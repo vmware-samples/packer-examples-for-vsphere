@@ -183,7 +183,7 @@ Edit the `vsphere.pkvars.hcl` file to configure the following:
 
     # vSphere Objects
 
-    vcenter_insecure_connection = trye
+    vcenter_insecure_connection = true
     vcenter_server              = "sfo-w01-vc01.sfo.rainpole.io"
     vcenter_cluster             = "sfo-w01-cl01"
     vcenter_datastore           = "sfo-w01-cl01-ds-vsan01"

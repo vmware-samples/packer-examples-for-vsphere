@@ -1,0 +1,35 @@
+
+; txtsetup.oem file.
+; Required to install the pvscsi driver at install time.
+
+[Disks]
+;"directory" should specify the full-path as per the documentation, but only
+; relative paths worked during testing.
+
+
+
+
+
+
+
+
+
+
+
+[Defaults]
+SCSI = pvscsi
+
+[SCSI]
+pvscsi = "VMware PVSCSI Controller"
+
+[Files.SCSI.pvscsi]
+driver = disk,pvscsi.sys,pvscsi
+inf = disk,pvscsi.inf
+catalog = disk,pvscsi.cat
+
+[Config.pvscsi]
+value = Parameters\PnpInterface, 5 ,REG_DWORD, 1
+value = Parameters, BusType, REG_DWORD, A
+
+[HardwareIds.scsi.pvscsi]
+id = "PCI\VEN_15AD&DEV_07C0", "pvscsi"

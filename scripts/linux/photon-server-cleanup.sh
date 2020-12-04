@@ -22,7 +22,7 @@ sudo tdnf install -y openssl-c_rehash
 
 ### Clearing tdnf cache. ###
 echo '> Clearing tdnf cache ...'
-sudu tdnf clean
+sudo tdnf clean all
 
 ### Copy the Certificate Authority certificates and add to the certificate authority trust. ###
 echo '> Copying the Certificate Authority certificates and adding to the certificate authority trust ...'

@@ -116,7 +116,7 @@ echo '> Changeing script permissions for execution ...'
 sudo chmod +x /tmp/clean.sh
 
 ### Executes the cleauup script. ### 
-echo '> Executing the cleauup script ...'
+echo '> Executing the cleanup script ...'
 sudo /tmp/clean.sh
 
 ### All done. ### 

@@ -95,7 +95,7 @@ hostnamectl set-hostname localhost
 
 # Cleans tdnf.
 echo '> Cleaning tdnf ...'
-tdbnf clean
+tdnf clean all
 
 # Cleans the machine-id.
 echo '> Cleaning the machine-id ...'
@@ -116,7 +116,7 @@ echo '> Changeing script permissions for execution ...'
 sudo chmod +x /tmp/clean.sh
 
 ### Executes the cleauup script. ### 
-echo '> Executing the cleauup script ...'
+echo '> Executing the cleanup script ...'
 sudo /tmp/clean.sh
 
 ### All done. ### 

@@ -185,6 +185,7 @@ Edit the `vsphere.pkvars.hcl` file to configure the following:
 
     vcenter_insecure_connection = trye
     vcenter_server              = "sfo-w01-vc01.sfo.rainpole.io"
+    vcenter_datacenter          = "sfo-w01-dc01"
     vcenter_cluster             = "sfo-w01-cl01"
     vcenter_datastore           = "sfo-w01-cl01-ds-vsan01"
     vcenter_network             = "sfo-w01-seg-dhcp"
@@ -323,9 +324,7 @@ Edit the `variables.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder
         "choco install postman",
         "choco install winscp",
         "choco install putty",
-        "choco install vscode",
-        "choco install terraform",
-        "choco install packer"
+        "choco install vscode"
     ]
     ```
 

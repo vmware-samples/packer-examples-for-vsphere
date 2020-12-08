@@ -64,6 +64,12 @@ variable "vcenter_server" {
   default = ""
 }
 
+variable "vcenter_datacenter" {
+  type    = string
+  description = "The name of the target vSphere datacenter. (e.g. 'sfo-w01-dc01')"
+  default = ""
+}
+
 variable "vcenter_cluster" {
   type    = string
   description = "The name of the target vSphere cluster. (e.g. 'sfo-w01-cl01')"
@@ -248,6 +254,7 @@ source "vsphere-iso" "linux-redhat-server" {
   vcenter_server       = var.vcenter_server
   username             = var.vcenter_username
   password             = var.vcenter_password
+  datacenter           = var.vcenter_datacenter
   cluster              = var.vcenter_cluster
   datastore            = var.vcenter_datastore
   folder               = var.vcenter_folder

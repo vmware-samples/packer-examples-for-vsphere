@@ -17,6 +17,7 @@ build_password   = "R@in!$aG00dThing."
 
 vcenter_insecure_connection     = true
 vcenter_server                  = "sfo-w01-vc01.sfo.rainpole.io"
+vcenter_datacenter              = "sfo-w01-dc01"
 vcenter_cluster                 = "sfo-w01-cl01"
 vcenter_datastore               = "sfo-w01-cl01-ds-vsan01"
 vcenter_network                 = "sfo-w01-seg-dhcp"

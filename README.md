@@ -3,7 +3,7 @@
 
 ![Rainpole](icon.png)
 
-## Using HashiCorp Packer and the VMware vSphere Provisioner to Build Private Cloud Machine Images
+## Using HashiCorp Packer and VMware vSphere to Build Private Cloud Machine Images
 
 This repository provides examples to automate the creation of virtual machine images and their guest operating systems on VMware vSphere using [HashiCorp Packer][packer] and the `vsphere-iso` [builder][packer-vsphere-iso]. All examples are authored in the HashiCorp Configuration Language ("HCL2") instead of JSON.
 

@@ -1,6 +1,6 @@
 ---
 name: "Feature Request"
-about: "Is something critial missing? Suggest a feature or an enhancement."
+about: "Is something critical missing? Suggest a feature or an enhancement."
 title: ''
 labels: enhancement
 assignees: tenthirtyam

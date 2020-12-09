@@ -5,7 +5,7 @@ labels: bug
 assignees: tenthirtyam
 ---
 
-When filing a bug please include the following information, if possible. 
+When filing a bug, please include the following information. 
 
 <!--
     Any example text in this template may be deleted.

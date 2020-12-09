@@ -223,7 +223,7 @@ Edit the `variables.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder
 
     > **Note**: All `variables.auto.pkvars.hcl` default to using the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types. 
     
-    > **IMPORTANT**: [EFI Secure Boot][vsphere-efi] is not yet used as there is a reported bug for the vSphere Content Library. OVF Template virtual machines images with `EFI` set to `BIOS` when cloned from a vSphere Content Library. This will be resolved in a future vSphere update, and the plumbing is ready to support it.
+    > **IMPORTANT**: [EFI Secure Boot][vsphere-efi] is not yet used as there is a reported bug (2639957) for the vSphere Content Library. OVF Template virtual machines images with `EFI` set to `BIOS` when cloned from a vSphere Content Library. This will be resolved in a future vSphere update, and the plumbing is ready to support it.
 
     **Example 1**: Ubuntu Server 20.04 LTS
     ```

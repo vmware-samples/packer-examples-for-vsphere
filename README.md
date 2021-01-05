@@ -122,13 +122,13 @@ rainpole@macos> git clone https://github.com/rainpole/packer-vsphere.git
     * Ubuntu Server 18.04 LTS
         * [Download][download-linux-ubuntu-server-18-04-lts] the latest legacy **non-live** release.
     * CentOS Server 8
-        * [Download][download-linux-centos-server-8] the latest release.
+        * [Download][download-linux-centos-server-8] the latest release of the full (e.g `CentOS-x86_64-dvd1.iso`) .iso image.
     * CentOS Server 7
-        * [Download][download-linux-centos-server-7] the latest release.
+        * [Download][download-linux-centos-server-7] the latest release of the full (e.g `CentOS-x86_64-dvd1.iso`) .iso image.
     * Red Hat Enterprise Linux Server 8
-        * [Download][download-linux-redhat-server-8] the latest release.
+        * [Download][download-linux-redhat-server-8] the latest release of the full (e.g `RHEL-x86_64-dvd1.iso`) .iso image.
     * Red Hat Enterprise Linux Server 7
-        * [Download][download-linux-redhat-server-7] the latest release.
+        * [Download][download-linux-redhat-server-7] the latest release of the full (e.g `RHEL-x86_64-dvd1.iso`) .iso image.
 
     **Microsoft Windows**
     * Microsoft Windows Server 2019

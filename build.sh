@@ -368,7 +368,7 @@ until [ "$selection" = "0" ]; do
   echo ""
   echo "      Linux Distribution:"
   echo ""
-  echo "    	 1  -  VMware Photon OS 4 (Beta)"
+  echo "    	 1  -  VMware Photon OS 4"
   echo "    	 2  -  VMware Photon OS 3"
   echo "    	 3  -  Ubuntu Server 20.04 LTS"
   echo "    	 4  -  Ubuntu Server 18.04 LTS"

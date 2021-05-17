@@ -14,7 +14,7 @@ If an item of the same name exists in the target content library, Packer will up
 The following builds are automated:
 
 **Linux Distributions**
-* VMware Photon OS 4.0 Beta
+* VMware Photon OS 4.0
 * VMware Photon OS 3.0
 * Ubuntu Server 20.04 LTS
 * Ubuntu Server 18.04 LTS
@@ -113,8 +113,8 @@ rainpole@macos> git clone https://github.com/rainpole/packer-vsphere.git
 1. Download the x64 guest operating system [.iso][iso] images.
 
     **Linux Distributions**
-    * VMware Photon OS 4.0 Beta 
-        * [Download][download-linux-photon-server-4] the latest beta release.
+    * VMware Photon OS 4.0
+        * [Download][download-linux-photon-server-4] the latest release.
     * VMware Photon OS 3.0
         * [Download][download-linux-photon-server-3] the latest release.
     * Ubuntu Server 20.04 LTS
@@ -190,7 +190,7 @@ Edit the `vsphere.pkvars.hcl` file to configure the following:
     vcenter_datastore           = "sfo-w01-cl01-ds-vsan01"
     vcenter_network             = "sfo-w01-seg-dhcp"
     vcenter_folder              = "sfo-w01-fd-templates"
-    vcenter_content_library     = "sfo-w01-clib01"
+    vcenter_content_library     = "sfo-w01-lib01"
 
     # ISO Objects
 
@@ -612,7 +612,7 @@ The menu will allow you to execute and confirm a build using Packer and the `vsp
 
       Linux Distribution:
 
-         1  -  VMware Photon OS 4 (Beta)
+         1  -  VMware Photon OS 4
          2  -  VMware Photon OS 3
          3  -  Ubuntu Server 20.04 LTS
          4  -  Ubuntu Server 18.04 LTS
@@ -675,7 +675,7 @@ Happy building!!!
 [credits-owen-reynolds-github]: https://github.com/getvpro/Build-Packer/blob/master/Scripts/Install-VMTools.ps1
 [download-linux-centos-server-8]: http://isoredirect.centos.org/centos/8/isos/x86_64/
 [download-linux-centos-server-7]: http://isoredirect.centos.org/centos/7/isos/x86_64/
-[download-linux-photon-server-4]: https://packages.vmware.com/photon/4.0/Beta/iso/
+[download-linux-photon-server-4]: https://packages.vmware.com/photon/4.0/
 [download-linux-photon-server-3]: https://packages.vmware.com/photon/3.0/
 [download-linux-redhat-server-8]: https://access.redhat.com/downloads/content/479/
 [download-linux-redhat-server-7]: https://access.redhat.com/downloads/content/69/

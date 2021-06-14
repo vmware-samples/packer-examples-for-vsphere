@@ -65,7 +65,6 @@ packer-vsphere/
 │       └── version 
 |           (e.g. windows-server-2019)
 │           └── build files 
-│               └── build.sh
 |               (e.g. variables.auto.pkrvars.hcl and *.pkr.hcl)
 ├── certificates
 │   └── root-ca.crt

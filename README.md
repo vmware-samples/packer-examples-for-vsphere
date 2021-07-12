@@ -1,4 +1,6 @@
 
+[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/rainpole/packer-vsphere)
+
 # Rainpole Machine Images
 
 ![Rainpole](icon.png)

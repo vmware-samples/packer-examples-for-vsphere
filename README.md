@@ -32,7 +32,7 @@ The following builds are automated:
 ## Requirements
 
 * macOS
-* vCenter Server 7.0 U1 or higher.
+* vCenter Server 7.0 Update 2 or higher.
 * [Packer 1.6.5][packer-install] or higher.
 
     ```
@@ -224,7 +224,7 @@ Edit the `variables.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder
 
     > **Note**: All `variables.auto.pkvars.hcl` default to using the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types. 
     
-    > **IMPORTANT**: [EFI Secure Boot][vsphere-efi] is not yet used as there was a reported bug (2639957) for the vSphere Content Library. OVF Template virtual machines images with `EFI` set to `BIOS` when cloned from a vSphere Content Library. This will was resolved in vSphere 7.0 Update 2 and the plumbing is ready to support it by changing vm_firmware = "efi-secure".
+    > **IMPORTANT**: [EFI Secure Boot][vsphere-efi] can be used with vSphere 7.0 Update 2 and later. There was ans issue for the vSphere Content Library in prior releases where OVF Template virtual machines images with `EFI` we're set to `BIOS` when cloned from a vSphere Content Library. This was resolved in vSphere 7.0 Update 2 and can be enabled by changing vm_firmware = "efi-secure" and the the config paths to "efi-secure" from "bios".
 
     **Example 1**: Ubuntu Server 20.04 LTS
     ```
@@ -271,7 +271,7 @@ Edit the `variables.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder
     vm_guest_os_edition_dc      = "datacenter"
     vm_guest_os_type            = "windows2019srv_64Guest" 
     vm_version                  = 18
-    vm_firmware                 = "bios"
+    vm_firmware                 = "efi-secure"
     vm_boot_command             = ["<spacebar>"]
     vm_boot_wait                = "2s"
     vm_cdrom_type               = "sata"
@@ -282,25 +282,25 @@ Edit the `variables.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder
     vm_disk_controller_type     = ["pvscsi"]
     vm_network_card             = "vmxnet3"
     vm_floppy_files_server_std_dexp = [
-        "../../../configs/windows/windows-server-2019/standard/bios/autounattend.xml",
+        "../../../configs/windows/windows-server-2019/standard/efi-secure/autounattend.xml",
         "../../../scripts/windows/",
         "../../../drivers/windows",
         "../../../certificates/",
     ]
     vm_floppy_files_server_std_core = [
-        "../../../configs/windows/windows-server-2019/standard-core/bios/autounattend.xml",
+        "../../../configs/windows/windows-server-2019/standard-core/efi-secure/autounattend.xml",
         "../../../scripts/windows/",
         "../../../drivers/windows",
         "../../../certificates/",
     ]
     vm_floppy_files_server_dc_dexp = [
-        "../../../configs/windows/windows-server-2019/datacenter/bios/autounattend.xml",
+        "../../../configs/windows/windows-server-2019/datacenter/efi-secure/autounattend.xml",
         "../../../scripts/windows/",
         "../../../drivers/windows",
         "../../../certificates/",
     ]
     vm_floppy_files_server_dc_core = [
-        "../../../configs/windows/windows-server-2019/datacenter-core/bios/autounattend.xml",
+        "../../../configs/windows/windows-server-2019/datacenter-core/efi-secure/autounattend.xml",
         "../../../scripts/windows/",
         "../../../drivers/windows",
         "../../../certificates/",
@@ -533,7 +533,7 @@ Decoded Password: [decoded password]
     ```
 * **Microsoft Windows** - Use the Microsoft Windows [Answer File Generator][microsoft-windows-afg] if you need to customize the provided examples further.
 
-> **NOTE**: BIOS-based `autounattend.xml` files for Microsoft Windows included in this repository are configured to use KMS licenses, and configure Windows Remote Management and VMware Tools. UEFI-based `autounattend.xml` files are included for future consumption and include the addition of the GPT disk structure requirements.
+> **NOTE**: BIOS-based `autounattend.xml` files for Microsoft Windows included in this repository are configured to use KMS licenses, and configure Windows Remote Management and VMware Tools. UEFI-based `autounattend.xml` files are included for consumption and include the addition of the GPT disk structure requirements.
 
 ## Step 5 - Certificates and Keys
 1. Save a copy of your Root Certificate Authority certificate to `/certificates` in `.crt` and `.p7b` formats.

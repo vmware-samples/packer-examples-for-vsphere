@@ -222,9 +222,9 @@ Edit the `variables.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder
 * .iso Image File `(string)`
 * .iso Image SHA-512 Checksum `(string)`
 
-    > **Note**: All `variables.auto.pkvars.hcl` default to using the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types. 
+    > **Note**: All `variables.auto.pkvars.hcl` default to using the BIOS firmware, the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types. 
     
-    > **IMPORTANT**: [EFI Secure Boot][vsphere-efi] can be used with vSphere 7.0 Update 2 and later. There was ans issue for the vSphere Content Library in prior releases where OVF Template virtual machines images with `EFI` we're set to `BIOS` when cloned from a vSphere Content Library. This was resolved in vSphere 7.0 Update 2 and can be enabled by changing vm_firmware = "efi-secure" and the the config paths to "efi-secure" from "bios".
+    > **IMPORTANT**: [EFI Secure Boot][vsphere-efi] can be used with vSphere 7.0 Update 2 and later. In prior vSphere releases, there was an issue with the vSphere Content Library where OVF Template virtual machines images with `EFI` were set to `BIOS` after being cloned from a vSphere Content Library. This was resolved in vSphere 7.0 Update 2 and can be enabled by changing vm_firmware = "efi-secure" and the configuration to the "efi-secure" path.
 
     **Example 1**: Ubuntu Server 20.04 LTS
     ```

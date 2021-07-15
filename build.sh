@@ -105,7 +105,7 @@ menu_option_5() {
   fi
 
   ### Build an Red Hat Enerprise Linux Server 8 Template for VMware vSphere ###
-  echo "Building an Red Hat Enerprise Linux Server 8 Template for VMware vSphere ..."
+  echo "Building a Red Hat Enerprise Linux Server 8 Template for VMware vSphere ..."
   rm -f output-vmware-iso/*.ova
 
   ### Apply the HashiCorp Packer Build ###
@@ -129,7 +129,7 @@ menu_option_6() {
   fi
 
   ### Build an Red Hat Enerprise Linux Server 7 Template for VMware vSphere ###
-  echo "Building an Red Hat Enerprise Linux Server 7 Template for VMware vSphere ..."
+  echo "Building a Red Hat Enerprise Linux Server 7 Template for VMware vSphere ..."
   rm -f output-vmware-iso/*.ova
 
   ### Apply the HashiCorp Packer Build ###
@@ -190,7 +190,7 @@ menu_option_8() {
 
 menu_option_9() {
   cd builds/windows/windows-server-2019/
-  echo -e "\nCONFIRM: Build Microsoft Windows Server 2019 Templates for VMware vSphere."
+  echo -e "\nCONFIRM: Build a Microsoft Windows Server 2019 Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
   read REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -199,7 +199,7 @@ menu_option_9() {
   fi
 
   ### Build Microsoft Windows Server 2019 Templates for VMware vSphere ###
-  echo "Building Microsoft Windows Server 2019 Templates for VMware vSphere  ..."
+  echo "Building a Microsoft Windows Server 2019 Templates for VMware vSphere  ..."
   rm -f output-vmware-iso/*.ova
 
   ### Apply the HashiCorp Packer Build ###
@@ -213,7 +213,7 @@ menu_option_9() {
 
 menu_option_10() {
   cd builds/windows/windows-server-2019/
-  echo -e "\nCONFIRM: Build Microsoft Windows Server 2019 Templates for VMware vSphere."
+  echo -e "\nCONFIRM: Build a Microsoft Windows Server 2019 Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
   read REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -222,7 +222,7 @@ menu_option_10() {
   fi
 
   ### Build Microsoft Windows Server 2019 Standard Templates for VMware vSphere ###
-  echo "Building Microsoft Windows Server 2019 Standard Templates for VMware vSphere  ..."
+  echo "Building a Microsoft Windows Server 2019 Standard Templates for VMware vSphere  ..."
   rm -f output-vmware-iso/*.ova
 
   ### Apply the HashiCorp Packer Build ###
@@ -237,7 +237,7 @@ menu_option_10() {
 
 menu_option_11() {
   cd builds/windows/windows-server-2019/
-  echo -e "\nCONFIRM: Build Microsoft Windows Server 2019 Datacenter Templates for VMware vSphere."
+  echo -e "\nCONFIRM: Build a Microsoft Windows Server 2019 Datacenter Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
   read REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -246,7 +246,7 @@ menu_option_11() {
   fi
 
   ### Build Microsoft Windows Server 2019 Datacenter Templates for VMware vSphere ###
-  echo "Building Microsoft Windows Server 2019 Datacenter Templates for VMware vSphere  ..."
+  echo "Building a Microsoft Windows Server 2019 Datacenter Templates for VMware vSphere  ..."
   rm -f output-vmware-iso/*.ova
 
   ### Apply the HashiCorp Packer Build ###
@@ -261,7 +261,7 @@ menu_option_11() {
 
 menu_option_12() {
   cd builds/windows/windows-server-2016/
-  echo -e "\nCONFIRM: Build Microsoft Windows Server 2016 Templates for VMware vSphere."
+  echo -e "\nCONFIRM: Build a Microsoft Windows Server 2016 Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
   read REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -270,7 +270,7 @@ menu_option_12() {
   fi
 
   ### Build Microsoft Windows Server 2016 Templates for VMware vSphere ###
-  echo "Building Microsoft Windows Server 2016 Templates for VMware vSphere  ..."
+  echo "Building a Microsoft Windows Server 2016 Templates for VMware vSphere  ..."
   rm -f output-vmware-iso/*.ova
 
   ### Apply the HashiCorp Packer Build ###
@@ -284,7 +284,7 @@ menu_option_12() {
 
 menu_option_13() {
   cd builds/windows/windows-server-2016/
-  echo -e "\nCONFIRM: Build Microsoft Windows Server Standard 2016 Templates for VMware vSphere."
+  echo -e "\nCONFIRM: Build a Microsoft Windows Server Standard 2016 Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
   read REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -293,7 +293,7 @@ menu_option_13() {
   fi
 
   ### Build Microsoft Windows Server 2016 Standard Templates for VMware vSphere ###
-  echo "Building Microsoft Windows Server 2016 Standard Templates for VMware vSphere  ..."
+  echo "Building a Microsoft Windows Server 2016 Standard Templates for VMware vSphere  ..."
   rm -f output-vmware-iso/*.ova
 
   ### Apply the HashiCorp Packer Build ###
@@ -308,7 +308,7 @@ menu_option_13() {
 
 menu_option_14() {
   cd builds/windows/windows-server-2016/
-  echo -e "\nCONFIRM: Build Microsoft Windows Server 2016 Datacenter Templates for VMware vSphere."
+  echo -e "\nCONFIRM: Build a Microsoft Windows Server 2016 Datacenter Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
   read REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -317,7 +317,7 @@ menu_option_14() {
   fi
 
   ### Build Microsoft Windows Server 2016 Datacenter Templates for VMware vSphere ###
-  echo "Building Microsoft Windows Server 2016 Datacenter Templates for VMware vSphere  ..."
+  echo "Building a Microsoft Windows Server 2016 Datacenter Templates for VMware vSphere  ..."
   rm -f output-vmware-iso/*.ova
 
   ### Apply the HashiCorp Packer Build ###
@@ -344,7 +344,7 @@ info() {
   echo ""
   echo "Microsoft Windows Server builds include both Core and Desktop Experience."
   echo ""
-  echo "UEFI based are not enabled by default for Microsoft Windows Server 2019/2016 and Red Hat Enterprise Linux 8 due to a known issue with cloning from the vSphere Content Library."
+  echo "UEFI based are not enabled by default for Microsoft Windows Server 2019/2016 and Red Hat Enterprise Linux 8."
   echo ""
   echo "For more information, visit the repositiory or review the README."
   read

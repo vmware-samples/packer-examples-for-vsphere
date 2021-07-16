@@ -34,7 +34,7 @@ The following builds are automated:
 * macOS, Linux, or Windows.
 * vCenter Server 7.0 Update 2 or higher.
 * [Packer 1.7.3][packer-install] or higher.
-* [Windows Update Provisioner][packer-provisioner-windows-update] - a community provisioner for Packer.
+* [packer-provisioner-windows-update] 0.12.0 - a community provisioner for Packer.
 
 > **NOTE**: You must place the provisioner executable in the same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
 

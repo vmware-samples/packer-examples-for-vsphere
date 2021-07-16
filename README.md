@@ -16,18 +16,21 @@ If an item of the same name exists in the target content library, Packer will up
 The following builds are automated:
 
 **Linux Distributions**
-* VMware Photon OS 4.0
-* VMware Photon OS 3.0
+* VMware Photon OS 4
+* VMware Photon OS 3
 * Ubuntu Server 20.04 LTS
 * Ubuntu Server 18.04 LTS
 * Red Hat Enterprise Linux Server 8
 * Red Hat Enterprise Linux Server 7
+* Rocky Linux Server 8
 * CentOS Server 8
 * CentOS Server 7
 
 **Microsoft Windows** - _Core and Desktop Experience_
 * Microsoft Windows Server 2019 - Standard and Datacenter
 * Microsoft Windows Server 2016 - Standard and Datacenter
+
+> **NOTE**: Guest Customization is [**not supported**](https://partnerweb.vmware.com/programs/guestOS/guest-os-customization-matrix.pdf) for Rocky Linux in vCenter Server 7.0 Update 2. 
 
 ## Requirements
 
@@ -36,7 +39,7 @@ The following builds are automated:
 * [Packer 1.7.3][packer-install] or higher.
 * [packer-plugin-windows-update] 0.12.0 - a community plug-in for Packer.
 
-> **NOTE**: You must initialize the Packer plug-ins or place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
+> **NOTE**: You must initialize the Packer plug-ins using Option P in `./build.sh` or place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
 
 ## Structure
 
@@ -114,14 +117,16 @@ rainpole@macos> git clone https://github.com/rainpole/packer-vsphere.git
         * [Download][download-linux-ubuntu-server-20-04-lts] the latest **live** release.
     * Ubuntu Server 18.04 LTS
         * [Download][download-linux-ubuntu-server-18-04-lts] the latest legacy **non-live** release.
-    * CentOS Server 8
-        * [Download][download-linux-centos-server-8] the latest release of the full (e.g `CentOS-x86_64-dvd1.iso`) .iso image.
-    * CentOS Server 7
-        * [Download][download-linux-centos-server-7] the latest release of the full (e.g `CentOS-x86_64-dvd1.iso`) .iso image.
     * Red Hat Enterprise Linux Server 8
         * [Download][download-linux-redhat-server-8] the latest release of the full (e.g `RHEL-x86_64-dvd1.iso`) .iso image.
     * Red Hat Enterprise Linux Server 7
         * [Download][download-linux-redhat-server-7] the latest release of the full (e.g `RHEL-x86_64-dvd1.iso`) .iso image.
+    * Rocky Linux Server 8
+        * [Download][download-linux-rocky-server-8] the latest release of the full (e.g `Rocky-x86_64-dvd1.iso`) .iso image.
+    * CentOS Server 8
+        * [Download][download-linux-centos-server-8] the latest release of the full (e.g `CentOS-x86_64-dvd1.iso`) .iso image.
+    * CentOS Server 7
+        * [Download][download-linux-centos-server-7] the latest release of the full (e.g `CentOS-x86_64-dvd1.iso`) .iso image.
 
     **Microsoft Windows**
     * Microsoft Windows Server 2019
@@ -611,18 +616,19 @@ The menu will allow you to execute and confirm a build using Packer and the `vsp
          4  -  Ubuntu Server 18.04 LTS
          5  -  Red Hat Enterprise Linux Server 8
          6  -  Red Hat Enterprise Linux Server 7
-         7  -  CentOS Server 8
-         8  -  CentOS Server 7
+         7  -  Rocky Linux Server 8
+         8  -  CentOS Server 8
+         9  -  CentOS Server 7
 
 
       Microsoft Windows:
 
-         9  -  Windows Server 2019 - All
-        10  -  Windows Server 2019 - Standard Only
-        11  -  Windows Server 2019 - Datacenter Only
-        12  -  Windows Server 2016 - All
-        13  -  Windows Server 2016 - Standard Only
-        14  -  Windows Server 2016 - Datacenter Only
+        10  -  Windows Server 2019 - All
+        11  -  Windows Server 2019 - Standard Only
+        12  -  Windows Server 2019 - Datacenter Only
+        13  -  Windows Server 2016 - All
+        14  -  Windows Server 2016 - Standard Only
+        15  -  Windows Server 2016 - Datacenter Only
 
 
       Other:
@@ -667,14 +673,16 @@ Happy building!!!
 [credits-maher-alasfar-github]: https://github.com/vmwarelab/cloud-init-scripts
 [credits-owen-reynolds-twitter]: https://twitter.com/OVDamn
 [credits-owen-reynolds-github]: https://github.com/getvpro/Build-Packer/blob/master/Scripts/Install-VMTools.ps1
-[download-linux-centos-server-8]: http://isoredirect.centos.org/centos/8/isos/x86_64/
-[download-linux-centos-server-7]: http://isoredirect.centos.org/centos/7/isos/x86_64/
+
 [download-linux-photon-server-4]: https://packages.vmware.com/photon/4.0/
 [download-linux-photon-server-3]: https://packages.vmware.com/photon/3.0/
-[download-linux-redhat-server-8]: https://access.redhat.com/downloads/content/479/
-[download-linux-redhat-server-7]: https://access.redhat.com/downloads/content/69/
 [download-linux-ubuntu-server-20-04-lts]: https://releases.ubuntu.com/20.04.1/
 [download-linux-ubuntu-server-18-04-lts]: http://cdimage.ubuntu.com/ubuntu/releases/18.04.5/release/
+[download-linux-redhat-server-8]: https://access.redhat.com/downloads/content/479/
+[download-linux-redhat-server-7]: https://access.redhat.com/downloads/content/69/
+[download-linux-rocky-server-8]: https://download.rockylinux.org/pub/rocky/8/isos/x86_64/
+[download-linux-centos-server-8]: http://isoredirect.centos.org/centos/8/isos/x86_64/
+[download-linux-centos-server-7]: http://isoredirect.centos.org/centos/7/isos/x86_64/
 [hashicorp]: https://www.hashicorp.com/
 [iso]: https://en.wikipedia.org/wiki/ISO_image
 [microsoft-kms]: https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys

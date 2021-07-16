@@ -626,7 +626,8 @@ The menu will allow you to execute and confirm a build using Packer and the `vsp
 
 
       Other:
-
+      
+        P   -  Initialize Plug-ins
         I   -  Information
         Q   -  Quit
 ```

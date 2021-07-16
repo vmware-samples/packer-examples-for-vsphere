@@ -142,6 +142,7 @@ rainpole@macos> git clone https://github.com/rainpole/packer-vsphere.git
     * `iso-linux-ubuntu-server-18-04-lts.iso`
     * `iso-linux-redhat-server-8`
     * `iso-linux-redhat-server-7`
+    * `iso-linux-rocky-server-8`
     * `iso-linux-centos-server-8`
     * `iso-linux-centos-server-7`
     * `iso-windows-server-2019.iso`

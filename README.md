@@ -111,7 +111,7 @@ rainpole@macos> git clone https://github.com/rainpole/packer-vsphere.git
     * VMware Photon OS 3.0
         * [Download][download-linux-photon-server-3] the latest release.
     * Ubuntu Server 20.04 LTS
-        * [Download][download-linux-ubuntu-server-18-04-lts] the latest **live** release.
+        * [Download][download-linux-ubuntu-server-20-04-lts] the latest **live** release.
     * Ubuntu Server 18.04 LTS
         * [Download][download-linux-ubuntu-server-18-04-lts] the latest legacy **non-live** release.
     * CentOS Server 8

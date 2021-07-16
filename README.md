@@ -31,18 +31,10 @@ The following builds are automated:
 
 ## Requirements
 
-* macOS
+* macOS, Linux, or Windows.
 * vCenter Server 7.0 Update 2 or higher.
-* [Packer 1.6.5][packer-install] or higher.
-
-    ```
-    rainpole@macos> brew install hashicorp/tap/packer
-    ```
+* [Packer 1.7.3][packer-install] or higher.
 * [Windows Update Provisioner][packer-provisioner-windows-update] - a community provisioner for Packer.
-
-    ```
-    rainpole@macos> git clone https://github.com/rgl/packer-provisioner-windows-update.git
-    ```
 
 > **NOTE**: You must place the provisioner executable in the same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
 

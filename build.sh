@@ -337,6 +337,25 @@ press_enter() {
   clear
 }
 
+plugins() {
+  cd builds/windows/windows-server-2019/
+  echo -e "\nCONFIRM: Initilize the Windows Update Plug-in."
+  echo -e "\nContinue? (y/n)"
+  read REPLY
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+    exit 1
+  fi
+
+  ### Initilize the Windows Update Plug-in. ###
+  echo "Initilizing the Windows Update Plug-in ..."
+  rm -f output-vmware-iso/*.ova
+  packer init windows-server-2019.pkr.hcl
+      
+  ### All done. ###
+  echo "Done."
+}
+
 info() {
   echo "GitHub Repository: github.com/rainpole/packer-vsphere/"
   echo "Maintainer: code@rainpole.io"
@@ -390,6 +409,7 @@ until [ "$selection" = "0" ]; do
   echo ""
   echo "      Other:"
   echo ""
+  echo "        P   -  Initialize Plug-ins"
   echo "        I   -  Information"
   echo "        Q   -  Quit"
   echo ""
@@ -410,6 +430,7 @@ until [ "$selection" = "0" ]; do
     12 ) clear ; menu_option_12 ; press_enter ;;
     13 ) clear ; menu_option_13 ; press_enter ;;
     14 ) clear ; menu_option_14 ; press_enter ;;
+    P ) clear ; plugins ; press_enter ;;
     I ) clear ; info ; press_enter ;;
     Q ) clear ; exit ;;
     * ) clear ; incorrect_selection ; press_enter ;;

@@ -609,6 +609,12 @@ The menu will allow you to execute and confirm a build using Packer and the `vsp
 
 **Example**: Menu for `./build.sh`.
 ```
+    ____             __                ____        _ __    __     
+   / __ \____ ______/ /_____  _____   / __ )__  __(_) /___/ /____ 
+  / /_/ / __  / ___/ //_/ _ \/ ___/  / __  / / / / / / __  / ___/ 
+ / ____/ /_/ / /__/ ,< /  __/ /     / /_/ / /_/ / / / /_/ (__  )  
+/_/    \__,_/\___/_/|_|\___/_/     /_____/\__,_/_/_/\__,_/____/   
+
   Select a HashiCorp Packer build for VMware vSphere:
 
       Linux Distribution:

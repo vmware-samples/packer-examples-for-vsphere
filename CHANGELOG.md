@@ -1,7 +1,24 @@
-# The Changelog
+# THE CHANGELOG
 
-## [v0.0.2] (2020-12-08)
+![Rainpole](icon.png)
+
+## 2021-07-16
+* Bumped support to >= vSphere 7.0 U2 and >= Packer 1.7.3.
+* Added support for [VMware Photon OS](https://vmware.github.io/photon/) 4.
+* Added [support](https://github.com/rainpole/packer-vsphere/issues/13) for [Rocky Linux](https://rockylinux.org) 8. 
+
+    > Note: GuestOS Customization is not supported in vSphere 7.0 U2.
+
+* Added the Packer block to Windows builds with required versions of the [Windows-Update Plug-in](https://github.com/rgl/packer-plugin-windows-update).
+* Added the option to initialize the Windows-Update Plug-in with **Option P** in `./build.sh`.
+* Updated README.md regarding support for UEFI (`vm_firmware = "efi-secure"`) for Windows and RHEL as resolved in vSphere 7.0 Update 2. 
+
+    > Note: Defaults remain BIOS (`vm_firmware = "bios"`).
+
+* Various bug fixes and [README.md](README.md) updates
+
+## 2020-12-08
 * Updated examples to support vSphere datacenter object.
 
-## [v0.0.1] (2020-11-26)
+## 2020-11-26
 * Initial release.

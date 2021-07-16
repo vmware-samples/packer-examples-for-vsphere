@@ -3,9 +3,11 @@
 
 ![Rainpole](icon.png)
 
-[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/rainpole/packer-vsphere)
+[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/rainpole/packer-vsphere) 
 
 ## Using HashiCorp Packer and VMware vSphere to Build Private Cloud Machine Images
+
+Read the [CHANGELOG](CHANGELOG.md) for the latest updates.
 
 This repository provides examples to automate the creation of virtual machine images and their guest operating systems on VMware vSphere using [HashiCorp Packer][packer] and the `vsphere-iso` [builder][packer-vsphere-iso]. All examples are authored in the HashiCorp Configuration Language ("HCL2") instead of JSON.
 

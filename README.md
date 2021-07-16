@@ -521,7 +521,7 @@ Decoded Password: [decoded password]
 **Need help customizing the configuration files further?**
 
 * **VMware PhotonOS** - Read the [PhotonOS Kickstart Documentation][photon-kickstart].
-* **Red Hat Enterprise Linux** (_and CentOS_) - Use the [Red Hat Kickstart Generator][redhat-kickstart].
+* **Red Hat Enterprise Linux** (_as well as Rocky Linux and CentOS_) - Use the [Red Hat Kickstart Generator][redhat-kickstart].
 * **Ubuntu Server** - Install and run system-config-kickstart on a Ubuntu desktop.
 
     ```

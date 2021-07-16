@@ -644,9 +644,10 @@ You can also start a build based on a specific source for some of the virtual ma
 
 For example, if you simply want to build a Microsoft Windows Server 2019 Standard Core, run the following:
 
-**Example**: Build a specific machine image.
+**Example**: Initialize plug-ins and build a specific machine image.
 ```
 rainpole@macos packer-examples> cd builds/windows/windows-server-2019/
+rainpole@macos packer-examples> packer init windows-server-2019.pkr.hcl
 rainpole@macos windows-server-2019> packer build -force \
       --only vsphere-iso.windows-server-standard-core \
       -var-file="../../../vsphere.pkrvars.hcl" .

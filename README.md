@@ -34,9 +34,9 @@ The following builds are automated:
 * macOS, Linux, or Windows.
 * vCenter Server 7.0 Update 2 or higher.
 * [Packer 1.7.3][packer-install] or higher.
-* [packer-provisioner-windows-update] 0.12.0 - a community provisioner for Packer.
+* [packer-plugin-windows-update] 0.12.0 - a community plug-in for Packer.
 
-> **NOTE**: You must place the provisioner executable in the same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
+> **NOTE**: You must initialize the Packer plug-ins or place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
 
 ## Structure
 
@@ -683,7 +683,7 @@ Happy building!!!
 [packer]: https://www.packer.io
 [packer-debug]: https://www.packer.io/docs/debugging
 [packer-install]: https://www.packer.io/intro/getting-started/install.html
-[packer-provisioner-windows-update]: https://github.com/rgl/packer-provisioner-windows-update
+[packer-plugin-windows-update]: https://github.com/rgl/packer-plugin-windows-update
 [packer-variables]: https://www.packer.io/docs/from-1.5/variables#variable-definitions-pkrvars-hcl-files
 [packer-vsphere-iso]: https://www.packer.io/docs/builders/vmware/vsphere-iso
 [photon-kickstart]: https://vmware.github.io/photon/assets/files/html/3.0/photon_user/kickstart.html

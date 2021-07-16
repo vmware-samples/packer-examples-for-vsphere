@@ -40,7 +40,7 @@ sudo rm -rf /tmp/id_ecdsa.pub
 ### Configure SSH for Public Key Authentication. ###
 echo '> Configuring SSH for Public Key Authentication ...'
 sudo sed -i '/^PermitRootLogin/s/yes/no/' /etc/ssh/sshd_config
-sudo sed -i "s/.*PubkeyAuthentication.*/PubkeyAuthentication yes/g" /etc/ssh/sshd_config
+sudo sed -i 's/.*PubkeyAuthentication.*/PubkeyAuthentication yes/g' /etc/ssh/sshd_config
 
 ### Restart the SSH daemon. ###
 echo '> Restarting the SSH daemon. ...'

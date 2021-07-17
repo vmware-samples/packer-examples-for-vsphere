@@ -1,13 +1,27 @@
 
-# Rainpole Machine Images
-
 ![Rainpole](icon.png)
 
-[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/rainpole/packer-vsphere) 
+<img alt="Last Commit" src="https://img.shields.io/github/last-commit/rainpole/packer-vsphere?style=for-the-badge&logo=github">
+<br/>
+<img alt=">= VMware vSphere 7.0 Update 2" src="https://img.shields.io/badge/VMware%20vSphere->=%207.0%20Update%202-blue?style=for-the-badge">
+<br/>
+<img alt=">= Packer 1.7.3" src="https://img.shields.io/badge/HashiCorp%20Packer->=%201.7.3-blue?style=for-the-badge">
 
-## Using HashiCorp Packer and VMware vSphere to Build Private Cloud Machine Images
+<br/><br/>
 
-Read the [CHANGELOG](CHANGELOG.md) for the latest updates.
+# HashiCorp Packer and VMware vSphere to Build Private Cloud Machine Images
+
+[<img alt="The Changelog" src="https://img.shields.io/badge/The%20Changelog-Read-blue?style=for-the-badge&logo=github">](CHANGELOG.md) [<img alt="Open in Visual Studio Code" src="https://img.shields.io/badge/Visual%20Studio%20Code-Open-blue?style=for-the-badge&logo=visualstudiocode">](https://open.vscode.dev/rainpole/packer-vsphere)
+
+## Table of Contents
+1.	[Introduction](#Introduction)
+1.	[Requirements](#Requirements)
+1.	[Getting Started](#Getting%20Started)
+1.	[Execution](#Execution)
+1.	[Troubleshooting](#Troubleshooting)
+1.	[Credits](#Credits)
+
+## Introduction
 
 This repository provides examples to automate the creation of virtual machine images and their guest operating systems on VMware vSphere using [HashiCorp Packer][packer] and the `vsphere-iso` [builder][packer-vsphere-iso]. All examples are authored in the HashiCorp Configuration Language ("HCL2") instead of JSON.
 
@@ -43,7 +57,16 @@ The following builds are automated:
 
 > **NOTE**: You must initialize the Packer plug-ins using Option P in `./build.sh` or place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
 
-## Structure
+## Getting Started
+
+### Step 1 - Clone the Repository
+
+Clone the GitHub repository:
+
+**Example**: 
+```
+rainpole@macos> git clone https://github.com/rainpole/packer-vsphere.git
+```
 
 The directory structure of the repository.
 
@@ -95,18 +118,8 @@ packer-vsphere/
 │   └── windows
 │       (e.g. windows-server-cleanup.ps1)
 ```
-## Getting Started
 
-### Step 1 - Clone
-
-Clone the GitHub repository:
-
-**Example**: 
-```
-rainpole@macos> git clone https://github.com/rainpole/packer-vsphere.git
-```
-
-### Step 2 - Guest Operating Systems
+### Step 2 - Prepare the Guest Operating Systems ISOs
 
 1. Download the x64 guest operating system [.iso][iso] images.
 
@@ -150,7 +163,7 @@ rainpole@macos> git clone https://github.com/rainpole/packer-vsphere.git
     * `iso-windows-server-2019.iso`
     * `iso-windows-server-2016.iso`
 
-3. Obtain the SHA-512 checksum for each guest operating system `.iso` image. This will be use in the build's input variables.
+3. Obtain the SHA-512 checksum for each guest operating system `.iso` image. This will be use in the build input variables.
 
     * macOS terminal: `shasum -a 512 [filename.iso]`
     * Linux shell: `sha512sum [filename.iso]`
@@ -158,9 +171,9 @@ rainpole@macos> git clone https://github.com/rainpole/packer-vsphere.git
 
 4. [Upload][vsphere-upload] your guest operating system `.iso` images to the `iso_datastore/iso_path` datastore location that will be defined in your variables. For example, `[sfo-w01-ds-nfs01] /iso`.
 
-### Step 3 - Input Variables
+### Step 3 - Configure the Input Variables
 
-All Packer [input variables][packer-variables] are defined in HCL2 as `.pkvars.hcl` files.
+The [variables][packer-variables] are defined in `.pkvars.hcl` files.
 
 #### **vSphere Variables**
 
@@ -331,9 +344,9 @@ Edit the `variables.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder
 
     > **Hint**: You can discover the _[VirtualMachineGuestOsIdentifier][vsphere-guestosid]_ using the [vSphere 7.0 API Reference][vsphere-api] documentation.
 
-## Step 4 - Configurations and Scripts
+## Step 4 - Modify the Configurations and Scripts
 
-Update the configuration and scripts files, as needed, for the Linux distributions and Microsoft Windows.
+Modify the configuration and scripts files, as needed, for the Linux distributions and Microsoft Windows.
 
 **Linux Distribution Kickstart and Scripts**
 
@@ -354,14 +367,14 @@ The kickstart files for each linux distribution includes a SHA-512 encrypted pas
 
 You can generate a SHA-512 password using various other tools like OpenSSL, mkpasswd, etc.
 
-**Example**: : OpenSSL on macOS
+**OpenSSL on macOS**:
 ```
 rainpole@macos>  openssl passwd -6 
 Password: ***************
 Verifying - Password: ***************
 [password hash]
 ```
-**Example**: : mkpasswd on Linux
+**mkpasswd on Linux**:
 ```
 rainpole@linux>  mkpasswd --method=SHA-512 --rounds=4096
 Password: ***************
@@ -483,7 +496,7 @@ If the password for the `<UserAccounts>` - which includes the `administrator` an
 </LocalAccounts>
 </UserAccounts>
 ```
-**Example**: Auto Logon.
+**Example**: Auto Logon
 ```
 <AutoLogon>
 <Password>
@@ -522,7 +535,7 @@ Decoded Password: [decoded password]
 ```
 **Need help customizing the configuration files further?**
 
-* **VMware PhotonOS** - Read the [PhotonOS Kickstart Documentation][photon-kickstart].
+* **VMware Photon OS** - Read the [Photon OS Kickstart Documentation][photon-kickstart].
 * **Red Hat Enterprise Linux** (_as well as Rocky Linux and CentOS_) - Use the [Red Hat Kickstart Generator][redhat-kickstart].
 * **Ubuntu Server** - Install and run system-config-kickstart on a Ubuntu desktop.
 
@@ -535,7 +548,8 @@ Decoded Password: [decoded password]
 
 > **NOTE**: BIOS-based `autounattend.xml` files for Microsoft Windows included in this repository are configured to use KMS licenses, and configure Windows Remote Management and VMware Tools. UEFI-based `autounattend.xml` files are included for consumption and include the addition of the GPT disk structure requirements.
 
-## Step 5 - Certificates and Keys
+### Step 5 - Configure Certificates and Keys
+
 1. Save a copy of your Root Certificate Authority certificate to `/certificates` in `.crt` and `.p7b` formats.
 
     ```
@@ -596,7 +610,7 @@ Decoded Password: [decoded password]
     >
     > See [Generate a New SSH Key][ssh-keygen] on SSH.com. 
 
-## Step 6 - Run a Build!
+## Execution
 
 Start a pre-defined build by running the build script (`./build.sh`). The script presents a menu the which simply calls Packer and the respective build(s). 
 
@@ -666,7 +680,7 @@ Happy building!!!
 
 * Read [Debugging Packer Builds][packer-debug].
 
-## Credits:
+## Credits
 * Maher AlAsfar [@vmwarelab][credits-maher-alasfar-twitter]
 
     [Linux][credits-maher-alasfar-github] Bash scripting code.

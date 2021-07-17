@@ -3,9 +3,9 @@
 
 <img alt="Last Commit" src="https://img.shields.io/github/last-commit/rainpole/packer-vsphere?style=for-the-badge&logo=github">
 <br/>
-<img alt=">= VMware vSphere 7.0 Update 2" src="https://img.shields.io/badge/VMware%20vSphere->=%207.0%20Update%202-blue?style=for-the-badge">
+<img alt=">= VMware vSphere 7.0 Update 2" src="https://img.shields.io/badge/VMware%20vSphere-7.0%20Update%202-blue?style=for-the-badge">
 <br/>
-<img alt=">= Packer 1.7.3" src="https://img.shields.io/badge/HashiCorp%20Packer->=%201.7.3-blue?style=for-the-badge">
+<img alt=">= Packer 1.7.3" src="https://img.shields.io/badge/HashiCorp%20Packer-1.7.3-blue?style=for-the-badge">
 
 <br/><br/>
 

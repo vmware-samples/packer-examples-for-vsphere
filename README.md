@@ -11,7 +11,7 @@
 ## Table of Contents
 1.	[Introduction](#Introduction)
 1.	[Requirements](#Requirements)
-1.	[Getting Started](#Getting%20Started)
+1.	[Configuration](#Configuration)
 1.	[Execution](#Execution)
 1.	[Troubleshooting](#Troubleshooting)
 1.	[Credits](#Credits)
@@ -52,7 +52,7 @@ The following builds are automated:
 
 > **NOTE**: You must initialize the Packer plug-ins using Option P in `./build.sh` or place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
 
-## Getting Started
+## Configuration
 
 ### Step 1 - Clone the Repository
 

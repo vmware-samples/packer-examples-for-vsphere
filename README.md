@@ -12,8 +12,8 @@
 1.	[Introduction](#Introduction)
 1.	[Requirements](#Requirements)
 1.	[Configuration](#Configuration)
-1.	[Execution](#Execution)
-1.	[Troubleshooting](#Troubleshooting)
+1.	[Build](#Build)
+1.	[Troubleshoot](#Troubleshoot)
 1.	[Credits](#Credits)
 
 ## Introduction
@@ -605,9 +605,9 @@ Decoded Password: [decoded password]
     >
     > See [Generate a New SSH Key][ssh-keygen] on SSH.com. 
 
-## Execution
+## Build
 
-Start a pre-defined build by running the build script (`./build.sh`). The script presents a menu the which simply calls Packer and the respective build(s). 
+Start a pre-defined build by running the build script (`./build.sh`). The script presents a menu the which simply calls Packer and the respective build(s).
 
 **Example**: Launch`./build.sh`.
 ```
@@ -671,7 +671,7 @@ Happy building!!!
 
  -- Your friends at rainpole.io.
 
-## Troubleshooting
+## Troubleshoot
 
 * Read [Debugging Packer Builds][packer-debug].
 
@@ -713,7 +713,7 @@ Happy building!!!
 [packer-install]: https://www.packer.io/intro/getting-started/install.html
 [packer-plugin-windows-update]: https://github.com/rgl/packer-plugin-windows-update
 [packer-variables]: https://www.packer.io/docs/from-1.5/variables#variable-definitions-pkrvars-hcl-files
-[packer-vsphere-iso]: https://www.packer.io/docs/builders/vmware/vsphere-iso
+[packer-vsphere-iso]: https://www.packer.io/docs/builders/vsphere/vsphere-iso
 [photon-kickstart]: https://vmware.github.io/photon/assets/files/html/3.0/photon_user/kickstart.html
 [redhat-kickstart]: https://access.redhat.com/labs/kickstartconfig/
 [ssh-keygen]: https://www.ssh.com/ssh/keygen/

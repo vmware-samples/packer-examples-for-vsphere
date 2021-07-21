@@ -1,5 +1,6 @@
 # Maintainer: code@rainpole.io
 # Packer variables for Red Hat Enterprise Linux 8 Server.
+# https://www.packer.io/docs/builders/vsphere/vsphere-iso
 
 ##################################################################################
 # VARIABLES

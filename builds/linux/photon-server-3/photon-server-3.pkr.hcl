@@ -1,6 +1,6 @@
 # Maintainer: code@rainpole.io
-# Packer template for VMware Photon OS 3.0.
-# https://www.packer.io/docs/builders/vmware/vsphere-iso
+# Packer template for VMware Photon OS 3.
+# https://www.packer.io/docs/builders/vsphere/vsphere-iso
 
 ##################################################################################
 # PACKER

@@ -1,6 +1,6 @@
 # Maintainer: code@rainpole.io
 # Packer template for Rocky Linux Server 8.
-# https://www.packer.io/docs/builders/vmware/vsphere-iso
+# https://www.packer.io/docs/builders/vsphere/vsphere-iso
 
 ##################################################################################
 # PACKER

@@ -1,6 +1,6 @@
 # Maintainer: code@rainpole.io
 # Packer template for Red Hat Enterprise Linux 7 Server.
-# https://www.packer.io/docs/builders/vmware/vsphere-iso
+# https://www.packer.io/docs/builders/vsphere/vsphere-iso
 
 ##################################################################################
 # PACKER

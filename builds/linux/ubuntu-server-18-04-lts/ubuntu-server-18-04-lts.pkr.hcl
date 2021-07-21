@@ -1,6 +1,6 @@
 # Maintainer: code@rainpole.io
 # Packer tenmplate for Ubuntu Server 18.04 LTS.
-# https://www.packer.io/docs/builders/vmware/vsphere-iso
+# https://www.packer.io/docs/builders/vsphere/vsphere-iso
 
 ##################################################################################
 # PACKER

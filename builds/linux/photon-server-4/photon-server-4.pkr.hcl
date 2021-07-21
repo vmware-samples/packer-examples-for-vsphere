@@ -1,6 +1,6 @@
 # Maintainer: code@rainpole.io
-# Packer template for VMware Photon OS 4.0 Beta.
-# https://www.packer.io/docs/builders/vmware/vsphere-iso
+# Packer template for VMware Photon OS 4.
+# https://www.packer.io/docs/builders/vsphere/vsphere-iso
 
 ##################################################################################
 # PACKER

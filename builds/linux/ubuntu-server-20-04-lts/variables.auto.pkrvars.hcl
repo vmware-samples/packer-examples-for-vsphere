@@ -1,5 +1,6 @@
 # Maintainer: code@rainpole.io
 # Packer variables for Ubuntu Server 20.04 LTS.
+# https://www.packer.io/docs/builders/vsphere/vsphere-iso
 
 ##################################################################################
 # VARIABLES

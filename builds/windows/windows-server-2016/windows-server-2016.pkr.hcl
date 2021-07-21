@@ -1,5 +1,6 @@
 # Maintainer: code@rainpole.io
-# Packer temnplate for Windows Server 2019 Standard and Datacenter- Desktop Experience and Core
+# Packer temnplate for Windows Server 2019 Standard and Datacenter - Desktop Experience and Core
+# https://www.packer.io/docs/builders/vsphere/vsphere-iso
 
 ##################################################################################
 # PACKER PLUGINS

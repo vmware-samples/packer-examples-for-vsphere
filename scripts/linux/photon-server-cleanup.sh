@@ -119,9 +119,13 @@ EOF
 echo '> Changeing script permissions for execution ...'
 sudo chmod +x /tmp/clean.sh
 
-### Executes the cleauup script. ### 
-echo '> Executing the cleanup script ...'
+### Runs the cleauup script. ### 
+echo '> Running the cleanup script ...'
 sudo /tmp/clean.sh
+
+### Generate host keys using ssh-keygen ### 
+echo '> Generating host keys ...'
+sudo ssh-keygen -A
 
 ### All done. ### 
 echo '> Done.'  

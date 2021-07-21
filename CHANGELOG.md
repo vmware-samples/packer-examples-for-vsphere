@@ -4,6 +4,9 @@
 
 ## 2021-07-21
 * Added [support](https://github.com/rainpole/packer-vsphere/issues/18) for [AlmaLinux](http://almalinux.org) 8. 
+
+    > Note: GuestOS Customization is not supported in vSphere 7.0 U2.
+
 * Updated scripts for Linux to generate host keys using `ssh-keygen` to ensure `sshd` will start on machine images.
 
 ## 2021-07-16

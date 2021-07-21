@@ -33,6 +33,7 @@ The following builds are automated:
 * Ubuntu Server 18.04 LTS
 * Red Hat Enterprise Linux Server 8
 * Red Hat Enterprise Linux Server 7
+* AlmaLinux Server 8
 * Rocky Linux Server 8
 * CentOS Server 8
 * CentOS Server 7
@@ -41,26 +42,38 @@ The following builds are automated:
 * Microsoft Windows Server 2019 - Standard and Datacenter
 * Microsoft Windows Server 2016 - Standard and Datacenter
 
-> **NOTE**: Guest Customization is [**not supported**](https://partnerweb.vmware.com/programs/guestOS/guest-os-customization-matrix.pdf) for Rocky Linux in vCenter Server 7.0 Update 2. 
+> **NOTE**: Guest Customization is [**not supported**](https://partnerweb.vmware.com/programs/guestOS/guest-os-customization-matrix.pdf) for AlmaLinux and Rocky Linux in vCenter Server 7.0 Update 2. 
 
 ## Requirements
 
-* macOS, Linux, or Windows.
-* vCenter Server 7.0 Update 2 or higher.
-* [Packer 1.7.3][packer-install] or higher.
-* [packer-plugin-windows-update] 0.12.0 - a community plug-in for Packer.
+Packer:
+* [Packer][packer-install] 1.7.3 or higher.
+* [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.12.0 or higher - a community plugin for Packer.
 
-> **NOTE**: You must initialize the Packer plug-ins using Option P in `./build.sh` or place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
+    > Initialize the Packer plugin using Option P in `./build.sh` or place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
+
+Operating Systems:
+* macOS Big Sur (Intel)
+* Ubuntu Server 20.04 LTS
+* Microsoft Windows Server 2019
+
+    > Operating systems and versions tested with the repository examples.
+
+Additional Software Packages:
+* [Git][download-git] command line tools.
+
+Platform:
+* vSphere 7.0 Update 2 or higher.
 
 ## Configuration
 
 ### Step 1 - Clone the Repository
 
-Clone the GitHub repository:
+Clone the GitHub repository using Git.
 
 **Example**: 
 ```
-rainpole@macos> git clone https://github.com/rainpole/packer-vsphere.git
+git clone https://github.com/rainpole/packer-vsphere.git
 ```
 
 The directory structure of the repository.
@@ -119,24 +132,26 @@ packer-vsphere/
 1. Download the x64 guest operating system [.iso][iso] images.
 
     **Linux Distributions**
-    * VMware Photon OS 4.0
+    * VMware Photon OS 4
         * [Download][download-linux-photon-server-4] the latest release.
-    * VMware Photon OS 3.0
+    * VMware Photon OS 3
         * [Download][download-linux-photon-server-3] the latest release.
     * Ubuntu Server 20.04 LTS
-        * [Download][download-linux-ubuntu-server-20-04-lts] the latest **live** release.
+        * [Download][download-linux-ubuntu-server-20-04-lts] the latest **LIVE** release.
     * Ubuntu Server 18.04 LTS
-        * [Download][download-linux-ubuntu-server-18-04-lts] the latest legacy **non-live** release.
+        * [Download][download-linux-ubuntu-server-18-04-lts] the latest legacy **NON-LIVE** release.
     * Red Hat Enterprise Linux Server 8
-        * [Download][download-linux-redhat-server-8] the latest release of the full (e.g `RHEL-x86_64-dvd1.iso`) .iso image.
+        * [Download][download-linux-redhat-server-8] the latest release of the full (e.g `RHEL-8-x86_64-dvd1.iso`) .iso image.
     * Red Hat Enterprise Linux Server 7
-        * [Download][download-linux-redhat-server-7] the latest release of the full (e.g `RHEL-x86_64-dvd1.iso`) .iso image.
+        * [Download][download-linux-redhat-server-7] the latest release of the full (e.g `RHEL-7-x86_64-dvd1.iso`) .iso image.
+    * AlmaLinux Server 8
+        * [Download][download-linux-almalinux-server-8] the latest release of the full (e.g `AlmaLinux-8-x86_64-dvd1.iso`) .iso image.
     * Rocky Linux Server 8
-        * [Download][download-linux-rocky-server-8] the latest release of the full (e.g `Rocky-x86_64-dvd1.iso`) .iso image.
+        * [Download][download-linux-rocky-server-8] the latest release of the full (e.g `Rocky-8-x86_64-dvd1.iso`) .iso image.
     * CentOS Server 8
-        * [Download][download-linux-centos-server-8] the latest release of the full (e.g `CentOS-x86_64-dvd1.iso`) .iso image.
+        * [Download][download-linux-centos-server-8] the latest release of the full (e.g `CentOS-8-x86_64-dvd1.iso`) .iso image.
     * CentOS Server 7
-        * [Download][download-linux-centos-server-7] the latest release of the full (e.g `CentOS-x86_64-dvd1.iso`) .iso image.
+        * [Download][download-linux-centos-server-7] the latest release of the full (e.g `CentOS-7-x86_64-dvd1.iso`) .iso image.
 
     **Microsoft Windows**
     * Microsoft Windows Server 2019
@@ -152,6 +167,7 @@ packer-vsphere/
     * `iso-linux-ubuntu-server-18-04-lts.iso`
     * `iso-linux-redhat-server-8`
     * `iso-linux-redhat-server-7`
+    * `iso-linux-almalinux-server-8`
     * `iso-linux-rocky-server-8`
     * `iso-linux-centos-server-8`
     * `iso-linux-centos-server-7`
@@ -343,7 +359,7 @@ Edit the `variables.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder
 
 Modify the configuration and scripts files, as needed, for the Linux distributions and Microsoft Windows.
 
-**Linux Distribution Kickstart and Scripts**
+### Linux Distribution Kickstart and Scripts
 
 ```
 packer-vsphere/ 
@@ -358,7 +374,7 @@ packer-vsphere/
 │       (e.g. ubuntu-server-cleanup.sh)
 ```
 
-The kickstart files for each linux distribution includes a SHA-512 encrypted password for the `root` account and the name and SHA-512 encrypted password for the the build user `rainpole`. It also adds the build user to the sudoers. Update these lines as necessary.
+The kickstart files for each Linux distribution includes a SHA-512 encrypted password for the `root` account and the name and SHA-512 encrypted password for the the build user `rainpole`. It also adds the build user to the sudoers. Update these lines as necessary.
 
 You can generate a SHA-512 password using various other tools like OpenSSL, mkpasswd, etc.
 
@@ -393,9 +409,23 @@ Password: ***************
 ```
 > **NOTE**: Update the `public_key` with the desired public key for the root user. This will be added to the `.ssh/authorized_keys` file for the `root` account. 
 
-**Example 2**: 
+**Example 2**: Ubuntu Server 20.04 (and later) `user-data` and `meta-data` files.
 
-Older Ubuntu Server `ks.cfg` file.
+ The `user-data` and `meta-data` files are [cloud-init][cloud-init] configuration files used to build the Ubuntu Server 20.04 LTS and later machine images. You must update the `user-data` file, but the contents of the `meta-data` file should remain empty.
+
+Ubuntu Server `user-data` file.
+```
+identity:
+    hostname: ubuntu-server
+    username: rainpole
+    password: '[password hash]'
+
+late-commands:
+- echo 'rainpole ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/rainpole
+- curtin in-target --target=/target -- chmod 440 /etc/sudoers.d/rainpole
+```
+
+**Example 3**: Ubuntu Server 18.04 `ks.cfg` file.
 
 ```
 # User Configuration
@@ -415,23 +445,7 @@ d-i preseed/late_command string \
     in-target chmod 440 /etc/sudoers.d/rainpole ;
 ```
 
-Newer Ubuntu Server `user-data` and `meta-data` files.
-
- The `user-data` and `meta-data` files are [cloud-init][cloud-init] configuration files used to build the Ubuntu Server 20.04 LTS and later machine images. You must update the `user-data` file, but the contents of the `meta-data` file should remain empty.
-
-**Example**: Ubuntu Server `user-data` file.
-```
-identity:
-    hostname: ubuntu-server
-    username: rainpole
-    password: '[password hash]'
-
-late-commands:
-- echo 'rainpole ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/rainpole
-- curtin in-target --target=/target -- chmod 440 /etc/sudoers.d/rainpole
-```
-
-**Example 3**: Red Hat Enterprise Linux Server and CentOS Server `ks.cfg` file:
+**Example 4**: Red Hat Enterprise Linux, CentOS Linux, AlmaLinux, and Rocky Linux `ks.cfg` file:
 
 ```
 rootpw [password hash] --iscrypted
@@ -441,7 +455,7 @@ user --name=rainpole --groups=wheel --iscrypted --password=[password hash]
 echo "rainpole ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/rainpole
 ```
 
-**Microsoft Windows Unattended amd Scripts**
+### Microsoft Windows Unattended amd Scripts
 
 ```
 packer-vsphere/ 
@@ -531,7 +545,6 @@ Decoded Password: [decoded password]
 **Need help customizing the configuration files further?**
 
 * **VMware Photon OS** - Read the [Photon OS Kickstart Documentation][photon-kickstart].
-* **Red Hat Enterprise Linux** (_as well as Rocky Linux and CentOS_) - Use the [Red Hat Kickstart Generator][redhat-kickstart].
 * **Ubuntu Server** - Install and run system-config-kickstart on a Ubuntu desktop.
 
     ```
@@ -539,6 +552,7 @@ Decoded Password: [decoded password]
     ssh -X rainpole@ubuntu-desktop
     sudo system-config-kickstart
     ```
+* **Red Hat Enterprise Linux** (_as well as CentOS Linux, AlmaLinux, and Rocky Linux_) - Use the [Red Hat Kickstart Generator][redhat-kickstart].
 * **Microsoft Windows** - Use the Microsoft Windows [Answer File Generator][microsoft-windows-afg] if you need to customize the provided examples further.
 
 > **NOTE**: BIOS-based `autounattend.xml` files for Microsoft Windows included in this repository are configured to use KMS licenses, and configure Windows Remote Management and VMware Tools. UEFI-based `autounattend.xml` files are included for consumption and include the addition of the GPT disk structure requirements.
@@ -555,7 +569,7 @@ Decoded Password: [decoded password]
     ```
     These files are copied to the guest operating systems with a Packer file provisioner; after which, the a shell provisioner adds the certificate to the Trusted Certificate Authority of the guest operating system.
 
-    >**NOTE**: If you do not with to install the certificates on the guest operating systems, comment out the portion of the shell provisioner scripts in `/scripts/` and remove the file provisioner from the `prk.hcl` file for each build. If you need to add an intermediate certificate, add the certificate to `/certificates/` and update the shell provisioner scripts in `/scripts/` with your requirements.
+    >**NOTE**: If you do not wish to install the certificates on the guest operating systems, comment out the portion of the shell provisioner scripts in the `scripts` directory and remove the file provisioner from the `prk.hcl` file for each build. If you need to add an intermediate certificate, add the certificate to `/certificates` and update the shell provisioner scripts in the `scripts` directory with your requirements.
 
 2. Generate a Public Key
 
@@ -599,7 +613,7 @@ Decoded Password: [decoded password]
     
     This file is temporarily copied to the guest operating systems of the Linux distributions with a Packer file provisioner; after which, the a shell provisioner adds the key to the `.ssh/authorized_keys` file of the `build_username` on the guest operating system.
     
-    >**IMPORTANT**: You definitely must to replace this public key.
+    >**IMPORTANT**: You definitely **must** to replace this public key.
 
     >**NOTE**: This release uses the newer ECDSA versus the older RSA public key algorithm. 
     >
@@ -634,19 +648,20 @@ The menu will allow you to execute and confirm a build using Packer and the `vsp
          4  -  Ubuntu Server 18.04 LTS
          5  -  Red Hat Enterprise Linux Server 8
          6  -  Red Hat Enterprise Linux Server 7
-         7  -  Rocky Linux Server 8
-         8  -  CentOS Server 8
-         9  -  CentOS Server 7
+         7  -  AlmaLinux Server 8
+         8  -  Rocky Linux Server 8
+         9  -  CentOS Server 8
+        10  -  CentOS Server 7
 
 
       Microsoft Windows:
 
-        10  -  Windows Server 2019 - All
-        11  -  Windows Server 2019 - Standard Only
-        12  -  Windows Server 2019 - Datacenter Only
-        13  -  Windows Server 2016 - All
-        14  -  Windows Server 2016 - Standard Only
-        15  -  Windows Server 2016 - Datacenter Only
+        12  -  Windows Server 2019 - All
+        12  -  Windows Server 2019 - Standard Only
+        13  -  Windows Server 2019 - Datacenter Only
+        14  -  Windows Server 2016 - All
+        15  -  Windows Server 2016 - Standard Only
+        16  -  Windows Server 2016 - Datacenter Only
 
 
       Other:
@@ -692,13 +707,14 @@ Happy building!!!
 [credits-maher-alasfar-github]: https://github.com/vmwarelab/cloud-init-scripts
 [credits-owen-reynolds-twitter]: https://twitter.com/OVDamn
 [credits-owen-reynolds-github]: https://github.com/getvpro/Build-Packer/blob/master/Scripts/Install-VMTools.ps1
-
+[download-git]: https://git-scm.com/downloads
 [download-linux-photon-server-4]: https://packages.vmware.com/photon/4.0/
 [download-linux-photon-server-3]: https://packages.vmware.com/photon/3.0/
 [download-linux-ubuntu-server-20-04-lts]: https://releases.ubuntu.com/20.04.1/
 [download-linux-ubuntu-server-18-04-lts]: http://cdimage.ubuntu.com/ubuntu/releases/18.04.5/release/
 [download-linux-redhat-server-8]: https://access.redhat.com/downloads/content/479/
 [download-linux-redhat-server-7]: https://access.redhat.com/downloads/content/69/
+[download-linux-almalinux-server-8]: https://mirrors.almalinux.org/isos.html
 [download-linux-rocky-server-8]: https://download.rockylinux.org/pub/rocky/8/isos/x86_64/
 [download-linux-centos-server-8]: http://isoredirect.centos.org/centos/8/isos/x86_64/
 [download-linux-centos-server-7]: http://isoredirect.centos.org/centos/7/isos/x86_64/

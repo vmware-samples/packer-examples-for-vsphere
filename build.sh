@@ -143,6 +143,29 @@ menu_option_6() {
 }
 
 menu_option_7() {
+  cd builds/linux/almalinux-server-8/
+  echo -e "\nCONFIRM: Build an AlmaLinux Server 8 Template for VMware vSphere."
+  echo -e "\nContinue? (y/n)"
+  read REPLY
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+    exit 1
+  fi
+
+  ### Build a Rocky Linux 8 Template for VMware vSphere ###
+  echo "Building an AlmaLinux Server 8 Template for VMware vSphere  ..."
+  rm -f output-vmware-iso/*.ova
+
+  ### Apply the HashiCorp Packer Build ###
+  echo "Applying the HashiCorp Packer Build ..."
+  packer build -force \
+      -var-file="../../../vsphere.pkrvars.hcl" .
+
+  ### All done. ###
+  echo "Done."
+}
+
+menu_option_8() {
   cd builds/linux/rocky-server-8/
   echo -e "\nCONFIRM: Build a Rocky Linux Server 8 Template for VMware vSphere."
   echo -e "\nContinue? (y/n)"
@@ -165,7 +188,7 @@ menu_option_7() {
   echo "Done."
 }
 
-menu_option_8() {
+menu_option_9() {
   cd builds/linux/centos-server-8/
   echo -e "\nCONFIRM: Build a CentOS Server 8 Template for VMware vSphere."
   echo -e "\nContinue? (y/n)"
@@ -188,7 +211,7 @@ menu_option_8() {
   echo "Done."
 }
 
-menu_option_9() {
+menu_option_10() {
   cd builds/linux/centos-server-7/
   echo -e "\nCONFIRM: Build a CentOS Server 7 Template for VMware vSphere."
   echo -e "\nContinue? (y/n)"
@@ -211,7 +234,7 @@ menu_option_9() {
   echo "Done."
 }
 
-menu_option_10() {
+menu_option_11() {
   cd builds/windows/windows-server-2019/
   echo -e "\nCONFIRM: Build all Microsoft Windows Server 2019 Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
@@ -234,7 +257,7 @@ menu_option_10() {
   echo "Done."
 }
 
-menu_option_11() {
+menu_option_12() {
   cd builds/windows/windows-server-2019/
   echo -e "\nCONFIRM: Build a Microsoft Windows Server 2019 Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
@@ -258,7 +281,7 @@ menu_option_11() {
   echo "Done."
 }
 
-menu_option_12() {
+menu_option_13() {
   cd builds/windows/windows-server-2019/
   echo -e "\nCONFIRM: Build a Microsoft Windows Server 2019 Datacenter Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
@@ -282,7 +305,7 @@ menu_option_12() {
   echo "Done."
 }
 
-menu_option_13() {
+menu_option_14() {
   cd builds/windows/windows-server-2016/
   echo -e "\nCONFIRM: Build all Microsoft Windows Server 2016 Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
@@ -305,7 +328,7 @@ menu_option_13() {
   echo "Done."
 }
 
-menu_option_14() {
+menu_option_15() {
   cd builds/windows/windows-server-2016/
   echo -e "\nCONFIRM: Build a Microsoft Windows Server Standard 2016 Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
@@ -329,7 +352,7 @@ menu_option_14() {
   echo "Done."
 }
 
-menu_option_15() {
+menu_option_16() {
   cd builds/windows/windows-server-2016/
   echo -e "\nCONFIRM: Build a Microsoft Windows Server 2016 Datacenter Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
@@ -416,24 +439,25 @@ until [ "$selection" = "0" ]; do
   echo "    	 4  -  Ubuntu Server 18.04 LTS"
   echo "    	 5  -  Red Hat Enterprise Linux Server 8"
   echo "    	 6  -  Red Hat Enterprise Linux Server 7"
-  echo "    	 7  -  Rocky Linux Server 8"
-  echo "    	 8  -  CentOS Server 8"
-  echo "    	 9  -  CentOS Server 7"
+  echo "    	 7  -  AlmaLinux Server 8"
+  echo "    	 8  -  Rocky Linux Server 8"
+  echo "    	 9  -  CentOS Server 8"
+  echo "    	10  -  CentOS Server 7"
   echo ""
   echo ""
   echo "      Microsoft Windows:"
   echo ""
-  echo "    	10  -  Windows Server 2019 - All"
-  echo "    	11  -  Windows Server 2019 - Standard Only"
-  echo "    	12  -  Windows Server 2019 - Datacenter Only"
-  echo "    	13  -  Windows Server 2016 - All" 
-  echo "    	14  -  Windows Server 2016 - Standard Only"
-  echo "    	15  -  Windows Server 2016 - Datacenter Only"
+  echo "    	11  -  Windows Server 2019 - All"
+  echo "    	12  -  Windows Server 2019 - Standard Only"
+  echo "    	13  -  Windows Server 2019 - Datacenter Only"
+  echo "    	14  -  Windows Server 2016 - All" 
+  echo "    	15  -  Windows Server 2016 - Standard Only"
+  echo "    	16  -  Windows Server 2016 - Datacenter Only"
   echo ""
   echo ""
   echo "      Other:"
   echo ""
-  echo "        P   -  Initialize Plug-ins"
+  echo "        P   -  Initialize Plugins"
   echo "        I   -  Information"
   echo "        Q   -  Quit"
   echo ""
@@ -455,6 +479,7 @@ until [ "$selection" = "0" ]; do
     13 ) clear ; menu_option_13 ; press_enter ;;
     14 ) clear ; menu_option_14 ; press_enter ;;
     15 ) clear ; menu_option_15 ; press_enter ;;
+    16 ) clear ; menu_option_16 ; press_enter ;;
     P ) clear ; plugins ; press_enter ;;
     I ) clear ; info ; press_enter ;;
     Q ) clear ; exit ;;

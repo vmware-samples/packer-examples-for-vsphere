@@ -2,6 +2,9 @@
 
 ![Rainpole](icon.png)
 
+## 2021-07-21
+* Updated scripts for Linux to generate host keys using `ssh-keygen` to ensure `sshd` will start on machine images.
+
 ## 2021-07-16
 * Bumped support to >= vSphere 7.0 U2.
 * Added the Packer block to all builds with `required_versions >= "1.7.3"` for Packer.

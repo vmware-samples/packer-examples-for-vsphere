@@ -1,5 +1,5 @@
 # Maintainer: code@rainpole.io
-# Packer variables for VMware Photon OS 3.
+# Packer variables for VMware Photon OS 3 Server.
 # https://www.packer.io/docs/builders/vsphere/vsphere-iso
 
 ##################################################################################

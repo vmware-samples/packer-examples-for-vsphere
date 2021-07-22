@@ -1,5 +1,5 @@
 # Maintainer: code@rainpole.io
-# Packer variables for CentOS Linux 7.
+# Packer variables for CentOS Server 7.
 # https://www.packer.io/docs/builders/vsphere/vsphere-iso
 
 ##################################################################################

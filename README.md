@@ -35,7 +35,6 @@ The following builds are automated:
 * Red Hat Enterprise Linux Server 7
 * AlmaLinux Server 8
 * Rocky Linux Server 8
-* CentOS Stream 8
 * CentOS Server 8
 * CentOS Server 7
 
@@ -149,8 +148,6 @@ packer-vsphere/
         * [Download][download-linux-almalinux-server-8] the latest release of the full (e.g `AlmaLinux-8-x86_64-dvd1.iso`) .iso image.
     * Rocky Linux Server 8
         * [Download][download-linux-rocky-server-8] the latest release of the full (e.g `Rocky-8-x86_64-dvd1.iso`) .iso image.
-    * CentOS Stream 8
-        * [Download][download-linux-centos-stream-8] the latest release of the full (e.g `CentOS-Stream-8-x86_64-dvd1.iso`) .iso image.
     * CentOS Server 8
         * [Download][download-linux-centos-server-8] the latest release of the full (e.g `CentOS-8-x86_64-dvd1.iso`) .iso image.
     * CentOS Server 7
@@ -172,7 +169,6 @@ packer-vsphere/
     * `iso-linux-redhat-server-7`
     * `iso-linux-almalinux-server-8`
     * `iso-linux-rocky-server-8`
-    * `iso-linux-centos-stream-8`
     * `iso-linux-centos-server-8`
     * `iso-linux-centos-server-7`
     * `iso-windows-server-2019.iso`
@@ -646,22 +642,21 @@ The menu will allow you to execute and confirm a build using Packer and the `vsp
 
       Linux Distribution:
 
-         1  -  VMware Photon OS 4 Server
-         2  -  VMware Photon OS 3 Server
+         1  -  VMware Photon OS 4
+         2  -  VMware Photon OS 3
          3  -  Ubuntu Server 20.04 LTS
          4  -  Ubuntu Server 18.04 LTS
-         5  -  Red Hat Enterprise Linux 8 Server
-         6  -  Red Hat Enterprise Linux 8 Server
-         7  -  AlmaLinux 8 Server
-         8  -  Rocky Linux 8 Server
-         9  -  CentOS Stream 8 Server
-        10  -  CentOS Linux 8 Server
-        11  -  CentOS Linux 7 Server
+         5  -  Red Hat Enterprise Linux Server 8
+         6  -  Red Hat Enterprise Linux Server 7
+         7  -  AlmaLinux Server 8
+         8  -  Rocky Linux Server 8
+         9  -  CentOS Server 8
+        10  -  CentOS Server 7
 
 
       Microsoft Windows:
 
-        11  -  Windows Server 2019 - All
+        12  -  Windows Server 2019 - All
         12  -  Windows Server 2019 - Standard Only
         13  -  Windows Server 2019 - Datacenter Only
         14  -  Windows Server 2016 - All
@@ -721,7 +716,6 @@ Happy building!!!
 [download-linux-redhat-server-7]: https://access.redhat.com/downloads/content/69/
 [download-linux-almalinux-server-8]: https://mirrors.almalinux.org/isos.html
 [download-linux-rocky-server-8]: https://download.rockylinux.org/pub/rocky/8/isos/x86_64/
-[download-linux-centos-stream-8]: http://isoredirect.centos.org/centos/8-stream/isos/x86_64/
 [download-linux-centos-server-8]: http://isoredirect.centos.org/centos/8/isos/x86_64/
 [download-linux-centos-server-7]: http://isoredirect.centos.org/centos/7/isos/x86_64/
 [hashicorp]: https://www.hashicorp.com/

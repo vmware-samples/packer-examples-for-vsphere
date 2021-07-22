@@ -13,6 +13,7 @@
 1.	[Requirements](#Requirements)
 1.	[Configuration](#Configuration)
 1.	[Build](#Build)
+1.	[Known Issues](#Known-Issues)
 1.	[Troubleshoot](#Troubleshoot)
 1.	[Credits](#Credits)
 
@@ -250,10 +251,18 @@ Edit the `variables.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder
 * .iso Image File `(string)`
 * .iso Image SHA-512 Checksum `(string)`
 
-    > **Note**: All `variables.auto.pkvars.hcl` default to using the BIOS firmware, the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types. 
+    > **Note**: All `variables.auto.pkvars.hcl` currently default to using the BIOS firmware, the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types. 
     
-    > **IMPORTANT**: [EFI Secure Boot][vsphere-efi] can be used with vSphere 7.0 Update 2 and later. In prior vSphere releases, there was an issue with the vSphere Content Library where OVF Template virtual machines images with `EFI` were set to `BIOS` after being cloned from a vSphere Content Library. This was resolved in vSphere 7.0 Update 2 and can be enabled by changing vm_firmware = "efi-secure" and the configuration to the "efi-secure" path.
+    > **IMPORTANT**: [EFI Secure Boot][vsphere-efi] can be used with vSphere 7.0 Update 2 and later. In prior vSphere releases, there was an issue with the vSphere Content Library where OVF Template virtual machines images with `EFI` were set to `BIOS` after being cloned from a vSphere Content Library. This was resolved in vSphere 7.0 Update 2.
+    >
+    > For Microsoft Windows Server 2019/2016 EFI Secure Boot can be enabled by changing `vm_firmware = "bios"` to use = `"vm_firmware = efi-secure"` and the `vm_floppy_files_server...` configuration to use the `efi-secure` directory path. 
+    >
+    > EFI Secure Boot does not work with all Linux distributions, but it does work with Red Hat Enterprise Linux 8, CentoOS Linux/Stream 8, and AlmaLinux 8. For Red Hat Enterprise Linux 8, CentoOS Linux/Stream 8, and AlmaLinux, 8 EFI Secure Boot can be enabled by changing `vm_firmware = "bios"` to use = `"vm_firmware = efi-secure"`and the `boot_command` to use the following arguments to pass the boot commands required.
 
+    ```
+    boot_command = ["up","e","<down><down><end><wait>"," text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/${var.http_file}","<enter><wait><leftCtrlOn>x<leftCtrlOff>"]
+    ```
+  
     **Example 1**: Ubuntu Server 20.04 LTS
     ```
     # HTTP Settings for Kickstart
@@ -690,6 +699,26 @@ rainpole@macos windows-server-2019> packer build -force \
 Happy building!!!
 
  -- Your friends at rainpole.io.
+
+## Known-Issues
+
+### Disconnected network interface for Ubuntu 20.04 machine images.
+The network interface for Ubuntu 20.04 machine images are in a disconnected after conversion to template / OVF. This does not effect Windows images.
+
+**Workaround**: Manually or programmatically connect the network interface post-provisioning. This is being investigated - the cause is present the post-provisioning script executed before shutdown, likely due to cloud-init.
+
+### UEFI Firmware does not work with older Linux distributions.
+The use of UEFI firmware, by setting `vm_firmware = "efi-secure"`, does not work on some older Linux distributions. 
+
+**Workaround**: EFI Secure Boot does not work with all Linux distributions under the vSphere version, but it does work with Red Hat Enterprise Linux 8, CentoOS Linux/Stream 8, and AlmaLinux 8. It is the recommend Firmware setting under VM Options for each when using the guestOS type of `rhel8_64Guest` and `centos8_64Guest` via the vSphere Client. 
+    
+For Red Hat Enterprise Linux 8, CentoOS Linux/Stream 8, and AlmaLinux 8, EFI Secure Boot can be enabled by changing `vm_firmware = "bios"` to use = `"vm_firmware = efi-secure"` and the `boot_command` to use the following arguments to pass the additional boot commands required.
+
+  ```
+boot_command = ["up","e","<down><down><end><wait>"," text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/${var.http_file}","<enter><wait><leftCtrlOn>x<leftCtrlOff>"]
+```
+
+We plan to pivot all guestOS types for machine images in the repository to use their "(Recommended)" firmware settings in a future commit. Stay tuned.
 
 ## Troubleshoot
 

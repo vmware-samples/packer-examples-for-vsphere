@@ -16,6 +16,8 @@ vm_guest_os_edition_dc      = "datacenter"
 vm_guest_os_type            = "windows9Server64Guest"
 vm_version                  = 18
 vm_firmware                 = "bios"
+# Firmware for EFI.
+# vm_firmware               = "efi-secure"
 vm_boot_command             = ["<spacebar>"]
 vm_boot_wait                = "2s"
 vm_cdrom_type               = "sata"

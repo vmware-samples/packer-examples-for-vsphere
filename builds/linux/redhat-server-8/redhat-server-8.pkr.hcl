@@ -297,6 +297,8 @@ source "vsphere-iso" "linux-redhat-server" {
   boot_order               = "disk,cdrom"
   boot_wait                = var.vm_boot_wait
   boot_command             = ["<tab>","text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/${var.http_file}","<enter><wait>"]
+  # Boot Command for EFI.
+  # boot_command           = ["up","e","<down><down><end><wait>"," text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/${var.http_file}","<enter><wait><leftCtrlOn>x<leftCtrlOff>"]
   ip_wait_timeout          = "20m"
   ssh_password             = var.build_password
   ssh_username             = var.build_username

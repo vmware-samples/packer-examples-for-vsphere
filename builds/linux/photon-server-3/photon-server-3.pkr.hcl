@@ -174,7 +174,7 @@ variable "vm_version" {
 
 variable "vm_firmware" {
   type    = string
-  description = "The virtual machine firmware. (e.g. 'bios' or 'efi')"
+  description = "The virtual machine firmware. (e.g. 'bios')"
   default = "bios"
 }
 

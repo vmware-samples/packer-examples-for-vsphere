@@ -714,11 +714,11 @@ The use of UEFI firmware, by setting `vm_firmware = "efi-secure"`, does not work
     
 For Red Hat Enterprise Linux 8, CentoOS Linux/Stream 8, and AlmaLinux 8, EFI Secure Boot can be enabled by changing `vm_firmware = "bios"` to use = `"vm_firmware = efi-secure"` and the `boot_command` to use the following arguments to pass the additional boot commands required.
 
-  ```
+```
 boot_command = ["up","e","<down><down><end><wait>"," text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/${var.http_file}","<enter><wait><leftCtrlOn>x<leftCtrlOff>"]
 ```
 
-We plan to pivot all guestOS types for machine images in the repository to use their "(Recommended)" firmware settings in a future commit. Stay tuned.
+We [plan to pivot](https://github.com/rainpole/packer-vsphere/issues/22) all guestOS types for machine images in the repository to use their "(Recommended)" firmware settings in a future commit. Stay tuned.
 
 ## Troubleshoot
 

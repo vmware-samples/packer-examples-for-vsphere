@@ -1,5 +1,5 @@
 # Maintainer: code@rainpole.io
-# Packer template for CentOS Server 7.
+# Packer template for CentOS Linux 7.
 # https://www.packer.io/docs/builders/vsphere/vsphere-iso
 
 ##################################################################################

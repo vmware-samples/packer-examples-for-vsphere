@@ -1,5 +1,5 @@
 # Maintainer: code@rainpole.io
-# Packer template for CentOS Linux 8.
+# Packer template for CentOS Stream 8.
 # https://www.packer.io/docs/builders/vsphere/vsphere-iso
 
 ##################################################################################
@@ -110,13 +110,13 @@ variable "iso_path" {
 
 variable "iso_file" {
   type    = string
-  description = "The file name of the ISO image. (e.g. 'iso-centos-server-8.iso')"
+  description = "The file name of the ISO image. (e.g. 'iso-centos-stream-8.iso')"
   default = ""
 }
 
 variable "iso_checksum" {
   type    = string
-  description = "The SHA-512 checkcum of the ISO image. (e.g. Result of 'shasum -a 512 iso-centos-server-8.iso')"
+  description = "The SHA-512 checkcum of the ISO image. (e.g. Result of 'shasum -a 512 iso-centos-stream-8.iso')"
   default = ""
 }
 
@@ -150,7 +150,7 @@ variable "vm_guest_os_vendor" {
 
 variable "vm_guest_os_member" {
   type    = string
-  description = "The guest operatiing system member. Used for naming. (e.g. 'server')"
+  description = "The guest operatiing system member. Used for naming. (e.g. 'stream')"
   default = ""
 }
 
@@ -244,7 +244,7 @@ locals {
 # SOURCE
 ##################################################################################
 
-source "vsphere-iso" "linux-centos-server" {
+source "vsphere-iso" "linux-centos-stream" {
   vcenter_server       = var.vcenter_server
   username             = var.vcenter_username
   password             = var.vcenter_password
@@ -297,12 +297,12 @@ source "vsphere-iso" "linux-centos-server" {
   - If destroy = true - the virtual machine image is destroyed after a successfully exported the target content library
   - By default, the target name is the vm_name unless name = "foo" is provided.
   - The content library item is updated if the target name is the same. 
-  */
   content_library_destination {
     library = var.vcenter_content_library
     ovf     = true
     destroy = true
   }
+  */
 }
 
 ##################################################################################
@@ -310,7 +310,7 @@ source "vsphere-iso" "linux-centos-server" {
 ##################################################################################
 
 build {
-  sources = ["source.vsphere-iso.linux-centos-server"]
+  sources = ["source.vsphere-iso.linux-centos-stream"]
   /*
   Uses the File Provisioner to copy the public key.
   - The Shell Provisioner will execute a script that imports the public key to authorized_keys to the build user.

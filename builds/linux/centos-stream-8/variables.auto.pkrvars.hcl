@@ -1,5 +1,5 @@
 # Maintainer: code@rainpole.io
-# Packer template for CentOS Linux 8.
+# Packer template for CentOS Stream 8.
 # https://www.packer.io/docs/builders/vsphere/vsphere-iso
 
 ##################################################################################
@@ -15,7 +15,7 @@ http_file      = "ks-v8.cfg"
 
 vm_guest_os_family          = "linux" 
 vm_guest_os_vendor          = "centos"
-vm_guest_os_member          = "server" 
+vm_guest_os_member          = "stream" 
 vm_guest_os_version         = "8" 
 vm_guest_os_type            = "centos8_64Guest" 
 vm_version                  = 18
@@ -31,8 +31,8 @@ vm_boot_wait                = "2s"
 
 # ISO Objects
 
-iso_file     = "iso-linux-centos-server-8.iso"
-iso_checksum = "ff1164dc26ba47616f2b26a18158398a7d7930487770a8bb9e573d5758e01255ebc11db68c22976abe684a857083a0fae445e9d41d11a24a2073cdb1b500ae9a"
+iso_file     = "iso-linux-centos-stream-8.iso"
+iso_checksum = "552cf5dcdc9d3db41791a2b3bbbd18335d75607ca54e7aa8bf28a6ea1d49ce914a55da0bd839123aa96654b7de6db65cc786beb71e6233982ea96ce456a47035"
 
 # Scripts
 

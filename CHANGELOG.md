@@ -7,6 +7,7 @@
 
     > Note: GuestOS Customization is not supported in vSphere 7.0 U2.
 
+* Added [support](https://github.com/rainpole/packer-vsphere/issues/19) for [CentOS Stream](https://www.centos.org/centos-stream/) 8. 
 * Updated scripts for Linux to generate host keys using `ssh-keygen` to ensure `sshd` will start on machine images.
 
 ## 2021-07-16

@@ -52,7 +52,7 @@ sudo sed -i 's/D/#&/' /usr/lib/tmpfiles.d/tmp.conf
 
 ### Add After=dbus.service to open-vm-tools. ### 
 echo '> Adding After=dbus.service to open-vm-tools ...'
-sudo sed -i '/^After=vgauthd.service/a\After=dbus.service' /lib/systemd/system/open-vm-tools.service
+sudo sed -i '/^After=vgauth.service/a\After=dbus.service' /lib/systemd/system/open-vm-tools.service
 
 ### Create a cleanup script. ###
 echo '> Creating cleanup script ...'

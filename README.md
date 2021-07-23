@@ -251,7 +251,7 @@ Edit the `variables.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder
 * .iso Image File `(string)`
 * .iso Image SHA-512 Checksum `(string)`
 
-    >**Note**: All `variables.auto.pkvars.hcl` currently default to using the the recommended firmware for the guest operating system, the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types. If required, BIOS can be enabled by changing `vm_firmware = "efi-secure"` to use = `vm_firmware = "bios"` and the `boot_command` to use commented boot commands in the corresponding `...pkr.hcl` file.
+    >**Note**: All `variables.auto.pkvars.hcl` default to using the the recommended firmware for the guest operating system, the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types. If required, BIOS can be enabled by changing `vm_firmware = "efi-secure"` to use = `vm_firmware = "bios"` and the `boot_command` to use commented boot commands in the corresponding `...pkr.hcl` file.
   
     **Example 1**: Ubuntu Server 20.04 LTS
     ```
@@ -448,7 +448,7 @@ d-i preseed/late_command string \
     in-target chmod 440 /etc/sudoers.d/rainpole ;
 ```
 
-**Example 4**: Red Hat Enterprise Linux, CentOS Linux, AlmaLinux, and Rocky Linux `ks.cfg` file:
+**Example 4**: Red Hat Enterprise Linux, CentOS Linux/Stream, AlmaLinux, and Rocky Linux `ks.cfg` file:
 
 ```
 rootpw [password hash] --iscrypted
@@ -555,10 +555,10 @@ Decoded Password: [decoded password]
     ssh -X rainpole@ubuntu-desktop
     sudo system-config-kickstart
     ```
-* **Red Hat Enterprise Linux** (_as well as CentOS Linux, AlmaLinux, and Rocky Linux_) - Use the [Red Hat Kickstart Generator][redhat-kickstart].
+* **Red Hat Enterprise Linux** (_as well as CentOS Linux/Stream, AlmaLinux, and Rocky Linux_) - Use the [Red Hat Kickstart Generator][redhat-kickstart].
 * **Microsoft Windows** - Use the Microsoft Windows [Answer File Generator][microsoft-windows-afg] if you need to customize the provided examples further.
 
->**NOTE**: BIOS-based `autounattend.xml` files for Microsoft Windows included in this repository are configured to use KMS licenses, and configure Windows Remote Management and VMware Tools. UEFI-based `autounattend.xml` files are included for consumption and include the addition of the GPT disk structure requirements.
+>**NOTE**: The `autounattend.xml` files for Microsoft Windows included in this repository are configured to use KMS licenses, and configure Windows Remote Management and VMware Tools. UEFI-based `autounattend.xml` files include the addition of the GPT disk structure requirements.
 
 ### Step 5 - Configure Certificates and Keys
 

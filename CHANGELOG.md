@@ -2,6 +2,9 @@
 
 ![Rainpole](icon.png)
 
+## 2021-07-23
+* All machine images [default](https://github.com/rainpole/packer-vsphere/issues/22) to using the the recommended firmware based on the guest operating system and the minimum vSphere release supported by the repository. EFI Secure Boot is enabled for Red Hat Enterprise Linux 8, CentoOS Linux/Stream 8, AlmaLinux 8, and Microsoft Windows Server 2019/2016. BIOS is enabled for Red Hat Enterprise Linux 7, CentoOS Linux 7 and Rocky Linux 8.
+
 ## 2021-07-21
 * Added [support](https://github.com/rainpole/packer-vsphere/issues/18) for [AlmaLinux](http://almalinux.org) 8. 
 

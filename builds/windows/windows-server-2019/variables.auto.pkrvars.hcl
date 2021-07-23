@@ -15,9 +15,7 @@ vm_guest_os_edition_std     = "standard"
 vm_guest_os_edition_dc      = "datacenter"
 vm_guest_os_type            = "windows2019srv_64Guest" 
 vm_version                  = 18
-vm_firmware                 = "bios"
-# Firmware for EFI.
-# vm_firmware               = "efi-secure"
+vm_firmware                 = "efi-secure"
 vm_boot_command             = ["<spacebar>"]
 vm_boot_wait                = "2s"
 vm_cdrom_type               = "sata"
@@ -28,25 +26,25 @@ vm_disk_size                = 102400
 vm_disk_controller_type     = ["pvscsi"]
 vm_network_card             = "vmxnet3"
 vm_floppy_files_server_std_dexp = [
-  "../../../configs/windows/windows-server-2019/standard/bios/autounattend.xml",
+  "../../../configs/windows/windows-server-2019/standard/efi-secure/autounattend.xml",
   "../../../scripts/windows/",
   "../../../drivers/windows",
   "../../../certificates/"
   ]
 vm_floppy_files_server_std_core = [
-  "../../../configs/windows/windows-server-2019/standard-core/bios/autounattend.xml",
+  "../../../configs/windows/windows-server-2019/standard-core/efi-secure/autounattend.xml",
   "../../../scripts/windows/",
   "../../../drivers/windows",
   "../../../certificates/"
 ]
 vm_floppy_files_server_dc_dexp = [
-  "../../../configs/windows/windows-server-2019/datacenter/bios/autounattend.xml",
+  "../../../configs/windows/windows-server-2019/datacenter/efi-secure/autounattend.xml",
   "../../../scripts/windows/",
   "../../../drivers/windows",
   "../../../certificates/"
   ]
 vm_floppy_files_server_dc_core = [
-  "../../../configs/windows/windows-server-2019/datacenter-core/bios/autounattend.xml",
+  "../../../configs/windows/windows-server-2019/datacenter-core/efi-secure/autounattend.xml",
   "../../../scripts/windows/",
   "../../../drivers/windows",
   "../../../certificates/"

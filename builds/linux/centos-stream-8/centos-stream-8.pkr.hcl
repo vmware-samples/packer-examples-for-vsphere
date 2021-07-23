@@ -174,8 +174,8 @@ variable "vm_version" {
 
 variable "vm_firmware" {
   type    = string
-  description = "The virtual machine firmware. (e.g. 'bios' or 'efi-secure')"
-  default = "bios"
+  description = "The virtual machine firmware. (e.g. 'efi-secure' or 'bios')"
+  default = "efi-secure"
 }
 
 variable "vm_cdrom_type" {
@@ -282,9 +282,15 @@ source "vsphere-iso" "linux-centos-stream" {
   http_directory           = var.http_directory
   boot_order               = "disk,cdrom"
   boot_wait                = var.vm_boot_wait
-  boot_command             = ["<tab>","text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/${var.http_file}","<enter><wait>"]
-  # Boot Command for EFI.
-  # boot_command           = ["up","e","<down><down><end><wait>"," text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/${var.http_file}","<enter><wait><leftCtrlOn>x<leftCtrlOff>"]
+    /*
+    Default: vm_firmware = efi-secure.
+    Comment the line below if vm_firmware = bios.
+    */
+  boot_command             = ["up","e","<down><down><end><wait>","text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/${var.http_file}","<enter><wait><leftCtrlOn>x<leftCtrlOff>"]
+    /*
+    Comment the line above and uncomment the line below if the default is modified to vm_firmware = bios
+    boot_command           = ["<tab>","text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/${var.http_file}","<enter><wait>"]
+    */
   ip_wait_timeout          = "20m"
   ssh_password             = var.build_password
   ssh_username             = var.build_username
@@ -293,14 +299,15 @@ source "vsphere-iso" "linux-centos-stream" {
   ssh_handshake_attempts   = "20"
   shutdown_command         = "echo '${var.build_password}' | sudo -S -E shutdown -P now"
   shutdown_timeout         = "15m"
-  /*
-  Comment or remove the option below to exclude the use of the vSphere content library.
-  - If ovf = true - the virtual machine image is exported to the target content library.
-  - If destroy = true - the virtual machine image is destroyed after a successfully exported the target content library
-  - By default, the target name is the vm_name unless name = "foo" is provided.
-  - The content library item is updated if the target name is the same. 
-  */
-    content_library_destination {
+    /*
+    Default: Clone to the content library as an OVF template and destroy the originating machine image.
+    Comment this section to exclude the use of the content library.
+    - If ovf = true - the machine image is exported to the target content library.
+    - If destroy = true - the machine image is destroyed after successfully exported to the target content library.
+    - By default, the target name is the vm_name unless name = "foo" is provided.
+    - The content library item is updated if the target name is the same. 
+    */
+  content_library_destination {
     library = var.vcenter_content_library
     ovf     = true
     destroy = true

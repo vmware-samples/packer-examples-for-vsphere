@@ -251,17 +251,7 @@ Edit the `variables.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder
 * .iso Image File `(string)`
 * .iso Image SHA-512 Checksum `(string)`
 
-    > **Note**: All `variables.auto.pkvars.hcl` currently default to using the BIOS firmware, the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types. 
-    
-    > **IMPORTANT**: [EFI Secure Boot][vsphere-efi] can be used with vSphere 7.0 Update 2 and later. In prior vSphere releases, there was an issue with the vSphere Content Library where OVF Template virtual machines images with `EFI` were set to `BIOS` after being cloned from a vSphere Content Library. This was resolved in vSphere 7.0 Update 2.
-    >
-    > For Microsoft Windows Server 2019/2016 EFI Secure Boot can be enabled by changing `vm_firmware = "bios"` to use = `"vm_firmware = efi-secure"` and the `vm_floppy_files_server...` configuration to use the `efi-secure` directory path. 
-    >
-    > EFI Secure Boot does not work with all Linux distributions, but it does work with Red Hat Enterprise Linux 8, CentoOS Linux/Stream 8, and AlmaLinux 8. For Red Hat Enterprise Linux 8, CentoOS Linux/Stream 8, and AlmaLinux, 8 EFI Secure Boot can be enabled by changing `vm_firmware = "bios"` to use = `"vm_firmware = efi-secure"`and the `boot_command` to use the following arguments to pass the boot commands required.
-
-    ```
-    boot_command = ["up","e","<down><down><end><wait>"," text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/${var.http_file}","<enter><wait><leftCtrlOn>x<leftCtrlOff>"]
-    ```
+    >**Note**: All `variables.auto.pkvars.hcl` currently default to using the the recommended firmware for the guest operating system, the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types. If required, BIOS can be enabled by changing `vm_firmware = "efi-secure"` to use = `vm_firmware = "bios"` and the `boot_command` to use commented boot commands in the corresponding `...pkr.hcl` file.
   
     **Example 1**: Ubuntu Server 20.04 LTS
     ```
@@ -366,7 +356,7 @@ Edit the `variables.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder
     ]
     ```
 
-    > **Hint**: You can discover the _[VirtualMachineGuestOsIdentifier][vsphere-guestosid]_ using the [vSphere 7.0 API Reference][vsphere-api] documentation.
+    >**Hint**: You can discover the _[VirtualMachineGuestOsIdentifier][vsphere-guestosid]_ using the [vSphere 7.0 API Reference][vsphere-api] documentation.
 
 ## Step 4 - Modify the Configurations and Scripts
 
@@ -420,7 +410,7 @@ Password: ***************
         "usermod -aG sudo rainpole"
     ],
 ```
-> **NOTE**: Update the `public_key` with the desired public key for the root user. This will be added to the `.ssh/authorized_keys` file for the `root` account. 
+>**NOTE**: Update the `public_key` with the desired public key for the root user. This will be added to the `.ssh/authorized_keys` file for the `root` account. 
 
 **Example 2**: Ubuntu Server 20.04 (and later) `user-data` and `meta-data` files.
 
@@ -568,7 +558,7 @@ Decoded Password: [decoded password]
 * **Red Hat Enterprise Linux** (_as well as CentOS Linux, AlmaLinux, and Rocky Linux_) - Use the [Red Hat Kickstart Generator][redhat-kickstart].
 * **Microsoft Windows** - Use the Microsoft Windows [Answer File Generator][microsoft-windows-afg] if you need to customize the provided examples further.
 
-> **NOTE**: BIOS-based `autounattend.xml` files for Microsoft Windows included in this repository are configured to use KMS licenses, and configure Windows Remote Management and VMware Tools. UEFI-based `autounattend.xml` files are included for consumption and include the addition of the GPT disk structure requirements.
+>**NOTE**: BIOS-based `autounattend.xml` files for Microsoft Windows included in this repository are configured to use KMS licenses, and configure Windows Remote Management and VMware Tools. UEFI-based `autounattend.xml` files are included for consumption and include the addition of the GPT disk structure requirements.
 
 ### Step 5 - Configure Certificates and Keys
 
@@ -630,9 +620,9 @@ Decoded Password: [decoded password]
     
     >**NOTE**: This repository uses the newer ECDSA versus the older RSA public key algorithm. See [Generate a New SSH Key][ssh-keygen] on SSH.com. 
     > 
-    > If you do not wish to install the public key on the Linux guest operating systems and therefore disable Public Key Authentication, comment or remove the portion of the associated script in the `/scripts` directory and the file provisioner from the `prk.hcl` file for each Linux build. 
+    >If you do not wish to install the public key on the Linux guest operating systems and therefore disable Public Key Authentication, comment or remove the portion of the associated script in the `/scripts` directory and the file provisioner from the `prk.hcl` file for each Linux build. 
     >
-    > By default, both Public Key Authentication and Password Authentication are enabled for Linux distributions. If you wish to disable Password Authentication and only use Public Key Authentication, comment or remove the portion of the associated script in the `/scripts` directory.
+    >By default, both Public Key Authentication and Password Authentication are enabled for Linux distributions. If you wish to disable Password Authentication and only use Public Key Authentication, comment or remove the portion of the associated script in the `/scripts` directory.
 
 ## Build
 
@@ -715,14 +705,6 @@ The network interface for Ubuntu 20.04 machine images are in a disconnected afte
 The use of UEFI firmware, by setting `vm_firmware = "efi-secure"`, does not work on some older Linux distributions. 
 
 **Workaround**: EFI Secure Boot does not work with all Linux distributions under the vSphere version, but it does work with Red Hat Enterprise Linux 8, CentoOS Linux/Stream 8, and AlmaLinux 8. It is the recommend Firmware setting under VM Options for each when using the guestOS type of `rhel8_64Guest` and `centos8_64Guest` via the vSphere Client. 
-    
-For Red Hat Enterprise Linux 8, CentoOS Linux/Stream 8, and AlmaLinux 8, EFI Secure Boot can be enabled by changing `vm_firmware = "bios"` to use = `"vm_firmware = efi-secure"` and the `boot_command` to use the following arguments to pass the additional boot commands required.
-
-```
-boot_command = ["up","e","<down><down><end><wait>"," text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/${var.http_file}","<enter><wait><leftCtrlOn>x<leftCtrlOff>"]
-```
-
-We [plan to pivot](https://github.com/rainpole/packer-vsphere/issues/22) all guestOS types for machine images in the repository to use their "(Recommended)" firmware settings in a future commit. Stay tuned.
 
 ## Troubleshoot
 

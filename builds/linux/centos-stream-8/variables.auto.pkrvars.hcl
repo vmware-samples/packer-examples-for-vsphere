@@ -19,9 +19,7 @@ vm_guest_os_member          = "stream"
 vm_guest_os_version         = "8" 
 vm_guest_os_type            = "centos8_64Guest" 
 vm_version                  = 18
-vm_firmware                 = "bios"
-# Firmware for EFI.
-# vm_firmware               = "efi-secure"
+vm_firmware                 = "efi-secure"
 vm_cdrom_type               = "sata"
 vm_cpu_sockets              = 2
 vm_cpu_cores                = 1

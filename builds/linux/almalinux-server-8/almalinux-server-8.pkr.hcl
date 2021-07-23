@@ -174,8 +174,8 @@ variable "vm_version" {
 
 variable "vm_firmware" {
   type    = string
-  description = "The virtual machine firmware. (e.g. 'efi-secure' or 'bios')"
-  default = "efi-secure"
+  description = "The virtual machine firmware. (e.g. 'bios' or 'efi')"
+  default = "bios"
 }
 
 variable "vm_cdrom_type" {
@@ -282,15 +282,9 @@ source "vsphere-iso" "linux-almalinux-server" {
   http_directory           = var.http_directory
   boot_order               = "disk,cdrom"
   boot_wait                = var.vm_boot_wait
-  /*
-    Default: vm_firmware = efi-secure.
-    Comment the line below if vm_firmware = bios.
-  */
-  boot_command             = ["up","e","<down><down><end><wait>"," text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/${var.http_file}","<enter><wait><leftCtrlOn>x<leftCtrlOff>"]
-  /*
-    Comment the line above and uncomment the line below if the default is modified to vm_firmware = bios
-    boot_command           = ["<tab>","text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/${var.http_file}","<enter><wait><leftCtrlOn>x<leftCtrlOff>"]
-  */
+  boot_command             = ["<tab>","text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/${var.http_file}","<enter><wait>"]
+  # Boot Command for EFI.
+  # boot_command           = ["<tab>","text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/${var.http_file}","<enter><wait><leftCtrlOn>x<leftCtrlOff>"]
   ip_wait_timeout          = "20m"
   ssh_password             = var.build_password
   ssh_username             = var.build_username
@@ -300,18 +294,17 @@ source "vsphere-iso" "linux-almalinux-server" {
   shutdown_command         = "echo '${var.build_password}' | sudo -S -E shutdown -P now"
   shutdown_timeout         = "15m"
   /*
-    Default: Use the content library.
-    Comment this section to exclude the use of the vSphere content library.
-    - If ovf = true - the virtual machine image is exported to the target content library.
-    - If destroy = true - the virtual machine image is destroyed after a successfully exported the target content library
-    - By default, the target name is the vm_name unless name = "foo" is provided.
-    - The content library item is updated if the target name is the same. 
+  Comment or remove the option below to exclude the use of the vSphere content library.
+  - If ovf = true - the virtual machine image is exported to the target content library.
+  - If destroy = true - the virtual machine image is destroyed after a successfully exported the target content library
+  - By default, the target name is the vm_name unless name = "foo" is provided.
+  - The content library item is updated if the target name is the same. 
+  */
   content_library_destination {
     library = var.vcenter_content_library
     ovf     = true
     destroy = true
   }
-  */
 }
 
 ##################################################################################
@@ -321,16 +314,16 @@ source "vsphere-iso" "linux-almalinux-server" {
 build {
   sources = ["source.vsphere-iso.linux-almalinux-server"]
   /*
-    Uses the File Provisioner to copy the public key.
-    - The Shell Provisioner will execute a script that imports the public key to authorized_keys to the build user.
+  Uses the File Provisioner to copy the public key.
+  - The Shell Provisioner will execute a script that imports the public key to authorized_keys to the build user.
   */ 
   provisioner "file" {
     destination = "/tmp/id_ecdsa.pub"
     source = "../../../keys/id_ecdsa.pub"
   }
   /*
-    Uses the File Provisioner to copy the .crt certificate for the Root Certificate Authority.
-    - The Shell Provisioner will execute a script that imports the certificate to the Certificate Authority Trust.
+  Uses the File Provisioner to copy the .crt certificate for the Root Certificate Authority.
+  - The Shell Provisioner will execute a script that imports the certificate to the Certificate Authority Trust.
   */ 
    provisioner "file" {
     destination = "/tmp/root-ca.crt"

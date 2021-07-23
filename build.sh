@@ -408,7 +408,7 @@ press_enter() {
 
 plugins() {
   cd builds/windows/windows-server-2019/
-  echo -e "\nCONFIRM: Initilize the Windows Update Plug-in."
+  echo -e "\nCONFIRM: Initilize the Windows Update Plugin."
   echo -e "\nContinue? (y/n)"
   read REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -416,8 +416,8 @@ plugins() {
     exit 1
   fi
 
-  ### Initilize the Windows Update Plug-in. ###
-  echo "Initilizing the Windows Update Plug-in ..."
+  ### Initialize the Windows Update Plugin. ###
+  echo "Initializing the Windows Update Plugin ..."
   rm -f output-vmware-iso/*.ova
   packer init windows-server-2019.pkr.hcl
       
@@ -432,9 +432,7 @@ info() {
   echo ""
   echo "Microsoft Windows Server builds include both Core and Desktop Experience."
   echo ""
-  echo "UEFI based are not enabled by default for Microsoft Windows Server 2019/2016 and Red Hat Enterprise Linux 8."
-  echo ""
-  echo "For more information, visit the repositiory or review the README."
+  echo "For more information, visit the repository and review the README."
   read
 }
 

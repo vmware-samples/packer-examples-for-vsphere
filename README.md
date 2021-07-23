@@ -582,7 +582,7 @@ Decoded Password: [decoded password]
     ```
     These files are copied to the guest operating systems with a Packer file provisioner; after which, the a shell provisioner adds the certificate to the Trusted Certificate Authority of the guest operating system.
 
-    >**NOTE**: If you do not wish to install the certificates on the guest operating systems, comment out the portion of the shell provisioner scripts in the `scripts` directory and remove the file provisioner from the `prk.hcl` file for each build. If you need to add an intermediate certificate, add the certificate to `/certificates` and update the shell provisioner scripts in the `scripts` directory with your requirements.
+    >**NOTE**: If you do not wish to install the certificates on the guest operating systems, comment or remove the portion of the associated script in the `/scripts` directory and the file provisioner from the `prk.hcl` file for each build. If you need to add an intermediate certificate, add the certificate to `/certificates` and update the shell provisioner scripts in the `scripts` directory with your requirements.
 
 2. Generate a Public Key
 
@@ -624,13 +624,15 @@ Decoded Password: [decoded password]
     │   └── id_ecdsa.pub
     ```
     
-    This file is temporarily copied to the guest operating systems of the Linux distributions with a Packer file provisioner; after which, the a shell provisioner adds the key to the `.ssh/authorized_keys` file of the `build_username` on the guest operating system.
+    This file is temporarily copied to the guest operating systems of the Linux distributions with a Packer file provisioner; after which, the a shell provisioner adds the key to the `.ssh/authorized_keys` file of the `build_username` on the guest operating system. 
     
-    >**IMPORTANT**: You definitely **must** to replace this public key.
-
-    >**NOTE**: This release uses the newer ECDSA versus the older RSA public key algorithm. 
+    >**WARNING**: You should most definitely replace this public key.
+    
+    >**NOTE**: This repository uses the newer ECDSA versus the older RSA public key algorithm. See [Generate a New SSH Key][ssh-keygen] on SSH.com. 
+    > 
+    > If you do not wish to install the public key on the Linux guest operating systems and therefore disable Public Key Authentication, comment or remove the portion of the associated script in the `/scripts` directory and the file provisioner from the `prk.hcl` file for each Linux build. 
     >
-    > See [Generate a New SSH Key][ssh-keygen] on SSH.com. 
+    > By default, both Public Key Authentication and Password Authentication are enabled for Linux distributions. If you wish to disable Password Authentication and only use Public Key Authentication, comment or remove the portion of the associated script in the `/scripts` directory.
 
 ## Build
 

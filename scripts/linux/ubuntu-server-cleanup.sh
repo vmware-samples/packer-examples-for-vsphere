@@ -30,6 +30,7 @@ sudo rm -rf /tmp/root-ca.crt
 
 ### Copy the SSH key to authorized_keys and set permissions. ###
 echo '> Copying the SSH key to Authorized Keys and setting permissions ...'
+### Comment the lines below to to if you disable Public Key Authentication. ###
 sudo mkdir -p /home/$BUILD_USERNAME/.ssh
 sudo chmod 700 /home/$BUILD_USERNAME/.ssh
 sudo cat /tmp/id_ecdsa.pub > /home/$BUILD_USERNAME/.ssh/authorized_keys
@@ -39,8 +40,10 @@ sudo rm -rf /tmp/id_ecdsa.pub
 
 ### Configure SSH for Public Key Authentication. ###
 echo '> Configuring SSH for Public Key Authentication ...'
-sudo sed -i '/^PermitRootLogin/s/yes/no/' /etc/ssh/sshd_config
-sudo sed -i 's/.*PubkeyAuthentication.*/PubkeyAuthentication yes/g' /etc/ssh/sshd_config
+### Comment or r4move the line below to to disable Public Key Authentication allow _only_ Password Authentication. ###
+sudo sed -i 's/.*PubkeyAuthentication.*/PubkeyAuthentication yes/' /etc/ssh/sshd_config
+### Uncomment the line below to to disable Password Authentication and enforce _only_ Public Key Authentication. ###
+### sudo sed -i 's/#PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config
 
 ### Restart the SSH daemon. ###
 echo '> Restarting the SSH daemon. ...'

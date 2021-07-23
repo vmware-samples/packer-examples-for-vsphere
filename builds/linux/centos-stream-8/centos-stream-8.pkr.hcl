@@ -299,13 +299,12 @@ source "vsphere-iso" "linux-centos-stream" {
   - If destroy = true - the virtual machine image is destroyed after a successfully exported the target content library
   - By default, the target name is the vm_name unless name = "foo" is provided.
   - The content library item is updated if the target name is the same. 
-    */
+  */
     content_library_destination {
     library = var.vcenter_content_library
     ovf     = true
     destroy = true
   }
-  */
 }
 
 ##################################################################################

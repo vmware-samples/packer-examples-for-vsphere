@@ -28,17 +28,17 @@ If an item of the same name exists in the target content library, Packer will up
 The following builds are automated:
 
 **Linux Distributions**
-* VMware Photon OS 4
-* VMware Photon OS 3
+* VMware Photon OS 4 Server
+* VMware Photon OS 3 Server
 * Ubuntu Server 20.04 LTS
 * Ubuntu Server 18.04 LTS
-* Red Hat Enterprise Linux Server 8
-* Red Hat Enterprise Linux Server 7
-* AlmaLinux Server 8
-* Rocky Linux Server 8
-* CentOS Stream 8
-* CentOS Server 8
-* CentOS Server 7
+* Red Hat Enterprise Linux 8 Server
+* Red Hat Enterprise Linux 7 Server
+* AlmaLinux 8 Server
+* Rocky Linux 8 Server
+* CentOS Stream 8 Server
+* CentOS Linux 8 Server
+* CentOS Linux 7 Server
 
 **Microsoft Windows** - _Core and Desktop Experience_
 * Microsoft Windows Server 2019 - Standard and Datacenter
@@ -134,27 +134,27 @@ packer-vsphere/
 1. Download the x64 guest operating system [.iso][iso] images.
 
     **Linux Distributions**
-    * VMware Photon OS 4
+    * VMware Photon OS 4 Server
         * [Download][download-linux-photon-server-4] the latest release.
-    * VMware Photon OS 3
+    * VMware Photon OS 3 Server
         * [Download][download-linux-photon-server-3] the latest release.
     * Ubuntu Server 20.04 LTS
         * [Download][download-linux-ubuntu-server-20-04-lts] the latest **LIVE** release.
     * Ubuntu Server 18.04 LTS
         * [Download][download-linux-ubuntu-server-18-04-lts] the latest legacy **NON-LIVE** release.
-    * Red Hat Enterprise Linux Server 8
+    * Red Hat Enterprise Linux 8 Server
         * [Download][download-linux-redhat-server-8] the latest release of the full (e.g `RHEL-8-x86_64-dvd1.iso`) .iso image.
-    * Red Hat Enterprise Linux Server 7
+    * Red Hat Enterprise Linux 7 Server
         * [Download][download-linux-redhat-server-7] the latest release of the full (e.g `RHEL-7-x86_64-dvd1.iso`) .iso image.
-    * AlmaLinux Server 8
+    * AlmaLinux 8 Server
         * [Download][download-linux-almalinux-server-8] the latest release of the full (e.g `AlmaLinux-8-x86_64-dvd1.iso`) .iso image.
-    * Rocky Linux Server 8
+    * Rocky Linux 8 Server
         * [Download][download-linux-rocky-server-8] the latest release of the full (e.g `Rocky-8-x86_64-dvd1.iso`) .iso image.
-    * CentOS Stream 8
+    * CentOS Stream 8 Server
         * [Download][download-linux-centos-stream-8] the latest release of the full (e.g `CentOS-Stream-8-x86_64-dvd1.iso`) .iso image.
-    * CentOS Server 8
+    * CentOS Linux 8 Server
         * [Download][download-linux-centos-server-8] the latest release of the full (e.g `CentOS-8-x86_64-dvd1.iso`) .iso image.
-    * CentOS Server 7
+    * CentOS Linux 7 Server
         * [Download][download-linux-centos-server-7] the latest release of the full (e.g `CentOS-7-x86_64-dvd1.iso`) .iso image.
 
     **Microsoft Windows**
@@ -704,10 +704,12 @@ Happy building!!!
 
 ## Known-Issues
 
-### Disconnected network interface for Ubuntu 20.04 machine images.
-The network interface for Ubuntu 20.04 machine images are in a disconnected after conversion to template / OVF. This does not effect Windows images.
+### Disconnected network interface for Ubuntu 20.04 machine images after cloning from content library or template.
+The network interface for Ubuntu 20.04 machine images are in a disconnected after deployment. This does not effect other Linux or Windows machine images.
 
-**Workaround**: Manually or programmatically connect the network interface post-provisioning. This is being investigated - the cause is present the post-provisioning script executed before shutdown, likely due to cloud-init.
+**Workaround**: This is caused by the presence of cloud-init. The network interface will eventually connect through guest customization once cloud-init fails or it can be mitigated by adding the following to `/scripts/linux/ubuntu-server-cleanup.sh`.
+
+`sudo apt purge cloud-init -y ;sudo apt autoremove -y ;sudo rm -rf /etc/cloud`
 
 ### UEFI Firmware does not work with older Linux distributions.
 The use of UEFI firmware, by setting `vm_firmware = "efi-secure"`, does not work on some older Linux distributions. 

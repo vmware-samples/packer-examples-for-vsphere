@@ -255,7 +255,7 @@ source "vsphere-iso" "linux-photon-server" {
   insecure_connection  = var.vcenter_insecure_connection
   tools_upgrade_policy = true
   remove_cdrom         = true
-  convert_to_template  = true
+  convert_to_template  = false
   guest_os_type        = var.vm_guest_os_type
   vm_version           = var.vm_version
   notes                = "Built by HashiCorp Packer on ${local.buildtime}."

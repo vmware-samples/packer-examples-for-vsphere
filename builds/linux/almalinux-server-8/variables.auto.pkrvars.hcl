@@ -1,5 +1,5 @@
 # Maintainer: code@rainpole.io
-# Packer template for AlmaLinux 8 Server.
+# Packer variables for AlmaLinux 8 Server.
 # https://www.packer.io/docs/builders/vsphere/vsphere-iso
 
 ##################################################################################

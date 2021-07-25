@@ -7,6 +7,7 @@
 ##################################################################################
 
 packer {
+  required_version = ">= 1.7.3"
   required_plugins {
     windows-update = {
       version = "0.12.0"

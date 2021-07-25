@@ -21,7 +21,7 @@
 
 This repository provides examples to automate the creation of virtual machine images and their guest operating systems on VMware vSphere using [HashiCorp Packer][packer] and the `vsphere-iso` [builder][packer-vsphere-iso]. All examples are authored in the HashiCorp Configuration Language ("HCL2") instead of JSON.
 
-The resulting machine image artifacts are, by default, converted to a virtual machine template and then transferred to a [vSphere Content Library][vsphere-content-library] as an OVF template. 
+The resulting machine image artifacts are, by default, transferred to a [vSphere Content Library][vsphere-content-library] as an OVF template and the temporary machine image is destroyed.
 
 If an item of the same name exists in the target content library, Packer will update the existing item with the new OVF template. This method is extremely useful for vRealize Automation / vRealize Automation Cloud as image mappings do not need to be updated when a virtual machine image update is executed and finalized.
 

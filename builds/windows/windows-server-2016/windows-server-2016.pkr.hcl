@@ -294,7 +294,7 @@ source "vsphere-iso" "windows-server-standard-dexp" {
   insecure_connection  = var.vcenter_insecure_connection
   tools_upgrade_policy = true
   remove_cdrom         = true
-  convert_to_template  = true
+  convert_to_template  = false
   guest_os_type        = var.vm_guest_os_type
   vm_version           = var.vm_version
   notes                = "Built by HashiCorp Packer on ${local.buildtime}."
@@ -358,7 +358,7 @@ source "vsphere-iso" "windows-server-standard-core" {
   insecure_connection  = var.vcenter_insecure_connection
   tools_upgrade_policy = true
   remove_cdrom         = true
-  convert_to_template  = true
+  convert_to_template  = false
   guest_os_type        = var.vm_guest_os_type
   vm_version           = var.vm_version
   notes                = "Built by HashiCorp Packer on ${local.buildtime}."
@@ -422,7 +422,7 @@ source "vsphere-iso" "windows-server-datacenter-dexp" {
   insecure_connection  = var.vcenter_insecure_connection
   tools_upgrade_policy = true
   remove_cdrom         = true
-  convert_to_template  = true
+  convert_to_template  = false
   guest_os_type        = var.vm_guest_os_type
   vm_version           = var.vm_version
   notes                = "Built by HashiCorp Packer on ${local.buildtime}."
@@ -486,7 +486,7 @@ source "vsphere-iso" "windows-server-datacenter-core" {
   insecure_connection  = var.vcenter_insecure_connection
   tools_upgrade_policy = true
   remove_cdrom         = true
-  convert_to_template  = true
+  convert_to_template  = false
   guest_os_type        = var.vm_guest_os_type
   vm_version           = var.vm_version
   notes                = "Built by HashiCorp Packer on ${local.buildtime}."

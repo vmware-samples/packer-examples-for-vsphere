@@ -652,7 +652,7 @@ The menu will allow you to execute and confirm a build using Packer and the `vsp
          3  -  Ubuntu Server 20.04 LTS
          4  -  Ubuntu Server 18.04 LTS
          5  -  Red Hat Enterprise Linux 8 Server
-         6  -  Red Hat Enterprise Linux 8 Server
+         6  -  Red Hat Enterprise Linux 7 Server
          7  -  AlmaLinux 8 Server
          8  -  Rocky Linux 8 Server
          9  -  CentOS Stream 8 Server

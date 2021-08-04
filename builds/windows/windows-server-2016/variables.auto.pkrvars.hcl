@@ -28,25 +28,21 @@ vm_network_card             = "vmxnet3"
 vm_floppy_files_server_std_dexp = [
   "../../../configs/windows/windows-server-2016/standard/efi-secure/autounattend.xml",
   "../../../scripts/windows/",
-  "../../../drivers/windows",
   "../../../certificates/"
   ]
 vm_floppy_files_server_std_core = [
   "../../../configs/windows/windows-server-2016/standard-core/efi-secure/autounattend.xml",
   "../../../scripts/windows/",
-  "../../../drivers/windows",
   "../../../certificates/"
   ]
 vm_floppy_files_server_dc_dexp = [
   "../../../configs/windows/windows-server-2016/datacenter/efi-secure/autounattend.xml",
   "../../../scripts/windows/",
-  "../../../drivers/windows",
   "../../../certificates/"
   ]
 vm_floppy_files_server_dc_core = [
   "../../../configs/windows/windows-server-2016/datacenter-core/efi-secure/autounattend.xml",
   "../../../scripts/windows/",
-  "../../../drivers/windows",
   "../../../certificates/"
   ]
 vm_shutdown_command = "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\""

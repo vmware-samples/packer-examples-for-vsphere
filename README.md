@@ -320,7 +320,6 @@ export PKR_VAR_ansible_username="<ansible_password>"
 export PKR_VAR_ansible_key="<ansible_key>"
 export PKR_VAR_rhsm_username="<rhsm_password>"
 export PKR_VAR_rhsm_password="<rhsm_password>"
-
 ```
 ## Step 4 - Modify the Configurations and Scripts
 

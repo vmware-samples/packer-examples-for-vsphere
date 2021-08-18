@@ -1,21 +1,21 @@
 # Maintainer: code@rainpole.io
-# CentOS Stream 8 variables for the Packer Builder for VMware vSphere (vsphere-iso).
+# VMware Photon OS 4 variables for the Packer Builder for VMware vSphere (vsphere-iso).
 
 ##################################################################################
 # VARIABLES
 ##################################################################################
 
-// Guest Operating System Metadata
+// Guest Operating Systtem Metadata
 vm_guest_os_family  = "linux"
-vm_guest_os_vendor  = "centos-stream"
+vm_guest_os_vendor  = "photon"
 vm_guest_os_member  = "server"
-vm_guest_os_version = "8"
+vm_guest_os_version = "4"
 
-// Virtual Machine Guest Operating System Setting
-vm_guest_os_type = "centos8_64Guest"
+// Virtual Machine Guest Operating Systtem Setting
+vm_guest_os_type = "vmwarePhoton64Guest"
 
 // Virtual Machine Hardware Settings
-vm_firmware              = "efi-secure"
+vm_firmware              = "bios"
 vm_cdrom_type            = "sata"
 vm_cpu_sockets           = 2
 vm_cpu_cores             = 1
@@ -28,12 +28,12 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_file     = "iso-linux-centos-stream-8.iso"
-iso_checksum = "552cf5dcdc9d3db41791a2b3bbbd18335d75607ca54e7aa8bf28a6ea1d49ce914a55da0bd839123aa96654b7de6db65cc786beb71e6233982ea96ce456a47035"
+iso_file     = "iso-linux-photon-4.iso"
+iso_checksum = "9cb0ae0329a50733f56e921c1e220ce3e9d328499890b8202e05991daec34c4184ef03606caf706e9058035115c23fef1cacbb184200fca8ec577a191ad3f394"
 
 // Boot Settings
-http_directory = "../../../configs/linux/redhat-variant"
-http_file      = "ks.cfg"
+http_directory = "../../../configs/linux/photon"
+http_file      = "ks.json"
 vm_boot_order  = "disk,cdrom"
 vm_boot_wait   = "2s"
 
@@ -42,5 +42,5 @@ communicator_port    = 22
 communicator_timeout = "30m"
 
 // Provisioner Settings
-scripts = ["../../../scripts/linux/redhat-variant.sh"]
+scripts = ["../../../scripts/linux/photon.sh"]
 inline  = []

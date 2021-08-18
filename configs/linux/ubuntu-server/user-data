@@ -2,7 +2,7 @@
 autoinstall:
   version: 1
   early-commands:
-    # Stopping SSH to inhibit the Packer SSH communicator from connecting too soon.
+    # Ensures that Packer does not connect too soon.
     - sudo systemctl stop ssh
   locale: en_US
   keyboard:
@@ -19,11 +19,10 @@ autoinstall:
     network:
       version: 2
       ethernets:
-        ens33: {dhcp4: true, dhcp-identifier: mac}
+        ens33: 
+          dhcp4: true
   ssh:
     install-server: true
-    authorized-keys:
-      - ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBADwXV3rbRCWwhSr6aMkHukV5O7OGAEyUtAerj2anJHm3mwbOxlBU/uO4f0ELqo2GJcTALMC0aFrbvu9qonIH5VF7wBBfCP1cS5B92sUagVV9ldI/uo89e/7dVYC9maPsFaZq2G0/PLU0hZKOohq99Oxc2RMSiJaaenX/hNqx5xYSaK+CA== code@rainpole.io
     allow-pw: true
   packages:
     - openssh-server

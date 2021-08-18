@@ -2,35 +2,41 @@
 
 ![Rainpole](icon.png)
 
-## 2021-07-23
-* All machine images [default](https://github.com/rainpole/packer-vsphere/issues/22) to using the the recommended firmware based on the guest operating system and the minimum vSphere release supported by the repository. EFI Secure Boot is enabled for Red Hat Enterprise Linux 8, CentoOS Linux/Stream 8, AlmaLinux 8, and Microsoft Windows Server 2019/2016. BIOS is enabled for Red Hat Enterprise Linux 7, CentoOS Linux 7 and Rocky Linux 8.
+## Release: `21.08`
+August 18, 2021
+* Moved `vsphere.pkrvars.hcl` and `rhsm.pkrvars.hcl` to the `builds` directory.
+* Isolated variables to simplify updates to common settings with `builds/common.pkrvars.hcl`.
+* Refactored all build definitions to use variables and reduce any hard-coded settings.
+* All machine image build definitions use the the recommended firmware based on the guest operating system and the minimum vSphere release supported by the repository. EFI Secure Boot is enabled for Red Hat Enterprise Linux 8, CentoOS Linux/Stream 8, AlmaLinux 8, and Microsoft Windows Server 2019/2016. BIOS is enabled Rocky Linux 8.
+* Added the manifest post-provisioner to machine image build definitions.
+* Moved public keys to variables.
+* Added a user for Ansible to Linux machine images with authorized_keys. Uses `builds/ansible.pkrvars.hcl`. Password is randomized.
+* Updated the Packer block to all builds with `required_versions >= "1.7.4"` for Packer.
+* Added the `required_plugins` to the Packer block for all builds to use the `vsphere` plugin `version = ">= v1.0.1"`.
+* Updated the Packer block for Windows builds with `required_plugins` and `version = "0.14.0"` for the [Windows-Update plugin](https://github.com/rgl/packer-plugin-windows-update).
+* All builds automatically run `packer init` to initialize required plugins before running a build with `build.sh`.
+* Updated Microsoft Windows `autounattend.xml` files to use the  attached VMware Tools `.iso` for PVSCSI driver.
+* Simplified and reduced the script files used by provisioners.
+* Patched the script for VNware PhotoN OS 4 due to an issue performing updates with `tdnf`.
+* Patched the script for Ubuntu Server 20.04 LTS to remove cloud-init and remove all netplan configurations before GuestOS customization.
+* Removed support for VMware Photon OS 3 machine image builds.
+* Removed support for Red Hat Enterprise Linux 7 machine image builds.
+* Removed support for CentOS Linux 7 machine image builds. 
+* Deprecating CentOS Linux 8. Removing in a future update. The CentOS Project [has shifted focus](https://www.redhat.com/en/blog/faq-centos-stream-updates) from CentOS Linux to CentOS Stream. CentOS Linux 8 EOL: `2021-12-31`.
+* Deprecating Microsoft Windows Server 2016. Removing in a future update. Microsoft Windows Server 2016 EOL: `2022-01-22`.
+* Added MAINTAINERS.md.
+* Updated README.md.
 
-## 2021-07-21
-* Added [support](https://github.com/rainpole/packer-vsphere/issues/18) for [AlmaLinux](http://almalinux.org) 8. 
-
-    > Note: GuestOS Customization is not supported in vSphere 7.0 U2.
-
-* Added [support](https://github.com/rainpole/packer-vsphere/issues/19) for [CentOS Stream](https://www.centos.org/centos-stream/) 8. 
-* Updated scripts for Linux to generate host keys using `ssh-keygen` to ensure `sshd` will start on machine images.
-
-## 2021-07-16
-* Bumped support to >= vSphere 7.0 U2.
-* Added the Packer block to all builds with `required_versions >= "1.7.3"` for Packer.
-* Added the Packer block to Windows builds with `required_plugins` and `version = "0.12.0"` for the [Windows-Update Plug-in](https://github.com/rgl/packer-plugin-windows-update).
+## Release: `21.07`
+July 21, 2021
 * Added support for [VMware Photon OS](https://vmware.github.io/photon/) 4.
+* Added [support](https://github.com/rainpole/packer-vsphere/issues/18) for [AlmaLinux](http://almalinux.org) 8. 
 * Added [support](https://github.com/rainpole/packer-vsphere/issues/13) for [Rocky Linux](https://rockylinux.org) 8. 
+* Added [support](https://github.com/rainpole/packer-vsphere/issues/19) for [CentOS Stream](https://www.centos.org/centos-stream/) 8. 
+* Updated to `>=` vSphere 7.0 U2.
+* Added the Packer block to all builds with `required_versions >= "1.7.3"` for Packer.
+* Added the Packer block for Windows builds with `required_plugins` and `version = "0.12.0"` for the [Windows-Update plugin](https://github.com/rgl/packer-plugin-windows-update).
 
-    > Note: GuestOS Customization is not supported in vSphere 7.0 U2.
-
-* Added the option to initialize the Windows-Update Plug-in with **Option P** in `./build.sh`.
-* Updated README.md regarding support for UEFI (`vm_firmware = "efi-secure"`) for Windows and RHEL as resolved in vSphere 7.0 Update 2. 
-
-    > Note: Defaults remain BIOS (`vm_firmware = "bios"`).
-
-* Various bug fixes and [README.md](README.md) updates
-
-## 2020-12-08
-* Updated examples to support vSphere datacenter object.
-
-## 2020-11-26
+## Release: `20.11`
+November 26, 2020
 * Initial release.

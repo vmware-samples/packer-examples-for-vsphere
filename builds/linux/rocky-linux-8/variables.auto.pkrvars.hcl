@@ -1,5 +1,5 @@
 # Maintainer: code@rainpole.io
-# CentOS Stream 8 variables for the Packer Builder for VMware vSphere (vsphere-iso).
+# Rocky Linux 8 variables for the Packer Builder for VMware vSphere (vsphere-iso).
 
 ##################################################################################
 # VARIABLES
@@ -7,7 +7,7 @@
 
 // Guest Operating System Metadata
 vm_guest_os_family  = "linux"
-vm_guest_os_vendor  = "centos-stream"
+vm_guest_os_vendor  = "rocky-linux"
 vm_guest_os_member  = "server"
 vm_guest_os_version = "8"
 
@@ -15,7 +15,7 @@ vm_guest_os_version = "8"
 vm_guest_os_type = "centos8_64Guest"
 
 // Virtual Machine Hardware Settings
-vm_firmware              = "efi-secure"
+vm_firmware              = "bios"
 vm_cdrom_type            = "sata"
 vm_cpu_sockets           = 2
 vm_cpu_cores             = 1
@@ -28,8 +28,8 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_file     = "iso-linux-centos-stream-8.iso"
-iso_checksum = "552cf5dcdc9d3db41791a2b3bbbd18335d75607ca54e7aa8bf28a6ea1d49ce914a55da0bd839123aa96654b7de6db65cc786beb71e6233982ea96ce456a47035"
+iso_file     = "iso-linux-rocky-linux-8.iso"
+iso_checksum = "dbfacdbbfd50059a0dda5c19071bc2f55496f3651279eafa6f50d2ea2d941fdd8b43b8710e2187cdbfe630fa7efb5d3b047ee0cdbc2f8d09bd5f68a7014e0d0c"
 
 // Boot Settings
 http_directory = "../../../configs/linux/redhat-variant"

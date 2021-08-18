@@ -1,5 +1,5 @@
 # Maintainer: code@rainpole.io
-# CentOS Stream 8 template using the Packer Builder for VMware vSphere (vsphere-iso).
+# Rocky Linux 8 template using the Packer Builder for VMware vSphere (vsphere-iso).
 
 ##################################################################################
 # PACKER
@@ -80,7 +80,7 @@ variable "vm_guest_os_family" {
 
 variable "vm_guest_os_vendor" {
   type        = string
-  description = "The guest operatiing system vendor. Used for naming . (e.g. 'centos-stream')"
+  description = "The guest operatiing system vendor. Used for naming . (e.g. 'rocky-linux')"
 }
 
 variable "vm_guest_os_member" {
@@ -101,7 +101,7 @@ variable "vm_guest_os_type" {
 variable "vm_firmware" {
   type        = string
   description = "The virtual machine firmware. (e.g. 'efi-secure' or 'bios')"
-  default     = "efi-secure"
+  default     = "bios"
 }
 
 variable "vm_cdrom_type" {
@@ -221,12 +221,12 @@ variable "common_iso_hash" {
 
 variable "iso_file" {
   type        = string
-  description = "The file name of the ISO image. (e.g. 'iso-linux-centos-stream-8.iso')"
+  description = "The file name of the ISO image. (e.g. 'iso-rockylinux-8.iso')"
 }
 
 variable "iso_checksum" {
   type        = string
-  description = "The checksum of the ISO image. (e.g. Result of 'shasum -a 512 iso-linux-centos-stream-8.iso')"
+  description = "The checksum of the ISO image. (e.g. Result of 'shasum -a 512 iso-linux-rocky-linux-8.iso')"
 }
 
 // Boot Settings
@@ -342,7 +342,7 @@ locals {
 # SOURCE
 ##################################################################################
 
-source "vsphere-iso" "linux-centos-stream" {
+source "vsphere-iso" "linux-rocky-linux" {
   // vCenter Server Endpoint Settings and Credentials
   vcenter_server      = var.vsphere_endpoint
   username            = var.vsphere_username
@@ -390,7 +390,7 @@ source "vsphere-iso" "linux-centos-stream" {
   http_directory   = var.http_directory
   boot_order       = var.vm_boot_order
   boot_wait        = var.vm_boot_wait
-  boot_command     = ["up", "e", "<down><down><end><wait>", "text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/${var.http_file}", "<enter><wait><leftCtrlOn>x<leftCtrlOff>"]
+  boot_command     = ["<tab>", "text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/${var.http_file}", "<enter><wait>"]
   ip_wait_timeout  = var.common_ip_wait_timeout
   shutdown_command = "echo '${var.build_password}' | sudo -S -E shutdown -P now"
   shutdown_timeout = var.common_shutdown_timeout
@@ -416,7 +416,7 @@ source "vsphere-iso" "linux-centos-stream" {
 ##################################################################################
 
 build {
-  sources = ["source.vsphere-iso.linux-centos-stream"]
+  sources = ["source.vsphere-iso.linux-rocky-linux"]
   /*
   Uses the File Provisioner to copy the .crt certificate for the Root Certificate Authority.
   - The Shell Provisioner will execute a script that imports the certificate to the Certificate Authority Trust.

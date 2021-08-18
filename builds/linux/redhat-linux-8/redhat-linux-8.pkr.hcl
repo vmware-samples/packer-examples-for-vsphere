@@ -1,5 +1,5 @@
 # Maintainer: code@rainpole.io
-# CentOS Stream 8 template using the Packer Builder for VMware vSphere (vsphere-iso).
+# Red Hat Enterprise Linux 8 template using the Packer Builder for VMware vSphere (vsphere-iso).
 
 ##################################################################################
 # PACKER
@@ -18,6 +18,20 @@ packer {
 ##################################################################################
 # VARIABLES
 ##################################################################################
+
+// Red Hat Subscription Manager Credentials
+
+variable "rhsm_username" {
+  type        = string
+  description = "The username to Red Hat Subscription Manager."
+  sensitive   = true
+}
+
+variable "rhsm_password" {
+  type        = string
+  description = "The password to login to Red Hat Subscription Manager."
+  sensitive   = true
+}
 
 // vSphere Credentials
 
@@ -80,7 +94,7 @@ variable "vm_guest_os_family" {
 
 variable "vm_guest_os_vendor" {
   type        = string
-  description = "The guest operatiing system vendor. Used for naming . (e.g. 'centos-stream')"
+  description = "The guest operatiing system vendor. Used for naming . (e.g. 'redhat-linux')"
 }
 
 variable "vm_guest_os_member" {
@@ -95,7 +109,7 @@ variable "vm_guest_os_version" {
 
 variable "vm_guest_os_type" {
   type        = string
-  description = "The guest operating system type, also know as guestid. (e.g. 'centos8_64Guest')"
+  description = "The guest operating system type, also know as guestid. (e.g. 'rhel8_64Guest')"
 }
 
 variable "vm_firmware" {
@@ -221,12 +235,12 @@ variable "common_iso_hash" {
 
 variable "iso_file" {
   type        = string
-  description = "The file name of the ISO image. (e.g. 'iso-linux-centos-stream-8.iso')"
+  description = "The file name of the ISO image. (e.g. 'iso-linux-redhat-linux-8.iso')"
 }
 
 variable "iso_checksum" {
   type        = string
-  description = "The checksum of the ISO image. (e.g. Result of 'shasum -a 512 iso-linux-centos-stream-8.iso')"
+  description = "The checksum of the ISO image. (e.g. Result of 'shasum -a 512 iso-linux-redhat-linux-8.iso')"
 }
 
 // Boot Settings
@@ -342,7 +356,7 @@ locals {
 # SOURCE
 ##################################################################################
 
-source "vsphere-iso" "linux-centos-stream" {
+source "vsphere-iso" "linux-redhat-linux" {
   // vCenter Server Endpoint Settings and Credentials
   vcenter_server      = var.vsphere_endpoint
   username            = var.vsphere_username
@@ -416,7 +430,7 @@ source "vsphere-iso" "linux-centos-stream" {
 ##################################################################################
 
 build {
-  sources = ["source.vsphere-iso.linux-centos-stream"]
+  sources = ["source.vsphere-iso.linux-redhat-linux"]
   /*
   Uses the File Provisioner to copy the .crt certificate for the Root Certificate Authority.
   - The Shell Provisioner will execute a script that imports the certificate to the Certificate Authority Trust.
@@ -432,7 +446,9 @@ build {
       "BUILD_USERNAME=${var.build_username}",
       "BUILD_KEY=${var.build_key}",
       "ANSIBLE_USERNAME=${var.ansible_username}",
-      "ANSIBLE_KEY=${var.ansible_key}"
+      "ANSIBLE_KEY=${var.ansible_key}",
+      "RHSM_USERNAME=${var.rhsm_username}",
+      "RHSM_PASSWORD=${var.rhsm_password}"
     ]
     scripts = var.scripts
   }

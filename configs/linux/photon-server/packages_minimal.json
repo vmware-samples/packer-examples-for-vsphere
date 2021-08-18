@@ -1,7 +1,0 @@
-{
-    "packages": [
-        "minimal",
-        "linux",
-        "initramfs"
-        ]
-}

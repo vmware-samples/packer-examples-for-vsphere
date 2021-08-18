@@ -1,5 +1,5 @@
 # Maintainer: code@rainpole.io
-# CentOS Stream 8 variables for the Packer Builder for VMware vSphere (vsphere-iso).
+# AlmaLinux 8 variables for the Packer Builder for VMware vSphere (vsphere-iso).
 
 ##################################################################################
 # VARIABLES
@@ -7,7 +7,7 @@
 
 // Guest Operating System Metadata
 vm_guest_os_family  = "linux"
-vm_guest_os_vendor  = "centos-stream"
+vm_guest_os_vendor  = "almalinux"
 vm_guest_os_member  = "server"
 vm_guest_os_version = "8"
 
@@ -28,8 +28,8 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_file     = "iso-linux-centos-stream-8.iso"
-iso_checksum = "552cf5dcdc9d3db41791a2b3bbbd18335d75607ca54e7aa8bf28a6ea1d49ce914a55da0bd839123aa96654b7de6db65cc786beb71e6233982ea96ce456a47035"
+iso_file     = "iso-linux-almalinux-8.iso"
+iso_checksum = "44f56b309fa0cccf41f4d8a5ca3c9b91bb7da510ff8d8faf93fadef9262df872cb824aa7499c5ada5a7ae743be6b38261ed458c465d84e2504e38ca6f05107d7"
 
 // Boot Settings
 http_directory = "../../../configs/linux/redhat-variant"

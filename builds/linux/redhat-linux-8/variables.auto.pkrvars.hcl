@@ -1,5 +1,5 @@
 # Maintainer: code@rainpole.io
-# CentOS Stream 8 variables for the Packer Builder for VMware vSphere (vsphere-iso).
+# Red Hat Enterprise Linux 8 variables for the Packer Builder for VMware vSphere (vsphere-iso).
 
 ##################################################################################
 # VARIABLES
@@ -7,12 +7,12 @@
 
 // Guest Operating System Metadata
 vm_guest_os_family  = "linux"
-vm_guest_os_vendor  = "centos-stream"
+vm_guest_os_vendor  = "redhat-linux"
 vm_guest_os_member  = "server"
 vm_guest_os_version = "8"
 
 // Virtual Machine Guest Operating System Setting
-vm_guest_os_type = "centos8_64Guest"
+vm_guest_os_type = "rhel8_64Guest"
 
 // Virtual Machine Hardware Settings
 vm_firmware              = "efi-secure"
@@ -28,11 +28,11 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_file     = "iso-linux-centos-stream-8.iso"
-iso_checksum = "552cf5dcdc9d3db41791a2b3bbbd18335d75607ca54e7aa8bf28a6ea1d49ce914a55da0bd839123aa96654b7de6db65cc786beb71e6233982ea96ce456a47035"
+iso_file     = "iso-linux-redhat-linux-8.iso"
+iso_checksum = "3b3f4ad5a0b8ef289643bf8cb7f6f5a0fa7b2cbca747dc0ed6b588f574f38bee8c741b76519b8d0bf7dd4328d9ecc950bad443c22ddc8347837a4c58cd85b3a7"
 
 // Boot Settings
-http_directory = "../../../configs/linux/redhat-variant"
+http_directory = "../../../configs/linux/redhat-linux"
 http_file      = "ks.cfg"
 vm_boot_order  = "disk,cdrom"
 vm_boot_wait   = "2s"
@@ -42,5 +42,5 @@ communicator_port    = 22
 communicator_timeout = "30m"
 
 // Provisioner Settings
-scripts = ["../../../scripts/linux/redhat-variant.sh"]
+scripts = ["../../../scripts/linux/redhat-linux.sh"]
 inline  = []

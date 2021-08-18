@@ -1,5 +1,5 @@
 # Maintainer: code@rainpole.io
-# CentOS Stream 8 template using the Packer Builder for VMware vSphere (vsphere-iso).
+# VMware Photon OS 4 template using the Packer Builder for VMware vSphere (vsphere-iso).
 
 ##################################################################################
 # PACKER
@@ -80,7 +80,7 @@ variable "vm_guest_os_family" {
 
 variable "vm_guest_os_vendor" {
   type        = string
-  description = "The guest operatiing system vendor. Used for naming . (e.g. 'centos-stream')"
+  description = "The guest operatiing system vendor. Used for naming . (e.g. 'photon')"
 }
 
 variable "vm_guest_os_member" {
@@ -90,12 +90,12 @@ variable "vm_guest_os_member" {
 
 variable "vm_guest_os_version" {
   type        = string
-  description = "The guest operatiing system version. Used for naming. (e.g. '8')"
+  description = "The guest operatiing system version. Used for naming. (e.g. '4')"
 }
 
 variable "vm_guest_os_type" {
   type        = string
-  description = "The guest operating system type, also know as guestid. (e.g. 'centos8_64Guest')"
+  description = "The guest operating system type, also know as guestid. (e.g. 'vmwarePhoton64Guest')"
 }
 
 variable "vm_firmware" {
@@ -221,12 +221,12 @@ variable "common_iso_hash" {
 
 variable "iso_file" {
   type        = string
-  description = "The file name of the ISO image. (e.g. 'iso-linux-centos-stream-8.iso')"
+  description = "The file name of the ISO image. (e.g. 'iso-linux-photon-4.iso')"
 }
 
 variable "iso_checksum" {
   type        = string
-  description = "The checksum of the ISO image. (e.g. Result of 'shasum -a 512 iso-linux-centos-stream-8.iso')"
+  description = "The checksum of the ISO image. (e.g. Result of 'shasum -a 512 iso-linux-photon-4.iso')"
 }
 
 // Boot Settings
@@ -243,12 +243,12 @@ variable "common_http_port_max" {
 
 variable "http_directory" {
   type        = string
-  description = "The HTTP directory path. (e.g. ../../../configs/linux/redhat-variant/)"
+  description = "The HTTP directory path. (e.g. ../../../configs/linux/photon/)"
 }
 
 variable "http_file" {
   type        = string
-  description = "The guest operating system kickstart file. (e.g. ks.cfg)"
+  description = "The guest operating system kickstart file. (e.g. ks.json)"
 }
 
 variable "vm_boot_order" {
@@ -342,7 +342,7 @@ locals {
 # SOURCE
 ##################################################################################
 
-source "vsphere-iso" "linux-centos-stream" {
+source "vsphere-iso" "linux-photon" {
   // vCenter Server Endpoint Settings and Credentials
   vcenter_server      = var.vsphere_endpoint
   username            = var.vsphere_username
@@ -390,7 +390,7 @@ source "vsphere-iso" "linux-centos-stream" {
   http_directory   = var.http_directory
   boot_order       = var.vm_boot_order
   boot_wait        = var.vm_boot_wait
-  boot_command     = ["up", "e", "<down><down><end><wait>", "text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/${var.http_file}", "<enter><wait><leftCtrlOn>x<leftCtrlOff>"]
+  boot_command     = ["<esc><wait> vmlinuz initrd=initrd.img root=/dev/ram0 loglevel=3 insecure_installation=1 ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/${var.http_file} photon.media=cdrom <enter>"]
   ip_wait_timeout  = var.common_ip_wait_timeout
   shutdown_command = "echo '${var.build_password}' | sudo -S -E shutdown -P now"
   shutdown_timeout = var.common_shutdown_timeout
@@ -416,7 +416,7 @@ source "vsphere-iso" "linux-centos-stream" {
 ##################################################################################
 
 build {
-  sources = ["source.vsphere-iso.linux-centos-stream"]
+  sources = ["source.vsphere-iso.linux-photon"]
   /*
   Uses the File Provisioner to copy the .crt certificate for the Root Certificate Authority.
   - The Shell Provisioner will execute a script that imports the certificate to the Certificate Authority Trust.

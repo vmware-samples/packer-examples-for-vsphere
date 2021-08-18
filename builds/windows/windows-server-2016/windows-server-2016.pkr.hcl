@@ -1,17 +1,22 @@
 # Maintainer: code@rainpole.io
-# Packer temnplate for Windows Server 2019 Standard and Datacenter - Desktop Experience and Core
-# https://www.packer.io/docs/builders/vsphere/vsphere-iso
+# Microsoft Windows Server 2016 Standard template using the Packer Builder for VMware vSphere (vsphere-iso).
 
 ##################################################################################
-# PACKER PLUGINS
+# PACKER
 ##################################################################################
 
 packer {
-  required_version = ">= 1.7.3"
+  required_version = ">= 1.7.4"
+  required_plugins {
+    vsphere = {
+      version = ">= v1.0.1"
+      source  = "github.com/hashicorp/vsphere"
+    }
+  }
   required_plugins {
     windows-update = {
-      version = "0.12.0"
-      source = "github.com/rgl/windows-update"
+      version = ">= 0.14.0"
+      source  = "github.com/rgl/windows-update"
     }
   }
 }
@@ -20,572 +25,701 @@ packer {
 # VARIABLES
 ##################################################################################
 
-# Credentials.
+// vSphere Credentials
 
-variable "vcenter_username" {
-  type    = string
-  description = "The username to login to the vCenter Server instance. (e.g. 'svc-packer-vsphere@rainpole.io')"
-  default = ""
-  sensitive = true
-}
-
-variable "vcenter_password" {
-  type      = string
-  description = "The password for the login to the vCenter Server instance."
-  default = ""
-  sensitive = true
-}
-
-variable "build_username" {
-  type    = string
-  description = "The username to login to the guest operating system. (e.g. 'rainpole')"
-  default = ""
-  sensitive = true
-}
-
-variable "build_password" {
-  type      = string
-  description = "The password for the login to the guest operating system."
-  default = ""
-  sensitive = true
-}
-
-# vSphere Objects
-
-variable "vcenter_insecure_connection" {
-  type    = bool
-  description = "Do not validate vCenter Server TLS certificate."
-  default = true
-}
-
-variable "vcenter_server" {
-  type    = string
+variable "vsphere_endpoint" {
+  type        = string
   description = "The fully qualified domain name or IP address of the vCenter Server instance. (e.g. 'sfo-w01-vc01.sfo.rainpole.io')"
-  default = ""
 }
 
-variable "vcenter_datacenter" {
-  type    = string
+variable "vsphere_username" {
+  type        = string
+  description = "The username to login to the vCenter Server instance. (e.g. svc-packer-vsphere@rainpole.io)"
+  sensitive   = true
+}
+
+variable "vsphere_password" {
+  type        = string
+  description = "The password for the login to the vCenter Server instance."
+  sensitive   = true
+}
+
+variable "vsphere_insecure_connection" {
+  type        = bool
+  description = "Do not validate vCenter Server TLS certificate."
+  default     = true
+}
+
+// vSphere Settings
+
+variable "vsphere_datacenter" {
+  type        = string
   description = "The name of the target vSphere datacenter. (e.g. 'sfo-w01-dc01')"
-  default = ""
 }
 
-variable "vcenter_cluster" {
-  type    = string
+variable "vsphere_cluster" {
+  type        = string
   description = "The name of the target vSphere cluster. (e.g. 'sfo-w01-cl01')"
-  default = ""
 }
 
-variable "vcenter_datastore" {
-  type    = string
+variable "vsphere_datastore" {
+  type        = string
   description = "The name of the target vSphere datastore. (e.g. 'sfo-w01-cl01-vsan01')"
-  default = ""
 }
 
-variable "vcenter_network" {
-  type    = string
+variable "vsphere_network" {
+  type        = string
   description = "The name of the target vSphere network segment. (e.g. 'sfo-w01-dhcp')"
-  default = ""
 }
 
-variable "vcenter_folder" {
-  type    = string
+variable "vsphere_folder" {
+  type        = string
   description = "The name of the target vSphere cluster. (e.g. 'sfo-w01-fd-templates')"
-  default = ""
 }
 
-variable "vcenter_content_library" {
-  type    = string
-  description = "The name of the target vSphere content library, if used. (e.g. 'sfo-w01-cl01-lib01')"
-  default = ""
+// Virtual Machine Settings
+
+variable "vm_guest_os_vendor" {
+  type        = string
+  description = "The guest operatiing system vendor. Used for naming . (e.g. 'microsoft)"
 }
-
-# ISO Objects
-
-variable "iso_datastore" {
-  type    = string
-  description = "The name of the source vSphere datastore for ISO images. (e.g. 'sfo-w01-cl01-nfs01')"
-  default = ""
-  }
-
-variable "iso_path" {
-  type    = string
-  description = "The path on the source vSphere datastore for ISO images. (e.g. 'iso')"
-  default = ""
-  }
-
-variable "iso_file" {
-  type    = string
-  description = "The file name of the ISO image. (e.g. 'iso-windows-server-2019.iso')"
-  default = ""
-}
-
-variable "iso_checksum" {
-  type    = string
-  description = "The SHA-512 checkcum of the ISO image. (e.g. Result of 'shasum -a 512 iso-windows-server-2019.iso')"
-  default = ""
-}
-
-# Virtual Machine Settings
 
 variable "vm_guest_os_family" {
-  type    = string
-  description = "The guest operatiing system family. Used for naming and VMware tools. (e.g. 'windows' or 'linux')"
-  default = ""
+  type        = string
+  description = "The guest operating system family. Used for naming and VMware tools. (e.g.'windows')"
 }
 
 variable "vm_guest_os_member" {
-  type    = string
-  description = "The guest operatiing system member. Used for naming. (e.g. 'server' or 'desktop')"
-  default = ""
+  type        = string
+  description = "The guest operatiing system member. Used for naming. (e.g. 'server')"
 }
 
 variable "vm_guest_os_version" {
-  type    = string
-  description = "The guest operatiing system version. Used for naming. (e.g. '2019')"
-  default = ""
+  type        = string
+  description = "The guest operatiing system version. Used for naming. (e.g. '2016')"
 }
 
-variable "vm_guest_os_edition_std" {
-  type    = string
+variable "vm_guest_os_ed_standard" {
+  type        = string
   description = "The guest operatiing system edition. Used for naming. (e.g. 'standard')"
-  default = "standard"
+  default     = "standard"
 }
 
-variable "vm_guest_os_edition_dc" {
-  type    = string
+variable "vm_guest_os_ed_datacenter" {
+  type        = string
   description = "The guest operatiing system edition. Used for naming. (e.g. 'datacenter')"
-  default = "datacenter"
+  default     = "datacenter"
+}
+
+variable "vm_guest_os_exp_minimal" {
+  type        = string
+  description = "The guest operatiing system minimal experience. Used for naming. (e.g. 'core')"
+  default     = "core"
+}
+
+variable "vm_guest_os_exp_desktop" {
+  type        = string
+  description = "The guest operatiing system desktop experience. Used for naming. (e.g. 'dexp')"
+  default     = "desktop"
 }
 
 variable "vm_guest_os_type" {
-  type    = string
-  description = "The guest operating system type, also know as guestid. (e.g. 'windows2019srv_64Guest')"
-  default = ""
-}
-
-variable "vm_version" {
-  type    = number
-  description = "The vSphere virtual hardware version. Refer to https://kb.vmware.com/kb/1003746. (e.g. '18')"
-  default = 18
+  type        = string
+  description = "The guest operating system type, also know as guestid. (e.g. 'windows9Server64Guest')"
 }
 
 variable "vm_firmware" {
-  type    = string
+  type        = string
   description = "The virtual machine firmware. (e.g. 'efi-secure' or 'bios')"
-  default = "efi-secure"
-}
-
-variable "vm_boot_wait" {
-  type    = string
-  description = "The time to wait before boot. "
-  default = "2s"
+  default     = "efi-secure"
 }
 
 variable "vm_cdrom_type" {
-  type    = string
+  type        = string
   description = "The virtual machine CD-ROM type. (e.g. 'sata', or 'ide')"
-  default = "sata"
-}
-
-variable "vm_boot_command" {
-  type    = list(string)
-  description = "The virtual machine boot command."
-  default = []
+  default     = "sata"
 }
 
 variable "vm_cpu_sockets" {
-  type    = number
+  type        = number
   description = "The number of virtual CPUs sockets. (e.g. '2')"
-  default = 2
 }
 
 variable "vm_cpu_cores" {
-  type    = number
+  type        = number
   description = "The number of virtual CPUs cores per socket. (e.g. '1')"
-  default = 1
+}
+
+variable "vm_cpu_hot_add" {
+  type        = bool
+  description = "Enable hot add CPU."
+  default     = true
 }
 
 variable "vm_mem_size" {
-  type    = number
+  type        = number
   description = "The size for the virtual memory in MB. (e.g. '2048')"
-  default = 2048
+}
+
+variable "vm_mem_hot_add" {
+  type        = bool
+  description = "Enable hot add memory."
+  default     = true
 }
 
 variable "vm_disk_size" {
-  type    = number
+  type        = number
   description = "The size for the virtual disk in MB. (e.g. '40960')"
-  default = 40960
-}
-
-variable "vm_floppy_files_server_std_dexp" {
-  type    = list(string)
-  description = "Used for Server with Desktop Experience. The list of files or directories to be added to the virtual flappy device. Used for unattended installation."
-  default = []
-}
-
-variable "vm_floppy_files_server_std_core" {
-  type    = list(string)
-  description = "Used for Server Core. The list of files or directories to be added to the virtual flappy device. Used for unattended installation."
-  default = []
-}
-
-variable "vm_floppy_files_server_dc_dexp" {
-  type    = list(string)
-  description = "Used for Server with Desktop Experience. The list of files or directories to be added to the virtual flappy device. Used for unattended installation."
-  default = []
-}
-
-variable "vm_floppy_files_server_dc_core" {
-  type    = list(string)
-  description = "Used for Server Core. The list of files or directories to be added to the virtual flappy device. Used for unattended installation."
-  default = []
 }
 
 variable "vm_disk_controller_type" {
-  type    = list(string)
-  description = "The virtual disk controller types in sequence. If pvscsi is used the drivers must be added to the virtual floppy device. (e.g. 'pvscsi')"
-  default = ["pvscsi"]
+  type        = list(string)
+  description = "The virtual disk controller types in sequence. (e.g. 'pvscsi')"
+  default     = ["pvscsi"]
+}
+
+variable "vm_disk_thin_provisioned" {
+  type        = bool
+  description = "Thin provision the virtual disk."
+  default     = true
 }
 
 variable "vm_network_card" {
-  type    = string
-  description = "The virtual network card type. If vmxnet3 is used, VMware Tools must be installed before connectivity. Performed by second ISO path and autounattend.xml. (e.g. 'vmxnet3' or 'e1000e')"
-  default = "vmxnet3"
+  type        = string
+  description = "The virtual network card type. (e.g. 'vmxnet3' or 'e1000e')"
+  default     = "vmxnet3"
+}
+
+variable "common_vm_version" {
+  type        = number
+  description = "The vSphere virtual hardware version. (e.g. '18')"
+}
+
+variable "common_tools_upgrade_policy" {
+  type        = bool
+  description = "Upgrade VMware Tools on reboot."
+  default     = true
+}
+
+variable "common_remove_cdrom" {
+  type        = bool
+  description = "Remove the virtual CD-ROM(s)."
+  default     = true
+}
+
+// Template and Content Library Settings
+
+variable "common_template_conversion" {
+  type        = bool
+  description = "Convert the virtual machine to template. Must be 'false' for content library."
+  default     = false
+}
+
+variable "common_content_library_name" {
+  type        = string
+  description = "The name of the target vSphere content library, if used. (e.g. 'sfo-w01-cl01-lib01')"
+}
+
+variable "common_content_library_ovf" {
+  type        = bool
+  description = "Export to content library as an OVF template."
+  default     = true
+}
+
+variable "common_content_library_destroy" {
+  type        = bool
+  description = "Delete the virtual machine afer exporting to the content library."
+  default     = true
+}
+
+// Removable Media Settings
+
+variable "common_iso_datastore" {
+  type        = string
+  description = "The name of the source vSphere datastore for ISO images. (e.g. 'sfo-w01-cl01-nfs01')"
+}
+
+variable "common_iso_path" {
+  type        = string
+  description = "The path on the source vSphere datastore for ISO images. (e.g. 'iso')"
+}
+
+variable "common_iso_hash" {
+  type        = string
+  description = "The algorithm used for the checkcum of the ISO image. (e.g. sha512')"
+}
+
+variable "iso_file" {
+  type        = string
+  description = "The file name of the ISO image. (e.g. 'iso-windows-server-2016.iso')"
+}
+
+variable "iso_checksum" {
+  type        = string
+  description = "The checksum of the ISO image. (e.g. Result of 'shasum -a 512 iso-windows-server-2016.iso')"
+}
+
+// Boot Settings
+
+variable "common_http_port_min" {
+  type        = number
+  description = "The start of the HTTP port range."
+}
+
+variable "common_http_port_max" {
+  type        = number
+  description = "The end of the HTTP port range."
+}
+
+variable "http_directory" {
+  type        = string
+  description = "The HTTP directory path."
+  default     = ""
+}
+
+variable "http_file" {
+  type        = string
+  description = "The guest operating system boot file(s)."
+  default     = ""
+}
+
+variable "vm_boot_order" {
+  type        = string
+  description = "The time to wait before boot."
+  default     = "disk,cdrom"
+}
+
+variable "vm_boot_wait" {
+  type        = string
+  description = "The boot order for virtual machines devices."
+}
+
+variable "vm_boot_command" {
+  type        = list(string)
+  description = "The virtual machine boot command."
+  default     = []
 }
 
 variable "vm_shutdown_command" {
-  type    = string
-  description = "The shutdown command to issue to the guest operating system at the end of the build process. (e.g. 'windows-server-sysprep.bat')"
-  default = ""
+  type        = string
+  description = "Command(s) for guest operating system shutdown."
 }
 
-variable "powershell_scripts" {
-  type    = list(string)
-  description = "A list of scripts and their relative paths to transfer and execute using Windows Remote Management."
-  default = []
+variable "common_ip_wait_timeout" {
+  type        = string
+  description = "Time to wait for guest operating system IP address response."
 }
 
-variable "powershell_inline" {
-  type    = list(string)
-  description = "A list of commands to execute using Windows Remote Management."
-  default = []
+variable "common_shutdown_timeout" {
+  type        = string
+  description = "Time to wait for guest operating system shutdown."
+}
+
+// Communicator Settings and Credentials
+
+variable "build_username" {
+  type        = string
+  description = "The username to login to the guest operating system. (e.g. rainpole)"
+  sensitive   = true
+}
+
+variable "build_password" {
+  type        = string
+  description = "The password to login to the guest operating system."
+  sensitive   = true
+}
+
+variable "build_key" {
+  type        = string
+  description = "The public key to login to the guest operating system."
+  sensitive   = true
+  default     = ""
+}
+
+// Communicator Credentials
+
+variable "communicator_port" {
+  type        = string
+  description = "The port for the communicator protocol."
+}
+
+variable "communicator_timeout" {
+  type        = string
+  description = "The timeout for the communicator protocol."
+}
+
+// Provisioner Settings
+
+variable "scripts" {
+  type        = list(string)
+  description = "A list of scripts and their relative paths to transfer and execute."
+  default     = []
+}
+
+variable "inline" {
+  type        = list(string)
+  description = "A list of commands to execute."
+  default     = []
 }
 
 ##################################################################################
 # LOCALS
 ##################################################################################
 
-locals { 
+locals {
   buildtime = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
-  }
+}
 
 ##################################################################################
 # SOURCE
 ##################################################################################
 
-source "vsphere-iso" "windows-server-standard-dexp" {
-  vcenter_server       = var.vcenter_server
-  username             = var.vcenter_username
-  password             = var.vcenter_password
-  datacenter           = var.vcenter_datacenter
-  cluster              = var.vcenter_cluster
-  datastore            = var.vcenter_datastore
-  folder               = var.vcenter_folder
-  insecure_connection  = var.vcenter_insecure_connection
-  tools_upgrade_policy = true
-  remove_cdrom         = true
-  convert_to_template  = false
-  guest_os_type        = var.vm_guest_os_type
-  vm_version           = var.vm_version
-  notes                = "Built by HashiCorp Packer on ${local.buildtime}."
-  vm_name              = "${ var.vm_guest_os_family }-${ var.vm_guest_os_member }-${ var.vm_guest_os_version }-${ var.vm_guest_os_edition_std }"
-  firmware             = var.vm_firmware
-  CPUs                 = var.vm_cpu_sockets
-  cpu_cores            = var.vm_cpu_cores
-  CPU_hot_plug         = false
-  RAM                  = var.vm_mem_size
-  RAM_hot_plug         = false
-  boot_wait            = var.vm_boot_wait
-  boot_command         = var.vm_boot_command
-  boot_order           = "disk,cdrom"
-  cdrom_type           = var.vm_cdrom_type
-  disk_controller_type = var.vm_disk_controller_type
-  storage {
-    disk_size             = var.vm_disk_size
-    disk_controller_index = 0
-    disk_thin_provisioned = true
-    }
-  network_adapters {
-    network      = var.vcenter_network
-    network_card = var.vm_network_card
-    }
-  floppy_files              = var.vm_floppy_files_server_std_dexp
-  iso_paths                 = [ "${ var.iso_datastore }${ var.iso_path }/${ var.iso_file }",
-                                "[] /vmimages/tools-isoimages/${ var.vm_guest_os_family }.iso"
-    ]
-  iso_checksum              = "sha512:var.iso_checksum"
-  ip_wait_timeout           = "20m"
-  communicator              = "winrm"
-  winrm_username            = var.build_username
-  winrm_password            = var.build_password
-  winrm_port                = "5985"
-  winrm_timeout             = "12h"
-  shutdown_command          = var.vm_shutdown_command
-  shutdown_timeout          = "15m"
-    /*
-    Default: Clone to the content library as an OVF template and destroy the originating machine image.
-    Comment this section to exclude the use of the content library.
-    - If ovf = true - the machine image is exported to the target content library.
-    - If destroy = true - the machine image is destroyed after successfully exported to the target content library.
-    - By default, the target name is the vm_name unless name = "foo" is provided.
-    - The content library item is updated if the target name is the same. 
-    */
-  content_library_destination {
-    library = var.vcenter_content_library
-    ovf     = true
-    destroy = true
-  }
-}
-
 source "vsphere-iso" "windows-server-standard-core" {
-  vcenter_server       = var.vcenter_server
-  username             = var.vcenter_username
-  password             = var.vcenter_password
-  datacenter           = var.vcenter_datacenter
-  cluster              = var.vcenter_cluster
-  datastore            = var.vcenter_datastore
-  folder               = var.vcenter_folder
-  insecure_connection  = var.vcenter_insecure_connection
-  tools_upgrade_policy = true
-  remove_cdrom         = true
-  convert_to_template  = false
+  // vCenter Server Endpoint Settings and Credentials
+  vcenter_server      = var.vsphere_endpoint
+  username            = var.vsphere_username
+  password            = var.vsphere_password
+  insecure_connection = var.vsphere_insecure_connection
+
+  // vSphere Settings
+  datacenter = var.vsphere_datacenter
+  cluster    = var.vsphere_cluster
+  datastore  = var.vsphere_datastore
+  folder     = var.vsphere_folder
+
+  // Virtual Machine Settings
   guest_os_type        = var.vm_guest_os_type
-  vm_version           = var.vm_version
-  notes                = "Built by HashiCorp Packer on ${local.buildtime}."
-  vm_name              = "${ var.vm_guest_os_family }-${ var.vm_guest_os_member }-${ var.vm_guest_os_version }-${ var.vm_guest_os_edition_std }-core"
+  vm_name              = "${var.vm_guest_os_family}-${var.vm_guest_os_member}-${var.vm_guest_os_version}-${var.vm_guest_os_ed_standard}-${var.vm_guest_os_exp_minimal}"
   firmware             = var.vm_firmware
   CPUs                 = var.vm_cpu_sockets
   cpu_cores            = var.vm_cpu_cores
-  CPU_hot_plug         = false
+  CPU_hot_plug         = var.vm_cpu_hot_add
   RAM                  = var.vm_mem_size
-  RAM_hot_plug         = false
-  boot_wait            = var.vm_boot_wait
-  boot_command         = var.vm_boot_command
-  boot_order           = "disk,cdrom"
+  RAM_hot_plug         = var.vm_mem_hot_add
   cdrom_type           = var.vm_cdrom_type
   disk_controller_type = var.vm_disk_controller_type
   storage {
     disk_size             = var.vm_disk_size
     disk_controller_index = 0
-    disk_thin_provisioned = true
-    }
+    disk_thin_provisioned = var.vm_disk_thin_provisioned
+  }
   network_adapters {
-    network      = var.vcenter_network
+    network      = var.vsphere_network
     network_card = var.vm_network_card
-    }
-  floppy_files              = var.vm_floppy_files_server_std_core
-  iso_paths                 = [ "${ var.iso_datastore }${ var.iso_path }/${ var.iso_file }",
-                                "[] /vmimages/tools-isoimages/${ var.vm_guest_os_family }.iso"
+  }
+  vm_version           = var.common_vm_version
+  remove_cdrom         = var.common_remove_cdrom
+  tools_upgrade_policy = var.common_tools_upgrade_policy
+  notes                = "Built by HashiCorp Packer on ${local.buildtime}."
+
+  // Removable Media Settings
+  iso_paths    = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
+  iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
+  floppy_files = [
+    "../../../configs/${var.vm_guest_os_family}/${var.vm_guest_os_family}-${var.vm_guest_os_member}-${var.vm_guest_os_version}/${var.vm_guest_os_ed_standard}-${var.vm_guest_os_exp_minimal}/${var.vm_firmware}/autounattend.xml",
+    "../../../scripts/${var.vm_guest_os_family}/",
+    "../../../certificates/"
     ]
-  iso_checksum              = "sha512:var.iso_checksum"
-  ip_wait_timeout           = "20m"
-  communicator              = "winrm"
-  winrm_username            = var.build_username
-  winrm_password            = var.build_password
-  winrm_port                = "5985"
-  winrm_timeout             = "12h"
-  shutdown_command          = var.vm_shutdown_command
-  shutdown_timeout          = "15m"
-    /*
-    Default: Clone to the content library as an OVF template and destroy the originating machine image.
-    Comment this section to exclude the use of the content library.
-    - If ovf = true - the machine image is exported to the target content library.
-    - If destroy = true - the machine image is destroyed after successfully exported to the target content library.
-    - By default, the target name is the vm_name unless name = "foo" is provided.
-    - The content library item is updated if the target name is the same. 
-    */
+
+  // Boot and Provisioning Settings
+  http_port_min    = var.common_http_port_min
+  http_port_max    = var.common_http_port_max
+  http_directory   = var.http_directory
+  boot_order       = var.vm_boot_order
+  boot_wait        = var.vm_boot_wait
+  boot_command     = var.vm_boot_command
+  ip_wait_timeout  = var.common_ip_wait_timeout
+  shutdown_command = var.vm_shutdown_command
+  shutdown_timeout = var.common_shutdown_timeout
+
+  // Communicator Settings and Credentials
+  communicator   = "winrm"
+  winrm_username = var.build_username
+  winrm_password = var.build_password
+  winrm_port     = var.communicator_port
+  winrm_timeout  = var.communicator_timeout
+
+  // Template and Content Library Settings
+  convert_to_template = var.common_template_conversion
   content_library_destination {
-    library = var.vcenter_content_library
-    ovf     = true
-    destroy = true
+    library = var.common_content_library_name
+    ovf     = var.common_content_library_ovf
+    destroy = var.common_content_library_destroy
   }
 }
 
-source "vsphere-iso" "windows-server-datacenter-dexp" {
-  vcenter_server       = var.vcenter_server
-  username             = var.vcenter_username
-  password             = var.vcenter_password
-  datacenter           = var.vcenter_datacenter
-  cluster              = var.vcenter_cluster
-  datastore            = var.vcenter_datastore
-  folder               = var.vcenter_folder
-  insecure_connection  = var.vcenter_insecure_connection
-  tools_upgrade_policy = true
-  remove_cdrom         = true
-  convert_to_template  = false
+source "vsphere-iso" "windows-server-standard-dexp" {
+  // vCenter Server Endpoint Settings and Credentials
+  vcenter_server      = var.vsphere_endpoint
+  username            = var.vsphere_username
+  password            = var.vsphere_password
+  insecure_connection = var.vsphere_insecure_connection
+
+  // vSphere Settings
+  datacenter = var.vsphere_datacenter
+  cluster    = var.vsphere_cluster
+  datastore  = var.vsphere_datastore
+  folder     = var.vsphere_folder
+
+  // Virtual Machine Settings
   guest_os_type        = var.vm_guest_os_type
-  vm_version           = var.vm_version
-  notes                = "Built by HashiCorp Packer on ${local.buildtime}."
-  vm_name              = "${ var.vm_guest_os_family }-${ var.vm_guest_os_member }-${ var.vm_guest_os_version }-${ var.vm_guest_os_edition_dc }"
+  vm_name              = "${var.vm_guest_os_family}-${var.vm_guest_os_member}-${var.vm_guest_os_version}-${var.vm_guest_os_ed_standard}"
   firmware             = var.vm_firmware
   CPUs                 = var.vm_cpu_sockets
   cpu_cores            = var.vm_cpu_cores
-  CPU_hot_plug         = false
+  CPU_hot_plug         = var.vm_cpu_hot_add
   RAM                  = var.vm_mem_size
-  RAM_hot_plug         = false
-  boot_wait            = var.vm_boot_wait
-  boot_command         = var.vm_boot_command
-  boot_order           = "disk,cdrom"
+  RAM_hot_plug         = var.vm_mem_hot_add
   cdrom_type           = var.vm_cdrom_type
   disk_controller_type = var.vm_disk_controller_type
   storage {
     disk_size             = var.vm_disk_size
     disk_controller_index = 0
-    disk_thin_provisioned = true
-    }
+    disk_thin_provisioned = var.vm_disk_thin_provisioned
+  }
   network_adapters {
-    network      = var.vcenter_network
+    network      = var.vsphere_network
     network_card = var.vm_network_card
-    }
-  floppy_files              = var.vm_floppy_files_server_dc_dexp
-  iso_paths                 = [ "${ var.iso_datastore }${ var.iso_path }/${ var.iso_file }",
-                                "[] /vmimages/tools-isoimages/${ var.vm_guest_os_family }.iso"
+  }
+  vm_version           = var.common_vm_version
+  remove_cdrom         = var.common_remove_cdrom
+  tools_upgrade_policy = var.common_tools_upgrade_policy
+  notes                = "Built by HashiCorp Packer on ${local.buildtime}."
+
+  // Removable Media Settings
+  iso_paths    = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
+  iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
+  floppy_files = [
+    "../../../configs/${var.vm_guest_os_family}/${var.vm_guest_os_family}-${var.vm_guest_os_member}-${var.vm_guest_os_version}/${var.vm_guest_os_ed_standard}-${var.vm_guest_os_exp_desktop}/${var.vm_firmware}/autounattend.xml",
+    "../../../scripts/${var.vm_guest_os_family}/",
+    "../../../certificates/"
     ]
-  iso_checksum              = "sha512:var.iso_checksum"
-  ip_wait_timeout           = "20m"
-  communicator              = "winrm"
-  winrm_username            = var.build_username
-  winrm_password            = var.build_password
-  winrm_port                = "5985"
-  winrm_timeout             = "12h"
-  shutdown_command          = var.vm_shutdown_command
-  shutdown_timeout          = "15m"
-    /*
-    Default: Clone to the content library as an OVF template and destroy the originating machine image.
-    Comment this section to exclude the use of the content library.
-    - If ovf = true - the machine image is exported to the target content library.
-    - If destroy = true - the machine image is destroyed after successfully exported to the target content library.
-    - By default, the target name is the vm_name unless name = "foo" is provided.
-    - The content library item is updated if the target name is the same. 
-    */
+
+  // Boot and Provisioning Settings
+  http_port_min    = var.common_http_port_min
+  http_port_max    = var.common_http_port_max
+  http_directory   = var.http_directory
+  boot_order       = var.vm_boot_order
+  boot_wait        = var.vm_boot_wait
+  boot_command     = var.vm_boot_command
+  ip_wait_timeout  = var.common_ip_wait_timeout
+  shutdown_command = var.vm_shutdown_command
+  shutdown_timeout = var.common_shutdown_timeout
+
+  // Communicator Settings and Credentials
+  communicator   = "winrm"
+  winrm_username = var.build_username
+  winrm_password = var.build_password
+  winrm_port     = var.communicator_port
+  winrm_timeout  = var.communicator_timeout
+
+  // Template and Content Library Settings
+  convert_to_template = var.common_template_conversion
   content_library_destination {
-    library = var.vcenter_content_library
-    ovf     = true
-    destroy = true
+    library = var.common_content_library_name
+    ovf     = var.common_content_library_ovf
+    destroy = var.common_content_library_destroy
   }
 }
 
 source "vsphere-iso" "windows-server-datacenter-core" {
-  vcenter_server       = var.vcenter_server
-  username             = var.vcenter_username
-  password             = var.vcenter_password
-  datacenter           = var.vcenter_datacenter
-  cluster              = var.vcenter_cluster
-  datastore            = var.vcenter_datastore
-  folder               = var.vcenter_folder
-  insecure_connection  = var.vcenter_insecure_connection
-  tools_upgrade_policy = true
-  remove_cdrom         = true
-  convert_to_template  = false
+  // vCenter Server Endpoint Settings and Credentials
+  vcenter_server      = var.vsphere_endpoint
+  username            = var.vsphere_username
+  password            = var.vsphere_password
+  insecure_connection = var.vsphere_insecure_connection
+
+  // vSphere Settings
+  datacenter = var.vsphere_datacenter
+  cluster    = var.vsphere_cluster
+  datastore  = var.vsphere_datastore
+  folder     = var.vsphere_folder
+
+  // Virtual Machine Settings
   guest_os_type        = var.vm_guest_os_type
-  vm_version           = var.vm_version
-  notes                = "Built by HashiCorp Packer on ${local.buildtime}."
-  vm_name              = "${ var.vm_guest_os_family }-${ var.vm_guest_os_member }-${ var.vm_guest_os_version }-${ var.vm_guest_os_edition_dc }-core"
+  vm_name              = "${var.vm_guest_os_family}-${var.vm_guest_os_member}-${var.vm_guest_os_version}-${var.vm_guest_os_ed_datacenter}-${var.vm_guest_os_exp_minimal}"
   firmware             = var.vm_firmware
   CPUs                 = var.vm_cpu_sockets
   cpu_cores            = var.vm_cpu_cores
-  CPU_hot_plug         = false
+  CPU_hot_plug         = var.vm_cpu_hot_add
   RAM                  = var.vm_mem_size
-  RAM_hot_plug         = false
-  boot_wait            = var.vm_boot_wait
-  boot_command         = var.vm_boot_command
-  boot_order           = "disk,cdrom"
+  RAM_hot_plug         = var.vm_mem_hot_add
   cdrom_type           = var.vm_cdrom_type
   disk_controller_type = var.vm_disk_controller_type
   storage {
     disk_size             = var.vm_disk_size
     disk_controller_index = 0
-    disk_thin_provisioned = true
-    }
+    disk_thin_provisioned = var.vm_disk_thin_provisioned
+  }
   network_adapters {
-    network      = var.vcenter_network
+    network      = var.vsphere_network
     network_card = var.vm_network_card
-    }
-  floppy_files              = var.vm_floppy_files_server_dc_core
-  iso_paths                 = [ "${ var.iso_datastore }${ var.iso_path }/${ var.iso_file }",
-                                "[] /vmimages/tools-isoimages/${ var.vm_guest_os_family }.iso"
+  }
+  vm_version           = var.common_vm_version
+  remove_cdrom         = var.common_remove_cdrom
+  tools_upgrade_policy = var.common_tools_upgrade_policy
+  notes                = "Built by HashiCorp Packer on ${local.buildtime}."
+
+  // Removable Media Settings
+  iso_paths    = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
+  iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
+  floppy_files = [
+    "../../../configs/${var.vm_guest_os_family}/${var.vm_guest_os_family}-${var.vm_guest_os_member}-${var.vm_guest_os_version}/${var.vm_guest_os_ed_datacenter}-${var.vm_guest_os_exp_minimal}/${var.vm_firmware}/autounattend.xml",
+    "../../../scripts/${var.vm_guest_os_family}/",
+    "../../../certificates/"
     ]
-  iso_checksum              = "sha512:var.iso_checksum"
-  ip_wait_timeout           = "20m"
-  communicator              = "winrm"
-  winrm_username            = var.build_username
-  winrm_password            = var.build_password
-  winrm_port                = "5985"
-  winrm_timeout             = "12h"
-  shutdown_command          = var.vm_shutdown_command
-  shutdown_timeout          = "15m"
-    /*
-    Default: Clone to the content library as an OVF template and destroy the originating machine image.
-    Comment this section to exclude the use of the content library.
-    - If ovf = true - the machine image is exported to the target content library.
-    - If destroy = true - the machine image is destroyed after successfully exported to the target content library.
-    - By default, the target name is the vm_name unless name = "foo" is provided.
-    - The content library item is updated if the target name is the same. 
-    */
+
+  // Boot and Provisioning Settings
+  http_port_min    = var.common_http_port_min
+  http_port_max    = var.common_http_port_max
+  http_directory   = var.http_directory
+  boot_order       = var.vm_boot_order
+  boot_wait        = var.vm_boot_wait
+  boot_command     = var.vm_boot_command
+  ip_wait_timeout  = var.common_ip_wait_timeout
+  shutdown_command = var.vm_shutdown_command
+  shutdown_timeout = var.common_shutdown_timeout
+
+  // Communicator Settings and Credentials
+  communicator   = "winrm"
+  winrm_username = var.build_username
+  winrm_password = var.build_password
+  winrm_port     = var.communicator_port
+  winrm_timeout  = var.communicator_timeout
+
+  // Template and Content Library Settings
+  convert_to_template = var.common_template_conversion
   content_library_destination {
-    library = var.vcenter_content_library
-    ovf     = true
-    destroy = true
+    library = var.common_content_library_name
+    ovf     = var.common_content_library_ovf
+    destroy = var.common_content_library_destroy
   }
 }
 
-  ##################################################################################
-  # BUILD
-  ##################################################################################
+source "vsphere-iso" "windows-server-datacenter-dexp" {
+  // vCenter Server Endpoint Settings and Credentials
+  vcenter_server      = var.vsphere_endpoint
+  username            = var.vsphere_username
+  password            = var.vsphere_password
+  insecure_connection = var.vsphere_insecure_connection
 
-  build {
-    sources = [
-      "source.vsphere-iso.windows-server-standard-dexp",
-      "source.vsphere-iso.windows-server-standard-core",
-      "source.vsphere-iso.windows-server-datacenter-dexp",
-      "source.vsphere-iso.windows-server-datacenter-core"
-      ]
-    /*
+  // vSphere Settings
+  datacenter = var.vsphere_datacenter
+  cluster    = var.vsphere_cluster
+  datastore  = var.vsphere_datastore
+  folder     = var.vsphere_folder
+
+  // Virtual Machine Settings
+  guest_os_type        = var.vm_guest_os_type
+  vm_name              = "${var.vm_guest_os_family}-${var.vm_guest_os_member}-${var.vm_guest_os_version}-${var.vm_guest_os_ed_datacenter}"
+  firmware             = var.vm_firmware
+  CPUs                 = var.vm_cpu_sockets
+  cpu_cores            = var.vm_cpu_cores
+  CPU_hot_plug         = var.vm_cpu_hot_add
+  RAM                  = var.vm_mem_size
+  RAM_hot_plug         = var.vm_mem_hot_add
+  cdrom_type           = var.vm_cdrom_type
+  disk_controller_type = var.vm_disk_controller_type
+  storage {
+    disk_size             = var.vm_disk_size
+    disk_controller_index = 0
+    disk_thin_provisioned = var.vm_disk_thin_provisioned
+  }
+  network_adapters {
+    network      = var.vsphere_network
+    network_card = var.vm_network_card
+  }
+  vm_version           = var.common_vm_version
+  remove_cdrom         = var.common_remove_cdrom
+  tools_upgrade_policy = var.common_tools_upgrade_policy
+  notes                = "Built by HashiCorp Packer on ${local.buildtime}."
+
+  // Removable Media Settings
+  iso_paths    = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
+  iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
+  floppy_files = [
+    "../../../configs/${var.vm_guest_os_family}/${var.vm_guest_os_family}-${var.vm_guest_os_member}-${var.vm_guest_os_version}/${var.vm_guest_os_ed_datacenter}-${var.vm_guest_os_exp_desktop}/${var.vm_firmware}/autounattend.xml",
+    "../../../scripts/${var.vm_guest_os_family}/",
+    "../../../certificates/"
+    ]
+
+  // Boot and Provisioning Settings
+  http_port_min    = var.common_http_port_min
+  http_port_max    = var.common_http_port_max
+  http_directory   = var.http_directory
+  boot_order       = var.vm_boot_order
+  boot_wait        = var.vm_boot_wait
+  boot_command     = var.vm_boot_command
+  ip_wait_timeout  = var.common_ip_wait_timeout
+  shutdown_command = var.vm_shutdown_command
+  shutdown_timeout = var.common_shutdown_timeout
+
+  // Communicator Settings and Credentials
+  communicator   = "winrm"
+  winrm_username = var.build_username
+  winrm_password = var.build_password
+  winrm_port     = var.communicator_port
+  winrm_timeout  = var.communicator_timeout
+
+  // Template and Content Library Settings
+  convert_to_template = var.common_template_conversion
+  content_library_destination {
+    library = var.common_content_library_name
+    ovf     = var.common_content_library_ovf
+    destroy = var.common_content_library_destroy
+  }
+}
+
+##################################################################################
+# BUILD
+##################################################################################
+
+build {
+  sources = [
+    "source.vsphere-iso.windows-server-standard-core",
+    "source.vsphere-iso.windows-server-standard-dexp",
+    "source.vsphere-iso.windows-server-datacenter-core",
+    "source.vsphere-iso.windows-server-datacenter-dexp"
+  ]
+  /*
     Uses the File Provisioner to copy the .p7b certificate for the Root Certificate Authority.
     - The PowerShell Provisioner will execute a script that imports the certificate to the Trusted Root Authorities.
-    */ 
-    provisioner "file" {
-      source = "../../../certificates/root-ca.p7b"
-      destination = "C:\\windows\\temp\\root-ca.p7b"
-      }
-    // Uses the PowerShell Provisioner to execute a series of scripts defined in the variables. 
-    provisioner "powershell" {
-      environment_vars = [
-        "BUILD_USERNAME=${var.build_username}"
-        ]
-      scripts = var.powershell_scripts
-      }
-    // Uses the PowerShell Provisioner to execute a series of inline commands defined in the variables
-    provisioner "powershell" {
-      only = [
-        "vsphere-iso.windows-server-standard-dexp",
-        "vsphere-iso.windows-server-datacenter-dexp"
-        ]
-      inline = var.powershell_inline
-      }
-    /*
+    */
+  provisioner "file" {
+    source      = "../../../certificates/root-ca.p7b"
+    destination = "C:\\windows\\temp\\root-ca.p7b"
+  }
+  // Uses the PowerShell Provisioner to execute a series of scripts defined in the variables. 
+  provisioner "powershell" {
+    environment_vars = [
+      "BUILD_USERNAME=${var.build_username}"
+    ]
+    scripts = var.scripts
+  }
+  // Uses the PowerShell Provisioner to execute a series of inline commands defined in the variables
+  provisioner "powershell" {
+    only = [
+      "vsphere-iso.windows-server-standard-dexp",
+      "vsphere-iso.windows-server-datacenter-dexp"
+    ]
+    inline = var.inline
+  }
+  /*
     Uses the Windows-Update Provisioner to update the guest operating system.
     - See https://github.com/rgl/packer-provisioner-windows-update for the latest release and documentation.
     */
-    provisioner "windows-update" {
-      pause_before = "30s"
-      search_criteria = "IsInstalled=0"
-      filters = [
-          "exclude:$_.Title -like '*VMware*'",
-          "exclude:$_.Title -like '*Preview*'",
-          "exclude:$_.Title -like '*Defender*'",
-          "include:$true"
-          ]
-      }
+  provisioner "windows-update" {
+    pause_before    = "30s"
+    search_criteria = "IsInstalled=0"
+    filters = [
+      "exclude:$_.Title -like '*VMware*'",
+      "exclude:$_.Title -like '*Preview*'",
+      "exclude:$_.Title -like '*Defender*'",
+      "include:$true"
+    ]
   }
+  post-processor "manifest" {
+    output     = "../../../manifests/${local.buildtime}-${var.vm_guest_os_family}-${var.vm_guest_os_vendor}-${var.vm_guest_os_member}-${var.vm_guest_os_version}.json"
+    strip_path = false
+  }
+}

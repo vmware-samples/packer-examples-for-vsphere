@@ -593,7 +593,7 @@ For example, if you simply want to build a Microsoft Windows Server 2019 Standar
 Initialize plugins:
 ```
 rainpole@macos packer-examples> cd builds/windows/windows-server-2019/
-rainpole@macos packer-examples> packer init windows-server-2019.pkr.hcl
+rainpole@macos packer-examples> packer init .
 ```
 Build a specific machine image:
 ```
@@ -655,9 +655,9 @@ Happy building!!!
 [packer]: https://www.packer.io
 [packer-debug]: https://www.packer.io/docs/debugging
 [packer-install]: https://www.packer.io/intro/getting-started/install.html
+[packer-plugin-vsphere]: https://www.packer.io/docs/builders/vsphere/vsphere-iso
 [packer-plugin-windows-update]: https://github.com/rgl/packer-plugin-windows-update
 [packer-variables]: https://www.packer.io/docs/from-1.5/variables#variable-definitions-pkrvars-hcl-files
-[packer-vsphere-iso]: https://www.packer.io/docs/builders/vsphere/vsphere-iso
 [photon-kickstart]: https://vmware.github.io/photon/assets/files/html/3.0/photon_user/kickstart.html
 [redhat-kickstart]: https://access.redhat.com/labs/kickstartconfig/
 [ssh-keygen]: https://www.ssh.com/ssh/keygen/

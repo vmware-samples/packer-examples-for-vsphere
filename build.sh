@@ -18,11 +18,7 @@ menu_option_1() {
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
-  packer init \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../ansible.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+  packer init .
 
   ### Apply the HashiCorp Packer Build ###
   echo "Applying the HashiCorp Packer Build ..."
@@ -52,11 +48,7 @@ menu_option_2() {
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
-  packer init \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../ansible.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+  packer init .
 
   ### Apply the HashiCorp Packer Build ###
   echo "Applying the HashiCorp Packer Build ..."
@@ -86,11 +78,7 @@ menu_option_3() {
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
-  packer init \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../ansible.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+  packer init .
 
   ### Apply the HashiCorp Packer Build ###
   echo "Applying the HashiCorp Packer Build ..."
@@ -120,12 +108,7 @@ menu_option_4() {
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
-  packer init \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../ansible.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" \
-      -var-file="../../rhsm.pkrvars.hcl" .
+  packer init .
 
   ### Apply the HashiCorp Packer Build ###
   echo "Applying the HashiCorp Packer Build ..."
@@ -156,11 +139,7 @@ menu_option_5() {
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
-  packer init \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../ansible.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+  packer init .
 
   ### Apply the HashiCorp Packer Build ###
   echo "Starting the HashiCorp Packer build ..."
@@ -190,11 +169,7 @@ menu_option_6() {
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
-  packer init \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../ansible.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+  packer init .
 
   ### Apply the HashiCorp Packer Build ###
   echo "Starting the HashiCorp Packer build ..."
@@ -220,11 +195,7 @@ menu_option_7() {
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
-  packer init \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../ansible.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+  packer init .
 
   ### Apply the HashiCorp Packer Build ###
   echo "Starting the HashiCorp Packer build ..."
@@ -255,11 +226,7 @@ menu_option_8() {
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
-  packer init \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../ansible.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+  packer init .
 
   ### Apply the HashiCorp Packer Build ###
   echo "Starting the HashiCorp Packer build ..."
@@ -289,10 +256,7 @@ menu_option_9() {
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
-  packer init \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+  packer init .
 
   ### Apply the HashiCorp Packer Build ###
   echo "Starting the HashiCorp Packer build ..."
@@ -321,11 +285,7 @@ menu_option_10() {
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
-  packer init \
-      --only vsphere-iso.windows-server-standard-dexp,vsphere-iso.windows-server-standard-core \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+  packer init .
 
   ### Apply the HashiCorp Packer Build ###
   echo "Starting the HashiCorp Packer build ..."
@@ -355,11 +315,7 @@ menu_option_11() {
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
-  packer init \
-      --only vsphere-iso.windows-server-datacenter-dexp,vsphere-iso.windows-server-datacenter-core \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+  packer init .
 
   ### Apply the HashiCorp Packer Build ###
   echo "Starting the HashiCorp Packer build ..."
@@ -389,10 +345,7 @@ menu_option_12() {
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
-  packer init \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+  packer init .
 
   ### Apply the HashiCorp Packer Build ###
   echo "Starting the HashiCorp Packer build ..."
@@ -421,11 +374,7 @@ menu_option_13() {
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
-  packer init \
-      --only vsphere-iso.windows-server-standard-dexp,vsphere-iso.windows-server-standard-core \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+  packer init .
 
   ### Apply the HashiCorp Packer Build ###
   echo "Starting the HashiCorp Packer build ..."
@@ -455,11 +404,7 @@ menu_option_14() {
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
-  packer init \
-      --only vsphere-iso.windows-server-datacenter-dexp,vsphere-iso.windows-server-datacenter-core \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+  packer init .
 
   ### Apply the HashiCorp Packer Build ###
   echo "Starting the HashiCorp Packer build ..."

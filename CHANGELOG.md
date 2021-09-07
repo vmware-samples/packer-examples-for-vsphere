@@ -8,7 +8,6 @@ September 7, 2021
 * Refactored configuration files to be generated using templates. Reduces the number of files and passes variables into the `.pkrtpl.hcl` content.
 * Refactored builds for Linux distributions to use `http_content` instead of `http_directory` and `http_file`.
 * Refactored builds for Microsoft Windows to use `cd_content` instead of `floppy_files`, which allows for use generated configuration files. A Packer compatible `.iso `command-line tool is required and noted in the [README.md](README.md#Requirements).
-->>> * Refactored configuration files for Linux distributions - packages, comments, and CIS benchmarks.
 * Added disclaimers and updated descriptions in script files.
 * Added [NOTICE](NOTICE).
 * Updated the `packer init` commands run in `build.sh`.

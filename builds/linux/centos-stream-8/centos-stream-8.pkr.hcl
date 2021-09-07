@@ -1,9 +1,10 @@
-# Maintainer: code@rainpole.io
-# CentOS Stream 8 template using the Packer Builder for VMware vSphere (vsphere-iso).
+/*
+    DESCRIPTION: 
+    CentOS Stream 8 template using the Packer Builder for VMware vSphere (vsphere-iso).
+*/
 
-##################################################################################
-# PACKER
-##################################################################################
+//  BLOCK: packer
+//  The Packer configuration.
 
 packer {
   required_version = ">= 1.7.4"
@@ -15,9 +16,8 @@ packer {
   }
 }
 
-##################################################################################
-# VARIABLES
-##################################################################################
+//  BLOCK: variable
+//  Defines the input variables.
 
 // vSphere Credentials
 
@@ -241,16 +241,6 @@ variable "common_http_port_max" {
   description = "The end of the HTTP port range."
 }
 
-variable "http_directory" {
-  type        = string
-  description = "The HTTP directory path. (e.g. ../../../configs/linux/redhat-variant/)"
-}
-
-variable "http_file" {
-  type        = string
-  description = "The guest operating system kickstart file. (e.g. ks.cfg)"
-}
-
 variable "vm_boot_order" {
   type        = string
   description = "The time to wait before boot."
@@ -283,6 +273,12 @@ variable "build_username" {
 variable "build_password" {
   type        = string
   description = "The password to login to the guest operating system."
+  sensitive   = true
+}
+
+variable "build_password_encrypted" {
+  type        = string
+  description = "The encrypted password for building the guest operating system."
   sensitive   = true
 }
 
@@ -330,19 +326,18 @@ variable "inline" {
   default     = []
 }
 
-##################################################################################
-# LOCALS
-##################################################################################
+//  BLOCK: locals
+//  Defines the local variables.
 
 locals {
   buildtime = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
 }
 
-##################################################################################
-# SOURCE
-##################################################################################
+//  BLOCK: source
+//  Defines the builder configuration blocks.
 
 source "vsphere-iso" "linux-centos-stream" {
+
   // vCenter Server Endpoint Settings and Credentials
   vcenter_server      = var.vsphere_endpoint
   username            = var.vsphere_username
@@ -368,7 +363,6 @@ source "vsphere-iso" "linux-centos-stream" {
   disk_controller_type = var.vm_disk_controller_type
   storage {
     disk_size             = var.vm_disk_size
-    disk_controller_index = 0
     disk_thin_provisioned = var.vm_disk_thin_provisioned
   }
   network_adapters {
@@ -387,10 +381,12 @@ source "vsphere-iso" "linux-centos-stream" {
   // Boot and Provisioning Settings
   http_port_min    = var.common_http_port_min
   http_port_max    = var.common_http_port_max
-  http_directory   = var.http_directory
+  http_content     = {
+    "/ks.cfg" = templatefile("http/ks.pkrtpl.hcl", { build_username = var.build_username, build_password_encrypted = var.build_password_encrypted })
+  }
   boot_order       = var.vm_boot_order
   boot_wait        = var.vm_boot_wait
-  boot_command     = ["up", "e", "<down><down><end><wait>", "text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/${var.http_file}", "<enter><wait><leftCtrlOn>x<leftCtrlOff>"]
+  boot_command     = ["up", "e", "<down><down><end><wait>", "text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg", "<enter><wait><leftCtrlOn>x<leftCtrlOff>"]
   ip_wait_timeout  = var.common_ip_wait_timeout
   shutdown_command = "echo '${var.build_password}' | sudo -S -E shutdown -P now"
   shutdown_timeout = var.common_shutdown_timeout
@@ -411,21 +407,17 @@ source "vsphere-iso" "linux-centos-stream" {
   }
 }
 
-##################################################################################
-# BUILD
-##################################################################################
+//  BLOCK: build
+//  Defines the builders to run, provisioners, and post-processors.
 
 build {
   sources = ["source.vsphere-iso.linux-centos-stream"]
-  /*
-  Uses the File Provisioner to copy the .crt certificate for the Root Certificate Authority.
-  - The Shell Provisioner will execute a script that imports the certificate to the Certificate Authority Trust.
-  */
+
   provisioner "file" {
     destination = "/tmp/root-ca.crt"
     source      = "../../../certificates/root-ca.crt"
   }
-  // Uses the Shell Provisioner to execute a series of inline commands defined in the variables
+
   provisioner "shell" {
     execute_command = "echo '${var.build_password}' | {{.Vars}} sudo -E -S sh -eux '{{.Path}}'"
     environment_vars = [
@@ -436,6 +428,7 @@ build {
     ]
     scripts = var.scripts
   }
+
   post-processor "manifest" {
     output     = "../../../manifests/${local.buildtime}-${var.vm_guest_os_family}-${var.vm_guest_os_vendor}-${var.vm_guest_os_member}-${var.vm_guest_os_version}.json"
     strip_path = false

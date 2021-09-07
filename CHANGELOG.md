@@ -2,6 +2,19 @@
 
 ![Rainpole](icon.png)
 
+## Release: `21.09`
+September 7, 2021
+* Added support for Microsoft Windows Server 2022 machine image builds.
+* Refactored configuration files to be generated using templates. Reduces the number of files and passes variables into the `.pkrtpl.hcl` content.
+* Refactored builds for Linux distributions to use `http_content` instead of `http_directory` and `http_file`.
+* Refactored builds for Microsoft Windows to use `cd_content` instead of `floppy_files`, which allows for use generated configuration files. A Packer compatible `.iso `command-line tool is required and noted in the [README.md](README.md#Requirements).
+* Added disclaimers and updated descriptions in script files.
+* Added [NOTICE](NOTICE).
+* Updated the `packer init` commands run in `build.sh`.
+* Updated MAINTAINERS.md.
+* Updated CONTRIBUTING.md.
+* Updated README.md.
+
 ## Release: `21.08`
 August 18, 2021
 * Moved `vsphere.pkrvars.hcl` and `rhsm.pkrvars.hcl` to the `builds` directory.
@@ -15,9 +28,9 @@ August 18, 2021
 * Added the `required_plugins` to the Packer block for all builds to use the `vsphere` plugin `version = ">= v1.0.1"`.
 * Updated the Packer block for Windows builds with `required_plugins` and `version = "0.14.0"` for the [Windows-Update plugin](https://github.com/rgl/packer-plugin-windows-update).
 * All builds automatically run `packer init` to initialize required plugins before running a build with `build.sh`.
-* Updated Microsoft Windows `autounattend.xml` files to use the  attached VMware Tools `.iso` for PVSCSI driver.
+* Updated Microsoft Windows `autounattend.xml` files to use the attached VMware Tools `.iso` for PVSCSI driver.
 * Simplified and reduced the script files used by provisioners.
-* Patched the script for VNware PhotoN OS 4 due to an issue performing updates with `tdnf`.
+* Patched the script for VNware Photon OS 4 due to an issue performing updates with `tdnf`.
 * Patched the script for Ubuntu Server 20.04 LTS to remove cloud-init and remove all netplan configurations before GuestOS customization.
 * Removed support for VMware Photon OS 3 machine image builds.
 * Removed support for Red Hat Enterprise Linux 7 machine image builds.

@@ -1,9 +1,7 @@
-# Maintainer: code@rainpole.io
-# Ubuntu Server 20.04 LTS variables for the Packer Builder for VMware vSphere (vsphere-iso).
-
-##################################################################################
-# VARIABLES
-##################################################################################
+/*
+    DESCRIPTION: 
+    Ubuntu Server 20.04 LTS  variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+*/
 
 // Guest Operating System Metadata
 vm_guest_os_family  = "linux"
@@ -32,10 +30,8 @@ iso_file     = "iso-linux-ubuntu-server-20-04-lts.iso"
 iso_checksum = "302c990c6d69575ff24c96566e5c7e26bf36908abb0cd546e22687c46fb07bf8dba595bf77a9d4fd9ab63e75c0437c133f35462fd41ea77f6f616140cd0e5e6a"
 
 // Boot Settings
-http_directory = "../../../configs/linux/ubuntu-server"
-http_file      = ""
-vm_boot_order  = "disk,cdrom"
-vm_boot_wait   = "5s"
+vm_boot_order = "disk,cdrom"
+vm_boot_wait  = "5s"
 
 // Communicator Settings
 communicator_port    = 22

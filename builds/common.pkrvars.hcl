@@ -1,9 +1,8 @@
-# Maintainer: code@rainpole.io
-# Common variables for all builds.
-
-##################################################################################
-# VARIABLES
-##################################################################################
+/*
+    DESCRIPTION: 
+    Common variables used for all builds.
+    - Variables are use by the source blocks.
+*/
 
 // Virtual Machine Settings
 common_vm_version           = 18

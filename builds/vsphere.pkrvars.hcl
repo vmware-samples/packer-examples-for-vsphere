@@ -1,9 +1,8 @@
-# Maintainer: code@rainpole.io
-# VMaware vSphere variables for all builds.
-
-##################################################################################
-# VARIABLES
-##################################################################################
+/*
+    DESCRIPTION: 
+    VMaware vSphere variables used for all builds.
+    - Variables are use by the source blocks.
+*/
 
 // vSphere Credentials
 vsphere_endpoint            = "sfo-w01-vc01.sfo.rainpole.io"

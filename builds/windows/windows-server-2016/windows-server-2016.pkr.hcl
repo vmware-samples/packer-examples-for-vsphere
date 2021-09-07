@@ -1,9 +1,10 @@
-# Maintainer: code@rainpole.io
-# Microsoft Windows Server 2016 Standard template using the Packer Builder for VMware vSphere (vsphere-iso).
+/*
+    DESCRIPTION: 
+    Microsoft Windows Server 2016 Standard template using the Packer Builder for VMware vSphere (vsphere-iso).
+*/
 
-##################################################################################
-# PACKER
-##################################################################################
+//  BLOCK: packer
+//  The Packer configuration.
 
 packer {
   required_version = ">= 1.7.4"
@@ -21,11 +22,10 @@ packer {
   }
 }
 
-##################################################################################
-# VARIABLES
-##################################################################################
+//  BLOCK: variable
+//  Defines the input variables.
 
-// vSphere Credentials
+//  vSphere Credentials
 
 variable "vsphere_endpoint" {
   type        = string
@@ -271,12 +271,6 @@ variable "common_http_port_max" {
   description = "The end of the HTTP port range."
 }
 
-variable "http_directory" {
-  type        = string
-  description = "The HTTP directory path."
-  default     = ""
-}
-
 variable "http_file" {
   type        = string
   description = "The guest operating system boot file(s)."
@@ -329,6 +323,13 @@ variable "build_password" {
   sensitive   = true
 }
 
+variable "build_password_encrypted" {
+  type        = string
+  description = "The encrypted password for building the guest operating system."
+  sensitive   = true
+  default     = ""
+}
+
 variable "build_key" {
   type        = string
   description = "The public key to login to the guest operating system."
@@ -362,19 +363,18 @@ variable "inline" {
   default     = []
 }
 
-##################################################################################
-# LOCALS
-##################################################################################
+//  BLOCK: locals
+//  Defines the local variables.
 
 locals {
   buildtime = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
 }
 
-##################################################################################
-# SOURCE
-##################################################################################
+//  BLOCK: source
+//  Defines the builder configuration blocks.
 
 source "vsphere-iso" "windows-server-standard-core" {
+
   // vCenter Server Endpoint Settings and Credentials
   vcenter_server      = var.vsphere_endpoint
   username            = var.vsphere_username
@@ -400,7 +400,6 @@ source "vsphere-iso" "windows-server-standard-core" {
   disk_controller_type = var.vm_disk_controller_type
   storage {
     disk_size             = var.vm_disk_size
-    disk_controller_index = 0
     disk_thin_provisioned = var.vm_disk_thin_provisioned
   }
   network_adapters {
@@ -415,16 +414,17 @@ source "vsphere-iso" "windows-server-standard-core" {
   // Removable Media Settings
   iso_paths    = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
   iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
-  floppy_files = [
-    "../../../configs/${var.vm_guest_os_family}/${var.vm_guest_os_family}-${var.vm_guest_os_member}-${var.vm_guest_os_version}/${var.vm_guest_os_ed_standard}-${var.vm_guest_os_exp_minimal}/${var.vm_firmware}/autounattend.xml",
+  cd_files = [
     "../../../scripts/${var.vm_guest_os_family}/",
     "../../../certificates/"
-    ]
+  ]
+  cd_content = {
+    "autounattend.xml" = templatefile("cd/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2016 SERVERSTANDARDCORE", kms_key = "WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY", build_username = var.build_username, build_password = var.build_password })
+  }
 
   // Boot and Provisioning Settings
   http_port_min    = var.common_http_port_min
   http_port_max    = var.common_http_port_max
-  http_directory   = var.http_directory
   boot_order       = var.vm_boot_order
   boot_wait        = var.vm_boot_wait
   boot_command     = var.vm_boot_command
@@ -449,6 +449,7 @@ source "vsphere-iso" "windows-server-standard-core" {
 }
 
 source "vsphere-iso" "windows-server-standard-dexp" {
+
   // vCenter Server Endpoint Settings and Credentials
   vcenter_server      = var.vsphere_endpoint
   username            = var.vsphere_username
@@ -474,7 +475,6 @@ source "vsphere-iso" "windows-server-standard-dexp" {
   disk_controller_type = var.vm_disk_controller_type
   storage {
     disk_size             = var.vm_disk_size
-    disk_controller_index = 0
     disk_thin_provisioned = var.vm_disk_thin_provisioned
   }
   network_adapters {
@@ -489,16 +489,17 @@ source "vsphere-iso" "windows-server-standard-dexp" {
   // Removable Media Settings
   iso_paths    = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
   iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
-  floppy_files = [
-    "../../../configs/${var.vm_guest_os_family}/${var.vm_guest_os_family}-${var.vm_guest_os_member}-${var.vm_guest_os_version}/${var.vm_guest_os_ed_standard}-${var.vm_guest_os_exp_desktop}/${var.vm_firmware}/autounattend.xml",
+  cd_files = [
     "../../../scripts/${var.vm_guest_os_family}/",
     "../../../certificates/"
-    ]
+  ]
+  cd_content = {
+    "autounattend.xml" = templatefile("cd/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2016 SERVERSTANDARD", kms_key = "WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY", build_username = var.build_username, build_password = var.build_password })
+  }
 
   // Boot and Provisioning Settings
   http_port_min    = var.common_http_port_min
   http_port_max    = var.common_http_port_max
-  http_directory   = var.http_directory
   boot_order       = var.vm_boot_order
   boot_wait        = var.vm_boot_wait
   boot_command     = var.vm_boot_command
@@ -523,6 +524,7 @@ source "vsphere-iso" "windows-server-standard-dexp" {
 }
 
 source "vsphere-iso" "windows-server-datacenter-core" {
+
   // vCenter Server Endpoint Settings and Credentials
   vcenter_server      = var.vsphere_endpoint
   username            = var.vsphere_username
@@ -563,16 +565,17 @@ source "vsphere-iso" "windows-server-datacenter-core" {
   // Removable Media Settings
   iso_paths    = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
   iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
-  floppy_files = [
-    "../../../configs/${var.vm_guest_os_family}/${var.vm_guest_os_family}-${var.vm_guest_os_member}-${var.vm_guest_os_version}/${var.vm_guest_os_ed_datacenter}-${var.vm_guest_os_exp_minimal}/${var.vm_firmware}/autounattend.xml",
+  cd_files = [
     "../../../scripts/${var.vm_guest_os_family}/",
     "../../../certificates/"
-    ]
+  ]
+  cd_content = {
+    "autounattend.xml" = templatefile("cd/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2016 SERVERDATACENTERCORE", kms_key = "CB7KF-BWN84-R7R2Y-793K2-8XDDG", build_username = var.build_username, build_password = var.build_password })
+  }
 
   // Boot and Provisioning Settings
   http_port_min    = var.common_http_port_min
   http_port_max    = var.common_http_port_max
-  http_directory   = var.http_directory
   boot_order       = var.vm_boot_order
   boot_wait        = var.vm_boot_wait
   boot_command     = var.vm_boot_command
@@ -597,6 +600,7 @@ source "vsphere-iso" "windows-server-datacenter-core" {
 }
 
 source "vsphere-iso" "windows-server-datacenter-dexp" {
+
   // vCenter Server Endpoint Settings and Credentials
   vcenter_server      = var.vsphere_endpoint
   username            = var.vsphere_username
@@ -637,16 +641,17 @@ source "vsphere-iso" "windows-server-datacenter-dexp" {
   // Removable Media Settings
   iso_paths    = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
   iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
-  floppy_files = [
-    "../../../configs/${var.vm_guest_os_family}/${var.vm_guest_os_family}-${var.vm_guest_os_member}-${var.vm_guest_os_version}/${var.vm_guest_os_ed_datacenter}-${var.vm_guest_os_exp_desktop}/${var.vm_firmware}/autounattend.xml",
+  cd_files = [
     "../../../scripts/${var.vm_guest_os_family}/",
     "../../../certificates/"
-    ]
+  ]
+  cd_content = {
+    "autounattend.xml" = templatefile("cd/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2016 SERVERDATACENTER", kms_key = "CB7KF-BWN84-R7R2Y-793K2-8XDDG", build_username = var.build_username, build_password = var.build_password })
+  }
 
   // Boot and Provisioning Settings
   http_port_min    = var.common_http_port_min
   http_port_max    = var.common_http_port_max
-  http_directory   = var.http_directory
   boot_order       = var.vm_boot_order
   boot_wait        = var.vm_boot_wait
   boot_command     = var.vm_boot_command
@@ -670,9 +675,8 @@ source "vsphere-iso" "windows-server-datacenter-dexp" {
   }
 }
 
-##################################################################################
-# BUILD
-##################################################################################
+//  BLOCK: build
+//  Defines the builders to run, provisioners, and post-processors.
 
 build {
   sources = [
@@ -681,33 +685,27 @@ build {
     "source.vsphere-iso.windows-server-datacenter-core",
     "source.vsphere-iso.windows-server-datacenter-dexp"
   ]
-  /*
-    Uses the File Provisioner to copy the .p7b certificate for the Root Certificate Authority.
-    - The PowerShell Provisioner will execute a script that imports the certificate to the Trusted Root Authorities.
-    */
+
   provisioner "file" {
     source      = "../../../certificates/root-ca.p7b"
     destination = "C:\\windows\\temp\\root-ca.p7b"
   }
-  // Uses the PowerShell Provisioner to execute a series of scripts defined in the variables. 
+
   provisioner "powershell" {
     environment_vars = [
       "BUILD_USERNAME=${var.build_username}"
     ]
-    scripts = var.scripts
+    elevated_user     = var.build_username
+    elevated_password = var.build_password
+    scripts           = var.scripts
   }
-  // Uses the PowerShell Provisioner to execute a series of inline commands defined in the variables
+
   provisioner "powershell" {
-    only = [
-      "vsphere-iso.windows-server-standard-dexp",
-      "vsphere-iso.windows-server-datacenter-dexp"
-    ]
-    inline = var.inline
+    elevated_user     = var.build_username
+    elevated_password = var.build_password
+    inline            = var.inline
   }
-  /*
-    Uses the Windows-Update Provisioner to update the guest operating system.
-    - See https://github.com/rgl/packer-provisioner-windows-update for the latest release and documentation.
-    */
+
   provisioner "windows-update" {
     pause_before    = "30s"
     search_criteria = "IsInstalled=0"
@@ -715,9 +713,12 @@ build {
       "exclude:$_.Title -like '*VMware*'",
       "exclude:$_.Title -like '*Preview*'",
       "exclude:$_.Title -like '*Defender*'",
+      "exclude:$_.InstallationBehavior.CanRequestUserInput",
       "include:$true"
     ]
+    restart_timeout = "120m"
   }
+
   post-processor "manifest" {
     output     = "../../../manifests/${local.buildtime}-${var.vm_guest_os_family}-${var.vm_guest_os_vendor}-${var.vm_guest_os_member}-${var.vm_guest_os_version}.json"
     strip_path = false

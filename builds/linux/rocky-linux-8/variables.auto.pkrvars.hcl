@@ -1,9 +1,7 @@
-# Maintainer: code@rainpole.io
-# Rocky Linux 8 variables for the Packer Builder for VMware vSphere (vsphere-iso).
-
-##################################################################################
-# VARIABLES
-##################################################################################
+/*
+    DESCRIPTION: 
+    Rocky Linux 8 variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+*/
 
 // Guest Operating System Metadata
 vm_guest_os_family  = "linux"
@@ -32,10 +30,8 @@ iso_file     = "iso-linux-rocky-linux-8.iso"
 iso_checksum = "dbfacdbbfd50059a0dda5c19071bc2f55496f3651279eafa6f50d2ea2d941fdd8b43b8710e2187cdbfe630fa7efb5d3b047ee0cdbc2f8d09bd5f68a7014e0d0c"
 
 // Boot Settings
-http_directory = "../../../configs/linux/redhat-variant"
-http_file      = "ks.cfg"
-vm_boot_order  = "disk,cdrom"
-vm_boot_wait   = "2s"
+vm_boot_order = "disk,cdrom"
+vm_boot_wait  = "2s"
 
 // Communicator Settings
 communicator_port    = 22

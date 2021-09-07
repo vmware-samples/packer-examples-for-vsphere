@@ -1,9 +1,7 @@
-# Maintainer: code@rainpole.io
-# VMware Photon OS 4 variables for the Packer Builder for VMware vSphere (vsphere-iso).
-
-##################################################################################
-# VARIABLES
-##################################################################################
+/*
+    DESCRIPTION: 
+    VMware Photon OS 4 variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+*/
 
 // Guest Operating Systtem Metadata
 vm_guest_os_family  = "linux"
@@ -32,10 +30,8 @@ iso_file     = "iso-linux-photon-4.iso"
 iso_checksum = "9cb0ae0329a50733f56e921c1e220ce3e9d328499890b8202e05991daec34c4184ef03606caf706e9058035115c23fef1cacbb184200fca8ec577a191ad3f394"
 
 // Boot Settings
-http_directory = "../../../configs/linux/photon"
-http_file      = "ks.json"
-vm_boot_order  = "disk,cdrom"
-vm_boot_wait   = "2s"
+vm_boot_order = "disk,cdrom"
+vm_boot_wait  = "2s"
 
 // Communicator Settings
 communicator_port    = 22

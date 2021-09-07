@@ -1,9 +1,7 @@
-# Maintainer: code@rainpole.io
-# AlmaLinux 8 variables for the Packer Builder for VMware vSphere (vsphere-iso).
-
-##################################################################################
-# VARIABLES
-##################################################################################
+/*
+    DESCRIPTION: 
+    AlmaLinux 8 variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+*/
 
 // Guest Operating System Metadata
 vm_guest_os_family  = "linux"
@@ -32,10 +30,8 @@ iso_file     = "iso-linux-almalinux-8.iso"
 iso_checksum = "44f56b309fa0cccf41f4d8a5ca3c9b91bb7da510ff8d8faf93fadef9262df872cb824aa7499c5ada5a7ae743be6b38261ed458c465d84e2504e38ca6f05107d7"
 
 // Boot Settings
-http_directory = "../../../configs/linux/redhat-variant"
-http_file      = "ks.cfg"
-vm_boot_order  = "disk,cdrom"
-vm_boot_wait   = "2s"
+vm_boot_order = "disk,cdrom"
+vm_boot_wait  = "2s"
 
 // Communicator Settings
 communicator_port    = 22

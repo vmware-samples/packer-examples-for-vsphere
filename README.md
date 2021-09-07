@@ -3,10 +3,10 @@
 
 # HashiCorp Packer and VMware vSphere to Build Private Cloud Machine Images
 
-<img alt="Last Commit" src="https://img.shields.io/github/last-commit/rainpole/packer-vsphere?style=for-the-badge&logo=github"> [<img alt="Changelog" src="https://img.shields.io/badge/Changelog-Read-blue?style=for-the-badge&logo=github">](CHANGELOG.md) [<img alt="Discussions" src="https://img.shields.io/github/discussions/rainpole/packer-vsphere?style=for-the-badge&logo=github">](https://github.com/rainpole/packer-vsphere/discussions)
+<img alt="Last Commit" src="https://img.shields.io/github/last-commit/rainpole/packer-vsphere?style=for-the-badge&logo=github"> [<img alt="The Changelog" src="https://img.shields.io/badge/The%20Changelog-Read-blue?style=for-the-badge&logo=github">](CHANGELOG.md) [<img alt="Open in Visual Studio Code" src="https://img.shields.io/badge/Visual%20Studio%20Code-Open-blue?style=for-the-badge&logo=visualstudiocode">](https://open.vscode.dev/rainpole/packer-vsphere)
 <br/>
 <img alt="VMware vSphere 7.0 Update 2" src="https://img.shields.io/badge/VMware%20vSphere-7.0%20Update%202-blue?style=for-the-badge">
-<img alt="Packer 1.7.4" src="https://img.shields.io/badge/HashiCorp%20Packer-1.7.4-blue?style=for-the-badge">
+<img alt="Packer 1.7.4" src="https://img.shields.io/badge/HashiCorp%20Packer-1.7.4-blue?style=for-the-badge&logo=packer">
 
 ## Table of Contents
 1.	[Introduction](#Introduction)
@@ -15,12 +15,12 @@
 1.	[Build](#Build)
 1.	[Troubleshoot](#Troubleshoot)
 1.	[Credits](#Credits)
-    
+
 ## Introduction
 
-This repository provides examples to automate the creation of virtual machine images and their guest operating systems on VMware vSphere using [HashiCorp Packer][packer] and the [Packer Plugin for VMware vSphere][packer-vsphere-iso] (`vsphere-iso`). All examples are authored in the HashiCorp Configuration Language ("HCL2") instead of JSON.
+This repository provides examples to automate the creation of virtual machine images and their guest operating systems on VMware vSphere using [HashiCorp Packer][packer] and the [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`). All examples are authored in the HashiCorp Configuration Language ("HCL2").
 
-The resulting machine image artifacts are, by default, transferred to a [vSphere Content Library][vsphere-content-library] as an OVF template and the temporary machine image is destroyed. If an item of the same name exists in the target content library, Packer will update the existing item with the new OVF template. This method is extremely useful for vRealize Automation / vRealize Automation Cloud as image mappings do not need to be updated when a virtual machine image update is executed and finalized.
+By default, the machine image artifacts are transferred to a [vSphere Content Library][vsphere-content-library] as an OVF template and the temporary machine image is destroyed. If an item of the same name exists in the target content library, Packer will update the existing item with the new OVF template. This method is extremely useful for vRealize Automation as image mappings do not need to be updated when a virtual machine image update is executed and finalized.
 
 The following builds are available:
 
@@ -35,6 +35,7 @@ The following builds are available:
 * CentOS Linux 8
 
 **Microsoft Windows** - _Core and Desktop Experience_
+* Microsoft Windows Server 2022 - Standard and Datacenter
 * Microsoft Windows Server 2019 - Standard and Datacenter
 * Microsoft Windows Server 2016 - Standard and Datacenter
 
@@ -42,24 +43,29 @@ The following builds are available:
 
 ## Requirements
 
-Packer:
+**Packer**:
 * HashiCorp [Packer][packer-install] 1.7.4 or higher.
 * HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.1 or higher.
 * [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.0 or higher - a community plugin for HashiCorp Packer.
 
-    >Required plugins are automatically downloaded and initialized when using `./build.sh`. Alternatively, you may download the plugins and place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
+    >Required plugins are automatically downloaded and initialized when using `./build.sh`. For dark sites, you may download the plugins and place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
 
-Operating Systems:
-* macOS Big Sur (Intel)
+**Operating Systems**:
 * Ubuntu Server 20.04 LTS
+* macOS Big Sur (Intel)
 * Microsoft Windows Server 2019
 
     > Operating systems and versions tested with the repository examples.
 
-Additional Software Packages:
+**Additional Software Packages**:
 * [Git][download-git] command line tools.
+* A command-line .iso creator. Packer will use one of the following:
+  - **xorriso** (Ubuntu: `apt-get install xorriso`)
+  - **mkisofs** (Ubuntu: `apt-get install mkisofs`)
+  - **hdiutil** (macOS)
+  - **oscdimg** (Windows: requires Windows ADK)
 
-Platform:
+**Platform**:
 * vSphere 7.0 Update 2 or higher.
 
 ## Configuration
@@ -76,56 +82,44 @@ git clone https://github.com/rainpole/packer-vsphere.git
 The directory structure of the repository.
 
 ```
-packer-vsphere/ 
+
 ├── build.sh
+├── LICENSE
+├── NOTICE
 ├── README.md
 ├── builds
-│   └── ansible.pkvars.hcl
-│   └── build.pkvars.hcl
-│   └── common.pkvars.hcl
-│   └── rhsm.pkvars.hcl
-│   └── vsphere.pkvars.hcl
-│   └── linux
-│       └── distribution version
-|           (e.g. ubuntu-server-20-04-lts)
-│           └── build files
-|               (e.g. variables.auto.pkrvars.hcl and *.pkr.hcl)
-│   └── windows
-│       └── version 
-|           (e.g. windows-server-2019)
-│           └── build files 
-|               (e.g. variables.auto.pkrvars.hcl and *.pkr.hcl)
-├── certificates
-│   └── root-ca.crt
-│   └── root-ca.p7b
-├── configs
-│   └── linux
-│       └── distribution
-|           (e.g. ubuntu-server)
-│           └── kickstart files 
-|               (e.g. ks*.cfg or ks.json)
+│   ├── ansible.pkvars.hcl
+│   ├── build.pkvars.hcl
+│   ├── common.pkvars.hcl
+│   ├── rhsm.pkvars.hcl
+│   ├── vsphere.pkvars.hcl
+│   ├── linux
+│   │   └── distribution-version
+│   │       ├── *.pkr.hcl
+│   │       ├── variables.auto.pkrvars.hcl
+│   │       └── http
+│   │           └── ks.pkrtpl.hcl
 │   └── windows
 │       └── version
-|           (e.g. windows-server-2019)
-│           └── edition-experience
-|               (e.g. standard-core)
-│               └── efi-secure 
-│                   └── autounattend.xml
-│               └── bios 
-│                   └── autounattend.xml
+│           ├── *.pkr.hcl
+│           ├── variables.auto.pkrvars.hcl
+│           └── cd
+│               └── autounattend.pkrtpl.hcl
+├── certificates
+│   ├── root-ca.crt
+│   └── root-ca.p7b
 ├── manifests
-├── scripts
-│   └── linux
-│       (e.g. ubuntu-server.sh)
-│   └── windows
-│       (e.g. windows-server-cleanup.ps1)
+└── scripts
+    ├── linux
+    │   └── *.sh
+    └── windows
+        └── *.ps1
 ```
-The files are distributed in to five main directories.
-1. The `builds` directory contains the build templates and variables.
-2. The `configs` directory contains Kickstart files for Linux and autounattend files for Microsoft Windows guest operating systems.
-3. The `scripts` directory contains scripts that are used to prepare the machine image builds.
-4. The `certificates` directory contains the Trusted Root Authority certificates.
-5. The `manifests` directory contains the manifest created after the completion of each build.
+The files are distributed in the following directories.
+* **`builds`** - contains the build templates, variables, and configuration files.
+* **`scripts`** - contains scripts that are used to initialize and prepare the machine image builds.
+* **`certificates`** - contains the Trusted Root Authority certificates.
+* **`manifests`** - manifests created after the completion of each build.
 
 ### Step 2 - Prepare the Guest Operating Systems ISOs
 
@@ -133,48 +127,42 @@ The files are distributed in to five main directories.
 
     **Linux Distributions**
     * VMware Photon OS 4 Server
-        * [Download][download-linux-photon-server-4] the latest full release.
+        * [Download][download-linux-photon-server-4] the latest release of the **FULL** `.iso` image.
     * Ubuntu Server 20.04 LTS
-        * [Download][download-linux-ubuntu-server-20-04-lts] the latest **LIVE** release.
+        * [Download][download-linux-ubuntu-server-20-04-lts] the latest **LIVE** release `.iso` image.
     * Ubuntu Server 18.04 LTS
-        * [Download][download-linux-ubuntu-server-18-04-lts] the latest legacy **NON-LIVE** release.
+        * [Download][download-linux-ubuntu-server-18-04-lts] the latest legacy **NON-LIVE** release` .iso` image.
     * Red Hat Enterprise Linux 8 Server
-        * [Download][download-linux-redhat-server-8] the latest release of the full (e.g `RHEL-8-x86_64-dvd1.iso`) .iso image.
+        * [Download][download-linux-redhat-server-8] the latest release of the **FULL** (e.g. `RHEL-8-x86_64-dvd1.iso`) `.iso` image.
     * AlmaLinux 8 Server
-        * [Download][download-linux-almalinux-server-8] the latest release of the full (e.g `AlmaLinux-8-x86_64-dvd1.iso`) .iso image.
+        * [Download][download-linux-almalinux-server-8] the latest release of the **FULL** (e.g. `AlmaLinux-8-x86_64-dvd1.iso`) `.iso` image.
     * Rocky Linux 8 Server
-        * [Download][download-linux-rocky-server-8] the latest release of the full (e.g `Rocky-8-x86_64-dvd1.iso`) .iso image.
+        * [Download][download-linux-rocky-server-8] the latest release of the **FULL** (e.g. `Rocky-8-x86_64-dvd1.iso`) `.iso` image.
     * CentOS Stream 8 Server
-        * [Download][download-linux-centos-stream-8] the latest release of the full (e.g `CentOS-Stream-8-x86_64-dvd1.iso`) .iso image.
+        * [Download][download-linux-centos-stream-8] the latest release of the **FULL** (e.g. `CentOS-Stream-8-x86_64-dvd1.iso`) `.iso` image.
     * CentOS Linux 8 Server
-        * [Download][download-linux-centos-server-8] the latest release of the full (e.g `CentOS-8-x86_64-dvd1.iso`) .iso image.
+        * [Download][download-linux-centos-server-8] the latest release of the **FULL** (e.g. `CentOS-8-x86_64-dvd1.iso`) `.iso` image.
 
     **Microsoft Windows**
+    * Microsoft Windows Server 2022
     * Microsoft Windows Server 2019
     * Microsoft Windows Server 2016
 
 2. Rename your guest operating system `.iso` images. The examples in this repository _generally_ use the format of `iso-family-vendor-type-version.iso`. 
 
-    For example:
-
-    * `iso-linux-photon-4.iso`
-    * `iso-linux-ubuntu-server-20-04-lts.iso`
-    * `iso-linux-ubuntu-server-18-04-lts.iso`
-    * `iso-linux-redhat-linux-8`
-    * `iso-linux-almalinux-8`
-    * `iso-linux-rocky-linux-8`
-    * `iso-linux-centos-stream-8`
-    * `iso-linux-centos-linux-8`
-    * `iso-windows-server-2019.iso`
-    * `iso-windows-server-2016.iso`
+   Example: `iso-linux-ubuntu-server-20-04-lts.iso`
 
 3. Obtain the SHA-512 checksum for each guest operating system `.iso` image. This will be use in the build input variables.
+
+    Example:
 
     * macOS terminal: `shasum -a 512 [filename.iso]`
     * Linux shell: `sha512sum [filename.iso]`
     * Windows command: `certutil -hashfile [filename.iso] sha512`
 
-4. [Upload][vsphere-upload] your guest operating system `.iso` images to the datastore and path defined in your common variables. For example, `[sfo-w01-ds-nfs01] /iso`.
+4. [Upload][vsphere-upload] your guest operating system `.iso` images to the datastore and path defined in your common variables. 
+
+    Example: `[sfo-w01-ds-nfs01] /iso`.
 
 ### Step 3 - Configure the Variables
 
@@ -189,14 +177,33 @@ Edit the `/builds/build.pkvars.hcl` file to configure the following:
 Example: `/builds/build.pkvars.hcl`
 
 ```
-// Communicator Credentials
-build_username = "rainpole"
-build_password = "R@in!$aG00dThing."
-build_key      = "<public_key>"
+build_username           = "rainpole"
+build_password           = "<plaintext_password>"
+build_password_encrypted = "<sha512_encrypted_password >"
+build_key                = "<public_key>"
 ```
-Generate a public key for authentication.
 
-Example: `id_ecdsa.pub` on macOS and Linux.
+Generate a SHA-512 encrypted password for the  _`build_password_encrypted`_ using various other tools like OpenSSL, mkpasswd, etc.
+
+Example: OpenSSL on macOS:
+
+```
+rainpole@macos>  openssl passwd -6 
+Password: ***************
+Verifying - Password: ***************
+[password hash]
+```
+
+Example: mkpasswd on Linux:
+
+```
+rainpole@linux>  mkpasswd --method=SHA-512 --rounds=4096
+Password: ***************
+[password hash]
+```
+Generate a public key for the `build_password_encrypted` for public key authentication.
+
+Example: macOS and Linux.
 
 ```
 rainpole@macos> cd .ssh/
@@ -207,14 +214,15 @@ Enter passphrase (empty for no passphrase): **************
 Enter same passphrase again: **************
 Your identification has been saved in /Users/rainpole/.ssh/id_ecdsa.
 Your public key has been saved in /Users/rainpole/.ssh/id_ecdsa.pub.
-    
-This content of the public is adds the key to the `.ssh/authorized_keys` file of the `build_username` on the guest operating system. 
 ```
 
->**WARNING**: Replace the default public keys.
+The content of the public key, `build_key`,  is added the key to the `.ssh/authorized_keys` file of the `build_username` on the guest operating system. 
+
+
+>**WARNING**: Replace the default public keys and passwords.
 >By default, both Public Key Authentication and Password Authentication are enabled for Linux distributions. If you wish to disable Password Authentication and only use Public Key Authentication, comment or remove the portion of the associated script in the `/scripts` directory.
 
-#### **Build Variables**
+#### **Ansible Variables**
 
 Edit the `/builds/ansible.pkvars.hcl` file to configure the following:
 
@@ -223,10 +231,10 @@ Edit the `/builds/ansible.pkvars.hcl` file to configure the following:
 Example: `/builds/ansible.pkvars.hcl`
 
 ```
-// Ansible Credentials
 ansible_username = "ansible"
 ansible_key      = "<public_key>"
 ```
+>**NOTE**: A random password is generated for the Ansible user.
 
 #### **Common Variables**
 
@@ -240,7 +248,6 @@ Edit the `/builds/common.pkvars.hcl` file to configure the following:
 Example: `/builds/common.pkvars.hcl`
 
 ```
-// Template and Content Library Settings
 common_template_conversion     = false
 common_content_library_name    = "sfo-w01-lib01"
 common_content_library_ovf     = true
@@ -257,13 +264,10 @@ Edit the `/buils/vsphere.pkvars.hcl` file to configure the following:
 Example: `/builds/vsphere.pkvars.hcl`
 
 ```
-// vSphere Credentials
 vsphere_endpoint             = "sfo-w01-vc01.sfo.rainpole.io"
 vsphere_username             = "svc-packer-vsphere@rainpole.io"
-vsphere_password             = "R@in!$aG00dThing."
+vsphere_password             = "<plaintext_password>"
 vsphere_insecure_connection  = true
-
-// vSphere Settings
 vsphere_datacenter           = "sfo-w01-dc01"
 vsphere_cluster              = "sfo-w01-cl01"
 vsphere_datastore            = "sfo-w01-cl01-ds-vsan01"
@@ -280,14 +284,13 @@ Edit the `/builds/redhat.pkvars.hcl` file to configure the following:
 Example: `/builds/redhat.pkvars.hcl`
 
 ```
-// Red Hat Subscription Manager Credentials
 rhsm_username = "rainpole"
-rhsm_password = "R@in!$aG00dThing."
+rhsm_password = "<plaintext_password>"
 ```
 
-These variables are **only** used if you are performing a Red Hat Enterprise Linux Server build to register the image with Red Hat Subscription Manager and run a `sudo yum update -y` within the shell provisioner. Before the build completes, the image is unregistered.
+These variables are **only** used if you are performing a Red Hat Enterprise Linux Server build to register the image with Red Hat Subscription Manager and run a `sudo yum update -y` within the shell provisioner. Before the build completes, the machine image is unregistered from Red Hat Subscription Manager.
 
-#### **Build Variables**
+#### **Machine Image Variables**
 
 Edit the `variables.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder to configure the following virtual machine hardware settings, as required:
 
@@ -300,7 +303,7 @@ Edit the `variables.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder
 
     >**Note**: All `variables.auto.pkvars.hcl` default to using the the recommended firmware for the guest operating system, the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types.
 
-#### Using Environmental Variables
+#### **Using Environmental Variables**
 
 Some of the variables may include sensitive information and environmental data that you would prefer not to save to clear text files. You can save use environmental variables before running a build using the example below:
 
@@ -315,203 +318,31 @@ export PKR_VAR_vsphere_network="<vsphere_network>"
 export PKR_VAR_vsphere_folder="<vsphere_folder>"
 export PKR_VAR_build_username="<build_password>"
 export PKR_VAR_build_password="<build_password>"
+export PKR_VAR_build_password="<build_password_encrypted>"
 export PKR_VAR_build_key="<build_key>"
 export PKR_VAR_ansible_username="<ansible_password>"
 export PKR_VAR_ansible_key="<ansible_key>"
 export PKR_VAR_rhsm_username="<rhsm_password>"
 export PKR_VAR_rhsm_password="<rhsm_password>"
+
 ```
 ## Step 4 - Modify the Configurations and Scripts
 
-Modify the configuration and scripts files, as required, for the Linux distributions and Microsoft Windows.
+If required, modify the configuration and scripts files, for the Linux distributions and Microsoft Windows.
 
 ### Linux Distribution Kickstart and Scripts
 
-```
-packer-vsphere/ 
-├── configs
-│   └── linux
-│       └── distribution
-|           (e.g. ubuntu-server)
-│           └── kickstart files 
-|               (e.g. ks.cfg or ks.json)
-└── scripts
-│   └── linux
-│       (e.g. ubuntu-server.sh)
-```
+Username and password variables are passed into the kickstart or cloud-init files for each Linux distribution as Packer template files (`.pkrtpl.hcl`) to generate these on-demand.
 
-The kickstart files for each Linux distribution includes a SHA-512 encrypted password for the `root` account and the name and SHA-512 encrypted password for the the build user (e.g. `rainpole`). It also adds the build user to the sudoers. Update these lines as necessary.
-
-You can generate a SHA-512 password using various other tools like OpenSSL, mkpasswd, etc.
-
-**OpenSSL on macOS**:
-```
-rainpole@macos>  openssl passwd -6 
-Password: ***************
-Verifying - Password: ***************
-[password hash]
-```
-**mkpasswd on Linux**:
-```
-rainpole@linux>  mkpasswd --method=SHA-512 --rounds=4096
-Password: ***************
-[password hash]
-```
-
-**Example 1**: VMware Photon OS `ks.json` file.
-
-```
-"password":
-    {
-        "crypted": true,
-        "text": "[password hash]"
-    },
-    ...
-    "postinstall": [
-        ...
-        "useradd -m -p '[password hash]' -s /bin/bash rainpole",
-        "usermod -aG sudo rainpole"
-    ],
-```
->**NOTE**: Update the `public_key` with the desired public key for the root user. This will be added to the `.ssh/authorized_keys` file for the `root` account. 
-
-**Example 2**: Ubuntu Server 20.04 (and later) `user-data` and `meta-data` files.
-
- The `user-data` and `meta-data` files are [cloud-init][cloud-init] configuration files used to build the Ubuntu Server 20.04 LTS and later machine images. You must update the `user-data` file, but the contents of the `meta-data` file should remain empty.
-
-Ubuntu Server `user-data` file.
-```
-identity:
-    hostname: ubuntu-server
-    username: rainpole
-    password: '[password hash]'
-
-late-commands:
-- echo 'rainpole ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/rainpole
-- curtin in-target --target=/target -- chmod 440 /etc/sudoers.d/rainpole
-```
-
-**Example 3**: Ubuntu Server 18.04 `ks.cfg` file.
-
-```
-# User Configuration
-
-d-i passwd/user-fullname string rainpole
-
-d-i passwd/username string rainpole
-
-d-i passwd/user-password-crypted password [password hash]
-
-# Root Configuration
-d-i passwd/root-password-crypted password [password hash]
-
-# Add User to Sudoers
-d-i preseed/late_command string \
-    echo 'rainpole ALL=(ALL) NOPASSWD: ALL' > /target/etc/sudoers.d/rainpole ; \
-    in-target chmod 440 /etc/sudoers.d/rainpole ;
-```
-
-**Example 4**: Red Hat Enterprise Linux, CentOS Linux/Stream, AlmaLinux, and Rocky Linux `ks.cfg` file:
-
-```
-rootpw [password hash] --iscrypted
-
-user --name=rainpole --groups=wheel --iscrypted --password=[password hash]
-...
-echo "rainpole ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/rainpole
-```
+A SHA-512 encrypted password for the `root` account and the _`build_username`_ (e.g. `rainpole`). It also adds the _`build_username`_ to the sudoers.
 
 ### Microsoft Windows Unattended amd Scripts
 
-```
-packer-vsphere/ 
-├── configs
-│   └── windows
-│       └── version
-|           (e.g. windows-server-2019)
-│           └── edition-experience
-|               (e.g. standard-core)
-│               └── unattended files 
-|                   (e.g. autounattend.xml)
-└── scripts
-│   └── windows
-│       (e.g. windows-server-cleanup.sh)
-```
-
-The [Microsoft Windows][microsoft-windows-unattend] `autounattend.xml` files include configurations to:
-* Add the Registration Name and Organization
-* Set the Product Key
-* Add a local account for the build user.
-* Set the password for the Administrator and the build user.
-
-The **Registration Name** and **Organization** must be changed - update this code block in each `autounattend.xml`. 
+Variables are passed into the [Microsoft Windows][microsoft-windows-unattend] unattend files (`autounattend.xml`) as Packer template files (`autounattend.pkrtpl.hcl`) to generate these on-demand.
 
 By default, each unattended file set the **Product Key** to use the [KMS client setup keys][microsoft-kms].
 
-The password for the `<UserAccounts>` - which includes the `administrator` and build user (e.g. `rainpole`) - and the [`<AutoLogon>`][microsoft-windows-autologon] must be changed - update these code blocks in each `autounattend.xml` file.
-
-Example: Administrator and Local Accounts
-```
-<UserAccounts>
-<AdministratorPassword>
-    <Value>R@in!$aG00dThing.</Value>
-    <PlainText>true</PlainText>
-</AdministratorPassword>
-<LocalAccounts>
-    <LocalAccount wcm:action="add">
-        <Password>
-            <Value>R@in!$aG00dThing.</Value>
-            <PlainText>true</PlainText>
-        </Password>
-        <Group>administrators</Group>
-        <DisplayName>Rainpole</DisplayName>
-        <Name>rainpole</Name>
-        <Description>Build Account by Rainpole</Description>
-    </LocalAccount>
-</LocalAccounts>
-</UserAccounts>
-```
-Example: Auto Logon
-```
-<AutoLogon>
-<Password>
-    <Value>R@in!$aG00dThing.</Value>
-    <PlainText>true</PlainText>
-</Password>
-<Enabled>true</Enabled>
-<Username>rainpole</Username>
-</AutoLogon>
-
-```
-If you would like to encrypt the passwords in the `autounattend.xml`, you can do so using the following. But please note that the can be easily decrypted.
-
-Example: Encode a password with PowerShell on macOS.
-
-```
-PS /Users/rainpole> $UnEncodedText = 'R@in!$aG00dThing.'
-PS /Users/rainpole> $EncodedText =[Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes($UnEncodedText))
-PS /Users/rainpole> write-host "Encoded Password:" $EncodedText             
-
-Encoded Password: [encoded password]
-```
-Example: Decode a password with PowerShell on macOS.
-
-```
-PS /Users/rainpole $DecodedText = [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String($EncodedText))
-PS /Users/rainpole> write-host "Decoded Password:" $DecodedText              
-
-Decoded Password: [decoded password]
-
-```
-Example: Use the encoded password in a `autounattend.xml` file.
-
-```
-<Password>
-    <Value>[encoded password]</Value>
-    <PlainText>false</PlainText>
-</Password>
-```
-**Need help customizing the configuration files further?**
+**Need help customizing the configuration files?**
 
 * **VMware Photon OS** - Read the [Photon OS Kickstart Documentation][photon-kickstart].
 * **Ubuntu Server** - Install and run system-config-kickstart on a Ubuntu desktop.
@@ -528,12 +359,6 @@ Example: Use the encoded password in a `autounattend.xml` file.
 
 Save a copy of your Root Certificate Authority certificate to `/certificates` in `.crt` and `.p7b` formats.
 
-```
-packer-vsphere/ 
-├── certificates
-│   └── root-ca.crt
-│   └── root-ca.p7b
-```
 These files are copied to the guest operating systems with a Packer file provisioner; after which, the a shell provisioner adds the certificate to the Trusted Certificate Authority of the guest operating system.
 
 >**NOTE**: If you do not wish to install the certificates on the guest operating systems, comment or remove the portion of the associated script in the `/scripts` directory and the file provisioner from the `prk.hcl` file for each build. If you need to add an intermediate certificate, add the certificate to `/certificates` and update the shell provisioner scripts in the `scripts` directory with your requirements.
@@ -541,13 +366,6 @@ These files are copied to the guest operating systems with a Packer file provisi
 ## Build
 
 Start a pre-defined build by running the build script (`./build.sh`). The script presents a menu the which simply calls Packer and the respective build(s).
-
-Example: Launch`./build.sh`.
-```
-rainpole@macos packer-examples> ./build.sh
-```
-
-The menu will allow you to execute and confirm a build using Packer and the `vsphere-iso` provisioner.
 
 Example: Menu for `./build.sh`.
 ```
@@ -570,16 +388,17 @@ Example: Menu for `./build.sh`.
          7  -  CentOS Stream 8 Server
          8  -  CentOS Linux 8 Server
 
-
       Microsoft Windows:
 
-         9  -  Windows Server 2019 - All
-        10  -  Windows Server 2019 - Standard Only
-        11  -  Windows Server 2019 - Datacenter Only
-        12  -  Windows Server 2016 - All
-        13  -  Windows Server 2016 - Standard Only
-        14  -  Windows Server 2016 - Datacenter Only
-
+         9  -  Windows Server 2022 - All
+        10  -  Windows Server 2022 - Standard Only
+        11  -  Windows Server 2022 - Datacenter Only
+        12  -  Windows Server 2019 - All
+        13  -  Windows Server 2019 - Standard Only
+        14  -  Windows Server 2019 - Datacenter Only
+        15  -  Windows Server 2016 - All
+        16  -  Windows Server 2016 - Standard Only
+        17  -  Windows Server 2016 - Datacenter Only
 
       Other:
       
@@ -588,25 +407,24 @@ Example: Menu for `./build.sh`.
 ```
 You can also start a build based on a specific source for some of the virtual machine images.
 
-For example, if you simply want to build a Microsoft Windows Server 2019 Standard Core, run the following:
+For example, if you simply want to build a Microsoft Windows Server 2022 Standard Core, run the following:
 
-Initialize plugins:
+Initialize the plugins:
 ```
-rainpole@macos packer-examples> cd builds/windows/windows-server-2019/
-rainpole@macos packer-examples> packer init .
+rainpole@macos packer-examples> cd builds/windows/windows-server-2022/
+rainpole@macos packer-examples> packer init windows-server-2022.pkr.hcl
 ```
 Build a specific machine image:
 ```
-rainpole@macos windows-server-2019> packer build -force \
+rainpole@macos windows-server-2022> packer build -force \
       --only vsphere-iso.windows-server-standard-core \
       -var-file="../../vsphere.pkrvars.hcl" \
       -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../ansible.pkrvars.hcl" \
       -var-file="../../common.pkrvars.hcl" .
 ```
 Build a specific machine image using environmental variables:
 ```
-rainpole@macos windows-server-2019> packer build -force \
+rainpole@macos windows-server-2022> packer build -force \
       --only vsphere-iso.windows-server-standard-core \
       -var-file="../../common.pkrvars.hcl" .
 ```
@@ -621,7 +439,7 @@ Happy building!!!
 ## Credits
 * Maher AlAsfar [@vmwarelab][credits-maher-alasfar-twitter]
 
-    [Linux][credits-maher-alasfar-github] Bash scripting code.
+    [Linux][credits-maher-alasfar-github] Bash scripting hints.
     
 * Owen Reynolds [@OVDamn][credits-owen-reynolds-twitter]
     

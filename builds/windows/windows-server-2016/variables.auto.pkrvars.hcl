@@ -1,9 +1,7 @@
-# Maintainer: code@rainpole.io
-# Microsoft Windows Server 2016 Standard variables using the Packer Builder for VMware vSphere (vsphere-iso).
-
-##################################################################################
-# VARIABLES
-##################################################################################
+/*
+    DESCRIPTION: 
+    Microsoft Windows Server 2016 Standard variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+*/
 
 // Guest Operating System Metadata
 vm_guest_os_vendor        = "microsoft"
@@ -36,8 +34,6 @@ iso_file     = "iso-windows-server-2016.iso"
 iso_checksum = "12245fad2f514265732fa3f9a24bc72cfc44ba773f208b2c2eecd75ee4a1709e89a8ba2191b5d58f19cd34d5c8186f9879e58f0e1490a4521a88503767326dd2"
 
 // Boot Settings
-http_directory      = ""
-http_file           = ""
 vm_boot_order       = "disk,cdrom"
 vm_boot_wait        = "2s"
 vm_boot_command     = ["<spacebar>"]
@@ -49,16 +45,10 @@ communicator_timeout = "12h"
 
 // Provisioner Settings
 scripts = [
-  "../../../scripts/windows/windows-server-cleanup.ps1"
+  "../../../scripts/windows/windows-server-prepare.ps1"
 ]
 inline = [
   "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))",
   "choco feature enable -n allowGlobalConfirmation",
-  "choco install googlechrome",
-  "choco install firefox",
-  "choco install postman",
-  "choco install winscp",
-  "choco install putty",
-  "choco install vscode",
   "Get-EventLog -LogName * | ForEach { Clear-EventLog -LogName $_.Log }"
 ]

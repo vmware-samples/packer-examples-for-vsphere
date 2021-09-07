@@ -3,7 +3,7 @@
 ![Rainpole](icon.png)
 
 ## Release: `21.09`
-September ? TBD ?, 2021
+September 7, 2021
 * Added support for Microsoft Windows Server 2022 machine image builds.
 * Refactored configuration files to be generated using templates. Reduces the number of files and passes variables into the `.pkrtpl.hcl` content.
 * Refactored builds for Linux distributions to use `http_content` instead of `http_directory` and `http_file`.

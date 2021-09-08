@@ -68,29 +68,29 @@ variable "vsphere_network" {
 
 variable "vsphere_folder" {
   type        = string
-  description = "The name of the target vSphere cluster. (e.g. 'sfo-w01-fd-templates')"
+  description = "The name of the target vSphere folder. (e.g. 'sfo-w01-fd-templates')"
 }
 
 // Virtual Machine Settings
 
 variable "vm_guest_os_family" {
   type        = string
-  description = "The guest operatiing system family. Used for naming and VMware tools. (e.g.'linux')"
+  description = "The guest operating system family. Used for naming. (e.g.'linux')"
 }
 
 variable "vm_guest_os_vendor" {
   type        = string
-  description = "The guest operatiing system vendor. Used for naming . (e.g. 'rocky-linux')"
+  description = "The guest operating system vendor. Used for naming. (e.g. 'rocky-linux')"
 }
 
 variable "vm_guest_os_member" {
   type        = string
-  description = "The guest operatiing system member. Used for naming. (e.g. 'server')"
+  description = "The guest operating system member. Used for naming. (e.g. 'server')"
 }
 
 variable "vm_guest_os_version" {
   type        = string
-  description = "The guest operatiing system version. Used for naming. (e.g. '8')"
+  description = "The guest operating system version. Used for naming. (e.g. '8')"
 }
 
 variable "vm_guest_os_type" {
@@ -123,7 +123,7 @@ variable "vm_cpu_cores" {
 variable "vm_cpu_hot_add" {
   type        = bool
   description = "Enable hot add CPU."
-  default     = true
+  default     = false
 }
 
 variable "vm_mem_size" {
@@ -134,7 +134,7 @@ variable "vm_mem_size" {
 variable "vm_mem_hot_add" {
   type        = bool
   description = "Enable hot add memory."
-  default     = true
+  default     = false
 }
 
 variable "vm_disk_size" {

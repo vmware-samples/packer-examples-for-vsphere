@@ -1,6 +1,6 @@
 blank_issues_enabled: false
 contact_links:
-  - name: GitHub Community Support
+  - name: GitHub Community Discussions
     url: https://github.com/rainpole/packer-vsphere/discussions
     about: Having trouble working with the examples? Ask and answer questions.
 

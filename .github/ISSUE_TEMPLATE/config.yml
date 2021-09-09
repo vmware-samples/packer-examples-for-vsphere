@@ -3,4 +3,10 @@ contact_links:
   - name: GitHub Community Discussions
     url: https://github.com/rainpole/packer-vsphere/discussions
     about: Having trouble working with the examples? Ask and answer questions.
+  - name: Packer Documentation
+    url: https://www.packer.io/docs
+    about: Having trouble with Packer? Check out the product documentation.
+  - name: Packer Plugin for vSphere
+    url: https://github.com/hashicorp/packer-plugin-vsphere/issues/new/choose
+    about: Having trouble with the Packer Plugin for vSphere? Check out the GitHub Issues.
 

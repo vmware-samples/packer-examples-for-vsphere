@@ -559,7 +559,7 @@ source "vsphere-iso" "windows-server-datacenter-core" {
 
   // Removable Media Settings
   iso_paths   = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
-  iso_checksu = "${var.common_iso_hash}:${var.iso_checksum}"
+  iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
   cd_files = [
     "../../../scripts/${var.vm_guest_os_family}/",
     "../../../certificates/"

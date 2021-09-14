@@ -1,7 +1,7 @@
 name: Documentation
 description: Found a typo or something that needs clarification?.
 title: "[DOCS] *REPLACE WITH SHORT DESCRIPTION"
-labels: "[docs, needs-triage]"
+labels: "[docs, needs-review]"
 assignees:
   - tenthirtyam
 body:

@@ -1,7 +1,7 @@
 name: Enhancment Request
 description: Is something critical missing? Suggest a feature or an enhancement.
 title: "[ENHANCEMENT] *REPLACE WITH SHORT DESCRIPTION*"
-labels: "[enhancement, needs-triage]"
+labels: [enhancement, needs-triage]
 assignees:
   - tenthirtyam
 body:

@@ -1,11 +1,11 @@
 # Locale and Keyboard
-d-i debian-installer/locale string en_US
+d-i debian-installer/locale string ${vm_guest_os_language}
 d-i console-setup/ask_detect boolean false
-d-i keyboard-configuration/xkb-keymap select us
+d-i keyboard-configuration/xkb-keymap select ${vm_guest_os_keyboard}
 
 # Clock and Timezone
 d-i clock-setup/utc boolean true
-d-i time/zone string UTC
+d-i time/zone string ${vm_guest_os_timezone}
 
 # Grub and Reboot Message
 d-i finish-install/reboot_in_progress note

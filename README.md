@@ -96,13 +96,13 @@ The directory structure of the repository.
 │   ├── linux
 │   │   └── distribution-version
 │   │       ├── *.pkr.hcl
-│   │       ├── variables.auto.pkrvars.hcl
+│   │       ├── *.auto.pkrvars.hcl
 │   │       └── http
 │   │           └── ks.pkrtpl.hcl
 │   └── windows
 │       └── version
 │           ├── *.pkr.hcl
-│           ├── variables.auto.pkrvars.hcl
+│           ├── *.auto.pkrvars.hcl
 │           └── cd
 │               └── autounattend.pkrtpl.hcl
 ├── certificates
@@ -292,7 +292,7 @@ These variables are **only** used if you are performing a Red Hat Enterprise Lin
 
 #### **Machine Image Variables**
 
-Edit the `variables.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder to configure the following virtual machine hardware settings, as required:
+Edit the `*.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder to configure the following virtual machine hardware settings, as required:
 
 * CPU Sockets `(init)`
 * CPU Cores `(init)`
@@ -305,7 +305,7 @@ Edit the `variables.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder
 
 #### **Using Environmental Variables**
 
-Some of the variables may include sensitive information and environmental data that you would prefer not to save to clear text files. You can save use environmental variables before running a build using the example below:
+Some of the variables may include sensitive information and environmental data that you would prefer not to save to clear text files. You can add there to environmental variables using the example below:
 
 ```
 export PKR_VAR_vsphere_endpoint="<vsphere_endpoint_fqdn>"

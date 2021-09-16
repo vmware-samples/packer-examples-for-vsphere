@@ -1,9 +1,9 @@
 # Rocky Linux 8
 install
 eula --agreed
-lang en_US
-keyboard us
-timezone UTC
+lang ${vm_guest_os_language}
+keyboard ${vm_guest_os_keyboard}
+timezone ${vm_guest_os_timezone}
 rootpw --lock
 user --name=${build_username} --iscrypted --password=${build_password_encrypted} --groups=wheel
 cdrom

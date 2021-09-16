@@ -4,10 +4,9 @@ autoinstall:
   early-commands:
     # Ensures that Packer does not connect too soon.
     - sudo systemctl stop ssh
-  locale: en_US
+  locale: ${vm_guest_os_language}
   keyboard:
-    layout: en
-    variant: us
+    layout: ${vm_guest_os_keyboard}
   storage:
     layout:
       name: lvm
@@ -38,3 +37,4 @@ autoinstall:
     - curtin in-target --target=/target -- chmod 440 /etc/sudoers.d/${build_username}
     - curtin in-target --target=/target -- apt-get update
     - curtin in-target --target=/target -- apt-get upgrade --yes
+  timezone: ${vm_guest_os_timezone}

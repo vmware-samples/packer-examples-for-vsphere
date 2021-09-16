@@ -3,13 +3,13 @@
    <settings pass="windowsPE">
       <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
          <SetupUILanguage>
-            <UILanguage>en-US</UILanguage>
+            <UILanguage>${vm_guest_os_language}</UILanguage>
          </SetupUILanguage>
-         <InputLocale>en-US</InputLocale>
-         <SystemLocale>en-US</SystemLocale>
-         <UILanguage>en-US</UILanguage>
-         <UILanguageFallback>en-US</UILanguageFallback>
-         <UserLocale>en-US</UserLocale>
+         <InputLocale>${vm_guest_os_keyboard}</InputLocale>
+         <SystemLocale>e${vm_guest_os_language}</SystemLocale>
+         <UILanguage>${vm_guest_os_language}</UILanguage>
+         <UILanguageFallback>${vm_guest_os_language}</UILanguageFallback>
+         <UserLocale>${vm_guest_os_language}</UserLocale>
       </component>
       <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-PnpCustomizationsWinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
          <DriverPaths>
@@ -123,7 +123,7 @@
             <HelpCustomized>false</HelpCustomized>
          </OEMInformation>
          <ComputerName>win-server-2019</ComputerName>
-         <TimeZone>Pacific Standard Time</TimeZone>
+         <TimeZone>${vm_guest_os_timezone}</TimeZone>
          <RegisteredOwner />
       </component>
       <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-ServerManager-SvrMgrNc" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">

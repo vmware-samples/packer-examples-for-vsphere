@@ -2,7 +2,19 @@
 
 ![Rainpole](icon.png)
 
-## Release: `21.09`
+## Release: `v21.09.1`
+September 16, 2021
+* Refactored issue templates to use GitHub custom issue forms.
+* Refactored all builds to pass the language, keyboard, and timezone to the configuration files.
+* Updated the Rocky Linux build to use UEFI; however without secure boot. 
+* Updated the defaults in `common.pkvars.hcl` to use hardware version 19, which provides the best performance and latest features available in ESXi 7.0 U2. Refer to the VMware vSphere 7.0 [product documentation](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-789C3913-1053-4850-A0F0-E29C3D32B6DA.html) if using a previous release
+* Refactored all builds with input variable definitions separated into `variables.pkr.hcl`.
+* Refactored all builds to use `<build>.auto.pkvars.hcl` for input variables the and `<build>.pkr.hcl` for the template configurations, with simplified names for `<build>`.
+* Refactored all builds to use `${path.cwd}/output/` as the path for the manifest post-processor.
+* Added disclaimers and updated descriptions in script files.
+* Updated README.md.
+
+## Release: `v21.09`
 September 7, 2021
 * Added support for Microsoft Windows Server 2022 machine image builds.
 * Refactored configuration files to be generated using templates. Reduces the number of files and passes variables into the `.pkrtpl.hcl` content.
@@ -15,7 +27,7 @@ September 7, 2021
 * Updated CONTRIBUTING.md.
 * Updated README.md.
 
-## Release: `21.08`
+## Release: `v21.08`
 August 18, 2021
 * Moved `vsphere.pkrvars.hcl` and `rhsm.pkrvars.hcl` to the `builds` directory.
 * Isolated variables to simplify updates to common settings with `builds/common.pkrvars.hcl`.
@@ -40,7 +52,7 @@ August 18, 2021
 * Added MAINTAINERS.md.
 * Updated README.md.
 
-## Release: `21.07`
+## Release: `v21.07`
 July 21, 2021
 * Added support for [VMware Photon OS](https://vmware.github.io/photon/) 4.
 * Added [support](https://github.com/rainpole/packer-vsphere/issues/18) for [AlmaLinux](http://almalinux.org) 8. 
@@ -50,6 +62,6 @@ July 21, 2021
 * Added the Packer block to all builds with `required_versions >= "1.7.3"` for Packer.
 * Added the Packer block for Windows builds with `required_plugins` and `version = "0.12.0"` for the [Windows-Update plugin](https://github.com/rgl/packer-plugin-windows-update).
 
-## Release: `20.11`
+## Release: `v20.11`
 November 26, 2020
 * Initial release.

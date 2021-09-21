@@ -237,24 +237,6 @@ ansible_key      = "<public_key>"
 ```
 >**NOTE**: A random password is generated for the Ansible user.
 
-#### **Proxy Variables**
-
-Edit the `/builds/proxy.pkvars.hcl` file to configure the following:
-
-* SOCKS proxy host to use for connecting Linux machine
-* SOCKS proxy port to use for connecting Linux machine
-* Optional username to authenticate with the proxy server
-* Optional password to authenticate with the proxy server
-
-Example: `/builds/proxy.pkvars.hcl`
-
-```
-communicator_proxy_host = "socks.rainpole.io"
-communicator_proxy_port = 1080
-communicator_proxy_username = "rainpole"
-communicator_proxy_password = "R@in!$aG00dThing."
-```
-
 #### **Common Variables**
 
 Edit the `/builds/common.pkvars.hcl` file to configure the following:
@@ -271,6 +253,22 @@ common_template_conversion     = false
 common_content_library_name    = "sfo-w01-lib01"
 common_content_library_ovf     = true
 common_content_library_destroy = true
+```
+
+#### **Proxy Variables**
+
+Edit the `/builds/proxy.pkvars.hcl` file to configure the following:
+
+* SOCKS proxy settings used for connecting to Linux machine images.
+* Credentials for the proxy server (Optional). 
+
+Example: `/builds/proxy.pkvars.hcl`
+
+```
+communicator_proxy_host     = "proxy.rainpole.io"
+communicator_proxy_port     = 1080
+communicator_proxy_username = "rainpole"
+communicator_proxy_password = "<plaintext_password>"
 ```
 
 #### **vSphere Variables**

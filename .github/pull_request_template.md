@@ -40,7 +40,7 @@ Issue Number: N/A
     Please check the one that applies to this pull request using "x". 
 -->
 
-- [ ] Tests have been been completed (for bug fixes / features).
+- [ ] Tests have been completed (for bug fixes / features).
 - [ ] Documentation has been added / updated (for bug fixes / features).
 
 **Breaking Changes?**

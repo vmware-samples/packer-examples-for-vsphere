@@ -91,6 +91,7 @@ The directory structure of the repository.
 │   ├── ansible.pkvars.hcl
 │   ├── build.pkvars.hcl
 │   ├── common.pkvars.hcl
+│   ├── proxy.pkvars.hcl
 │   ├── rhsm.pkvars.hcl
 │   ├── vsphere.pkvars.hcl
 │   ├── linux
@@ -235,6 +236,24 @@ ansible_username = "ansible"
 ansible_key      = "<public_key>"
 ```
 >**NOTE**: A random password is generated for the Ansible user.
+
+#### **Proxy Variables**
+
+Edit the `/builds/proxy.pkvars.hcl` file to configure the following:
+
+* SOCKS proxy host to use for connecting Linux machine
+* SOCKS proxy port to use for connecting Linux machine
+* Optional username to authenticate with the proxy server
+* Optional password to authenticate with the proxy server
+
+Example: `/builds/proxy.pkvars.hcl`
+
+```
+communicator_proxy_host = "socks.rainpole.io"
+communicator_proxy_port = 1080
+communicator_proxy_username = "rainpole"
+communicator_proxy_password = "R@in!$aG00dThing."
+```
 
 #### **Common Variables**
 

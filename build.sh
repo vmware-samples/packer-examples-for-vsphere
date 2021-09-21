@@ -26,6 +26,7 @@ menu_option_1() {
       -var-file="../../vsphere.pkrvars.hcl" \
       -var-file="../../build.pkrvars.hcl" \
       -var-file="../../ansible.pkrvars.hcl" \
+      -var-file="../../proxy.pkrvars.hcl" \
       -var-file="../../common.pkrvars.hcl" .
 
   ### All done. ###
@@ -56,8 +57,9 @@ menu_option_2() {
       -var-file="../../vsphere.pkrvars.hcl" \
       -var-file="../../build.pkrvars.hcl" \
       -var-file="../../ansible.pkrvars.hcl" \
+      -var-file="../../proxy.pkrvars.hcl" \
       -var-file="../../common.pkrvars.hcl" .
-      
+
   ### All done. ###
   echo "Done."
 }
@@ -86,8 +88,9 @@ menu_option_3() {
       -var-file="../../vsphere.pkrvars.hcl" \
       -var-file="../../build.pkrvars.hcl" \
       -var-file="../../ansible.pkrvars.hcl" \
+      -var-file="../../proxy.pkrvars.hcl" \
       -var-file="../../common.pkrvars.hcl" .
-      
+
   ### All done. ###
   echo "Done."
 }
@@ -116,6 +119,7 @@ menu_option_4() {
       -var-file="../../vsphere.pkrvars.hcl" \
       -var-file="../../build.pkrvars.hcl" \
       -var-file="../../ansible.pkrvars.hcl" \
+      -var-file="../../proxy.pkrvars.hcl" \
       -var-file="../../common.pkrvars.hcl" \
       -var-file="../../rhsm.pkrvars.hcl" .
 
@@ -147,6 +151,7 @@ menu_option_5() {
       -var-file="../../vsphere.pkrvars.hcl" \
       -var-file="../../build.pkrvars.hcl" \
       -var-file="../../ansible.pkrvars.hcl" \
+      -var-file="../../proxy.pkrvars.hcl" \
       -var-file="../../common.pkrvars.hcl" .
 
   ### All done. ###
@@ -177,6 +182,7 @@ menu_option_6() {
       -var-file="../../vsphere.pkrvars.hcl" \
       -var-file="../../build.pkrvars.hcl" \
       -var-file="../../ansible.pkrvars.hcl" \
+      -var-file="../../proxy.pkrvars.hcl" \
       -var-file="../../common.pkrvars.hcl" .
 
   ### All done. ###
@@ -203,6 +209,7 @@ menu_option_7() {
       -var-file="../../vsphere.pkrvars.hcl" \
       -var-file="../../build.pkrvars.hcl" \
       -var-file="../../ansible.pkrvars.hcl" \
+      -var-file="../../proxy.pkrvars.hcl" \
       -var-file="../../common.pkrvars.hcl" .
 
   ### All done. ###
@@ -233,6 +240,7 @@ menu_option_8() {
       -var-file="../../vsphere.pkrvars.hcl" \
       -var-file="../../build.pkrvars.hcl" \
       -var-file="../../ansible.pkrvars.hcl" \
+      -var-file="../../proxy.pkrvars.hcl" \
       -var-file="../../common.pkrvars.hcl" .
 
   ### All done. ###
@@ -293,7 +301,7 @@ menu_option_10() {
       -var-file="../../vsphere.pkrvars.hcl" \
       -var-file="../../build.pkrvars.hcl" \
       -var-file="../../common.pkrvars.hcl" .
-      
+
   ### All done. ###
   echo "Done."
 }
@@ -323,7 +331,7 @@ menu_option_11() {
       -var-file="../../vsphere.pkrvars.hcl" \
       -var-file="../../build.pkrvars.hcl" \
       -var-file="../../common.pkrvars.hcl" .
-      
+
   ### All done. ###
   echo "Done."
 }
@@ -382,7 +390,7 @@ menu_option_13() {
       -var-file="../../vsphere.pkrvars.hcl" \
       -var-file="../../build.pkrvars.hcl" \
       -var-file="../../common.pkrvars.hcl" .
-      
+
   ### All done. ###
   echo "Done."
 }
@@ -412,7 +420,7 @@ menu_option_14() {
       -var-file="../../vsphere.pkrvars.hcl" \
       -var-file="../../build.pkrvars.hcl" \
       -var-file="../../common.pkrvars.hcl" .
-      
+
   ### All done. ###
   echo "Done."
 }
@@ -471,7 +479,7 @@ menu_option_16() {
       -var-file="../../vsphere.pkrvars.hcl" \
       -var-file="../../build.pkrvars.hcl" \
       -var-file="../../common.pkrvars.hcl" .
-      
+
   ### All done. ###
   echo "Done."
 }
@@ -501,7 +509,7 @@ menu_option_17() {
       -var-file="../../vsphere.pkrvars.hcl" \
       -var-file="../../build.pkrvars.hcl" \
       -var-file="../../common.pkrvars.hcl" .
-      
+
   ### All done. ###
   echo "Done."
 }
@@ -538,7 +546,7 @@ until [ "$selection" = "0" ]; do
   echo "  / /_/ / __  / ___/ //_/ _ \/ ___/  / __  / / / / / / __  / ___/ "
   echo " / ____/ /_/ / /__/ ,< /  __/ /     / /_/ / /_/ / / / /_/ (__  )  "
   echo "/_/    \__,_/\___/_/|_|\___/_/     /_____/\__,_/_/_/\__,_/____/   "
-  echo ""                                                                
+  echo ""
   echo -n "  Select a HashiCorp Packer build for VMware vSphere:"
   echo ""
   echo ""
@@ -561,7 +569,7 @@ until [ "$selection" = "0" ]; do
   echo "    	12  -  Windows Server 2019 - All"
   echo "    	13  -  Windows Server 2019 - Standard Only"
   echo "    	14  -  Windows Server 2019 - Datacenter Only"
-  echo "    	15  -  Windows Server 2016 - All" 
+  echo "    	15  -  Windows Server 2016 - All"
   echo "    	16  -  Windows Server 2016 - Standard Only"
   echo "    	17  -  Windows Server 2016 - Datacenter Only"
   echo ""

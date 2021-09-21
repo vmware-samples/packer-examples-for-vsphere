@@ -1,5 +1,5 @@
 /*
-    DESCRIPTION: 
+    DESCRIPTION:
     CentOS Linux 8 variables using the Packer Builder for VMware vSphere (vsphere-iso).
 */
 
@@ -291,6 +291,31 @@ variable "build_key" {
   type        = string
   description = "The public key to login to the guest operating system."
   sensitive   = true
+}
+
+variable "communicator_proxy_host" {
+  type        = string
+  description = "A SOCKS proxy host to use for SSH connection."
+  default     = null
+}
+
+variable "communicator_proxy_port" {
+  type        = number
+  description = "A port of the SOCKS proxy."
+  default     = null
+}
+
+variable "communicator_proxy_username" {
+  type        = string
+  description = "The optional username to authenticate with the proxy server."
+  default     = null
+}
+
+variable "communicator_proxy_password" {
+  type        = string
+  description = "The optional password to use to authenticate with the proxy server."
+  sensitive   = true
+  default     = null
 }
 
 variable "communicator_port" {

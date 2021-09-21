@@ -1,5 +1,5 @@
 /*
-    DESCRIPTION: 
+    DESCRIPTION:
     CentOS Linux 8 template using the Packer Builder for VMware vSphere (vsphere-iso).
 */
 
@@ -90,10 +90,13 @@ source "vsphere-iso" "linux-centos-linux" {
 
   // Template and Content Library Settings
   convert_to_template = var.common_template_conversion
-  content_library_destination {
-    library = var.common_content_library_name
-    ovf     = var.common_content_library_ovf
-    destroy = var.common_content_library_destroy
+  dynamic "content_library_destination" {
+    for_each = var.common_content_library_name != null ? [1] : []
+    content {
+      library = var.common_content_library_name
+      ovf     = var.common_content_library_ovf
+      destroy = var.common_content_library_destroy
+    }
   }
 }
 

@@ -1,5 +1,5 @@
 /*
-    DESCRIPTION: 
+    DESCRIPTION:
     Ubuntu Server 20.04 LTS variables using the Packer Builder for VMware vSphere (vsphere-iso).
 */
 
@@ -193,6 +193,7 @@ variable "common_template_conversion" {
 variable "common_content_library_name" {
   type        = string
   description = "The name of the target vSphere content library, if used. (e.g. 'sfo-w01-cl01-lib01')"
+  default     = null
 }
 
 variable "common_content_library_ovf" {

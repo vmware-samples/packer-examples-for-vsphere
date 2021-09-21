@@ -17,13 +17,13 @@ In order to have a good experience with our community, we recommend that you rea
 - [ ] This is a code style / formatting update.
 - [ ] This is a documentation update.
 - [ ] This is a refactoring update.
-- [ ] This is a something else.
+- [ ] This is something else.
       Please describe:
 
 **Context of the Pull Request***
 
 <!-- 
-    Please describe the current behavior that you are modifying, or link to a relevant issue. 
+    Please describe the current behavior that you are modifying or link to a relevant issue. 
 -->
 
 **Related to Existing Issues**

@@ -1,29 +1,29 @@
 # CentOS Stream 8
-install
+
+cdrom
+text
 eula --agreed
-lang ${vm_guest_os_language}
 keyboard ${vm_guest_os_keyboard}
+lang ${vm_guest_os_language}
 timezone ${vm_guest_os_timezone}
 rootpw --lock
 user --name=${build_username} --iscrypted --password=${build_password_encrypted} --groups=wheel
-cdrom
-reboot --eject
-bootloader --location=mbr --append="rhgb quiet crashkernel=auto"
+bootloader --location=mbr
 zerombr
-autopart
 clearpart --all --initlabel
-auth --passalgo=sha512 --useshadow
+autopart --type=lvm
 network --bootproto=dhcp
+services --enabled=NetworkManager,sshd
 firewall --enabled --ssh
 skipx
-selinux --enforcing
-firstboot --disable
-services --enabled=NetworkManager,sshd
+reboot
+
+%packages --ignoremissing --excludedocs
+@core
+-iwl*firmware
+%end
+
 %post
 yum install -y sudo open-vm-tools perl
 echo "${build_username} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/${build_username}
 sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
-%end
-%packages
-@^server-product-environment
-%end

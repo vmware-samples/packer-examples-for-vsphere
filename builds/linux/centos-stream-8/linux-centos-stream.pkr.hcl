@@ -76,7 +76,7 @@ source "vsphere-iso" "linux-centos-stream" {
   }
   boot_order       = var.vm_boot_order
   boot_wait        = var.vm_boot_wait
-  boot_command     = ["up", "e", "<down><down><end><wait>", "text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg", "<enter><wait><leftCtrlOn>x<leftCtrlOff>"]
+  boot_command     = ["up", "e", "<down><down><end><wait>", "text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg", "<enter><wait><leftCtrlOn>x<leftCtrlOff>"]
   ip_wait_timeout  = var.common_ip_wait_timeout
   shutdown_command = "echo '${var.build_password}' | sudo -S -E shutdown -P now"
   shutdown_timeout = var.common_shutdown_timeout

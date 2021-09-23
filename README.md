@@ -66,7 +66,8 @@ The following builds are available:
   - **oscdimg** (Windows: requires Windows ADK)
 
 **Platform**:
-* vSphere 7.0 Update 2 or higher.
+* VMware Cloud Foundation 4.2 or higher, or
+* VMware vSphere 7.0 Update 2 or higher
 
 ## Configuration
 

@@ -27,3 +27,4 @@ reboot
 yum install -y sudo open-vm-tools perl
 echo "${build_username} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/${build_username}
 sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
+%end

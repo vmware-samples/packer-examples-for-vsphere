@@ -5,14 +5,14 @@
 */
 
 // vSphere Credentials
-vsphere_endpoint            = "sfo-w01-vc01.sfo.rainpole.io"
-vsphere_username            = "svc-packer-vsphere@rainpole.io"
-vsphere_password            = "R@in!$aG00dThing."
+vsphere_endpoint            = "r2c1-vcsa.vcf.vxrail.local"
+vsphere_username            = "administrator@vsphere.local"
+vsphere_password            = "Vx5eals!!"
 vsphere_insecure_connection = true
 
 // vSphere Settings
-vsphere_datacenter = "sfo-w01-dc01"
-vsphere_cluster    = "sfo-w01-cl01"
-vsphere_datastore  = "sfo-w01-cl01-ds-vsan01"
-vsphere_network    = "sfo-w01-seg-dhcp"
-vsphere_folder     = "sfo-w01-fd-templates"
+vsphere_datacenter = "vxrail-datacenter"
+vsphere_cluster    = "vxrail-main-cluster"
+vsphere_datastore  = "vxrail-vsan-ds"
+vsphere_network    = "workload-net"
+vsphere_folder     = "Templates"

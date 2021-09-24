@@ -30,7 +30,7 @@ vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
 iso_file     = "iso-linux-centos-linux-8.iso"
-iso_checksum = "ff1164dc26ba47616f2b26a18158398a7d7930487770a8bb9e573d5758e01255ebc11db68c22976abe684a857083a0fae445e9d41d11a24a2073cdb1b500ae9a"
+iso_checksum = "a0dddb520aaaad912c4cb109a0d43c5d913ad9227a92730abf6ed56bd359b6077e67e896ae8d49b5d9bb9b87a8c73ed6fae05e30176813df243f8955d894ad2d"
 
 // Boot Settings
 vm_boot_order  = "disk,cdrom"

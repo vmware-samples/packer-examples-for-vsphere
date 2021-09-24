@@ -6,7 +6,7 @@
 */
 
 // Default Account Credentials
-build_username           = "rainpole"
-build_password           = "R@in!$aG00dThing."
-build_password_encrypted = "$6$jqoxlQyW2ROxsLK4$P3gGp2Bf0FCSLAZTNaE/LZBqSsvVAYZNPNwTehXZbMAhRJdKOjNqqyUWVUTwql9CnhHUlpiluWzHlR2DpUKD4/"
-build_key                = "ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBADwXV3rbRCWwhSr6aMkHukV5O7OGAEyUtAerj2anJHm3mwbOxlBU/uO4f0ELqo2GJcTALMC0aFrbvu9qonIH5VF7wBBfCP1cS5B92sUagVV9ldI/uo89e/7dVYC9maPsFaZq2G0/PLU0hZKOohq99Oxc2RMSiJaaenX/hNqx5xYSaK+CA== code@rainpole.io"
+build_username           = "packer"
+build_password           = "Sup3rC0mP!exP@s5"
+build_password_encrypted = "$6$rounds=4096$HmEVOKNb8EqErgWa$8tSdXVxN/VVTQAk5NFQ4Ri7Jm4NrtXicaj/Fz1D.hE8Iqt5sgk.vdT6XxuWefMV4lVrHCmU8gRhvNIGiC5uDM/"
+build_key                = "ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBACL+/S7t6qKHiO4P+7yptfIJUExLPfcLRZE3z8IYb8CfCDBSKhlvTdtua68TT6leDf70H2vlyEMWVhF/EVS5WsDjQGnLa0qwqoQLgM7jrPvdlHxic3PRBx+O+TL/ubcn0a1tN2YjGBrSE6xSMiOf93fXy4QkninhN0+kjm45EBrDAzHKg== packer@geos.lab"

@@ -237,6 +237,11 @@ variable "iso_checksum" {
 
 // Boot Settings
 
+variable "common_http_bind_address" {
+  type        = string
+  description = "Force IP to use for http server."
+}
+
 variable "common_http_port_min" {
   type        = number
   description = "The start of the HTTP port range."

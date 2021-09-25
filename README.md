@@ -92,6 +92,7 @@ The directory structure of the repository.
 │   ├── ansible.pkvars.hcl
 │   ├── build.pkvars.hcl
 │   ├── common.pkvars.hcl
+│   ├── proxy.pkvars.hcl
 │   ├── rhsm.pkvars.hcl
 │   ├── vsphere.pkvars.hcl
 │   ├── linux
@@ -255,6 +256,38 @@ common_content_library_ovf     = true
 common_content_library_destroy = true
 ```
 
+#### **Proxy Variables**
+
+Edit the `/builds/proxy.pkvars.hcl` file to configure the following:
+
+* SOCKS proxy settings used for connecting to Linux machine images.
+* Credentials for the proxy server (Optional). 
+
+Example: `/builds/proxy.pkvars.hcl`
+
+```
+communicator_proxy_host     = "proxy.rainpole.io"
+communicator_proxy_port     = 1080
+communicator_proxy_username = "rainpole"
+communicator_proxy_password = "<plaintext_password>"
+```
+#### **Red Hat Subscription Manager Variables**
+
+Edit the `/builds/redhat.pkvars.hcl` file to configure the following:
+
+* Credentials for your Red Hat Subscription Manager account. 
+
+Example: `/builds/redhat.pkvars.hcl`
+
+```
+rhsm_username = "rainpole"
+rhsm_password = "<plaintext_password>"
+```
+
+These variables are **only** used if you are performing a Red Hat Enterprise Linux Server build to register the image with Red Hat Subscription Manager and run a `sudo yum update -y` within the shell provisioner. Before the build completes, the machine image is unregistered from Red Hat Subscription Manager.
+
+
+
 #### **vSphere Variables**
 
 Edit the `/buils/vsphere.pkvars.hcl` file to configure the following:
@@ -276,21 +309,6 @@ vsphere_network              = "sfo-w01-seg-dhcp"
 vsphere_folder               = "sfo-w01-fd-templates"
 ```
 
-#### **Red Hat Subscription Manager Variables**
-
-Edit the `/builds/redhat.pkvars.hcl` file to configure the following:
-
-* Credentials for your Red Hat Subscription Manager account. 
-
-Example: `/builds/redhat.pkvars.hcl`
-
-```
-rhsm_username = "rainpole"
-rhsm_password = "<plaintext_password>"
-```
-
-These variables are **only** used if you are performing a Red Hat Enterprise Linux Server build to register the image with Red Hat Subscription Manager and run a `sudo yum update -y` within the shell provisioner. Before the build completes, the machine image is unregistered from Red Hat Subscription Manager.
-
 #### **Machine Image Variables**
 
 Edit the `*.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder to configure the following virtual machine hardware settings, as required:
@@ -309,6 +327,18 @@ Edit the `*.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder to conf
 Some of the variables may include sensitive information and environmental data that you would prefer not to save to clear text files. You can add there to environmental variables using the example below:
 
 ```
+export PKR_VAR_ansible_username="<ansible_password>"
+export PKR_VAR_ansible_key="<ansible_key>"
+export PKR_VAR_build_username="<build_password>"
+export PKR_VAR_build_password="<build_password>"
+export PKR_VAR_build_password="<build_password_encrypted>"
+export PKR_VAR_build_key="<build_key>"
+export PKR_VAR_communicator_proxy_host = "<communicator_proxy_host>"
+export PKR_VAR_communicator_proxy_port = "<communicator_proxy_port>"
+export PKR_VAR_communicator_proxy_username = "<communicator_proxy_username>"
+export PKR_VAR_communicator_proxy_password = "communicator_proxy_password>"
+export PKR_VAR_rhsm_username="<rhsm_password>"
+export PKR_VAR_rhsm_password="<rhsm_password>"
 export PKR_VAR_vsphere_endpoint="<vsphere_endpoint_fqdn>"
 export PKR_VAR_vsphere_username="<vsphere_username>"
 export PKR_VAR_vsphere_password="<vsphere_password>"
@@ -317,14 +347,6 @@ export PKR_VAR_vsphere_cluster="<vsphere_cluster>"
 export PKR_VAR_vsphere_datastore="<vsphere_datastore>>"
 export PKR_VAR_vsphere_network="<vsphere_network>"
 export PKR_VAR_vsphere_folder="<vsphere_folder>"
-export PKR_VAR_build_username="<build_password>"
-export PKR_VAR_build_password="<build_password>"
-export PKR_VAR_build_password="<build_password_encrypted>"
-export PKR_VAR_build_key="<build_key>"
-export PKR_VAR_ansible_username="<ansible_password>"
-export PKR_VAR_ansible_key="<ansible_key>"
-export PKR_VAR_rhsm_username="<rhsm_password>"
-export PKR_VAR_rhsm_password="<rhsm_password>"
 
 ```
 ## Step 4 - Modify the Configurations and Scripts

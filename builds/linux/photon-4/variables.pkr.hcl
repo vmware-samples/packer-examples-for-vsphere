@@ -276,6 +276,31 @@ variable "build_key" {
   sensitive   = true
 }
 
+variable "communicator_proxy_host" {
+  type        = string
+  description = "A SOCKS proxy host to use for SSH connection."
+  default     = null
+}
+
+variable "communicator_proxy_port" {
+  type        = number
+  description = "A port of the SOCKS proxy."
+  default     = null
+}
+
+variable "communicator_proxy_username" {
+  type        = string
+  description = "The optional username to authenticate with the proxy server."
+  default     = null
+}
+
+variable "communicator_proxy_password" {
+  type        = string
+  description = "The optional password to use to authenticate with the proxy server."
+  sensitive   = true
+  default     = null
+}
+
 variable "communicator_port" {
   type        = string
   description = "The port for the communicator protocol."

@@ -82,11 +82,15 @@ source "vsphere-iso" "linux-centos-stream" {
   shutdown_timeout = var.common_shutdown_timeout
 
   // Communicator Settings and Credentials
-  communicator = "ssh"
-  ssh_username = var.build_username
-  ssh_password = var.build_password
-  ssh_port     = var.communicator_port
-  ssh_timeout  = var.communicator_timeout
+  communicator       = "ssh"
+  ssh_proxy_host     = var.communicator_proxy_host
+  ssh_proxy_port     = var.communicator_proxy_port
+  ssh_proxy_username = var.communicator_proxy_username
+  ssh_proxy_password = var.communicator_proxy_password
+  ssh_username       = var.build_username
+  ssh_password       = var.build_password
+  ssh_port           = var.communicator_port
+  ssh_timeout        = var.communicator_timeout
 
   // Template and Content Library Settings
   convert_to_template = var.common_template_conversion

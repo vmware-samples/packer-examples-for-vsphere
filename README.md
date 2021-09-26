@@ -170,13 +170,17 @@ The files are distributed in the following directories.
 
 The [variables][packer-variables] are defined in `.pkvars.hcl` files.
 
+#### **Copy the default Variables**
+
+Run config script `./config.sh` to copy the default variables in `config` folder.
+
 #### **Build Variables**
 
-Edit the `/builds/build.pkvars.hcl` file to configure the following:
+Edit the `/config/build.pkvars.hcl` file to configure the following:
 
 * Credentials for the default account on machine images. 
 
-Example: `/builds/build.pkvars.hcl`
+Example: `/config/build.pkvars.hcl`
 
 ```
 build_username           = "rainpole"
@@ -226,11 +230,11 @@ The content of the public key, `build_key`,  is added the key to the `.ssh/autho
 
 #### **Ansible Variables**
 
-Edit the `/builds/ansible.pkvars.hcl` file to configure the following:
+Edit the `/config/ansible.pkvars.hcl` file to configure the following:
 
 * Credentials for the Ansible account on Linux machine images. 
 
-Example: `/builds/ansible.pkvars.hcl`
+Example: `/config/ansible.pkvars.hcl`
 
 ```
 ansible_username = "ansible"
@@ -240,14 +244,14 @@ ansible_key      = "<public_key>"
 
 #### **Common Variables**
 
-Edit the `/builds/common.pkvars.hcl` file to configure the following:
+Edit the `/config/common.pkvars.hcl` file to configure the following:
 
 * Common Virtual Machine Settings
 * Common Template and Content Library Settings
 * Common Removable Media Settings
 * Common Boot and Provisioning Settings
 
-Example: `/builds/common.pkvars.hcl`
+Example: `/config/common.pkvars.hcl`
 
 ```
 common_template_conversion     = false
@@ -258,12 +262,12 @@ common_content_library_destroy = true
 
 #### **Proxy Variables**
 
-Edit the `/builds/proxy.pkvars.hcl` file to configure the following:
+Edit the `/config/proxy.pkvars.hcl` file to configure the following:
 
 * SOCKS proxy settings used for connecting to Linux machine images.
 * Credentials for the proxy server (Optional). 
 
-Example: `/builds/proxy.pkvars.hcl`
+Example: `/config/proxy.pkvars.hcl`
 
 ```
 communicator_proxy_host     = "proxy.rainpole.io"
@@ -273,11 +277,11 @@ communicator_proxy_password = "<plaintext_password>"
 ```
 #### **Red Hat Subscription Manager Variables**
 
-Edit the `/builds/redhat.pkvars.hcl` file to configure the following:
+Edit the `/config/redhat.pkvars.hcl` file to configure the following:
 
 * Credentials for your Red Hat Subscription Manager account. 
 
-Example: `/builds/redhat.pkvars.hcl`
+Example: `/config/redhat.pkvars.hcl`
 
 ```
 rhsm_username = "rainpole"
@@ -295,7 +299,7 @@ Edit the `/buils/vsphere.pkvars.hcl` file to configure the following:
 * vSphere Endpoint and Credentials
 * vSphere Settings
 
-Example: `/builds/vsphere.pkvars.hcl`
+Example: `/config/vsphere.pkvars.hcl`
 
 ```
 vsphere_endpoint             = "sfo-w01-vc01.sfo.rainpole.io"

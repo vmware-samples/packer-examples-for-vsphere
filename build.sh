@@ -1,12 +1,24 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-BASEDIR=$(pwd)
+set -e
+
+follow_link() {
+  FILE="$1"
+  while [ -h "$FILE" ]; do
+    # On Mac OS, readlink -f doesn't work.
+    FILE="$(readlink "$FILE")"
+  done
+  echo "$FILE"
+}
+
+SCRIPT_PATH=$(realpath "$(dirname "$(follow_link "$0")")")
+CONFIG_PATH=$(realpath "${1:-${SCRIPT_PATH}/config}")
 
 menu_option_1() {
-  cd builds/linux/photon-4/
+  cd "$SCRIPT_PATH"/builds/linux/photon-4/
   echo -e "\nCONFIRM: Build a VMware Photon OS 4 Template for VMware vSphere."
   echo -e "\nContinue? (y/n)"
-  read REPLY
+  read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
     exit 1
@@ -23,21 +35,21 @@ menu_option_1() {
   ### Apply the HashiCorp Packer Build ###
   echo "Applying the HashiCorp Packer Build ..."
   packer build -force \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../ansible.pkrvars.hcl" \
-      -var-file="../../proxy.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" .
 
   ### All done. ###
   echo "Done."
 }
 
 menu_option_2() {
-  cd builds/linux/ubuntu-server-20-04-lts/
+  cd "$SCRIPT_PATH"/builds/linux/ubuntu-server-20-04-lts/
   echo -e "\nCONFIRM: Build a Ubuntu Server 20.04 LTS Template for VMware vSphere."
   echo -e "\nContinue? (y/n)"
-  read REPLY
+  read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
     exit 1
@@ -54,21 +66,21 @@ menu_option_2() {
   ### Apply the HashiCorp Packer Build ###
   echo "Applying the HashiCorp Packer Build ..."
   packer build -force \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../ansible.pkrvars.hcl" \
-      -var-file="../../proxy.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" .
 
   ### All done. ###
   echo "Done."
 }
 
 menu_option_3() {
-  cd builds/linux/ubuntu-server-18-04-lts/
+  cd "$SCRIPT_PATH"/builds/linux/ubuntu-server-18-04-lts/
   echo -e "\nCONFIRM: Build a Ubuntu Server 18.04 LTS Template for VMware vSphere."
   echo -e "\nContinue? (y/n)"
-  read REPLY
+  read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
     exit 1
@@ -85,21 +97,21 @@ menu_option_3() {
   ### Apply the HashiCorp Packer Build ###
   echo "Applying the HashiCorp Packer Build ..."
   packer build -force \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../ansible.pkrvars.hcl" \
-      -var-file="../../proxy.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" .
 
   ### All done. ###
   echo "Done."
 }
 
 menu_option_4() {
-  cd builds/linux/redhat-linux-8/
+  cd "$SCRIPT_PATH"/builds/linux/redhat-linux-8/
   echo -e "\nCONFIRM: Build a Red Hat Enerprise Linux 8 Server Template for VMware vSphere."
   echo -e "\nContinue? (y/n)"
-  read REPLY
+  read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
     exit 1
@@ -116,22 +128,22 @@ menu_option_4() {
   ### Apply the HashiCorp Packer Build ###
   echo "Applying the HashiCorp Packer Build ..."
   packer build -force \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../ansible.pkrvars.hcl" \
-      -var-file="../../proxy.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" \
-      -var-file="../../rhsm.pkrvars.hcl" .
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/rhsm.pkrvars.hcl" .
 
   ### All done. ###
   echo "Done."
 }
 
 menu_option_5() {
-  cd builds/linux/almalinux-8/
+  cd "$SCRIPT_PATH"/builds/linux/almalinux-8/
   echo -e "\nCONFIRM: Build an AlmaLinux 8 Template for VMware vSphere."
   echo -e "\nContinue? (y/n)"
-  read REPLY
+  read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
     exit 1
@@ -148,21 +160,21 @@ menu_option_5() {
   ### Apply the HashiCorp Packer Build ###
   echo "Starting the HashiCorp Packer build ..."
   packer build -force \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../ansible.pkrvars.hcl" \
-      -var-file="../../proxy.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" .
 
   ### All done. ###
   echo "Done."
 }
 
 menu_option_6() {
-  cd builds/linux/rocky-linux-8/
+  cd "$SCRIPT_PATH"/builds/linux/rocky-linux-8/
   echo -e "\nCONFIRM: Build a Rocky Linux 8 Template for VMware vSphere."
   echo -e "\nContinue? (y/n)"
-  read REPLY
+  read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
     exit 1
@@ -179,21 +191,21 @@ menu_option_6() {
   ### Apply the HashiCorp Packer Build ###
   echo "Starting the HashiCorp Packer build ..."
   packer build -force \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../ansible.pkrvars.hcl" \
-      -var-file="../../proxy.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" .
 
   ### All done. ###
   echo "Done."
 }
 
 menu_option_7() {
-  cd builds/linux/centos-stream-8/
+  cd "$SCRIPT_PATH"/builds/linux/centos-stream-8/
   echo -e "\nCONFIRM: Build a CentOS Stream 8 Template for VMware vSphere."
   echo -e "\nContinue? (y/n)"
-  read REPLY
+  read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
     exit 1
@@ -206,21 +218,21 @@ menu_option_7() {
   ### Apply the HashiCorp Packer Build ###
   echo "Starting the HashiCorp Packer build ..."
   packer build -force \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../ansible.pkrvars.hcl" \
-      -var-file="../../proxy.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" .
 
   ### All done. ###
   echo "Done."
 }
 
 menu_option_8() {
-  cd builds/linux/centos-linux-8/
+  cd "$SCRIPT_PATH"/builds/linux/centos-linux-8/
   echo -e "\nCONFIRM: Build a CentOS Linux 8 Template for VMware vSphere."
   echo -e "\nContinue? (y/n)"
-  read REPLY
+  read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
     exit 1
@@ -237,21 +249,21 @@ menu_option_8() {
   ### Apply the HashiCorp Packer Build ###
   echo "Starting the HashiCorp Packer build ..."
   packer build -force \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../ansible.pkrvars.hcl" \
-      -var-file="../../proxy.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" .
 
   ### All done. ###
   echo "Done."
 }
 
 menu_option_9() {
-  cd builds/windows/windows-server-2022/
+  cd "$SCRIPT_PATH"/builds/windows/windows-server-2022/
   echo -e "\nCONFIRM: Build all Microsoft Windows Server 2022 Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
-  read REPLY
+  read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
     exit 1
@@ -268,19 +280,19 @@ menu_option_9() {
   ### Apply the HashiCorp Packer Build ###
   echo "Starting the HashiCorp Packer build ..."
   packer build -force \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" .
 
   ### All done. ###
   echo "Done."
 }
 
 menu_option_10() {
-  cd builds/windows/windows-server-2022/
+  cd "$SCRIPT_PATH"/builds/windows/windows-server-2022/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2022 Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
-  read REPLY
+  read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
     exit 1
@@ -298,19 +310,19 @@ menu_option_10() {
   echo "Starting the HashiCorp Packer build ..."
   packer build -force \
       --only vsphere-iso.windows-server-standard-dexp,vsphere-iso.windows-server-standard-core \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" .
 
   ### All done. ###
   echo "Done."
 }
 
 menu_option_11() {
-  cd builds/windows/windows-server-2022/
+  cd "$SCRIPT_PATH"/builds/windows/windows-server-2022/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2022 Datacenter Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
-  read REPLY
+  read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
     exit 1
@@ -328,19 +340,19 @@ menu_option_11() {
   echo "Starting the HashiCorp Packer build ..."
   packer build -force \
       --only vsphere-iso.windows-server-datacenter-dexp,vsphere-iso.windows-server-datacenter-core \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" .
 
   ### All done. ###
   echo "Done."
 }
 
 menu_option_12() {
-  cd builds/windows/windows-server-2019/
+  cd "$SCRIPT_PATH"/builds/windows/windows-server-2019/
   echo -e "\nCONFIRM: Build all Microsoft Windows Server 2019 Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
-  read REPLY
+  read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
     exit 1
@@ -357,19 +369,19 @@ menu_option_12() {
   ### Apply the HashiCorp Packer Build ###
   echo "Starting the HashiCorp Packer build ..."
   packer build -force \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" .
 
   ### All done. ###
   echo "Done."
 }
 
 menu_option_13() {
-  cd builds/windows/windows-server-2019/
+  cd "$SCRIPT_PATH"/builds/windows/windows-server-2019/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2019 Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
-  read REPLY
+  read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
     exit 1
@@ -387,19 +399,19 @@ menu_option_13() {
   echo "Starting the HashiCorp Packer build ..."
   packer build -force \
       --only vsphere-iso.windows-server-standard-dexp,vsphere-iso.windows-server-standard-core \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" .
 
   ### All done. ###
   echo "Done."
 }
 
 menu_option_14() {
-  cd builds/windows/windows-server-2019/
+  cd "$SCRIPT_PATH"/builds/windows/windows-server-2019/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2019 Datacenter Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
-  read REPLY
+  read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
     exit 1
@@ -417,19 +429,19 @@ menu_option_14() {
   echo "Starting the HashiCorp Packer build ..."
   packer build -force \
       --only vsphere-iso.windows-server-datacenter-dexp,vsphere-iso.windows-server-datacenter-core \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" .
 
   ### All done. ###
   echo "Done."
 }
 
 menu_option_15() {
-  cd builds/windows/windows-server-2016/
+  cd "$SCRIPT_PATH"/builds/windows/windows-server-2016/
   echo -e "\nCONFIRM: Build all Microsoft Windows Server 2016 Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
-  read REPLY
+  read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
     exit 1
@@ -446,19 +458,19 @@ menu_option_15() {
   ### Apply the HashiCorp Packer Build ###
   echo "Starting the HashiCorp Packer build ..."
   packer build -force \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" .
 
   ### All done. ###
   echo "Done."
 }
 
 menu_option_16() {
-  cd builds/windows/windows-server-2016/
+  cd "$SCRIPT_PATH"/builds/windows/windows-server-2016/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2016 Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
-  read REPLY
+  read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
     exit 1
@@ -476,19 +488,19 @@ menu_option_16() {
   echo "Starting the HashiCorp Packer build ..."
   packer build -force \
       --only vsphere-iso.windows-server-standard-dexp,vsphere-iso.windows-server-standard-core \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" .
 
   ### All done. ###
   echo "Done."
 }
 
 menu_option_17() {
-  cd builds/windows/windows-server-2016/
+  cd "$SCRIPT_PATH"/builds/windows/windows-server-2016/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2016 Datacenter Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
-  read REPLY
+  read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
     exit 1
@@ -506,18 +518,18 @@ menu_option_17() {
   echo "Starting the HashiCorp Packer build ..."
   packer build -force \
       --only vsphere-iso.windows-server-datacenter-dexp,vsphere-iso.windows-server-datacenter-core \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" .
 
   ### All done. ###
   echo "Done."
 }
 
 press_enter() {
-  cd "$BASEDIR"
+  cd "$SCRIPT_PATH"
   echo -n "Press Enter to continue."
-  read
+  read -r
   clear
 }
 
@@ -531,7 +543,7 @@ info() {
   echo "HashiCorp Packer Plugin for Windows Update >= 0.14.0"
   echo ""
   echo "For more information, visit review the README.md."
-  read
+  read -r
 }
 
 incorrect_selection() {
@@ -578,7 +590,7 @@ until [ "$selection" = "0" ]; do
   echo "        I   -  Information"
   echo "        Q   -  Quit"
   echo ""
-  read selection
+  read -r selection
   echo ""
   case $selection in
     1 ) clear ; menu_option_1 ; press_enter ;;

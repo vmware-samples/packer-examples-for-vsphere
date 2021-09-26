@@ -9,5 +9,5 @@ packer_cache/
 crash.log
 
 # Configurations
-## Ignore custom configurations
+## Ignore custom configurations.
 config/

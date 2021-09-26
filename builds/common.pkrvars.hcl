@@ -1,5 +1,5 @@
 /*
-    DESCRIPTION: 
+    DESCRIPTION:
     Common variables used for all builds.
     - Variables are use by the source blocks.
 */
@@ -21,6 +21,7 @@ common_iso_path      = "iso"
 common_iso_hash      = "sha512"
 
 // Boot and Provisioning Settings
+common_data_source      = "http"
 common_http_port_min    = 8000
 common_http_port_max    = 8099
 common_ip_wait_timeout  = "20m"

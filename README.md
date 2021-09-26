@@ -64,6 +64,7 @@ The following builds are available:
   - **mkisofs** (Ubuntu: `apt-get install mkisofs`)
   - **hdiutil** (macOS)
   - **oscdimg** (Windows: requires Windows ADK)
+* Coreutils (macOS `brew install coreutils`)
 
 **Platform**:
 * VMware Cloud Foundation 4.2 or higher, or
@@ -89,12 +90,12 @@ The directory structure of the repository.
 ├── NOTICE
 ├── README.md
 ├── builds
-│   ├── ansible.pkvars.hcl
-│   ├── build.pkvars.hcl
-│   ├── common.pkvars.hcl
-│   ├── proxy.pkvars.hcl
-│   ├── rhsm.pkvars.hcl
-│   ├── vsphere.pkvars.hcl
+│   ├── ansible.pkvars.hcl.example
+│   ├── build.pkvars.hcl.example
+│   ├── common.pkvars.hcl.example
+│   ├── proxy.pkvars.hcl.example
+│   ├── rhsm.pkvars.hcl.example
+│   ├── vsphere.pkvars.hcl.example
 │   ├── linux
 │   │   └── distribution-version
 │   │       ├── *.pkr.hcl
@@ -170,9 +171,9 @@ The files are distributed in the following directories.
 
 The [variables][packer-variables] are defined in `.pkvars.hcl` files.
 
-#### **Copy the default Variables**
+#### **Copy the Example Variables**
 
-Run config script `./config.sh` to copy the default variables in `config` folder.
+Run the config script `./config.sh` to copy the `.pkvars.hcl.example` files to the `config` directory.
 
 #### **Build Variables**
 
@@ -185,7 +186,7 @@ Example: `/config/build.pkvars.hcl`
 ```
 build_username           = "rainpole"
 build_password           = "<plaintext_password>"
-build_password_encrypted = "<sha512_encrypted_password >"
+build_password_encrypted = "<sha512_encrypted_password>"
 build_key                = "<public_key>"
 ```
 

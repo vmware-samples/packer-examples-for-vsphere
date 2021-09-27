@@ -128,7 +128,7 @@ build {
   }
 
   provisioner "ansible-local" {
-    playbook_file   = "C:\Users\allan\Documents\Dev\Repositories\packer-vsphere\scripts\ansible\pkplay.yml"
+    playbook_file   = "../../../scripts/ansible/pkplay.yml"
   }
 
   post-processor "manifest" {

@@ -1,0 +1,44 @@
+---
+- name: "pkplay.yml"
+  hosts: localhost
+  gather_facts: yes
+  become: yes
+  tasks:
+    - name: Install epel repo (RedHat)
+      dnf:
+        name: "epel-release"
+        state: latest
+      when: ansible_os_family == "RedHat"
+
+    - name: Upgrade all packages
+      dnf:
+        name: "*"
+        state: latest
+      when: ansible_os_family == "RedHat"
+
+    - name: Install packages
+      dnf:
+        name: "{{ packages }}"
+        state: latest
+      vars:
+        packages:
+          - bash-completion
+          - curl
+          - git
+          - vim
+          - wget
+          - openssh-clients
+          - net-tools
+          - ca-certificates
+          - unzip
+          - yum-utils
+      when: ansible_os_family == "RedHat"
+
+    - name: Install open-vm-tools
+      dnf:
+        name: open-vm-tools
+        state: latest
+      when:
+        - ansible_os_family == "RedHat"
+        - ansible_virtualization_type == "VMware"
+

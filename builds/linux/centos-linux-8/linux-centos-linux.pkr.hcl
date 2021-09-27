@@ -111,6 +111,11 @@ build {
     source      = "../../../certificates/root-ca.crt"
   }
 
+  #provisioner "file" {
+  #  destination = "/tmp/pkplay.yml"
+  #  source      = "../../../scripts/ansible/pkplay.yml"
+  #}
+
   provisioner "shell" {
     execute_command = "echo '${var.build_password}' | {{.Vars}} sudo -E -S sh -eux '{{.Path}}'"
     environment_vars = [
@@ -120,6 +125,10 @@ build {
       "ANSIBLE_KEY=${var.ansible_key}"
     ]
     scripts = var.scripts
+  }
+
+  provisioner "ansible-local" {
+    playbook_file   = "C:\Users\allan\Documents\Dev\Repositories\packer-vsphere\scripts\ansible\pkplay.yml"
   }
 
   post-processor "manifest" {

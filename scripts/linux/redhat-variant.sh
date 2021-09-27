@@ -18,15 +18,15 @@ sudo yum update -y
 
 ### Install additional packages. ### 
 echo '> Installing additional packages ...'
-sudo yum install -y yum-utils
-sudo yum install -y epel-release
-sudo yum install -y curl
-sudo yum install -y wget
-sudo yum install -y git
-sudo yum install -y vim
-sudo yum install -y net-tools
-sudo yum install -y unzip
-sudo yum install -y ca-certificates
+#sudo yum install -y yum-utils
+#sudo yum install -y epel-release
+#sudo yum install -y curl
+#sudo yum install -y wget
+#sudo yum install -y git
+#sudo yum install -y vim
+#sudo yum install -y net-tools
+#sudo yum install -y unzip
+#sudo yum install -y ca-certificates
 
 ### Install the Certificate Authority certificates and add to the certificate authority trust. ###
 echo '> Installing the Certificate Authority certificates and adding to the certificate authority trust ...'

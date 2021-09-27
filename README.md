@@ -64,6 +64,7 @@ The following builds are available:
   - **mkisofs** (Ubuntu: `apt-get install mkisofs`)
   - **hdiutil** (macOS)
   - **oscdimg** (Windows: requires Windows ADK)
+* Coreutils (macOS `brew install coreutils`)
 
 **Platform**:
 * VMware Cloud Foundation 4.2 or higher, or
@@ -89,12 +90,12 @@ The directory structure of the repository.
 ├── NOTICE
 ├── README.md
 ├── builds
-│   ├── ansible.pkvars.hcl
-│   ├── build.pkvars.hcl
-│   ├── common.pkvars.hcl
-│   ├── proxy.pkvars.hcl
-│   ├── rhsm.pkvars.hcl
-│   ├── vsphere.pkvars.hcl
+│   ├── ansible.pkvars.hcl.example
+│   ├── build.pkvars.hcl.example
+│   ├── common.pkvars.hcl.example
+│   ├── proxy.pkvars.hcl.example
+│   ├── rhsm.pkvars.hcl.example
+│   ├── vsphere.pkvars.hcl.example
 │   ├── linux
 │   │   └── distribution-version
 │   │       ├── *.pkr.hcl
@@ -170,18 +171,44 @@ The files are distributed in the following directories.
 
 The [variables][packer-variables] are defined in `.pkvars.hcl` files.
 
+#### **Copy the Example Variables**
+
+Run the config script `./config.sh` to copy the `.pkvars.hcl.example` files to the `config` directory.
+
+The `config` folder is the default folder for the first argument of these scripts. you may override the default by passing an alternate value as the first argument. 
+
+```
+./config.sh foo
+./build.sh foo
+```
+For example, this is useful for the purposes of running machine image builds for different environment.
+
+**San Francisco:** us-west-1
+
+```
+./config.sh config/us-west-1
+./build.sh config/us-west-1
+```
+
+**Los Angeles:** us-west-2
+
+```
+./config.sh config/us-west-2
+./build.sh config/us-west-2
+```
+
 #### **Build Variables**
 
-Edit the `/builds/build.pkvars.hcl` file to configure the following:
+Edit the `/config/build.pkvars.hcl` file to configure the following:
 
 * Credentials for the default account on machine images. 
 
-Example: `/builds/build.pkvars.hcl`
+Example: `/config/build.pkvars.hcl`
 
 ```
 build_username           = "rainpole"
 build_password           = "<plaintext_password>"
-build_password_encrypted = "<sha512_encrypted_password >"
+build_password_encrypted = "<sha512_encrypted_password>"
 build_key                = "<public_key>"
 ```
 
@@ -226,11 +253,11 @@ The content of the public key, `build_key`,  is added the key to the `.ssh/autho
 
 #### **Ansible Variables**
 
-Edit the `/builds/ansible.pkvars.hcl` file to configure the following:
+Edit the `/config/ansible.pkvars.hcl` file to configure the following:
 
 * Credentials for the Ansible account on Linux machine images. 
 
-Example: `/builds/ansible.pkvars.hcl`
+Example: `/config/ansible.pkvars.hcl`
 
 ```
 ansible_username = "ansible"
@@ -240,14 +267,14 @@ ansible_key      = "<public_key>"
 
 #### **Common Variables**
 
-Edit the `/builds/common.pkvars.hcl` file to configure the following:
+Edit the `/config/common.pkvars.hcl` file to configure the following:
 
 * Common Virtual Machine Settings
 * Common Template and Content Library Settings
 * Common Removable Media Settings
 * Common Boot and Provisioning Settings
 
-Example: `/builds/common.pkvars.hcl`
+Example: `/config/common.pkvars.hcl`
 
 ```
 common_template_conversion     = false
@@ -258,12 +285,12 @@ common_content_library_destroy = true
 
 #### **Proxy Variables**
 
-Edit the `/builds/proxy.pkvars.hcl` file to configure the following:
+Edit the `/config/proxy.pkvars.hcl` file to configure the following:
 
 * SOCKS proxy settings used for connecting to Linux machine images.
 * Credentials for the proxy server (Optional). 
 
-Example: `/builds/proxy.pkvars.hcl`
+Example: `/config/proxy.pkvars.hcl`
 
 ```
 communicator_proxy_host     = "proxy.rainpole.io"
@@ -273,11 +300,11 @@ communicator_proxy_password = "<plaintext_password>"
 ```
 #### **Red Hat Subscription Manager Variables**
 
-Edit the `/builds/redhat.pkvars.hcl` file to configure the following:
+Edit the `/config/redhat.pkvars.hcl` file to configure the following:
 
 * Credentials for your Red Hat Subscription Manager account. 
 
-Example: `/builds/redhat.pkvars.hcl`
+Example: `/config/redhat.pkvars.hcl`
 
 ```
 rhsm_username = "rainpole"
@@ -295,7 +322,7 @@ Edit the `/buils/vsphere.pkvars.hcl` file to configure the following:
 * vSphere Endpoint and Credentials
 * vSphere Settings
 
-Example: `/builds/vsphere.pkvars.hcl`
+Example: `/config/vsphere.pkvars.hcl`
 
 ```
 vsphere_endpoint             = "sfo-w01-vc01.sfo.rainpole.io"

@@ -175,6 +175,28 @@ The [variables][packer-variables] are defined in `.pkvars.hcl` files.
 
 Run the config script `./config.sh` to copy the `.pkvars.hcl.example` files to the `config` directory.
 
+The `config` folder is the default folder for the first argument of these scripts. you may override the default by passing an alternate value as the first argument. 
+
+```
+./config.sh foo
+./build.sh foo
+```
+For example, this is useful for the purposes of running machine image builds for different environment.
+
+**San Francisco:** us-west-1
+
+```
+./config.sh config/us-west-1
+./build.sh config/us-west-1
+```
+
+**Los Angeles:** us-west-2
+
+```
+./config.sh config/us-west-2
+./build.sh config/us-west-2
+```
+
 #### **Build Variables**
 
 Edit the `/config/build.pkvars.hcl` file to configure the following:

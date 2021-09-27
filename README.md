@@ -72,9 +72,11 @@ The following builds are available:
 
 ## Configuration
 
-### Step 1 - Clone the Repository
+### Step 1 - Download the Release.
 
-Clone the GitHub repository using Git.
+Download the [**latest**](https://github.com/rainpole/packer-vsphere/releases/latest) release.
+
+You may also clone `main` for the latest pre-release updates.
 
 Example: 
 ```

@@ -112,8 +112,8 @@ The directory structure of the repository.
 │           └── data
 │               └── autounattend.pkrtpl.hcl
 ├── certificates
-│   ├── root-ca.crt
-│   └── root-ca.p7b
+│   ├── root-ca.crt.example
+│   └── root-ca.p7b.example
 ├── manifests
 └── scripts
     ├── linux

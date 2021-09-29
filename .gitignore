@@ -7,3 +7,7 @@
 packer_cache/
 ## Ignore crash log files.
 crash.log
+
+# Configurations
+## Ignore custom configurations.
+config/

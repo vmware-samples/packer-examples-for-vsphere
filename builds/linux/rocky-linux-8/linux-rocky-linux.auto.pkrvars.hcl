@@ -33,8 +33,8 @@ iso_file     = "iso-linux-rocky-linux-8.iso"
 iso_checksum = "dbfacdbbfd50059a0dda5c19071bc2f55496f3651279eafa6f50d2ea2d941fdd8b43b8710e2187cdbfe630fa7efb5d3b047ee0cdbc2f8d09bd5f68a7014e0d0c"
 
 // Boot Settings
-vm_boot_order  = "disk,cdrom"
-vm_boot_wait   = "2s"
+vm_boot_order = "disk,cdrom"
+vm_boot_wait  = "2s"
 
 // Communicator Settings
 communicator_port    = 22

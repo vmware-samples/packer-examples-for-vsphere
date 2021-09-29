@@ -11,6 +11,8 @@ crash.log
 # Configurations
 ## Ignore custom configurations.
 config/
-## Ignore certificatess.
+## Ignore certificates.
 **/.crt
 **/.p7b
+## Ignore manifests.
+manifests/*.json

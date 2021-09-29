@@ -20,7 +20,8 @@ packer {
 //  Defines the local variables.
 
 locals {
-  buildtime = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
+  buildtime     = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
+  path_manifest = "../../../manifests/"
 }
 
 //  BLOCK: source
@@ -69,9 +70,9 @@ source "vsphere-iso" "linux-photon" {
   iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
 
   // Boot and Provisioning Settings
-  http_port_min    = var.common_http_port_min
-  http_port_max    = var.common_http_port_max
-  http_content     = {
+  http_port_min = var.common_http_port_min
+  http_port_max = var.common_http_port_max
+  http_content = {
     "/ks.json"       = templatefile("${path.cwd}/data/ks.pkrtpl.hcl", { build_username = var.build_username, build_password_encrypted = var.build_password_encrypted })
     "/packages.json" = file("${path.cwd}/data/packages_minimal.json")
   }
@@ -128,7 +129,7 @@ build {
   }
 
   post-processor "manifest" {
-    output     = "${path.cwd}/output/${local.buildtime}-${var.vm_guest_os_family}-${var.vm_guest_os_vendor}.json"
+    output     = "${local.path_manifest}${local.buildtime}-${var.vm_guest_os_family}-${var.vm_guest_os_vendor}.json"
     strip_path = false
   }
 }

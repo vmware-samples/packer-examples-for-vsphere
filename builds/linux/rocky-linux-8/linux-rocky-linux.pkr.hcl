@@ -20,7 +20,8 @@ packer {
 //  Defines the local variables.
 
 locals {
-  buildtime = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
+  buildtime     = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
+  path_manifest = "../../../manifests/"
   data_source_content = {
     "/ks.cfg" = templatefile("${path.cwd}/data/ks.pkrtpl.hcl", { build_username = var.build_username, build_password_encrypted = var.build_password_encrypted, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
   }
@@ -132,7 +133,7 @@ build {
   }
 
   post-processor "manifest" {
-    output     = "${path.cwd}/output/${local.buildtime}-${var.vm_guest_os_family}-${var.vm_guest_os_vendor}.json"
+    output     = "${local.path_manifest}${local.buildtime}-${var.vm_guest_os_family}-${var.vm_guest_os_vendor}.json"
     strip_path = false
   }
 }

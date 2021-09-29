@@ -20,7 +20,8 @@ packer {
 //  Defines the local variables.
 
 locals {
-  buildtime = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
+  buildtime     = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
+  path_manifest = "../../../manifests/"
 }
 
 //  BLOCK: source
@@ -69,13 +70,13 @@ source "vsphere-iso" "linux-ubuntu-server" {
   iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
 
   // Boot and Provisioning Settings
-  http_port_min  = var.common_http_port_min
-  http_port_max  = var.common_http_port_max
-  http_content   = {
+  http_port_min = var.common_http_port_min
+  http_port_max = var.common_http_port_max
+  http_content = {
     "/ks.cfg" = templatefile("${path.cwd}/data/ks.pkrtpl.hcl", { build_username = var.build_username, build_password_encrypted = var.build_password_encrypted, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
   }
-  boot_order     = var.vm_boot_order
-  boot_wait      = var.vm_boot_wait
+  boot_order = var.vm_boot_order
+  boot_wait  = var.vm_boot_wait
   boot_command = ["<enter><wait><f6><wait><esc><wait>",
     "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
     "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
@@ -140,7 +141,7 @@ build {
   }
 
   post-processor "manifest" {
-    output     = "${path.cwd}/output/${local.buildtime}-${var.vm_guest_os_family}-${var.vm_guest_os_vendor}-${var.vm_guest_os_member}.json"
+    output     = "${local.path_manifest}${local.buildtime}-${var.vm_guest_os_family}-${var.vm_guest_os_vendor}-${var.vm_guest_os_member}.json"
     strip_path = false
   }
 }

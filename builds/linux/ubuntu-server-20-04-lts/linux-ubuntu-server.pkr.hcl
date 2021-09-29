@@ -21,6 +21,11 @@ packer {
 
 locals {
   buildtime = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
+  data_source_content = {
+    "/meta-data" = file("${path.cwd}/data/meta-data")
+    "/user-data" = templatefile("${path.cwd}/data/user-data.pkrtpl.hcl", { build_username = var.build_username, build_password_encrypted = var.build_password_encrypted, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
+  }
+  data_source_command = var.common_data_source == "http" ? "ds=nocloud-net;s=http://{{.HTTPIP}}:{{.HTTPPort}}/" : "ds=nocloud"
 }
 
 //  BLOCK: source
@@ -69,15 +74,16 @@ source "vsphere-iso" "linux-ubuntu-server" {
   iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
 
   // Boot and Provisioning Settings
-  http_port_min    = var.common_http_port_min
-  http_port_max    = var.common_http_port_max
-  http_content     = {
-    "/meta-data"   = file("http/meta-data")
-    "/user-data"   = templatefile("http/user-data.pkrtpl.hcl", { build_username = var.build_username, build_password_encrypted = var.build_password_encrypted, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
-  }
+  http_port_min = var.common_data_source == "http" ? var.common_http_port_min : null
+  http_port_max = var.common_data_source == "http" ? var.common_http_port_max : null
+  http_content  = var.common_data_source == "http" ? local.data_source_content : null
+
+  cd_label   = var.common_data_source == "disk" ? "cidata" : null
+  cd_content = var.common_data_source == "disk" ? local.data_source_content : null
+
   boot_order       = var.vm_boot_order
   boot_wait        = var.vm_boot_wait
-  boot_command     = ["<enter><enter><f6><esc><wait> ", "autoinstall ", "ip=dhcp ipv6.disable=1 ds=nocloud-net;s=http://{{.HTTPIP}}:{{.HTTPPort}}/ ", "<enter><wait>"]
+  boot_command     = ["<enter><enter><f6><esc><wait> ", "autoinstall ", "ip=dhcp ipv6.disable=1 ${local.data_source_command} ", "<enter><wait>"]
   ip_wait_timeout  = var.common_ip_wait_timeout
   shutdown_command = "echo '${var.build_password}' | sudo -S -E shutdown -P now"
   shutdown_timeout = var.common_shutdown_timeout

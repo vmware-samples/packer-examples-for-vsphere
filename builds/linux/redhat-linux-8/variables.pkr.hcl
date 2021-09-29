@@ -251,6 +251,11 @@ variable "iso_checksum" {
 
 // Boot Settings
 
+variable "common_data_source" {
+  type        = string
+  description = "The provisioning data source ('http' or 'disk')."
+}
+
 variable "common_http_port_min" {
   type        = number
   description = "The start of the HTTP port range."

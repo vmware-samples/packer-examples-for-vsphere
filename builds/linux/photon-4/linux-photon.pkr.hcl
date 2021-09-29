@@ -72,8 +72,8 @@ source "vsphere-iso" "linux-photon" {
   http_port_min    = var.common_http_port_min
   http_port_max    = var.common_http_port_max
   http_content     = {
-    "/ks.json"       = templatefile("http/ks.pkrtpl.hcl", { build_username = var.build_username, build_password_encrypted = var.build_password_encrypted })
-    "/packages.json" = file("http/packages_minimal.json")
+    "/ks.json"       = templatefile("${path.cwd}/data/ks.pkrtpl.hcl", { build_username = var.build_username, build_password_encrypted = var.build_password_encrypted })
+    "/packages.json" = file("${path.cwd}/data/packages_minimal.json")
   }
   boot_order       = var.vm_boot_order
   boot_wait        = var.vm_boot_wait

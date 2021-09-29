@@ -33,8 +33,8 @@ iso_file     = "iso-linux-ubuntu-server-18-04-lts.iso"
 iso_checksum = "43738d7dfd3e2661e4d55d2e0f9d8150f0687f4335af9b4dac047bf45fafcb4a4831685281fd5a318c5747681c351375d1129094d3f1bf38d88ab4bb49b6c457"
 
 // Boot Settings
-vm_boot_order  = "disk,cdrom"
-vm_boot_wait   = "3s"
+vm_boot_order = "disk,cdrom"
+vm_boot_wait  = "3s"
 
 // Communicator Settings
 communicator_port    = 22

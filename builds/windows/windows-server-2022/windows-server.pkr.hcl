@@ -26,7 +26,8 @@ packer {
 //  Defines the local variables.
 
 locals {
-  buildtime = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
+  buildtime     = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
+  path_manifest = "../../../manifests/"
 }
 
 //  BLOCK: source
@@ -76,7 +77,7 @@ source "vsphere-iso" "windows-server-standard-core" {
   cd_files = [
     "../../../scripts/${var.vm_guest_os_family}/",
     "../../../certificates/"
-    ]
+  ]
   cd_content = {
     "autounattend.xml" = templatefile("${path.cwd}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2022 SERVERSTANDARDCORE", kms_key = "VDYBN-27WPP-V4HQT-9VMD4-VMK7H", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
   }
@@ -155,7 +156,7 @@ source "vsphere-iso" "windows-server-standard-dexp" {
   cd_files = [
     "../../../scripts/${var.vm_guest_os_family}/",
     "../../../certificates/"
-    ]
+  ]
   cd_content = {
     "autounattend.xml" = templatefile("${path.cwd}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2022 SERVERSTANDARD", kms_key = "VDYBN-27WPP-V4HQT-9VMD4-VMK7H", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
   }
@@ -234,7 +235,7 @@ source "vsphere-iso" "windows-server-datacenter-core" {
   cd_files = [
     "../../../scripts/${var.vm_guest_os_family}/",
     "../../../certificates/"
-    ]
+  ]
   cd_content = {
     "autounattend.xml" = templatefile("${path.cwd}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2022 SERVERDATACENTERCORE", kms_key = "WX4NM-KYWYW-QJJR4-XV3QB-6VM33", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
   }
@@ -313,7 +314,7 @@ source "vsphere-iso" "windows-server-datacenter-dexp" {
   cd_files = [
     "../../../scripts/${var.vm_guest_os_family}/",
     "../../../certificates/"
-    ]
+  ]
   cd_content = {
     "autounattend.xml" = templatefile("${path.cwd}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2022 SERVERDATACENTER", kms_key = "WX4NM-KYWYW-QJJR4-XV3QB-6VM33", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
   }
@@ -367,15 +368,15 @@ build {
     environment_vars = [
       "BUILD_USERNAME=${var.build_username}"
     ]
-    elevated_user      = var.build_username
-    elevated_password  = var.build_password
-    scripts            = var.scripts
+    elevated_user     = var.build_username
+    elevated_password = var.build_password
+    scripts           = var.scripts
   }
 
   provisioner "powershell" {
-    elevated_user      = var.build_username
-    elevated_password  = var.build_password
-    inline             = var.inline
+    elevated_user     = var.build_username
+    elevated_password = var.build_password
+    inline            = var.inline
   }
 
   provisioner "windows-update" {
@@ -392,7 +393,7 @@ build {
   }
 
   post-processor "manifest" {
-    output     = "${path.cwd}/output/${local.buildtime}-${var.vm_guest_os_family}-${var.vm_guest_os_member}.json"
+    output     = "${local.path_manifest}${local.buildtime}-${var.vm_guest_os_family}-${var.vm_guest_os_member}.json"
     strip_path = false
   }
 }

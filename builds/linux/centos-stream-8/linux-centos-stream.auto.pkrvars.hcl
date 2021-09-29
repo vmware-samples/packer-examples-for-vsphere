@@ -33,8 +33,8 @@ iso_file     = "iso-linux-centos-stream-8.iso"
 iso_checksum = "552cf5dcdc9d3db41791a2b3bbbd18335d75607ca54e7aa8bf28a6ea1d49ce914a55da0bd839123aa96654b7de6db65cc786beb71e6233982ea96ce456a47035"
 
 // Boot Settings
-vm_boot_order  = "disk,cdrom"
-vm_boot_wait   = "2s"
+vm_boot_order = "disk,cdrom"
+vm_boot_wait  = "2s"
 
 // Communicator Settings
 communicator_port    = 22

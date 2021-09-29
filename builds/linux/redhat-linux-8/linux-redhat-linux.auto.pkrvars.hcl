@@ -33,8 +33,8 @@ iso_file     = "iso-linux-redhat-linux-8.iso"
 iso_checksum = "3b3f4ad5a0b8ef289643bf8cb7f6f5a0fa7b2cbca747dc0ed6b588f574f38bee8c741b76519b8d0bf7dd4328d9ecc950bad443c22ddc8347837a4c58cd85b3a7"
 
 // Boot Settings
-vm_boot_order  = "disk,cdrom"
-vm_boot_wait   = "2s"
+vm_boot_order = "disk,cdrom"
+vm_boot_wait  = "2s"
 
 // Communicator Settings
 communicator_port    = 22

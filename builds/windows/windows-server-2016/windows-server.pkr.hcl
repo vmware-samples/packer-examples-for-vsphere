@@ -78,7 +78,7 @@ source "vsphere-iso" "windows-server-standard-core" {
     "../../../certificates/"
     ]
   cd_content = {
-    "autounattend.xml" = templatefile("${path.cwd}/cd/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2016 SERVERSTANDARDCORE", kms_key = "WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
+    "autounattend.xml" = templatefile("${path.cwd}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2016 SERVERSTANDARDCORE", kms_key = "WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
   }
 
   // Boot and Provisioning Settings
@@ -156,7 +156,7 @@ source "vsphere-iso" "windows-server-standard-dexp" {
     "../../../certificates/"
     ]
   cd_content = {
-    "autounattend.xml" = templatefile("${path.cwd}/cd/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2016 SERVERSTANDARD", kms_key = "WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
+    "autounattend.xml" = templatefile("${path.cwd}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2016 SERVERSTANDARD", kms_key = "WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
   }
 
   // Boot and Provisioning Settings
@@ -235,7 +235,7 @@ source "vsphere-iso" "windows-server-datacenter-core" {
     "../../../certificates/"
     ]
   cd_content = {
-    "autounattend.xml" = templatefile("${path.cwd}/cd/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2016 SERVERDATACENTERCORE", kms_key = "CB7KF-BWN84-R7R2Y-793K2-8XDDG", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
+    "autounattend.xml" = templatefile("${path.cwd}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2016 SERVERDATACENTERCORE", kms_key = "CB7KF-BWN84-R7R2Y-793K2-8XDDG", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
   }
 
   // Boot and Provisioning Settings
@@ -314,7 +314,7 @@ source "vsphere-iso" "windows-server-datacenter-dexp" {
     "../../../certificates/"
     ]
   cd_content = {
-    "autounattend.xml" = templatefile("${path.cwd}/cd/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2016 SERVERDATACENTER", kms_key = "CB7KF-BWN84-R7R2Y-793K2-8XDDG", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
+    "autounattend.xml" = templatefile("${path.cwd}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2016 SERVERDATACENTER", kms_key = "CB7KF-BWN84-R7R2Y-793K2-8XDDG", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
   }
 
   // Boot and Provisioning Settings

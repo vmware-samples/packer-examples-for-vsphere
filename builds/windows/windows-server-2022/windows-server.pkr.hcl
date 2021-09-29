@@ -78,7 +78,7 @@ source "vsphere-iso" "windows-server-standard-core" {
     "../../../certificates/"
     ]
   cd_content = {
-    "autounattend.xml" = templatefile("${path.cwd}/cd/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2022 SERVERSTANDARDCORE", kms_key = "VDYBN-27WPP-V4HQT-9VMD4-VMK7H", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
+    "autounattend.xml" = templatefile("${path.cwd}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2022 SERVERSTANDARDCORE", kms_key = "VDYBN-27WPP-V4HQT-9VMD4-VMK7H", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
   }
 
   // Boot and Provisioning Settings
@@ -157,7 +157,7 @@ source "vsphere-iso" "windows-server-standard-dexp" {
     "../../../certificates/"
     ]
   cd_content = {
-    "autounattend.xml" = templatefile("${path.cwd}/cd/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2022 SERVERSTANDARD", kms_key = "VDYBN-27WPP-V4HQT-9VMD4-VMK7H", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
+    "autounattend.xml" = templatefile("${path.cwd}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2022 SERVERSTANDARD", kms_key = "VDYBN-27WPP-V4HQT-9VMD4-VMK7H", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
   }
 
   // Boot and Provisioning Settings
@@ -236,7 +236,7 @@ source "vsphere-iso" "windows-server-datacenter-core" {
     "../../../certificates/"
     ]
   cd_content = {
-    "autounattend.xml" = templatefile("${path.cwd}/cd/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2022 SERVERDATACENTERCORE", kms_key = "WX4NM-KYWYW-QJJR4-XV3QB-6VM33", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
+    "autounattend.xml" = templatefile("${path.cwd}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2022 SERVERDATACENTERCORE", kms_key = "WX4NM-KYWYW-QJJR4-XV3QB-6VM33", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
   }
 
   // Boot and Provisioning Settings
@@ -315,7 +315,7 @@ source "vsphere-iso" "windows-server-datacenter-dexp" {
     "../../../certificates/"
     ]
   cd_content = {
-    "autounattend.xml" = templatefile("${path.cwd}/cd/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2022 SERVERDATACENTER", kms_key = "WX4NM-KYWYW-QJJR4-XV3QB-6VM33", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
+    "autounattend.xml" = templatefile("${path.cwd}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2022 SERVERDATACENTER", kms_key = "WX4NM-KYWYW-QJJR4-XV3QB-6VM33", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
   }
 
   // Boot and Provisioning Settings

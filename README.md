@@ -88,6 +88,7 @@ The directory structure of the repository.
 ```
 
 ├── build.sh
+├── config.sh
 ├── LICENSE
 ├── NOTICE
 ├── README.md
@@ -102,13 +103,13 @@ The directory structure of the repository.
 │   │   └── distribution-version
 │   │       ├── *.pkr.hcl
 │   │       ├── *.auto.pkrvars.hcl
-│   │       └── http
+│   │       └── data
 │   │           └── ks.pkrtpl.hcl
 │   └── windows
 │       └── version
 │           ├── *.pkr.hcl
 │           ├── *.auto.pkrvars.hcl
-│           └── cd
+│           └── data
 │               └── autounattend.pkrtpl.hcl
 ├── certificates
 │   ├── root-ca.crt
@@ -271,6 +272,7 @@ ansible_key      = "<public_key>"
 
 Edit the `/config/common.pkvars.hcl` file to configure the following:
 
+* Common Data Source
 * Common Virtual Machine Settings
 * Common Template and Content Library Settings
 * Common Removable Media Settings
@@ -279,11 +281,20 @@ Edit the `/config/common.pkvars.hcl` file to configure the following:
 Example: `/config/common.pkvars.hcl`
 
 ```
+common_data_source             = "http"
 common_template_conversion     = false
 common_content_library_name    = "sfo-w01-lib01"
 common_content_library_ovf     = true
 common_content_library_destroy = true
 ```
+
+`http` is the default provisioning data source for Linux machine image builds.
+
+You change the `common_data_source` from `http` to `disk` to build supported Linux machine images without the need to user Packer's HTTP server. This is useful for environments that may not be able to route back to the system from which Packer is running. Currently, the only `cd_content` is used when selecting `disk`.
+
+> Note: The following Linux distributions do not support kickstart from a secondary CD-ROM.
+> - VMware PhotonOS 4
+> - Ubuntu Server 18.04 LTS
 
 #### **Proxy Variables**
 

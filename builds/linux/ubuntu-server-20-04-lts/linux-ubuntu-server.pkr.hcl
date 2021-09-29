@@ -78,8 +78,8 @@ source "vsphere-iso" "linux-ubuntu-server" {
   http_port_max = var.common_data_source == "http" ? var.common_http_port_max : null
   http_content  = var.common_data_source == "http" ? local.data_source_content : null
 
-  cd_label   = var.common_data_source == "cd" ? "cidata" : null
-  cd_content = var.common_data_source == "cd" ? local.data_source_content : null
+  cd_label   = var.common_data_source == "disk" ? "cidata" : null
+  cd_content = var.common_data_source == "disk" ? local.data_source_content : null
 
   boot_order       = var.vm_boot_order
   boot_wait        = var.vm_boot_wait

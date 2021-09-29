@@ -221,7 +221,7 @@ variable "iso_checksum" {
 
 variable "common_data_source" {
   type        = string
-  description = "The provisioning data source ('http' or 'cd')."
+  description = "The provisioning data source ('http' or 'disk')."
 }
 
 variable "common_http_port_min" {

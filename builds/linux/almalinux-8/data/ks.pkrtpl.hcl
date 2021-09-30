@@ -24,7 +24,10 @@ reboot
 %end
 
 %post
-yum install -y sudo open-vm-tools perl
+sudo dnf makecache
+sudo dnf install epel-release -y
+sudo dnf makecache
+sudo dnf install -y sudo open-vm-tools perl ansible
 echo "${build_username} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/${build_username}
 sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
 %end

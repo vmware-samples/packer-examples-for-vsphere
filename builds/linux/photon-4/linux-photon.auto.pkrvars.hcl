@@ -1,5 +1,5 @@
 /*
-    DESCRIPTION: 
+    DESCRIPTION:
     VMware Photon OS 4 variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
 */
 
@@ -38,5 +38,5 @@ communicator_port    = 22
 communicator_timeout = "30m"
 
 // Provisioner Settings
-scripts = ["../../../scripts/linux/photon.sh"]
+scripts = ["scripts/linux/photon.sh"]
 inline  = []

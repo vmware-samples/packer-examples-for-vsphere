@@ -474,22 +474,23 @@ For example, if you simply want to build a Microsoft Windows Server 2022 Standar
 
 Initialize the plugins:
 ```
-rainpole@macos packer-examples> cd builds/windows/windows-server-2022/
-rainpole@macos packer-examples> packer init windows-server-2022.pkr.hcl
+rainpole@macos packer-examples> packer init builds/windows/windows-server-2022
 ```
 Build a specific machine image:
 ```
 rainpole@macos windows-server-2022> packer build -force \
       --only vsphere-iso.windows-server-standard-core \
-      -var-file="../../vsphere.pkrvars.hcl" \
-      -var-file="../../build.pkrvars.hcl" \
-      -var-file="../../common.pkrvars.hcl" .
+      -var-file="config/vsphere.pkrvars.hcl" \
+      -var-file="config/build.pkrvars.hcl" \
+      -var-file="config/common.pkrvars.hcl" \
+      builds/windows/windows-server-2022
 ```
 Build a specific machine image using environmental variables:
 ```
 rainpole@macos windows-server-2022> packer build -force \
       --only vsphere-iso.windows-server-standard-core \
-      -var-file="../../common.pkrvars.hcl" .
+      -var-file="config/common.pkrvars.hcl" \
+      builds/windows/windows-server-2022
 ```
 Happy building!!!
 

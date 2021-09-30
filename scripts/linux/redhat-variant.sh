@@ -14,19 +14,19 @@ export ANSIBLE_KEY
 
 #### Update the guest operating system. ###
 echo '> Updating the guest operating system ...'
-sudo yum update -y
+sudo dnf update -y
 
 ### Install additional packages. ### 
 echo '> Installing additional packages ...'
-sudo yum install -y yum-utils
-sudo yum install -y epel-release
-sudo yum install -y curl
-sudo yum install -y wget
-sudo yum install -y git
-sudo yum install -y vim
-sudo yum install -y net-tools
-sudo yum install -y unzip
-sudo yum install -y ca-certificates
+sudo dnf install -y \
+    epel-release \
+    curl \
+    wget \
+    git \
+    vim \
+    net-tools \
+    unzip \
+    ca-certificates
 
 ### Install the Certificate Authority certificates and add to the certificate authority trust. ###
 echo '> Installing the Certificate Authority certificates and adding to the certificate authority trust ...'
@@ -108,6 +108,7 @@ fi
 echo '> Cleaning /tmp directories ...'
 rm -rf /tmp/*
 rm -rf /var/tmp/*
+rm -rf /var/cache/dnf/*
 
 ### Clean the SSH keys. ###
 echo '> Cleaning the SSH keys ...'
@@ -118,9 +119,9 @@ echo '> Setting the hostname to localhost ...'
 cat /dev/null > /etc/hostname
 hostnamectl set-hostname localhost
 
-### Clean yum cache. ###
-echo '> Cleaning yum cache ...'
-yum clean all
+### Clean dnf cache. ###
+echo '> Cleaning dnf cache ...'
+dnf clean all
 
 ### Clean the machine-id. ###
 echo '> Cleaning the machine-id ...'

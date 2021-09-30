@@ -1,5 +1,5 @@
 /*
-    DESCRIPTION: 
+    DESCRIPTION:
     Ubuntu Server 18.04 LTS variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
 */
 
@@ -41,5 +41,5 @@ communicator_port    = 22
 communicator_timeout = "30m"
 
 // Provisioner Settings
-scripts = ["../../../scripts/linux/ubuntu-server-18.sh"]
+scripts = ["scripts/linux/ubuntu-server-18.sh"]
 inline  = []

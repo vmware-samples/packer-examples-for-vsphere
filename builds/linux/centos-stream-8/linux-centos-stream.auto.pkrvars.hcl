@@ -1,5 +1,5 @@
 /*
-    DESCRIPTION: 
+    DESCRIPTION:
     CentOS Stream 8 variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
 */
 
@@ -41,5 +41,5 @@ communicator_port    = 22
 communicator_timeout = "30m"
 
 // Provisioner Settings
-scripts = ["../../../scripts/linux/redhat-variant.sh"]
+scripts = ["scripts/linux/redhat-variant.sh"]
 inline  = []

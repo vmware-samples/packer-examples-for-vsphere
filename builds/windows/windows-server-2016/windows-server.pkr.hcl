@@ -27,7 +27,7 @@ packer {
 
 locals {
   buildtime     = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
-  path_manifest = "../../../manifests/"
+  path_manifest = "${path.cwd}/manifests/"
 }
 
 //  BLOCK: source
@@ -75,11 +75,11 @@ source "vsphere-iso" "windows-server-standard-core" {
   iso_paths    = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
   iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
   cd_files = [
-    "../../../scripts/${var.vm_guest_os_family}/",
-    "../../../certificates/"
+    "${path.cwd}/scripts/${var.vm_guest_os_family}/",
+    "${path.cwd}/certificates/"
   ]
   cd_content = {
-    "autounattend.xml" = templatefile("${path.cwd}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2016 SERVERSTANDARDCORE", kms_key = "WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
+    "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2016 SERVERSTANDARDCORE", kms_key = "WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
   }
 
   // Boot and Provisioning Settings
@@ -153,11 +153,11 @@ source "vsphere-iso" "windows-server-standard-dexp" {
   iso_paths    = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
   iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
   cd_files = [
-    "../../../scripts/${var.vm_guest_os_family}/",
-    "../../../certificates/"
+    "${path.cwd}/scripts/${var.vm_guest_os_family}/",
+    "${path.cwd}/certificates/"
   ]
   cd_content = {
-    "autounattend.xml" = templatefile("${path.cwd}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2016 SERVERSTANDARD", kms_key = "WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
+    "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2016 SERVERSTANDARD", kms_key = "WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
   }
 
   // Boot and Provisioning Settings
@@ -232,11 +232,11 @@ source "vsphere-iso" "windows-server-datacenter-core" {
   iso_paths    = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
   iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
   cd_files = [
-    "../../../scripts/${var.vm_guest_os_family}/",
-    "../../../certificates/"
+    "${path.cwd}/scripts/${var.vm_guest_os_family}/",
+    "${path.cwd}/certificates/"
   ]
   cd_content = {
-    "autounattend.xml" = templatefile("${path.cwd}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2016 SERVERDATACENTERCORE", kms_key = "CB7KF-BWN84-R7R2Y-793K2-8XDDG", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
+    "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2016 SERVERDATACENTERCORE", kms_key = "CB7KF-BWN84-R7R2Y-793K2-8XDDG", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
   }
 
   // Boot and Provisioning Settings
@@ -311,11 +311,11 @@ source "vsphere-iso" "windows-server-datacenter-dexp" {
   iso_paths    = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
   iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
   cd_files = [
-    "../../../scripts/${var.vm_guest_os_family}/",
-    "../../../certificates/"
+    "${path.cwd}/scripts/${var.vm_guest_os_family}/",
+    "${path.cwd}/certificates/"
   ]
   cd_content = {
-    "autounattend.xml" = templatefile("${path.cwd}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2016 SERVERDATACENTER", kms_key = "CB7KF-BWN84-R7R2Y-793K2-8XDDG", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
+    "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2016 SERVERDATACENTER", kms_key = "CB7KF-BWN84-R7R2Y-793K2-8XDDG", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
   }
 
   // Boot and Provisioning Settings
@@ -359,7 +359,7 @@ build {
   ]
 
   provisioner "file" {
-    source      = "../../../certificates/root-ca.p7b"
+    source      = "${path.cwd}/certificates/root-ca.p7b"
     destination = "C:\\windows\\temp\\root-ca.p7b"
   }
 
@@ -369,7 +369,7 @@ build {
     ]
     elevated_user     = var.build_username
     elevated_password = var.build_password
-    scripts           = var.scripts
+    scripts           = formatlist("${path.cwd}/%s", var.scripts)
   }
 
   provisioner "powershell" {

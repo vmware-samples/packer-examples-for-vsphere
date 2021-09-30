@@ -21,10 +21,10 @@ packer {
 
 locals {
   buildtime     = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
-  path_manifest = "../../../manifests/"
+  path_manifest = "${path.cwd}/manifests/"
   data_source_content = {
-    "/meta-data" = file("${path.cwd}/data/meta-data")
-    "/user-data" = templatefile("${path.cwd}/data/user-data.pkrtpl.hcl", { build_username = var.build_username, build_password_encrypted = var.build_password_encrypted, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
+    "/meta-data" = file("${abspath(path.root)}/data/meta-data")
+    "/user-data" = templatefile("${abspath(path.root)}/data/user-data.pkrtpl.hcl", { build_username = var.build_username, build_password_encrypted = var.build_password_encrypted, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
   }
   data_source_command = var.common_data_source == "http" ? "ds=nocloud-net;s=http://{{.HTTPIP}}:{{.HTTPPort}}/" : "ds=nocloud"
 }
@@ -120,7 +120,7 @@ build {
 
   provisioner "file" {
     destination = "/tmp/root-ca.crt"
-    source      = "../../../certificates/root-ca.crt"
+    source      = "${path.cwd}/certificates/root-ca.crt"
   }
 
   provisioner "shell" {
@@ -131,7 +131,7 @@ build {
       "ANSIBLE_USERNAME=${var.ansible_username}",
       "ANSIBLE_KEY=${var.ansible_key}"
     ]
-    scripts = var.scripts
+    scripts = formatlist("${path.cwd}/%s", var.scripts)
   }
 
   post-processor "manifest" {

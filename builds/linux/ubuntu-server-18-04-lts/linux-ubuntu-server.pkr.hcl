@@ -21,7 +21,7 @@ packer {
 
 locals {
   buildtime     = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
-  path_manifest = "../../../manifests/"
+  path_manifest = "${path.cwd}/manifests/"
 }
 
 //  BLOCK: source
@@ -73,7 +73,7 @@ source "vsphere-iso" "linux-ubuntu-server" {
   http_port_min = var.common_http_port_min
   http_port_max = var.common_http_port_max
   http_content = {
-    "/ks.cfg" = templatefile("${path.cwd}/data/ks.pkrtpl.hcl", { build_username = var.build_username, build_password_encrypted = var.build_password_encrypted, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
+    "/ks.cfg" = templatefile("${abspath(path.root)}/data/ks.pkrtpl.hcl", { build_username = var.build_username, build_password_encrypted = var.build_password_encrypted, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
   }
   boot_order = var.vm_boot_order
   boot_wait  = var.vm_boot_wait
@@ -126,7 +126,7 @@ build {
 
   provisioner "file" {
     destination = "/tmp/root-ca.crt"
-    source      = "../../../certificates/root-ca.crt"
+    source      = "${path.cwd}/certificates/root-ca.crt"
   }
 
   provisioner "shell" {
@@ -137,7 +137,7 @@ build {
       "ANSIBLE_USERNAME=${var.ansible_username}",
       "ANSIBLE_KEY=${var.ansible_key}"
     ]
-    scripts = var.scripts
+    scripts = formatlist("${path.cwd}/%s", var.scripts)
   }
 
   post-processor "manifest" {

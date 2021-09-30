@@ -6,7 +6,7 @@
             "text": "${build_password_encrypted}"
         },
     "disk": "/dev/sda",
-    "bootmode": "bios",
+    "bootmode": "efi",
     "packagelist_file": "packages_minimal.json",
     "additional_packages": [
         "sudo",

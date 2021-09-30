@@ -76,9 +76,16 @@ source "vsphere-iso" "linux-photon" {
     "/ks.json"       = templatefile("${path.cwd}/data/ks.pkrtpl.hcl", { build_username = var.build_username, build_password_encrypted = var.build_password_encrypted })
     "/packages.json" = file("${path.cwd}/data/packages_minimal.json")
   }
-  boot_order       = var.vm_boot_order
-  boot_wait        = var.vm_boot_wait
-  boot_command     = ["<esc><wait> vmlinuz initrd=initrd.img root=/dev/ram0 loglevel=3 insecure_installation=1 ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.json photon.media=cdrom <enter>"]
+  boot_order = var.vm_boot_order
+  boot_wait  = var.vm_boot_wait
+  boot_command = [
+    "<esc><wait>c",
+    "linux /isolinux/vmlinuz root=/dev/ram0 loglevel=3 insecure_installation=1 ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.json photon.media=cdrom",
+    "<enter>", "initrd /isolinux/initrd.img",
+    "<enter>",
+    "boot",
+    "<enter>"
+  ]
   ip_wait_timeout  = var.common_ip_wait_timeout
   shutdown_command = "echo '${var.build_password}' | sudo -S -E shutdown -P now"
   shutdown_timeout = var.common_shutdown_timeout

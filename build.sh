@@ -26,7 +26,6 @@ menu_option_1() {
 
   ### Build a VMware Photon OS 4 Template for VMware vSphere ###
   echo "Building a VMware Photon OS 4 Template for VMware vSphere ..."
-  rm -f output-vmware-iso/*.ova
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
@@ -57,7 +56,6 @@ menu_option_2() {
 
   ### Build a Ubuntu Server 20.04 LTS Template for VMware vSphere ###
   echo "Building a Ubuntu Server 20.04 LTS Template for VMware vSphere ..."
-  rm -f output-vmware-iso/*.ova
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
@@ -88,7 +86,6 @@ menu_option_3() {
 
   ### Build a Ubuntu Server 20.04 LTS Template for VMware vSphere ###
   echo "Building a Ubuntu Server 18.04 LTS Template for VMware vSphere ..."
-  rm -f output-vmware-iso/*.ova
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
@@ -119,7 +116,6 @@ menu_option_4() {
 
   ### Build an Red Hat Enerprise Linux 8 Server Template for VMware vSphere ###
   echo "Building a Red Hat Enerprise Linux 8 Server Template for VMware vSphere ..."
-  rm -f output-vmware-iso/*.ova
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
@@ -151,7 +147,6 @@ menu_option_5() {
 
   ### Build an AlmaLinux 8 Template for VMware vSphere ###
   echo "Building an AlmaLinux 8 Template for VMware vSphere ..."
-  rm -f output-vmware-iso/*.ova
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
@@ -182,7 +177,6 @@ menu_option_6() {
 
   ### Build a Rocky Linux 8 Template for VMware vSphere ###
   echo "Building a Rocky Linux 8 Template for VMware vSphere ..."
-  rm -f output-vmware-iso/*.ova
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
@@ -240,7 +234,6 @@ menu_option_8() {
 
   ### Build a CentOS Linux 8 Template for VMware vSphere ###
   echo "Building a CentOS Linux 8 Template for VMware vSphere ..."
-  rm -f output-vmware-iso/*.ova
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
@@ -271,7 +264,6 @@ menu_option_9() {
 
   ### Build Microsoft Windows Server 2022 Templates for VMware vSphere ###
   echo "Building all Microsoft Windows Server 2022 Templates for VMware vSphere  ..."
-  rm -f output-vmware-iso/*.ova
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
@@ -300,7 +292,6 @@ menu_option_10() {
 
   ### Build Microsoft Windows Server 2022 Standard Templates for VMware vSphere ###
   echo "Building Microsoft Windows Server 2022 Standard Templates for VMware vSphere  ..."
-  rm -f output-vmware-iso/*.ova
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
@@ -330,7 +321,6 @@ menu_option_11() {
 
   ### Build Microsoft Windows Server 2022 Datacenter Templates for VMware vSphere ###
   echo "Building Microsoft Windows Server 2022 Datacenter Templates for VMware vSphere  ..."
-  rm -f output-vmware-iso/*.ova
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
@@ -360,7 +350,6 @@ menu_option_12() {
 
   ### Build Microsoft Windows Server 2019 Templates for VMware vSphere ###
   echo "Building all Microsoft Windows Server 2019 Templates for VMware vSphere  ..."
-  rm -f output-vmware-iso/*.ova
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
@@ -389,7 +378,6 @@ menu_option_13() {
 
   ### Build Microsoft Windows Server 2019 Standard Templates for VMware vSphere ###
   echo "Building Microsoft Windows Server 2019 Standard Templates for VMware vSphere  ..."
-  rm -f output-vmware-iso/*.ova
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
@@ -419,7 +407,6 @@ menu_option_14() {
 
   ### Build Microsoft Windows Server 2019 Datacenter Templates for VMware vSphere ###
   echo "Building Microsoft Windows Server 2019 Datacenter Templates for VMware vSphere  ..."
-  rm -f output-vmware-iso/*.ova
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
@@ -449,7 +436,6 @@ menu_option_15() {
 
   ### Build Microsoft Windows Server 2016 Templates for VMware vSphere ###
   echo "Building all Microsoft Windows Server 2016 Templates for VMware vSphere  ..."
-  rm -f output-vmware-iso/*.ova
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
@@ -478,7 +464,6 @@ menu_option_16() {
 
   ### Build Microsoft Windows Server 2016 Standard Templates for VMware vSphere ###
   echo "Building Microsoft Windows Server 2016 Standard Templates for VMware vSphere  ..."
-  rm -f output-vmware-iso/*.ova
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
@@ -508,7 +493,6 @@ menu_option_17() {
 
   ### Build Microsoft Windows Server 2016 Datacenter Templates for VMware vSphere ###
   echo "Building a Microsoft Windows Server 2016 Datacenter Templates for VMware vSphere  ..."
-  rm -f output-vmware-iso/*.ova
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."

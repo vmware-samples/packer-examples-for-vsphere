@@ -11,7 +11,8 @@
     "additional_packages": [
         "sudo",
         "vim",
-        "cloud-utils"
+        "cloud-utils",
+        "ansible"
     ],
     "postinstall": [
         "#!/bin/sh",

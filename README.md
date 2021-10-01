@@ -270,31 +270,54 @@ ansible_key      = "<public_key>"
 
 #### **Common Variables**
 
-Edit the `/config/common.pkvars.hcl` file to configure the following:
+Edit the `/config/common.pkvars.hcl` file to configure the following common variables:
 
-* Common Data Source
-* Common Virtual Machine Settings
-* Common Template and Content Library Settings
-* Common Removable Media Settings
-* Common Boot and Provisioning Settings
+* Virtual Machine Settings
+* Template and Content Library Settings
+* Removable Media Settings
+* Boot and Provisioning Settings
 
 Example: `/config/common.pkvars.hcl`
 
 ```
-common_data_source             = "http"
+// Virtual Machine Settings
+common_vm_version           = 19
+common_tools_upgrade_policy = true
+common_remove_cdrom         = true
+
+// Template and Content Library Settings
 common_template_conversion     = false
 common_content_library_name    = "sfo-w01-lib01"
 common_content_library_ovf     = true
 common_content_library_destroy = true
+
+// Removable Media Settings
+common_iso_datastore = "sfo-w01-cl01-ds-nfs01"
+common_iso_path      = "iso"
+common_iso_hash      = "sha512"
+
+// Boot and Provisioning Settings
+common_data_source      = "http"
+common_http_ip          = null
+common_http_port_min    = 8000
+common_http_port_max    = 8099
+common_ip_wait_timeout  = "20m"
+common_shutdown_timeout = "15m"
 ```
 
 `http` is the default provisioning data source for Linux machine image builds.
 
-You change the `common_data_source` from `http` to `disk` to build supported Linux machine images without the need to user Packer's HTTP server. This is useful for environments that may not be able to route back to the system from which Packer is running. Currently, the only `cd_content` is used when selecting `disk`.
+You can change the `common_data_source` from `http` to `disk` to build supported Linux machine images without the need to user Packer's HTTP server. This is useful for environments that may not be able to route back to the system from which Packer is running. Currently, the only `cd_content` is used when selecting `disk`.
 
 > Note: The following Linux distributions do not support kickstart from a secondary CD-ROM.
 > - VMware PhotonOS 4
 > - Ubuntu Server 18.04 LTS
+
+If you need to define a specific IPv4 address from your host for Packer's HTTP Server, modify the `common_http_ip` variable from `null` to a `string` value. For example:
+
+```
+common_http_ip = "172.16.11.254"
+```
 
 #### **Proxy Variables**
 

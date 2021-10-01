@@ -70,6 +70,7 @@ source "vsphere-iso" "linux-photon" {
   iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
 
   // Boot and Provisioning Settings
+  http_ip       = var.common_http_ip
   http_port_min = var.common_http_port_min
   http_port_max = var.common_http_port_max
   http_content = {

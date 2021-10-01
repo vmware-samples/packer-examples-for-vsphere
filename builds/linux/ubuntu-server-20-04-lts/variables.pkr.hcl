@@ -242,6 +242,12 @@ variable "common_data_source" {
   description = "The provisioning data source ('http' or 'disk')."
 }
 
+variable "common_http_ip" {
+  type        = string
+  description = "Define an IP address on the host to use for the HTTP server."
+  default     = null
+}
+
 variable "common_http_port_min" {
   type        = number
   description = "The start of the HTTP port range."

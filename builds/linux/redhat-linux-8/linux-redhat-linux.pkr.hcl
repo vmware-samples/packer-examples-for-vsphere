@@ -74,6 +74,7 @@ source "vsphere-iso" "linux-redhat-linux" {
   iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
 
   // Boot and Provisioning Settings
+  http_ip       = var.common_data_source == "http" ? var.common_http_ip : null
   http_port_min = var.common_data_source == "http" ? var.common_http_port_min : null
   http_port_max = var.common_data_source == "http" ? var.common_http_port_max : null
   http_content  = var.common_data_source == "http" ? local.data_source_content : null

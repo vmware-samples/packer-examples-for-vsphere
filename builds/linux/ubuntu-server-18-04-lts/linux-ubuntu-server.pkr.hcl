@@ -22,6 +22,10 @@ packer {
 locals {
   buildtime     = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
   path_manifest = "${path.cwd}/manifests/"
+  data_source_content = {
+    "/ks.cfg" = templatefile("${abspath(path.root)}/data/ks.pkrtpl.hcl", { build_username = var.build_username, build_password_encrypted = var.build_password_encrypted, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
+  }
+  data_source_command = var.common_data_source == "http" ? "url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg" : "file=/media/ks.cfg"
 }
 
 //  BLOCK: source
@@ -70,11 +74,12 @@ source "vsphere-iso" "linux-ubuntu-server" {
   iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
 
   // Boot and Provisioning Settings
-  http_port_min = var.common_http_port_min
-  http_port_max = var.common_http_port_max
-  http_content = {
-    "/ks.cfg" = templatefile("${abspath(path.root)}/data/ks.pkrtpl.hcl", { build_username = var.build_username, build_password_encrypted = var.build_password_encrypted, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
-  }
+  http_port_min = var.common_data_source == "http" ? var.common_http_port_min : null
+  http_port_max = var.common_data_source == "http" ? var.common_http_port_max : null
+  http_content  = var.common_data_source == "http" ? local.data_source_content : null
+
+  floppy_content = var.common_data_source == "disk" ? local.data_source_content : null
+
   boot_order = var.vm_boot_order
   boot_wait  = var.vm_boot_wait
   boot_command = ["<enter><wait><f6><wait><esc><wait>",
@@ -89,7 +94,7 @@ source "vsphere-iso" "linux-ubuntu-server" {
     "<bs><bs><bs>",
     "/install/vmlinuz initrd=/install/initrd.gz",
     " priority=critical locale=${var.vm_guest_os_language}",
-    " url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg",
+    " ${local.data_source_command}",
   "<enter>"]
   ip_wait_timeout  = var.common_ip_wait_timeout
   shutdown_command = "echo '${var.build_password}' | sudo -S -E shutdown -P now"

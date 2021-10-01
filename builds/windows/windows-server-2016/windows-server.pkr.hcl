@@ -7,7 +7,7 @@
 //  The Packer configuration.
 
 packer {
-  required_version = ">= 1.7.4"
+  required_version = ">= 1.7.6"
   required_plugins {
     vsphere = {
       version = ">= v1.0.1"

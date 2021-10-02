@@ -534,7 +534,7 @@ menu_option_17() {
 
 menu_option_18() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-10/
-  echo -e "\nCONFIRM: Build Microsoft Windows 10 Pro Template for VMware vSphere."
+  echo -e "\nCONFIRM: Build Microsoft Windows 10 Professional Template for VMware vSphere."
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -542,8 +542,8 @@ menu_option_18() {
     exit 1
   fi
 
-  ### Build Microsoft Windows Server 2016 Datacenter Templates for VMware vSphere ###
-  echo "Building a Microsoft Microsoft Windows 10 Pro Template for VMware vSphere  ..."
+  ### Build Microsoft Windows 10 Professional for VMware vSphere ###
+  echo "Building a Microsoft Microsoft Windows 10 Professional Template for VMware vSphere  ..."
 
   ### Initialize Hashicorp Packer and required plugins ###
   echo "Initializing Hashicorp Packer and required plugins ..."
@@ -573,7 +573,7 @@ info() {
   echo "License: Apache License Version 2.0."
   echo ""
   echo "Versions Used:"
-  echo "HashiCorp Packer >= 1.7.4."
+  echo "HashiCorp Packer >= 1.7.6."
   echo "HashiCorp Packer Plugin for VMware vSphere >= 1.0.1"
   echo "HashiCorp Packer Plugin for Windows Update >= 0.14.0"
   echo ""
@@ -619,7 +619,7 @@ until [ "$selection" = "0" ]; do
   echo "    	15  -  Windows Server 2016 - All"
   echo "    	16  -  Windows Server 2016 - Standard Only"
   echo "    	17  -  Windows Server 2016 - Datacenter Only"
-  echo "    	18  -  Windows 10 Pro"
+  echo "    	18  -  Windows 10 Professional"
   echo ""
   echo "      Other:"
   echo ""

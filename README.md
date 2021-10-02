@@ -38,6 +38,7 @@ The following builds are available:
 * Microsoft Windows Server 2022 - Standard and Datacenter
 * Microsoft Windows Server 2019 - Standard and Datacenter
 * Microsoft Windows Server 2016 - Standard and Datacenter
+* Microsoft Windows 10 Professional
 
 > **NOTE**: Guest customization is [**not supported**](https://partnerweb.vmware.com/programs/guestOS/guest-os-customization-matrix.pdf) for AlmaLinux and Rocky Linux in vCenter Server 7.0 Update 2. 
 
@@ -153,6 +154,7 @@ The files are distributed in the following directories.
     * Microsoft Windows Server 2022
     * Microsoft Windows Server 2019
     * Microsoft Windows Server 2016
+    * Microsoft Windows 10
 
 2. Rename your guest operating system `.iso` images. The examples in this repository _generally_ use the format of `iso-family-vendor-type-version.iso`. 
 
@@ -485,6 +487,7 @@ Example: Menu for `./build.sh`.
         15  -  Windows Server 2016 - All
         16  -  Windows Server 2016 - Standard Only
         17  -  Windows Server 2016 - Datacenter Only
+        18  -  Windows 10 Professional
 
       Other:
       

@@ -532,6 +532,35 @@ menu_option_17() {
   echo "Done."
 }
 
+menu_option_18() {
+  INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-10/
+  echo -e "\nCONFIRM: Build Microsoft Windows 10 Professional Template for VMware vSphere."
+  echo -e "\nContinue? (y/n)"
+  read -r REPLY
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+    exit 1
+  fi
+
+  ### Build Microsoft Windows 10 Professional for VMware vSphere ###
+  echo "Building a Microsoft Microsoft Windows 10 Professional Template for VMware vSphere  ..."
+
+  ### Initialize Hashicorp Packer and required plugins ###
+  echo "Initializing Hashicorp Packer and required plugins ..."
+  packer init "$INPUT_PATH"
+
+  ### Apply the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build ..."
+  packer build -force \
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      "$INPUT_PATH"
+
+  ### All done. ###
+  echo "Done."
+}
+
 press_enter() {
   cd "$SCRIPT_PATH"
   echo -n "Press Enter to continue."
@@ -544,7 +573,7 @@ info() {
   echo "License: Apache License Version 2.0."
   echo ""
   echo "Versions Used:"
-  echo "HashiCorp Packer >= 1.7.4."
+  echo "HashiCorp Packer >= 1.7.6."
   echo "HashiCorp Packer Plugin for VMware vSphere >= 1.0.1"
   echo "HashiCorp Packer Plugin for Windows Update >= 0.14.0"
   echo ""
@@ -590,6 +619,7 @@ until [ "$selection" = "0" ]; do
   echo "    	15  -  Windows Server 2016 - All"
   echo "    	16  -  Windows Server 2016 - Standard Only"
   echo "    	17  -  Windows Server 2016 - Datacenter Only"
+  echo "    	18  -  Windows 10 Professional"
   echo ""
   echo "      Other:"
   echo ""
@@ -616,6 +646,7 @@ until [ "$selection" = "0" ]; do
     15 ) clear ; menu_option_15 ; press_enter ;;
     16 ) clear ; menu_option_16 ; press_enter ;;
     17 ) clear ; menu_option_17 ; press_enter ;;
+    18 ) clear ; menu_option_18 ; press_enter ;;
     I ) clear ; info ; press_enter ;;
     Q ) clear ; exit ;;
     * ) clear ; incorrect_selection ; press_enter ;;

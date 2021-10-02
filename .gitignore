@@ -9,10 +9,14 @@ packer_cache/
 crash.log
 
 # Configurations
-## Ignore custom configurations.
+## Ignore default config directory.
 config/
-## Ignore certificates.
+## Ignore certificates files.
 **/*.crt
 **/*.p7b
-## Ignore manifests.
+## Ignore public key files
+**/*.pub
+
+# Manifests
+## Ignore manifests directory.
 manifests/*.json

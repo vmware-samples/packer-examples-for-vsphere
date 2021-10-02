@@ -1,6 +1,6 @@
 /*
     DESCRIPTION:
-    Microsoft Windows 10 Pro Standard variables using the Packer Builder for VMware vSphere (vsphere-iso).
+    Microsoft Windows 10 Professional variables using the Packer Builder for VMware vSphere (vsphere-iso).
 */
 
 //  BLOCK: variable
@@ -104,7 +104,7 @@ variable "vm_guest_os_family" {
 
 variable "vm_guest_os_version" {
   type        = string
-  description = "The guest operating system version. Used for naming. (e.g. '2022')"
+  description = "The guest operating system version. Used for naming. (e.g. '10')"
 }
 
 variable "vm_guest_os_type" {
@@ -236,12 +236,12 @@ variable "common_iso_hash" {
 
 variable "iso_file" {
   type        = string
-  description = "The file name of the ISO image. (e.g. 'iso-windows-server-2019.iso')"
+  description = "The file name of the ISO image. (e.g. 'iso-windows-10.iso')"
 }
 
 variable "iso_checksum" {
   type        = string
-  description = "The checksum of the ISO image. (e.g. Result of 'shasum -a 512 iso-windows-server-2019.iso')"
+  description = "The checksum of the ISO image. (e.g. Result of 'shasum -a 512 iso-windows-10.iso')"
 }
 
 // Boot Settings

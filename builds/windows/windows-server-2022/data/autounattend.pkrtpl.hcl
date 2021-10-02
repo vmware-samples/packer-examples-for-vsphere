@@ -6,7 +6,7 @@
             <UILanguage>${vm_guest_os_language}</UILanguage>
          </SetupUILanguage>
          <InputLocale>${vm_guest_os_keyboard}</InputLocale>
-         <SystemLocale>e${vm_guest_os_language}</SystemLocale>
+         <SystemLocale>${vm_guest_os_language}</SystemLocale>
          <UILanguage>${vm_guest_os_language}</UILanguage>
          <UILanguageFallback>${vm_guest_os_language}</UILanguageFallback>
          <UserLocale>${vm_guest_os_language}</UserLocale>

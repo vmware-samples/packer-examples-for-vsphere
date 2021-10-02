@@ -109,7 +109,7 @@ variable "vm_guest_os_version" {
 
 variable "vm_guest_os_type" {
   type        = string
-  description = "The guest operating system type, also know as guestid. (e.g. 'windows2019srv_64Guest')"
+  description = "The guest operating system type, also know as guestid. (e.g. 'windows9_64Guest')"
 }
 
 variable "vm_firmware" {

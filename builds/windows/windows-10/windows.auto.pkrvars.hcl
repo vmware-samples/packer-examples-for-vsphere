@@ -1,11 +1,11 @@
 /*
     DESCRIPTION:
-    Microsoft Windows 10 Pro variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    Microsoft Windows 10 Professional variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
 */
 
 // Installation Operating System Metadata
-vm_inst_os_language = "en-GB"
-vm_inst_os_keyboard = "en-GB"
+vm_inst_os_language = "en-US"
+vm_inst_os_keyboard = "en-US"
 
 // Guest Operating System Metadata
 vm_guest_os_language = "en-US"

@@ -1,6 +1,6 @@
 /*
     DESCRIPTION:
-    Microsoft Windows 10 Pro template using the Packer Builder for VMware vSphere (vsphere-iso).
+    Microsoft Windows 10 Professional template using the Packer Builder for VMware vSphere (vsphere-iso).
 */
 
 //  BLOCK: packer
@@ -33,7 +33,7 @@ locals {
 //  BLOCK: source
 //  Defines the builder configuration blocks.
 
-source "vsphere-iso" "windows-10-pro" {
+source "vsphere-iso" "windows-10-professional" {
 
   // vCenter Server Endpoint Settings and Credentials
   vcenter_server      = var.vsphere_endpoint
@@ -49,7 +49,7 @@ source "vsphere-iso" "windows-10-pro" {
 
   // Virtual Machine Settings
   guest_os_type        = var.vm_guest_os_type
-  vm_name              = "${var.vm_guest_os_family}-${var.vm_guest_os_version}-pro"
+  vm_name              = "${var.vm_guest_os_family}-${var.vm_guest_os_version}-professional"
   firmware             = var.vm_firmware
   CPUs                 = var.vm_cpu_sockets
   cpu_cores            = var.vm_cpu_cores
@@ -129,7 +129,7 @@ source "vsphere-iso" "windows-10-pro" {
 
 build {
   sources = [
-    "source.vsphere-iso.windows-10-pro",
+    "source.vsphere-iso.windows-10-professional",
   ]
 
   provisioner "file" {
@@ -166,7 +166,7 @@ build {
   }
 
   post-processor "manifest" {
-    output     = "${local.path_manifest}${local.buildtime}-${var.vm_guest_os_family}.json"
+    output     = "${local.path_manifest}${local.buildtime}-${var.vm_guest_os_family}-professional.json"
     strip_path = false
   }
 }

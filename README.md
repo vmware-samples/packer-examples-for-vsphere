@@ -487,7 +487,7 @@ Example: Menu for `./build.sh`.
         15  -  Windows Server 2016 - All
         16  -  Windows Server 2016 - Standard Only
         17  -  Windows Server 2016 - Datacenter Only
-        18  -  Windows 10 Pro
+        18  -  Windows 10 Professional
 
       Other:
       

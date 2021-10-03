@@ -134,7 +134,7 @@ The files are distributed in the following directories.
 
     **Linux Distributions**
     * VMware Photon OS 4 Server
-        * [Download][download-linux-photon-server-4] the latest release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-ca7c9e933.iso`)
+        * [Download][download-linux-photon-server-4] the 4.0 GA release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-ca7c9e933.iso`)
     * Ubuntu Server 20.04 LTS
         * [Download][download-linux-ubuntu-server-20-04-lts] the latest **LIVE** release `.iso` image. (_e.g._ `ubuntu-20.04.2-live-server-amd64.iso`)
     * Ubuntu Server 18.04 LTS

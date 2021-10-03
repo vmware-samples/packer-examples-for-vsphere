@@ -191,7 +191,7 @@ variable "vm_network_card" {
 
 variable "common_vm_version" {
   type        = number
-  description = "The vSphere virtual hardware version. (e.g. '18')"
+  description = "The vSphere virtual hardware version. (e.g. '19')"
 }
 
 variable "common_tools_upgrade_policy" {
@@ -228,7 +228,7 @@ variable "common_content_library_ovf" {
 
 variable "common_content_library_destroy" {
   type        = bool
-  description = "Delete the virtual machine afer exporting to the content library."
+  description = "Delete the virtual machine after exporting to the content library."
   default     = true
 }
 
@@ -239,24 +239,24 @@ variable "common_iso_datastore" {
   description = "The name of the source vSphere datastore for ISO images. (e.g. 'sfo-w01-cl01-nfs01')"
 }
 
-variable "common_iso_path" {
+variable "iso_path" {
   type        = string
-  description = "The path on the source vSphere datastore for ISO images. (e.g. 'iso')"
-}
-
-variable "common_iso_hash" {
-  type        = string
-  description = "The algorithm used for the checkcum of the ISO image. (e.g. 'sha512')"
+  description = "The path on the source vSphere datastore for ISO image. (e.g. 'iso/windows')"
 }
 
 variable "iso_file" {
   type        = string
-  description = "The file name of the ISO image. (e.g. 'iso-windows-server-2019.iso')"
+  description = "The file name of the ISO image used by the vendor. (e.g. '<language>_windows_server_version_<version>_updated_<month_year>_x64_dvd_<string>.iso')"
 }
 
-variable "iso_checksum" {
+variable "iso_checksum_type" {
   type        = string
-  description = "The checksum of the ISO image. (e.g. Result of 'shasum -a 512 iso-windows-server-2019.iso')"
+  description = "The checksum algorithm used by the vendor. (e.g. 'sha256')"
+}
+
+variable "iso_checksum_value" {
+  type        = string
+  description = "The checksum value provided by the vendor."
 }
 
 // Boot Settings
@@ -264,6 +264,12 @@ variable "iso_checksum" {
 variable "common_data_source" {
   type        = string
   description = "The provisioning data source ('http' or 'disk')."
+}
+
+variable "common_http_ip" {
+  type        = string
+  description = "Define an IP address on the host to use for the HTTP server."
+  default     = null
 }
 
 variable "common_http_port_min" {

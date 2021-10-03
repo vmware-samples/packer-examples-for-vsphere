@@ -167,7 +167,7 @@ variable "vm_network_card" {
 
 variable "common_vm_version" {
   type        = number
-  description = "The vSphere virtual hardware version. (e.g. '18')"
+  description = "The vSphere virtual hardware version. (e.g. '19')"
 }
 
 variable "common_tools_upgrade_policy" {
@@ -215,24 +215,24 @@ variable "common_iso_datastore" {
   description = "The name of the source vSphere datastore for ISO images. (e.g. 'sfo-w01-cl01-nfs01')"
 }
 
-variable "common_iso_path" {
+variable "iso_path" {
   type        = string
-  description = "The path on the source vSphere datastore for ISO images. (e.g. 'iso')"
-}
-
-variable "common_iso_hash" {
-  type        = string
-  description = "The algorithm used for the checkcum of the ISO image. (e.g. 'sha512')"
+  description = "The path on the source vSphere datastore for ISO image. (e.g. 'iso'/linux/rhel-derivative)"
 }
 
 variable "iso_file" {
   type        = string
-  description = "The file name of the ISO image. (e.g. 'iso-linux-almalinux-8.iso')"
+  description = "The file name of the ISO image used by the vendor. (e.g. 'AlmaLinux-<version>-x86_64-dvd.iso')"
 }
 
-variable "iso_checksum" {
+variable "iso_checksum_type" {
   type        = string
-  description = "The checksum of the ISO image. (e.g. Result of 'shasum -a 512 iso-linux-almalinux-8.iso')"
+  description = "The checksum algorithm used by the vendor. (e.g. 'sha256')"
+}
+
+variable "iso_checksum_value" {
+  type        = string
+  description = "The checksum value provided by the vendor."
 }
 
 // Boot Settings
@@ -325,7 +325,7 @@ variable "communicator_proxy_username" {
 
 variable "communicator_proxy_password" {
   type        = string
-  description = "The optional password to use to authenticate with the proxy server."
+  description = "The optional password to authenticate with the proxy server."
   sensitive   = true
   default     = null
 }

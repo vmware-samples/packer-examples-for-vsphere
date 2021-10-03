@@ -29,8 +29,10 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_file     = "iso-linux-ubuntu-server-18-04-lts.iso"
-iso_checksum = "43738d7dfd3e2661e4d55d2e0f9d8150f0687f4335af9b4dac047bf45fafcb4a4831685281fd5a318c5747681c351375d1129094d3f1bf38d88ab4bb49b6c457"
+iso_path           = "iso/linux/ubuntu"
+iso_file           = "ubuntu-18.04.6-server-amd64.iso"
+iso_checksum_type  = "sha256"
+iso_checksum_value = "f5cbb8104348f0097a8e513b10173a07dbc6684595e331cb06f93f385d0aecf6"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

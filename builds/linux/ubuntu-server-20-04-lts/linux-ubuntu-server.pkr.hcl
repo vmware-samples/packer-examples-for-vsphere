@@ -24,7 +24,13 @@ locals {
   path_manifest = "${path.cwd}/manifests/"
   data_source_content = {
     "/meta-data" = file("${abspath(path.root)}/data/meta-data")
-    "/user-data" = templatefile("${abspath(path.root)}/data/user-data.pkrtpl.hcl", { build_username = var.build_username, build_password_encrypted = var.build_password_encrypted, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
+    "/user-data" = templatefile("${abspath(path.root)}/data/user-data.pkrtpl.hcl", {
+      build_username           = var.build_username
+      build_password_encrypted = var.build_password_encrypted
+      vm_guest_os_language     = var.vm_guest_os_language
+      vm_guest_os_keyboard     = var.vm_guest_os_keyboard
+      vm_guest_os_timezone     = var.vm_guest_os_timezone
+    })
   }
   data_source_command = var.common_data_source == "http" ? "ds=nocloud-net;s=http://{{.HTTPIP}}:{{.HTTPPort}}/" : "ds=nocloud"
 }
@@ -71,21 +77,24 @@ source "vsphere-iso" "linux-ubuntu-server" {
   notes                = "Built by HashiCorp Packer on ${local.buildtime}."
 
   // Removable Media Settings
-  iso_paths    = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}"]
-  iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
+  iso_paths    = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}"]
+  iso_checksum = "${var.iso_checksum_type}:${var.iso_checksum_value}"
+  http_content = var.common_data_source == "http" ? local.data_source_content : null
+  cd_content   = var.common_data_source == "disk" ? local.data_source_content : null
+  cd_label     = var.common_data_source == "disk" ? "cidata" : null
 
   // Boot and Provisioning Settings
   http_ip       = var.common_data_source == "http" ? var.common_http_ip : null
   http_port_min = var.common_data_source == "http" ? var.common_http_port_min : null
   http_port_max = var.common_data_source == "http" ? var.common_http_port_max : null
-  http_content  = var.common_data_source == "http" ? local.data_source_content : null
-
-  cd_label   = var.common_data_source == "disk" ? "cidata" : null
-  cd_content = var.common_data_source == "disk" ? local.data_source_content : null
-
-  boot_order       = var.vm_boot_order
-  boot_wait        = var.vm_boot_wait
-  boot_command     = ["<enter><enter><f6><esc><wait> ", "autoinstall ", "ip=dhcp ipv6.disable=1 ${local.data_source_command} ", "<enter><wait>"]
+  boot_order    = var.vm_boot_order
+  boot_wait     = var.vm_boot_wait
+  boot_command = [
+    "<enter><enter><f6><esc><wait> ",
+    "autoinstall ",
+    "${local.data_source_command} ",
+    "<enter><wait>"
+  ]
   ip_wait_timeout  = var.common_ip_wait_timeout
   shutdown_command = "echo '${var.build_password}' | sudo -S -E shutdown -P now"
   shutdown_timeout = var.common_shutdown_timeout
@@ -136,7 +145,7 @@ build {
   }
 
   post-processor "manifest" {
-    output     = "${local.path_manifest}${local.buildtime}-${var.vm_guest_os_family}-${var.vm_guest_os_vendor}-${var.vm_guest_os_member}.json"
+    output     = "${local.path_manifest}${local.buildtime} ${var.vm_guest_os_family}-${var.vm_guest_os_vendor}-${var.vm_guest_os_member}.json"
     strip_path = false
   }
 }

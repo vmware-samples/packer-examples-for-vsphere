@@ -66,19 +66,26 @@ source "vsphere-iso" "linux-ubuntu-server" {
   notes                = "Built by HashiCorp Packer on ${local.buildtime}."
 
   // Removable Media Settings
-  iso_paths    = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}"]
-  iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
+  iso_paths    = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}"]
+  iso_checksum = "${var.iso_checksum_type}:${var.iso_checksum_value}"
+  http_content = {
+    "/ks.cfg" = templatefile("${abspath(path.root)}/data/ks.pkrtpl.hcl", {
+      build_username           = var.build_username
+      build_password_encrypted = var.build_password_encrypted
+      vm_guest_os_language     = var.vm_guest_os_language
+      vm_guest_os_keyboard     = var.vm_guest_os_keyboard
+      vm_guest_os_timezone     = var.vm_guest_os_timezone
+    })
+  }
 
   // Boot and Provisioning Settings
   http_ip       = var.common_http_ip
   http_port_min = var.common_http_port_min
   http_port_max = var.common_http_port_max
-  http_content = {
-    "/ks.cfg" = templatefile("${abspath(path.root)}/data/ks.pkrtpl.hcl", { build_username = var.build_username, build_password_encrypted = var.build_password_encrypted, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
-  }
-  boot_order = var.vm_boot_order
-  boot_wait  = var.vm_boot_wait
-  boot_command = ["<enter><wait><f6><wait><esc><wait>",
+  boot_order    = var.vm_boot_order
+  boot_wait     = var.vm_boot_wait
+  boot_command = [
+    "<enter><wait><f6><wait><esc><wait>",
     "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
     "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
     "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
@@ -91,7 +98,8 @@ source "vsphere-iso" "linux-ubuntu-server" {
     "/install/vmlinuz initrd=/install/initrd.gz",
     " priority=critical locale=${var.vm_guest_os_language}",
     " url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg",
-  "<enter>"]
+    "<enter>"
+  ]
   ip_wait_timeout  = var.common_ip_wait_timeout
   shutdown_command = "echo '${var.build_password}' | sudo -S -E shutdown -P now"
   shutdown_timeout = var.common_shutdown_timeout
@@ -142,7 +150,7 @@ build {
   }
 
   post-processor "manifest" {
-    output     = "${local.path_manifest}${local.buildtime}-${var.vm_guest_os_family}-${var.vm_guest_os_vendor}-${var.vm_guest_os_member}.json"
+    output     = "${local.path_manifest}${local.buildtime} ${var.vm_guest_os_family}-${var.vm_guest_os_vendor}-${var.vm_guest_os_member}.json"
     strip_path = false
   }
 }

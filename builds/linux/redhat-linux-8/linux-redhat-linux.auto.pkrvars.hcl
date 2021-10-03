@@ -29,8 +29,10 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_file     = "iso-linux-redhat-linux-8.iso"
-iso_checksum = "3b3f4ad5a0b8ef289643bf8cb7f6f5a0fa7b2cbca747dc0ed6b588f574f38bee8c741b76519b8d0bf7dd4328d9ecc950bad443c22ddc8347837a4c58cd85b3a7"
+iso_path           = "iso/linux/rhel"
+iso_file           = "rhel-8.4-x86_64-dvd.iso"
+iso_checksum_type  = "sha256"
+iso_checksum_value = "48f955712454c32718dcde858dea5aca574376a1d7a4b0ed6908ac0b85597811"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

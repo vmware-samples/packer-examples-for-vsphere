@@ -29,8 +29,10 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_file     = "iso-linux-rocky-linux-8.iso"
-iso_checksum = "dbfacdbbfd50059a0dda5c19071bc2f55496f3651279eafa6f50d2ea2d941fdd8b43b8710e2187cdbfe630fa7efb5d3b047ee0cdbc2f8d09bd5f68a7014e0d0c"
+iso_path           = "iso/linux/rhel-derivative"
+iso_file           = "Rocky-8.4-x86_64-dvd1.iso"
+iso_checksum_type  = "sha256"
+iso_checksum_value = "ffe2fae67da6702d859cfb0b321561a5d616ce87a963d8a25b018c9c3d52d9a4"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"
@@ -41,5 +43,5 @@ communicator_port    = 22
 communicator_timeout = "30m"
 
 // Provisioner Settings
-scripts = ["scripts/linux/redhat-variant.sh"]
+scripts = ["scripts/linux/redhat-derivative.sh"]
 inline  = []

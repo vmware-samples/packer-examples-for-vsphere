@@ -66,19 +66,22 @@ source "vsphere-iso" "linux-photon" {
   notes                = "Built by HashiCorp Packer on ${local.buildtime}."
 
   // Removable Media Settings
-  iso_paths    = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}"]
-  iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
+  iso_paths    = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}"]
+  iso_checksum = "${var.iso_checksum_type}:${var.iso_checksum_value}"
+  http_content = {
+    "/ks.json" = templatefile("${abspath(path.root)}/data/ks.pkrtpl.hcl", {
+      build_username           = var.build_username
+      build_password_encrypted = var.build_password_encrypted
+    })
+    "/packages.json" = file("${abspath(path.root)}/data/packages_minimal.json")
+  }
 
   // Boot and Provisioning Settings
   http_ip       = var.common_http_ip
   http_port_min = var.common_http_port_min
   http_port_max = var.common_http_port_max
-  http_content = {
-    "/ks.json"       = templatefile("${abspath(path.root)}/data/ks.pkrtpl.hcl", { build_username = var.build_username, build_password_encrypted = var.build_password_encrypted })
-    "/packages.json" = file("${abspath(path.root)}/data/packages_minimal.json")
-  }
-  boot_order = var.vm_boot_order
-  boot_wait  = var.vm_boot_wait
+  boot_order    = var.vm_boot_order
+  boot_wait     = var.vm_boot_wait
   boot_command = [
     "<esc><wait>c",
     "linux /isolinux/vmlinuz root=/dev/ram0 loglevel=3 insecure_installation=1 ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.json photon.media=cdrom",
@@ -137,7 +140,7 @@ build {
   }
 
   post-processor "manifest" {
-    output     = "${local.path_manifest}${local.buildtime}-${var.vm_guest_os_family}-${var.vm_guest_os_vendor}.json"
+    output     = "${local.path_manifest}${local.buildtime} ${var.vm_guest_os_family}-${var.vm_guest_os_vendor}.json"
     strip_path = false
   }
 }

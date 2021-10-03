@@ -32,8 +32,10 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_file     = "iso-windows-10.iso"
-iso_checksum = "a5a224237d79b605a761e912295a76de84c56ff9130ec99e98138d75c93ad6d2023cd7455eebb36a95462ece813bc5f58a90b319cbffcf0eb65cf7c43dd851cc"
+iso_path           = "iso/windows"
+iso_file           = "en-us_windows_10_business_editions_version_21h1_updated_sep_2021_x64_dvd_56628c48.iso"
+iso_checksum_type  = "sha256"
+iso_checksum_value = "852C6A57D1660D2FF0745EBE16DC6CF1AAA67FC7C608C06921082403BACC6285"
 
 // Boot Settings
 vm_boot_order       = "disk,cdrom"

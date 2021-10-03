@@ -72,14 +72,22 @@ source "vsphere-iso" "windows-server-standard-core" {
   notes                = "Built by HashiCorp Packer on ${local.buildtime}."
 
   // Removable Media Settings
-  iso_paths    = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
-  iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
+  iso_paths    = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
+  iso_checksum = "${var.iso_checksum_type}:${var.iso_checksum_value}"
   cd_files = [
     "${path.cwd}/scripts/${var.vm_guest_os_family}/",
     "${path.cwd}/certificates/"
   ]
   cd_content = {
-    "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2019 SERVERSTANDARDCORE", kms_key = "N69G4-B89J2-4G8F4-WWYCC-J464C", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
+    "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", {
+      os_image             = "Windows Server 2019 SERVERSTANDARDCORE"
+      kms_key              = "N69G4-B89J2-4G8F4-WWYCC-J464C"
+      build_username       = var.build_username
+      build_password       = var.build_password
+      vm_guest_os_language = var.vm_guest_os_language
+      vm_guest_os_keyboard = var.vm_guest_os_keyboard
+      vm_guest_os_timezone = var.vm_guest_os_timezone
+    })
   }
 
   // Boot and Provisioning Settings
@@ -151,14 +159,22 @@ source "vsphere-iso" "windows-server-standard-dexp" {
   notes                = "Built by HashiCorp Packer on ${local.buildtime}."
 
   // Removable Media Settings
-  iso_paths    = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
-  iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
+  iso_paths    = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
+  iso_checksum = "${var.iso_checksum_type}:${var.iso_checksum_value}"
   cd_files = [
     "${path.cwd}/scripts/${var.vm_guest_os_family}/",
     "${path.cwd}/certificates/"
   ]
   cd_content = {
-    "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2019 SERVERSTANDARD", kms_key = "N69G4-B89J2-4G8F4-WWYCC-J464C", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
+    "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", {
+      os_image             = "Windows Server 2019 SERVERSTANDARD"
+      kms_key              = "N69G4-B89J2-4G8F4-WWYCC-J464C"
+      build_username       = var.build_username
+      build_password       = var.build_password
+      vm_guest_os_language = var.vm_guest_os_language
+      vm_guest_os_keyboard = var.vm_guest_os_keyboard
+      vm_guest_os_timezone = var.vm_guest_os_timezone
+    })
   }
 
   // Boot and Provisioning Settings
@@ -230,14 +246,22 @@ source "vsphere-iso" "windows-server-datacenter-core" {
   notes                = "Built by HashiCorp Packer on ${local.buildtime}."
 
   // Removable Media Settings
-  iso_paths    = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
-  iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
+  iso_paths    = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
+  iso_checksum = "${var.iso_checksum_type}:${var.iso_checksum_value}"
   cd_files = [
     "${path.cwd}/scripts/${var.vm_guest_os_family}/",
     "${path.cwd}/certificates/"
   ]
   cd_content = {
-    "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2019 SERVERDATACENTERCORE", kms_key = "WMDGN-G9PQG-XVVXX-R3X43-63DFG", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
+    "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", {
+      os_image             = "Windows Server 2019 SERVERDATACENTERCORE"
+      kms_key              = "WMDGN-G9PQG-XVVXX-R3X43-63DFG"
+      build_username       = var.build_username
+      build_password       = var.build_password
+      vm_guest_os_language = var.vm_guest_os_language
+      vm_guest_os_keyboard = var.vm_guest_os_keyboard
+      vm_guest_os_timezone = var.vm_guest_os_timezone
+    })
   }
 
   // Boot and Provisioning Settings
@@ -309,14 +333,22 @@ source "vsphere-iso" "windows-server-datacenter-dexp" {
   notes                = "Built by HashiCorp Packer on ${local.buildtime}."
 
   // Removable Media Settings
-  iso_paths    = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
-  iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
+  iso_paths    = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
+  iso_checksum = "${var.iso_checksum_type}:${var.iso_checksum_value}"
   cd_files = [
     "${path.cwd}/scripts/${var.vm_guest_os_family}/",
     "${path.cwd}/certificates/"
   ]
   cd_content = {
-    "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", { os_image = "Windows Server 2019 SERVERDATACENTER", kms_key = "WMDGN-G9PQG-XVVXX-R3X43-63DFG", build_username = var.build_username, build_password = var.build_password, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
+    "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", {
+      os_image             = "Windows Server 2019 SERVERDATACENTER"
+      kms_key              = "WMDGN-G9PQG-XVVXX-R3X43-63DFG"
+      build_username       = var.build_username
+      build_password       = var.build_password
+      vm_guest_os_language = var.vm_guest_os_language
+      vm_guest_os_keyboard = var.vm_guest_os_keyboard
+      vm_guest_os_timezone = var.vm_guest_os_timezone
+    })
   }
 
   // Boot and Provisioning Settings
@@ -393,7 +425,7 @@ build {
   }
 
   post-processor "manifest" {
-    output     = "${local.path_manifest}${local.buildtime}-${var.vm_guest_os_family}-${var.vm_guest_os_member}.json"
+    output     = "${local.path_manifest}${local.buildtime} ${var.vm_guest_os_family}-${var.vm_guest_os_member}.json"
     strip_path = false
   }
 }

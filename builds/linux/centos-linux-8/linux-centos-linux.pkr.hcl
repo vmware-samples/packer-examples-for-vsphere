@@ -23,7 +23,13 @@ locals {
   buildtime     = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
   path_manifest = "${path.cwd}/manifests/"
   data_source_content = {
-    "/ks.cfg" = templatefile("${abspath(path.root)}/data/ks.pkrtpl.hcl", { build_username = var.build_username, build_password_encrypted = var.build_password_encrypted, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
+    "/ks.cfg" = templatefile("${abspath(path.root)}/data/ks.pkrtpl.hcl", {
+      build_username           = var.build_username
+      build_password_encrypted = var.build_password_encrypted
+      vm_guest_os_language     = var.vm_guest_os_language
+      vm_guest_os_keyboard     = var.vm_guest_os_keyboard
+      vm_guest_os_timezone     = var.vm_guest_os_timezone
+    })
   }
   data_source_command = var.common_data_source == "http" ? "inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg" : "inst.ks=cdrom:/ks.cfg"
 }
@@ -70,20 +76,24 @@ source "vsphere-iso" "linux-centos-linux" {
   notes                = "Built by HashiCorp Packer on ${local.buildtime}."
 
   // Removable Media Settings
-  iso_paths    = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}"]
-  iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
+  iso_paths    = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}"]
+  iso_checksum = "${var.iso_checksum_type}:${var.iso_checksum_value}"
+  http_content = var.common_data_source == "http" ? local.data_source_content : null
+  cd_content   = var.common_data_source == "disk" ? local.data_source_content : null
 
   // Boot and Provisioning Settings
   http_ip       = var.common_data_source == "http" ? var.common_http_ip : null
   http_port_min = var.common_data_source == "http" ? var.common_http_port_min : null
   http_port_max = var.common_data_source == "http" ? var.common_http_port_max : null
-  http_content  = var.common_data_source == "http" ? local.data_source_content : null
-
-  cd_content = var.common_data_source == "disk" ? local.data_source_content : null
-
-  boot_order       = var.vm_boot_order
-  boot_wait        = var.vm_boot_wait
-  boot_command     = ["up", "e", "<down><down><end><wait>", "text ${local.data_source_command}", "<enter><wait><leftCtrlOn>x<leftCtrlOff>"]
+  boot_order    = var.vm_boot_order
+  boot_wait     = var.vm_boot_wait
+  boot_command = [
+    "up",
+    "e",
+    "<down><down><end><wait>",
+    "text ${local.data_source_command}",
+    "<enter><wait><leftCtrlOn>x<leftCtrlOff>"
+  ]
   ip_wait_timeout  = var.common_ip_wait_timeout
   shutdown_command = "echo '${var.build_password}' | sudo -S -E shutdown -P now"
   shutdown_timeout = var.common_shutdown_timeout
@@ -134,7 +144,7 @@ build {
   }
 
   post-processor "manifest" {
-    output     = "${local.path_manifest}${local.buildtime}-${var.vm_guest_os_family}-${var.vm_guest_os_vendor}.json"
+    output     = "${local.path_manifest}${local.buildtime} ${var.vm_guest_os_family}-${var.vm_guest_os_vendor}.json"
     strip_path = false
   }
 }

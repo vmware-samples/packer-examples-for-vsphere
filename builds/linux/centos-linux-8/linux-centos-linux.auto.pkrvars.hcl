@@ -29,8 +29,10 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_file     = "iso-linux-centos-linux-8.iso"
-iso_checksum = "ff1164dc26ba47616f2b26a18158398a7d7930487770a8bb9e573d5758e01255ebc11db68c22976abe684a857083a0fae445e9d41d11a24a2073cdb1b500ae9a"
+iso_path           = "iso/linux/rhel-derivative"
+iso_file           = "CentOS-8.4.2105-x86_64-dvd1.iso"
+iso_checksum_type  = "sha256"
+iso_checksum_value = "0394ecfa994db75efc1413207d2e5ac67af4f6685b3b896e2837c682221fd6b2"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"
@@ -41,5 +43,5 @@ communicator_port    = 22
 communicator_timeout = "30m"
 
 // Provisioner Settings
-scripts = ["scripts/linux/redhat-variant.sh"]
+scripts = ["scripts/linux/redhat-derivative.sh"]
 inline  = []

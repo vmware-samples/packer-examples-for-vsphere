@@ -29,8 +29,10 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_file     = "iso-linux-almalinux-8.iso"
-iso_checksum = "44f56b309fa0cccf41f4d8a5ca3c9b91bb7da510ff8d8faf93fadef9262df872cb824aa7499c5ada5a7ae743be6b38261ed458c465d84e2504e38ca6f05107d7"
+iso_path           = "iso/linux/rhel-derivative"
+iso_file           = "AlmaLinux-8.4-x86_64-dvd.iso"
+iso_checksum_type  = "sha256"
+iso_checksum_value = "44f56b309fa0cccf41f4d8a5ca3c9b91bb7da510ff8d8faf93fadef9262df872cb824aa7499c5ada5a7ae743be6b38261ed458c465d84e2504e38ca6f05107d7"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"
@@ -41,5 +43,5 @@ communicator_port    = 22
 communicator_timeout = "30m"
 
 // Provisioner Settings
-scripts = ["scripts/linux/redhat-variant.sh"]
+scripts = ["scripts/linux/redhat-derivative.sh"]
 inline  = []

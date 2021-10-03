@@ -26,8 +26,8 @@ packer {
 //  Defines the local variables.
 
 locals {
-  buildtime     = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
-  path_manifest = "${path.cwd}/manifests/"
+  buildtime        = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
+  path_manifest    = "${path.cwd}/manifests/"
 }
 
 //  BLOCK: source
@@ -72,23 +72,20 @@ source "vsphere-iso" "windows-10-professional" {
   notes                = "Built by HashiCorp Packer on ${local.buildtime}."
 
   // Removable Media Settings
-  iso_paths    = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
-  iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
+  iso_paths    = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
+  iso_checksum = "${var.iso_checksum_type}:${var.iso_checksum_value}"
   cd_files = [
     "${path.cwd}/scripts/${var.vm_guest_os_family}/",
     "${path.cwd}/certificates/"
   ]
   cd_content = {
     "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", {
-      os_image = "Windows 10 Pro"
-      kms_key  = "W269N-WFGWX-YVC9B-4J6C9-T83GX"
-
-      build_username = var.build_username
-      build_password = var.build_password
-
-      vm_inst_os_language = var.vm_inst_os_language
-      vm_inst_os_keyboard = var.vm_inst_os_keyboard
-
+      os_image             = "Windows 10 Pro"
+      kms_key              = "W269N-WFGWX-YVC9B-4J6C9-T83GX"
+      build_username       = var.build_username
+      build_password       = var.build_password
+      vm_inst_os_language  = var.vm_inst_os_language
+      vm_inst_os_keyboard  = var.vm_inst_os_keyboard
       vm_guest_os_language = var.vm_guest_os_language
       vm_guest_os_keyboard = var.vm_guest_os_keyboard
       vm_guest_os_timezone = var.vm_guest_os_timezone
@@ -166,7 +163,7 @@ build {
   }
 
   post-processor "manifest" {
-    output     = "${local.path_manifest}${local.buildtime}-${var.vm_guest_os_family}-professional.json"
+    output     = "${local.path_manifest}${local.buildtime} ${var.vm_guest_os_family}.json"
     strip_path = false
   }
 }

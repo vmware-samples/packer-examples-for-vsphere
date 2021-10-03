@@ -37,7 +37,7 @@ d-i passwd/root-password-crypted password ${build_password_encrypted}
 
 # Package Configuration
 tasksel tasksel/first standard
-d-i pkgsel/include string openssh-server open-vm-tools
+d-i pkgsel/include string openssh-server open-vm-tools ansible
 d-i pkgsel/install-language-support boolean false
 
 # Disable Automatic Package Updates

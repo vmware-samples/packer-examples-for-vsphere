@@ -33,8 +33,10 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_file     = "iso-windows-server-2019.iso"
-iso_checksum = "1c5e178d0aa403acf756ec2be356059ea833c662406a0bcc4531fce144bfc2c69212cb78bf138ecdbc23e7ed05c7d06603409943a2d93d8917a6bdbd01adc37b"
+iso_path           = "iso/windows"
+iso_file           = "en-us_windows_server_2019_updated_aug_2021_x64_dvd_a6431a28.iso"
+iso_checksum_type  = "sha256"
+iso_checksum_value = "0067AFE7FDC4E61F677BD8C35A209082AA917DF9C117527FC4B2B52A447E89BB"
 
 // Boot Settings
 vm_boot_order       = "disk,cdrom"
@@ -47,7 +49,7 @@ communicator_port    = 5985
 communicator_timeout = "12h"
 
 // Provisioner Settings
-scripts = [ "scripts/windows/windows-server-prepare.ps1" ]
+scripts = ["scripts/windows/windows-server-prepare.ps1"]
 inline = [
   "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))",
   "choco feature enable -n allowGlobalConfirmation",

@@ -24,8 +24,8 @@ sudo dnf update -y
 
 ### Install additional packages. ### 
 echo '> Installing additional packages ...'
+sudo dnf install -y -q https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 sudo dnf install -y \
-    epel-release \
     curl \
     wget \
     git \

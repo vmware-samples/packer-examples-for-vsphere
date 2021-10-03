@@ -122,7 +122,6 @@
          <OEMInformation>
             <HelpCustomized>false</HelpCustomized>
          </OEMInformation>
-         <ComputerName>win-server-2016</ComputerName>
          <TimeZone>${vm_guest_os_timezone}</TimeZone>
          <RegisteredOwner />
       </component>

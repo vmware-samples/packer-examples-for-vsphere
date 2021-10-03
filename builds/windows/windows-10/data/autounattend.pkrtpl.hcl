@@ -122,7 +122,6 @@
          <OEMInformation>
             <HelpCustomized>false</HelpCustomized>
          </OEMInformation>
-         <ComputerName>win-10-pro</ComputerName>
          <TimeZone>${vm_guest_os_timezone}</TimeZone>
          <RegisteredOwner />
       </component>

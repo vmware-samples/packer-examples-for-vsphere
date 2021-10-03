@@ -16,7 +16,7 @@ vm_guest_os_version  = "20-04-lts"
 vm_guest_os_type = "ubuntu64Guest"
 
 // Virtual Machine Hardware Settings
-vm_firmware              = "bios"
+vm_firmware              = "efi-secure"
 vm_cdrom_type            = "sata"
 vm_cpu_sockets           = 2
 vm_cpu_cores             = 1

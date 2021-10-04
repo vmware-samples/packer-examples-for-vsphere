@@ -29,10 +29,12 @@ The following builds are available:
 * Ubuntu Server 20.04 LTS
 * Ubuntu Server 18.04 LTS
 * Red Hat Enterprise Linux 8 Server
+* Red Hat Enterprise Linux 7 Server
 * AlmaLinux 8
 * Rocky Linux 8
 * CentOS Stream 8
 * CentOS Linux 8
+* CentOS Linux 7
 
 **Microsoft Windows** - _Core and Desktop Experience_
 * Microsoft Windows Server 2022 - Standard and Datacenter
@@ -140,15 +142,19 @@ The files are distributed in the following directories.
     * Ubuntu Server 18.04 LTS
         * [Download][download-linux-ubuntu-server-18-04-lts] the latest legacy **NON-LIVE** release `.iso` image. (_e.g._ `ubuntu-18.04.6-server-amd64.iso`)
     * Red Hat Enterprise Linux 8 Server
-        * [Download][download-linux-redhat-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `RHEL-8-x86_64-dvd1.iso`)
-    * AlmaLinux 8 Server
+        * [Download][download-linux-redhat-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `rhel-8-x86_64-dvd1.iso`)
+    * Red Hat Enterprise Linux 7 Server
+        * [Download][download-linux-redhat-server-7] the latest release of the **FULL** `.iso` image. (_e.g._ `rhel-server-7-x86_64-dvd1.iso`)
+    * AlmaLinux 8
         * [Download][download-linux-almalinux-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `AlmaLinux-8-x86_64-dvd1.iso`)
-    * Rocky Linux 8 Server
+    * Rocky Linux 8
         * [Download][download-linux-rocky-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `Rocky-8-x86_64-dvd1.iso`)
-    * CentOS Stream 8 Server
+    * CentOS Stream 8
         * [Download][download-linux-centos-stream-8] the latest release of the **FULL** `.iso` image. (_e.g._ `CentOS-Stream-8-x86_64-dvd1.iso`)
-    * CentOS Linux 8 Server
+    * CentOS Linux 8
         * [Download][download-linux-centos-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `CentOS-8-x86_64-dvd1.iso`)
+    * CentOS Linux 7
+        * [Download][download-linux-centos-server-7] the latest release of the **FULL** `.iso` image. (_e.g._ `CentOS-7-x86_64-DVD.iso`)
 
     **Microsoft Windows**
     * Microsoft Windows Server 2022
@@ -478,27 +484,29 @@ Example: Menu for `./build.sh`.
 
       Linux Distribution:
 
-         1  -  VMware Photon OS 4
-         2  -  Ubuntu Server 20.04 LTS
-         3  -  Ubuntu Server 18.04 LTS
-         4  -  Red Hat Enterprise Linux 8 Server
-         5  -  AlmaLinux 8 Server
-         6  -  Rocky Linux 8 Server
-         7  -  CentOS Stream 8 Server
-         8  -  CentOS Linux 8 Server
+     	 1  -  VMware Photon OS 4"
+     	 2  -  Ubuntu Server 20.04 LTS"
+     	 3  -  Ubuntu Server 18.04 LTS"
+     	 4  -  Red Hat Enterprise Linux 8"
+     	 5  -  Red Hat Enterprise Linux 7"
+     	 6  -  AlmaLinux 8"
+     	 7  -  Rocky Linux 8"
+     	 8  -  CentOS Stream 8"
+     	 9  -  CentOS Linux 8"
+     	10  -  CentOS Linux 7"
 
-      Microsoft Windows:
+       Microsoft Windows:"
 
-         9  -  Windows Server 2022 - All
-        10  -  Windows Server 2022 - Standard Only
-        11  -  Windows Server 2022 - Datacenter Only
-        12  -  Windows Server 2019 - All
-        13  -  Windows Server 2019 - Standard Only
-        14  -  Windows Server 2019 - Datacenter Only
-        15  -  Windows Server 2016 - All
-        16  -  Windows Server 2016 - Standard Only
-        17  -  Windows Server 2016 - Datacenter Only
-        18  -  Windows 10 Professional
+     	11  -  Windows Server 2022 - All"
+     	12  -  Windows Server 2022 - Standard Only"
+     	13  -  Windows Server 2022 - Datacenter Only"
+     	14  -  Windows Server 2019 - All"
+     	15  -  Windows Server 2019 - Standard Only"
+     	16  -  Windows Server 2019 - Datacenter Only"
+     	17  -  Windows Server 2016 - All"
+     	18  -  Windows Server 2016 - Standard Only"
+     	19  -  Windows Server 2016 - Datacenter Only"
+     	20  -  Windows 10 Professional"
 
       Other:
 
@@ -556,9 +564,11 @@ Happy building!!!
 [download-git]: https://git-scm.com/downloads
 [download-linux-almalinux-server-8]: https://mirrors.almalinux.org/isos.html
 [download-linux-centos-server-8]: http://isoredirect.centos.org/centos/8/isos/x86_64/
+[download-linux-centos-server-8]: http://isoredirect.centos.org/centos/7/isos/x86_64/
 [download-linux-centos-stream-8]: http://isoredirect.centos.org/centos/8-stream/isos/x86_64/
 [download-linux-photon-server-4]: https://packages.vmware.com/photon/4.0/
 [download-linux-redhat-server-8]: https://access.redhat.com/downloads/content/479/
+[download-linux-redhat-server-7]: https://access.redhat.com/downloads/content/69/
 [download-linux-rocky-server-8]: https://download.rockylinux.org/pub/rocky/8/isos/x86_64/
 [download-linux-ubuntu-server-18-04-lts]: http://cdimage.ubuntu.com/ubuntu/releases/18.04.5/release/
 [download-linux-ubuntu-server-20-04-lts]: https://releases.ubuntu.com/20.04.1/

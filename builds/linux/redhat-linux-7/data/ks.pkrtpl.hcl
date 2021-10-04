@@ -1,4 +1,4 @@
-# Red Hat Enterprise Linux Server 8
+# Red Hat Enterprise Linux Server 7
 
 cdrom
 text
@@ -25,10 +25,10 @@ reboot
 
 %post
 /usr/sbin/subscription-manager register --username ${rhsm_username} --password ${rhsm_password} --autosubscribe --force
-/usr/sbin/subscription-manager repos --enable "codeready-builder-for-rhel-8-x86_64-rpms"
-dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-dnf makecache
-dnf install -y sudo open-vm-tools perl ansible
+/usr/sbin/subscription-manager repos --enable "rhel--optional-rpms" --enable "rhel--extras-rpms" --enable "rhel-ha-for-rhel-*-server-rpms"
+yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+yum makecache
+yum install -y sudo open-vm-tools perl ansible
 echo "${build_username} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/${build_username}
 sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
 %end

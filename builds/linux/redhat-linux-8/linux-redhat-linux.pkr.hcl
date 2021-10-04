@@ -26,6 +26,8 @@ locals {
     "/ks.cfg" = templatefile("${abspath(path.root)}/data/ks.pkrtpl.hcl", {
       build_username           = var.build_username
       build_password_encrypted = var.build_password_encrypted
+      rhsm_username            = var.rhsm_username
+      rhsm_password            = var.rhsm_password
       vm_guest_os_language     = var.vm_guest_os_language
       vm_guest_os_keyboard     = var.vm_guest_os_keyboard
       vm_guest_os_timezone     = var.vm_guest_os_timezone

@@ -24,7 +24,10 @@ reboot
 %end
 
 %post
-yum install -y sudo open-vm-tools perl
+/usr/sbin/subscription-manager register --username ${rhsm_username} --password ${rhsm_password} --autosubscribe --force
+dnf install -y -q https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+dnf makecache
+dnf install -y sudo open-vm-tools perl ansible
 echo "${build_username} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/${build_username}
 sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
 %end

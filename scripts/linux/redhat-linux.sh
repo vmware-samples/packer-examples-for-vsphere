@@ -11,12 +11,10 @@ export BUILD_USERNAME
 export BUILD_KEY
 export ANSIBLE_USERNAME
 export ANSIBLE_KEY
-export RHSM_USERNAME
-export RHSM_PASSWORD
 
-#### Register Red Hat Subscription Manager to enable updates. ###
-echo '> Registering Red Hat Subscription Manager to enable updates ...'
-subscription-manager register --username $RHSM_USERNAME --password $RHSM_PASSWORD --auto-attach
+#### Checking Red Hat Subscription Manager status. ###
+echo '> Checking the Red Hat Subscription Manager status ...'
+subscription-manager refresh
 
 #### Update the guest operating system. ###
 echo '> Updating the guest operating system ...'
@@ -24,7 +22,6 @@ sudo dnf update -y
 
 ### Install additional packages. ### 
 echo '> Installing additional packages ...'
-sudo dnf install -y -q https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 sudo dnf install -y \
     curl \
     wget \

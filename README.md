@@ -484,29 +484,29 @@ Example: Menu for `./build.sh`.
 
       Linux Distribution:
 
-     	 1  -  VMware Photon OS 4"
-     	 2  -  Ubuntu Server 20.04 LTS"
-     	 3  -  Ubuntu Server 18.04 LTS"
-     	 4  -  Red Hat Enterprise Linux 8"
-     	 5  -  Red Hat Enterprise Linux 7"
-     	 6  -  AlmaLinux 8"
-     	 7  -  Rocky Linux 8"
-     	 8  -  CentOS Stream 8"
-     	 9  -  CentOS Linux 8"
-     	10  -  CentOS Linux 7"
+     	 1  -  VMware Photon OS 4
+     	 2  -  Ubuntu Server 20.04 LTS
+     	 3  -  Ubuntu Server 18.04 LTS
+     	 4  -  Red Hat Enterprise Linux 8
+     	 5  -  Red Hat Enterprise Linux 7
+     	 6  -  AlmaLinux 8
+     	 7  -  Rocky Linux 8
+     	 8  -  CentOS Stream 8
+     	 9  -  CentOS Linux 8
+     	10  -  CentOS Linux 7
 
-       Microsoft Windows:"
+       Microsoft Windows:
 
-     	11  -  Windows Server 2022 - All"
-     	12  -  Windows Server 2022 - Standard Only"
-     	13  -  Windows Server 2022 - Datacenter Only"
-     	14  -  Windows Server 2019 - All"
-     	15  -  Windows Server 2019 - Standard Only"
-     	16  -  Windows Server 2019 - Datacenter Only"
-     	17  -  Windows Server 2016 - All"
-     	18  -  Windows Server 2016 - Standard Only"
-     	19  -  Windows Server 2016 - Datacenter Only"
-     	20  -  Windows 10 Professional"
+     	11  -  Windows Server 2022 - All
+     	12  -  Windows Server 2022 - Standard Only
+     	13  -  Windows Server 2022 - Datacenter Only
+     	14  -  Windows Server 2019 - All
+     	15  -  Windows Server 2019 - Standard Only
+     	16  -  Windows Server 2019 - Datacenter Only
+     	17  -  Windows Server 2016 - All
+     	18  -  Windows Server 2016 - Standard Only
+     	19  -  Windows Server 2016 - Datacenter Only
+     	20  -  Windows 10 Professional
 
       Other:
 

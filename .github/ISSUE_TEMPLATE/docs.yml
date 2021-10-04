@@ -13,6 +13,19 @@ body:
       options:
         - label: I have read and agree to the project's Code of Conduct.
           required: true
+  - type: dropdown
+    id: version-project
+    attributes:
+      label: Project Version
+      description: Please provide the version of this project.
+      options:
+        - main
+        - 21.09.1 (Default)
+        - 21.09
+        - 21.08
+        - 21.07
+    validations:
+      required: true
   - type: textarea
     id: motivation
     attributes:

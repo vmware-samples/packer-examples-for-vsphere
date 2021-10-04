@@ -43,5 +43,5 @@ communicator_port    = 22
 communicator_timeout = "30m"
 
 // Provisioner Settings
-scripts = ["scripts/linux/redhat-derivative.sh"]
+scripts = ["scripts/linux/rhel8-derivative.sh"]
 inline  = []

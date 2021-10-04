@@ -1,6 +1,6 @@
 /*
     DESCRIPTION:
-    Rocky Linux 8 variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    CentOS Linux 7 variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
 */
 
 // Guest Operating System Metadata
@@ -8,15 +8,15 @@ vm_guest_os_language = "en_US"
 vm_guest_os_keyboard = "us"
 vm_guest_os_timezone = "UTC"
 vm_guest_os_family   = "linux"
-vm_guest_os_vendor   = "rocky-linux"
+vm_guest_os_vendor   = "centos-linux"
 vm_guest_os_member   = "server"
-vm_guest_os_version  = "8"
+vm_guest_os_version  = "7"
 
 // Virtual Machine Guest Operating System Setting
-vm_guest_os_type = "centos8_64Guest"
+vm_guest_os_type = "centos7_64Guest"
 
 // Virtual Machine Hardware Settings
-vm_firmware              = "efi"
+vm_firmware              = "efi-secure"
 vm_cdrom_type            = "sata"
 vm_cpu_sockets           = 2
 vm_cpu_cores             = 1
@@ -30,9 +30,9 @@ vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
 iso_path           = "iso/linux/rhel-derivative"
-iso_file           = "Rocky-8.4-x86_64-dvd1.iso"
+iso_file           = "CentOS-7-x86_64-DVD-2009.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "ffe2fae67da6702d859cfb0b321561a5d616ce87a963d8a25b018c9c3d52d9a4"
+iso_checksum_value = "689531cce9cf484378481ae762fae362791a9be078fda10e4f6977bf8fa71350 "
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"
@@ -43,5 +43,5 @@ communicator_port    = 22
 communicator_timeout = "30m"
 
 // Provisioner Settings
-scripts = ["scripts/linux/rhel8-derivative.sh"]
+scripts = ["scripts/linux/rhel7-derivative.sh"]
 inline  = []

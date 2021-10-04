@@ -6,7 +6,7 @@
 September 16, 2021
 * Refactored issue templates to use GitHub custom issue forms.
 * Refactored all builds to pass the language, keyboard, and timezone to the configuration files.
-* Updated the Rocky Linux build to use UEFI; however without secure boot. 
+* Updated the Rocky Linux build to use UEFI; however without secure boot.
 * Updated the defaults in `common.pkvars.hcl` to use hardware version 19, which provides the best performance and latest features available in ESXi 7.0 U2. Refer to the VMware vSphere 7.0 [product documentation](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-789C3913-1053-4850-A0F0-E29C3D32B6DA.html) if using a previous release
 * Refactored all builds with input variable definitions separated into `variables.pkr.hcl`.
 * Refactored all builds to use `<build>.auto.pkvars.hcl` for input variables the and `<build>.pkr.hcl` for the template configurations, with simplified names for `<build>`.
@@ -46,7 +46,7 @@ August 18, 2021
 * Patched the script for Ubuntu Server 20.04 LTS to remove cloud-init and remove all netplan configurations before GuestOS customization.
 * Removed support for VMware Photon OS 3 machine image builds.
 * Removed support for Red Hat Enterprise Linux 7 machine image builds.
-* Removed support for CentOS Linux 7 machine image builds. 
+* Removed support for CentOS Linux 7 machine image builds.
 * Deprecating CentOS Linux 8. Removing in a future update. The CentOS Project [has shifted focus](https://www.redhat.com/en/blog/faq-centos-stream-updates) from CentOS Linux to CentOS Stream. CentOS Linux 8 EOL: `2021-12-31`.
 * Deprecating Microsoft Windows Server 2016. Removing in a future update. Microsoft Windows Server 2016 EOL: `2022-01-22`.
 * Added MAINTAINERS.md.
@@ -55,9 +55,9 @@ August 18, 2021
 ## Release: `v21.07`
 July 21, 2021
 * Added support for [VMware Photon OS](https://vmware.github.io/photon/) 4.
-* Added [support](https://github.com/rainpole/packer-vsphere/issues/18) for [AlmaLinux](http://almalinux.org) 8. 
-* Added [support](https://github.com/rainpole/packer-vsphere/issues/13) for [Rocky Linux](https://rockylinux.org) 8. 
-* Added [support](https://github.com/rainpole/packer-vsphere/issues/19) for [CentOS Stream](https://www.centos.org/centos-stream/) 8. 
+* Added [support](https://github.com/rainpole/packer-vsphere/issues/18) for [AlmaLinux](http://almalinux.org) 8.
+* Added [support](https://github.com/rainpole/packer-vsphere/issues/13) for [Rocky Linux](https://rockylinux.org) 8.
+* Added [support](https://github.com/rainpole/packer-vsphere/issues/19) for [CentOS Stream](https://www.centos.org/centos-stream/) 8.
 * Updated to `>=` vSphere 7.0 U2.
 * Added the Packer block to all builds with `required_versions >= "1.7.3"` for Packer.
 * Added the Packer block for Windows builds with `required_plugins` and `version = "0.12.0"` for the [Windows-Update plugin](https://github.com/rgl/packer-plugin-windows-update).

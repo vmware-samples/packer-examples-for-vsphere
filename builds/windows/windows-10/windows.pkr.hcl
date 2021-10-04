@@ -26,8 +26,8 @@ packer {
 //  Defines the local variables.
 
 locals {
-  buildtime        = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
-  path_manifest    = "${path.cwd}/manifests/"
+  buildtime     = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
+  path_manifest = "${path.cwd}/manifests/"
 }
 
 //  BLOCK: source

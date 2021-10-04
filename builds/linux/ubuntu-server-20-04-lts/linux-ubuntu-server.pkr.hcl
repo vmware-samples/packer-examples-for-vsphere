@@ -89,7 +89,7 @@ source "vsphere-iso" "linux-ubuntu-server" {
   http_port_max = var.common_data_source == "http" ? var.common_http_port_max : null
   boot_order    = var.vm_boot_order
   boot_wait     = var.vm_boot_wait
-  boot_command  = [
+  boot_command = [
     "<esc><wait>",
     "linux /casper/vmlinuz --- autoinstall ${local.data_source_command}",
     "<enter><wait>",

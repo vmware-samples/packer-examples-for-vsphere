@@ -40,7 +40,7 @@ The following builds are available:
 * Microsoft Windows Server 2016 - Standard and Datacenter
 * Microsoft Windows 10 Professional
 
-> **NOTE**: Guest customization is [**not supported**](https://partnerweb.vmware.com/programs/guestOS/guest-os-customization-matrix.pdf) for AlmaLinux and Rocky Linux in vCenter Server 7.0 Update 2. 
+> **NOTE**: Guest customization is [**not supported**](https://partnerweb.vmware.com/programs/guestOS/guest-os-customization-matrix.pdf) for AlmaLinux and Rocky Linux in vCenter Server 7.0 Update 2.
 
 ## Requirements
 
@@ -79,7 +79,7 @@ Download the [**latest**](https://github.com/rainpole/packer-vsphere/releases/la
 
 You may also clone `main` for the latest pre-release updates.
 
-Example: 
+Example:
 ```
 git clone https://github.com/rainpole/packer-vsphere.git
 ```
@@ -140,7 +140,7 @@ The files are distributed in the following directories.
     * Ubuntu Server 18.04 LTS
         * [Download][download-linux-ubuntu-server-18-04-lts] the latest legacy **NON-LIVE** release `.iso` image. (_e.g._ `ubuntu-18.04.6-server-amd64.iso`)
     * Red Hat Enterprise Linux 8 Server
-        * [Download][download-linux-redhat-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `RHEL-8-x86_64-dvd1.iso`) 
+        * [Download][download-linux-redhat-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `RHEL-8-x86_64-dvd1.iso`)
     * AlmaLinux 8 Server
         * [Download][download-linux-almalinux-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `AlmaLinux-8-x86_64-dvd1.iso`)
     * Rocky Linux 8 Server
@@ -158,7 +158,7 @@ The files are distributed in the following directories.
 
 3. Obtain the checksum type (_e.g._ `sha256`, `md5`, etc.) and checksum value for each guest operating system `.iso` image. This will be use in the build input variables.
 
-4. [Upload][vsphere-upload] your guest operating system `.iso` images to the ISO datastore and paths that will be used in your variables. 
+4. [Upload][vsphere-upload] your guest operating system `.iso` images to the ISO datastore and paths that will be used in your variables.
 
     Example: `builds/<type>/<build>/*.auto.pkvars.hcl`
     ```
@@ -181,7 +181,7 @@ The [variables][packer-variables] are defined in `.pkvars.hcl` files.
 
 Run the config script `./config.sh` to copy the `.pkvars.hcl.example` files to the `config` directory.
 
-The `config` folder is the default folder for the first argument of these scripts. you may override the default by passing an alternate value as the first argument. 
+The `config` folder is the default folder for the first argument of these scripts. you may override the default by passing an alternate value as the first argument.
 
 ```
 ./config.sh foo
@@ -207,7 +207,7 @@ For example, this is useful for the purposes of running machine image builds for
 
 Edit the `config/build.pkvars.hcl` file to configure the following:
 
-* Credentials for the default account on machine images. 
+* Credentials for the default account on machine images.
 
 Example: `config/build.pkvars.hcl`
 
@@ -230,7 +230,7 @@ Generate a SHA-512 encrypted password for the  _`build_password_encrypted`_ usin
 Example: OpenSSL on macOS:
 
 ```
-rainpole@macos>  openssl passwd -6 
+rainpole@macos>  openssl passwd -6
 Password: ***************
 Verifying - Password: ***************
 [password hash]
@@ -251,14 +251,14 @@ Example: macOS and Linux.
 rainpole@macos> cd .ssh/
 rainpole@macos ~/.ssh> ssh-keygen -t ecdsa -b 521 -C "code@rainpole.io"
 Generating public/private ecdsa key pair.
-Enter file in which to save the key (/Users/rainpole/.ssh/id_ecdsa): 
+Enter file in which to save the key (/Users/rainpole/.ssh/id_ecdsa):
 Enter passphrase (empty for no passphrase): **************
 Enter same passphrase again: **************
 Your identification has been saved in /Users/rainpole/.ssh/id_ecdsa.
 Your public key has been saved in /Users/rainpole/.ssh/id_ecdsa.pub.
 ```
 
-The content of the public key, `build_key`, is added the key to the `.ssh/authorized_keys` file of the `build_username` on the guest operating system. 
+The content of the public key, `build_key`, is added the key to the `.ssh/authorized_keys` file of the `build_username` on the guest operating system.
 
 >**WARNING**: Replace the default public keys and passwords.
 >By default, both Public Key Authentication and Password Authentication are enabled for Linux distributions. If you wish to disable Password Authentication and only use Public Key Authentication, comment or remove the portion of the associated script in the `scripts` directory.
@@ -267,7 +267,7 @@ The content of the public key, `build_key`, is added the key to the `.ssh/author
 
 Edit the `config/ansible.pkvars.hcl` file to configure the following:
 
-* Credentials for the Ansible account on Linux machine images. 
+* Credentials for the Ansible account on Linux machine images.
 
 Example: `config/ansible.pkvars.hcl`
 
@@ -339,7 +339,7 @@ common_http_ip = "172.16.11.254"
 Edit the `config/proxy.pkvars.hcl` file to configure the following:
 
 * SOCKS proxy settings used for connecting to Linux machine images.
-* Credentials for the proxy server (Optional). 
+* Credentials for the proxy server (Optional).
 
 Example: `config/proxy.pkvars.hcl`
 
@@ -353,7 +353,7 @@ communicator_proxy_password = "<plaintext_password>"
 
 Edit the `config/redhat.pkvars.hcl` file to configure the following:
 
-* Credentials for your Red Hat Subscription Manager account. 
+* Credentials for your Red Hat Subscription Manager account.
 
 Example: `config/redhat.pkvars.hcl`
 
@@ -468,11 +468,11 @@ Start a pre-defined build by running the build script (`./build.sh`). The script
 
 Example: Menu for `./build.sh`.
 ```
-    ____             __                ____        _ __    __     
-   / __ \____ ______/ /_____  _____   / __ )__  __(_) /___/ /____ 
-  / /_/ / __  / ___/ //_/ _ \/ ___/  / __  / / / / / / __  / ___/ 
- / ____/ /_/ / /__/ ,< /  __/ /     / /_/ / /_/ / / / /_/ (__  )  
-/_/    \__,_/\___/_/|_|\___/_/     /_____/\__,_/_/_/\__,_/____/   
+    ____             __                ____        _ __    __
+   / __ \____ ______/ /_____  _____   / __ )__  __(_) /___/ /____
+  / /_/ / __  / ___/ //_/ _ \/ ___/  / __  / / / / / / __  / ___/
+ / ____/ /_/ / /__/ ,< /  __/ /     / /_/ / /_/ / / / /_/ (__  )
+/_/    \__,_/\___/_/|_|\___/_/     /_____/\__,_/_/_/\__,_/____/
 
   Select a HashiCorp Packer build for VMware vSphere:
 
@@ -501,7 +501,7 @@ Example: Menu for `./build.sh`.
         18  -  Windows 10 Professional
 
       Other:
-      
+
         I   -  Information
         Q   -  Quit
 ```
@@ -541,9 +541,9 @@ Happy building!!!
 * Maher AlAsfar [@vmwarelab][credits-maher-alasfar-twitter]
 
     [Linux][credits-maher-alasfar-github] Bash scripting hints.
-    
+
 * Owen Reynolds [@OVDamn][credits-owen-reynolds-twitter]
-    
+
     [VMware Tools for Windows][credits-owen-reynolds-github] installation PowerShell script.
 
 [//]: Links

@@ -1,4 +1,4 @@
-name: Enhancment Request
+name: Enhancement Request
 description: Is something critical missing? Suggest a feature or an enhancement.
 title: "[ENHANCEMENT] *REPLACE WITH SHORT DESCRIPTION*"
 labels: [enhancement, needs-triage]
@@ -8,7 +8,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Before filing a feature, please search the existing issues for relevant feature requests, and use the [reaction](https://blog.github.com/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/) feature to add up-votes to existing requests.
+        Before filing a feature, please search the existing issues and [discussions](https://github.com/rainpole/packer-vsphere/discussions) relevant feature requests, and use the [reaction](https://blog.github.com/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/) feature to add up-votes to existing requests.
         When filing a feature, please include the following information.
   - type: checkboxes
     id: terms

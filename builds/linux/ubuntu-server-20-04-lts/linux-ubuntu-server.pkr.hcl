@@ -136,6 +136,10 @@ build {
     source      = "${path.cwd}/certificates/root-ca.crt"
   }
 
+  provisioner "ansible-local" {
+    playbook_file     = "${path.cwd}/scripts/ansible/playbook.yml"
+  }
+
   provisioner "shell" {
     execute_command  = "echo '${var.build_password}' | {{.Vars}} sudo -E -S sh -eux '{{.Path}}'"
     environment_vars = [
@@ -145,10 +149,6 @@ build {
       "ANSIBLE_KEY=${var.ansible_key}"
     ]
     scripts = formatlist("${path.cwd}/%s", var.scripts)
-  }
-
-  provisioner "ansible-local" {
-    playbook_file     = "${path.cwd}/scripts/ansible/playbook.yml"
   }
 
   post-processor "manifest" {

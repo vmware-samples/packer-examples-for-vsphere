@@ -14,19 +14,19 @@ export ANSIBLE_USERNAME
 export ANSIBLE_KEY
 
 ### Update the guest operating system. ###
-echo '> Updating the guest operating system ...'
-sudo apt-get update
-sudo apt-get upgrade -y
+###echo '> Updating the guest operating system ...'
+###sudo apt-get update
+###sudo apt-get upgrade -y
 
 ### Install additional packages. ### 
-echo '> Installing additional packages ...'
-sudo apt-get install -y \
-    curl \
-    wget \
-    git \
-    net-tools \
-    unzip \
-    ca-certificates
+### echo '> Installing additional packages ...'
+### sudo apt-get install -y \
+###     curl \
+###     wget \
+###     git \
+###     net-tools \
+###     unzip \
+###     ca-certificates
 
 ### Install the Certificate Authority certificates and add to the certificate authority trust. ###
 echo '> Installing the Certificate Authority certificates and adding to the certificate authority trust ...'

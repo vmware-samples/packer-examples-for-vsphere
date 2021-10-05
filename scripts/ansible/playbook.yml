@@ -1,0 +1,26 @@
+---
+
+- hosts: localhost
+  gather_facts: yes
+  become: true
+  tasks:
+  - name: System details
+    debug: msg="{{ item }}"
+    with_items: 
+    - "{{ ansible_distribution }}"
+
+  - block:    # For Ubuntu Distributions
+    - name: Install Packages
+      apt:
+        name:
+          - bash-completion
+          - curl
+          - wget
+          - git
+          - net-tools
+          - unzip
+          - ca-certificates
+        state: latest
+
+      when:
+        - ansible_distribution == "Ubuntu"

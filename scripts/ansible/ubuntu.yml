@@ -1,4 +1,0 @@
----
-
-- name: Get system OS Version
-  hosts: localhost

@@ -86,7 +86,7 @@ subscription-manager clean
 
 ### Create a clean script. ###
 echo '> Creating clean script ...'
-sudo cat <<EOF > /tmp/clean.sh
+sudo cat <<EOF > /home/$BUILD_USERNAME/clean.sh
 #!/bin/bash
 
 ### Cleans the audit logs. ###
@@ -148,11 +148,11 @@ EOF
 
 ### Change script permissions on /tmp/clean.sh. ###
 echo '> Changing script permissions on /tmp/clean.sh ...'
-sudo chmod +x /tmp/clean.sh
+sudo chmod +x /home/$BUILD_USERNAME/clean.sh
 
 ### Run the cleau script. ###
 echo '> Running the clean script ...'
-sudo /tmp/clean.sh
+sudo /home/$BUILD_USERNAME/clean.sh
 ### END: Clean the guest operating system. ###
 
 ### Generate the host keys using ssh-keygen. ###

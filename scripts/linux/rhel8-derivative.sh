@@ -83,7 +83,7 @@ sudo systemctl restart sshd
 
 ### Create the clean script. ###
 echo '> Creating the clean script ...'
-sudo cat <<EOF > /tmp/clean.sh
+sudo cat <<EOF > /home/$BUILD_USERNAME/clean.sh
 #!/bin/bash
 
 ###  Cleans all audit logs. ### 
@@ -139,11 +139,11 @@ EOF
 
 ### Change the permissions on /tmp/clean.sh. ###
 echo '> Changing the permissions on /tmp/clean.sh ...'
-sudo chmod +x /tmp/clean.sh
+sudo chmod +x /home/$BUILD_USERNAME/clean.sh
 
 ### Run the cleau script. ### 
 echo '> Running the clean script ...'
-sudo /tmp/clean.sh
+sudo /home/$BUILD_USERNAME/clean.sh
 
 ### Generate the host keys using ssh-keygen. ### 
 echo '> Generating the host keys using ssh-keygen ...'

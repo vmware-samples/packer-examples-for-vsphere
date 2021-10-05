@@ -29,12 +29,12 @@ export ANSIBLE_KEY
 ###     ca-certificates
 
 ### Install the Certificate Authority certificates and add to the certificate authority trust. ###
-echo '> Installing the Certificate Authority certificates and adding to the certificate authority trust ...'
-sudo chown -R root:root /tmp/root-ca.crt
-sudo chmod 644 /tmp/root-ca.crt
-sudo cp /tmp/root-ca.crt /usr/local/share/ca-certificates/
-sudo update-ca-certificates
-sudo rm -rf /tmp/root-ca.crt
+### echo '> Installing the Certificate Authority certificates and adding to the certificate authority trust ...'
+### sudo chown -R root:root /tmp/root-ca.crt
+### sudo chmod 644 /tmp/root-ca.crt
+### sudo cp /tmp/root-ca.crt /usr/local/share/ca-certificates/
+### sudo update-ca-certificates
+### sudo rm -rf /tmp/root-ca.crt
 
 ### Update the default local user. ###
 echo '> Updating the default local user ...'

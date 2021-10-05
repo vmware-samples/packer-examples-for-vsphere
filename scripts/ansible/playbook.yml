@@ -28,5 +28,18 @@
           - ca-certificates
         state: latest
 
+    - name: Install CA Certificate
+      copy:
+        src: /tmp/root-ca.crt
+        dest: /usr/local/share/ca-certificates/
+        owner: root
+        group: root
+        mode: 0644
+      notify:
+      - update trusted ca ubuntu
       when:
         - ansible_distribution == "Ubuntu"
+
+  handlers:
+      - name: update trusted ca ubuntu
+        shell: /usr/sbin/update-ca-certificates

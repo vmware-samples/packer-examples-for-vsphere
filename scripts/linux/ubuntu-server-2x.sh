@@ -14,9 +14,9 @@ export ANSIBLE_USERNAME
 export ANSIBLE_KEY
 
 ### Update the guest operating system. ###
-###echo '> Updating the guest operating system ...'
-###sudo apt-get update
-###sudo apt-get upgrade -y
+### echo '> Updating the guest operating system ...'
+### sudo apt-get update
+### sudo apt-get upgrade -y
 
 ### Install additional packages. ### 
 ### echo '> Installing additional packages ...'

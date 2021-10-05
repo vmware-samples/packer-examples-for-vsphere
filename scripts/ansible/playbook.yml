@@ -10,14 +10,11 @@
     - "{{ ansible_distribution }}"
 
   - block:    # For Ubuntu Distributions
-    - name: Update Apt Cache
-      apt:
-        update_cache: yes
-
-    - name: Upgrade all Installed Packages
+    - name: Update cache and Upgrade all Installed Packages
       apt:
         name: "*"
         state: latest
+        update_cache: yes
 
     - name: Install Packages
       apt:

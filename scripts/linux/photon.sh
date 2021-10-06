@@ -33,14 +33,12 @@ echo '> Installing additional packages ...'
 sudo tdnf install -y \
   minimal \
   logrotate \
-  curl \
   wget \
   git \
   unzip \
   tar \
   jq \
   parted \
-  ca-certificates \
   openssl-c_rehash
 
 ### Clearing tdnf cache. ###
@@ -48,8 +46,6 @@ echo '> Clearing tdnf cache ...'
 sudo tdnf clean all
 
 ### Copy the Certificate Authority certificates and add to the certificate authority trust. ###
-echo '> Copying the Certificate Authority certificates and adding to the certificate authority trust ...'
-sudo tdnf install -y openssl-c_rehash
 echo '> Copying the Certificate Authority certificates and adding to the certificate authority trust ...'
 sudo chown -R root:root /tmp/root-ca.crt
 sudo cat /tmp/root-ca.crt > /etc/ssl/certs/root-ca.pem

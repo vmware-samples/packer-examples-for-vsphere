@@ -136,8 +136,12 @@ build {
     source      = "${path.cwd}/certificates/root-ca.crt"
   }
 
+  provisioner "ansible-local" {
+    playbook_file = "${path.cwd}/scripts/ansible/playbook.yml"
+  }
+
   provisioner "shell" {
-    execute_command = "echo '${var.build_password}' | {{.Vars}} sudo -E -S sh -eux '{{.Path}}'"
+    execute_command  = "echo '${var.build_password}' | {{.Vars}} sudo -E -S sh -eux '{{.Path}}'"
     environment_vars = [
       "BUILD_USERNAME=${var.build_username}",
       "BUILD_KEY=${var.build_key}",

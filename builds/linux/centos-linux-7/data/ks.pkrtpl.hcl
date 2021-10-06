@@ -71,7 +71,7 @@ part /boot --fstype xfs --size=1024 --label=BOOTFS
 part /boot/efi --fstype vfat --size=1024 --label=EFIFS
 part pv.01 --size=100 --grow
 
-### Create a logical volume lanagement (LVM) group.
+### Create a logical volume management (LVM) group.
 volgroup sysvg --pesize=4096 pv.01
 
 ### Modify logical volume sizes for the virtual machine hardware.

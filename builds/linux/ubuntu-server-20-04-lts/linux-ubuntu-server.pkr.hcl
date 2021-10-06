@@ -137,7 +137,7 @@ build {
   }
 
   provisioner "ansible-local" {
-    playbook_file     = "${path.cwd}/scripts/ansible/playbook.yml"
+    playbook_file = "${path.cwd}/scripts/ansible/playbook.yml"
   }
 
   provisioner "shell" {

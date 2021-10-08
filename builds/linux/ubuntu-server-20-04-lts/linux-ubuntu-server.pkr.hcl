@@ -21,7 +21,8 @@ packer {
 
 locals {
   buildtime     = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
-  path_manifest = "${path.cwd}/manifests/"
+  manifest_date = formatdate("YYYY-MM-DD hh:mm:ss", timestamp())
+  manifest_path = "${path.cwd}/manifests/"
   data_source_content = {
     "/meta-data" = file("${abspath(path.root)}/data/meta-data")
     "/user-data" = templatefile("${abspath(path.root)}/data/user-data.pkrtpl.hcl", {
@@ -141,7 +142,7 @@ build {
   }
 
   provisioner "shell" {
-    execute_command  = "echo '${var.build_password}' | {{.Vars}} sudo -E -S sh -eux '{{.Path}}'"
+    execute_command = "echo '${var.build_password}' | {{.Vars}} sudo -E -S sh -eux '{{.Path}}'"
     environment_vars = [
       "BUILD_USERNAME=${var.build_username}",
       "BUILD_KEY=${var.build_key}",
@@ -152,7 +153,29 @@ build {
   }
 
   post-processor "manifest" {
-    output     = "${local.path_manifest}${local.buildtime} ${var.vm_guest_os_family}-${var.vm_guest_os_vendor}-${var.vm_guest_os_member}.json"
-    strip_path = false
+    output     = "${local.manifest_path}${local.manifest_date}.json"
+    strip_path = true
+    strip_time = true
+    custom_data = {
+      ansible_username         = var.ansible_username
+      build_username           = var.build_username
+      buildtime                = local.buildtime
+      common_data_source       = var.common_data_source
+      common_vm_version        = var.common_vm_version
+      vm_cpu_cores             = var.vm_cpu_cores
+      vm_cpu_sockets           = var.vm_cpu_sockets
+      vm_disk_size             = var.vm_disk_size
+      vm_disk_thin_provisioned = var.vm_disk_thin_provisioned
+      vm_firmware              = var.vm_firmware
+      vm_guest_os_type         = var.vm_guest_os_type
+      vm_mem_size              = var.vm_mem_size
+      vm_network_card          = var.vm_network_card
+      vsphere_cluster          = var.vsphere_cluster
+      vsphere_datacenter       = var.vsphere_datacenter
+      vsphere_datastore        = var.vsphere_datastore
+      vsphere_endpoint         = var.vsphere_endpoint
+      vsphere_folder           = var.vsphere_folder
+      vsphere_iso_path         = "[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}"
+    }
   }
 }

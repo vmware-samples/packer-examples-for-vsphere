@@ -17,42 +17,6 @@ export ANSIBLE_KEY
 echo '> Disabling IPv6'
 echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
 
-#### Update the guest operating system. ###
-echo '> Updating the guest operating system ...'
-cd /etc/yum.repos.d/
-sed -i 's/dl.bintray.com\/vmware/packages.vmware.com\/photon\/$releasever/g' photon.repo photon-updates.repo photon-extras.repo photon-debuginfo.repo
-sudo tdnf -y update photon-repos
-sudo tdnf -y remove minimal # Required due to a bug in VMware Photon OS 4.0.
-sudo rpm -e --noscripts systemd-udev-247.3-1.ph4 # Required due to a bug in VMware Photon OS 4.0.
-sudo tdnf clean all
-sudo tdnf makecache
-sudo tdnf -y update
-
-### Install additional packages. ### 
-echo '> Installing additional packages ...'
-sudo tdnf install -y \
-  minimal \
-  logrotate \
-  wget \
-  git \
-  unzip \
-  tar \
-  jq \
-  parted \
-  openssl-c_rehash
-
-### Clearing tdnf cache. ###
-echo '> Clearing tdnf cache ...'
-sudo tdnf clean all
-
-### Copy the Certificate Authority certificates and add to the certificate authority trust. ###
-echo '> Copying the Certificate Authority certificates and adding to the certificate authority trust ...'
-sudo chown -R root:root /tmp/root-ca.crt
-sudo cat /tmp/root-ca.crt > /etc/ssl/certs/root-ca.pem
-sudo chmod 644 /etc/ssl/certs/root-ca.pem
-sudo rehash_ca_certificates.sh
-sudo rm -rf /tmp/root-ca.crt
-
 ### Update the default local user. ###
 echo '> Updating the default local user ...'
 echo '> Adding authorized_keys for the default local user ...'
@@ -98,7 +62,7 @@ sudo sed -i '/^After=vgauthd.service/a\After=dbus.service' /usr/lib/systemd/syst
 
 ### Create a cleanup script. ###
 echo '> Creating cleanup script ...'
-sudo cat <<EOF > /tmp/clean.sh
+sudo cat <<EOF > /home/$BUILD_USERNAME/clean.sh
 #!/bin/bash
 
 # Cleans all audit logs.
@@ -153,11 +117,11 @@ EOF
 
 ### Change script permissions for execution. ### 
 echo '> Changeing script permissions for execution ...'
-sudo chmod +x /tmp/clean.sh
+sudo chmod +x /home/$BUILD_USERNAME/clean.sh
 
 ### Runs the cleauup script. ### 
 echo '> Running the cleanup script ...'
-sudo /tmp/clean.sh
+sudo /home/$BUILD_USERNAME/clean.sh
 
 ### Generate host keys using ssh-keygen ### 
 echo '> Generating host keys ...'

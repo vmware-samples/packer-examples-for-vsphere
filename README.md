@@ -58,18 +58,22 @@ The following builds are available:
 **Operating Systems**:
 * Ubuntu Server 20.04 LTS
 * macOS Big Sur (Intel)
-* Microsoft Windows Server 2019
 
     > Operating systems and versions tested with the repository examples.
 
 **Additional Software Packages**:
 * [Git][download-git] command line tools.
+  - Ubuntu: `apt-get install git`
+  - macOS: `brew install git` 
+* [Ansible][ansible-docs] 2.9 or higher.
+  - Ubuntu: `apt-get install ansible`
+  - macOS: `brew install ansible`
 * A command-line .iso creator. Packer will use one of the following:
-  - **xorriso** (Ubuntu: `apt-get install xorriso`)
-  - **mkisofs** (Ubuntu: `apt-get install mkisofs`)
-  - **hdiutil** (macOS)
-  - **oscdimg** (Windows: requires Windows ADK)
-* Coreutils (macOS `brew install coreutils`)
+  - **xorriso** on Ubuntu: `apt-get install xorriso`
+  - **mkisofs** on Ubuntu: `apt-get install mkisofs`
+  - **hdiutil** on macOS: native
+* Coreutils 
+  - macOS: `brew install coreutils`
 
 **Platform**:
 * VMware Cloud Foundation 4.2 or higher, or
@@ -97,6 +101,24 @@ The directory structure of the repository.
 ├── LICENSE
 ├── NOTICE
 ├── README.md
+├── ansible
+│   ├── roles
+│   │   └── <role>
+│   │       ├── defaults
+│   │       │   └── main.yml
+│   │       ├── files
+│   │       │   └── root-ca.p7b.example
+│   │       ├── handlers
+│   │       │   └── main.yml
+│   │       ├── meta
+│   │       │   └── main.yml
+│   │       ├── tasks
+│   │       │   └── main.yml
+│   │       │   └── *.yml
+│   │       └── vars
+│   │           └── main.yml
+│   ├── ansible.cfg
+│   └── main.yml
 ├── builds
 │   ├── ansible.pkvars.hcl.example
 │   ├── build.pkvars.hcl.example
@@ -105,19 +127,18 @@ The directory structure of the repository.
 │   ├── rhsm.pkvars.hcl.example
 │   ├── vsphere.pkvars.hcl.example
 │   ├── linux
-│   │   └── distribution-version
+│   │   └── <distribution-version>
 │   │       ├── *.pkr.hcl
 │   │       ├── *.auto.pkrvars.hcl
 │   │       └── data
 │   │           └── ks.pkrtpl.hcl
 │   └── windows
-│       └── version
+│       └── <version>
 │           ├── *.pkr.hcl
 │           ├── *.auto.pkrvars.hcl
 │           └── data
 │               └── autounattend.pkrtpl.hcl
 ├── certificates
-│   ├── root-ca.crt.example
 │   └── root-ca.p7b.example
 ├── manifests
 └── scripts
@@ -127,10 +148,13 @@ The directory structure of the repository.
         └── *.ps1
 ```
 The files are distributed in the following directories.
-* **`builds`** - contains the build templates, variables, and configuration files.
-* **`scripts`** - contains scripts that are used to initialize and prepare the machine image builds.
-* **`certificates`** - contains the Trusted Root Authority certificates.
-* **`manifests`** - manifests created after the completion of each build.
+* **`ansible`** - contains the Ansible roles to initialize and prepare the machine image build.
+* **`builds`** - contains the templates, variables, and configuration files for the machine image build.
+* **`scripts`** - contains the scripts to initialize and prepare the machine image build.
+* **`certificates`** - contains the Trusted Root Authority certificates for Windows build.
+* **`manifests`** - manifests created after the completion of the machine image build.
+
+> **NOTE**: The project is transitioning to use Ansible instead of scripts, where possible.
 
 ### Step 2 - Download the Guest Operating Systems ISOs
 
@@ -370,7 +394,7 @@ rhsm_username = "rainpole"
 rhsm_password = "<plaintext_password>"
 ```
 
-These variables are **only** used if you are performing a Red Hat Enterprise Linux Server build to register the image with Red Hat Subscription Manager and run a `sudo dnf update -y` within the shell provisioner. Before the build completes, the machine image is unregistered from Red Hat Subscription Manager.
+These variables are **only** used if you are performing a Red Hat Enterprise Linux Server build and are used to register the image with Red Hat Subscription Manager during the build for system updates and package installation. Before the build completes, the machine image is unregistered from Red Hat Subscription Manager.
 
 #### **vSphere Variables**
 
@@ -464,15 +488,15 @@ By default, each unattended file set the **Product Key** to use the [KMS client 
 
 ### Step 5 - Configure Certificates
 
-Save a copy of your Root Certificate Authority certificate to `/certificates` in `.crt` and `.p7b` formats.
+Save a copy of your Root Certificate Authority certificate to the following in `.crt` and `.p7b` formats.
+- `/ansible/roles/base/files` for Linux machine images.
+- `/certificates` for Windows machine images.
 
-These files are copied to the guest operating systems with a Packer file provisioner; after which, the a shell provisioner adds the certificate to the Trusted Certificate Authority of the guest operating system.
-
->**NOTE**: If you do not wish to install the certificates on the guest operating systems, comment or remove the portion of the associated script in the `/scripts` directory and the file provisioner from the `prk.hcl` file for each build. If you need to add an intermediate certificate, add the certificate to `/certificates` and update the shell provisioner scripts in the `scripts` directory with your requirements.
+These files are copied to the guest operating systems and added the certificate to the Trusted Certificate Authority of the guest operating system. Linux distributions uses the Ansible provisioner, but Windows still uses the shell provisioner at this time.
 
 ## Build
 
-Start a pre-defined build by running the build script (`./build.sh`). The script presents a menu the which simply calls Packer and the respective build(s).
+Start a build by running the build script (`./build.sh`). The script presents a menu the which simply calls Packer and the respective build(s).
 
 Example: Menu for `./build.sh`.
 ```
@@ -541,7 +565,7 @@ rainpole@macos windows-server-2022> packer build -force \
 ```
 Happy building!!!
 
- -- Your friends at rainpole.io.
+ -- Your friends at github.com/rainpole.
 
 ## Troubleshoot
 
@@ -558,6 +582,7 @@ Happy building!!!
 
 [//]: Links
 
+[ansible-docs]: https://docs.ansible.com
 [cloud-init]: https://cloudinit.readthedocs.io/en/latest/
 [credits-maher-alasfar-twitter]: https://twitter.com/vmwarelab
 [credits-maher-alasfar-github]: https://github.com/vmwarelab/cloud-init-scripts

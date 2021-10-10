@@ -21,7 +21,7 @@ CONFIG_PATH=$(realpath "${1:-${SCRIPT_PATH}/config}")
 
 menu_option_1() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/photon-4/
-  echo -e "\nCONFIRM: Build a VMware Photon OS 4 Template for VMware vSphere."
+  echo -e "\nCONFIRM: Build a VMware Photon OS 4 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -29,15 +29,15 @@ menu_option_1() {
     exit 1
   fi
 
-  ### Build a VMware Photon OS 4 Template for VMware vSphere ###
-  echo "Building a VMware Photon OS 4 Template for VMware vSphere ..."
+  ### Build a VMware Photon OS 4 Template for VMware vSphere. ###
+  echo "Building a VMware Photon OS 4 Template for VMware vSphere..."
 
-  ### Initialize Hashicorp Packer and required plugins ###
-  echo "Initializing Hashicorp Packer and required plugins ..."
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Apply the HashiCorp Packer Build ###
-  echo "Applying the HashiCorp Packer Build ..."
+  ### Start the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build..."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -52,7 +52,7 @@ menu_option_1() {
 
 menu_option_2() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/ubuntu-server-20-04-lts/
-  echo -e "\nCONFIRM: Build a Ubuntu Server 20.04 LTS Template for VMware vSphere."
+  echo -e "\nCONFIRM: Build a Ubuntu Server 20.04 LTS Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -60,15 +60,15 @@ menu_option_2() {
     exit 1
   fi
 
-  ### Build a Ubuntu Server 20.04 LTS Template for VMware vSphere ###
-  echo "Building a Ubuntu Server 20.04 LTS Template for VMware vSphere ..."
+  ### Build a Ubuntu Server 20.04 LTS Template for VMware vSphere. ###
+  echo "Building a Ubuntu Server 20.04 LTS Template for VMware vSphere..."
 
-  ### Initialize Hashicorp Packer and required plugins ###
-  echo "Initializing Hashicorp Packer and required plugins ..."
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Apply the HashiCorp Packer Build ###
-  echo "Applying the HashiCorp Packer Build ..."
+  ### Start the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build..."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -83,7 +83,7 @@ menu_option_2() {
 
 menu_option_3() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/ubuntu-server-18-04-lts/
-  echo -e "\nCONFIRM: Build a Ubuntu Server 18.04 LTS Template for VMware vSphere."
+  echo -e "\nCONFIRM: Build a Ubuntu Server 18.04 LTS Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -91,15 +91,15 @@ menu_option_3() {
     exit 1
   fi
 
-  ### Build a Ubuntu Server 20.04 LTS Template for VMware vSphere ###
-  echo "Building a Ubuntu Server 18.04 LTS Template for VMware vSphere ..."
+  ### Build a Ubuntu Server 20.04 LTS Template for VMware vSphere. ###
+  echo "Building a Ubuntu Server 18.04 LTS Template for VMware vSphere..."
 
-  ### Initialize Hashicorp Packer and required plugins ###
-  echo "Initializing Hashicorp Packer and required plugins ..."
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Apply the HashiCorp Packer Build ###
-  echo "Applying the HashiCorp Packer Build ..."
+  ### Start the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build..."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -114,7 +114,7 @@ menu_option_3() {
 
 menu_option_4() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/redhat-linux-8/
-  echo -e "\nCONFIRM: Build a Red Hat Enerprise Linux 8 Server Template for VMware vSphere."
+  echo -e "\nCONFIRM: Build a Red Hat Enerprise Linux 8 Server Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -122,15 +122,15 @@ menu_option_4() {
     exit 1
   fi
 
-  ### Build an Red Hat Enerprise Linux 8 Server Template for VMware vSphere ###
-  echo "Building a Red Hat Enerprise Linux 8 Server Template for VMware vSphere ..."
+  ### Build an Red Hat Enerprise Linux 8 Server Template for VMware vSphere. ###
+  echo "Building a Red Hat Enerprise Linux 8 Server Template for VMware vSphere..."
 
-  ### Initialize Hashicorp Packer and required plugins ###
-  echo "Initializing Hashicorp Packer and required plugins ..."
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Apply the HashiCorp Packer Build ###
-  echo "Applying the HashiCorp Packer Build ..."
+  ### Start the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build..."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -146,7 +146,7 @@ menu_option_4() {
 
 menu_option_5() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/redhat-linux-7/
-  echo -e "\nCONFIRM: Build a Red Hat Enerprise Linux 7 Server Template for VMware vSphere."
+  echo -e "\nCONFIRM: Build a Red Hat Enerprise Linux 7 Server Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -154,15 +154,15 @@ menu_option_5() {
     exit 1
   fi
 
-  ### Build an Red Hat Enerprise Linux 7 Server Template for VMware vSphere ###
-  echo "Building a Red Hat Enerprise Linux 7 Server Template for VMware vSphere ..."
+  ### Build an Red Hat Enerprise Linux 7 Server Template for VMware vSphere. ###
+  echo "Building a Red Hat Enerprise Linux 7 Server Template for VMware vSphere..."
 
-  ### Initialize Hashicorp Packer and required plugins ###
-  echo "Initializing Hashicorp Packer and required plugins ..."
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Apply the HashiCorp Packer Build ###
-  echo "Applying the HashiCorp Packer Build ..."
+  ### Start the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build..."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -178,7 +178,7 @@ menu_option_5() {
 
 menu_option_6() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/almalinux-8/
-  echo -e "\nCONFIRM: Build an AlmaLinux 8 Template for VMware vSphere."
+  echo -e "\nCONFIRM: Build an AlmaLinux 8 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -186,15 +186,15 @@ menu_option_6() {
     exit 1
   fi
 
-  ### Build an AlmaLinux 8 Template for VMware vSphere ###
-  echo "Building an AlmaLinux 8 Template for VMware vSphere ..."
+  ### Build an AlmaLinux 8 Template for VMware vSphere. ###
+  echo "Building an AlmaLinux 8 Template for VMware vSphere..."
 
-  ### Initialize Hashicorp Packer and required plugins ###
-  echo "Initializing Hashicorp Packer and required plugins ..."
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Apply the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build ..."
+  ### Start the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build..."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -209,7 +209,7 @@ menu_option_6() {
 
 menu_option_7() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/rocky-linux-8/
-  echo -e "\nCONFIRM: Build a Rocky Linux 8 Template for VMware vSphere."
+  echo -e "\nCONFIRM: Build a Rocky Linux 8 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -217,15 +217,15 @@ menu_option_7() {
     exit 1
   fi
 
-  ### Build a Rocky Linux 8 Template for VMware vSphere ###
-  echo "Building a Rocky Linux 8 Template for VMware vSphere ..."
+  ### Build a Rocky Linux 8 Template for VMware vSphere. ###
+  echo "Building a Rocky Linux 8 Template for VMware vSphere..."
 
-  ### Initialize Hashicorp Packer and required plugins ###
-  echo "Initializing Hashicorp Packer and required plugins ..."
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Apply the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build ..."
+  ### Start the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build..."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -240,7 +240,7 @@ menu_option_7() {
 
 menu_option_8() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos-stream-8/
-  echo -e "\nCONFIRM: Build a CentOS Stream 8 Template for VMware vSphere."
+  echo -e "\nCONFIRM: Build a CentOS Stream 8 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -248,12 +248,15 @@ menu_option_8() {
     exit 1
   fi
 
-  ### Initialize Hashicorp Packer and required plugins ###
-  echo "Initializing Hashicorp Packer and required plugins ..."
+  ### Build a CentOS Stream 8 Template for VMware vSphere. ###
+  echo "Building a CentOS Stream 8 Template for VMware vSphere..."
+
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Apply the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build ..."
+  ### Start the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build..."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -268,7 +271,7 @@ menu_option_8() {
 
 menu_option_9() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos-linux-8/
-  echo -e "\nCONFIRM: Build a CentOS Linux 8 Template for VMware vSphere."
+  echo -e "\nCONFIRM: Build a CentOS Linux 8 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -276,15 +279,15 @@ menu_option_9() {
     exit 1
   fi
 
-  ### Build a CentOS Linux 8 Template for VMware vSphere ###
-  echo "Building a CentOS Linux 8 Template for VMware vSphere ..."
+  ### Build a CentOS Linux 8 Template for VMware vSphere. ###
+  echo "Building a CentOS Linux 8 Template for VMware vSphere..."
 
-  ### Initialize Hashicorp Packer and required plugins ###
-  echo "Initializing Hashicorp Packer and required plugins ..."
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Apply the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build ..."
+  ### Start the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build..."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -299,7 +302,7 @@ menu_option_9() {
 
 menu_option_10() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos-linux-7/
-  echo -e "\nCONFIRM: Build a CentOS Linux 7 Template for VMware vSphere."
+  echo -e "\nCONFIRM: Build a CentOS Linux 7 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -307,15 +310,15 @@ menu_option_10() {
     exit 1
   fi
 
-  ### Build a CentOS Linux 7 Template for VMware vSphere ###
-  echo "Building a CentOS Linux 7 Template for VMware vSphere ..."
+  ### Build a CentOS Linux 7 Template for VMware vSphere. ###
+  echo "Building a CentOS Linux 7 Template for VMware vSphere..."
 
-  ### Initialize Hashicorp Packer and required plugins ###
-  echo "Initializing Hashicorp Packer and required plugins ..."
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Apply the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build ..."
+  ### Start the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build..."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -330,7 +333,7 @@ menu_option_10() {
 
 menu_option_11() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2022/
-  echo -e "\nCONFIRM: Build all Microsoft Windows Server 2022 Templates for VMware vSphere."
+  echo -e "\nCONFIRM: Build all Microsoft Windows Server 2022 Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -338,15 +341,15 @@ menu_option_11() {
     exit 1
   fi
 
-  ### Build Microsoft Windows Server 2022 Templates for VMware vSphere ###
-  echo "Building all Microsoft Windows Server 2022 Templates for VMware vSphere  ..."
+  ### Build Microsoft Windows Server 2022 Templates for VMware vSphere. ###
+  echo "Building all Microsoft Windows Server 2022 Templates for VMware vSphere..."
 
-  ### Initialize Hashicorp Packer and required plugins ###
-  echo "Initializing Hashicorp Packer and required plugins ..."
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Apply the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build ..."
+  ### Start the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build..."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -359,7 +362,7 @@ menu_option_11() {
 
 menu_option_12() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2022/
-  echo -e "\nCONFIRM: Build Microsoft Windows Server 2022 Templates for VMware vSphere."
+  echo -e "\nCONFIRM: Build Microsoft Windows Server 2022 Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -367,15 +370,15 @@ menu_option_12() {
     exit 1
   fi
 
-  ### Build Microsoft Windows Server 2022 Standard Templates for VMware vSphere ###
-  echo "Building Microsoft Windows Server 2022 Standard Templates for VMware vSphere  ..."
+  ### Build Microsoft Windows Server 2022 Standard Templates for VMware vSphere. ###
+  echo "Building Microsoft Windows Server 2022 Standard Templates for VMware vSphere..."
 
-  ### Initialize Hashicorp Packer and required plugins ###
-  echo "Initializing Hashicorp Packer and required plugins ..."
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Apply the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build ..."
+  ### Start the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build..."
   packer build -force \
       --only vsphere-iso.windows-server-standard-dexp,vsphere-iso.windows-server-standard-core \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
@@ -389,7 +392,7 @@ menu_option_12() {
 
 menu_option_13() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2022/
-  echo -e "\nCONFIRM: Build Microsoft Windows Server 2022 Datacenter Templates for VMware vSphere."
+  echo -e "\nCONFIRM: Build Microsoft Windows Server 2022 Datacenter Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -397,15 +400,15 @@ menu_option_13() {
     exit 1
   fi
 
-  ### Build Microsoft Windows Server 2022 Datacenter Templates for VMware vSphere ###
-  echo "Building Microsoft Windows Server 2022 Datacenter Templates for VMware vSphere  ..."
+  ### Build Microsoft Windows Server 2022 Datacenter Templates for VMware vSphere. ###
+  echo "Building Microsoft Windows Server 2022 Datacenter Templates for VMware vSphere..."
 
-  ### Initialize Hashicorp Packer and required plugins ###
-  echo "Initializing Hashicorp Packer and required plugins ..."
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Apply the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build ..."
+  ### Start the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build..."
   packer build -force \
       --only vsphere-iso.windows-server-datacenter-dexp,vsphere-iso.windows-server-datacenter-core \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
@@ -419,7 +422,7 @@ menu_option_13() {
 
 menu_option_14() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2019/
-  echo -e "\nCONFIRM: Build all Microsoft Windows Server 2019 Templates for VMware vSphere."
+  echo -e "\nCONFIRM: Build all Microsoft Windows Server 2019 Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -427,15 +430,15 @@ menu_option_14() {
     exit 1
   fi
 
-  ### Build Microsoft Windows Server 2019 Templates for VMware vSphere ###
-  echo "Building all Microsoft Windows Server 2019 Templates for VMware vSphere  ..."
+  ### Build Microsoft Windows Server 2019 Templates for VMware vSphere. ###
+  echo "Building all Microsoft Windows Server 2019 Templates for VMware vSphere..."
 
-  ### Initialize Hashicorp Packer and required plugins ###
-  echo "Initializing Hashicorp Packer and required plugins ..."
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Apply the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build ..."
+  ### Start the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build..."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -448,7 +451,7 @@ menu_option_14() {
 
 menu_option_15() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2019/
-  echo -e "\nCONFIRM: Build Microsoft Windows Server 2019 Templates for VMware vSphere."
+  echo -e "\nCONFIRM: Build Microsoft Windows Server 2019 Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -456,15 +459,15 @@ menu_option_15() {
     exit 1
   fi
 
-  ### Build Microsoft Windows Server 2019 Standard Templates for VMware vSphere ###
-  echo "Building Microsoft Windows Server 2019 Standard Templates for VMware vSphere  ..."
+  ### Build Microsoft Windows Server 2019 Standard Templates for VMware vSphere. ###
+  echo "Building Microsoft Windows Server 2019 Standard Templates for VMware vSphere..."
 
-  ### Initialize Hashicorp Packer and required plugins ###
-  echo "Initializing Hashicorp Packer and required plugins ..."
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Apply the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build ..."
+  ### Start the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build..."
   packer build -force \
       --only vsphere-iso.windows-server-standard-dexp,vsphere-iso.windows-server-standard-core \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
@@ -478,7 +481,7 @@ menu_option_15() {
 
 menu_option_16() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2019/
-  echo -e "\nCONFIRM: Build Microsoft Windows Server 2019 Datacenter Templates for VMware vSphere."
+  echo -e "\nCONFIRM: Build Microsoft Windows Server 2019 Datacenter Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -486,15 +489,15 @@ menu_option_16() {
     exit 1
   fi
 
-  ### Build Microsoft Windows Server 2019 Datacenter Templates for VMware vSphere ###
-  echo "Building Microsoft Windows Server 2019 Datacenter Templates for VMware vSphere  ..."
+  ### Build Microsoft Windows Server 2019 Datacenter Templates for VMware vSphere. ###
+  echo "Building Microsoft Windows Server 2019 Datacenter Templates for VMware vSphere..."
 
-  ### Initialize Hashicorp Packer and required plugins ###
-  echo "Initializing Hashicorp Packer and required plugins ..."
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Apply the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build ..."
+  ### Start the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build..."
   packer build -force \
       --only vsphere-iso.windows-server-datacenter-dexp,vsphere-iso.windows-server-datacenter-core \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
@@ -508,7 +511,7 @@ menu_option_16() {
 
 menu_option_17() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2016/
-  echo -e "\nCONFIRM: Build all Microsoft Windows Server 2016 Templates for VMware vSphere."
+  echo -e "\nCONFIRM: Build all Microsoft Windows Server 2016 Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -516,15 +519,15 @@ menu_option_17() {
     exit 1
   fi
 
-  ### Build Microsoft Windows Server 2016 Templates for VMware vSphere ###
-  echo "Building all Microsoft Windows Server 2016 Templates for VMware vSphere  ..."
+  ### Build Microsoft Windows Server 2016 Templates for VMware vSphere. ###
+  echo "Building all Microsoft Windows Server 2016 Templates for VMware vSphere..."
 
-  ### Initialize Hashicorp Packer and required plugins ###
-  echo "Initializing Hashicorp Packer and required plugins ..."
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Apply the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build ..."
+  ### Start the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build..."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -537,7 +540,7 @@ menu_option_17() {
 
 menu_option_18() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2016/
-  echo -e "\nCONFIRM: Build Microsoft Windows Server 2016 Templates for VMware vSphere."
+  echo -e "\nCONFIRM: Build Microsoft Windows Server 2016 Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -545,15 +548,15 @@ menu_option_18() {
     exit 1
   fi
 
-  ### Build Microsoft Windows Server 2016 Standard Templates for VMware vSphere ###
-  echo "Building Microsoft Windows Server 2016 Standard Templates for VMware vSphere  ..."
+  ### Build Microsoft Windows Server 2016 Standard Templates for VMware vSphere. ###
+  echo "Building Microsoft Windows Server 2016 Standard Templates for VMware vSphere..."
 
-  ### Initialize Hashicorp Packer and required plugins ###
-  echo "Initializing Hashicorp Packer and required plugins ..."
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Apply the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build ..."
+  ### Start the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build..."
   packer build -force \
       --only vsphere-iso.windows-server-standard-dexp,vsphere-iso.windows-server-standard-core \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
@@ -567,7 +570,7 @@ menu_option_18() {
 
 menu_option_19() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2016/
-  echo -e "\nCONFIRM: Build Microsoft Windows Server 2016 Datacenter Templates for VMware vSphere."
+  echo -e "\nCONFIRM: Build Microsoft Windows Server 2016 Datacenter Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -575,15 +578,15 @@ menu_option_19() {
     exit 1
   fi
 
-  ### Build Microsoft Windows Server 2016 Datacenter Templates for VMware vSphere ###
-  echo "Building a Microsoft Windows Server 2016 Datacenter Templates for VMware vSphere  ..."
+  ### Build Microsoft Windows Server 2016 Datacenter Templates for VMware vSphere. ###
+  echo "Building a Microsoft Windows Server 2016 Datacenter Templates for VMware vSphere..."
 
-  ### Initialize Hashicorp Packer and required plugins ###
-  echo "Initializing Hashicorp Packer and required plugins ..."
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Apply the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build ..."
+  ### Start the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build..."
   packer build -force \
       --only vsphere-iso.windows-server-datacenter-dexp,vsphere-iso.windows-server-datacenter-core \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
@@ -597,7 +600,7 @@ menu_option_19() {
 
 menu_option_20() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-10/
-  echo -e "\nCONFIRM: Build Microsoft Windows 10 Professional Template for VMware vSphere."
+  echo -e "\nCONFIRM: Build Microsoft Windows 10 Professional Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -605,15 +608,15 @@ menu_option_20() {
     exit 1
   fi
 
-  ### Build Microsoft Windows 10 Professional for VMware vSphere ###
-  echo "Building a Microsoft Microsoft Windows 10 Professional Template for VMware vSphere  ..."
+  ### Build Microsoft Windows 10 Professional for VMware vSphere. ###
+  echo "Building a Microsoft Microsoft Windows 10 Professional Template for VMware vSphere..."
 
-  ### Initialize Hashicorp Packer and required plugins ###
-  echo "Initializing Hashicorp Packer and required plugins ..."
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Apply the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build ..."
+  ### Start the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build..."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \

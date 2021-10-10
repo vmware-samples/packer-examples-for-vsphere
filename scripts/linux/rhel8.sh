@@ -12,33 +12,6 @@ export BUILD_KEY
 export ANSIBLE_USERNAME
 export ANSIBLE_KEY
 
-#### Checking Red Hat Subscription Manager status. ###
-echo '> Checking the Red Hat Subscription Manager status ...'
-subscription-manager refresh
-
-#### Update the guest operating system. ###
-echo '> Updating the guest operating system ...'
-sudo dnf update -y
-
-### Install additional packages. ### 
-echo '> Installing additional packages ...'
-sudo dnf install -y \
-    curl \
-    wget \
-    git \
-    vim \
-    net-tools \
-    unzip \
-    ca-certificates
-
-### Install the Certificate Authority certificates and add to the certificate authority trust. ###
-echo '> Installing the Certificate Authority certificates and adding to the certificate authority trust ...'
-sudo chown -R root:root /tmp/root-ca.crt
-sudo cat /tmp/root-ca.crt > /etc/pki/ca-trust/source/anchors/root-ca.crt
-sudo chmod 644 /etc/pki/ca-trust/source/anchors/root-ca.crt
-sudo update-ca-trust extract
-sudo rm -rf /tmp/root-ca.crt
-
 ### Update the default local user. ###
 echo '> Updating the default local user ...'
 sudo mkdir -p /home/$BUILD_USERNAME/.ssh

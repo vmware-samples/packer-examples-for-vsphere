@@ -130,9 +130,15 @@ source "vsphere-iso" "linux-redhat-linux" {
 build {
   sources = ["source.vsphere-iso.linux-redhat-linux"]
 
-  provisioner "file" {
-    destination = "/tmp/root-ca.crt"
-    source      = "${path.cwd}/certificates/root-ca.crt"
+  provisioner "ansible" {
+    playbook_file    = "${path.cwd}/ansible/main.yml"
+    roles_path       = "${path.cwd}/ansible/roles"
+    ansible_env_vars = [
+      "ANSIBLE_CONFIG=${path.cwd}/ansible/ansible.cfg"
+      ]
+    extra_arguments  = [
+      "-e", "display_skipped_hosts = false" 
+    ]
   }
 
   provisioner "shell" {

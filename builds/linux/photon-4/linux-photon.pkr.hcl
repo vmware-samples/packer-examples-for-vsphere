@@ -21,7 +21,8 @@ packer {
 
 locals {
   buildtime     = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
-  path_manifest = "${path.cwd}/manifests/"
+  manifest_date = formatdate("YYYY-MM-DD hh:mm:ss", timestamp())
+  manifest_path = "${path.cwd}/manifests/"
 }
 
 //  BLOCK: source
@@ -66,18 +67,22 @@ source "vsphere-iso" "linux-photon" {
   notes                = "Built by HashiCorp Packer on ${local.buildtime}."
 
   // Removable Media Settings
-  iso_paths    = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}"]
-  iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
-
-  // Boot and Provisioning Settings
-  http_port_min = var.common_http_port_min
-  http_port_max = var.common_http_port_max
+  iso_paths    = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}"]
+  iso_checksum = "${var.iso_checksum_type}:${var.iso_checksum_value}"
   http_content = {
-    "/ks.json"       = templatefile("${abspath(path.root)}/data/ks.pkrtpl.hcl", { build_username = var.build_username, build_password_encrypted = var.build_password_encrypted })
+    "/ks.json" = templatefile("${abspath(path.root)}/data/ks.pkrtpl.hcl", {
+      build_username           = var.build_username
+      build_password_encrypted = var.build_password_encrypted
+    })
     "/packages.json" = file("${abspath(path.root)}/data/packages_minimal.json")
   }
-  boot_order = var.vm_boot_order
-  boot_wait  = var.vm_boot_wait
+
+  // Boot and Provisioning Settings
+  http_ip       = var.common_http_ip
+  http_port_min = var.common_http_port_min
+  http_port_max = var.common_http_port_max
+  boot_order    = var.vm_boot_order
+  boot_wait     = var.vm_boot_wait
   boot_command = [
     "<esc><wait>c",
     "linux /isolinux/vmlinuz root=/dev/ram0 loglevel=3 insecure_installation=1 ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.json photon.media=cdrom",
@@ -136,7 +141,29 @@ build {
   }
 
   post-processor "manifest" {
-    output     = "${local.path_manifest}${local.buildtime}-${var.vm_guest_os_family}-${var.vm_guest_os_vendor}.json"
-    strip_path = false
+    output     = "${local.manifest_path}${local.manifest_date}.json"
+    strip_path = true
+    strip_time = true
+    custom_data = {
+      ansible_username         = var.ansible_username
+      build_username           = var.build_username
+      buildtime                = local.buildtime
+      common_data_source       = var.common_data_source
+      common_vm_version        = var.common_vm_version
+      vm_cpu_cores             = var.vm_cpu_cores
+      vm_cpu_sockets           = var.vm_cpu_sockets
+      vm_disk_size             = var.vm_disk_size
+      vm_disk_thin_provisioned = var.vm_disk_thin_provisioned
+      vm_firmware              = var.vm_firmware
+      vm_guest_os_type         = var.vm_guest_os_type
+      vm_mem_size              = var.vm_mem_size
+      vm_network_card          = var.vm_network_card
+      vsphere_cluster          = var.vsphere_cluster
+      vsphere_datacenter       = var.vsphere_datacenter
+      vsphere_datastore        = var.vsphere_datastore
+      vsphere_endpoint         = var.vsphere_endpoint
+      vsphere_folder           = var.vsphere_folder
+      vsphere_iso_path         = "[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}"
+    }
   }
 }

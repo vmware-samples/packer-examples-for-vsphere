@@ -18,9 +18,11 @@
 
 ## Introduction
 
-This repository provides examples to automate the creation of virtual machine images and their guest operating systems on VMware vSphere using [HashiCorp Packer][packer] and the [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`). All examples are authored in the HashiCorp Configuration Language ("HCL2").
+This repository provides infrastructure-as-code examples to automate the creation of virtual machine images and their guest operating systems on VMware vSphere using [HashiCorp Packer][packer] and the [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`). All examples are authored in the HashiCorp Configuration Language ("HCL2").
 
-By default, the machine image artifacts are transferred to a [vSphere Content Library][vsphere-content-library] as an OVF template and the temporary machine image is destroyed. If an item of the same name exists in the target content library, Packer will update the existing item with the new OVF template. This method is extremely useful for vRealize Automation as image mappings do not need to be updated when a virtual machine image update is executed and finalized.
+Use of this repository is mentioned in the VMware Validated Solution: Private Cloud Automation for VMware Cloud Foundation authored by the maintainer. Learn more about this solution at [vmware.com/go/vvs](https://vmware.com/go/vvs). 
+
+By default, the machine image artifacts are transferred to a [vSphere Content Library][vsphere-content-library] as an OVF template and the temporary machine image is destroyed. If an item of the same name exists in the target content library, Packer will update the existing item with the new OVF template. This method is extremely useful for vRealize Automation as image mappings do not need to be updated when a virtual machine image update is executed and finalized. 
 
 The following builds are available:
 
@@ -29,17 +31,20 @@ The following builds are available:
 * Ubuntu Server 20.04 LTS
 * Ubuntu Server 18.04 LTS
 * Red Hat Enterprise Linux 8 Server
+* Red Hat Enterprise Linux 7 Server
 * AlmaLinux 8
 * Rocky Linux 8
 * CentOS Stream 8
 * CentOS Linux 8
+* CentOS Linux 7
 
 **Microsoft Windows** - _Core and Desktop Experience_
 * Microsoft Windows Server 2022 - Standard and Datacenter
 * Microsoft Windows Server 2019 - Standard and Datacenter
 * Microsoft Windows Server 2016 - Standard and Datacenter
+* Microsoft Windows 10 Professional
 
-> **NOTE**: Guest customization is [**not supported**](https://partnerweb.vmware.com/programs/guestOS/guest-os-customization-matrix.pdf) for AlmaLinux and Rocky Linux in vCenter Server 7.0 Update 2. 
+> **NOTE**: Guest customization is [**not supported**](https://partnerweb.vmware.com/programs/guestOS/guest-os-customization-matrix.pdf) for AlmaLinux and Rocky Linux in vCenter Server 7.0 Update 2.
 
 ## Requirements
 
@@ -78,7 +83,7 @@ Download the [**latest**](https://github.com/rainpole/packer-vsphere/releases/la
 
 You may also clone `main` for the latest pre-release updates.
 
-Example: 
+Example:
 ```
 git clone https://github.com/rainpole/packer-vsphere.git
 ```
@@ -127,48 +132,54 @@ The files are distributed in the following directories.
 * **`certificates`** - contains the Trusted Root Authority certificates.
 * **`manifests`** - manifests created after the completion of each build.
 
-### Step 2 - Prepare the Guest Operating Systems ISOs
+### Step 2 - Download the Guest Operating Systems ISOs
 
 1. Download the x64 guest operating system [.iso][iso] images.
 
     **Linux Distributions**
     * VMware Photon OS 4 Server
-        * [Download][download-linux-photon-server-4] the latest release of the **FULL** `.iso` image.
+        * [Download][download-linux-photon-server-4] the 4.0 GA release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-ca7c9e933.iso`)
     * Ubuntu Server 20.04 LTS
-        * [Download][download-linux-ubuntu-server-20-04-lts] the latest **LIVE** release `.iso` image.
+        * [Download][download-linux-ubuntu-server-20-04-lts] the latest **LIVE** release `.iso` image. (_e.g._ `ubuntu-20.04.2-live-server-amd64.iso`)
     * Ubuntu Server 18.04 LTS
-        * [Download][download-linux-ubuntu-server-18-04-lts] the latest legacy **NON-LIVE** release` .iso` image.
+        * [Download][download-linux-ubuntu-server-18-04-lts] the latest legacy **NON-LIVE** release `.iso` image. (_e.g._ `ubuntu-18.04.6-server-amd64.iso`)
     * Red Hat Enterprise Linux 8 Server
-        * [Download][download-linux-redhat-server-8] the latest release of the **FULL** (e.g. `RHEL-8-x86_64-dvd1.iso`) `.iso` image.
-    * AlmaLinux 8 Server
-        * [Download][download-linux-almalinux-server-8] the latest release of the **FULL** (e.g. `AlmaLinux-8-x86_64-dvd1.iso`) `.iso` image.
-    * Rocky Linux 8 Server
-        * [Download][download-linux-rocky-server-8] the latest release of the **FULL** (e.g. `Rocky-8-x86_64-dvd1.iso`) `.iso` image.
-    * CentOS Stream 8 Server
-        * [Download][download-linux-centos-stream-8] the latest release of the **FULL** (e.g. `CentOS-Stream-8-x86_64-dvd1.iso`) `.iso` image.
-    * CentOS Linux 8 Server
-        * [Download][download-linux-centos-server-8] the latest release of the **FULL** (e.g. `CentOS-8-x86_64-dvd1.iso`) `.iso` image.
+        * [Download][download-linux-redhat-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `rhel-8-x86_64-dvd1.iso`)
+    * Red Hat Enterprise Linux 7 Server
+        * [Download][download-linux-redhat-server-7] the latest release of the **FULL** `.iso` image. (_e.g._ `rhel-server-7-x86_64-dvd1.iso`)
+    * AlmaLinux 8
+        * [Download][download-linux-almalinux-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `AlmaLinux-8-x86_64-dvd1.iso`)
+    * Rocky Linux 8
+        * [Download][download-linux-rocky-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `Rocky-8-x86_64-dvd1.iso`)
+    * CentOS Stream 8
+        * [Download][download-linux-centos-stream-8] the latest release of the **FULL** `.iso` image. (_e.g._ `CentOS-Stream-8-x86_64-dvd1.iso`)
+    * CentOS Linux 8
+        * [Download][download-linux-centos-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `CentOS-8-x86_64-dvd1.iso`)
+    * CentOS Linux 7
+        * [Download][download-linux-centos-server-7] the latest release of the **FULL** `.iso` image. (_e.g._ `CentOS-7-x86_64-DVD.iso`)
 
     **Microsoft Windows**
     * Microsoft Windows Server 2022
     * Microsoft Windows Server 2019
     * Microsoft Windows Server 2016
+    * Microsoft Windows 10 Professional
 
-2. Rename your guest operating system `.iso` images. The examples in this repository _generally_ use the format of `iso-family-vendor-type-version.iso`. 
+3. Obtain the checksum type (_e.g._ `sha256`, `md5`, etc.) and checksum value for each guest operating system `.iso` image. This will be use in the build input variables.
 
-   Example: `iso-linux-ubuntu-server-20-04-lts.iso`
+4. [Upload][vsphere-upload] your guest operating system `.iso` images to the ISO datastore and paths that will be used in your variables.
 
-3. Obtain the SHA-512 checksum for each guest operating system `.iso` image. This will be use in the build input variables.
+    Example: `builds/<type>/<build>/*.auto.pkvars.hcl`
+    ```
+    common_iso_datastore = "sfo-w01-cl01-ds-nfs01"
+    ```
 
-    Example:
-
-    * macOS terminal: `shasum -a 512 [filename.iso]`
-    * Linux shell: `sha512sum [filename.iso]`
-    * Windows command: `certutil -hashfile [filename.iso] sha512`
-
-4. [Upload][vsphere-upload] your guest operating system `.iso` images to the datastore and path defined in your common variables. 
-
-    Example: `[sfo-w01-ds-nfs01] /iso`.
+    Example: `config/common.pkvars.hcl`
+    ```
+    iso_path           = "iso/linux/photon"
+    iso_file           = "photon-4.0-ca7c9e933.iso"
+    iso_checksum_type  = "md5"
+    iso_checksum_value = "d8c4bc561e68afaf7815518f78a5b4ab"
+    ```
 
 ### Step 3 - Configure the Variables
 
@@ -178,7 +189,7 @@ The [variables][packer-variables] are defined in `.pkvars.hcl` files.
 
 Run the config script `./config.sh` to copy the `.pkvars.hcl.example` files to the `config` directory.
 
-The `config` folder is the default folder for the first argument of these scripts. you may override the default by passing an alternate value as the first argument. 
+The `config` folder is the default folder for the first argument of these scripts. you may override the default by passing an alternate value as the first argument.
 
 ```
 ./config.sh foo
@@ -202,11 +213,11 @@ For example, this is useful for the purposes of running machine image builds for
 
 #### **Build Variables**
 
-Edit the `/config/build.pkvars.hcl` file to configure the following:
+Edit the `config/build.pkvars.hcl` file to configure the following:
 
-* Credentials for the default account on machine images. 
+* Credentials for the default account on machine images.
 
-Example: `/config/build.pkvars.hcl`
+Example: `config/build.pkvars.hcl`
 
 ```
 build_username           = "rainpole"
@@ -214,13 +225,20 @@ build_password           = "<plaintext_password>"
 build_password_encrypted = "<sha512_encrypted_password>"
 build_key                = "<public_key>"
 ```
+You can also override the `build_key` value with contents of a file, if required.
+
+For example:
+
+```
+build_key = file("${path.root}/config/ssh/build_id_ecdsa.pub")
+```
 
 Generate a SHA-512 encrypted password for the  _`build_password_encrypted`_ using various other tools like OpenSSL, mkpasswd, etc.
 
 Example: OpenSSL on macOS:
 
 ```
-rainpole@macos>  openssl passwd -6 
+rainpole@macos>  openssl passwd -6
 Password: ***************
 Verifying - Password: ***************
 [password hash]
@@ -241,26 +259,25 @@ Example: macOS and Linux.
 rainpole@macos> cd .ssh/
 rainpole@macos ~/.ssh> ssh-keygen -t ecdsa -b 521 -C "code@rainpole.io"
 Generating public/private ecdsa key pair.
-Enter file in which to save the key (/Users/rainpole/.ssh/id_ecdsa): 
+Enter file in which to save the key (/Users/rainpole/.ssh/id_ecdsa):
 Enter passphrase (empty for no passphrase): **************
 Enter same passphrase again: **************
 Your identification has been saved in /Users/rainpole/.ssh/id_ecdsa.
 Your public key has been saved in /Users/rainpole/.ssh/id_ecdsa.pub.
 ```
 
-The content of the public key, `build_key`,  is added the key to the `.ssh/authorized_keys` file of the `build_username` on the guest operating system. 
-
+The content of the public key, `build_key`, is added the key to the `.ssh/authorized_keys` file of the `build_username` on the guest operating system.
 
 >**WARNING**: Replace the default public keys and passwords.
->By default, both Public Key Authentication and Password Authentication are enabled for Linux distributions. If you wish to disable Password Authentication and only use Public Key Authentication, comment or remove the portion of the associated script in the `/scripts` directory.
+>By default, both Public Key Authentication and Password Authentication are enabled for Linux distributions. If you wish to disable Password Authentication and only use Public Key Authentication, comment or remove the portion of the associated script in the `scripts` directory.
 
 #### **Ansible Variables**
 
-Edit the `/config/ansible.pkvars.hcl` file to configure the following:
+Edit the `config/ansible.pkvars.hcl` file to configure the following:
 
-* Credentials for the Ansible account on Linux machine images. 
+* Credentials for the Ansible account on Linux machine images.
 
-Example: `/config/ansible.pkvars.hcl`
+Example: `config/ansible.pkvars.hcl`
 
 ```
 ansible_username = "ansible"
@@ -268,42 +285,71 @@ ansible_key      = "<public_key>"
 ```
 >**NOTE**: A random password is generated for the Ansible user.
 
-#### **Common Variables**
+You can also override the `ansible_key` value with contents of a file, if required.
 
-Edit the `/config/common.pkvars.hcl` file to configure the following:
-
-* Common Data Source
-* Common Virtual Machine Settings
-* Common Template and Content Library Settings
-* Common Removable Media Settings
-* Common Boot and Provisioning Settings
-
-Example: `/config/common.pkvars.hcl`
+For example:
 
 ```
-common_data_source             = "http"
+build_key = file("${path.root}/config/ssh/ansible_id_ecdsa.pub")
+```
+
+#### **Common Variables**
+
+Edit the `config/common.pkvars.hcl` file to configure the following common variables:
+
+* Virtual Machine Settings
+* Template and Content Library Settings
+* Removable Media Settings
+* Boot and Provisioning Settings
+
+Example: `config/common.pkvars.hcl`
+
+```
+// Virtual Machine Settings
+common_vm_version           = 19
+common_tools_upgrade_policy = true
+common_remove_cdrom         = true
+
+// Template and Content Library Settings
 common_template_conversion     = false
 common_content_library_name    = "sfo-w01-lib01"
 common_content_library_ovf     = true
 common_content_library_destroy = true
+
+// Removable Media Settings
+common_iso_datastore = "sfo-w01-cl01-ds-nfs01"
+
+// Boot and Provisioning Settings
+common_data_source      = "http"
+common_http_ip          = null
+common_http_port_min    = 8000
+common_http_port_max    = 8099
+common_ip_wait_timeout  = "20m"
+common_shutdown_timeout = "15m"
 ```
 
 `http` is the default provisioning data source for Linux machine image builds.
 
-You change the `common_data_source` from `http` to `disk` to build supported Linux machine images without the need to user Packer's HTTP server. This is useful for environments that may not be able to route back to the system from which Packer is running. Currently, the only `cd_content` is used when selecting `disk`.
+You can change the `common_data_source` from `http` to `disk` to build supported Linux machine images without the need to user Packer's HTTP server. This is useful for environments that may not be able to route back to the system from which Packer is running. Currently, the only `cd_content` is used when selecting `disk`.
 
 > Note: The following Linux distributions do not support kickstart from a secondary CD-ROM.
 > - VMware PhotonOS 4
 > - Ubuntu Server 18.04 LTS
 
+If you need to define a specific IPv4 address from your host for Packer's HTTP Server, modify the `common_http_ip` variable from `null` to a `string` value. For example:
+
+```
+common_http_ip = "172.16.11.254"
+```
+
 #### **Proxy Variables**
 
-Edit the `/config/proxy.pkvars.hcl` file to configure the following:
+Edit the `config/proxy.pkvars.hcl` file to configure the following:
 
 * SOCKS proxy settings used for connecting to Linux machine images.
-* Credentials for the proxy server (Optional). 
+* Credentials for the proxy server (Optional).
 
-Example: `/config/proxy.pkvars.hcl`
+Example: `config/proxy.pkvars.hcl`
 
 ```
 communicator_proxy_host     = "proxy.rainpole.io"
@@ -313,29 +359,27 @@ communicator_proxy_password = "<plaintext_password>"
 ```
 #### **Red Hat Subscription Manager Variables**
 
-Edit the `/config/redhat.pkvars.hcl` file to configure the following:
+Edit the `config/redhat.pkvars.hcl` file to configure the following:
 
-* Credentials for your Red Hat Subscription Manager account. 
+* Credentials for your Red Hat Subscription Manager account.
 
-Example: `/config/redhat.pkvars.hcl`
+Example: `config/redhat.pkvars.hcl`
 
 ```
 rhsm_username = "rainpole"
 rhsm_password = "<plaintext_password>"
 ```
 
-These variables are **only** used if you are performing a Red Hat Enterprise Linux Server build to register the image with Red Hat Subscription Manager and run a `sudo yum update -y` within the shell provisioner. Before the build completes, the machine image is unregistered from Red Hat Subscription Manager.
-
-
+These variables are **only** used if you are performing a Red Hat Enterprise Linux Server build to register the image with Red Hat Subscription Manager and run a `sudo dnf update -y` within the shell provisioner. Before the build completes, the machine image is unregistered from Red Hat Subscription Manager.
 
 #### **vSphere Variables**
 
-Edit the `/buils/vsphere.pkvars.hcl` file to configure the following:
+Edit the `builds/vsphere.pkvars.hcl` file to configure the following:
 
 * vSphere Endpoint and Credentials
 * vSphere Settings
 
-Example: `/config/vsphere.pkvars.hcl`
+Example: `config/vsphere.pkvars.hcl`
 
 ```
 vsphere_endpoint             = "sfo-w01-vc01.sfo.rainpole.io"
@@ -357,14 +401,16 @@ Edit the `*.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder to conf
 * CPU Cores `(init)`
 * Memory in MB `(init)`
 * Primary Disk in MB `(init)`
-* .iso Image File `(string)`
-* .iso Image SHA-512 Checksum `(string)`
+* .iso Path `(string)`
+* .iso File `(string)`
+* .iso Checksum Type `(string)`
+* .iso Checksum Value `(string)`
 
-    >**Note**: All `variables.auto.pkvars.hcl` default to using the the recommended firmware for the guest operating system, the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types.
+    >**Note**: All `variables.auto.pkvars.hcl` default to using the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types.
 
 #### **Using Environmental Variables**
 
-Some of the variables may include sensitive information and environmental data that you would prefer not to save to clear text files. You can add there to environmental variables using the example below:
+Some of the variables may include sensitive information and environmental data that you would prefer not to save to clear text files. You can add these to environmental variables using the example below:
 
 ```
 export PKR_VAR_ansible_username="<ansible_password>"
@@ -387,8 +433,8 @@ export PKR_VAR_vsphere_cluster="<vsphere_cluster>"
 export PKR_VAR_vsphere_datastore="<vsphere_datastore>>"
 export PKR_VAR_vsphere_network="<vsphere_network>"
 export PKR_VAR_vsphere_folder="<vsphere_folder>"
-
 ```
+
 ## Step 4 - Modify the Configurations and Scripts
 
 If required, modify the configuration and scripts files, for the Linux distributions and Microsoft Windows.
@@ -396,8 +442,6 @@ If required, modify the configuration and scripts files, for the Linux distribut
 ### Linux Distribution Kickstart and Scripts
 
 Username and password variables are passed into the kickstart or cloud-init files for each Linux distribution as Packer template files (`.pkrtpl.hcl`) to generate these on-demand.
-
-A SHA-512 encrypted password for the `root` account and the _`build_username`_ (e.g. `rainpole`). It also adds the _`build_username`_ to the sudoers.
 
 ### Microsoft Windows Unattended amd Scripts
 
@@ -432,39 +476,42 @@ Start a pre-defined build by running the build script (`./build.sh`). The script
 
 Example: Menu for `./build.sh`.
 ```
-    ____             __                ____        _ __    __     
-   / __ \____ ______/ /_____  _____   / __ )__  __(_) /___/ /____ 
-  / /_/ / __  / ___/ //_/ _ \/ ___/  / __  / / / / / / __  / ___/ 
- / ____/ /_/ / /__/ ,< /  __/ /     / /_/ / /_/ / / / /_/ (__  )  
-/_/    \__,_/\___/_/|_|\___/_/     /_____/\__,_/_/_/\__,_/____/   
+    ____             __                ____        _ __    __
+   / __ \____ ______/ /_____  _____   / __ )__  __(_) /___/ /____
+  / /_/ / __  / ___/ //_/ _ \/ ___/  / __  / / / / / / __  / ___/
+ / ____/ /_/ / /__/ ,< /  __/ /     / /_/ / /_/ / / / /_/ (__  )
+/_/    \__,_/\___/_/|_|\___/_/     /_____/\__,_/_/_/\__,_/____/
 
   Select a HashiCorp Packer build for VMware vSphere:
 
       Linux Distribution:
 
-         1  -  VMware Photon OS 4
-         2  -  Ubuntu Server 20.04 LTS
-         3  -  Ubuntu Server 18.04 LTS
-         4  -  Red Hat Enterprise Linux 8 Server
-         5  -  AlmaLinux 8 Server
-         6  -  Rocky Linux 8 Server
-         7  -  CentOS Stream 8 Server
-         8  -  CentOS Linux 8 Server
+     	 1  -  VMware Photon OS 4
+     	 2  -  Ubuntu Server 20.04 LTS
+     	 3  -  Ubuntu Server 18.04 LTS
+     	 4  -  Red Hat Enterprise Linux 8
+     	 5  -  Red Hat Enterprise Linux 7
+     	 6  -  AlmaLinux 8
+     	 7  -  Rocky Linux 8
+     	 8  -  CentOS Stream 8
+     	 9  -  CentOS Linux 8
+     	10  -  CentOS Linux 7
 
-      Microsoft Windows:
+       Microsoft Windows:
 
-         9  -  Windows Server 2022 - All
-        10  -  Windows Server 2022 - Standard Only
-        11  -  Windows Server 2022 - Datacenter Only
-        12  -  Windows Server 2019 - All
-        13  -  Windows Server 2019 - Standard Only
-        14  -  Windows Server 2019 - Datacenter Only
-        15  -  Windows Server 2016 - All
-        16  -  Windows Server 2016 - Standard Only
-        17  -  Windows Server 2016 - Datacenter Only
+     	11  -  Windows Server 2022 - All
+     	12  -  Windows Server 2022 - Standard Only
+     	13  -  Windows Server 2022 - Datacenter Only
+     	14  -  Windows Server 2019 - All
+     	15  -  Windows Server 2019 - Standard Only
+     	16  -  Windows Server 2019 - Datacenter Only
+     	17  -  Windows Server 2016 - All
+     	18  -  Windows Server 2016 - Standard Only
+     	19  -  Windows Server 2016 - Datacenter Only
+     	20  -  Windows 10 Professional
 
       Other:
-      
+
         I   -  Information
         Q   -  Quit
 ```
@@ -504,30 +551,29 @@ Happy building!!!
 * Maher AlAsfar [@vmwarelab][credits-maher-alasfar-twitter]
 
     [Linux][credits-maher-alasfar-github] Bash scripting hints.
-    
+
 * Owen Reynolds [@OVDamn][credits-owen-reynolds-twitter]
-    
+
     [VMware Tools for Windows][credits-owen-reynolds-github] installation PowerShell script.
 
 [//]: Links
 
-[chocolatey]: https://chocolatey.org/why-chocolatey
 [cloud-init]: https://cloudinit.readthedocs.io/en/latest/
 [credits-maher-alasfar-twitter]: https://twitter.com/vmwarelab
 [credits-maher-alasfar-github]: https://github.com/vmwarelab/cloud-init-scripts
 [credits-owen-reynolds-twitter]: https://twitter.com/OVDamn
 [credits-owen-reynolds-github]: https://github.com/getvpro/Build-Packer/blob/master/Scripts/Install-VMTools.ps1
 [download-git]: https://git-scm.com/downloads
+[download-linux-almalinux-server-8]: https://mirrors.almalinux.org/isos.html
+[download-linux-centos-server-8]: http://isoredirect.centos.org/centos/8/isos/x86_64/
+[download-linux-centos-server-8]: http://isoredirect.centos.org/centos/7/isos/x86_64/
+[download-linux-centos-stream-8]: http://isoredirect.centos.org/centos/8-stream/isos/x86_64/
 [download-linux-photon-server-4]: https://packages.vmware.com/photon/4.0/
-[download-linux-ubuntu-server-20-04-lts]: https://releases.ubuntu.com/20.04.1/
-[download-linux-ubuntu-server-18-04-lts]: http://cdimage.ubuntu.com/ubuntu/releases/18.04.5/release/
 [download-linux-redhat-server-8]: https://access.redhat.com/downloads/content/479/
 [download-linux-redhat-server-7]: https://access.redhat.com/downloads/content/69/
-[download-linux-almalinux-server-8]: https://mirrors.almalinux.org/isos.html
 [download-linux-rocky-server-8]: https://download.rockylinux.org/pub/rocky/8/isos/x86_64/
-[download-linux-centos-stream-8]: http://isoredirect.centos.org/centos/8-stream/isos/x86_64/
-[download-linux-centos-server-8]: http://isoredirect.centos.org/centos/8/isos/x86_64/
-[download-linux-centos-server-7]: http://isoredirect.centos.org/centos/7/isos/x86_64/
+[download-linux-ubuntu-server-18-04-lts]: http://cdimage.ubuntu.com/ubuntu/releases/18.04.5/release/
+[download-linux-ubuntu-server-20-04-lts]: https://releases.ubuntu.com/20.04.1/
 [hashicorp]: https://www.hashicorp.com/
 [iso]: https://en.wikipedia.org/wiki/ISO_image
 [microsoft-kms]: https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys
@@ -539,8 +585,8 @@ Happy building!!!
 [packer-install]: https://www.packer.io/intro/getting-started/install.html
 [packer-plugin-vsphere]: https://www.packer.io/docs/builders/vsphere/vsphere-iso
 [packer-plugin-windows-update]: https://github.com/rgl/packer-plugin-windows-update
-[packer-variables]: https://www.packer.io/docs/from-1.5/variables#variable-definitions-pkrvars-hcl-files
-[photon-kickstart]: https://vmware.github.io/photon/assets/files/html/3.0/photon_user/kickstart.html
+[packer-variables]: https://www.packer.io/docs/templates/hcl_templates/variables
+[photon-kickstart]: https://vmware.github.io/photon/docs/user-guide/kickstart-through-http/packer-template/
 [redhat-kickstart]: https://access.redhat.com/labs/kickstartconfig/
 [ssh-keygen]: https://www.ssh.com/ssh/keygen/
 [vmware-pvscsi]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.hostclient.doc/GUID-7A595885-3EA5-4F18-A6E7-5952BFC341CC.html

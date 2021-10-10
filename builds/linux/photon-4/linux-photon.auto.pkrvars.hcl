@@ -26,8 +26,10 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_file     = "iso-linux-photon-4.iso"
-iso_checksum = "9cb0ae0329a50733f56e921c1e220ce3e9d328499890b8202e05991daec34c4184ef03606caf706e9058035115c23fef1cacbb184200fca8ec577a191ad3f394"
+iso_path           = "iso/linux/photon"
+iso_file           = "photon-4.0-1526e30ba.iso"
+iso_checksum_type  = "md5"
+iso_checksum_value = "e0c77e9495c7bfaea20cc17be3cb145b"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

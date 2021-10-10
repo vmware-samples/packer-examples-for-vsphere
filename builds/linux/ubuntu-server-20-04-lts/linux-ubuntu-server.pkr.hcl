@@ -21,12 +21,19 @@ packer {
 
 locals {
   buildtime     = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
-  path_manifest = "${path.cwd}/manifests/"
+  manifest_date = formatdate("YYYY-MM-DD hh:mm:ss", timestamp())
+  manifest_path = "${path.cwd}/manifests/"
   data_source_content = {
     "/meta-data" = file("${abspath(path.root)}/data/meta-data")
-    "/user-data" = templatefile("${abspath(path.root)}/data/user-data.pkrtpl.hcl", { build_username = var.build_username, build_password_encrypted = var.build_password_encrypted, vm_guest_os_language = var.vm_guest_os_language, vm_guest_os_keyboard = var.vm_guest_os_keyboard, vm_guest_os_timezone = var.vm_guest_os_timezone })
+    "/user-data" = templatefile("${abspath(path.root)}/data/user-data.pkrtpl.hcl", {
+      build_username           = var.build_username
+      build_password_encrypted = var.build_password_encrypted
+      vm_guest_os_language     = var.vm_guest_os_language
+      vm_guest_os_keyboard     = var.vm_guest_os_keyboard
+      vm_guest_os_timezone     = var.vm_guest_os_timezone
+    })
   }
-  data_source_command = var.common_data_source == "http" ? "ds=nocloud-net;s=http://{{.HTTPIP}}:{{.HTTPPort}}/" : "ds=nocloud"
+  data_source_command = var.common_data_source == "http" ? "ds=\"nocloud-net;seedfrom=http://{{.HTTPIP}}:{{.HTTPPort}}/\"" : "ds\"=nocloud\""
 }
 
 //  BLOCK: source
@@ -71,20 +78,27 @@ source "vsphere-iso" "linux-ubuntu-server" {
   notes                = "Built by HashiCorp Packer on ${local.buildtime}."
 
   // Removable Media Settings
-  iso_paths    = ["[${var.common_iso_datastore}] ${var.common_iso_path}/${var.iso_file}"]
-  iso_checksum = "${var.common_iso_hash}:${var.iso_checksum}"
+  iso_paths    = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}"]
+  iso_checksum = "${var.iso_checksum_type}:${var.iso_checksum_value}"
+  http_content = var.common_data_source == "http" ? local.data_source_content : null
+  cd_content   = var.common_data_source == "disk" ? local.data_source_content : null
+  cd_label     = var.common_data_source == "disk" ? "cidata" : null
 
   // Boot and Provisioning Settings
+  http_ip       = var.common_data_source == "http" ? var.common_http_ip : null
   http_port_min = var.common_data_source == "http" ? var.common_http_port_min : null
   http_port_max = var.common_data_source == "http" ? var.common_http_port_max : null
-  http_content  = var.common_data_source == "http" ? local.data_source_content : null
-
-  cd_label   = var.common_data_source == "disk" ? "cidata" : null
-  cd_content = var.common_data_source == "disk" ? local.data_source_content : null
-
-  boot_order       = var.vm_boot_order
-  boot_wait        = var.vm_boot_wait
-  boot_command     = ["<enter><enter><f6><esc><wait> ", "autoinstall ", "ip=dhcp ipv6.disable=1 ${local.data_source_command} ", "<enter><wait>"]
+  boot_order    = var.vm_boot_order
+  boot_wait     = var.vm_boot_wait
+  boot_command = [
+    "<esc><wait>",
+    "linux /casper/vmlinuz --- autoinstall ${local.data_source_command}",
+    "<enter><wait>",
+    "initrd /casper/initrd",
+    "<enter><wait>",
+    "boot",
+    "<enter>"
+  ]
   ip_wait_timeout  = var.common_ip_wait_timeout
   shutdown_command = "echo '${var.build_password}' | sudo -S -E shutdown -P now"
   shutdown_timeout = var.common_shutdown_timeout
@@ -123,6 +137,10 @@ build {
     source      = "${path.cwd}/certificates/root-ca.crt"
   }
 
+  provisioner "ansible-local" {
+    playbook_file = "${path.cwd}/scripts/ansible/playbook.yml"
+  }
+
   provisioner "shell" {
     execute_command = "echo '${var.build_password}' | {{.Vars}} sudo -E -S sh -eux '{{.Path}}'"
     environment_vars = [
@@ -135,7 +153,29 @@ build {
   }
 
   post-processor "manifest" {
-    output     = "${local.path_manifest}${local.buildtime}-${var.vm_guest_os_family}-${var.vm_guest_os_vendor}-${var.vm_guest_os_member}.json"
-    strip_path = false
+    output     = "${local.manifest_path}${local.manifest_date}.json"
+    strip_path = true
+    strip_time = true
+    custom_data = {
+      ansible_username         = var.ansible_username
+      build_username           = var.build_username
+      buildtime                = local.buildtime
+      common_data_source       = var.common_data_source
+      common_vm_version        = var.common_vm_version
+      vm_cpu_cores             = var.vm_cpu_cores
+      vm_cpu_sockets           = var.vm_cpu_sockets
+      vm_disk_size             = var.vm_disk_size
+      vm_disk_thin_provisioned = var.vm_disk_thin_provisioned
+      vm_firmware              = var.vm_firmware
+      vm_guest_os_type         = var.vm_guest_os_type
+      vm_mem_size              = var.vm_mem_size
+      vm_network_card          = var.vm_network_card
+      vsphere_cluster          = var.vsphere_cluster
+      vsphere_datacenter       = var.vsphere_datacenter
+      vsphere_datastore        = var.vsphere_datastore
+      vsphere_endpoint         = var.vsphere_endpoint
+      vsphere_folder           = var.vsphere_folder
+      vsphere_iso_path         = "[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}"
+    }
   }
 }

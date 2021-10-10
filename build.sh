@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+# WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+# COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+# OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 set -e
 
 follow_link() {
@@ -140,6 +145,38 @@ menu_option_4() {
 }
 
 menu_option_5() {
+  INPUT_PATH="$SCRIPT_PATH"/builds/linux/redhat-linux-7/
+  echo -e "\nCONFIRM: Build a Red Hat Enerprise Linux 7 Server Template for VMware vSphere."
+  echo -e "\nContinue? (y/n)"
+  read -r REPLY
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+    exit 1
+  fi
+
+  ### Build an Red Hat Enerprise Linux 7 Server Template for VMware vSphere ###
+  echo "Building a Red Hat Enerprise Linux 7 Server Template for VMware vSphere ..."
+
+  ### Initialize Hashicorp Packer and required plugins ###
+  echo "Initializing Hashicorp Packer and required plugins ..."
+  packer init "$INPUT_PATH"
+
+  ### Apply the HashiCorp Packer Build ###
+  echo "Applying the HashiCorp Packer Build ..."
+  packer build -force \
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/rhsm.pkrvars.hcl" \
+      "$INPUT_PATH"
+
+  ### All done. ###
+  echo "Done."
+}
+
+menu_option_6() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/almalinux-8/
   echo -e "\nCONFIRM: Build an AlmaLinux 8 Template for VMware vSphere."
   echo -e "\nContinue? (y/n)"
@@ -170,7 +207,7 @@ menu_option_5() {
   echo "Done."
 }
 
-menu_option_6() {
+menu_option_7() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/rocky-linux-8/
   echo -e "\nCONFIRM: Build a Rocky Linux 8 Template for VMware vSphere."
   echo -e "\nContinue? (y/n)"
@@ -201,7 +238,7 @@ menu_option_6() {
   echo "Done."
 }
 
-menu_option_7() {
+menu_option_8() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos-stream-8/
   echo -e "\nCONFIRM: Build a CentOS Stream 8 Template for VMware vSphere."
   echo -e "\nContinue? (y/n)"
@@ -229,7 +266,7 @@ menu_option_7() {
   echo "Done."
 }
 
-menu_option_8() {
+menu_option_9() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos-linux-8/
   echo -e "\nCONFIRM: Build a CentOS Linux 8 Template for VMware vSphere."
   echo -e "\nContinue? (y/n)"
@@ -260,7 +297,38 @@ menu_option_8() {
   echo "Done."
 }
 
-menu_option_9() {
+menu_option_10() {
+  INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos-linux-7/
+  echo -e "\nCONFIRM: Build a CentOS Linux 7 Template for VMware vSphere."
+  echo -e "\nContinue? (y/n)"
+  read -r REPLY
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+    exit 1
+  fi
+
+  ### Build a CentOS Linux 7 Template for VMware vSphere ###
+  echo "Building a CentOS Linux 7 Template for VMware vSphere ..."
+
+  ### Initialize Hashicorp Packer and required plugins ###
+  echo "Initializing Hashicorp Packer and required plugins ..."
+  packer init "$INPUT_PATH"
+
+  ### Apply the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build ..."
+  packer build -force \
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      "$INPUT_PATH"
+
+  ### All done. ###
+  echo "Done."
+}
+
+menu_option_11() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2022/
   echo -e "\nCONFIRM: Build all Microsoft Windows Server 2022 Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
@@ -289,7 +357,7 @@ menu_option_9() {
   echo "Done."
 }
 
-menu_option_10() {
+menu_option_12() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2022/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2022 Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
@@ -319,7 +387,7 @@ menu_option_10() {
   echo "Done."
 }
 
-menu_option_11() {
+menu_option_13() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2022/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2022 Datacenter Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
@@ -349,7 +417,7 @@ menu_option_11() {
   echo "Done."
 }
 
-menu_option_12() {
+menu_option_14() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2019/
   echo -e "\nCONFIRM: Build all Microsoft Windows Server 2019 Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
@@ -378,7 +446,7 @@ menu_option_12() {
   echo "Done."
 }
 
-menu_option_13() {
+menu_option_15() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2019/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2019 Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
@@ -408,7 +476,7 @@ menu_option_13() {
   echo "Done."
 }
 
-menu_option_14() {
+menu_option_16() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2019/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2019 Datacenter Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
@@ -438,7 +506,7 @@ menu_option_14() {
   echo "Done."
 }
 
-menu_option_15() {
+menu_option_17() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2016/
   echo -e "\nCONFIRM: Build all Microsoft Windows Server 2016 Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
@@ -467,7 +535,7 @@ menu_option_15() {
   echo "Done."
 }
 
-menu_option_16() {
+menu_option_18() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2016/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2016 Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
@@ -497,7 +565,7 @@ menu_option_16() {
   echo "Done."
 }
 
-menu_option_17() {
+menu_option_19() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2016/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2016 Datacenter Templates for VMware vSphere."
   echo -e "\nContinue? (y/n)"
@@ -527,6 +595,35 @@ menu_option_17() {
   echo "Done."
 }
 
+menu_option_20() {
+  INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-10/
+  echo -e "\nCONFIRM: Build Microsoft Windows 10 Professional Template for VMware vSphere."
+  echo -e "\nContinue? (y/n)"
+  read -r REPLY
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+    exit 1
+  fi
+
+  ### Build Microsoft Windows 10 Professional for VMware vSphere ###
+  echo "Building a Microsoft Microsoft Windows 10 Professional Template for VMware vSphere  ..."
+
+  ### Initialize Hashicorp Packer and required plugins ###
+  echo "Initializing Hashicorp Packer and required plugins ..."
+  packer init "$INPUT_PATH"
+
+  ### Apply the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build ..."
+  packer build -force \
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      "$INPUT_PATH"
+
+  ### All done. ###
+  echo "Done."
+}
+
 press_enter() {
   cd "$SCRIPT_PATH"
   echo -n "Press Enter to continue."
@@ -539,7 +636,7 @@ info() {
   echo "License: Apache License Version 2.0."
   echo ""
   echo "Versions Used:"
-  echo "HashiCorp Packer >= 1.7.4."
+  echo "HashiCorp Packer >= 1.7.6"
   echo "HashiCorp Packer Plugin for VMware vSphere >= 1.0.1"
   echo "HashiCorp Packer Plugin for Windows Update >= 0.14.0"
   echo ""
@@ -569,22 +666,25 @@ until [ "$selection" = "0" ]; do
   echo "    	 2  -  Ubuntu Server 20.04 LTS"
   echo "    	 3  -  Ubuntu Server 18.04 LTS"
   echo "    	 4  -  Red Hat Enterprise Linux 8"
-  echo "    	 5  -  AlmaLinux 8"
-  echo "    	 6  -  Rocky Linux 8"
-  echo "    	 7  -  CentOS Stream 8"
-  echo "    	 8  -  CentOS Linux 8"
+  echo "    	 5  -  Red Hat Enterprise Linux 7"
+  echo "    	 6  -  AlmaLinux 8"
+  echo "    	 7  -  Rocky Linux 8"
+  echo "    	 8  -  CentOS Stream 8"
+  echo "    	 9  -  CentOS Linux 8"
+  echo "    	10  -  CentOS Linux 7"
   echo ""
   echo "      Microsoft Windows:"
   echo ""
-  echo "    	 9  -  Windows Server 2022 - All"
-  echo "    	10  -  Windows Server 2022 - Standard Only"
-  echo "    	11  -  Windows Server 2022 - Datacenter Only"
-  echo "    	12  -  Windows Server 2019 - All"
-  echo "    	13  -  Windows Server 2019 - Standard Only"
-  echo "    	14  -  Windows Server 2019 - Datacenter Only"
-  echo "    	15  -  Windows Server 2016 - All"
-  echo "    	16  -  Windows Server 2016 - Standard Only"
-  echo "    	17  -  Windows Server 2016 - Datacenter Only"
+  echo "    	11  -  Windows Server 2022 - All"
+  echo "    	12  -  Windows Server 2022 - Standard Only"
+  echo "    	13  -  Windows Server 2022 - Datacenter Only"
+  echo "    	14  -  Windows Server 2019 - All"
+  echo "    	15  -  Windows Server 2019 - Standard Only"
+  echo "    	16  -  Windows Server 2019 - Datacenter Only"
+  echo "    	17  -  Windows Server 2016 - All"
+  echo "    	18  -  Windows Server 2016 - Standard Only"
+  echo "    	19  -  Windows Server 2016 - Datacenter Only"
+  echo "    	20  -  Windows 10 Professional"
   echo ""
   echo "      Other:"
   echo ""
@@ -611,6 +711,9 @@ until [ "$selection" = "0" ]; do
     15 ) clear ; menu_option_15 ; press_enter ;;
     16 ) clear ; menu_option_16 ; press_enter ;;
     17 ) clear ; menu_option_17 ; press_enter ;;
+    18 ) clear ; menu_option_18 ; press_enter ;;
+    19 ) clear ; menu_option_18 ; press_enter ;;
+    20 ) clear ; menu_option_18 ; press_enter ;;
     I ) clear ; info ; press_enter ;;
     Q ) clear ; exit ;;
     * ) clear ; incorrect_selection ; press_enter ;;

@@ -9,4 +9,3 @@ contact_links:
   - name: Packer Plugin for vSphere
     url: https://github.com/hashicorp/packer-plugin-vsphere/issues/new/choose
     about: Having trouble with the Packer Plugin for vSphere? Check out the GitHub Issues.
-

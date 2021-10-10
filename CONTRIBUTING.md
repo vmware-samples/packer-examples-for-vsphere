@@ -11,7 +11,7 @@ information to effectively respond to your bug report or contribution.
 We welcome you to use the GitHub issue tracker to report bugs or suggest features and enhancements.
 
 When filing an issue, please check existing open, or recently closed, issues to make sure someone else hasn't already
-reported the issue. 
+reported the issue.
 
 Please try to include as much information as you can. Details like these are incredibly useful:
 
@@ -26,7 +26,7 @@ Contributions via pull requests are appreciated. Before sending us a pull reques
 1. You [open a discussion](https://github.com/rainpole/packer-vsphere/discussions) to discuss any significant work with the maintainer(s).
 2. You open an issue and link your pull request to the issue for context.
 3. You are working against the latest source on the `main` branch.
-4. You check existing open, and recently merged, pull requests to make sure someone else hasn't already addressed the problem. 
+4. You check existing open, and recently merged, pull requests to make sure someone else hasn't already addressed the problem.
 
 To send us a pull request, please:
 

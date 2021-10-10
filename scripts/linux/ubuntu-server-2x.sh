@@ -13,29 +13,6 @@ export BUILD_KEY
 export ANSIBLE_USERNAME
 export ANSIBLE_KEY
 
-### Update the guest operating system. ###
-echo '> Updating the guest operating system ...'
-sudo apt-get update
-sudo apt-get upgrade -y
-
-### Install additional packages. ### 
-echo '> Installing additional packages ...'
-sudo apt-get install -y \
-    curl \
-    wget \
-    git \
-    net-tools \
-    unzip \
-    ca-certificates
-
-### Install the Certificate Authority certificates and add to the certificate authority trust. ###
-echo '> Installing the Certificate Authority certificates and adding to the certificate authority trust ...'
-sudo chown -R root:root /tmp/root-ca.crt
-sudo chmod 644 /tmp/root-ca.crt
-sudo cp /tmp/root-ca.crt /usr/local/share/ca-certificates/
-sudo update-ca-certificates
-sudo rm -rf /tmp/root-ca.crt
-
 ### Update the default local user. ###
 echo '> Updating the default local user ...'
 echo '> Adding authorized_keys for the default local user ...'
@@ -78,10 +55,10 @@ sudo systemctl restart sshd
 
 ### Create the clean script. ###
 echo '> Creating the clean script ...'
-sudo cat <<EOF > /tmp/clean.sh
+sudo cat <<EOF > /home/$BUILD_USERNAME/clean.sh
 #!/bin/bash
 
-###  Cleans all audit logs. ### 
+###  Cleans all audit logs. ###
 echo '> Cleaning all audit logs ...'
 if [ -f /var/log/audit/audit.log ]; then
 cat /dev/null > /var/log/audit/audit.log
@@ -93,7 +70,7 @@ if [ -f /var/log/lastlog ]; then
 cat /dev/null > /var/log/lastlog
 fi
 
-### Cleans persistent udev rules. ### 
+### Cleans persistent udev rules. ###
 echo '> Cleaning persistent udev rules ...'
 if [ -f /etc/udev/rules.d/70-persistent-net.rules ]; then
 rm /etc/udev/rules.d/70-persistent-net.rules
@@ -139,17 +116,17 @@ echo > ~/.bash_history
 rm -fr /root/.bash_history
 EOF
 
-### Change the permissions on /tmp/clean.sh . ###
-echo '> Changing the permissions on /tmp/clean.sh ...'
-sudo chmod +x /tmp/clean.sh
+### Change the permissions on /home/$BUILD_USERNAME/clean.sh . ###
+echo '> Changing the permissions on /home/$BUILD_USERNAME/clean.sh ...'
+sudo chmod +x /home/$BUILD_USERNAME/clean.sh
 
-### Run the clean script. ### 
+### Run the clean script. ###
 echo '> Running the clean script ...'
-sudo /tmp/clean.sh
+sudo /home/$BUILD_USERNAME/clean.sh
 
-### Generate the host keys using ssh-keygen. ### 
+### Generate the host keys using ssh-keygen. ###
 echo '> Generating the host keys using ssh-keygen ...'
 sudo ssh-keygen -A
 
-### Done. ### 
+### Done. ###
 echo '> Done.'

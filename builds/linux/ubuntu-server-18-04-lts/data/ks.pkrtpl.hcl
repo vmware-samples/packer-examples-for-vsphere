@@ -1,3 +1,10 @@
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+# WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+# COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+# OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+# Ubuntu Server 18.04 LTS
+
 # Locale and Keyboard
 d-i debian-installer/locale string ${vm_guest_os_language}
 d-i console-setup/ask_detect boolean false
@@ -37,7 +44,7 @@ d-i passwd/root-password-crypted password ${build_password_encrypted}
 
 # Package Configuration
 tasksel tasksel/first standard
-d-i pkgsel/include string openssh-server open-vm-tools
+d-i pkgsel/include string openssh-server open-vm-tools ansible
 d-i pkgsel/install-language-support boolean false
 
 # Disable Automatic Package Updates

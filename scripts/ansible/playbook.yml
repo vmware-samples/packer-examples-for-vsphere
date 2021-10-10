@@ -1,0 +1,51 @@
+---
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+# WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+# COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+# OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+- hosts: localhost
+  gather_facts: yes
+  become: true
+  tasks:
+  - name: System Details
+    debug: msg="{{ item }}"
+    with_items: 
+    - "{{ ansible_distribution }}"
+
+  - block: # Ubuntu Distributions
+    - name: Update Cache and Upgrade Packages
+      apt:
+        name: "*"
+        state: latest
+        update_cache: yes
+        force_apt_get: true
+
+    - name: Install Additional Packages
+      apt:
+        name:
+          - bash-completion
+          - curl
+          - wget
+          - git
+          - net-tools
+          - unzip
+          - ca-certificates
+        state: latest
+
+    - name: Install CA Certificate
+      copy:
+        src: /tmp/root-ca.crt
+        dest: /usr/local/share/ca-certificates/
+        owner: root
+        group: root
+        mode: 0644
+      notify:
+      - Ubuntu - Update Trusted CA
+      when:
+        - ansible_distribution == "Ubuntu"
+
+  handlers:
+      - name: Ubuntu - Update Trusted CA
+        shell: /usr/sbin/update-ca-certificates

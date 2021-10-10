@@ -5,26 +5,20 @@
 # COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 # OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-# Prepares a Red Hat Enterprise Linux guest operating system.
+# Prepares a Red Hat Enterprise Linux 7 derivative guest operating system.
 
 export BUILD_USERNAME
 export BUILD_KEY
 export ANSIBLE_USERNAME
 export ANSIBLE_KEY
-export RHSM_USERNAME
-export RHSM_PASSWORD
-
-#### Register Red Hat Subscription Manager to enable updates. ###
-echo '> Registering Red Hat Subscription Manager to enable updates ...'
-subscription-manager register --username $RHSM_USERNAME --password $RHSM_PASSWORD --auto-attach
 
 #### Update the guest operating system. ###
 echo '> Updating the guest operating system ...'
-sudo dnf update -y
+sudo yum update -y
 
 ### Install additional packages. ### 
 echo '> Installing additional packages ...'
-sudo dnf install -y \
+sudo yum install -y \
     epel-release \
     curl \
     wget \
@@ -44,6 +38,7 @@ sudo rm -rf /tmp/root-ca.crt
 
 ### Update the default local user. ###
 echo '> Updating the default local user ...'
+echo '> Adding authorized_keys for the default local user ...'
 sudo mkdir -p /home/$BUILD_USERNAME/.ssh
 sudo cat << EOF > /home/$BUILD_USERNAME/.ssh/authorized_keys
 $BUILD_KEY
@@ -51,12 +46,15 @@ EOF
 sudo chown -R $BUILD_USERNAME /home/$BUILD_USERNAME/.ssh
 sudo chmod 700 /home/$BUILD_USERNAME/.ssh
 sudo chmod 644 /home/$BUILD_USERNAME/.ssh/authorized_keys
+echo '> Adding the default local user to passwordless sudoers...'
+sudo bash -c "echo \"$BUILD_USERNAME ALL=(ALL) NOPASSWD:ALL\" >> /etc/sudoers"
 
 ### Create a local user for Ansible. ###
 echo '> Creating a local user for Ansible ...'
 sudo groupadd $ANSIBLE_USERNAME
 sudo useradd -g $ANSIBLE_USERNAME -G wheel -m -s /bin/bash $ANSIBLE_USERNAME
 echo $ANSIBLE_USERNAME:$(openssl rand -base64 14) | sudo chpasswd
+echo '> Adding authorized_keys for local Ansible user ...'
 sudo mkdir /home/$ANSIBLE_USERNAME/.ssh
 sudo cat << EOF > /home/$ANSIBLE_USERNAME/.ssh/authorized_keys
 $ANSIBLE_KEY
@@ -64,6 +62,8 @@ EOF
 sudo chown -R $ANSIBLE_USERNAME:$ANSIBLE_USERNAME /home/$ANSIBLE_USERNAME/.ssh
 sudo chmod 700 /home/$ANSIBLE_USERNAME/.ssh
 sudo chmod 600 /home/$ANSIBLE_USERNAME/.ssh/authorized_keys
+echo '> Adding local Ansible user to passwordless sudoers...'
+sudo bash -c "echo \"$ANSIBLE_USERNAME ALL=(ALL) NOPASSWD:ALL\" >> /etc/sudoers"
 
 ### Configure SSH for Public Key Authentication. ###
 echo '> Configuring SSH for Public Key Authentication ...'
@@ -81,19 +81,13 @@ sudo sed -i 's/^SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 echo '> Restarting the SSH daemon. ...'
 sudo systemctl restart sshd
 
-#### Unregister from Red Hat Subscription Manager. ###
-echo '> Unregistering from Red Hat Subscription Manager ...'
-subscription-manager unsubscribe --all
-subscription-manager unregister
-subscription-manager clean
-
-### Create a clean script. ###
-echo '> Creating clean script ...'
-sudo cat <<EOF > /tmp/clean.sh
+### Create the clean script. ###
+echo '> Creating the clean script ...'
+sudo cat <<EOF > /home/$BUILD_USERNAME/clean.sh
 #!/bin/bash
 
-### Cleans the audit logs. ###
-echo '> Cleaning the audit logs ...'
+###  Cleans all audit logs. ### 
+echo '> Cleaning all audit logs ...'
 if [ -f /var/log/audit/audit.log ]; then
 cat /dev/null > /var/log/audit/audit.log
 fi
@@ -104,31 +98,30 @@ if [ -f /var/log/lastlog ]; then
 cat /dev/null > /var/log/lastlog
 fi
 
-### Cleans the persistent udev rules. ###
+### Cleans persistent udev rules. ### 
 echo '> Cleaning persistent udev rules ...'
 if [ -f /etc/udev/rules.d/70-persistent-net.rules ]; then
 rm /etc/udev/rules.d/70-persistent-net.rules
 fi
 
 ### Clean the /tmp directories. ###
-echo '> Cleaning the /tmp directories ...'
+echo '> Cleaning /tmp directories ...'
 rm -rf /tmp/*
 rm -rf /var/tmp/*
-rm -rf /var/log/rhsm/*
 rm -rf /var/cache/dnf/*
 
 ### Clean the SSH keys. ###
 echo '> Cleaning the SSH keys ...'
-#rm -f /etc/ssh/ssh_host_*
+rm -f /etc/ssh/ssh_host_*
 
-### Sets the hostname to localhost. ###
+### Set the hostname to localhost. ###
 echo '> Setting the hostname to localhost ...'
 cat /dev/null > /etc/hostname
 hostnamectl set-hostname localhost
 
-### Clean the dnf cache. ###
-echo '> Cleaning the  cache ...'
-dnf clean all
+### Clean yum cache. ###
+echo '> Cleaning yum cache ...'
+yum clean all
 
 ### Clean the machine-id. ###
 echo '> Cleaning the machine-id ...'
@@ -142,25 +135,19 @@ unset HISTFILE
 history -cw
 echo > ~/.bash_history
 rm -fr /root/.bash_history
-
-### Run a sync. ###
-echo '> Running a sync ...'
-sync && sync
-
 EOF
 
-### Change script permissions on /tmp/clean.sh. ###
-echo '> Changing script permissions on /tmp/clean.sh ...'
-sudo chmod +x /tmp/clean.sh
+### Change the permissions on /tmp/clean.sh. ###
+echo '> Changing the permissions on /tmp/clean.sh ...'
+sudo chmod +x /home/$BUILD_USERNAME/clean.sh
 
-### Run the cleau script. ###
+### Run the cleau script. ### 
 echo '> Running the clean script ...'
-sudo /tmp/clean.sh
-### END: Clean the guest operating system. ###
+sudo /home/$BUILD_USERNAME/clean.sh
 
-### Generate the host keys using ssh-keygen. ###
+### Generate the host keys using ssh-keygen. ### 
 echo '> Generating the host keys using ssh-keygen ...'
 sudo ssh-keygen -A
 
-### Done. ###
+### Done. ### 
 echo '> Done.'

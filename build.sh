@@ -362,7 +362,7 @@ menu_option_11() {
 
 menu_option_12() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2022/
-  echo -e "\nCONFIRM: Build Microsoft Windows Server 2022 Templates for VMware vSphere?"
+  echo -e "\nCONFIRM: Build Microsoft Windows Server 2022 Standard Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -451,7 +451,7 @@ menu_option_14() {
 
 menu_option_15() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2019/
-  echo -e "\nCONFIRM: Build Microsoft Windows Server 2019 Templates for VMware vSphere?"
+  echo -e "\nCONFIRM: Build Microsoft Windows Server 2019 Standard Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -540,7 +540,7 @@ menu_option_17() {
 
 menu_option_18() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2016/
-  echo -e "\nCONFIRM: Build Microsoft Windows Server 2016 Templates for VMware vSphere?"
+  echo -e "\nCONFIRM: Build Microsoft Windows Server 2016 Standard Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -715,8 +715,8 @@ until [ "$selection" = "0" ]; do
     16 ) clear ; menu_option_16 ; press_enter ;;
     17 ) clear ; menu_option_17 ; press_enter ;;
     18 ) clear ; menu_option_18 ; press_enter ;;
-    19 ) clear ; menu_option_18 ; press_enter ;;
-    20 ) clear ; menu_option_18 ; press_enter ;;
+    19 ) clear ; menu_option_19 ; press_enter ;;
+    20 ) clear ; menu_option_20 ; press_enter ;;
     I ) clear ; info ; press_enter ;;
     Q ) clear ; exit ;;
     * ) clear ; incorrect_selection ; press_enter ;;

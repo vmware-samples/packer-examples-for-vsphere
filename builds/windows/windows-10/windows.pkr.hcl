@@ -168,7 +168,6 @@ build {
     strip_path = true
     strip_time = true
     custom_data = {
-      ansible_username         = var.ansible_username
       build_username           = var.build_username
       buildtime                = local.buildtime
       common_data_source       = var.common_data_source

@@ -1,0 +1,54 @@
+##################################################################################
+# VARIABLES
+##################################################################################
+
+# Credentials
+
+vsphere_server   = "sfo-m01-vc01.rainpole.io"
+vsphere_username = "administrator@vsphere.local"
+vsphere_password = "R@in!$aG00dThing."
+vsphere_insecure = false
+
+# vSphere Settings
+
+vsphere_datacenter = "sfo-m01-dc01"
+
+# Roles
+
+packer_vsphere_role = "Packer to vSphere Integration"
+
+packer_vsphere_privileges = [
+  "System.Anonymous",
+  "System.Read",
+  "System.View",
+  "ContentLibrary.AddLibraryItem",
+  "ContentLibrary.UpdateLibraryItem",
+  "Datastore.AllocateSpace",
+  "Datastore.Browse",
+  "Datastore.FileManagement",
+  "Network.Assign",
+  "Resource.AssignVMToPool",
+  "VApp.Export",
+  "VirtualMachine.Config.AddNewDisk",
+  "VirtualMachine.Config.AddRemoveDevice",
+  "VirtualMachine.Config.AdvancedConfig",
+  "VirtualMachine.Config.Annotation",
+  "VirtualMachine.Config.CPUCount",
+  "VirtualMachine.Config.Memory",
+  "VirtualMachine.Config.Resource",
+  "VirtualMachine.Config.Settings",
+
+  "VirtualMachine.Interact.DeviceConnection",
+  "VirtualMachine.Interact.PowerOff",
+  "VirtualMachine.Interact.PowerOn",
+  "VirtualMachine.Interact.PutUsbScanCodes",
+  "VirtualMachine.Interact.SetCDMedia",
+  "VirtualMachine.Interact.SetFloppyMedia",
+  "VirtualMachine.Inventory.Create",
+  "VirtualMachine.Inventory.CreateFromExisting",
+  "VirtualMachine.Inventory.Delete",
+  "VirtualMachine.Provisioning.CreateTemplateFromVM",
+  "VirtualMachine.Provisioning.MarkAsTemplate",
+  "VirtualMachine.Provisioning.MarkAsVM",
+  "VirtualMachine.State.CreateSnapshot"
+]

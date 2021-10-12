@@ -62,6 +62,9 @@ The following builds are available:
     > Operating systems and versions tested with the repository examples.
 
 **Additional Software Packages**:
+
+The following software packages must be installed on the Packer host:
+
 * [Git][download-git] command line tools.
   - Ubuntu: `apt-get install git`
   - macOS: `brew install git` 
@@ -87,7 +90,8 @@ Download the [**latest**](https://github.com/rainpole/packer-vsphere/releases/la
 
 You may also clone `main` for the latest pre-release updates.
 
-Example:
+**Example**:
+
 ```
 git clone https://github.com/rainpole/packer-vsphere.git
 ```
@@ -95,7 +99,6 @@ git clone https://github.com/rainpole/packer-vsphere.git
 The directory structure of the repository.
 
 ```
-
 ├── build.sh
 ├── config.sh
 ├── LICENSE
@@ -141,11 +144,13 @@ The directory structure of the repository.
 ├── certificates
 │   └── root-ca.p7b.example
 ├── manifests
-└── scripts
-    ├── linux
-    │   └── *.sh
-    └── windows
-        └── *.ps1
+├── scripts
+│   ├── linux
+│   │   └── *.sh
+│   └── windows
+│       └── *.ps1
+└── terraform
+    └── vsphere-role
 ```
 The files are distributed in the following directories.
 * **`ansible`** - contains the Ansible roles to initialize and prepare the machine image build.
@@ -162,7 +167,7 @@ The files are distributed in the following directories.
 
     **Linux Distributions**
     * VMware Photon OS 4 Server
-        * [Download][download-linux-photon-server-4] the 4.0 GA release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-ca7c9e933.iso`)
+        * [Download][download-linux-photon-server-4] the 4.0 GA release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-1526e30ba.iso`)
     * Ubuntu Server 20.04 LTS
         * [Download][download-linux-ubuntu-server-20-04-lts] the latest **LIVE** release `.iso` image. (_e.g._ `ubuntu-20.04.2-live-server-amd64.iso`)
     * Ubuntu Server 18.04 LTS
@@ -192,20 +197,103 @@ The files are distributed in the following directories.
 
 4. [Upload][vsphere-upload] your guest operating system `.iso` images to the ISO datastore and paths that will be used in your variables.
 
-    Example: `builds/<type>/<build>/*.auto.pkvars.hcl`
+    **Example**: `builds/<type>/<build>/*.auto.pkvars.hcl`
     ```
     common_iso_datastore = "sfo-w01-cl01-ds-nfs01"
     ```
 
-    Example: `config/common.pkvars.hcl`
+    **Example**: `config/common.pkvars.hcl`
     ```
     iso_path           = "iso/linux/photon"
-    iso_file           = "photon-4.0-ca7c9e933.iso"
+    iso_file           = "photon-4.0-1526e30ba.iso"
     iso_checksum_type  = "md5"
-    iso_checksum_value = "d8c4bc561e68afaf7815518f78a5b4ab"
+    iso_checksum_value = "e0c77e9495c7bfaea20cc17be3cb145b"
     ```
 
-### Step 3 - Configure the Variables
+### Step 3 - Configure Service Account Privileges in vSphere 
+
+Create a custom vSphere role with the required privileges to integrate HashiCorp Packer with VMware vSphere. A service account can be added to the role to ensure that Packer has least privilege access to the infrastructure. Clone the default **Read-Only** vSphere role and add the following privileges:
+
+Category        | Privilege                                           | Reference
+----------------|-----------------------------------------------------|---------
+Content Library | Add library item                                    | `ContentLibrary.AddLibraryItem`
+ ...            | Update Library Item                                 | `ContentLibrary.UpdateLibraryItem`
+Datastore       | Allocate space                                      | `Datastore.AllocateSpace`
+...             | Browse datastore                                    | `Datastore.Browse`
+...             | Low level file operations                           | `Datastore.Browse`
+Network         | Assign network                                      | `Network.Assign`
+Resource        | Assign virtual machine to resource pool             | `Resource.AssignVMToPool`
+vApp            | Export                                              | `vApp.Export`
+Virtual Machine | Configuration > Add new disk                        | `VirtualMachine.Config.AddNewDisk`
+...             | Configuration > Add or remove device                | `VirtualMachine.Config.AddRemoveDevice`
+...             | Configuration > Advanced configuration              | `VirtualMachine.Config.AdvancedConfig`
+...             | Configuration > Change CPU count                    | `VirtualMachine.Config.CPUCount`
+...             | Configuration > Change memory                       | `VirtualMachine.Config.Memory`
+...             | Configuration > Change settings                     | `VirtualMachine.Config.Settings`
+...             | Configuration > Change Resource                     | `VirtualMachine.Config.Resource`
+...             | Configuration > Set annotation                      | `VirtualMachine.Config.Annotation`
+...             | Edit Inventory > Create from existing               | `VirtualMachine.Inventory.CreateFromExisting`
+...             | Edit Inventory > Create new                         | `VirtualMachine.Inventory.Create`
+...             | Edit Inventory > Remove                             | `VirtualMachine.Inventory.Delete`
+...             | Interaction > Configure CD media                    | `VirtualMachine.Interact.SetCDMedia`
+...             | Interaction > Configure floppy media                | `VirtualMachine.Interact.SetFloppyMedia`
+...             | Interaction > Connect devices                       | `VirtualMachine.Interact.DeviceConnection`
+...             | Interaction > Inject USB HID scan codes             | `VirtualMachine.Interact.PutUsbScanCodes`
+...             | Interaction > Power off                             | `VirtualMachine.Interact.PowerOff`
+...             | Interaction > Power on                              | `VirtualMachine.Interact.PowerOn`
+...             | Provisioning > Create template from virtual machine | `VirtualMachine.Provisioning.CreateTemplateFromVM`
+...             | Provisioning > Mark as template                     | `VirtualMachine.Provisioning.MarkAsTemplate`
+...             | Provisioning > Mark as virtual machine              | `VirtualMachine.Provisioning.MarkAsVM`
+...             | State > Create snapshot                             | `VirtualMachine.State.CreateSnapshot`
+
+If you'd like to automate the creation of the custom vSphere role, a Terraform example is included in the project.
+
+1, Navigate to the directory for the example.
+
+```
+cd terraform/vsphere-role
+```
+
+2. Duplicate the `terraform.tfvars.example` file to `terraform.tfvars` in the directory.
+
+```
+cp terraform.tfvars.example terraform.tfvars
+```
+
+3. Open the `terraform.tfvars` file and update the variables according to your environment.
+
+4. Initialize the current directory and the required Terraform provider for VMware vSphere.
+
+```
+terraform init
+```
+
+5. Create a Terraform plan and save the output to a file.
+
+```
+terraform plan -out=tfplan
+```
+
+6. Apply the Terraform plan.
+
+```
+terraform apply tfplan
+```
+
+Once the custom vSphere role is created, assign **Global Permissions** in vSphere for the service account used for the HashiCorp Packer to VMware vSphere integration. Global permissions are required for the content library. For example:
+
+1. Log in to the vCenter Server at _https://<management_vcenter_server_fqdn>/ui_ as `administrator@vsphere.local`.
+2. Select **Menu** > **Administration**.
+3. In the left pane, select **Access control** > **Global permissions** and click the **Add permissions** icon.
+4. In the **Add permissions** dialog box, enter the service account (_e.g._ svc-packer-vsphere@rainpole.io), select the custom role (_e.g._ Packer to vSphere Integration Role) and the **Propagate to children** check box, and click OK.
+
+In an environment with many vCenter Server instances, such as management and workload domains, you may wish to further reduce the scope of access across the infrastructure in vSphere for the service account. For example, if you do not want Packer to have access to your management domain, but only allow access to workload domains:
+
+1. From the **Hosts and clusters** inventory, select management domain vCenter Server to restrict scope, and click the **Permissions** tab.
+2. Select the service account with the custom role assigned and click the **Change role** icon.
+3. In the **Change role** dialog box, from the **Role** drop-down menu, select **No Access**, select the **Propagate to children** check box, and click **OK**.
+
+### Step 4 - Configure the Variables
 
 The [variables][packer-variables] are defined in `.pkvars.hcl` files.
 
@@ -213,7 +301,7 @@ The [variables][packer-variables] are defined in `.pkvars.hcl` files.
 
 Run the config script `./config.sh` to copy the `.pkvars.hcl.example` files to the `config` directory.
 
-The `config` folder is the default folder for the first argument of these scripts. you may override the default by passing an alternate value as the first argument.
+The `config` folder is the default folder, You may override the default by passing an alternate value as the first argument.
 
 ```
 ./config.sh foo
@@ -241,7 +329,7 @@ Edit the `config/build.pkvars.hcl` file to configure the following:
 
 * Credentials for the default account on machine images.
 
-Example: `config/build.pkvars.hcl`
+**Example**: `config/build.pkvars.hcl`
 
 ```
 build_username           = "rainpole"
@@ -259,7 +347,7 @@ build_key = file("${path.root}/config/ssh/build_id_ecdsa.pub")
 
 Generate a SHA-512 encrypted password for the  _`build_password_encrypted`_ using various other tools like OpenSSL, mkpasswd, etc.
 
-Example: OpenSSL on macOS:
+**Example**: OpenSSL on macOS:
 
 ```
 rainpole@macos>  openssl passwd -6
@@ -268,7 +356,7 @@ Verifying - Password: ***************
 [password hash]
 ```
 
-Example: mkpasswd on Linux:
+**Example**: mkpasswd on Linux:
 
 ```
 rainpole@linux>  mkpasswd --method=SHA-512 --rounds=4096
@@ -277,7 +365,7 @@ Password: ***************
 ```
 Generate a public key for the `build_password_encrypted` for public key authentication.
 
-Example: macOS and Linux.
+**Example**: macOS and Linux.
 
 ```
 rainpole@macos> cd .ssh/
@@ -301,7 +389,7 @@ Edit the `config/ansible.pkvars.hcl` file to configure the following:
 
 * Credentials for the Ansible account on Linux machine images.
 
-Example: `config/ansible.pkvars.hcl`
+**Example**: `config/ansible.pkvars.hcl`
 
 ```
 ansible_username = "ansible"
@@ -314,7 +402,7 @@ You can also override the `ansible_key` value with contents of a file, if requir
 For example:
 
 ```
-build_key = file("${path.root}/config/ssh/ansible_id_ecdsa.pub")
+ansible_key = file("${path.root}/config/ssh/ansible_id_ecdsa.pub")
 ```
 
 #### **Common Variables**
@@ -326,7 +414,7 @@ Edit the `config/common.pkvars.hcl` file to configure the following common varia
 * Removable Media Settings
 * Boot and Provisioning Settings
 
-Example: `config/common.pkvars.hcl`
+**Example**: `config/common.pkvars.hcl`
 
 ```
 // Virtual Machine Settings
@@ -360,20 +448,20 @@ You can change the `common_data_source` from `http` to `disk` to build supported
 > - VMware PhotonOS 4
 > - Ubuntu Server 18.04 LTS
 
-If you need to define a specific IPv4 address from your host for Packer's HTTP Server, modify the `common_http_ip` variable from `null` to a `string` value. For example:
+If you need to define a specific IPv4 address from your host for Packer's HTTP Server, modify the `common_http_ip` variable from `null` to a `string` value that matches an IP address on your Packer host. For example:
 
 ```
 common_http_ip = "172.16.11.254"
 ```
 
-#### **Proxy Variables**
+#### **Proxy Variables** (Optional)
 
 Edit the `config/proxy.pkvars.hcl` file to configure the following:
 
 * SOCKS proxy settings used for connecting to Linux machine images.
-* Credentials for the proxy server (Optional).
+* Credentials for the proxy server.
 
-Example: `config/proxy.pkvars.hcl`
+**Example**: `config/proxy.pkvars.hcl`
 
 ```
 communicator_proxy_host     = "proxy.rainpole.io"
@@ -387,7 +475,7 @@ Edit the `config/redhat.pkvars.hcl` file to configure the following:
 
 * Credentials for your Red Hat Subscription Manager account.
 
-Example: `config/redhat.pkvars.hcl`
+**Example**: `config/redhat.pkvars.hcl`
 
 ```
 rhsm_username = "rainpole"
@@ -403,7 +491,7 @@ Edit the `builds/vsphere.pkvars.hcl` file to configure the following:
 * vSphere Endpoint and Credentials
 * vSphere Settings
 
-Example: `config/vsphere.pkvars.hcl`
+**Example**: `config/vsphere.pkvars.hcl`
 
 ```
 vsphere_endpoint             = "sfo-w01-vc01.sfo.rainpole.io"
@@ -459,7 +547,7 @@ export PKR_VAR_vsphere_network="<vsphere_network>"
 export PKR_VAR_vsphere_folder="<vsphere_folder>"
 ```
 
-## Step 4 - Modify the Configurations and Scripts
+## Step 5 - Modify the Configurations and Scripts (Optional)
 
 If required, modify the configuration and scripts files, for the Linux distributions and Microsoft Windows.
 
@@ -486,7 +574,7 @@ By default, each unattended file set the **Product Key** to use the [KMS client 
 * **Red Hat Enterprise Linux** (_as well as CentOS Linux/Stream, AlmaLinux, and Rocky Linux_) - Use the [Red Hat Kickstart Generator][redhat-kickstart].
 * **Microsoft Windows** - Use the Microsoft Windows [Answer File Generator][microsoft-windows-afg] if you need to customize the provided examples further.
 
-### Step 5 - Configure Certificates
+### Step 6 - Add Certificates
 
 Save a copy of your Root Certificate Authority certificate to the following in `.crt` and `.p7b` formats.
 - `/ansible/roles/base/files` for Linux machine images.
@@ -498,7 +586,7 @@ These files are copied to the guest operating systems and added the certificate 
 
 Start a build by running the build script (`./build.sh`). The script presents a menu the which simply calls Packer and the respective build(s).
 
-Example: Menu for `./build.sh`.
+**Example**: Menu for `./build.sh`.
 ```
     ____             __                ____        _ __    __
    / __ \____ ______/ /_____  _____   / __ )__  __(_) /___/ /____
@@ -590,8 +678,8 @@ Happy building!!!
 [credits-owen-reynolds-github]: https://github.com/getvpro/Build-Packer/blob/master/Scripts/Install-VMTools.ps1
 [download-git]: https://git-scm.com/downloads
 [download-linux-almalinux-server-8]: https://mirrors.almalinux.org/isos.html
+[download-linux-centos-server-7]: http://isoredirect.centos.org/centos/7/isos/x86_64/
 [download-linux-centos-server-8]: http://isoredirect.centos.org/centos/8/isos/x86_64/
-[download-linux-centos-server-8]: http://isoredirect.centos.org/centos/7/isos/x86_64/
 [download-linux-centos-stream-8]: http://isoredirect.centos.org/centos/8-stream/isos/x86_64/
 [download-linux-photon-server-4]: https://packages.vmware.com/photon/4.0/
 [download-linux-redhat-server-8]: https://access.redhat.com/downloads/content/479/

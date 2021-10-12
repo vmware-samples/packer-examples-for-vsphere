@@ -2,6 +2,47 @@
 
 ![Rainpole](icon.png)
 
+## Release: `v21.10`
+October 11, 2021
+* Added the `config.sh` to create `config/*.prkvars.hcl` (default) files from the examples in `build/`. 
+* Added the option for create >1 set of configuration set by passing an argument to `config.sh` (_e.g._ `config.sh config/us-west-1`) and the pass the configuration set to `build.sh` (_e.g._ `build.sh config/us-west-1`).
+* Use of the content library is now optional by updating the `config/common.pkvars.hcl` settings to the following: 
+    ```
+    common_template_conversion     = true
+    common_content_library_name    = null
+    common_content_library_ovf     = false
+    common_content_library_destroy = false
+    ```
+* Added support for a SOCKS proxy by editing `config/proxy.pkvars.hcl`.
+* Added the ability to set the IP address to bind the HTTP server by editing the `common_http_ip` in `config/common.pkvars.hcl` from `null` to an IP address on the Packer host: 
+    ```
+    common_http_ip = "172.16.11.100"
+    ```
+* Add configurable data source provisioning for Linux images. By default, HTTP is used for the kickstart. By editing the `common_data_source` in `config/common.pkvars.hcl` from `http` to `disk` the build will use a disk-based method, such as a `.iso` as the secondary CD-ROM. This is useful for environments that can not communicate back to the Packer host's HTTP server.
+    ```
+    common_data_source = "disk"
+    ```
+* Renamed all certificates to `*.ctr.example` and `*.pb7.example`. Please add your own custom certificates to the directories per the README.md.
+* Added the ability for Packer to be run from any directory by including the use of `$(path.cwd)/`.
+* Added the `ansible` provisioner to Linux builds for base configuration using roles. More updates to follow.
+* Added information on least privilege service account using a custom role in vSphere.
+* Added a Terraform example for creation of the custom role in vSphere.
+* Updated `manifests` to use `manifests/` and a JSON output based on the timestamp.
+* Updated `manifests` to use include relevant data in the JSON output for the build.
+* Added RHEL 7 and CentoOS 7 back to the builds per requests.
+* Refactored RHEL and RHEL derivative kickstarts templates.
+* Added Windows 10 Professional.
+* Updated PhotonOS to `efi-secure`.
+* Update Ubuntu 20.04 LTS to `efi-secure`.
+* Added vendor provided filename and checksums to the build examples.
+* Updated CONTRIBUTING.md with the contributor workflow.
+* Added headers to various scripts and files, as needed.
+* Add public keys and specific Terraform files to `.gitignore`.
+* Updated issue templates to use forms.
+* Various bug fixes and code cleanliness.
+* Bumped Packer to `>= 1.7.6`.
+* Thanks to the the new contributors: @sestegra, @metabsdm,  and @gcblack!
+
 ## Release: `v21.09.1`
 September 16, 2021
 * Refactored issue templates to use GitHub custom issue forms.

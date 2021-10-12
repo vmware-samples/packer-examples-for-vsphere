@@ -222,7 +222,7 @@ Datastore       | Allocate space                                      | `Datasto
 ...             | Browse datastore                                    | `Datastore.Browse`
 ...             | Low level file operations                           | `Datastore.Browse`
 Network         | Assign network                                      | `Network.Assign`
-Resource        | Assign virtual machine to resource pool             | `AssignVMToPool`
+Resource        | Assign virtual machine to resource pool             | `Resource.AssignVMToPool`
 vApp            | Export                                              | `vApp.Export`
 Virtual Machine | Configuration > Add new disk                        | `VirtualMachine.Config.AddNewDisk`
 ...             | Configuration > Add or remove device                | `VirtualMachine.Config.AddRemoveDevice`

@@ -8,6 +8,25 @@ packer_cache/
 ## Ignore crash log files.
 crash.log
 
+# HashiCorp Terraform
+## Ignore .terraform directories.
+**/.terraform/*
+## Ignore .tfstate files
+*.tfstate
+*.tfstate.*
+## Ignore crash.log files.
+crash.log
+## Ignore .tfvars files, which are likely to contain sentitive data.
+*.tfvars
+## Ignore override files.
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+## Ignore Terraform CLI configuration files.
+.terraformrc
+terraform.rc
+
 # Configurations
 ## Ignore default config directory.
 config/

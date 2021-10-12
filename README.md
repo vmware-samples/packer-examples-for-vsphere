@@ -167,7 +167,7 @@ The files are distributed in the following directories.
 
     **Linux Distributions**
     * VMware Photon OS 4 Server
-        * [Download][download-linux-photon-server-4] the 4.0 GA release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-1526e30ba.iso`)
+        * [Download][download-linux-photon-server-4] the 4.0 GA release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-ca7c9e933.iso`)
     * Ubuntu Server 20.04 LTS
         * [Download][download-linux-ubuntu-server-20-04-lts] the latest **LIVE** release `.iso` image. (_e.g._ `ubuntu-20.04.2-live-server-amd64.iso`)
     * Ubuntu Server 18.04 LTS
@@ -205,9 +205,9 @@ The files are distributed in the following directories.
     **Example**: `config/common.pkvars.hcl`
     ```
     iso_path           = "iso/linux/photon"
-    iso_file           = "photon-4.0-1526e30ba.iso"
+    iso_file           = "photon-4.0-ca7c9e933.iso"
     iso_checksum_type  = "md5"
-    iso_checksum_value = "e0c77e9495c7bfaea20cc17be3cb145b"
+    iso_checksum_value = "d8c4bc561e68afaf7815518f78a5b4ab"
     ```
 
 ### Step 3 - Configure Service Account Privileges in vSphere 

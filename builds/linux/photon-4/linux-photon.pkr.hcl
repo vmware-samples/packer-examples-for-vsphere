@@ -74,7 +74,6 @@ source "vsphere-iso" "linux-photon" {
       build_username           = var.build_username
       build_password_encrypted = var.build_password_encrypted
     })
-    "/packages.json" = file("${abspath(path.root)}/data/packages_minimal.json")
   }
 
   // Boot and Provisioning Settings

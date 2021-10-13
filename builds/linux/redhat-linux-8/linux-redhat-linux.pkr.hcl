@@ -147,9 +147,7 @@ build {
       "BUILD_USERNAME=${var.build_username}",
       "BUILD_KEY=${var.build_key}",
       "ANSIBLE_USERNAME=${var.ansible_username}",
-      "ANSIBLE_KEY=${var.ansible_key}",
-      "RHSM_USERNAME=${var.rhsm_username}",
-      "RHSM_PASSWORD=${var.rhsm_password}"
+      "ANSIBLE_KEY=${var.ansible_key}"
     ]
     scripts = formatlist("${path.cwd}/%s", var.scripts)
   }

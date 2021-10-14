@@ -599,6 +599,35 @@ menu_option_19() {
 }
 
 menu_option_20() {
+  INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-11/
+  echo -e "\nCONFIRM: Build Microsoft Windows 11 Professional Template for VMware vSphere?"
+  echo -e "\nContinue? (y/n)"
+  read -r REPLY
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+    exit 1
+  fi
+
+  ### Build Microsoft Windows 11 Professional for VMware vSphere. ###
+  echo "Building a Microsoft Microsoft Windows 11 Professional Template for VMware vSphere..."
+
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
+  packer init "$INPUT_PATH"
+
+  ### Start the HashiCorp Packer Build ###
+  echo "Starting the HashiCorp Packer build..."
+  packer build -force \
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      "$INPUT_PATH"
+
+  ### All done. ###
+  echo "Done."
+}
+
+menu_option_21() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-10/
   echo -e "\nCONFIRM: Build Microsoft Windows 10 Professional Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -687,7 +716,8 @@ until [ "$selection" = "0" ]; do
   echo "    	17  -  Windows Server 2016 - All"
   echo "    	18  -  Windows Server 2016 - Standard Only"
   echo "    	19  -  Windows Server 2016 - Datacenter Only"
-  echo "    	20  -  Windows 10 Professional"
+  echo "    	20  -  Windows 11 Professional"
+  echo "    	21  -  Windows 10 Professional"
   echo ""
   echo "      Other:"
   echo ""
@@ -717,6 +747,7 @@ until [ "$selection" = "0" ]; do
     18 ) clear ; menu_option_18 ; press_enter ;;
     19 ) clear ; menu_option_19 ; press_enter ;;
     20 ) clear ; menu_option_20 ; press_enter ;;
+    21 ) clear ; menu_option_21 ; press_enter ;;
     I ) clear ; info ; press_enter ;;
     Q ) clear ; exit ;;
     * ) clear ; incorrect_selection ; press_enter ;;

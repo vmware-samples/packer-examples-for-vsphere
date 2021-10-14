@@ -1,7 +1,7 @@
 name: Bug Report
 description: Is something not working as expected? Submit a bug.
 title: "[BUG] REPLACE WITH A SHORT DESCRIPTION"
-labels: [bug, needs-triage]
+labels: [type/bug, status/needs-triage]
 assignees:
   - tenthirtyam
 body:

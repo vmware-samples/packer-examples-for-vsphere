@@ -89,7 +89,7 @@ rm -rf /var/cache/dnf/*
 
 ### Clean the SSH keys. ###
 echo '> Cleaning the SSH keys ...'
-#rm -f /etc/ssh/ssh_host_*
+rm -f /etc/ssh/ssh_host_*
 
 ### Sets the hostname to localhost. ###
 echo '> Setting the hostname to localhost ...'
@@ -127,10 +127,6 @@ sudo chmod +x /home/$BUILD_USERNAME/clean.sh
 echo '> Running the clean script ...'
 sudo /home/$BUILD_USERNAME/clean.sh
 ### END: Clean the guest operating system. ###
-
-### Generate the host keys using ssh-keygen. ###
-echo '> Generating the host keys using ssh-keygen ...'
-sudo ssh-keygen -A
 
 ### Done. ###
 echo '> Done.'

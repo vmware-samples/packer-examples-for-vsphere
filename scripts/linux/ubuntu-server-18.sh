@@ -117,9 +117,14 @@ sudo chmod +x /home/$BUILD_USERNAME/clean.sh
 echo '> Running the clean script ...'
 sudo /home/$BUILD_USERNAME/clean.sh
 
-### Generate the host keys using ssh-keygen. ###
-echo '> Generating the host keys using ssh-keygen ...'
-sudo ssh-keygen -A
+### Set check for ssh keys on reboot; regenerate on reboot if neccessary. ###
+echo '> Setting check for ssh keys on reboot; will regenerate on reboot if neccessary. ...'
+sudo cat <<EOF > /etc/rc.local
+#!/bin/bash
+test -f /etc/ssh/ssh_host_dsa_key || dpkg-reconfigure openssh-server
+exit 0
+EOF
+sudo chmod +x /etc/rc.local
 
 ### Done. ###
 echo '> Done.'

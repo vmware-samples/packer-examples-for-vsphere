@@ -3,13 +3,13 @@
    <settings pass="windowsPE">
       <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
          <SetupUILanguage>
-            <UILanguage>${vm_guest_os_language}</UILanguage>
+            <UILanguage>${vm_inst_os_language}</UILanguage>
          </SetupUILanguage>
-         <InputLocale>${vm_guest_os_keyboard}</InputLocale>
-         <SystemLocale>${vm_guest_os_language}</SystemLocale>
-         <UILanguage>${vm_guest_os_language}</UILanguage>
-         <UILanguageFallback>${vm_guest_os_language}</UILanguageFallback>
-         <UserLocale>${vm_guest_os_language}</UserLocale>
+         <InputLocale>${vm_inst_os_keyboard}</InputLocale>
+         <SystemLocale>${vm_inst_os_language}</SystemLocale>
+         <UILanguage>${vm_inst_os_language}</UILanguage>
+         <UILanguageFallback>${vm_inst_os_language}</UILanguageFallback>
+         <UserLocale>${vm_inst_os_language}</UserLocale>
       </component>
       <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-PnpCustomizationsWinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
          <DriverPaths>
@@ -95,6 +95,21 @@
                </InstallTo>
             </OSImage>
          </ImageInstall>
+         <RunSynchronous>
+            <RunSynchronousCommand>
+               <Order>1</Order>
+               <!-- Set power scheme to high performance in WinPE for faster imaging. -->
+               <Path>cmd /c powercfg.exe /s 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c</Path>
+            </RunSynchronousCommand>
+            <RunSynchronousCommand>
+               <Order>2</Order>
+               <!-- Bypass TPM 2.0 precheck. -->
+               <Path>cmd /c reg add &quot;HKLM\SYSTEM\Setup\LabConfig&quot; /f /v BypassTPMCheck /t REG_DWORD /d 1</Path>
+            </RunSynchronousCommand>			
+         </RunSynchronous>
+
+
+
          <UserData>
             <AcceptEula>true</AcceptEula>
             <FullName>${build_username}</FullName>
@@ -136,6 +151,13 @@
       </component>
    </settings>
    <settings pass="oobeSystem">
+      <component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         <InputLocale>${vm_guest_os_keyboard}</InputLocale>
+         <SystemLocale>${vm_guest_os_language}</SystemLocale>
+         <UILanguage>${vm_guest_os_language}</UILanguage>
+         <UILanguageFallback>${vm_guest_os_language}</UILanguageFallback>
+         <UserLocale>${vm_guest_os_language}</UserLocale>
+      </component>
       <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
          <AutoLogon>
             <Password>
@@ -191,7 +213,7 @@
                <Description>Install VMware Tools</Description>
             </SynchronousCommand>
             <SynchronousCommand wcm:action="add">
-               <CommandLine>%SystemRoot%\system32\WindowsPowerShell\v1.0\powershell.exe -File F:\windows-server-init.ps1</CommandLine>
+               <CommandLine>%SystemRoot%\system32\WindowsPowerShell\v1.0\powershell.exe -File F:\windows-init.ps1</CommandLine>
                <Order>4</Order>
                <Description>Enable Windows Remote Management</Description>
             </SynchronousCommand>

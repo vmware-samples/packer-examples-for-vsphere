@@ -5,8 +5,9 @@
 
 <img alt="Last Commit" src="https://img.shields.io/github/last-commit/rainpole/packer-vsphere?style=for-the-badge&logo=github"> [<img alt="The Changelog" src="https://img.shields.io/badge/The%20Changelog-Read-blue?style=for-the-badge&logo=github">](CHANGELOG.md) [<img alt="Open in Visual Studio Code" src="https://img.shields.io/badge/Visual%20Studio%20Code-Open-blue?style=for-the-badge&logo=visualstudiocode">](https://open.vscode.dev/rainpole/packer-vsphere)
 <br/>
-<img alt="VMware vSphere 7.0 Update 2" src="https://img.shields.io/badge/VMware%20vSphere-7.0%20Update%202-blue?style=for-the-badge">
-<img alt="Packer 1.7.6" src="https://img.shields.io/badge/HashiCorp%20Packer-1.7.6-blue?style=for-the-badge&logo=packer">
+<img alt="VMware vSphere 7.0 Update 2+" src="https://img.shields.io/badge/VMware%20vSphere-7.0%20Update%202+-blue?style=for-the-badge">
+<img alt="Packer 1.7.6+" src="https://img.shields.io/badge/HashiCorp%20Packer-1.7.6+-blue?style=for-the-badge&logo=packer">
+<img alt="Ansible 2.9+" src="https://img.shields.io/badge/Ansible-2.9+-blue?style=for-the-badge&logo=ansible">
 
 ## Table of Contents
 1.	[Introduction](#Introduction)
@@ -191,6 +192,7 @@ The files are distributed in the following directories.
     * Microsoft Windows Server 2022
     * Microsoft Windows Server 2019
     * Microsoft Windows Server 2016
+    * Microsoft Windows 11 Professional
     * Microsoft Windows 10 Professional
 
 3. Obtain the checksum type (_e.g._ `sha256`, `md5`, etc.) and checksum value for each guest operating system `.iso` image. This will be use in the build input variables.
@@ -620,7 +622,8 @@ Start a build by running the build script (`./build.sh`). The script presents a 
      	17  -  Windows Server 2016 - All
      	18  -  Windows Server 2016 - Standard Only
      	19  -  Windows Server 2016 - Datacenter Only
-     	20  -  Windows 10 Professional
+     	20  -  Windows 11 Professional
+     	21  -  Windows 10 Professional
 
       Other:
 

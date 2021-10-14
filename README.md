@@ -43,6 +43,7 @@ The following builds are available:
 * Microsoft Windows Server 2022 - Standard and Datacenter
 * Microsoft Windows Server 2019 - Standard and Datacenter
 * Microsoft Windows Server 2016 - Standard and Datacenter
+* Microsoft Windows 11 Professional
 * Microsoft Windows 10 Professional
 
 > **NOTE**: Guest customization is [**not supported**](https://partnerweb.vmware.com/programs/guestOS/guest-os-customization-matrix.pdf) for AlmaLinux and Rocky Linux in vCenter Server 7.0 Update 2.

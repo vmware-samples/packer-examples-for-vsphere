@@ -37,6 +37,7 @@ d-i partman-auto/expert_recipe string                     \
     label { EFIFS }                                       \
     .                                                     \
     1024 1024 1024 xfs                                    \
+    $bootable{ }                                          \
     $primary{ }                                           \
     mountpoint{ /boot }                                   \
     method{ format }                                      \

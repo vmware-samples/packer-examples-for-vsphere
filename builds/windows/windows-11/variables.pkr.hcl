@@ -213,8 +213,14 @@ variable "common_content_library_ovf" {
 
 variable "common_content_library_destroy" {
   type        = bool
-  description = "Delete the virtual machine afer exporting to the content library."
+  description = "Delete the virtual machine after exporting to the content library."
   default     = true
+}
+
+variable "common_content_library_skip_import" {
+  type        = bool
+  description = "Skip exporting the virtual machine to the content library. Option allows for testing / debugging without saving the machine image."
+  default     = false
 }
 
 // Removable Media Settings

@@ -208,6 +208,12 @@ variable "common_content_library_destroy" {
   default     = true
 }
 
+variable "common_content_library_skip_import" {
+  type        = bool
+  description = "Skip exporting the virtual machine to the content library. Option allows for testing / debugging without saving the machine image."
+  default     = false
+}
+
 // Removable Media Settings
 
 variable "common_iso_datastore" {

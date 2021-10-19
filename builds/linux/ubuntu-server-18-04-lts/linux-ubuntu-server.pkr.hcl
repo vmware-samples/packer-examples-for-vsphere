@@ -124,9 +124,10 @@ source "vsphere-iso" "linux-ubuntu-server" {
   dynamic "content_library_destination" {
     for_each = var.common_content_library_name != null ? [1] : []
     content {
-      library = var.common_content_library_name
-      ovf     = var.common_content_library_ovf
-      destroy = var.common_content_library_destroy
+      library     = var.common_content_library_name
+      ovf         = var.common_content_library_ovf
+      destroy     = var.common_content_library_destroy
+      skip_import = var.common_content_library_skip_import
     }
   }
 }

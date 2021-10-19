@@ -10,7 +10,7 @@ packer {
   required_version = ">= 1.7.6"
   required_plugins {
     vsphere = {
-      version = ">= v1.0.1"
+      version = ">= v1.0.2"
       source  = "github.com/hashicorp/vsphere"
     }
   }
@@ -137,13 +137,16 @@ source "vsphere-iso" "linux-ubuntu-server" {
 build {
   sources = ["source.vsphere-iso.linux-ubuntu-server"]
 
-  provisioner "file" {
-    destination = "/tmp/root-ca.crt"
-    source      = "${path.cwd}/certificates/root-ca.crt"
-  }
-
-  provisioner "ansible-local" {
-    playbook_file = "${path.cwd}/scripts/ansible/playbook.yml"
+  provisioner "ansible" {
+    playbook_file    = "${path.cwd}/ansible/main.yml"
+    roles_path       = "${path.cwd}/ansible/roles"
+    ansible_env_vars = [
+      "ANSIBLE_CONFIG=${path.cwd}/ansible/ansible.cfg",
+      "ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3"
+      ]
+    extra_arguments  = [
+      "-e", "display_skipped_hosts = false" 
+    ]
   }
 
   provisioner "shell" {

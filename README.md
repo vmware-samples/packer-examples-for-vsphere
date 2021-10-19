@@ -52,7 +52,7 @@ The following builds are available:
 
 **Packer**:
 * HashiCorp [Packer][packer-install] 1.7.6 or higher.
-* HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.1 or higher.
+* HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.2 or higher.
 * [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.0 or higher - a community plugin for HashiCorp Packer.
 
     >Required plugins are automatically downloaded and initialized when using `./build.sh`. For dark sites, you may download the plugins and place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
@@ -443,13 +443,17 @@ common_ip_wait_timeout  = "20m"
 common_shutdown_timeout = "15m"
 ```
 
+##### Data Source Options
+
 `http` is the default provisioning data source for Linux machine image builds.
 
-You can change the `common_data_source` from `http` to `disk` to build supported Linux machine images without the need to user Packer's HTTP server. This is useful for environments that may not be able to route back to the system from which Packer is running. Currently, the only `cd_content` is used when selecting `disk`.
+You can change the `common_data_source` from `http` to `disk` to build supported Linux machine images without the need to use Packer's HTTP server. This is useful for environments that may not be able to route back to the system from which Packer is running. The `cd_content` option is used when selecting `disk` unless the distribution does not support a secondary CD-ROM. For distributions that do not support a secondary CD-ROM the `floppy_content` option is used.
 
-> Note: The following Linux distributions do not support kickstart from a secondary CD-ROM.
-> - VMware PhotonOS 4
-> - Ubuntu Server 18.04 LTS
+```
+common_data_source = "disk"
+```
+
+##### HTTP Binding
 
 If you need to define a specific IPv4 address from your host for Packer's HTTP Server, modify the `common_http_ip` variable from `null` to a `string` value that matches an IP address on your Packer host. For example:
 

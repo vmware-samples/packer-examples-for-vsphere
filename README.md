@@ -193,7 +193,7 @@ The files are distributed in the following directories.
     * Microsoft Windows Server 2022
     * Microsoft Windows Server 2019
     * Microsoft Windows Server 2016
-    * Microsoft Windows 11 Professional
+    * Microsoft Windows 11 Professional (Experimental)
     * Microsoft Windows 10 Professional
 
 3. Obtain the checksum type (_e.g._ `sha256`, `md5`, etc.) and checksum value for each guest operating system `.iso` image. This will be use in the build input variables.
@@ -627,7 +627,7 @@ Start a build by running the build script (`./build.sh`). The script presents a 
      	17  -  Windows Server 2016 - All
      	18  -  Windows Server 2016 - Standard Only
      	19  -  Windows Server 2016 - Datacenter Only
-     	20  -  Windows 11 Professional
+     	20  -  Windows 11 Professional (Experimental)
      	21  -  Windows 10 Professional
 
       Other:

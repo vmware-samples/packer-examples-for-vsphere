@@ -668,7 +668,7 @@ info() {
   echo "License: Apache License Version 2.0."
   echo ""
   echo "Versions Used:"
-  echo "HashiCorp Packer >= 1.7.6"
+  echo "HashiCorp Packer >= 1.7.7"
   echo "HashiCorp Packer Plugin for VMware vSphere >= 1.0.2"
   echo "HashiCorp Packer Plugin for Windows Update >= 0.14.0"
   echo ""

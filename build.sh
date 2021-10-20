@@ -716,7 +716,7 @@ until [ "$selection" = "0" ]; do
   echo "    	17  -  Windows Server 2016 - All"
   echo "    	18  -  Windows Server 2016 - Standard Only"
   echo "    	19  -  Windows Server 2016 - Datacenter Only"
-  echo "    	20  -  Windows 11 Professional"
+  echo "    	20  -  Windows 11 Professional (Experimental)"
   echo "    	21  -  Windows 10 Professional"
   echo ""
   echo "      Other:"

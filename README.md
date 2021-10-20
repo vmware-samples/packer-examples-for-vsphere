@@ -6,7 +6,7 @@
 <img alt="Last Commit" src="https://img.shields.io/github/last-commit/rainpole/packer-vsphere?style=for-the-badge&logo=github"> [<img alt="The Changelog" src="https://img.shields.io/badge/The%20Changelog-Read-blue?style=for-the-badge&logo=github">](CHANGELOG.md) [<img alt="Open in Visual Studio Code" src="https://img.shields.io/badge/Visual%20Studio%20Code-Open-blue?style=for-the-badge&logo=visualstudiocode">](https://open.vscode.dev/rainpole/packer-vsphere)
 <br/>
 <img alt="VMware vSphere 7.0 Update 2+" src="https://img.shields.io/badge/VMware%20vSphere-7.0%20Update%202+-blue?style=for-the-badge">
-<img alt="Packer 1.7.6+" src="https://img.shields.io/badge/HashiCorp%20Packer-1.7.6+-blue?style=for-the-badge&logo=packer">
+<img alt="Packer 1.7.7+" src="https://img.shields.io/badge/HashiCorp%20Packer-1.7.7+-blue?style=for-the-badge&logo=packer">
 <img alt="Ansible 2.9+" src="https://img.shields.io/badge/Ansible-2.9+-blue?style=for-the-badge&logo=ansible">
 
 ## Table of Contents
@@ -51,7 +51,7 @@ The following builds are available:
 ## Requirements
 
 **Packer**:
-* HashiCorp [Packer][packer-install] 1.7.6 or higher.
+* HashiCorp [Packer][packer-install] 1.7.7 or higher.
 * HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.2 or higher.
 * [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.0 or higher - a community plugin for HashiCorp Packer.
 

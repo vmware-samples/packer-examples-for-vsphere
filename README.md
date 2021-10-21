@@ -364,7 +364,7 @@ Password: ***************
 **Example**: mkpasswd on Linux:
 
 ```
-rainpole@linux>  mkpasswd --method=SHA-512 --rounds=4096
+rainpole@linux>  mkpasswd -m sha-512
 Password: ***************
 [password hash]
 ```

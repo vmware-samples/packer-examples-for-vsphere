@@ -254,7 +254,7 @@ Virtual Machine | Configuration > Add new disk                        | `Virtual
 
 If you'd like to automate the creation of the custom vSphere role, a Terraform example is included in the project.
 
-1, Navigate to the directory for the example.
+1. Navigate to the directory for the example.
 
 ```
 cd terraform/vsphere-role

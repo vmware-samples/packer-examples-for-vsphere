@@ -1,6 +1,6 @@
 /*
     DESCRIPTION:
-    VMaware vSphere variables used for all builds.
+    VMware vSphere variables used for all builds.
     - Variables are use by the source blocks.
 */
 

@@ -78,8 +78,8 @@ The following software packages must be installed on the Packer host:
   - **mkisofs** on Ubuntu: `apt-get install mkisofs`
   - **hdiutil** on macOS: native
 * mkpasswd
- - Ubuntu: `apt-get install whois`
- - macOS: `brew install --cask docker`
+  - Ubuntu: `apt-get install whois`
+  - macOS: `brew install --cask docker`
 * Coreutils 
   - macOS: `brew install coreutils`
 

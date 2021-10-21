@@ -77,6 +77,9 @@ The following software packages must be installed on the Packer host:
   - **xorriso** on Ubuntu: `apt-get install xorriso`
   - **mkisofs** on Ubuntu: `apt-get install mkisofs`
   - **hdiutil** on macOS: native
+* mkpasswd
+ - Ubuntu: `apt-get install whois`
+ - macOS: `brew install --cask docker`
 * Coreutils 
   - macOS: `brew install coreutils`
 
@@ -348,14 +351,13 @@ For example:
 build_key = file("${path.root}/config/ssh/build_id_ecdsa.pub")
 ```
 
-Generate a SHA-512 encrypted password for the  _`build_password_encrypted`_ using various other tools like OpenSSL, mkpasswd, etc.
+Generate a SHA-512 encrypted password for the  _`build_password_encrypted`_ using tools like mkpasswd.
 
-**Example**: OpenSSL on macOS:
+**Example**: mkpasswd using Docker on macOS:
 
 ```
-rainpole@macos>  openssl passwd -6
+rainpole@macos>  docker run -it --rm alpine:latest mkpasswd -m sha512
 Password: ***************
-Verifying - Password: ***************
 [password hash]
 ```
 

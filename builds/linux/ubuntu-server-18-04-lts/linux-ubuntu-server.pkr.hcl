@@ -83,9 +83,9 @@ source "vsphere-iso" "linux-ubuntu-server" {
   floppy_content = var.common_data_source == "disk" ? local.data_source_content : null
 
   // Boot and Provisioning Settings
-  http_ip       = var.common_http_ip
-  http_port_min = var.common_http_port_min
-  http_port_max = var.common_http_port_max
+  http_ip       = var.common_data_source == "http" ? var.common_http_ip : null
+  http_port_min = var.common_data_source == "http" ? var.common_http_port_min : null
+  http_port_max = var.common_data_source == "http" ? var.common_http_port_max : null
   boot_order    = var.vm_boot_order
   boot_wait     = var.vm_boot_wait
   boot_command = [

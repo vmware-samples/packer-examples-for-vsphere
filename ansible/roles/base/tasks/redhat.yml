@@ -60,8 +60,8 @@
 
 - name: "{{ ansible_facts['distribution'] }} - Importing Certificate Authority certificates."
   copy:
-    src: root-ca.crt
-    dest: /etc/pki/ca-trust/source/anchors/root-ca.crt
+    src: root-ca.cer
+    dest: /etc/pki/ca-trust/source/anchors/root-ca.cer
     owner: root
     group: root
     mode: 0644

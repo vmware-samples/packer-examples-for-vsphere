@@ -16,13 +16,13 @@ $ErrorActionPreference = "Stop"
 
 # Import the Root CA certificate to the Trusted Root Certification Authoriries.
 Write-Host "Importing the Root CA certificate to the Trusted Root Certification Authoriries ..."
-Import-Certificate -FilePath C:\windows\temp\root-ca.p7b -CertStoreLocation 'Cert:\LocalMachine\Root'
-Remove-Item C:\windows\temp\root-ca.p7b -Confirm:$false
+Import-Certificate -FilePath C:\windows\temp\root-ca.cer -CertStoreLocation 'Cert:\LocalMachine\Root' | Out-Null
+Remove-Item C:\windows\temp\root-ca.cer -Confirm:$false
 
 # Import the Issuing CA certificate to the Trusted Root Certification Authoriries.
 ### Write-Host "Importing the Issuing CA certificate to the Trusted Root Certification Authoriries ..."
-### Import-Certificate -FilePath C:\windows\temp\issuing-ca.p7b -CertStoreLocation 'Cert:\LocalMachine\CA'
-### Remove-Item C:\windows\temp\issuing-ca.p7b -Confirm:$false
+### Import-Certificate -FilePath C:\windows\temp\issuing-ca.cer -CertStoreLocation 'Cert:\LocalMachine\CA' | Out-Null
+### Remove-Item C:\windows\temp\issuing-ca.cer -Confirm:$false
 
 # Set the Windows Explorer options.
 Write-Host "Setting the Windows Explorer options ..."

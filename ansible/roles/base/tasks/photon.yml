@@ -29,7 +29,7 @@
 
 - name: "{{ ansible_facts['distribution'] }} - Importing Certificate Authority certificates."
   copy:
-    src: root-ca.crt
+    src: root-ca.cer
     dest: /etc/ssl/certs/root-ca.pem
     owner: root
     group: root

@@ -396,8 +396,8 @@ build {
   ]
 
   provisioner "file" {
-    source      = "${path.cwd}/certificates/root-ca.p7b"
-    destination = "C:\\windows\\temp\\root-ca.p7b"
+    source      = "${path.cwd}/certificates/root-ca.cer"
+    destination = "C:\\windows\\temp\\root-ca.cer"
   }
 
   provisioner "powershell" {

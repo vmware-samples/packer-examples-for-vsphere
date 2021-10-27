@@ -115,7 +115,7 @@ The directory structure of the repository.
 │   │       ├── defaults
 │   │       │   └── main.yml
 │   │       ├── files
-│   │       │   └── root-ca.p7b.example
+│   │       │   └── root-ca.cer.example
 │   │       ├── handlers
 │   │       │   └── main.yml
 │   │       ├── meta
@@ -147,7 +147,7 @@ The directory structure of the repository.
 │           └── data
 │               └── autounattend.pkrtpl.hcl
 ├── certificates
-│   └── root-ca.p7b.example
+│   └── root-ca.cer.example
 ├── manifests
 ├── scripts
 │   ├── linux
@@ -585,7 +585,7 @@ By default, each unattended file set the **Product Key** to use the [KMS client 
 
 ### Step 6 - Add Certificates
 
-Save a copy of your Root Certificate Authority certificate to the following in `.crt` and `.p7b` formats.
+Save a copy of your PEM encoded Root Certificate Authority certificate to the following in `.cer` format.
 - `/ansible/roles/base/files` for Linux machine images.
 - `/certificates` for Windows machine images.
 

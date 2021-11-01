@@ -7,10 +7,10 @@
 //  The Packer configuration.
 
 packer {
-  required_version = ">= 1.7.6"
+  required_version = ">= 1.7.7"
   required_plugins {
     vsphere = {
-      version = ">= v1.0.1"
+      version = ">= v1.0.2"
       source  = "github.com/hashicorp/vsphere"
     }
   }
@@ -115,9 +115,10 @@ source "vsphere-iso" "windows-10-professional" {
   dynamic "content_library_destination" {
     for_each = var.common_content_library_name != null ? [1] : []
     content {
-      library = var.common_content_library_name
-      ovf     = var.common_content_library_ovf
-      destroy = var.common_content_library_destroy
+      library     = var.common_content_library_name
+      ovf         = var.common_content_library_ovf
+      destroy     = var.common_content_library_destroy
+      skip_import = var.common_content_library_skip_import
     }
   }
 }
@@ -131,8 +132,8 @@ build {
   ]
 
   provisioner "file" {
-    source      = "${path.cwd}/certificates/root-ca.p7b"
-    destination = "C:\\windows\\temp\\root-ca.p7b"
+    source      = "${path.cwd}/certificates/root-ca.cer"
+    destination = "C:\\windows\\temp\\root-ca.cer"
   }
 
   provisioner "powershell" {

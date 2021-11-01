@@ -1,6 +1,6 @@
 /*
     DESCRIPTION:
-    Microsoft Windows 10 Professional variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    Microsoft Windows 11 Professional variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
 */
 
 // Installation Operating System Metadata
@@ -13,7 +13,7 @@ vm_guest_os_keyboard = "en-US"
 vm_guest_os_timezone = "UTC"
 vm_guest_os_vendor   = "microsoft"
 vm_guest_os_family   = "windows"
-vm_guest_os_version  = "10"
+vm_guest_os_version  = "11"
 
 // Virtual Machine Guest Operating System Setting
 vm_guest_os_type = "windows9_64Guest"
@@ -24,7 +24,7 @@ vm_cdrom_type            = "sata"
 vm_cpu_sockets           = 2
 vm_cpu_cores             = 1
 vm_cpu_hot_add           = false
-vm_mem_size              = 2048
+vm_mem_size              = 4096
 vm_mem_hot_add           = false
 vm_disk_size             = 102400
 vm_disk_controller_type  = ["pvscsi"]
@@ -33,14 +33,14 @@ vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
 iso_path           = "iso/windows"
-iso_file           = "en-us_windows_10_business_editions_version_21h1_updated_sep_2021_x64_dvd_56628c48.iso"
+iso_file           = "en-us_windows_11_business_editions_x64_dvd_3a304c08.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "852C6A57D1660D2FF0745EBE16DC6CF1AAA67FC7C608C06921082403BACC6285"
+iso_checksum_value = "6939B236E6976F6EEAEA045DE805801F312700300C8359D17C0ABF31B35371E3"
 
 // Boot Settings
 vm_boot_order       = "disk,cdrom"
-vm_boot_wait        = "2s"
-vm_boot_command     = ["<spacebar>"]
+vm_boot_wait        = "3s"
+vm_boot_command     = ["<spacebar><spacebar>"]
 vm_shutdown_command = "shutdown /s /t 10 /f /d p:4:1 /c \"Shutdown by Packer\""
 
 // Communicator Settings

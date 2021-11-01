@@ -1,6 +1,6 @@
 /*
     DESCRIPTION:
-    VMware Photon OS 4 variables using the Packer Builder for VMware vSphere (vsphere-iso).
+    Microsoft Windows 11 Professional variables using the Packer Builder for VMware vSphere (vsphere-iso).
 */
 
 //  BLOCK: variable
@@ -58,31 +58,58 @@ variable "vsphere_folder" {
   description = "The name of the target vSphere cluster. (e.g. 'sfo-w01-fd-templates')"
 }
 
+// Installer Settings
+
+variable "vm_inst_os_language" {
+  type        = string
+  description = "The installation operating system lanugage."
+  default     = "en-GB"
+}
+
+variable "vm_inst_os_keyboard" {
+  type        = string
+  description = "The installation operating system keyboard input."
+  default     = "en-GB"
+}
+
 // Virtual Machine Settings
 
-variable "vm_guest_os_family" {
+variable "vm_guest_os_language" {
   type        = string
-  description = "The guest operating system family. Used for naming and VMware tools. (e.g.'linux')"
+  description = "The guest operating system lanugage."
+  default     = "en-US"
+}
+
+variable "vm_guest_os_keyboard" {
+  type        = string
+  description = "The guest operating system keyboard input."
+  default     = "en-US"
+}
+
+variable "vm_guest_os_timezone" {
+  type        = string
+  description = "The guest operating system timezone."
+  default     = "UTC"
 }
 
 variable "vm_guest_os_vendor" {
   type        = string
-  description = "The guest operating system vendor. Used for naming . (e.g. 'photon')"
+  description = "The guest operating system vendor. Used for naming . (e.g. 'microsoft)"
 }
 
-variable "vm_guest_os_member" {
+variable "vm_guest_os_family" {
   type        = string
-  description = "The guest operating system member. Used for naming. (e.g. 'server')"
+  description = "The guest operating system family. Used for naming and VMware tools. (e.g.'windows')"
 }
 
 variable "vm_guest_os_version" {
   type        = string
-  description = "The guest operating system version. Used for naming. (e.g. '4')"
+  description = "The guest operating system version. Used for naming. (e.g. '11')"
 }
 
 variable "vm_guest_os_type" {
   type        = string
-  description = "The guest operating system type, also know as guestid. (e.g. 'vmwarePhoton64Guest')"
+  description = "The guest operating system type, also know as guestid. (e.g. 'windows9_64Guest')"
 }
 
 variable "vm_firmware" {
@@ -110,18 +137,18 @@ variable "vm_cpu_cores" {
 variable "vm_cpu_hot_add" {
   type        = bool
   description = "Enable hot add CPU."
-  default     = false
+  default     = true
 }
 
 variable "vm_mem_size" {
   type        = number
-  description = "The size for the virtual memory in MB. (e.g. '2048')"
+  description = "The size for the virtual memory in MB. (e.g. '4096')"
 }
 
 variable "vm_mem_hot_add" {
   type        = bool
   description = "Enable hot add memory."
-  default     = false
+  default     = true
 }
 
 variable "vm_disk_size" {
@@ -205,17 +232,17 @@ variable "common_iso_datastore" {
 
 variable "iso_path" {
   type        = string
-  description = "The path on the source vSphere datastore for ISO image. (e.g. 'iso/linux/photon')"
+  description = "The path on the source vSphere datastore for ISO image. (e.g. 'iso/windows')"
 }
 
 variable "iso_file" {
   type        = string
-  description = "The file name of the ISO image used by the vendor. (e.g. 'photon-<version>.iso')"
+  description = "The file name of the ISO image used by the vendor. (e.g. '<langauge>_windows_<version>_business_editions_version_<YYhx<_updated_<month_year>_x64_dvd_<string>.iso')"
 }
 
 variable "iso_checksum_type" {
   type        = string
-  description = "The checksum algorithm used by the vendor. (e.g. 'md5')"
+  description = "The checksum algorithm used by the vendor. (e.g. 'sha256')"
 }
 
 variable "iso_checksum_value" {
@@ -257,6 +284,17 @@ variable "vm_boot_wait" {
   description = "The time to wait before boot."
 }
 
+variable "vm_boot_command" {
+  type        = list(string)
+  description = "The virtual machine boot command."
+  default     = []
+}
+
+variable "vm_shutdown_command" {
+  type        = string
+  description = "Command(s) for guest operating system shutdown."
+}
+
 variable "common_ip_wait_timeout" {
   type        = string
   description = "Time to wait for guest operating system IP address response."
@@ -285,38 +323,17 @@ variable "build_password_encrypted" {
   type        = string
   description = "The encrypted password to login to the guest operating system."
   sensitive   = true
+  default     = ""
 }
 
 variable "build_key" {
   type        = string
   description = "The public key to login to the guest operating system."
   sensitive   = true
+  default     = ""
 }
 
-variable "communicator_proxy_host" {
-  type        = string
-  description = "A SOCKS proxy host to use for SSH connection."
-  default     = null
-}
-
-variable "communicator_proxy_port" {
-  type        = number
-  description = "A port of the SOCKS proxy."
-  default     = null
-}
-
-variable "communicator_proxy_username" {
-  type        = string
-  description = "The optional username to authenticate with the proxy server."
-  default     = null
-}
-
-variable "communicator_proxy_password" {
-  type        = string
-  description = "The optional password to authenticate with the proxy server."
-  sensitive   = true
-  default     = null
-}
+// Communicator Credentials
 
 variable "communicator_port" {
   type        = string
@@ -326,20 +343,6 @@ variable "communicator_port" {
 variable "communicator_timeout" {
   type        = string
   description = "The timeout for the communicator protocol."
-}
-
-// Ansible Credentials
-
-variable "ansible_username" {
-  type        = string
-  description = "The username for Ansible to login to the guest operating system. (e.g. ansible)"
-  sensitive   = true
-}
-
-variable "ansible_key" {
-  type        = string
-  description = "The public key for Ansible to login to the guest operating system."
-  sensitive   = true
 }
 
 // Provisioner Settings

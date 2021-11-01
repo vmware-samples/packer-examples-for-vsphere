@@ -7,10 +7,10 @@
 //  The Packer configuration.
 
 packer {
-  required_version = ">= 1.7.6"
+  required_version = ">= 1.7.7"
   required_plugins {
     vsphere = {
-      version = ">= v1.0.1"
+      version = ">= v1.0.2"
       source  = "github.com/hashicorp/vsphere"
     }
   }
@@ -23,6 +23,16 @@ locals {
   buildtime     = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
   manifest_date = formatdate("YYYY-MM-DD hh:mm:ss", timestamp())
   manifest_path = "${path.cwd}/manifests/"
+  data_source_content = {
+    "/ks.cfg" = templatefile("${abspath(path.root)}/data/ks.pkrtpl.hcl", {
+      build_username           = var.build_username
+      build_password_encrypted = var.build_password_encrypted
+      vm_guest_os_language     = var.vm_guest_os_language
+      vm_guest_os_keyboard     = var.vm_guest_os_keyboard
+      vm_guest_os_timezone     = var.vm_guest_os_timezone
+    })
+  }
+  data_source_command = var.common_data_source == "http" ? "url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg" : "file=/media/ks.cfg"
 }
 
 //  BLOCK: source
@@ -67,22 +77,15 @@ source "vsphere-iso" "linux-ubuntu-server" {
   notes                = "Built by HashiCorp Packer on ${local.buildtime}."
 
   // Removable Media Settings
-  iso_paths    = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}"]
-  iso_checksum = "${var.iso_checksum_type}:${var.iso_checksum_value}"
-  http_content = {
-    "/ks.cfg" = templatefile("${abspath(path.root)}/data/ks.pkrtpl.hcl", {
-      build_username           = var.build_username
-      build_password_encrypted = var.build_password_encrypted
-      vm_guest_os_language     = var.vm_guest_os_language
-      vm_guest_os_keyboard     = var.vm_guest_os_keyboard
-      vm_guest_os_timezone     = var.vm_guest_os_timezone
-    })
-  }
+  iso_paths      = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}"]
+  iso_checksum   = "${var.iso_checksum_type}:${var.iso_checksum_value}"
+  http_content   = var.common_data_source == "http" ? local.data_source_content : null
+  floppy_content = var.common_data_source == "disk" ? local.data_source_content : null
 
   // Boot and Provisioning Settings
-  http_ip       = var.common_http_ip
-  http_port_min = var.common_http_port_min
-  http_port_max = var.common_http_port_max
+  http_ip       = var.common_data_source == "http" ? var.common_http_ip : null
+  http_port_min = var.common_data_source == "http" ? var.common_http_port_min : null
+  http_port_max = var.common_data_source == "http" ? var.common_http_port_max : null
   boot_order    = var.vm_boot_order
   boot_wait     = var.vm_boot_wait
   boot_command = [
@@ -98,7 +101,7 @@ source "vsphere-iso" "linux-ubuntu-server" {
     "<bs><bs><bs>",
     "/install/vmlinuz initrd=/install/initrd.gz",
     " priority=critical locale=${var.vm_guest_os_language}",
-    " url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg",
+    " ${local.data_source_command}",
     "<enter>"
   ]
   ip_wait_timeout  = var.common_ip_wait_timeout
@@ -121,9 +124,10 @@ source "vsphere-iso" "linux-ubuntu-server" {
   dynamic "content_library_destination" {
     for_each = var.common_content_library_name != null ? [1] : []
     content {
-      library = var.common_content_library_name
-      ovf     = var.common_content_library_ovf
-      destroy = var.common_content_library_destroy
+      library     = var.common_content_library_name
+      ovf         = var.common_content_library_ovf
+      destroy     = var.common_content_library_destroy
+      skip_import = var.common_content_library_skip_import
     }
   }
 }

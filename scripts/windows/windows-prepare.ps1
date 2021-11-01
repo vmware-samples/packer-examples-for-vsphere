@@ -5,7 +5,7 @@
 
 <#
     .DESCRIPTION
-    Prepares a Windows Server guest operating system.
+    Prepares a Windows guest operating system.
 #>
 
 param(

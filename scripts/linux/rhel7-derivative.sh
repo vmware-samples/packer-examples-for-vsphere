@@ -121,9 +121,5 @@ sudo chmod +x /home/$BUILD_USERNAME/clean.sh
 echo '> Running the clean script ...'
 sudo /home/$BUILD_USERNAME/clean.sh
 
-### Generate the host keys using ssh-keygen. ### 
-echo '> Generating the host keys using ssh-keygen ...'
-sudo ssh-keygen -A
-
 ### Done. ### 
 echo '> Done.'

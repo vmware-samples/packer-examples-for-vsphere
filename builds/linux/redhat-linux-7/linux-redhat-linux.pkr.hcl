@@ -7,10 +7,10 @@
 //  The Packer configuration.
 
 packer {
-  required_version = ">= 1.7.6"
+  required_version = ">= 1.7.7"
   required_plugins {
     vsphere = {
-      version = ">= v1.0.1"
+      version = ">= v1.0.2"
       source  = "github.com/hashicorp/vsphere"
     }
   }
@@ -117,9 +117,10 @@ source "vsphere-iso" "linux-redhat-linux" {
   dynamic "content_library_destination" {
     for_each = var.common_content_library_name != null ? [1] : []
     content {
-      library = var.common_content_library_name
-      ovf     = var.common_content_library_ovf
-      destroy = var.common_content_library_destroy
+      library     = var.common_content_library_name
+      ovf         = var.common_content_library_ovf
+      destroy     = var.common_content_library_destroy
+      skip_import = var.common_content_library_skip_import
     }
   }
 }
@@ -147,9 +148,7 @@ build {
       "BUILD_USERNAME=${var.build_username}",
       "BUILD_KEY=${var.build_key}",
       "ANSIBLE_USERNAME=${var.ansible_username}",
-      "ANSIBLE_KEY=${var.ansible_key}",
-      "RHSM_USERNAME=${var.rhsm_username}",
-      "RHSM_PASSWORD=${var.rhsm_password}"
+      "ANSIBLE_KEY=${var.ansible_key}"
     ]
     scripts = formatlist("${path.cwd}/%s", var.scripts)
   }

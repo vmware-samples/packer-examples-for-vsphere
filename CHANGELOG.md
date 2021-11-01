@@ -2,6 +2,17 @@
 
 ![Rainpole](icon.png)
 
+## Release: `v21.10.1`
+October 20, 2021
+* Update `LICENSE` and `NOTICE` to BSD-2.
+* Updated `required_versions` for `packer` to `>= v1.7.7`.
+* Updated `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.2`.
+* Updated Linux distributions to generate new host keys on first-boot.
+* Adds option to use`floppy_content` included in `packer-plugin-vsphere` release`v1.0.2`. Ubuntu Server 18.04 LTS will toggle to use `floppy_content` from `http_content` when `common_data_source = "disk"` is enabled. 
+* Added support for VMware Photon OS 4.0 Rev1.
+* Added Windows 2011 Professional as experimental until `vsphere-iso` supports vTPM.
+* Added support for `skip_import` added to `packer-plugin-vsphere` in `v1.0.2`. When set to `true` the virtual machine will not be imported into the content library. This is useful for testing / debugging. Defaults to false.
+
 ## Release: `v21.10`
 October 11, 2021
 * Added the `config.sh` to create `config/*.prkvars.hcl` (default) files from the examples in `build/`. 

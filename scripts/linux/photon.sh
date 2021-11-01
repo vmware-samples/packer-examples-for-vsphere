@@ -90,7 +90,7 @@ rm -rf /var/tmp/*
 
 # Cleans SSH keys.
 echo '> Cleaning SSH keys ...'
-#rm -f /etc/ssh/ssh_host_*
+rm -f /etc/ssh/ssh_host_*
 
 # Sets hostname to localhost.
 echo '> Setting hostname to localhost ...'

@@ -5,8 +5,9 @@
 
 <img alt="Last Commit" src="https://img.shields.io/github/last-commit/rainpole/packer-vsphere?style=for-the-badge&logo=github"> [<img alt="The Changelog" src="https://img.shields.io/badge/The%20Changelog-Read-blue?style=for-the-badge&logo=github">](CHANGELOG.md) [<img alt="Open in Visual Studio Code" src="https://img.shields.io/badge/Visual%20Studio%20Code-Open-blue?style=for-the-badge&logo=visualstudiocode">](https://open.vscode.dev/rainpole/packer-vsphere)
 <br/>
-<img alt="VMware vSphere 7.0 Update 2" src="https://img.shields.io/badge/VMware%20vSphere-7.0%20Update%202-blue?style=for-the-badge">
-<img alt="Packer 1.7.6" src="https://img.shields.io/badge/HashiCorp%20Packer-1.7.6-blue?style=for-the-badge&logo=packer">
+<img alt="VMware vSphere 7.0 Update 2+" src="https://img.shields.io/badge/VMware%20vSphere-7.0%20Update%202+-blue?style=for-the-badge">
+<img alt="Packer 1.7.7+" src="https://img.shields.io/badge/HashiCorp%20Packer-1.7.7+-blue?style=for-the-badge&logo=packer">
+<img alt="Ansible 2.9+" src="https://img.shields.io/badge/Ansible-2.9+-blue?style=for-the-badge&logo=ansible">
 
 ## Table of Contents
 1.	[Introduction](#Introduction)
@@ -42,6 +43,7 @@ The following builds are available:
 * Microsoft Windows Server 2022 - Standard and Datacenter
 * Microsoft Windows Server 2019 - Standard and Datacenter
 * Microsoft Windows Server 2016 - Standard and Datacenter
+* Microsoft Windows 11 Professional
 * Microsoft Windows 10 Professional
 
 > **NOTE**: Guest customization is [**not supported**](https://partnerweb.vmware.com/programs/guestOS/guest-os-customization-matrix.pdf) for AlmaLinux and Rocky Linux in vCenter Server 7.0 Update 2.
@@ -49,8 +51,8 @@ The following builds are available:
 ## Requirements
 
 **Packer**:
-* HashiCorp [Packer][packer-install] 1.7.6 or higher.
-* HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.1 or higher.
+* HashiCorp [Packer][packer-install] 1.7.7 or higher.
+* HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.2 or higher.
 * [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.0 or higher - a community plugin for HashiCorp Packer.
 
     >Required plugins are automatically downloaded and initialized when using `./build.sh`. For dark sites, you may download the plugins and place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
@@ -75,6 +77,9 @@ The following software packages must be installed on the Packer host:
   - **xorriso** on Ubuntu: `apt-get install xorriso`
   - **mkisofs** on Ubuntu: `apt-get install mkisofs`
   - **hdiutil** on macOS: native
+* mkpasswd
+  - Ubuntu: `apt-get install whois`
+  - macOS: `brew install --cask docker`
 * Coreutils 
   - macOS: `brew install coreutils`
 
@@ -110,7 +115,7 @@ The directory structure of the repository.
 │   │       ├── defaults
 │   │       │   └── main.yml
 │   │       ├── files
-│   │       │   └── root-ca.p7b.example
+│   │       │   └── root-ca.cer.example
 │   │       ├── handlers
 │   │       │   └── main.yml
 │   │       ├── meta
@@ -142,7 +147,7 @@ The directory structure of the repository.
 │           └── data
 │               └── autounattend.pkrtpl.hcl
 ├── certificates
-│   └── root-ca.p7b.example
+│   └── root-ca.cer.example
 ├── manifests
 ├── scripts
 │   ├── linux
@@ -167,7 +172,7 @@ The files are distributed in the following directories.
 
     **Linux Distributions**
     * VMware Photon OS 4 Server
-        * [Download][download-linux-photon-server-4] the 4.0 GA release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-1526e30ba.iso`)
+        * [Download][download-linux-photon-server-4] the 4.0 GA release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-ca7c9e933.iso`)
     * Ubuntu Server 20.04 LTS
         * [Download][download-linux-ubuntu-server-20-04-lts] the latest **LIVE** release `.iso` image. (_e.g._ `ubuntu-20.04.2-live-server-amd64.iso`)
     * Ubuntu Server 18.04 LTS
@@ -191,6 +196,7 @@ The files are distributed in the following directories.
     * Microsoft Windows Server 2022
     * Microsoft Windows Server 2019
     * Microsoft Windows Server 2016
+    * Microsoft Windows 11 Professional (Experimental)
     * Microsoft Windows 10 Professional
 
 3. Obtain the checksum type (_e.g._ `sha256`, `md5`, etc.) and checksum value for each guest operating system `.iso` image. This will be use in the build input variables.
@@ -205,9 +211,9 @@ The files are distributed in the following directories.
     **Example**: `config/common.pkvars.hcl`
     ```
     iso_path           = "iso/linux/photon"
-    iso_file           = "photon-4.0-1526e30ba.iso"
+    iso_file           = "photon-4.0-ca7c9e933.iso"
     iso_checksum_type  = "md5"
-    iso_checksum_value = "e0c77e9495c7bfaea20cc17be3cb145b"
+    iso_checksum_value = "d8c4bc561e68afaf7815518f78a5b4ab"
     ```
 
 ### Step 3 - Configure Service Account Privileges in vSphere 
@@ -248,7 +254,7 @@ Virtual Machine | Configuration > Add new disk                        | `Virtual
 
 If you'd like to automate the creation of the custom vSphere role, a Terraform example is included in the project.
 
-1, Navigate to the directory for the example.
+1. Navigate to the directory for the example.
 
 ```
 cd terraform/vsphere-role
@@ -345,21 +351,20 @@ For example:
 build_key = file("${path.root}/config/ssh/build_id_ecdsa.pub")
 ```
 
-Generate a SHA-512 encrypted password for the  _`build_password_encrypted`_ using various other tools like OpenSSL, mkpasswd, etc.
+Generate a SHA-512 encrypted password for the  _`build_password_encrypted`_ using tools like mkpasswd.
 
-**Example**: OpenSSL on macOS:
+**Example**: mkpasswd using Docker on macOS:
 
 ```
-rainpole@macos>  openssl passwd -6
+rainpole@macos>  docker run -it --rm alpine:latest mkpasswd -m sha512
 Password: ***************
-Verifying - Password: ***************
 [password hash]
 ```
 
 **Example**: mkpasswd on Linux:
 
 ```
-rainpole@linux>  mkpasswd --method=SHA-512 --rounds=4096
+rainpole@linux>  mkpasswd -m sha-512
 Password: ***************
 [password hash]
 ```
@@ -440,13 +445,17 @@ common_ip_wait_timeout  = "20m"
 common_shutdown_timeout = "15m"
 ```
 
+##### Data Source Options
+
 `http` is the default provisioning data source for Linux machine image builds.
 
-You can change the `common_data_source` from `http` to `disk` to build supported Linux machine images without the need to user Packer's HTTP server. This is useful for environments that may not be able to route back to the system from which Packer is running. Currently, the only `cd_content` is used when selecting `disk`.
+You can change the `common_data_source` from `http` to `disk` to build supported Linux machine images without the need to use Packer's HTTP server. This is useful for environments that may not be able to route back to the system from which Packer is running. The `cd_content` option is used when selecting `disk` unless the distribution does not support a secondary CD-ROM. For distributions that do not support a secondary CD-ROM the `floppy_content` option is used.
 
-> Note: The following Linux distributions do not support kickstart from a secondary CD-ROM.
-> - VMware PhotonOS 4
-> - Ubuntu Server 18.04 LTS
+```
+common_data_source = "disk"
+```
+
+##### HTTP Binding
 
 If you need to define a specific IPv4 address from your host for Packer's HTTP Server, modify the `common_http_ip` variable from `null` to a `string` value that matches an IP address on your Packer host. For example:
 
@@ -576,7 +585,7 @@ By default, each unattended file set the **Product Key** to use the [KMS client 
 
 ### Step 6 - Add Certificates
 
-Save a copy of your Root Certificate Authority certificate to the following in `.crt` and `.p7b` formats.
+Save a copy of your PEM encoded Root Certificate Authority certificate to the following in `.cer` format.
 - `/ansible/roles/base/files` for Linux machine images.
 - `/certificates` for Windows machine images.
 
@@ -620,7 +629,8 @@ Start a build by running the build script (`./build.sh`). The script presents a 
      	17  -  Windows Server 2016 - All
      	18  -  Windows Server 2016 - Standard Only
      	19  -  Windows Server 2016 - Datacenter Only
-     	20  -  Windows 10 Professional
+     	20  -  Windows 11 Professional (Experimental)
+     	21  -  Windows 10 Professional
 
       Other:
 

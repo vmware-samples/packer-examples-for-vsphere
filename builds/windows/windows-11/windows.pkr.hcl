@@ -1,6 +1,6 @@
 /*
     DESCRIPTION:
-    Rocky Linux 8 template using the Packer Builder for VMware vSphere (vsphere-iso).
+    Microsoft Windows 11 Professional template using the Packer Builder for VMware vSphere (vsphere-iso).
 */
 
 //  BLOCK: packer
@@ -14,6 +14,12 @@ packer {
       source  = "github.com/hashicorp/vsphere"
     }
   }
+  required_plugins {
+    windows-update = {
+      version = ">= 0.14.0"
+      source  = "github.com/rgl/windows-update"
+    }
+  }
 }
 
 //  BLOCK: locals
@@ -23,22 +29,12 @@ locals {
   buildtime     = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
   manifest_date = formatdate("YYYY-MM-DD hh:mm:ss", timestamp())
   manifest_path = "${path.cwd}/manifests/"
-  data_source_content = {
-    "/ks.cfg" = templatefile("${abspath(path.root)}/data/ks.pkrtpl.hcl", {
-      build_username           = var.build_username
-      build_password_encrypted = var.build_password_encrypted
-      vm_guest_os_language     = var.vm_guest_os_language
-      vm_guest_os_keyboard     = var.vm_guest_os_keyboard
-      vm_guest_os_timezone     = var.vm_guest_os_timezone
-    })
-  }
-  data_source_command = var.common_data_source == "http" ? "inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg" : "inst.ks=cdrom:/ks.cfg"
 }
 
 //  BLOCK: source
 //  Defines the builder configuration blocks.
 
-source "vsphere-iso" "linux-rocky-linux" {
+source "vsphere-iso" "windows-11-professional" {
 
   // vCenter Server Endpoint Settings and Credentials
   vcenter_server      = var.vsphere_endpoint
@@ -54,7 +50,7 @@ source "vsphere-iso" "linux-rocky-linux" {
 
   // Virtual Machine Settings
   guest_os_type        = var.vm_guest_os_type
-  vm_name              = "${var.vm_guest_os_family}-${var.vm_guest_os_vendor}-${var.vm_guest_os_member}-${var.vm_guest_os_version}"
+  vm_name              = "${var.vm_guest_os_family}-${var.vm_guest_os_version}-professional"
   firmware             = var.vm_firmware
   CPUs                 = var.vm_cpu_sockets
   cpu_cores            = var.vm_cpu_cores
@@ -77,38 +73,42 @@ source "vsphere-iso" "linux-rocky-linux" {
   notes                = "Built by HashiCorp Packer on ${local.buildtime}."
 
   // Removable Media Settings
-  iso_paths    = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}"]
+  iso_paths    = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
   iso_checksum = "${var.iso_checksum_type}:${var.iso_checksum_value}"
-  http_content = var.common_data_source == "http" ? local.data_source_content : null
-  cd_content   = var.common_data_source == "disk" ? local.data_source_content : null
+  cd_files = [
+    "${path.cwd}/scripts/${var.vm_guest_os_family}/",
+    "${path.cwd}/certificates/"
+  ]
+  cd_content = {
+    "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", {
+      os_image             = "Windows 10 Pro"
+      kms_key              = "W269N-WFGWX-YVC9B-4J6C9-T83GX"
+      build_username       = var.build_username
+      build_password       = var.build_password
+      vm_inst_os_language  = var.vm_inst_os_language
+      vm_inst_os_keyboard  = var.vm_inst_os_keyboard
+      vm_guest_os_language = var.vm_guest_os_language
+      vm_guest_os_keyboard = var.vm_guest_os_keyboard
+      vm_guest_os_timezone = var.vm_guest_os_timezone
+    })
+  }
 
   // Boot and Provisioning Settings
-  http_ip       = var.common_data_source == "http" ? var.common_http_ip : null
-  http_port_min = var.common_data_source == "http" ? var.common_http_port_min : null
-  http_port_max = var.common_data_source == "http" ? var.common_http_port_max : null
-  boot_order    = var.vm_boot_order
-  boot_wait     = var.vm_boot_wait
-  boot_command = [
-    "up",
-    "e",
-    "<down><down><end><wait>",
-    "text ${local.data_source_command}",
-    "<enter><wait><leftCtrlOn>x<leftCtrlOff>"
-  ]
+  http_port_min    = var.common_http_port_min
+  http_port_max    = var.common_http_port_max
+  boot_order       = var.vm_boot_order
+  boot_wait        = var.vm_boot_wait
+  boot_command     = var.vm_boot_command
   ip_wait_timeout  = var.common_ip_wait_timeout
-  shutdown_command = "echo '${var.build_password}' | sudo -S -E shutdown -P now"
+  shutdown_command = var.vm_shutdown_command
   shutdown_timeout = var.common_shutdown_timeout
 
   // Communicator Settings and Credentials
-  communicator       = "ssh"
-  ssh_proxy_host     = var.communicator_proxy_host
-  ssh_proxy_port     = var.communicator_proxy_port
-  ssh_proxy_username = var.communicator_proxy_username
-  ssh_proxy_password = var.communicator_proxy_password
-  ssh_username       = var.build_username
-  ssh_password       = var.build_password
-  ssh_port           = var.communicator_port
-  ssh_timeout        = var.communicator_timeout
+  communicator   = "winrm"
+  winrm_username = var.build_username
+  winrm_password = var.build_password
+  winrm_port     = var.communicator_port
+  winrm_timeout  = var.communicator_timeout
 
   // Template and Content Library Settings
   convert_to_template = var.common_template_conversion
@@ -127,28 +127,41 @@ source "vsphere-iso" "linux-rocky-linux" {
 //  Defines the builders to run, provisioners, and post-processors.
 
 build {
-  sources = ["source.vsphere-iso.linux-rocky-linux"]
+  sources = [
+    "source.vsphere-iso.windows-11-professional",
+  ]
 
-  provisioner "ansible" {
-    playbook_file    = "${path.cwd}/ansible/main.yml"
-    roles_path       = "${path.cwd}/ansible/roles"
-    ansible_env_vars = [
-      "ANSIBLE_CONFIG=${path.cwd}/ansible/ansible.cfg"
-      ]
-    extra_arguments  = [
-      "-e", "display_skipped_hosts = false" 
-    ]
+  provisioner "file" {
+    source      = "${path.cwd}/certificates/root-ca.cer"
+    destination = "C:\\windows\\temp\\root-ca.cer"
   }
 
-  provisioner "shell" {
-    execute_command = "echo '${var.build_password}' | {{.Vars}} sudo -E -S sh -eux '{{.Path}}'"
+  provisioner "powershell" {
     environment_vars = [
-      "BUILD_USERNAME=${var.build_username}",
-      "BUILD_KEY=${var.build_key}",
-      "ANSIBLE_USERNAME=${var.ansible_username}",
-      "ANSIBLE_KEY=${var.ansible_key}"
+      "BUILD_USERNAME=${var.build_username}"
     ]
-    scripts = formatlist("${path.cwd}/%s", var.scripts)
+    elevated_user     = var.build_username
+    elevated_password = var.build_password
+    scripts           = formatlist("${path.cwd}/%s", var.scripts)
+  }
+
+  provisioner "powershell" {
+    elevated_user     = var.build_username
+    elevated_password = var.build_password
+    inline            = var.inline
+  }
+
+  provisioner "windows-update" {
+    pause_before    = "30s"
+    search_criteria = "IsInstalled=0"
+    filters = [
+      "exclude:$_.Title -like '*VMware*'",
+      "exclude:$_.Title -like '*Preview*'",
+      "exclude:$_.Title -like '*Defender*'",
+      "exclude:$_.InstallationBehavior.CanRequestUserInput",
+      "include:$true"
+    ]
+    restart_timeout = "120m"
   }
 
   post-processor "manifest" {
@@ -156,7 +169,6 @@ build {
     strip_path = true
     strip_time = true
     custom_data = {
-      ansible_username         = var.ansible_username
       build_username           = var.build_username
       buildtime                = local.buildtime
       common_data_source       = var.common_data_source

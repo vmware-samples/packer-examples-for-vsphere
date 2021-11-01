@@ -89,20 +89,18 @@ source "vsphere-iso" "linux-ubuntu-server" {
   boot_order    = var.vm_boot_order
   boot_wait     = var.vm_boot_wait
   boot_command = [
-    "<enter><wait><f6><wait><esc><wait>",
+    "<wait>e<down><down><down><end><wait>",
     "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
     "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
     "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
     "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
     "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
     "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
-    "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
-    "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
-    "<bs><bs><bs>",
-    "/install/vmlinuz initrd=/install/initrd.gz",
+    "<bs><bs><bs><bs><bs><bs>",
+    "/install/vmlinuz",
     " priority=critical locale=${var.vm_guest_os_language}",
     " ${local.data_source_command}",
-    "<enter>"
+    "<f10>"
   ]
   ip_wait_timeout  = var.common_ip_wait_timeout
   shutdown_command = "echo '${var.build_password}' | sudo -S -E shutdown -P now"
@@ -146,7 +144,7 @@ build {
       "ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3"
       ]
     extra_arguments  = [
-      "-e", "display_skipped_hosts = false" 
+      "-e", "display_skipped_hosts = false"
     ]
   }
 

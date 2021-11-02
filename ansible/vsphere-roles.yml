@@ -1,0 +1,52 @@
+---
+
+- name: vSphere Roles for vRealize Suite
+  hosts: localhost
+  gather_facts: false
+  vars:
+    vcenter_hostname: 192.1.0.28
+    vcenter_username: administrator@vsphere.local
+    vcenter_password: Vx5eals!!
+  tasks:
+  - name: Packer to vSphere Integration
+    community.vmware.vmware_local_role_manager:
+      validate_certs: false
+      hostname: '{{ vcenter_hostname }}'
+      username: '{{ vcenter_username }}'
+      password: '{{ vcenter_password }}'
+      local_role_name: vRealize Automation to vSphere Integration
+      local_privilege_ids:
+        - System.Anonymous
+        - System.Read
+        - System.View
+        - ContentLibrary.AddLibraryItem
+        - ContentLibrary.UpdateLibraryItem
+        - Datastore.AllocateSpace
+        - Datastore.Browse
+        - Datastore.FileManagement
+        - Network.Assign
+        - Resource.AssignVMToPool
+        - VApp.Export
+        - VirtualMachine.Config.AddNewDisk
+        - VirtualMachine.Config.AddRemoveDevice
+        - VirtualMachine.Config.AdvancedConfig
+        - VirtualMachine.Config.Annotation
+        - VirtualMachine.Config.CPUCount
+        - VirtualMachine.Config.Memory
+        - VirtualMachine.Config.Resource
+        - VirtualMachine.Config.Settings
+        - VirtualMachine.Interact.DeviceConnection
+        - VirtualMachine.Interact.PowerOff
+        - VirtualMachine.Interact.PowerOn
+        - VirtualMachine.Interact.PutUsbScanCodes
+        - VirtualMachine.Interact.SetCDMedia
+        - VirtualMachine.Interact.SetFloppyMedia
+        - VirtualMachine.Inventory.Create
+        - VirtualMachine.Inventory.CreateFromExisting
+        - VirtualMachine.Inventory.Delete
+        - VirtualMachine.Provisioning.CreateTemplateFromVM
+        - VirtualMachine.Provisioning.MarkAsTemplate
+        - VirtualMachine.Provisioning.MarkAsVM
+        - VirtualMachine.State.CreateSnapshot
+      state: present
+    delegate_to: localhost

@@ -534,9 +534,9 @@ Edit the `*.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder to conf
 Some of the variables may include sensitive information and environmental data that you would prefer not to save to clear text files. You can add these to environmental variables using the example below:
 
 ```
-export PKR_VAR_ansible_username="<ansible_password>"
+export PKR_VAR_ansible_username="<ansible_username>"
 export PKR_VAR_ansible_key="<ansible_key>"
-export PKR_VAR_build_username="<build_password>"
+export PKR_VAR_build_username="<build_username>"
 export PKR_VAR_build_password="<build_password>"
 export PKR_VAR_build_password_encrypted="<build_password_encrypted>"
 export PKR_VAR_build_key="<build_key>"

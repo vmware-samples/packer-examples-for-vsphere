@@ -53,6 +53,10 @@ sudo sed -i 's/.*PubkeyAuthentication.*/PubkeyAuthentication yes/' /etc/ssh/sshd
 echo '> Restarting the SSH daemon. ...'
 sudo systemctl restart sshd
 
+### Disable and clean tmp. ### 
+echo '> Disabling and clean tmp ...'
+sudo sed -i 's/D/#&/' /usr/lib/tmpfiles.d/tmp.conf
+
 ### Create the clean script. ###
 echo '> Creating the clean script ...'
 sudo cat <<EOF > /home/$BUILD_USERNAME/clean.sh
@@ -90,13 +94,6 @@ echo '> Setting the hostname to localhost ...'
 cat /dev/null > /etc/hostname
 hostnamectl set-hostname localhost
 
-### Remove cloud-init. ###
-echo '> Removing cloud-init ...'
-apt-get purge cloud-init -y
-rm -rf /etc/cloud/ && sudo rm -rf /var/lib/cloud/
-rm -f /etc/netplan/00-installer-config.yaml
-rm -f /etc/netplan/50-cloud-init.yaml
-
 ### Clean apt cache. ###
 echo '> Cleaning apt cache ...'
 apt-get autoremove
@@ -114,6 +111,19 @@ unset HISTFILE
 history -cw
 echo > ~/.bash_history
 rm -fr /root/.bash_history
+
+### Prepare cloud-init ###
+echo `> Preparing cloud-init ...`
+rm -rf /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg
+rm -rf /etc/cloud/cloud.cfg.d/99-installer.cfg
+rm -rf /etc/netplan/00-installer-config.yaml
+echo "disable_vmware_customization: false" >> /etc/cloud/cloud.cfg
+echo "datasource_list: [ VMware, OVF, None ]" > /etc/cloud/cloud.cfg.d/90_dpkg.cfg
+
+### Modify GRUB ###
+echo `> Modifying GRUB ...`
+sed -i -e "s/GRUB_CMDLINE_LINUX_DEFAULT=\"\(.*\)\"/GRUB_CMDLINE_LINUX_DEFAULT=\"\"/" /etc/default/grub
+update-grub
 EOF
 
 ### Change the permissions on /home/$BUILD_USERNAME/clean.sh . ###

@@ -187,6 +187,7 @@ autoinstall:
   packages:
     - openssh-server
     - open-vm-tools
+    - cloud-init
     - ansible
   user-data:
     disable_root: false

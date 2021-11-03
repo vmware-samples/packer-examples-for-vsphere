@@ -1,12 +1,12 @@
 ---
 
-- name: vSphere Roles for vRealize Suite
+- name: VMware vSphere Role for Packer
   hosts: localhost
   gather_facts: false
   vars:
-    vcenter_hostname: 192.1.0.28
+    vcenter_hostname: sfo-m01-vc01.sfo.rainpole.io
     vcenter_username: administrator@vsphere.local
-    vcenter_password: Vx5eals!!
+    vcenter_password: R@in!$aG00dThing.
   tasks:
   - name: Create Packer Role in vSphere
     community.vmware.vmware_local_role_manager:

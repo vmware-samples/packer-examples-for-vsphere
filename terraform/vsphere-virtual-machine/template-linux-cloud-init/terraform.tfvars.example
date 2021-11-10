@@ -1,0 +1,27 @@
+##################################################################################
+# VARIABLES
+##################################################################################
+
+# Credentials
+
+vsphere_server   = "sfo-w01-vc01.rainpole.io"
+vsphere_username = "svc-terraform-vsphere@rainpole.io"
+vsphere_password = "************"
+vsphere_insecure = false
+
+# vSphere Settings
+
+vsphere_datacenter = "sfo-w01-dc01"
+vsphere_cluster    = "sfo-w01-cl01"
+vsphere_datastore  = "sfo-w01-cl01-ds-vsan01"
+vsphere_folder     = "workloads"
+vsphere_network    = "w01-172.16.100.0"
+vsphere_template   = "tpl-ubuntu-server-20-04-lts"
+
+# Virtual Machines Settings
+
+vm_name                    = "ubuntu-cloud-init"
+vm_cpus                    = 2
+vm_memory                  = 4096
+vm_firmware                = "efi"
+vm_efi_secure_boot_enabled = true

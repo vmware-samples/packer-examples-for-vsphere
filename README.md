@@ -43,7 +43,7 @@ The following builds are available:
 * Microsoft Windows Server 2022 - Standard and Datacenter
 * Microsoft Windows Server 2019 - Standard and Datacenter
 * Microsoft Windows Server 2016 - Standard and Datacenter
-* Microsoft Windows 11 Professional
+* Microsoft Windows 11 Professional (Experimental)
 * Microsoft Windows 10 Professional
 
 > **NOTE**: Guest customization is [**not supported**](https://partnerweb.vmware.com/programs/guestOS/guest-os-customization-matrix.pdf) for AlmaLinux and Rocky Linux in vCenter Server 7.0 Update 2.
@@ -82,6 +82,14 @@ The following software packages must be installed on the Packer host:
   - macOS: `brew install --cask docker`
 * Coreutils 
   - macOS: `brew install coreutils`
+* HashiCorp [Terraform][terraform-install] 1.0.10 or higher.
+  - Ubuntu: 
+    - `sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl`
+    - `curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -`
+    - `sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"`
+    - `sudo apt-get update && sudo apt-get install terraform`
+  - macOS: 
+    - `brew install terraform`
 
 **Platform**:
 * VMware Cloud Foundation 4.2 or higher, or
@@ -155,7 +163,8 @@ The directory structure of the repository.
 │   └── windows
 │       └── *.ps1
 └── terraform
-    └── vsphere-role
+    │── vsphere-role
+    └── vsphere-virtual-machine
 ```
 The files are distributed in the following directories.
 * **`ansible`** - contains the Ansible roles to initialize and prepare the machine image build.
@@ -712,6 +721,7 @@ Happy building!!!
 [photon-kickstart]: https://vmware.github.io/photon/docs/user-guide/kickstart-through-http/packer-template/
 [redhat-kickstart]: https://access.redhat.com/labs/kickstartconfig/
 [ssh-keygen]: https://www.ssh.com/ssh/keygen/
+[terraform-install]: https://www.terraform.io/docs/cli/install/apt.html
 [vmware-pvscsi]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.hostclient.doc/GUID-7A595885-3EA5-4F18-A6E7-5952BFC341CC.html
 [vmware-vmxnet3]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-AF9E24A8-2CFA-447B-AC83-35D563119667.html
 [vsphere-api]: https://code.vmware.com/apis/968

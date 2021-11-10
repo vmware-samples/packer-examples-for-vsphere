@@ -20,7 +20,8 @@ body:
       description: Please provide the version of this project.
       options:
         - main
-        - 21.10.1 (Default)
+        - 21.11 (Default)
+        - 21.10.1
         - 21.10
         - 21.09.1
         - 21.09

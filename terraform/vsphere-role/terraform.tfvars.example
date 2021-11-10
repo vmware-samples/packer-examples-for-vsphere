@@ -5,8 +5,8 @@
 # Credentials
 
 vsphere_server   = "sfo-m01-vc01.rainpole.io"
-vsphere_username = "administrator@vsphere.local"
-vsphere_password = "R@in!$aG00dThing."
+vsphere_username = "svc-terraform-vsphere@rainpole.io"
+vsphere_password = "************"
 vsphere_insecure = false
 
 # vSphere Settings
@@ -37,7 +37,6 @@ packer_vsphere_privileges = [
   "VirtualMachine.Config.Memory",
   "VirtualMachine.Config.Resource",
   "VirtualMachine.Config.Settings",
-
   "VirtualMachine.Interact.DeviceConnection",
   "VirtualMachine.Interact.PowerOff",
   "VirtualMachine.Interact.PowerOn",

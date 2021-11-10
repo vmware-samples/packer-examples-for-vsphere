@@ -113,7 +113,7 @@ echo > ~/.bash_history
 rm -fr /root/.bash_history
 
 ### Prepare cloud-init ###
-echo `> Preparing cloud-init ...`
+echo '> Preparing cloud-init ...'
 rm -rf /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg
 rm -rf /etc/cloud/cloud.cfg.d/99-installer.cfg
 rm -rf /etc/netplan/00-installer-config.yaml
@@ -121,7 +121,7 @@ echo "disable_vmware_customization: false" >> /etc/cloud/cloud.cfg
 echo "datasource_list: [ VMware, OVF, None ]" > /etc/cloud/cloud.cfg.d/90_dpkg.cfg
 
 ### Modify GRUB ###
-echo `> Modifying GRUB ...`
+echo '> Modifying GRUB ...'
 sed -i -e "s/GRUB_CMDLINE_LINUX_DEFAULT=\"\(.*\)\"/GRUB_CMDLINE_LINUX_DEFAULT=\"\"/" /etc/default/grub
 update-grub
 EOF

@@ -89,7 +89,8 @@ The following software packages must be installed on the Packer host:
     - `sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"`
     - `sudo apt-get update && sudo apt-get install terraform`
   - macOS: 
-    - `brew install terraform`
+    - `brew tap hashicorp/tap`
+    - `brew install hashicorp/tap/terraform`
 
 **Platform**:
 * VMware Cloud Foundation 4.2 or higher, or

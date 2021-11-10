@@ -2,6 +2,18 @@
 
 ![Rainpole](icon.png)
 
+## Release: `v21.11`
+November 09, 2021
+* Adds support for `cloud-init` and the `[VMware]` data source introduced in cloud-init v21.3 to:
+    * Ubuntu 20.04 LTS
+* Adds custom disk partitioning to:
+    * Ubuntu 20.04 LTS
+    * Ubuntu 18.04 LTS
+* Updates Ubuntu 18.04 LTS to `efi-secure`.
+* Updates all certificates to the PEM-encoded `.cer` format.
+* Adds example Terraform plans for deployment testing.
+* Adds an Ansible playbook example to create a custom role in vSphere for Packer.
+
 ## Release: `v21.10.1`
 October 20, 2021
 * Update `LICENSE` and `NOTICE` to BSD-2.
@@ -52,7 +64,7 @@ October 11, 2021
 * Updated issue templates to use forms.
 * Various bug fixes and code cleanliness.
 * Bumped Packer to `>= 1.7.6`.
-* Thanks to the the new contributors: @sestegra, @metabsdm,  and @gcblack!
+* Thanks to the new contributors: @sestegra, @metabsdm, and @gcblack!
 
 ## Release: `v21.09.1`
 September 16, 2021

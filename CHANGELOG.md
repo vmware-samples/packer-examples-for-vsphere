@@ -6,6 +6,9 @@
 November 09, 2021
 * Adds support for `cloud-init` and the `[VMware]` data source introduced in cloud-init v21.3 to:
     * Ubuntu 20.04 LTS
+    
+       **Important Note**: Uncomment [these lines](https://github.com/rainpole/packer-vsphere/blob/12ef2b35d52ee7feabd42c100b8fd483dffd15ed/scripts/linux/ubuntu-server-2x.sh#L123-L124) guest customization will be performed by VMware Tools vs `cloud-init`.
+       
 * Adds custom disk partitioning to:
     * Ubuntu 20.04 LTS
     * Ubuntu 18.04 LTS

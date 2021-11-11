@@ -119,6 +119,9 @@ rm -rf /etc/cloud/cloud.cfg.d/99-installer.cfg
 rm -rf /etc/netplan/00-installer-config.yaml
 echo "disable_vmware_customization: false" >> /etc/cloud/cloud.cfg
 echo "datasource_list: [ VMware, OVF, None ]" > /etc/cloud/cloud.cfg.d/90_dpkg.cfg
+# Uncomment below if guest customization will be performed by VMware Tools.
+# touch /etc/cloud/cloud.cfg.d/99.disable-network-config.cfg
+# echo "network: {config: disabled}" >> /etc/cloud/cloud.cfg.d/99.disable-network-config.cfg
 
 ### Modify GRUB ###
 echo '> Modifying GRUB ...'

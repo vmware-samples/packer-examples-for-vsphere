@@ -23,7 +23,7 @@ Please try to include as much information as you can. Details like these are inc
 
 Contributions via pull requests are appreciated. Before sending us a pull request, please ensure that:
 
-1. You [open a discussion](https://github.com/rainpole/packer-vsphere/discussions) to discuss any significant work with the maintainer(s).
+1. You [open a discussion](https://github.com/vmware-samples/packer-examples-for-vsphere/discussions) to discuss any significant work with the maintainer(s).
 2. You open an issue and link your pull request to the issue for context.
 3. You are working against the latest source on the `main` branch.
 4. You check existing open, and recently merged, pull requests to make sure someone else hasn't already addressed the problem.
@@ -54,7 +54,7 @@ This is a rough outline of what a contributor's workflow looks like:
 Example:
 
 ``` shell
-git remote add upstream https://github.com/rainpole/packer-vsphere.git
+git remote add upstream https://github.com/vmware-samples/packer-examples-for-vsphere.git
 git checkout -b my-new-feature main
 git commit -s -a
 git push origin my-new-feature
@@ -62,7 +62,7 @@ git push origin my-new-feature
 
 ### Staying In Sync With Upstream
 
-When your branch gets out of sync with the rainpole/main branch, use the following to update:
+When your branch gets out of sync with the vmware-samples/main branch, use the following to update:
 
 ``` shell
 git checkout my-new-feature
@@ -109,7 +109,7 @@ When opening a new issue, try to roughly follow the commit message format conven
 
 ## Finding Contributions to Work On
 
-Looking at the existing issues is a great way to find something to contribute on. If you have an idea you'd like to discuss, [open a discussion](https://github.com/rainpole/packer-vsphere/discussions).
+Looking at the existing issues is a great way to find something to contribute on. If you have an idea you'd like to discuss, [open a discussion](https://github.com/vmware-samples/packer-examples-for-vsphere/discussions).
 
 ## Licensing
 

@@ -100,14 +100,14 @@ The following software packages must be installed on the Packer host:
 
 ### Step 1 - Download the Release.
 
-Download the [**latest**](https://github.com/rainpole/packer-vsphere/releases/latest) release.
+Download the [**latest**](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/latest) release.
 
 You may also clone `main` for the latest pre-release updates.
 
 **Example**:
 
 ```
-git clone https://github.com/rainpole/packer-vsphere.git
+git clone https://github.com/vmware-samples/packer-examples-for-vsphere.git
 ```
 
 The directory structure of the repository.
@@ -366,7 +366,7 @@ Generate a SHA-512 encrypted password for the  _`build_password_encrypted`_ usin
 **Example**: mkpasswd using Docker on macOS:
 
 ```
-rainpole@macos>  docker run -it --rm alpine:latest mkpasswd -m sha512
+rainpole@macos>  docker run -it --rm alpine:latestvmwar mkpasswd -m sha512
 Password: ***************
 [password hash]
 ```
@@ -673,7 +673,7 @@ rainpole@macos windows-server-2022> packer build -force \
 ```
 Happy building!!!
 
- -- Your friends at github.com/rainpole.
+ -- Your friends at github.com/vmware-samples.
 
 ## Troubleshoot
 

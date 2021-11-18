@@ -8,13 +8,13 @@ body:
   - type: markdown
     attributes:
       value: |
-        Before filing a feature, please search the existing issues and [discussions](https://github.com/rainpole/packer-vsphere/discussions) relevant feature requests, and use the [reaction](https://blog.github.com/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/) feature to add up-votes to existing requests.
+        Before filing a feature, please search the existing issues and [discussions](https://github.com/vmware-samples/packer-examples-for-vsphere/discussions) relevant feature requests, and use the [reaction](https://blog.github.com/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/) feature to add up-votes to existing requests.
         When filing a feature, please include the following information.
   - type: checkboxes
     id: terms
     attributes:
       label: Code of Conduct
-      description: This project has a [Code of Conduct](https://github.com/rainpole/packer-vsphere/blob/main/CODE_OF_CONDUCT.md) that all participants are expected to understand and follow.
+      description: This project has a [Code of Conduct](https://github.com/vmware-samples/packer-examples-for-vspheree/blob/main/CODE_OF_CONDUCT.md) that all participants are expected to understand and follow.
       options:
         - label: I have read and agree to the project's Code of Conduct.
           required: true

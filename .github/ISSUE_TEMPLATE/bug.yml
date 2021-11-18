@@ -9,7 +9,7 @@ body:
     id: terms
     attributes:
       label: Code of Conduct
-      description: This project has a [Code of Conduct](https://github.com/rainpole/packer-vsphere/blob/main/CODE_OF_CONDUCT.md) that all participants are expected to understand and follow.
+      description: This project has a [Code of Conduct](https://github.com/vmware-samples/packer-examples-for-vsphere/blob/main/CODE_OF_CONDUCT.md) that all participants are expected to understand and follow.
       options:
         - label: I have read and agree to the project's Code of Conduct.
           required: true

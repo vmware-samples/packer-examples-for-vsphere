@@ -17,13 +17,8 @@ jobs:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         days-before-stale: 60
         days-before-close: 30
-        exempt-issue-labels:
-        - 'status/needs-triage'
-        - 'status/in-progress'
-        exempt-pr-labels:
-        - 'status/needs-review'
-        - 'status/under-review'
-        - 'status/planned'
+        exempt-issue-labels: 'status/needs-triage, status/in-progress'
+        exempt-pr-labels: 'status/needs-review, status/under-review, status/planned'
         remove-stale-when-updated: true
         labels-to-remove-when-unstale: 'status/stale'
         delete-branch: false

@@ -1,4 +1,4 @@
-name: Greeting
+name: Issue Greeting
 
 on:
   issues:

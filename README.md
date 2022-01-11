@@ -528,10 +528,10 @@ vsphere_folder               = "sfo-w01-fd-templates"
 
 Edit the `*.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder to configure the following virtual machine hardware settings, as required:
 
-* CPU Sockets `(init)`
-* CPU Cores `(init)`
-* Memory in MB `(init)`
-* Primary Disk in MB `(init)`
+* CPU Sockets `(ini)`
+* CPU Cores `(ini)`
+* Memory in MB `(ini)`
+* Primary Disk in MB `(ini)`
 * .iso Path `(string)`
 * .iso File `(string)`
 * .iso Checksum Type `(string)`

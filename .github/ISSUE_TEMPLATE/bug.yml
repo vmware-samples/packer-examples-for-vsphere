@@ -1,15 +1,30 @@
+---
 name: Bug Report
 description: Is something not working as expected? Submit a bug.
-title: "[BUG] REPLACE WITH A SHORT DESCRIPTION"
-labels: [type/bug, status/needs-triage]
+title: '[BUG] REPLACE WITH A SHORT DESCRIPTION'
+labels:
+  - type/bug
+  - status/needs-triage
 assignees:
   - tenthirtyam
 body:
+  - type: markdown
+    attributes:
+      value: >
+        Before filing a bug, please search the existing issues and
+        [discussions](https://github.com/vmware-samples/packer-examples-for-vsphere/discussions)
+        relevant issues.
+
+
+        When filing a feature, please include the following information.
   - type: checkboxes
     id: terms
     attributes:
       label: Code of Conduct
-      description: This project has a [Code of Conduct](https://github.com/vmware-samples/packer-examples-for-vsphere/blob/main/CODE_OF_CONDUCT.md) that all participants are expected to understand and follow.
+      description: >-
+        This project has a [Code of
+        Conduct](https://github.com/vmware-samples/packer-examples-for-vsphere/blob/main/CODE_OF_CONDUCT.md)
+        that all participants are expected to understand and follow.
       options:
         - label: I have read and agree to the project's Code of Conduct.
           required: true
@@ -22,8 +37,8 @@ body:
         - main
         - 21.11 (Default)
         - 21.10.1
-        - 21.10
-        - 21.09.1 
+        - 21.1
+        - 21.09.1
         - 21.09
         - 21.08
         - 21.07
@@ -49,7 +64,9 @@ body:
     id: version-packer-vsphere
     attributes:
       label: HashiCorp Packer Plugin for VMware vSphere
-      description: Please provide the HashiCorp Packer Plugin for VMware vSphere Version version.
+      description: >-
+        Please provide the HashiCorp Packer Plugin for VMware vSphere Version
+        version.
       placeholder: 1.0.2
     validations:
       required: true
@@ -72,17 +89,21 @@ body:
     id: description
     attributes:
       label: Description
-      description: Please provide a clear and concise description of the issue you are experiencing.
+      description: >-
+        Please provide a clear and concise description of the issue you are
+        experiencing.
     validations:
       required: true
   - type: textarea
     id: expected-behavior
     attributes:
       label: Expected Behavior
-      description: |
+      description: >
         What is it you expected to happen?
-        This should be a description of how the functionality you tried to use is supposed to work.
-      placeholder:
+
+        This should be a description of how the functionality you tried to use
+        is supposed to work.
+      placeholder: null
     validations:
       required: true
   - type: textarea
@@ -103,28 +124,31 @@ body:
     id: logs
     attributes:
       label: Log Fragments and Files
-      description:  |
-        Please include appropriate log fragments. If the log is longer than a few dozen lines, please include the URL to the [Gist](https://gist.github.com/) of the log or use the [GitHub detailed format](https://gist.github.com/ericclemmons/b146fe5da72ca1f706b2ef72a20ac39d) instead of posting it directly in the issue.
+      description: >
+        Please include appropriate log fragments. If the log is longer than a
+        few dozen lines, please include the URL to the
+        [Gist](https://gist.github.com/) of the log or use the [GitHub detailed
+        format](https://gist.github.com/ericclemmons/b146fe5da72ca1f706b2ef72a20ac39d)
+        instead of posting it directly in the issue.
     validations:
       required: false
   - type: textarea
     id: screenshot
     attributes:
       label: Screenshots
-      description: Screenshots of the issue, if applicable.
+      description: 'Screenshots of the issue, if applicable.'
     validations:
       required: false
   - type: textarea
     id: additional-context
     attributes:
       label: Additional Context
-      description: Please provide a code repository, gist, code snippet, sample files, screenshots, or anything else you think will aid in reproducing the issue.
+      description: >-
+        Please provide a code repository, gist, code snippet, sample files,
+        screenshots, or anything else you think will aid in reproducing the
+        issue.
     validations:
       required: false
   - type: markdown
     attributes:
-      value: |
-        ## Community Note
-        * Please vote on this issue by adding a 👍 [reaction](https://blog.github.com/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/) to the original issue to help the community and maintainers prioritize this request
-        * Please do not leave "+1" or other comments that do not add relevant new information or questions, they generate extra noise for issue followers and do not help prioritize the request
-        * If you are interested in working on this issue or have submitted a pull request, please leave a comment
+      value: "## Community Note\n* Please vote on this issue by adding a \U0001F44D [reaction](https://blog.github.com/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/) to the original issue to help the community and maintainers prioritize this request\n* Please do not leave \"+1\" or other comments that do not add relevant new information or questions, they generate extra noise for issue followers and do not help prioritize the request\n* If you are interested in working on this issue or have submitted a pull request, please leave a comment.\n"

@@ -1,32 +1,28 @@
+---
 name: Issue Greeting
-
-on:
+'on':
   issues:
-    types: ["opened"]
-
+    types:
+      - opened
 jobs:
   greeting:
     name: Send Greeting
     runs-on: ubuntu-latest
-    # only send message to users not (yet) associated with repo
-    # https://docs.github.com/en/graphql/reference/enums#commentauthorassociation
     if: github.event.issue.author_association == 'NONE'
-
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 1
-
-      - name: Render template
+      - name: Render Template
         id: template
         uses: chuhlomin/render-template@v1.2
         with:
           template: .github/comment-template.md
           vars: |
             author: ${{ github.actor }}
-      - name: Create comment
+      - name: Create Comment
         uses: peter-evans/create-or-update-comment@v1
         with:
-          issue-number: ${{ github.event.issue.number }}
-          body: ${{ steps.template.outputs.result }}
+          issue-number: '${{ github.event.issue.number }}'
+          body: '${{ steps.template.outputs.result }}'

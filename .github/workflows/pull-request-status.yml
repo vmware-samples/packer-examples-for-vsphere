@@ -1,0 +1,15 @@
+---
+name: Pull Request State Check
+'on':
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - edited
+jobs:
+  wip:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for "WIP" in Title
+        uses: embano1/wip@v1

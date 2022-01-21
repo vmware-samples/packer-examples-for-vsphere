@@ -1,18 +1,20 @@
+#
+
 In order to have a good experience with our community, we recommend that you read the [contributing guidelines](https://github.com/vmware-samples/packer-examples-for-vsphere/blob/main/CONTRIBUTING.md) for making a pull request.
 
-**Summary of Pull Request**
+## Summary of Pull Request
 
 <!--
     Please provide a clear and concise description of the pull request.
 -->
 
-**Type of Pull Request**
+## Type of Pull Request
 
 <!--
     Please check the one that applies to this pull request using "x".
 -->
 
-- [ ] This is a bug fix.
+- [ ] This is a bugfix.
 - [ ] This is an enhancement or feature.
 - [ ] This is a code style / formatting update.
 - [ ] This is a documentation update.
@@ -20,13 +22,13 @@ In order to have a good experience with our community, we recommend that you rea
 - [ ] This is something else.
       Please describe:
 
-**Context of the Pull Request***
+## Context of the Pull Request
 
 <!--
     Please describe the current behavior that you are modifying or link to a relevant issue.
 -->
 
-**Related to Existing Issues**
+## Related to Existing Issues
 
 <!--
   Is this related to any GitHub issue(s)?
@@ -34,16 +36,16 @@ In order to have a good experience with our community, we recommend that you rea
 
 Issue Number: N/A
 
-**Test and Documentation Coverage**
+## Test and Documentation Coverage
 
 <!--
     Please check the one that applies to this pull request using "x".
 -->
 
-- [ ] Tests have been completed (for bug fixes / features).
-- [ ] Documentation has been added / updated (for bug fixes / features).
+- [ ] Tests have been completed (for bugfixes / features).
+- [ ] Documentation has been added / updated (for bugfixes / features).
 
-**Breaking Changes?**
+## Breaking Changes?
 
 <!--
     Please check the one that applies to this pull request using "x".

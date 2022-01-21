@@ -1,4 +1,6 @@
-Hello, &nbsp; {{ .author }} ! 🖐  
+#
+
+Hello, &nbsp; {{ .author }} ! 🖐
 
 Thank you for your submitting an issue for the project. We will respond soon.
 

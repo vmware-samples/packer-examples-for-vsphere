@@ -20,7 +20,7 @@ SCRIPT_PATH=$(realpath "$(dirname "$(follow_link "$0")")")
 CONFIG_PATH=$(realpath "${1:-${SCRIPT_PATH}/config}")
 
 menu_option_1() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/linux/photon-4/
+  INPUT_PATH="$SCRIPT_PATH"/builds/linux/photon/4/
   echo -e "\nCONFIRM: Build a VMware Photon OS 4 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -51,7 +51,7 @@ menu_option_1() {
 }
 
 menu_option_2() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/linux/ubuntu-server-20-04-lts/
+  INPUT_PATH="$SCRIPT_PATH"/builds/linux/ubuntu/20-04-lts/
   echo -e "\nCONFIRM: Build a Ubuntu Server 20.04 LTS Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -82,7 +82,7 @@ menu_option_2() {
 }
 
 menu_option_3() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/linux/ubuntu-server-18-04-lts/
+  INPUT_PATH="$SCRIPT_PATH"/builds/linux/ubuntu/18-04-lts/
   echo -e "\nCONFIRM: Build a Ubuntu Server 18.04 LTS Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -91,7 +91,7 @@ menu_option_3() {
     exit 1
   fi
 
-  ### Build a Ubuntu Server 20.04 LTS Template for VMware vSphere. ###
+  ### Build a Ubuntu Server 18.04 LTS Template for VMware vSphere. ###
   echo "Building a Ubuntu Server 18.04 LTS Template for VMware vSphere..."
 
   ### Initialize HashiCorp Packer and required plugins. ###
@@ -113,7 +113,7 @@ menu_option_3() {
 }
 
 menu_option_4() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/linux/redhat-linux-8/
+  INPUT_PATH="$SCRIPT_PATH"/builds/linux/rhel/8/
   echo -e "\nCONFIRM: Build a Red Hat Enerprise Linux 8 Server Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -145,7 +145,7 @@ menu_option_4() {
 }
 
 menu_option_5() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/linux/redhat-linux-7/
+  INPUT_PATH="$SCRIPT_PATH"/builds/linux/rhel/7/
   echo -e "\nCONFIRM: Build a Red Hat Enerprise Linux 7 Server Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -177,8 +177,8 @@ menu_option_5() {
 }
 
 menu_option_6() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/linux/almalinux-8/
-  echo -e "\nCONFIRM: Build an AlmaLinux 8 Template for VMware vSphere?"
+  INPUT_PATH="$SCRIPT_PATH"/builds/linux/almalinux/8/
+  echo -e "\nCONFIRM: Build an AlmaLinux OS 8 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -186,8 +186,8 @@ menu_option_6() {
     exit 1
   fi
 
-  ### Build an AlmaLinux 8 Template for VMware vSphere. ###
-  echo "Building an AlmaLinux 8 Template for VMware vSphere..."
+  ### Build an AlmaLinux OS 8 Template for VMware vSphere. ###
+  echo "Building an AlmaLinux OS 8 Template for VMware vSphere..."
 
   ### Initialize HashiCorp Packer and required plugins. ###
   echo "Initializing HashiCorp Packer and required plugins..."
@@ -208,7 +208,7 @@ menu_option_6() {
 }
 
 menu_option_7() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/linux/rocky-linux-8/
+  INPUT_PATH="$SCRIPT_PATH"/builds/linux/rocky/8/
   echo -e "\nCONFIRM: Build a Rocky Linux 8 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -239,7 +239,7 @@ menu_option_7() {
 }
 
 menu_option_8() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos-stream-8/
+  INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos/8-stream/
   echo -e "\nCONFIRM: Build a CentOS Stream 8 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -270,7 +270,7 @@ menu_option_8() {
 }
 
 menu_option_9() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos-linux-8/
+  INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos/8/
   echo -e "\nCONFIRM: Build a CentOS Linux 8 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -301,7 +301,7 @@ menu_option_9() {
 }
 
 menu_option_10() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos-linux-7/
+  INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos/7/
   echo -e "\nCONFIRM: Build a CentOS Linux 7 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -332,7 +332,7 @@ menu_option_10() {
 }
 
 menu_option_11() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2022/
+  INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2022/
   echo -e "\nCONFIRM: Build all Microsoft Windows Server 2022 Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -361,7 +361,7 @@ menu_option_11() {
 }
 
 menu_option_12() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2022/
+  INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2022/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2022 Standard Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -391,7 +391,7 @@ menu_option_12() {
 }
 
 menu_option_13() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2022/
+  INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2022/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2022 Datacenter Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -421,7 +421,7 @@ menu_option_13() {
 }
 
 menu_option_14() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2019/
+  INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2019/
   echo -e "\nCONFIRM: Build all Microsoft Windows Server 2019 Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -450,7 +450,7 @@ menu_option_14() {
 }
 
 menu_option_15() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2019/
+  INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2019/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2019 Standard Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -480,7 +480,7 @@ menu_option_15() {
 }
 
 menu_option_16() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2019/
+  INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2019/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2019 Datacenter Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -510,7 +510,7 @@ menu_option_16() {
 }
 
 menu_option_17() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2016/
+  INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2016/
   echo -e "\nCONFIRM: Build all Microsoft Windows Server 2016 Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -539,7 +539,7 @@ menu_option_17() {
 }
 
 menu_option_18() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2016/
+  INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2016/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2016 Standard Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -569,7 +569,7 @@ menu_option_18() {
 }
 
 menu_option_19() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-server-2016/
+  INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2016/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2016 Datacenter Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -599,8 +599,8 @@ menu_option_19() {
 }
 
 menu_option_20() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-11/
-  echo -e "\nCONFIRM: Build Microsoft Windows 11 Professional Template for VMware vSphere?"
+  INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/11/
+  echo -e "\nCONFIRM: Build Microsoft Windows 11 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -608,8 +608,8 @@ menu_option_20() {
     exit 1
   fi
 
-  ### Build Microsoft Windows 11 Professional for VMware vSphere. ###
-  echo "Building a Microsoft Microsoft Windows 11 Professional Template for VMware vSphere..."
+  ### Build Microsoft Windows 11 for VMware vSphere. ###
+  echo "Building a Microsoft Microsoft Windows 11 Template for VMware vSphere..."
 
   ### Initialize HashiCorp Packer and required plugins. ###
   echo "Initializing HashiCorp Packer and required plugins..."
@@ -628,8 +628,8 @@ menu_option_20() {
 }
 
 menu_option_21() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/windows/windows-10/
-  echo -e "\nCONFIRM: Build Microsoft Windows 10 Professional Template for VMware vSphere?"
+  INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/10/
+  echo -e "\nCONFIRM: Build Microsoft Windows 10 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -637,8 +637,8 @@ menu_option_21() {
     exit 1
   fi
 
-  ### Build Microsoft Windows 10 Professional for VMware vSphere. ###
-  echo "Building a Microsoft Microsoft Windows 10 Professional Template for VMware vSphere..."
+  ### Build Microsoft Windows 10 for VMware vSphere. ###
+  echo "Building a Microsoft Microsoft Windows 10 Template for VMware vSphere..."
 
   ### Initialize HashiCorp Packer and required plugins. ###
   echo "Initializing HashiCorp Packer and required plugins..."
@@ -664,15 +664,10 @@ press_enter() {
 }
 
 info() {
-  echo "GitHub Repository: github.com/rainpole/packer-vsphere/"
-  echo "License: Apache License Version 2.0."
+  echo "License: BSD-2"
   echo ""
-  echo "Versions Used:"
-  echo "HashiCorp Packer >= 1.7.7"
-  echo "HashiCorp Packer Plugin for VMware vSphere >= 1.0.2"
-  echo "HashiCorp Packer Plugin for Windows Update >= 0.14.0"
-  echo ""
-  echo "For more information, visit review the README.md."
+  echo "For more information, review the project README."
+  echo "GitHub Repository: github.com/vmware-samples/packer-examples-for-vsphere/"
   read -r
 }
 
@@ -699,7 +694,7 @@ until [ "$selection" = "0" ]; do
   echo "    	 3  -  Ubuntu Server 18.04 LTS"
   echo "    	 4  -  Red Hat Enterprise Linux 8"
   echo "    	 5  -  Red Hat Enterprise Linux 7"
-  echo "    	 6  -  AlmaLinux 8"
+  echo "    	 6  -  AlmaLinux OS 8"
   echo "    	 7  -  Rocky Linux 8"
   echo "    	 8  -  CentOS Stream 8"
   echo "    	 9  -  CentOS Linux 8"
@@ -716,8 +711,8 @@ until [ "$selection" = "0" ]; do
   echo "    	17  -  Windows Server 2016 - All"
   echo "    	18  -  Windows Server 2016 - Standard Only"
   echo "    	19  -  Windows Server 2016 - Datacenter Only"
-  echo "    	20  -  Windows 11 Professional (Experimental)"
-  echo "    	21  -  Windows 10 Professional"
+  echo "    	20  -  Windows 11"
+  echo "    	21  -  Windows 10"
   echo ""
   echo "      Other:"
   echo ""

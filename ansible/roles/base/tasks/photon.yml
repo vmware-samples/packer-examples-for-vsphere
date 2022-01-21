@@ -1,37 +1,29 @@
 ---
-
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
-# WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-# COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-# OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-- name: "{{ ansible_facts['distribution'] }} - Updating the guest operating system."
-  command: "{{item}}"
+- name: "Updating the guest operating system."
+  args:
+    warn: false
+  command: "{{ item }}"
   with_items:
-    - tdnf -y update
+    - "tdnf -y update"
+- name: "Installing additional packages."
   args:
     warn: false
-
-- name: "{{ ansible_facts['distribution'] }} - Installing additional packages."
   command: |
-    tdnf -y install \
-    minimal \
-    logrotate \
-    wget \
-    git \
-    unzip \
-    tar \
-    jq \
-    parted \
-    openssl-c_rehash
-  args:
-    warn: false
-
-- name: "{{ ansible_facts['distribution'] }} - Importing Certificate Authority certificates."
+      tdnf -y install \
+      minimal \
+      logrotate \
+      wget \
+      git \
+      unzip \
+      tar \
+      jq \
+      parted \
+      openssl-c_rehash
+- name: "Importing certificate authortiy certificates."
   copy:
-    src: root-ca.cer
     dest: /etc/ssl/certs/root-ca.pem
-    owner: root
     group: root
-    mode: 0644
-  notify: "{{ ansible_facts['distribution'] }} - Updating the certificate authority trust."
+    mode: 420
+    owner: root
+    src: root-ca.cer
+  notify: "VMware Photon OS - Updating the certificate authority trust."

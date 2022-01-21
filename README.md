@@ -1,29 +1,26 @@
-
-![Rainpole](icon.png)
-
 # HashiCorp Packer and VMware vSphere to Build Private Cloud Machine Images
 
 <img alt="Last Commit" src="https://img.shields.io/github/last-commit/vmware-samples/packer-examples-for-vsphere?style=for-the-badge&logo=github"> [<img alt="The Changelog" src="https://img.shields.io/badge/The%20Changelog-Read-blue?style=for-the-badge&logo=github">](CHANGELOG.md) [<img alt="Open in Visual Studio Code" src="https://img.shields.io/badge/Visual%20Studio%20Code-Open-blue?style=for-the-badge&logo=visualstudiocode">](https://open.vscode.dev/vmware-samples/packer-examples-for-vsphere)
 <br/>
 <img alt="VMware vSphere 7.0 Update 2+" src="https://img.shields.io/badge/VMware%20vSphere-7.0%20Update%202+-blue?style=for-the-badge">
-<img alt="Packer 1.7.7+" src="https://img.shields.io/badge/HashiCorp%20Packer-1.7.7+-blue?style=for-the-badge&logo=packer">
+<img alt="Packer 1.7.9+" src="https://img.shields.io/badge/HashiCorp%20Packer-1.7.9+-blue?style=for-the-badge&logo=packer">
 <img alt="Ansible 2.9+" src="https://img.shields.io/badge/Ansible-2.9+-blue?style=for-the-badge&logo=ansible">
 
 ## Table of Contents
-1.	[Introduction](#Introduction)
-1.	[Requirements](#Requirements)
-1.	[Configuration](#Configuration)
-1.	[Build](#Build)
-1.	[Troubleshoot](#Troubleshoot)
-1.	[Credits](#Credits)
+1. [Introduction](#Introduction)
+2. [Requirements](#Requirements)
+3. [Configuration](#Configuration)
+4. [Build](#Build)
+5. [Troubleshoot](#Troubleshoot)
+6. [Credits](#Credits)
 
 ## Introduction
 
 This repository provides infrastructure-as-code examples to automate the creation of virtual machine images and their guest operating systems on VMware vSphere using [HashiCorp Packer][packer] and the [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`). All examples are authored in the HashiCorp Configuration Language ("HCL2").
 
-Use of this repository is mentioned in the VMware Validated Solution: Private Cloud Automation for VMware Cloud Foundation authored by the maintainer. Learn more about this solution at [vmware.com/go/vvs](https://vmware.com/go/vvs). 
+Use of this project is mentioned in the **_VMware Validated Solution: Private Cloud Automation for VMware Cloud Foundation_** authored by the maintainer. Learn more about this solution at [vmware.com/go/vvs](https://vmware.com/go/vvs).
 
-By default, the machine image artifacts are transferred to a [vSphere Content Library][vsphere-content-library] as an OVF template and the temporary machine image is destroyed. If an item of the same name exists in the target content library, Packer will update the existing item with the new OVF template. This method is extremely useful for vRealize Automation as image mappings do not need to be updated when a virtual machine image update is executed and finalized. 
+By default, the machine image artifacts are transferred to a [vSphere Content Library][vsphere-content-library] as an OVF template and the temporary machine image is destroyed. If an item of the same name exists in the target content library, Packer will update the existing item with the new version of OVF template.
 
 The following builds are available:
 
@@ -33,7 +30,7 @@ The following builds are available:
 * Ubuntu Server 18.04 LTS
 * Red Hat Enterprise Linux 8 Server
 * Red Hat Enterprise Linux 7 Server
-* AlmaLinux 8
+* AlmaLinux OS 8
 * Rocky Linux 8
 * CentOS Stream 8
 * CentOS Linux 8
@@ -43,33 +40,38 @@ The following builds are available:
 * Microsoft Windows Server 2022 - Standard and Datacenter
 * Microsoft Windows Server 2019 - Standard and Datacenter
 * Microsoft Windows Server 2016 - Standard and Datacenter
-* Microsoft Windows 11 Professional (Experimental)
-* Microsoft Windows 10 Professional
+* Microsoft Windows 11
+* Microsoft Windows 10
 
-> **NOTE**: Guest customization is [**not supported**](https://partnerweb.vmware.com/programs/guestOS/guest-os-customization-matrix.pdf) for AlmaLinux and Rocky Linux in vCenter Server 7.0 Update 2.
+> **NOTES**:
+> * Guest customization is not currently supported for AlmaLinux OS and Rocky Linux in vCenter Server 7.0 Update 2.
+>
+> * The Microsoft Windows 11 machine image uses a virtual trusted platform module (vTPM). Refer to the VMware vSphere [product documenation][vsphere-tpm] for requirements and pre-requisites.
+>
+> * The Microsoft Windows 11 machine image is not transferred to the content library by default. It is **not supported** to clone an encrypted virtual machine to the content library as an OVF Template. You can adjust the common content library settings to use VM Templates.
 
 ## Requirements
 
 **Packer**:
-* HashiCorp [Packer][packer-install] 1.7.7 or higher.
-* HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.2 or higher.
+* HashiCorp [Packer][packer-install] 1.7.9 or higher.
+* HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.3 or higher.
 * [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.0 or higher - a community plugin for HashiCorp Packer.
 
-    >Required plugins are automatically downloaded and initialized when using `./build.sh`. For dark sites, you may download the plugins and place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
+    > Required plugins are automatically downloaded and initialized when using `./build.sh`. For dark sites, you may download the plugins and place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
 
 **Operating Systems**:
 * Ubuntu Server 20.04 LTS
-* macOS Big Sur (Intel)
+* macOS Big Sur and Monterey (Intel)
 
-    > Operating systems and versions tested with the repository examples.
+    > Operating systems and versions tested with the project.
 
 **Additional Software Packages**:
 
 The following software packages must be installed on the Packer host:
 
-* [Git][download-git] command line tools.
+* [Git][download-git] command-line tools.
   - Ubuntu: `apt-get install git`
-  - macOS: `brew install git` 
+  - macOS: `brew install git`
 * [Ansible][ansible-docs] 2.9 or higher.
   - Ubuntu: `apt-get install ansible`
   - macOS: `brew install ansible`
@@ -80,15 +82,15 @@ The following software packages must be installed on the Packer host:
 * mkpasswd
   - Ubuntu: `apt-get install whois`
   - macOS: `brew install --cask docker`
-* Coreutils 
+* Coreutils
   - macOS: `brew install coreutils`
-* HashiCorp [Terraform][terraform-install] 1.0.10 or higher.
-  - Ubuntu: 
+* HashiCorp [Terraform][terraform-install] 1.1.3 or higher.
+  - Ubuntu:
     - `sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl`
     - `curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -`
     - `sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"`
     - `sudo apt-get update && sudo apt-get install terraform`
-  - macOS: 
+  - macOS:
     - `brew tap hashicorp/tap`
     - `brew install hashicorp/tap/terraform`
 
@@ -98,23 +100,24 @@ The following software packages must be installed on the Packer host:
 
 ## Configuration
 
-### Step 1 - Download the Release.
+### Step 1 - Download the Release
 
 Download the [**latest**](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/latest) release.
 
-You may also clone `main` for the latest pre-release updates.
+You may also clone `main` for the latest prerelease updates.
 
 **Example**:
 
-```
+```console
 git clone https://github.com/vmware-samples/packer-examples-for-vsphere.git
 ```
 
 The directory structure of the repository.
 
-```
+```console
 ├── build.sh
 ├── config.sh
+├── set-envvars.sh
 ├── LICENSE
 ├── NOTICE
 ├── README.md
@@ -144,17 +147,19 @@ The directory structure of the repository.
 │   ├── rhsm.pkvars.hcl.example
 │   ├── vsphere.pkvars.hcl.example
 │   ├── linux
-│   │   └── <distribution-version>
-│   │       ├── *.pkr.hcl
-│   │       ├── *.auto.pkrvars.hcl
-│   │       └── data
-│   │           └── ks.pkrtpl.hcl
+│   │   └── <distribution>
+│   │       └── <version>
+│   │           ├── *.pkr.hcl
+│   │           ├── *.auto.pkrvars.hcl
+│   │           └── data
+│   │               └── ks.pkrtpl.hcl
 │   └── windows
-│       └── <version>
-│           ├── *.pkr.hcl
-│           ├── *.auto.pkrvars.hcl
-│           └── data
-│               └── autounattend.pkrtpl.hcl
+│       └── <distribution>
+│           └── <version>
+│               ├── *.pkr.hcl
+│               ├── *.auto.pkrvars.hcl
+│               └── data
+│                   └── autounattend.pkrtpl.hcl
 ├── certificates
 │   └── root-ca.cer.example
 ├── manifests
@@ -167,12 +172,14 @@ The directory structure of the repository.
     │── vsphere-role
     └── vsphere-virtual-machine
 ```
+
 The files are distributed in the following directories.
 * **`ansible`** - contains the Ansible roles to initialize and prepare the machine image build.
 * **`builds`** - contains the templates, variables, and configuration files for the machine image build.
 * **`scripts`** - contains the scripts to initialize and prepare the machine image build.
 * **`certificates`** - contains the Trusted Root Authority certificates for Windows build.
 * **`manifests`** - manifests created after the completion of the machine image build.
+* **`manifests`** - contains example Terraform plans to test machine image builds.
 
 > **NOTE**: The project is transitioning to use Ansible instead of scripts, where possible.
 
@@ -182,23 +189,23 @@ The files are distributed in the following directories.
 
     **Linux Distributions**
     * VMware Photon OS 4 Server
-        * [Download][download-linux-photon-server-4] the 4.0 GA release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-ca7c9e933.iso`)
+        * [Download][download-linux-photon-server-4] the 4.0 Rev2 release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-xxxxxxxxx.iso`)
     * Ubuntu Server 20.04 LTS
-        * [Download][download-linux-ubuntu-server-20-04-lts] the latest **LIVE** release `.iso` image. (_e.g._ `ubuntu-20.04.2-live-server-amd64.iso`)
+        * [Download][download-linux-ubuntu-server-20-04-lts] the latest **LIVE** release `.iso` image. (_e.g._ `ubuntu-20.04.x-live-server-amd64.iso`)
     * Ubuntu Server 18.04 LTS
-        * [Download][download-linux-ubuntu-server-18-04-lts] the latest legacy **NON-LIVE** release `.iso` image. (_e.g._ `ubuntu-18.04.6-server-amd64.iso`)
+        * [Download][download-linux-ubuntu-server-18-04-lts] the latest legacy **NON-LIVE** release `.iso` image. (_e.g._ `ubuntu-18.04.x-server-amd64.iso`)
     * Red Hat Enterprise Linux 8 Server
-        * [Download][download-linux-redhat-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `rhel-8-x86_64-dvd1.iso`)
+        * [Download][download-linux-redhat-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `rhel-8.x-x86_64-dvd1.iso`)
     * Red Hat Enterprise Linux 7 Server
-        * [Download][download-linux-redhat-server-7] the latest release of the **FULL** `.iso` image. (_e.g._ `rhel-server-7-x86_64-dvd1.iso`)
-    * AlmaLinux 8
-        * [Download][download-linux-almalinux-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `AlmaLinux-8-x86_64-dvd1.iso`)
+        * [Download][download-linux-redhat-server-7] the latest release of the **FULL** `.iso` image. (_e.g._ `rhel-server-7.x-x86_64-dvd1.iso`)
+    * AlmaLinux OS 8
+        * [Download][download-linux-almalinux-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `AlmaLinux-8.x-x86_64-dvd1.iso`)
     * Rocky Linux 8
-        * [Download][download-linux-rocky-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `Rocky-8-x86_64-dvd1.iso`)
+        * [Download][download-linux-rocky-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `Rocky-8.x-x86_64-dvd1.iso`)
     * CentOS Stream 8
-        * [Download][download-linux-centos-stream-8] the latest release of the **FULL** `.iso` image. (_e.g._ `CentOS-Stream-8-x86_64-dvd1.iso`)
+        * [Download][download-linux-centos-stream-8] the latest release of the **FULL** `.iso` image. (_e.g._ `CentOS-Stream-8-x86_64-latest-dvd1.iso`)
     * CentOS Linux 8
-        * [Download][download-linux-centos-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `CentOS-8-x86_64-dvd1.iso`)
+        * [Download][download-linux-centos-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `CentOS-8.x.xxxx-x86_64-dvd1.iso`)
     * CentOS Linux 7
         * [Download][download-linux-centos-server-7] the latest release of the **FULL** `.iso` image. (_e.g._ `CentOS-7-x86_64-DVD.iso`)
 
@@ -206,27 +213,29 @@ The files are distributed in the following directories.
     * Microsoft Windows Server 2022
     * Microsoft Windows Server 2019
     * Microsoft Windows Server 2016
-    * Microsoft Windows 11 Professional (Experimental)
-    * Microsoft Windows 10 Professional
+    * Microsoft Windows 11
+    * Microsoft Windows 10
 
-3. Obtain the checksum type (_e.g._ `sha256`, `md5`, etc.) and checksum value for each guest operating system `.iso` image. This will be use in the build input variables.
+3. Obtain the checksum type (_e.g._ `sha256`, `md5`, etc.) and checksum value for each guest operating system `.iso` image from the vendor. This will be use in the build input variables.
 
 4. [Upload][vsphere-upload] your guest operating system `.iso` images to the ISO datastore and paths that will be used in your variables.
 
     **Example**: `builds/<type>/<build>/*.auto.pkvars.hcl`
-    ```
+
+    ```hcl
     common_iso_datastore = "sfo-w01-cl01-ds-nfs01"
     ```
 
     **Example**: `config/common.pkvars.hcl`
-    ```
+
+    ```hcl
     iso_path           = "iso/linux/photon"
-    iso_file           = "photon-4.0-ca7c9e933.iso"
+    iso_file           = "photon-4.0-xxxxxxxxx.iso"
     iso_checksum_type  = "md5"
-    iso_checksum_value = "d8c4bc561e68afaf7815518f78a5b4ab"
+    iso_checksum_value = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     ```
 
-### Step 3 - Configure Service Account Privileges in vSphere 
+### Step 3 - Configure Service Account Privileges in vSphere
 
 Create a custom vSphere role with the required privileges to integrate HashiCorp Packer with VMware vSphere. A service account can be added to the role to ensure that Packer has least privilege access to the infrastructure. Clone the default **Read-Only** vSphere role and add the following privileges:
 
@@ -262,17 +271,17 @@ Virtual Machine | Configuration > Add new disk                        | `Virtual
 ...             | Provisioning > Mark as virtual machine              | `VirtualMachine.Provisioning.MarkAsVM`
 ...             | State > Create snapshot                             | `VirtualMachine.State.CreateSnapshot`
 
-If you'd like to automate the creation of the custom vSphere role, a Terraform example is included in the project.
+If you would like to automate the creation of the custom vSphere role, a Terraform example is included in the project.
 
 1. Navigate to the directory for the example.
 
-```
+```console
 cd terraform/vsphere-role
 ```
 
 2. Duplicate the `terraform.tfvars.example` file to `terraform.tfvars` in the directory.
 
-```
+```console
 cp terraform.tfvars.example terraform.tfvars
 ```
 
@@ -280,25 +289,25 @@ cp terraform.tfvars.example terraform.tfvars
 
 4. Initialize the current directory and the required Terraform provider for VMware vSphere.
 
-```
+```console
 terraform init
 ```
 
 5. Create a Terraform plan and save the output to a file.
 
-```
+```console
 terraform plan -out=tfplan
 ```
 
 6. Apply the Terraform plan.
 
-```
+```console
 terraform apply tfplan
 ```
 
 Once the custom vSphere role is created, assign **Global Permissions** in vSphere for the service account used for the HashiCorp Packer to VMware vSphere integration. Global permissions are required for the content library. For example:
 
-1. Log in to the vCenter Server at _https://<management_vcenter_server_fqdn>/ui_ as `administrator@vsphere.local`.
+1. Log in to the vCenter Server at _<management_vcenter_server_fqdn>/ui_ as `administrator@vsphere.local`.
 2. Select **Menu** > **Administration**.
 3. In the left pane, select **Access control** > **Global permissions** and click the **Add permissions** icon.
 4. In the **Add permissions** dialog box, enter the service account (_e.g._ svc-packer-vsphere@rainpole.io), select the custom role (_e.g._ Packer to vSphere Integration Role) and the **Propagate to children** check box, and click OK.
@@ -319,7 +328,7 @@ Run the config script `./config.sh` to copy the `.pkvars.hcl.example` files to t
 
 The `config` folder is the default folder, You may override the default by passing an alternate value as the first argument.
 
-```
+```console
 ./config.sh foo
 ./build.sh foo
 ```
@@ -327,19 +336,19 @@ For example, this is useful for the purposes of running machine image builds for
 
 **San Francisco:** us-west-1
 
-```
+```console
 ./config.sh config/us-west-1
 ./build.sh config/us-west-1
 ```
 
 **Los Angeles:** us-west-2
 
-```
+```console
 ./config.sh config/us-west-2
 ./build.sh config/us-west-2
 ```
 
-#### **Build Variables**
+##### Build Variables
 
 Edit the `config/build.pkvars.hcl` file to configure the following:
 
@@ -347,7 +356,7 @@ Edit the `config/build.pkvars.hcl` file to configure the following:
 
 **Example**: `config/build.pkvars.hcl`
 
-```
+```hcl
 build_username           = "rainpole"
 build_password           = "<plaintext_password>"
 build_password_encrypted = "<sha512_encrypted_password>"
@@ -357,15 +366,15 @@ You can also override the `build_key` value with contents of a file, if required
 
 For example:
 
-```
+```hcl
 build_key = file("${path.root}/config/ssh/build_id_ecdsa.pub")
 ```
 
-Generate a SHA-512 encrypted password for the  _`build_password_encrypted`_ using tools like mkpasswd.
+Generate a SHA-512 encrypted password for the `build_password_encrypted` using tools like mkpasswd.
 
 **Example**: mkpasswd using Docker on macOS:
 
-```
+```console
 rainpole@macos>  docker run -it --rm alpine:latestvmwar mkpasswd -m sha512
 Password: ***************
 [password hash]
@@ -373,16 +382,16 @@ Password: ***************
 
 **Example**: mkpasswd on Linux:
 
-```
+```console
 rainpole@linux>  mkpasswd -m sha-512
 Password: ***************
 [password hash]
 ```
-Generate a public key for the `build_password_encrypted` for public key authentication.
+Generate a public key for the `build_key` for public key authentication.
 
 **Example**: macOS and Linux.
 
-```
+```console
 rainpole@macos> cd .ssh/
 rainpole@macos ~/.ssh> ssh-keygen -t ecdsa -b 521 -C "code@rainpole.io"
 Generating public/private ecdsa key pair.
@@ -398,7 +407,7 @@ The content of the public key, `build_key`, is added the key to the `.ssh/author
 >**WARNING**: Replace the default public keys and passwords.
 >By default, both Public Key Authentication and Password Authentication are enabled for Linux distributions. If you wish to disable Password Authentication and only use Public Key Authentication, comment or remove the portion of the associated script in the `scripts` directory.
 
-#### **Ansible Variables**
+##### Ansible Variables
 
 Edit the `config/ansible.pkvars.hcl` file to configure the following:
 
@@ -406,7 +415,7 @@ Edit the `config/ansible.pkvars.hcl` file to configure the following:
 
 **Example**: `config/ansible.pkvars.hcl`
 
-```
+```hcl
 ansible_username = "ansible"
 ansible_key      = "<public_key>"
 ```
@@ -416,11 +425,11 @@ You can also override the `ansible_key` value with contents of a file, if requir
 
 For example:
 
-```
+```hcl
 ansible_key = file("${path.root}/config/ssh/ansible_id_ecdsa.pub")
 ```
 
-#### **Common Variables**
+##### Common Variables
 
 Edit the `config/common.pkvars.hcl` file to configure the following common variables:
 
@@ -431,7 +440,7 @@ Edit the `config/common.pkvars.hcl` file to configure the following common varia
 
 **Example**: `config/common.pkvars.hcl`
 
-```
+```hcl
 // Virtual Machine Settings
 common_vm_version           = 19
 common_tools_upgrade_policy = true
@@ -459,9 +468,11 @@ common_shutdown_timeout = "15m"
 
 `http` is the default provisioning data source for Linux machine image builds.
 
-You can change the `common_data_source` from `http` to `disk` to build supported Linux machine images without the need to use Packer's HTTP server. This is useful for environments that may not be able to route back to the system from which Packer is running. The `cd_content` option is used when selecting `disk` unless the distribution does not support a secondary CD-ROM. For distributions that do not support a secondary CD-ROM the `floppy_content` option is used.
+You can change the `common_data_source` from `http` to `disk` to build supported Linux machine images without the need to use Packer's HTTP server. This is useful for environments that may not be able to route back to the system from which Packer is running.
 
-```
+The `cd_content` option is used when selecting `disk` unless the distribution does not support a secondary CD-ROM. For distributions that do not support a secondary CD-ROM the `floppy_content` option is used.
+
+```hcl
 common_data_source = "disk"
 ```
 
@@ -469,11 +480,11 @@ common_data_source = "disk"
 
 If you need to define a specific IPv4 address from your host for Packer's HTTP Server, modify the `common_http_ip` variable from `null` to a `string` value that matches an IP address on your Packer host. For example:
 
-```
+```hcl
 common_http_ip = "172.16.11.254"
 ```
 
-#### **Proxy Variables** (Optional)
+##### Proxy Variables (Optional)
 
 Edit the `config/proxy.pkvars.hcl` file to configure the following:
 
@@ -482,13 +493,13 @@ Edit the `config/proxy.pkvars.hcl` file to configure the following:
 
 **Example**: `config/proxy.pkvars.hcl`
 
-```
+```hcl
 communicator_proxy_host     = "proxy.rainpole.io"
 communicator_proxy_port     = 1080
 communicator_proxy_username = "rainpole"
 communicator_proxy_password = "<plaintext_password>"
 ```
-#### **Red Hat Subscription Manager Variables**
+##### Red Hat Subscription Manager Variables
 
 Edit the `config/redhat.pkvars.hcl` file to configure the following:
 
@@ -496,14 +507,14 @@ Edit the `config/redhat.pkvars.hcl` file to configure the following:
 
 **Example**: `config/redhat.pkvars.hcl`
 
-```
+```hcl
 rhsm_username = "rainpole"
 rhsm_password = "<plaintext_password>"
 ```
 
 These variables are **only** used if you are performing a Red Hat Enterprise Linux Server build and are used to register the image with Red Hat Subscription Manager during the build for system updates and package installation. Before the build completes, the machine image is unregistered from Red Hat Subscription Manager.
 
-#### **vSphere Variables**
+##### vSphere Variables
 
 Edit the `builds/vsphere.pkvars.hcl` file to configure the following:
 
@@ -512,7 +523,7 @@ Edit the `builds/vsphere.pkvars.hcl` file to configure the following:
 
 **Example**: `config/vsphere.pkvars.hcl`
 
-```
+```hcl
 vsphere_endpoint             = "sfo-w01-vc01.sfo.rainpole.io"
 vsphere_username             = "svc-packer-vsphere@rainpole.io"
 vsphere_password             = "<plaintext_password>"
@@ -523,6 +534,15 @@ vsphere_datastore            = "sfo-w01-cl01-ds-vsan01"
 vsphere_network              = "sfo-w01-seg-dhcp"
 vsphere_folder               = "sfo-w01-fd-templates"
 ```
+#### **Using Environment Variables**
+
+Alternatively, you can set your environment variables if you would prefer not to save sensitive potentially information in cleartext files. You can add these to environmental variables using the included `set-envvars.sh` script:
+
+```console
+rainpole@macos> . ./set-envvars.sh
+```
+
+> **NOTE**: You need to run the script as source or the shorthand "`.`".
 
 #### **Machine Image Variables**
 
@@ -539,58 +559,32 @@ Edit the `*.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder to conf
 
     >**Note**: All `variables.auto.pkvars.hcl` default to using the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types.
 
-#### **Using Environmental Variables**
 
-Some of the variables may include sensitive information and environmental data that you would prefer not to save to clear text files. You can add these to environmental variables using the example below:
-
-```
-export PKR_VAR_ansible_username="<ansible_username>"
-export PKR_VAR_ansible_key="<ansible_key>"
-export PKR_VAR_build_username="<build_username>"
-export PKR_VAR_build_password="<build_password>"
-export PKR_VAR_build_password_encrypted="<build_password_encrypted>"
-export PKR_VAR_build_key="<build_key>"
-export PKR_VAR_communicator_proxy_host = "<communicator_proxy_host>"
-export PKR_VAR_communicator_proxy_port = "<communicator_proxy_port>"
-export PKR_VAR_communicator_proxy_username = "<communicator_proxy_username>"
-export PKR_VAR_communicator_proxy_password = "communicator_proxy_password>"
-export PKR_VAR_rhsm_username="<rhsm_password>"
-export PKR_VAR_rhsm_password="<rhsm_password>"
-export PKR_VAR_vsphere_endpoint="<vsphere_endpoint_fqdn>"
-export PKR_VAR_vsphere_username="<vsphere_username>"
-export PKR_VAR_vsphere_password="<vsphere_password>"
-export PKR_VAR_vsphere_datacenter="<vsphere_datacenter>>"
-export PKR_VAR_vsphere_cluster="<vsphere_cluster>"
-export PKR_VAR_vsphere_datastore="<vsphere_datastore>>"
-export PKR_VAR_vsphere_network="<vsphere_network>"
-export PKR_VAR_vsphere_folder="<vsphere_folder>"
-```
-
-## Step 5 - Modify the Configurations and Scripts (Optional)
+### Step 5 - Modify the Configurations and Scripts (Optional)
 
 If required, modify the configuration and scripts files, for the Linux distributions and Microsoft Windows.
 
-### Linux Distribution Kickstart and Scripts
+#### Linux Distribution Kickstart and Scripts
 
 Username and password variables are passed into the kickstart or cloud-init files for each Linux distribution as Packer template files (`.pkrtpl.hcl`) to generate these on-demand.
 
-### Microsoft Windows Unattended amd Scripts
+#### Microsoft Windows Unattended amd Scripts
 
 Variables are passed into the [Microsoft Windows][microsoft-windows-unattend] unattend files (`autounattend.xml`) as Packer template files (`autounattend.pkrtpl.hcl`) to generate these on-demand.
 
-By default, each unattended file set the **Product Key** to use the [KMS client setup keys][microsoft-kms].
+By default, each unattended file is set to use the [KMS client setup keys][microsoft-kms] as the **Product Key**.
 
 **Need help customizing the configuration files?**
 
 * **VMware Photon OS** - Read the [Photon OS Kickstart Documentation][photon-kickstart].
 * **Ubuntu Server** - Install and run system-config-kickstart on a Ubuntu desktop.
 
-    ```
+    ```console
     sudo apt-get install system-config-kickstart
     ssh -X rainpole@ubuntu-desktop
     sudo system-config-kickstart
     ```
-* **Red Hat Enterprise Linux** (_as well as CentOS Linux/Stream, AlmaLinux, and Rocky Linux_) - Use the [Red Hat Kickstart Generator][redhat-kickstart].
+* **Red Hat Enterprise Linux** (_as well as CentOS Linux/Stream, AlmaLinux OS, and Rocky Linux_) - Use the [Red Hat Kickstart Generator][redhat-kickstart].
 * **Microsoft Windows** - Use the Microsoft Windows [Answer File Generator][microsoft-windows-afg] if you need to customize the provided examples further.
 
 ### Step 6 - Add Certificates
@@ -603,77 +597,48 @@ These files are copied to the guest operating systems and added the certificate 
 
 ## Build
 
+### Build with Variables Files
+
 Start a build by running the build script (`./build.sh`). The script presents a menu the which simply calls Packer and the respective build(s).
 
-**Example**: Menu for `./build.sh`.
-```
-    ____             __                ____        _ __    __
-   / __ \____ ______/ /_____  _____   / __ )__  __(_) /___/ /____
-  / /_/ / __  / ___/ //_/ _ \/ ___/  / __  / / / / / / __  / ___/
- / ____/ /_/ / /__/ ,< /  __/ /     / /_/ / /_/ / / / /_/ (__  )
-/_/    \__,_/\___/_/|_|\___/_/     /_____/\__,_/_/_/\__,_/____/
-
-  Select a HashiCorp Packer build for VMware vSphere:
-
-      Linux Distribution:
-
-     	 1  -  VMware Photon OS 4
-     	 2  -  Ubuntu Server 20.04 LTS
-     	 3  -  Ubuntu Server 18.04 LTS
-     	 4  -  Red Hat Enterprise Linux 8
-     	 5  -  Red Hat Enterprise Linux 7
-     	 6  -  AlmaLinux 8
-     	 7  -  Rocky Linux 8
-     	 8  -  CentOS Stream 8
-     	 9  -  CentOS Linux 8
-     	10  -  CentOS Linux 7
-
-       Microsoft Windows:
-
-     	11  -  Windows Server 2022 - All
-     	12  -  Windows Server 2022 - Standard Only
-     	13  -  Windows Server 2022 - Datacenter Only
-     	14  -  Windows Server 2019 - All
-     	15  -  Windows Server 2019 - Standard Only
-     	16  -  Windows Server 2019 - Datacenter Only
-     	17  -  Windows Server 2016 - All
-     	18  -  Windows Server 2016 - Standard Only
-     	19  -  Windows Server 2016 - Datacenter Only
-     	20  -  Windows 11 Professional (Experimental)
-     	21  -  Windows 10 Professional
-
-      Other:
-
-        I   -  Information
-        Q   -  Quit
-```
 You can also start a build based on a specific source for some of the virtual machine images.
 
 For example, if you simply want to build a Microsoft Windows Server 2022 Standard Core, run the following:
 
 Initialize the plugins:
+
+```console
+rainpole@macos> packer init builds/windows/server/2022/.
 ```
-rainpole@macos packer-examples> packer init builds/windows/windows-server-2022
-```
+
 Build a specific machine image:
-```
-rainpole@macos windows-server-2022> packer build -force \
+
+```console
+rainpole@macos> packer build -force \
       --only vsphere-iso.windows-server-standard-core \
       -var-file="config/vsphere.pkrvars.hcl" \
       -var-file="config/build.pkrvars.hcl" \
       -var-file="config/common.pkrvars.hcl" \
-      builds/windows/windows-server-2022
+      builds/windows/server/2022
 ```
-Build a specific machine image using environmental variables:
-```
-rainpole@macos windows-server-2022> packer build -force \
-      --only vsphere-iso.windows-server-standard-core \
-      -var-file="config/common.pkrvars.hcl" \
-      builds/windows/windows-server-2022
-```
-Happy building!!!
 
- -- Your friends at github.com/vmware-samples.
+### Build with Environmental Variables
+
+Initialize the plugins:
+
+```console
+rainpole@macos> packer init builds/windows/server/2022/.
+```
+
+Build a specific machine image using environmental variables:
+
+```console
+rainpole@macos> packer build -force \
+      --only vsphere-iso.windows-server-standard-core \
+      builds/windows/server/2022
+```
+
+Happy building!!!
 
 ## Troubleshoot
 
@@ -730,3 +695,4 @@ Happy building!!!
 [vsphere-guestosid]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
 [vsphere-efi]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-898217D4-689D-4EB5-866C-888353FE241C.html
 [vsphere-upload]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.storage.doc/GUID-58D77EA5-50D9-4A8E-A15A-D7B3ABA11B87.html?hWord=N4IghgNiBcIK4AcIHswBMAEAzAlhApgM4gC+QA
+[vsphere-tpm]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4DBF65A4-4BA0-4667-9725-AE9F047DE00A.html

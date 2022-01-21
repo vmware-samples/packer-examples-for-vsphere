@@ -1,3 +1,4 @@
+---
 instance-id: ubuntu-cloud-init
 local-hostname: ubuntu-cloud-init
 network:

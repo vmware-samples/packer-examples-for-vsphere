@@ -14,26 +14,26 @@ export ANSIBLE_KEY
 
 ### Update the default local user. ###
 echo '> Updating the default local user ...'
-sudo mkdir -p /home/$BUILD_USERNAME/.ssh
-sudo cat << EOF > /home/$BUILD_USERNAME/.ssh/authorized_keys
+sudo mkdir -p /home/"$BUILD_USERNAME"/.ssh
+sudo tee /home/"$BUILD_USERNAME"/.ssh/authorized_keys << EOF
 $BUILD_KEY
 EOF
-sudo chown -R $BUILD_USERNAME /home/$BUILD_USERNAME/.ssh
-sudo chmod 700 /home/$BUILD_USERNAME/.ssh
-sudo chmod 644 /home/$BUILD_USERNAME/.ssh/authorized_keys
+sudo chown -R "$BUILD_USERNAME" /home/"$BUILD_USERNAME"/.ssh
+sudo chmod 700 /home/"$BUILD_USERNAME"/.ssh
+sudo chmod 644 /home/"$BUILD_USERNAME"/.ssh/authorized_keys
 
 ### Create a local user for Ansible. ###
 echo '> Creating a local user for Ansible ...'
-sudo groupadd $ANSIBLE_USERNAME
-sudo useradd -g $ANSIBLE_USERNAME -G wheel -m -s /bin/bash $ANSIBLE_USERNAME
-echo $ANSIBLE_USERNAME:$(openssl rand -base64 14) | sudo chpasswd
-sudo mkdir /home/$ANSIBLE_USERNAME/.ssh
-sudo cat << EOF > /home/$ANSIBLE_USERNAME/.ssh/authorized_keys
+sudo groupadd "$ANSIBLE_USERNAME"
+sudo useradd -g "$ANSIBLE_USERNAME" -G wheel -m -s /bin/bash "$ANSIBLE_USERNAME"
+echo "$ANSIBLE_USERNAME":"$(openssl rand -base64 14)" | sudo chpasswd
+sudo mkdir /home/"$ANSIBLE_USERNAME"/.ssh
+sudo tee /home/"$ANSIBLE_USERNAME"/.ssh/authorized_keys << EOF
 $ANSIBLE_KEY
 EOF
-sudo chown -R $ANSIBLE_USERNAME:$ANSIBLE_USERNAME /home/$ANSIBLE_USERNAME/.ssh
-sudo chmod 700 /home/$ANSIBLE_USERNAME/.ssh
-sudo chmod 600 /home/$ANSIBLE_USERNAME/.ssh/authorized_keys
+sudo chown -R "$ANSIBLE_USERNAME":"$ANSIBLE_USERNAME" /home/"$ANSIBLE_USERNAME"/.ssh
+sudo chmod 700 /home/"$ANSIBLE_USERNAME"/.ssh
+sudo chmod 600 /home/"$ANSIBLE_USERNAME"/.ssh/authorized_keys
 
 ### Configure SSH for Public Key Authentication. ###
 echo '> Configuring SSH for Public Key Authentication ...'
@@ -59,7 +59,7 @@ subscription-manager clean
 
 ### Create a clean script. ###
 echo '> Creating clean script ...'
-sudo cat <<EOF > /home/$BUILD_USERNAME/clean.sh
+sudo tee /home/"$BUILD_USERNAME"/clean.sh << EOF
 #!/bin/bash
 
 ### Cleans the audit logs. ###
@@ -121,11 +121,11 @@ EOF
 
 ### Change script permissions on /tmp/clean.sh. ###
 echo '> Changing script permissions on /tmp/clean.sh ...'
-sudo chmod +x /home/$BUILD_USERNAME/clean.sh
+sudo chmod +x /home/"$BUILD_USERNAME"/clean.sh
 
 ### Run the cleau script. ###
 echo '> Running the clean script ...'
-sudo /home/$BUILD_USERNAME/clean.sh
+sudo /home/"$BUILD_USERNAME"/clean.sh
 ### END: Clean the guest operating system. ###
 
 ### Done. ###

@@ -1,4 +1,4 @@
-#!/bin/bash  -eux
+#!/bin/bash -eux
 
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
 # WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
@@ -20,32 +20,32 @@ echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
 ### Update the default local user. ###
 echo '> Updating the default local user ...'
 echo '> Adding authorized_keys for the default local user ...'
-sudo mkdir -p /home/$BUILD_USERNAME/.ssh
-sudo cat << EOF > /home/$BUILD_USERNAME/.ssh/authorized_keys
+sudo mkdir -p /home/"$BUILD_USERNAME"/.ssh
+sudo tee /home/"$BUILD_USERNAME"/.ssh/authorized_keys << EOF
 $BUILD_KEY
 EOF
-sudo chown -R $BUILD_USERNAME /home/$BUILD_USERNAME/.ssh
-sudo chmod 700 /home/$BUILD_USERNAME/.ssh
-sudo chmod 644 /home/$BUILD_USERNAME/.ssh/authorized_keys
+sudo chown -R "$BUILD_USERNAME" /home/"$BUILD_USERNAME"/.ssh
+sudo chmod 700 /home/"$BUILD_USERNAME"/.ssh
+sudo chmod 644 /home/"$BUILD_USERNAME"/.ssh/authorized_keys
 echo '> Adding the default local user to passwordless sudoers...'
-sudo bash -c "echo \"$BUILD_USERNAME ALL=(ALL) NOPASSWD:ALL\" >> /etc/sudoers"
+sudo bash -c "echo \"""$BUILD_USERNAME"" ALL=(ALL) NOPASSWD:ALL\" >> /etc/sudoers"
 
 ### Create a local user for Ansible. ###
 echo '> Creating a local user for Ansible ...'
-sudo groupadd $ANSIBLE_USERNAME
-sudo useradd -g $ANSIBLE_USERNAME -m -s /bin/bash $ANSIBLE_USERNAME
-sudo usermod -aG sudo $ANSIBLE_USERNAME
-echo $ANSIBLE_USERNAME:$(openssl rand -base64 14) | sudo chpasswd
+sudo groupadd "$ANSIBLE_USERNAME"
+sudo useradd -g "$ANSIBLE_USERNAME" -m -s /bin/bash "$ANSIBLE_USERNAME"
+sudo usermod -aG sudo "$ANSIBLE_USERNAME"
+echo "$ANSIBLE_USERNAME":"$(openssl rand -base64 14)" | sudo chpasswd
 echo '> Adding authorized_keys for local Ansible user ...'
-sudo mkdir /home/$ANSIBLE_USERNAME/.ssh
-sudo cat << EOF > /home/$ANSIBLE_USERNAME/.ssh/authorized_keys
+sudo mkdir /home/"$ANSIBLE_USERNAME"/.ssh
+sudo tee /home/"$ANSIBLE_USERNAME"/.ssh/authorized_keys << EOF
 $ANSIBLE_KEY
 EOF
-sudo chown -R $ANSIBLE_USERNAME:$ANSIBLE_USERNAME /home/$ANSIBLE_USERNAME/.ssh
-sudo chmod 700 /home/$ANSIBLE_USERNAME/.ssh
-sudo chmod 600 /home/$ANSIBLE_USERNAME/.ssh/authorized_keys
+sudo chown -R "$ANSIBLE_USERNAME":"$ANSIBLE_USERNAME" /home/"$ANSIBLE_USERNAME"/.ssh
+sudo chmod 700 /home/"$ANSIBLE_USERNAME"/.ssh
+sudo chmod 600 /home/"$ANSIBLE_USERNAME"/.ssh/authorized_keys
 echo '> Adding local Ansible user to passwordless sudoers...'
-sudo bash -c "echo \"$ANSIBLE_USERNAME ALL=(ALL) NOPASSWD:ALL\" >> /etc/sudoers"
+sudo bash -c "echo \"""$ANSIBLE_USERNAME"" ALL=(ALL) NOPASSWD:ALL\" >> /etc/sudoers"
 
 ### Configure SSH for Public Key Authentication. ###
 echo '> Configuring SSH for Public Key Authentication ...'
@@ -62,7 +62,7 @@ sudo sed -i '/^After=vgauthd.service/a\After=dbus.service' /usr/lib/systemd/syst
 
 ### Create a cleanup script. ###
 echo '> Creating cleanup script ...'
-sudo cat <<EOF > /home/$BUILD_USERNAME/clean.sh
+sudo tee /home/"$BUILD_USERNAME"/clean.sh << EOF
 #!/bin/bash
 
 # Cleans all audit logs.
@@ -117,11 +117,11 @@ EOF
 
 ### Change script permissions for execution. ### 
 echo '> Changeing script permissions for execution ...'
-sudo chmod +x /home/$BUILD_USERNAME/clean.sh
+sudo chmod +x /home/"$BUILD_USERNAME"/clean.sh
 
 ### Runs the cleauup script. ### 
 echo '> Running the cleanup script ...'
-sudo /home/$BUILD_USERNAME/clean.sh
+sudo /home/"$BUILD_USERNAME"/clean.sh
 
 ### Generate host keys using ssh-keygen ### 
 echo '> Generating host keys ...'

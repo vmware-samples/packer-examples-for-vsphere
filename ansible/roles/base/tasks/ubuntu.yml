@@ -1,18 +1,11 @@
 ---
-
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
-# WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-# COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-# OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-- name: "{{ ansible_facts['distribution'] }} - Updating the guest operating system."
+- name: "Updating the guest operating system."
   apt:
-    name: "*"
-    state: latest
-    update_cache: yes
     force_apt_get: true
-
-- name: "{{ ansible_facts['distribution'] }} - Installing additional packages."
+    name: "*"
+    state: latest     # noqa package-latest
+    update_cache: "yes"
+- name: "Installing additional packages."
   apt:
     name:
       - bash-completion
@@ -22,13 +15,12 @@
       - net-tools
       - unzip
       - ca-certificates
-    state: latest
-
-- name: "{{ ansible_facts['distribution'] }} - Importing Certificate Authority certificates."
+    state: latest     # noqa package-latest
+- name: "Importing certificate authority certificates."
   copy:
-    src: root-ca.cer
     dest: /usr/local/share/ca-certificates/
-    owner: root
     group: root
-    mode: 0644
-  notify: "{{ ansible_facts['distribution'] }} - Updating the certificate authority trust."
+    mode: 420
+    owner: root
+    src: root-ca.cer
+  notify: "Ubuntu - Updating the certificate authority trust."

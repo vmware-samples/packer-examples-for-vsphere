@@ -1,19 +1,10 @@
 ---
-
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
-# WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-# COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-# OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-- name: Prepare {{ ansible_facts['distribution'] }} distribution.
-  include_tasks: "{{ ansible_facts['distribution'] | lower }}.yml"         
-  when: ansible_facts['distribution'] == 'Ubuntu'
-
-- name: Prepare {{ ansible_facts['distribution'] }} distribution.
-  ### Generalized since Rocky Linux and AlmaLinux do not report `os_family` as `RedHat` in some versions of Ansible.
-  include_tasks: "redhat.yml"
-  when: ansible_facts['distribution'] in ['RedHat', 'CentOS', 'Rocky', 'AlmaLinux']
-
-- name: Prepare {{ ansible_facts['os_family'] }} distribution.
+- name: "Prepare {{ ansible_facts['distribution'] }} distribution."
+  include_tasks: "{{ ansible_facts['distribution'] | lower }}.yml"
+  when: "ansible_facts['distribution'] == 'Ubuntu'"
+- name: "Prepare {{ ansible_facts['distribution'] }} distribution."
+  include_tasks: redhat.yml
+  when: "ansible_facts['distribution'] in ['RedHat', 'CentOS', 'Rocky', 'AlmaLinux']"
+- name: "Prepare {{ ansible_facts['os_family'] }} distribution."
   include_tasks: "{{ ansible_facts['lsb']['codename'] | lower }}.yml"
-  when: ansible_facts['os_family'] == 'VMware Photon OS'
+  when: "ansible_facts['os_family'] == 'VMware Photon OS'"

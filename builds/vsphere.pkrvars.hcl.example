@@ -8,7 +8,7 @@
 vsphere_endpoint            = "sfo-w01-vc01.rainpole.io"
 vsphere_username            = "svc-packer-vsphere@rainpole.io"
 vsphere_password            = "R@in!$aG00dThing."
-vsphere_insecure_connection = true
+vsphere_insecure_connection = false
 
 // vSphere Settings
 vsphere_datacenter = "sfo-w01-dc01"

@@ -32,7 +32,7 @@ srcext=".pkrvars.hcl.example"
 dstext=".pkrvars.hcl"
 
 for f in "$CONFIG_PATH"/*"${srcext}"; do
-  bname="${f%${srcext}}"
+  bname="${f%"${srcext}"}"
   echo "${bname}{${srcext} → ${dstext}}"
   mv "${f}" "${bname}${dstext}"
 done

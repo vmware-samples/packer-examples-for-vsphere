@@ -15,7 +15,7 @@ variable "vsphere_endpoint" {
 
 variable "vsphere_username" {
   type        = string
-  description = "The username to login to the vCenter Server instance. (e.g. svc-packer-vsphere@rainpole.io)"
+  description = "The username to login to the vCenter Server instance. (e.g. 'svc-packer-vsphere@rainpole.io')"
   sensitive   = true
 }
 
@@ -238,7 +238,7 @@ variable "common_content_library_destroy" {
   default     = true
 }
 
-variable "common_content_library_skip_import" {
+variable "common_content_library_skip_export" {
   type        = bool
   description = "Skip exporting the virtual machine to the content library. Option allows for testing / debugging without saving the machine image."
   default     = false
@@ -275,7 +275,7 @@ variable "iso_checksum_value" {
 
 variable "common_data_source" {
   type        = string
-  description = "The provisioning data source ('http' or 'disk')."
+  description = "The provisioning data source. (e.g. 'http' or 'disk')"
 }
 
 variable "common_http_ip" {
@@ -296,7 +296,7 @@ variable "common_http_port_max" {
 
 variable "vm_boot_order" {
   type        = string
-  description = "The boot order for virtual machines devices."
+  description = "The boot order for virtual machines devices. (e.g. 'disk,cdrom')"
   default     = "disk,cdrom"
 }
 
@@ -330,7 +330,7 @@ variable "common_shutdown_timeout" {
 
 variable "build_username" {
   type        = string
-  description = "The username to login to the guest operating system. (e.g. rainpole)"
+  description = "The username to login to the guest operating system. (e.g. 'rainpole')"
   sensitive   = true
 }
 
@@ -342,7 +342,7 @@ variable "build_password" {
 
 variable "build_password_encrypted" {
   type        = string
-  description = "The encrypted password to login to the guest operating system."
+  description = "The SHA-512 encrypted password to login to the guest operating system."
   sensitive   = true
   default     = ""
 }
@@ -370,12 +370,12 @@ variable "communicator_timeout" {
 
 variable "scripts" {
   type        = list(string)
-  description = "A list of scripts and their relative paths to transfer and execute."
+  description = "A list of scripts and their relative paths to transfer and run."
   default     = []
 }
 
 variable "inline" {
   type        = list(string)
-  description = "A list of commands to execute."
+  description = "A list of commands to run."
   default     = []
 }

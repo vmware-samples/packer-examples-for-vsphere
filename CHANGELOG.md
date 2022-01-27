@@ -155,9 +155,9 @@
 > Release Date: 2021-07-21
 
 * Adds support for [VMware Photon OS](https://vmware.github.io/photon/) 4.
-* Adds [support](https://github.com/rainpole/packer-vsphere/issues/18) for [AlmaLinux](http://almalinux.org) 8.
-* Adds [support](https://github.com/rainpole/packer-vsphere/issues/13) for [Rocky Linux](https://rockylinux.org) 8.
-* Adds [support](https://github.com/rainpole/packer-vsphere/issues/19) for [CentOS Stream](https://www.centos.org/centos-stream/) 8.
+* Adds [support](https://github.com/vmware-samples/packer-examples-for-vsphere/issues/18) for [AlmaLinux](http://almalinux.org) 8.
+* Adds [support](https://github.com/vmware-samples/packer-examples-for-vsphere/issues/13) for [Rocky Linux](https://rockylinux.org) 8.
+* Adds [support](https://github.com/vmware-samples/packer-examples-for-vsphere/issues/19) for [CentOS Stream](https://www.centos.org/centos-stream/) 8.
 * Updates to `>=` vSphere 7.0 U2.
 * Adds the Packer block to all builds with `required_versions >= "1.7.3"` for Packer.
 * Adds the Packer block for Windows builds with `required_plugins` and `version = "0.12.0"` for the [Windows-Update plugin](https://github.com/rgl/packer-plugin-windows-update).

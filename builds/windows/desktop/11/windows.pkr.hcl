@@ -120,7 +120,7 @@ source "vsphere-iso" "windows-desktop" {
   #   for_each = var.common_content_library_name != null ? [1] : []
   #   content {
   #     library     = var.common_content_library_name
-      description = "Version: v${local.build_version}\nBuilt on: ${local.build_date}\n${local.build_by}"
+  #     description = "Version: v${local.build_version}\nBuilt on: ${local.build_date}\n${local.build_by}"
   #     ovf         = false // Will transfer as a VM Template
   #     destroy     = var.common_content_library_destroy
   #     skip_import = var.common_content_library_skip_export

@@ -37,9 +37,9 @@ vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
 iso_path           = "iso/windows/desktop"
-iso_file           = "en-us_windows_11_business_editions_x64_dvd_3a304c08.iso"
+iso_file           = "en-us_windows_11_business_editions_updated_jan_2022_x64_dvd_6e14eeb6.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "6939B236E6976F6EEAEA045DE805801F312700300C8359D17C0ABF31B35371E3"
+iso_checksum_value = "9999CBFC54C41FB9B861EF2C4602948893C87357ADA4CBC5DC2A060A60DC6403"
 
 // Boot Settings
 vm_boot_order       = "disk,cdrom"

@@ -26,7 +26,7 @@ packer {
 //  Defines the local variables.
 
 locals {
-  build_by      = "Built by HashiCorp Packer ${packer.version}"
+  build_by      = "Built by: HashiCorp Packer ${packer.version}"
   build_date    = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
   build_version = formatdate("YY.MM", timestamp())
   manifest_date = formatdate("YYYY-MM-DD hh:mm:ss", timestamp())
@@ -73,7 +73,7 @@ source "vsphere-iso" "windows-desktop" {
   vm_version           = var.common_vm_version
   remove_cdrom         = var.common_remove_cdrom
   tools_upgrade_policy = var.common_tools_upgrade_policy
-  notes                = "v${local.build_version} (${local.build_date}) | ${local.build_by}"
+  notes                = "Version: v${local.build_version}\nBuilt on: ${local.build_date}\n${local.build_by}"
 
   // Removable Media Settings
   iso_paths    = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
@@ -120,9 +120,10 @@ source "vsphere-iso" "windows-desktop" {
   #   for_each = var.common_content_library_name != null ? [1] : []
   #   content {
   #     library     = var.common_content_library_name
+      description = "Version: v${local.build_version}\nBuilt on: ${local.build_date}\n${local.build_by}"
   #     ovf         = false // Will transfer as a VM Template
   #     destroy     = var.common_content_library_destroy
-  #     skip_import = var.common_content_library_skip_import
+  #     skip_import = var.common_content_library_skip_export
   #   }
   # }
 }

@@ -16,7 +16,7 @@ common_remove_cdrom="true"
 common_template_conversion="false"
 common_content_library_ovf="true"
 common_content_library_destroy="true"
-common_content_library_skip_import="false"
+common_content_library_skip_export="false"
 common_data_source="http"
 common_http_ip=""
 common_http_port_min="8000"
@@ -68,7 +68,7 @@ echo -e '\n> Set the common template and content library settings.'
 read -r -p "Convert to a template (recommended: ""${common_template_conversion}""): " common_template_conversion
 read -r -p "Export OVF Template to the content library (recommended: ""${common_content_library_ovf}""): " common_content_library_ovf
 read -r -p "Destroy virtual machine artifact (recommended: ""${common_content_library_destroy}""): " common_content_library_destroy
-read -r -p "Skip export to content library (recommended: ""${common_content_library_skip_import}""): " common_content_library_skip_import
+read -r -p "Skip export to content library (recommended: ""${common_content_library_skip_export}""): " common_content_library_skip_export
 echo -e '\n> Set the common boot and provisioning settings.'
 # Boot and Provisioning Settings
 read -r -p "Set the provisioning datasource (recommended: ""${common_data_source}""): " common_data_source
@@ -147,7 +147,7 @@ echo '> Setting the common template and content library settings.'
 export PKR_VAR_common_template_conversion="${common_template_conversion}"
 export PKR_VAR_common_content_library_ovf="${common_content_library_ovf}"
 export PKR_VAR_common_content_library_destroy="${common_content_library_destroy}"
-export PKR_VAR_common_content_library_skip_import="${common_content_library_skip_import}"
+export PKR_VAR_common_content_library_skip_export="${common_content_library_skip_export}"
 
 echo '> Setting the common boot and provisioning settings.'
 # Boot and Provisioning Settings
@@ -222,7 +222,7 @@ case $display_environmental_variables in
     echo - PKR_VAR_common_template_conversion: "$PKR_VAR_common_template_conversion"
     echo - PKR_VAR_common_content_library_ovf: "$PKR_VAR_common_content_library_ovf"
     echo - PKR_VAR_common_content_library_destroy: "$PKR_VAR_common_content_library_destroy"
-    echo - PKR_VAR_common_content_library_skip_import: "$PKR_VAR_common_content_library_skip_import"
+    echo - PKR_VAR_common_content_library_skip_export: "$PKR_VAR_common_content_library_skip_export"
 
     # Boot and Provisioning Settings
     echo -e '\nBoot and Provisioning Settings'

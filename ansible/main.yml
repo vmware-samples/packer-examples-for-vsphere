@@ -7,3 +7,6 @@
   hosts: all
   roles:
     - base
+    - users
+    - configure
+    - clean

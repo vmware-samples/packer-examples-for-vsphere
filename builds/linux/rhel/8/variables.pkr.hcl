@@ -368,17 +368,3 @@ variable "ansible_key" {
   description = "The public key for Ansible to login to the guest operating system."
   sensitive   = true
 }
-
-// Provisioner Settings
-
-variable "scripts" {
-  type        = list(string)
-  description = "A list of scripts and their relative paths to transfer and run."
-  default     = []
-}
-
-variable "inline" {
-  type        = list(string)
-  description = "A list of commands to run."
-  default     = []
-}

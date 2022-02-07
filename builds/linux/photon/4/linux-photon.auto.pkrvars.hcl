@@ -37,7 +37,3 @@ vm_boot_wait  = "2s"
 // Communicator Settings
 communicator_port    = 22
 communicator_timeout = "30m"
-
-// Provisioner Settings
-scripts = ["scripts/linux/photon.sh"]
-inline  = []

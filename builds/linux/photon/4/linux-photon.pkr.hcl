@@ -7,7 +7,7 @@
 //  The Packer configuration.
 
 packer {
-  required_version = ">= 1.7.9"
+  required_version = ">= 1.7.10"
   required_plugins {
     vsphere = {
       version = ">= v1.0.3"
@@ -138,19 +138,12 @@ build {
       "ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3"
     ]
     extra_arguments = [
-      "-e", "display_skipped_hosts = false"
+      "--extra-vars", "display_skipped_hosts=false",
+      "--extra-vars", "BUILD_USERNAME=${var.build_username}",
+      "--extra-vars", "BUILD_SECRET='${var.build_key}'",
+      "--extra-vars", "ANSIBLE_USERNAME=${var.ansible_username}",
+      "--extra-vars", "ANSIBLE_SECRET='${var.ansible_key}'",
     ]
-  }
-
-  provisioner "shell" {
-    execute_command = "echo '${var.build_password}' | {{.Vars}} sudo -E -S sh -eux '{{.Path}}'"
-    environment_vars = [
-      "BUILD_USERNAME=${var.build_username}",
-      "BUILD_KEY=${var.build_key}",
-      "ANSIBLE_USERNAME=${var.ansible_username}",
-      "ANSIBLE_KEY=${var.ansible_key}"
-    ]
-    scripts = formatlist("${path.cwd}/%s", var.scripts)
   }
 
   post-processor "manifest" {

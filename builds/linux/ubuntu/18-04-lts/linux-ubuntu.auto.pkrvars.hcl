@@ -40,7 +40,3 @@ vm_boot_wait  = "3s"
 // Communicator Settings
 communicator_port    = 22
 communicator_timeout = "30m"
-
-// Provisioner Settings
-scripts = ["scripts/linux/ubuntu-18.sh"]
-inline  = []

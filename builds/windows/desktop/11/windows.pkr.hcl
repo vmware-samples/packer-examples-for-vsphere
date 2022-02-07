@@ -7,7 +7,7 @@
 //  The Packer configuration.
 
 packer {
-  required_version = ">= 1.7.9"
+  required_version = ">= 1.7.10"
   required_plugins {
     vsphere = {
       version = ">= v1.0.3"
@@ -187,6 +187,7 @@ build {
       vm_guest_os_type         = var.vm_guest_os_type
       vm_mem_size              = var.vm_mem_size
       vm_network_card          = var.vm_network_card
+      vm_vtpm                  = var.vm_vtpm
       vsphere_cluster          = var.vsphere_cluster
       vsphere_datacenter       = var.vsphere_datacenter
       vsphere_datastore        = var.vsphere_datastore

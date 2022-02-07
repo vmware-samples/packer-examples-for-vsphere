@@ -36,8 +36,8 @@ menu_option_1() {
   echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Start the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build..."
+  ### Start the Build. ###
+  echo "Starting the build...."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -67,8 +67,8 @@ menu_option_2() {
   echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Start the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build..."
+  ### Start the Build. ###
+  echo "Starting the build...."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -98,8 +98,8 @@ menu_option_3() {
   echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Start the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build..."
+  ### Start the Build. ###
+  echo "Starting the build...."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -129,8 +129,8 @@ menu_option_4() {
   echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Start the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build..."
+  ### Start the Build. ###
+  echo "Starting the build...."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -161,8 +161,8 @@ menu_option_5() {
   echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Start the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build..."
+  ### Start the Build. ###
+  echo "Starting the build...."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -193,8 +193,8 @@ menu_option_6() {
   echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Start the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build..."
+  ### Start the Build. ###
+  echo "Starting the build...."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -224,8 +224,8 @@ menu_option_7() {
   echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Start the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build..."
+  ### Start the Build. ###
+  echo "Starting the build...."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -255,8 +255,8 @@ menu_option_8() {
   echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Start the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build..."
+  ### Start the Build. ###
+  echo "Starting the build...."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -286,8 +286,8 @@ menu_option_9() {
   echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Start the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build..."
+  ### Start the Build. ###
+  echo "Starting the build...."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -317,8 +317,8 @@ menu_option_10() {
   echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Start the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build..."
+  ### Start the Build. ###
+  echo "Starting the build...."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -348,8 +348,8 @@ menu_option_11() {
   echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Start the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build..."
+  ### Start the Build. ###
+  echo "Starting the build...."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -377,8 +377,8 @@ menu_option_12() {
   echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Start the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build..."
+  ### Start the Build. ###
+  echo "Starting the build...."
   packer build -force \
       --only vsphere-iso.windows-server-standard-dexp,vsphere-iso.windows-server-standard-core \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
@@ -407,8 +407,8 @@ menu_option_13() {
   echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Start the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build..."
+  ### Start the Build. ###
+  echo "Starting the build...."
   packer build -force \
       --only vsphere-iso.windows-server-datacenter-dexp,vsphere-iso.windows-server-datacenter-core \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
@@ -437,8 +437,8 @@ menu_option_14() {
   echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Start the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build..."
+  ### Start the Build. ###
+  echo "Starting the build...."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -466,8 +466,8 @@ menu_option_15() {
   echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Start the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build..."
+  ### Start the Build. ###
+  echo "Starting the build...."
   packer build -force \
       --only vsphere-iso.windows-server-standard-dexp,vsphere-iso.windows-server-standard-core \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
@@ -496,8 +496,8 @@ menu_option_16() {
   echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Start the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build..."
+  ### Start the Build. ###
+  echo "Starting the build...."
   packer build -force \
       --only vsphere-iso.windows-server-datacenter-dexp,vsphere-iso.windows-server-datacenter-core \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
@@ -526,8 +526,8 @@ menu_option_17() {
   echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Start the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build..."
+  ### Start the Build. ###
+  echo "Starting the build...."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -555,8 +555,8 @@ menu_option_18() {
   echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Start the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build..."
+  ### Start the Build. ###
+  echo "Starting the build...."
   packer build -force \
       --only vsphere-iso.windows-server-standard-dexp,vsphere-iso.windows-server-standard-core \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
@@ -585,8 +585,8 @@ menu_option_19() {
   echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Start the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build..."
+  ### Start the Build. ###
+  echo "Starting the build...."
   packer build -force \
       --only vsphere-iso.windows-server-datacenter-dexp,vsphere-iso.windows-server-datacenter-core \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
@@ -615,8 +615,8 @@ menu_option_20() {
   echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Start the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build..."
+  ### Start the Build. ###
+  echo "Starting the build...."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
@@ -644,8 +644,8 @@ menu_option_21() {
   echo "Initializing HashiCorp Packer and required plugins..."
   packer init "$INPUT_PATH"
 
-  ### Start the HashiCorp Packer Build ###
-  echo "Starting the HashiCorp Packer build..."
+  ### Start the Build. ###
+  echo "Starting the build...."
   packer build -force \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \

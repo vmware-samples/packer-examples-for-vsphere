@@ -22,4 +22,5 @@ jobs:
           VALIDATE_ALL_CODEBASE: true
           DEFAULT_BRANCH: "main"
           DISABLE_ERRORS: false
+          VALIDATE_ANSIBLE: false
           VALIDATE_TERRAGRUNT: false

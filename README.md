@@ -3,7 +3,7 @@
 <img alt="Last Commit" src="https://img.shields.io/github/last-commit/vmware-samples/packer-examples-for-vsphere?style=for-the-badge&logo=github"> [<img alt="The Changelog" src="https://img.shields.io/badge/The%20Changelog-Read-blue?style=for-the-badge&logo=github">](CHANGELOG.md) [<img alt="Open in Visual Studio Code" src="https://img.shields.io/badge/Visual%20Studio%20Code-Open-blue?style=for-the-badge&logo=visualstudiocode">](https://open.vscode.dev/vmware-samples/packer-examples-for-vsphere)
 <br/>
 <img alt="VMware vSphere 7.0 Update 2+" src="https://img.shields.io/badge/VMware%20vSphere-7.0%20Update%202+-blue?style=for-the-badge">
-<img alt="Packer 1.7.9+" src="https://img.shields.io/badge/HashiCorp%20Packer-1.7.9+-blue?style=for-the-badge&logo=packer">
+<img alt="Packer 1.7.10+" src="https://img.shields.io/badge/HashiCorp%20Packer-1.7.10+-blue?style=for-the-badge&logo=packer">
 <img alt="Ansible 2.9+" src="https://img.shields.io/badge/Ansible-2.9+-blue?style=for-the-badge&logo=ansible">
 
 ## Table of Contents
@@ -53,7 +53,7 @@ The following builds are available:
 ## Requirements
 
 **Packer**:
-* HashiCorp [Packer][packer-install] 1.7.9 or higher.
+* HashiCorp [Packer][packer-install] 1.7.10 or higher.
 * HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.3 or higher.
 * [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.0 or higher - a community plugin for HashiCorp Packer.
 
@@ -84,7 +84,7 @@ The following software packages must be installed on the Packer host:
   - macOS: `brew install --cask docker`
 * Coreutils
   - macOS: `brew install coreutils`
-* HashiCorp [Terraform][terraform-install] 1.1.3 or higher.
+* HashiCorp [Terraform][terraform-install] 1.1.5 or higher.
   - Ubuntu:
     - `sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl`
     - `curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -`
@@ -164,8 +164,6 @@ The directory structure of the repository.
 │   └── root-ca.cer.example
 ├── manifests
 ├── scripts
-│   ├── linux
-│   │   └── *.sh
 │   └── windows
 │       └── *.ps1
 └── terraform
@@ -174,14 +172,14 @@ The directory structure of the repository.
 ```
 
 The files are distributed in the following directories.
-* **`ansible`** - contains the Ansible roles to initialize and prepare the machine image build.
+* **`ansible`** - contains the Ansible roles to prepare a Linux machine image build.
 * **`builds`** - contains the templates, variables, and configuration files for the machine image build.
-* **`scripts`** - contains the scripts to initialize and prepare the machine image build.
-* **`certificates`** - contains the Trusted Root Authority certificates for Windows build.
+* **`scripts`** - contains the scripts to initialize and prepare a Windows machine image build.
+* **`certificates`** - contains the Trusted Root Authority certificates for a Windows machine image build.
 * **`manifests`** - manifests created after the completion of the machine image build.
-* **`manifests`** - contains example Terraform plans to test machine image builds.
+* **`terraform`** - contains example Terraform plans to test machine image builds.
 
-> **NOTE**: The project is transitioning to use Ansible instead of scripts, where possible.
+> **NOTE**: The project is transitioning to use Ansible role instead of scripts, where possible.
 
 ### Step 2 - Download the Guest Operating Systems ISOs
 
@@ -405,7 +403,7 @@ Your public key has been saved in /Users/rainpole/.ssh/id_ecdsa.pub.
 The content of the public key, `build_key`, is added the key to the `.ssh/authorized_keys` file of the `build_username` on the guest operating system.
 
 >**WARNING**: Replace the default public keys and passwords.
->By default, both Public Key Authentication and Password Authentication are enabled for Linux distributions. If you wish to disable Password Authentication and only use Public Key Authentication, comment or remove the portion of the associated script in the `scripts` directory.
+>By default, both Public Key Authentication and Password Authentication are enabled for Linux distributions. If you wish to disable Password Authentication and only use Public Key Authentication, comment or remove the portion of the associated Ansible `configure` role.
 
 ##### Ansible Variables
 
@@ -560,17 +558,17 @@ Edit the `*.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder to conf
     >**Note**: All `variables.auto.pkvars.hcl` default to using the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types.
 
 
-### Step 5 - Modify the Configurations and Scripts (Optional)
+### Step 5 - Modify the Configurations (Optional)
 
-If required, modify the configuration and scripts files, for the Linux distributions and Microsoft Windows.
+If required, modify the configuration files for the Linux distributions and Microsoft Windows.
 
-#### Linux Distribution Kickstart and Scripts
+#### Linux Distribution Kickstart and Ansible Roles
 
-Username and password variables are passed into the kickstart or cloud-init files for each Linux distribution as Packer template files (`.pkrtpl.hcl`) to generate these on-demand.
+Username and password variables are passed into the kickstart or cloud-init files for each Linux distribution as Packer template files (`.pkrtpl.hcl`) to generate these on-demand. Ansible roles are then used to configure the Linux machine image builds.
 
 #### Microsoft Windows Unattended amd Scripts
 
-Variables are passed into the [Microsoft Windows][microsoft-windows-unattend] unattend files (`autounattend.xml`) as Packer template files (`autounattend.pkrtpl.hcl`) to generate these on-demand.
+Variables are passed into the [Microsoft Windows][microsoft-windows-unattend] unattend files (`autounattend.xml`) as Packer template files (`autounattend.pkrtpl.hcl`) to generate these on-demand. A PowerShell script is then used to configure the Linux machine image builds.
 
 By default, each unattended file is set to use the [KMS client setup keys][microsoft-kms] as the **Product Key**.
 
@@ -645,10 +643,6 @@ Happy building!!!
 * Read [Debugging Packer Builds][packer-debug].
 
 ## Credits
-* Maher AlAsfar [@vmwarelab][credits-maher-alasfar-twitter]
-
-    [Linux][credits-maher-alasfar-github] Bash scripting hints.
-
 * Owen Reynolds [@OVDamn][credits-owen-reynolds-twitter]
 
     [VMware Tools for Windows][credits-owen-reynolds-github] installation PowerShell script.
@@ -657,8 +651,6 @@ Happy building!!!
 
 [ansible-docs]: https://docs.ansible.com
 [cloud-init]: https://cloudinit.readthedocs.io/en/latest/
-[credits-maher-alasfar-twitter]: https://twitter.com/vmwarelab
-[credits-maher-alasfar-github]: https://github.com/vmwarelab/cloud-init-scripts
 [credits-owen-reynolds-twitter]: https://twitter.com/OVDamn
 [credits-owen-reynolds-github]: https://github.com/getvpro/Build-Packer/blob/master/Scripts/Install-VMTools.ps1
 [download-git]: https://git-scm.com/downloads
@@ -671,7 +663,7 @@ Happy building!!!
 [download-linux-redhat-server-7]: https://access.redhat.com/downloads/content/69/
 [download-linux-rocky-server-8]: https://download.rockylinux.org/pub/rocky/8/isos/x86_64/
 [download-linux-ubuntu-server-18-04-lts]: http://cdimage.ubuntu.com/ubuntu/releases/18.04.5/release/
-[download-linux-ubuntu-server-20-04-lts]: https://releases.ubuntu.com/20.04.1/
+[download-linux-ubuntu-server-20-04-lts]: https://releases.ubuntu.com/20.04/
 [hashicorp]: https://www.hashicorp.com/
 [iso]: https://en.wikipedia.org/wiki/ISO_image
 [microsoft-kms]: https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys

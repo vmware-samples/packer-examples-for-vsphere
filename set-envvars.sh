@@ -136,20 +136,20 @@ export PKR_VAR_vsphere_folder="${vsphere_folder}"
 export PKR_VAR_common_content_library_name="${common_content_library_name}"
 export PKR_VAR_common_iso_datastore="${common_iso_datastore}"
 
-echo '> Setting the common virtual machine settings.'
+echo '> Setting the common virtual machine settings...'
 # Virtual Machine Settings
 export PKR_VAR_common_vm_version="${common_vm_version}"
 export PKR_VAR_common_tools_upgrade_policy="${common_tools_upgrade_policy}"
 export PKR_VAR_common_remove_cdrom="${common_remove_cdrom}"
 
-echo '> Setting the common template and content library settings.'
+echo '> Setting the common template and content library settings...'
 # Template and Content Library Settings
 export PKR_VAR_common_template_conversion="${common_template_conversion}"
 export PKR_VAR_common_content_library_ovf="${common_content_library_ovf}"
 export PKR_VAR_common_content_library_destroy="${common_content_library_destroy}"
 export PKR_VAR_common_content_library_skip_export="${common_content_library_skip_export}"
 
-echo '> Setting the common boot and provisioning settings.'
+echo '> Setting the common boot and provisioning settings...'
 # Boot and Provisioning Settings
 export PKR_VAR_common_data_source="${common_data_source}"
 export PKR_VAR_common_http_ip="${common_http_ip}"

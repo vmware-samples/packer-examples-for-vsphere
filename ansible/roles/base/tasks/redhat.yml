@@ -1,5 +1,5 @@
 ---
-- name: "Red Hat Subscription Manager Status"
+- name: "Checking Red Hat Subscription Manager status."
   shell: "subscription-manager refresh"
   when: "ansible_facts['distribution'] == 'RedHat'"
 - name: "Updating the guest operating system."

@@ -1,0 +1,11 @@
+---
+- name: "Prepare {{ ansible_facts['distribution'] }} guest operating system."
+  include_tasks: "{{ ansible_facts['distribution'] | lower }}.yml"
+  when: "ansible_facts['distribution'] == 'Ubuntu'"
+- name: "Prepare {{ ansible_facts['distribution'] }} ansible_facts['os_family']."
+  include_tasks: redhat.yml
+  when: "ansible_facts['distribution'] in ['RedHat', 'CentOS', 'Rocky', 'AlmaLinux']"
+- name: "Prepare {{ ansible_facts['os_family'] }} guest operating system."
+  include_tasks: "{{ ansible_facts['lsb']['codename'] | lower }}.yml"
+  when: "ansible_facts['os_family'] == 'VMware Photon OS'"
+  

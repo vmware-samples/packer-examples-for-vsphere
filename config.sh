@@ -22,12 +22,12 @@ CONFIG_PATH=${1:-${SCRIPT_PATH}/config}
 mkdir -p "$CONFIG_PATH"
 ### Copy the example input variables.
 echo
-echo "> Copying the example input variables ..."
+echo "> Copying the example input variables..."
 cp -av "$SCRIPT_PATH"/builds/*.pkrvars.hcl.example "$CONFIG_PATH"
 
 ### Rename the example input variables.
 echo
-echo "> Renaming the example input variables ..."
+echo "> Renaming the example input variables..."
 srcext=".pkrvars.hcl.example"
 dstext=".pkrvars.hcl"
 

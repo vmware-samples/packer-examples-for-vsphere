@@ -1,6 +1,6 @@
 # Maintainers
 
-The following are active maintainers of this project.
+The following are maintainers of this project.
 
 **Ryan Johnson**  
 Staff II Solutions Architect, VMware, Inc.  

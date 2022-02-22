@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## Release v22.02
+
+> Release Date: 2022-02-22
+
+* Updates the configuration of Linux machine images to use the Ansible roles instead of shell scripts.
+* Updates `required_versions` for `packer` to `>= v1.7.10`.
+* Updates `required_versons` for `terraform` to `>= v1.1.5`.
+
 ## Release v22.01
 
 > Release Date: 2022-01-21

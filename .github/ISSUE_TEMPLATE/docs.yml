@@ -30,14 +30,9 @@ body:
       description: Please provide the version of this project.
       options:
         - main
-        - 22.01 (Default)
+        - 22.02 (Default)
+        - 22.01
         - 21.11
-        - 21.10.1
-        - 21.1
-        - 21.09.1
-        - 21.09
-        - 21.08
-        - 21.07
     validations:
       required: true
   - type: textarea

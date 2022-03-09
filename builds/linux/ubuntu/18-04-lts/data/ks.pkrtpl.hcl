@@ -48,12 +48,12 @@ d-i partman-auto/expert_recipe string                     \
     .                                                     \
     1024 1024 1024 linux-swap                             \
     $lvmok{ }                                             \
-    lv_name{ lv_swap }                             	      \
+    lv_name{ lv_swap }                             	   \
     in_vg { sysvg }                                       \
     method{ swap }                                        \
     format{ }                                             \
     label { SWAPFS }                                      \
-    .						                                          \
+    .                                                     \
     12288 12288 -1 xfs                                    \
     $lvmok{ }                                             \
     mountpoint{ / }                                       \
@@ -69,7 +69,7 @@ d-i partman-auto/expert_recipe string                     \
     $lvmok{ }                                             \
     mountpoint{ /home }                                   \
     lv_name{ lv_home }                                    \
-    in_vg { sysvg }                                	      \
+    in_vg { sysvg }                                	   \
     method{ format }                                      \
     format{ }                                             \
     use_filesystem{ }                                     \
@@ -82,7 +82,7 @@ d-i partman-auto/expert_recipe string                     \
     $lvmok{ }                                             \
     mountpoint{ /opt }                                    \
     lv_name{ lv_opt }                                     \
-    in_vg { sysvg }                                	      \
+    in_vg { sysvg }                                       \
     method{ format }                                      \
     format{ }                                             \
     use_filesystem{ }                                     \
@@ -94,7 +94,7 @@ d-i partman-auto/expert_recipe string                     \
     $lvmok{ }                                             \
     mountpoint{ /tmp }                                    \
     lv_name{ lv_tmp }                                     \
-    in_vg { sysvg }                                	      \
+    in_vg { sysvg }                                	   \
     method{ format }                                      \
     format{ }                                             \
     use_filesystem{ }                                     \
@@ -108,7 +108,7 @@ d-i partman-auto/expert_recipe string                     \
     $lvmok{ }                                             \
     mountpoint{ /var }                                    \
     lv_name{ lv_var }                                     \
-    in_vg { sysvg }                                	      \
+    in_vg { sysvg }                                	   \
     method{ format }                                      \
     format{ }                                             \
     use_filesystem{ }                                     \
@@ -120,7 +120,7 @@ d-i partman-auto/expert_recipe string                     \
     $lvmok{ }                                             \
     mountpoint{ /var/log }                                \
     lv_name{ lv_log }                                     \
-    in_vg { sysvg }                                	      \
+    in_vg { sysvg }                                	   \
     method{ format }                                      \
     format{ }                                             \
     use_filesystem{ }                                     \
@@ -134,7 +134,7 @@ d-i partman-auto/expert_recipe string                     \
     $lvmok{ }                                             \
     mountpoint{ /var/log/audit }                          \
     lv_name{ lv_audit }                                   \
-    in_vg { sysvg }                                	      \
+    in_vg { sysvg }                                	   \
     method{ format }                                      \
     format{ }                                             \
     use_filesystem{ }                                     \
@@ -163,7 +163,7 @@ d-i passwd/root-password-crypted password ${build_password_encrypted}
 
 # Package Configuration
 tasksel tasksel/first standard
-d-i pkgsel/include string openssh-server open-vm-tools ansible
+d-i pkgsel/include string openssh-server open-vm-tools
 d-i pkgsel/install-language-support boolean false
 
 # Disable Automatic Package Updates

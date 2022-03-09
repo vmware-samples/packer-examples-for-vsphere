@@ -103,7 +103,7 @@ skipx
 /usr/sbin/subscription-manager repos --enable "rhel--optional-rpms" --enable "rhel--extras-rpms" --enable "rhel-ha-for-rhel-*-server-rpms"
 yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 yum makecache
-yum install -y sudo open-vm-tools perl ansible
+yum install -y sudo open-vm-tools perl
 echo "${build_username} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/${build_username}
 sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
 %end

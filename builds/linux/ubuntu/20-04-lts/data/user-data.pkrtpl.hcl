@@ -188,7 +188,6 @@ autoinstall:
     - openssh-server
     - open-vm-tools
     - cloud-init
-    - ansible
   user-data:
     disable_root: false
     timezone: ${vm_guest_os_timezone}

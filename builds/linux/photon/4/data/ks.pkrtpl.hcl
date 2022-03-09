@@ -19,8 +19,7 @@
         "initramfs",
         "sudo",
         "vim",
-        "cloud-utils",
-        "ansible"
+        "cloud-utils"
     ],
     "postinstall": [
         "#!/bin/sh",

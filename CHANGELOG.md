@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v22.03
+
+* Updates `required_versions` for `packer` to `>= v1.8.0`.
+* Updates `required_versons` for `terraform` to `>= v1.1.7`.
+* Updates `required_versons` for `hashicorp/vsphere` to `>= v2.1.1`.
+
+> Release Date: 2022-03-17
+
 ## Release v22.02
 
 > Release Date: 2022-02-22

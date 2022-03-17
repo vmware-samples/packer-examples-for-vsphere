@@ -30,7 +30,8 @@ body:
       description: Please provide the version of this project.
       options:
         - main
-        - 22.02 (Default)
+        - 22.03 (Default)
+        - 22.02
         - 22.01
         - 21.11
     validations:

@@ -91,7 +91,7 @@ source "vsphere-iso" "linux-centos-stream" {
   boot_order    = var.vm_boot_order
   boot_wait     = var.vm_boot_wait
   boot_command = [
-    "up",
+    "<up>",
     "e",
     "<down><down><end><wait>",
     "text ${local.data_source_command}",

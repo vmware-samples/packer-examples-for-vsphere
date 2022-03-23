@@ -137,7 +137,7 @@ build {
     roles_path    = "${path.cwd}/ansible/roles"
     ansible_env_vars = [
       "ANSIBLE_CONFIG=${path.cwd}/ansible/ansible.cfg",
-      "ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3"
+      "ANSIBLE_PYTHON_INTERPRETER=/usr/libexec/platform-python"
     ]
     extra_arguments = [
       "--extra-vars", "display_skipped_hosts=false",

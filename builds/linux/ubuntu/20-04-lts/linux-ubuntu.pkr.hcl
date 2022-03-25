@@ -35,7 +35,7 @@ locals {
       vm_guest_os_timezone     = var.vm_guest_os_timezone
     })
   }
-  data_source_command = var.common_data_source == "http" ? "ds=\"nocloud-net;seedfrom=http://{{.HTTPIP}}:{{.HTTPPort}}/\"" : "ds\"=nocloud\""
+  data_source_command = var.common_data_source == "http" ? "ds=\"nocloud-net;seedfrom=http://{{.HTTPIP}}:{{.HTTPPort}}/\"" : "ds=\"nocloud\""
 }
 
 //  BLOCK: source

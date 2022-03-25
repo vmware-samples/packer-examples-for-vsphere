@@ -123,27 +123,13 @@ until [ "$selection" = "0" ]; do
   read -r selection
   echo ""
   case $selection in
-    1 ) clear ; menu_option_1 ; press_enter ;;
-    2 ) clear ; menu_option_2 ; press_enter ;;
-    3 ) clear ; menu_option_3 ; press_enter ;;
-    4 ) clear ; menu_option_4 ; press_enter ;;
-    5 ) clear ; menu_option_5 ; press_enter ;;
-    6 ) clear ; menu_option_6 ; press_enter ;;
-    7 ) clear ; menu_option_7 ; press_enter ;;
-    8 ) clear ; menu_option_8 ; press_enter ;;
-    9 ) clear ; menu_option_9 ; press_enter ;;
-    10 ) clear ; menu_option_10 ; press_enter ;;
-    11 ) clear ; menu_option_11 ; press_enter ;;
-    12 ) clear ; menu_option_12 ; press_enter ;;
-    13 ) clear ; menu_option_13 ; press_enter ;;
-    14 ) clear ; menu_option_14 ; press_enter ;;
-    15 ) clear ; menu_option_15 ; press_enter ;;
-    16 ) clear ; menu_option_16 ; press_enter ;;
-    17 ) clear ; menu_option_17 ; press_enter ;;
-    18 ) clear ; menu_option_18 ; press_enter ;;
-    19 ) clear ; menu_option_19 ; press_enter ;;
-    20 ) clear ; menu_option_20 ; press_enter ;;
-    21 ) clear ; menu_option_21 ; press_enter ;;
+{{- $selection_index := 0 }}
+{{- range $menu := (ds "build").menu }}
+{{- range $submenu := $menu.submenu -}}
+{{ $selection_index = math.Add $selection_index 1 }}
+    {{ $selection_index }} ) clear ; menu_option_{{ $selection_index }} ; press_enter ;;
+{{- end }}
+{{- end }}
     I ) clear ; info ; press_enter ;;
     Q ) clear ; exit ;;
     * ) clear ; incorrect_selection ; press_enter ;;

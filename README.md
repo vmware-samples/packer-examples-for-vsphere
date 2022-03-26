@@ -106,6 +106,8 @@ Download the [**latest**](https://github.com/vmware-samples/packer-examples-for-
 
 You may also clone `main` for the latest prerelease updates.
 
+> ⚠️ *WARNING*: Do *not* fork the project and make changes to your fork that may expose your sensitive information.
+
 **Example**:
 
 ```console

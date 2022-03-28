@@ -112,8 +112,6 @@ Download the [**latest**](https://github.com/vmware-samples/packer-examples-for-
 
 You may also clone `main` for the latest prerelease updates.
 
-> ⚠️ *WARNING*: Do *not* fork the project and make changes to your fork that may expose your sensitive information.
-
 **Example**:
 
 ```console
@@ -187,7 +185,8 @@ The files are distributed in the following directories.
 * **`manifests`** - manifests created after the completion of the machine image build.
 * **`terraform`** - contains example Terraform plans to test machine image builds.
 
-> **NOTE**: The project is transitioning to use Ansible role instead of scripts, where possible.
+> ⚠️ **WARNING**: 
+> When forking the project for upstream contribution, please be mindful not to make changes that may expose your sensitive information, such as passwords, keys, certificates, etc.
 
 ### Step 2 - Download the Guest Operating Systems ISOs
 
@@ -644,9 +643,7 @@ rainpole@macos> packer build -force \
       builds/windows/server/2022
 ```
 
-Happy building!!!
-
-### Generate a custom build script
+### Generate a Custom Build Script
 
 The build script (`./build.sh`) can be generated using a template (`./build.tmpl`) and a configuration file in YAML (`./build.yaml`).
 
@@ -655,6 +652,8 @@ Generate a custom build script:
 ```console
 rainpole@macos> gomplate -c build.yaml -f build.tmpl -o build.sh
 ```
+
+Happy building!!!
 
 ## Troubleshoot
 

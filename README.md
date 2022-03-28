@@ -186,7 +186,7 @@ The files are distributed in the following directories.
 * **`terraform`** - contains example Terraform plans to test machine image builds.
 
 > ⚠️ **WARNING**:
-> 
+>
 > When forking the project for upstream contribution, please be mindful not to make changes that may expose your sensitive information, such as passwords, keys, certificates, etc.
 
 ### Step 2 - Download the Guest Operating Systems ISOs

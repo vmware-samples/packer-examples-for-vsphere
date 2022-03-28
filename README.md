@@ -93,6 +93,12 @@ The following software packages must be installed on the Packer host:
   - macOS:
     - `brew tap hashicorp/tap`
     - `brew install hashicorp/tap/terraform`
+* [Gomplate](gomplate-install) 3.10.0 or higher.
+  - Ubuntu:
+    - `sudo curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/<version>/gomplate_<os>-<arch>`
+    - `sudo chmod 755 /usr/local/bin/gomplate`
+  - macOS:
+    - `brew install gomplate`
 
 **Platform**:
 * VMware Cloud Foundation 4.2 or higher, or
@@ -640,6 +646,16 @@ rainpole@macos> packer build -force \
 
 Happy building!!!
 
+### Generate a custom build script
+
+The build script (`./build.sh`) can be generated using a template (`./build.tmpl`) and a configuration file in YAML (`./build.yaml`).
+
+Generate a custom build script:
+
+```console
+rainpole@macos> gomplate -c build.yaml -f build.tmpl -o build.sh
+```
+
 ## Troubleshoot
 
 * Read [Debugging Packer Builds][packer-debug].
@@ -666,6 +682,7 @@ Happy building!!!
 [download-linux-rocky-server-8]: https://download.rockylinux.org/pub/rocky/8/isos/x86_64/
 [download-linux-ubuntu-server-18-04-lts]: http://cdimage.ubuntu.com/ubuntu/releases/18.04.5/release/
 [download-linux-ubuntu-server-20-04-lts]: https://releases.ubuntu.com/20.04/
+[gomplate-install]: https://gomplate.ca/
 [hashicorp]: https://www.hashicorp.com/
 [iso]: https://en.wikipedia.org/wiki/ISO_image
 [microsoft-kms]: https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys

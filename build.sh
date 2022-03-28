@@ -114,7 +114,7 @@ menu_option_3() {
 
 menu_option_4() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/rhel/8/
-  echo -e "\nCONFIRM: Build a Red Hat Enerprise Linux 8 Server Template for VMware vSphere?"
+  echo -e "\nCONFIRM: Build a Red Hat Enterprise Linux 8 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -122,8 +122,8 @@ menu_option_4() {
     exit 1
   fi
 
-  ### Build an Red Hat Enerprise Linux 8 Server Template for VMware vSphere. ###
-  echo "Building a Red Hat Enerprise Linux 8 Server Template for VMware vSphere..."
+  ### Build a Red Hat Enterprise Linux 8 Template for VMware vSphere. ###
+  echo "Building a Red Hat Enterprise Linux 8 Template for VMware vSphere..."
 
   ### Initialize HashiCorp Packer and required plugins. ###
   echo "Initializing HashiCorp Packer and required plugins..."
@@ -146,7 +146,7 @@ menu_option_4() {
 
 menu_option_5() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/rhel/7/
-  echo -e "\nCONFIRM: Build a Red Hat Enerprise Linux 7 Server Template for VMware vSphere?"
+  echo -e "\nCONFIRM: Build a Red Hat Enterprise Linux 7 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -154,8 +154,8 @@ menu_option_5() {
     exit 1
   fi
 
-  ### Build an Red Hat Enerprise Linux 7 Server Template for VMware vSphere. ###
-  echo "Building a Red Hat Enerprise Linux 7 Server Template for VMware vSphere..."
+  ### Build a Red Hat Enterprise Linux 7 Template for VMware vSphere. ###
+  echo "Building a Red Hat Enterprise Linux 7 Template for VMware vSphere..."
 
   ### Initialize HashiCorp Packer and required plugins. ###
   echo "Initializing HashiCorp Packer and required plugins..."
@@ -331,9 +331,10 @@ menu_option_10() {
   echo "Done."
 }
 
+
 menu_option_11() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2022/
-  echo -e "\nCONFIRM: Build all Microsoft Windows Server 2022 Templates for VMware vSphere?"
+  echo -e "\nCONFIRM: Build all Windows Server 2022 Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -341,8 +342,8 @@ menu_option_11() {
     exit 1
   fi
 
-  ### Build Microsoft Windows Server 2022 Templates for VMware vSphere. ###
-  echo "Building all Microsoft Windows Server 2022 Templates for VMware vSphere..."
+  ### Build all Windows Server 2022 Templates for VMware vSphere. ###
+  echo "Building all Windows Server 2022 Templates for VMware vSphere..."
 
   ### Initialize HashiCorp Packer and required plugins. ###
   echo "Initializing HashiCorp Packer and required plugins..."
@@ -422,7 +423,7 @@ menu_option_13() {
 
 menu_option_14() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2019/
-  echo -e "\nCONFIRM: Build all Microsoft Windows Server 2019 Templates for VMware vSphere?"
+  echo -e "\nCONFIRM: Build all Windows Server 2019 Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -430,8 +431,8 @@ menu_option_14() {
     exit 1
   fi
 
-  ### Build Microsoft Windows Server 2019 Templates for VMware vSphere. ###
-  echo "Building all Microsoft Windows Server 2019 Templates for VMware vSphere..."
+  ### Build all Windows Server 2019 Templates for VMware vSphere. ###
+  echo "Building all Windows Server 2019 Templates for VMware vSphere..."
 
   ### Initialize HashiCorp Packer and required plugins. ###
   echo "Initializing HashiCorp Packer and required plugins..."
@@ -511,7 +512,7 @@ menu_option_16() {
 
 menu_option_17() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2016/
-  echo -e "\nCONFIRM: Build all Microsoft Windows Server 2016 Templates for VMware vSphere?"
+  echo -e "\nCONFIRM: Build all Windows Server 2016 Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -519,8 +520,8 @@ menu_option_17() {
     exit 1
   fi
 
-  ### Build Microsoft Windows Server 2016 Templates for VMware vSphere. ###
-  echo "Building all Microsoft Windows Server 2016 Templates for VMware vSphere..."
+  ### Build all Windows Server 2016 Templates for VMware vSphere. ###
+  echo "Building all Windows Server 2016 Templates for VMware vSphere..."
 
   ### Initialize HashiCorp Packer and required plugins. ###
   echo "Initializing HashiCorp Packer and required plugins..."
@@ -579,7 +580,7 @@ menu_option_19() {
   fi
 
   ### Build Microsoft Windows Server 2016 Datacenter Templates for VMware vSphere. ###
-  echo "Building a Microsoft Windows Server 2016 Datacenter Templates for VMware vSphere..."
+  echo "Building Microsoft Windows Server 2016 Datacenter Templates for VMware vSphere..."
 
   ### Initialize HashiCorp Packer and required plugins. ###
   echo "Initializing HashiCorp Packer and required plugins..."
@@ -600,7 +601,7 @@ menu_option_19() {
 
 menu_option_20() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/11/
-  echo -e "\nCONFIRM: Build Microsoft Windows 11 Template for VMware vSphere?"
+  echo -e "\nCONFIRM: Build a Windows 11 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -608,8 +609,8 @@ menu_option_20() {
     exit 1
   fi
 
-  ### Build Microsoft Windows 11 for VMware vSphere. ###
-  echo "Building a Microsoft Microsoft Windows 11 Template for VMware vSphere..."
+  ### Build a Windows 11 Template for VMware vSphere. ###
+  echo "Building a Windows 11 Template for VMware vSphere..."
 
   ### Initialize HashiCorp Packer and required plugins. ###
   echo "Initializing HashiCorp Packer and required plugins..."
@@ -629,7 +630,7 @@ menu_option_20() {
 
 menu_option_21() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/10/
-  echo -e "\nCONFIRM: Build Microsoft Windows 10 Template for VMware vSphere?"
+  echo -e "\nCONFIRM: Build a Windows 10 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -637,8 +638,8 @@ menu_option_21() {
     exit 1
   fi
 
-  ### Build Microsoft Windows 10 for VMware vSphere. ###
-  echo "Building a Microsoft Microsoft Windows 10 Template for VMware vSphere..."
+  ### Build a Windows 10 Template for VMware vSphere. ###
+  echo "Building a Windows 10 Template for VMware vSphere..."
 
   ### Initialize HashiCorp Packer and required plugins. ###
   echo "Initializing HashiCorp Packer and required plugins..."

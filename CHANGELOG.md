@@ -1,12 +1,25 @@
 # CHANGELOG
 
+## v22.next
+
+> Release Date: Unreleased
+
+#### Enhancements:
+* Adds an option to generate a custom build script. (GH-188)
+
+#### Bugfixes
+* Updates the Python interpreter for Ansible on AlmaLinux to use `/usr/libexec/platform-python`. (GH-182)
+
+#### Chores
+* Updates the Ubuntu 20.04 LTS .iso to `v20.04.4`. (GH-184)
+
 ## v22.03
+
+> Release Date: 2022-03-17
 
 * Updates `required_versions` for `packer` to `>= v1.8.0`.
 * Updates `required_versons` for `terraform` to `>= v1.1.7`.
 * Updates `required_versons` for `hashicorp/vsphere` to `>= v2.1.1`.
-
-> Release Date: 2022-03-17
 
 ## Release v22.02
 

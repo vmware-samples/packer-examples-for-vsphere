@@ -45,7 +45,7 @@ vm_network_card          = "vmxnet3"
 iso_path           = "iso/windows/server"
 iso_file           = "en-us_windows_server_2022_updated_jan_2022_x64_dvd_f7ca3012.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "6BCE87FD4A0E4FE858E4FAB97290C8C51F0F65A016ACA8A8C80902470B90F121"
+iso_checksum_value = "662366CB186381ABDA2D326BB4A6CFD383F5924B35CB3A3797DC712C3208EC8D"
 
 // Boot Settings
 vm_boot_order       = "disk,cdrom"

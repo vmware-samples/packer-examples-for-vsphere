@@ -4,17 +4,17 @@
 
 > Release Date: Unreleased
 
-**Enhancements**:
+💫  **Enhancement**:
 * Adds an option to generate a custom build script. (GH-188)
 
-**Bugfixes**:
+🐞 **Bugfix**:
 * Updates the Python interpreter for Ansible on AlmaLinux to use `/usr/libexec/platform-python`. (GH-182)
 
-**Chores**:
+🧹 **Chore**:
 * Updates the Windows Server 2022 .iso to February 2022 release. (GH-192)
 * Updates the Ubuntu 20.04 LTS .iso to `v20.04.4`. (GH-184)
 
-## v22.03
+## [v22.03](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.03)
 
 > Release Date: 2022-03-17
 
@@ -22,7 +22,7 @@
 * Updates `required_versons` for `terraform` to `>= v1.1.7`.
 * Updates `required_versons` for `hashicorp/vsphere` to `>= v2.1.1`.
 
-## Release v22.02
+## [v22.02](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.02)
 
 > Release Date: 2022-02-22
 
@@ -30,7 +30,7 @@
 * Updates `required_versions` for `packer` to `>= v1.7.10`.
 * Updates `required_versons` for `terraform` to `>= v1.1.5`.
 
-## Release v22.01
+## [v22.01](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.01)
 
 > Release Date: 2022-01-21
 
@@ -47,7 +47,7 @@
 * Adds a GitHub Action on pull requests to check code quality using linters.
 * Updates all of project code to address issues found by the linter(s).
 
-## Release v21.11
+## [v21.11](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.11)
 
 > Release Date: 2021-11-09
 
@@ -67,7 +67,7 @@
 * Adds example Terraform plans for deployment testing.
 * Adds an Ansible playbook example to create a custom role in vSphere for Packer.
 
-## Release v21.10.01
+## [v21.10.01](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v21.10.01)
 
 > Release Date: 2021-10-20
 
@@ -80,7 +80,7 @@
 * Adds Microsoft Windows 11 Professional as experimental until `vsphere-iso` supports vTPM.
 * Adds support for `skip_import` Adds to `packer-plugin-vsphere` in `v1.0.2`. When set to `true` the virtual machine will not be imported into the content library. This is useful for testing / debugging. Defaults to false.
 
-## Release v21.10
+## [v21.10](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v21.10)
 
 > Release Date: 2021-10-11
 
@@ -124,7 +124,7 @@
 * Bumped Packer to `>= 1.7.6`.
 * Thanks to the new contributors: @sestegra, @metabsdm, and @gcblack!
 
-## Release v21.09.1
+## [v21.09.1](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v21.09.1)
 
 > Release Date: 2021-09-16
 
@@ -138,7 +138,7 @@
 * Adds disclaimers and Updates descriptions in script files.
 * Updates README.md.
 
-## Release v21.09
+## [v21.09](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v21.09)
 
 > Release Date: 2021-09-07
 
@@ -153,7 +153,7 @@
 * Updates CONTRIBUTING.md.
 * Updates README.md.
 
-## Release v21.08
+## [v21.08](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v21.06)
 
 > Release Date: 2021-08-18
 
@@ -180,7 +180,7 @@
 * Adds MAINTAINERS.md.
 * Updates README.md.
 
-## Release v21.07
+## [v21.07](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v21.07)
 
 > Release Date: 2021-07-21
 

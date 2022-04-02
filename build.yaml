@@ -1,0 +1,112 @@
+menu:
+  - entry: "Linux Distribution"
+    build:
+      var_files:
+        - "vsphere.pkrvars.hcl"
+        - "build.pkrvars.hcl"
+        - "ansible.pkrvars.hcl"
+        - "proxy.pkrvars.hcl"
+        - "common.pkrvars.hcl"
+    submenu:
+      - entry: "VMware Photon OS 4"
+        build:
+          path: "builds/linux/photon/4/"
+      - entry: "Ubuntu Server 20.04 LTS"
+        build:
+          path: "builds/linux/ubuntu/20-04-lts/"
+      - entry: "Ubuntu Server 18.04 LTS"
+        build:
+          path: "builds/linux/ubuntu/18-04-lts/"
+      - entry: "Red Hat Enterprise Linux 8"
+        build:
+          path: "builds/linux/rhel/8/"
+          var_files:
+            - "rhsm.pkrvars.hcl"
+      - entry: "Red Hat Enterprise Linux 7"
+        build:
+          path: "builds/linux/rhel/7/"
+          var_files:
+            - "rhsm.pkrvars.hcl"
+      - entry: "AlmaLinux OS 8"
+        message: "an AlmaLinux OS 8 Template"
+        build:
+          path: "builds/linux/almalinux/8/"
+      - entry: "Rocky Linux 8"
+        build:
+          path: "builds/linux/rocky/8/"
+      - entry: "CentOS Stream 8"
+        build:
+          path: "builds/linux/centos/8-stream/"
+      - entry: "CentOS Linux 8"
+        build:
+          path: "builds/linux/centos/8/"
+      - entry: "CentOS Linux 7"
+        build:
+          path: "builds/linux/centos/7/"
+  - entry: "Microsoft Windows"
+    build:
+      var_files:
+        - "vsphere.pkrvars.hcl"
+        - "build.pkrvars.hcl"
+        - "common.pkrvars.hcl"
+    submenu:
+      - entry: "Windows Server 2022 - All"
+        message: "all Windows Server 2022 Templates"
+        build:
+          path: "builds/windows/server/2022/"
+      - entry: "Windows Server 2022 - Standard Only"
+        message: "Microsoft Windows Server 2022 Standard Templates"
+        build:
+          path: "builds/windows/server/2022/"
+          only:
+            - vsphere-iso.windows-server-standard-dexp
+            - vsphere-iso.windows-server-standard-core
+      - entry: "Windows Server 2022 - Datacenter Only"
+        message: "Microsoft Windows Server 2022 Datacenter Templates"
+        build:
+          path: "builds/windows/server/2022/"
+          only:
+            - vsphere-iso.windows-server-datacenter-dexp
+            - vsphere-iso.windows-server-datacenter-core
+      - entry: "Windows Server 2019 - All"
+        message: "all Windows Server 2019 Templates"
+        build:
+          path: "builds/windows/server/2019/"
+      - entry: "Windows Server 2019 - Standard Only"
+        message: "Microsoft Windows Server 2019 Standard Templates"
+        build:
+          path: "builds/windows/server/2019/"
+          only:
+            - vsphere-iso.windows-server-standard-dexp
+            - vsphere-iso.windows-server-standard-core
+      - entry: "Windows Server 2019 - Datacenter Only"
+        message: "Microsoft Windows Server 2019 Datacenter Templates"
+        build:
+          path: "builds/windows/server/2019/"
+          only:
+            - vsphere-iso.windows-server-datacenter-dexp
+            - vsphere-iso.windows-server-datacenter-core
+      - entry: "Windows Server 2016 - All"
+        message: "all Windows Server 2016 Templates"
+        build:
+          path: "builds/windows/server/2016/"
+      - entry: "Windows Server 2016 - Standard Only"
+        message: "Microsoft Windows Server 2016 Standard Templates"
+        build:
+          path: "builds/windows/server/2016/"
+          only:
+            - vsphere-iso.windows-server-standard-dexp
+            - vsphere-iso.windows-server-standard-core
+      - entry: "Windows Server 2016 - Datacenter Only"
+        message: "Microsoft Windows Server 2016 Datacenter Templates"
+        build:
+          path: "builds/windows/server/2016/"
+          only:
+            - vsphere-iso.windows-server-datacenter-dexp
+            - vsphere-iso.windows-server-datacenter-core
+      - entry: "Windows 11"
+        build:
+          path: "builds/windows/desktop/11/"
+      - entry: "Windows 10"
+        build:
+          path: "builds/windows/desktop/10/"

@@ -1,0 +1,137 @@
+#!/usr/bin/env bash
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+# WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+# COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+# OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+set -e
+
+follow_link() {
+  FILE="$1"
+  while [ -h "$FILE" ]; do
+    # On Mac OS, readlink -f doesn't work.
+    FILE="$(readlink "$FILE")"
+  done
+  echo "$FILE"
+}
+
+SCRIPT_PATH=$(realpath "$(dirname "$(follow_link "$0")")")
+CONFIG_PATH=$(realpath "${1:-${SCRIPT_PATH}/config}")
+
+{{- $func_index := 0 }}
+{{ range $menu := (ds "build").menu -}}
+{{ range $submenu := $menu.submenu -}}
+{{ $func_index = math.Add $func_index 1 }}
+menu_option_{{ $func_index }}() {
+  INPUT_PATH="$SCRIPT_PATH"/{{ $submenu.build.path }}
+  {{ $message := "" -}}
+  {{- if (coll.Has $submenu "message") -}}
+  {{- $message = $submenu.message -}}
+  {{- else -}}
+  {{- $message = printf "a %s Template" $submenu.entry -}}
+  {{- end -}}
+  echo -e "\nCONFIRM: Build {{ $message }} for VMware vSphere?"
+  echo -e "\nContinue? (y/n)"
+  read -r REPLY
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+    exit 1
+  fi
+
+  ### Build {{ $message }} for VMware vSphere. ###
+  echo "Building {{ $message }} for VMware vSphere..."
+
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
+  packer init "$INPUT_PATH"
+
+  ### Start the Build. ###
+  echo "Starting the build...."
+  packer build -force \
+  {{- if (coll.Has $submenu.build "only") }}
+      --only {{ join $submenu.build.only "," }} \
+  {{- end -}}
+  {{- if (coll.Has $menu.build "var_files") -}}
+  {{ range $menu.build.var_files }}
+      -var-file="$CONFIG_PATH/{{ . }}" \
+  {{- end -}}
+  {{- end -}}
+  {{- if (coll.Has $submenu.build "var_files") -}}
+  {{ range $submenu.build.var_files }}
+      -var-file="$CONFIG_PATH/{{ . }}" \
+  {{- end -}}
+  {{- end }}
+      "$INPUT_PATH"
+
+  ### All done. ###
+  echo "Done."
+}
+{{ end }}
+{{ end -}}
+
+press_enter() {
+  cd "$SCRIPT_PATH"
+  echo -n "Press Enter to continue."
+  read -r
+  clear
+}
+
+info() {
+  echo "License: BSD-2"
+  echo ""
+  echo "For more information, review the project README."
+  echo "GitHub Repository: github.com/vmware-samples/packer-examples-for-vsphere/"
+  read -r
+}
+
+incorrect_selection() {
+  echo "Do or do not. There is no try."
+}
+
+until [ "$selection" = "0" ]; do
+  clear
+  echo ""
+  echo "    ____             __                ____        _ __    __     "
+  echo "   / __ \____ ______/ /_____  _____   / __ )__  __(_) /___/ /____ "
+  echo "  / /_/ / __  / ___/ //_/ _ \/ ___/  / __  / / / / / / __  / ___/ "
+  echo " / ____/ /_/ / /__/ ,< /  __/ /     / /_/ / /_/ / / / /_/ (__  )  "
+  echo "/_/    \__,_/\___/_/|_|\___/_/     /_____/\__,_/_/_/\__,_/____/   "
+  echo ""
+  echo -n "  Select a HashiCorp Packer build for VMware vSphere:"
+  echo ""
+  echo ""
+{{- $menu_index := 0 }}
+{{- range $menu := (ds "build").menu }}
+  echo "      {{ $menu.entry }}:"
+  echo ""
+{{- range $submenu := $menu.submenu -}}
+{{ $menu_index = math.Add $menu_index 1 }}
+{{- if (lt $menu_index 10) }}
+  echo "    	 {{ $menu_index }}  -  {{ $submenu.entry }}"
+{{- else }}
+  echo "    	{{ $menu_index }}  -  {{ $submenu.entry }}"
+{{- end }}
+{{- end }}
+  echo ""
+{{- end }}
+  echo "      Other:"
+  echo ""
+  echo "        I   -  Information"
+  echo "        Q   -  Quit"
+  echo ""
+  read -r selection
+  echo ""
+  case $selection in
+{{- $selection_index := 0 }}
+{{- range $menu := (ds "build").menu }}
+{{- range $submenu := $menu.submenu -}}
+{{ $selection_index = math.Add $selection_index 1 }}
+    {{ $selection_index }} ) clear ; menu_option_{{ $selection_index }} ; press_enter ;;
+{{- end }}
+{{- end }}
+    I ) clear ; info ; press_enter ;;
+    Q ) clear ; exit ;;
+    * ) clear ; incorrect_selection ; press_enter ;;
+  esac
+done

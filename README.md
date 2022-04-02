@@ -93,6 +93,12 @@ The following software packages must be installed on the Packer host:
   - macOS:
     - `brew tap hashicorp/tap`
     - `brew install hashicorp/tap/terraform`
+* [Gomplate](gomplate-install) 3.10.0 or higher.
+  - Ubuntu:
+    - `sudo curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/<version>/gomplate_<os>-<arch>`
+    - `sudo chmod 755 /usr/local/bin/gomplate`
+  - macOS:
+    - `brew install gomplate`
 
 **Platform**:
 * VMware Cloud Foundation 4.2 or higher, or
@@ -179,7 +185,9 @@ The files are distributed in the following directories.
 * **`manifests`** - manifests created after the completion of the machine image build.
 * **`terraform`** - contains example Terraform plans to test machine image builds.
 
-> **NOTE**: The project is transitioning to use Ansible role instead of scripts, where possible.
+> ⚠️ **WARNING**:
+>
+> When forking the project for upstream contribution, please be mindful not to make changes that may expose your sensitive information, such as passwords, keys, certificates, etc.
 
 ### Step 2 - Download the Guest Operating Systems ISOs
 
@@ -636,6 +644,16 @@ rainpole@macos> packer build -force \
       builds/windows/server/2022
 ```
 
+### Generate a Custom Build Script
+
+The build script (`./build.sh`) can be generated using a template (`./build.tmpl`) and a configuration file in YAML (`./build.yaml`).
+
+Generate a custom build script:
+
+```console
+rainpole@macos> gomplate -c build.yaml -f build.tmpl -o build.sh
+```
+
 Happy building!!!
 
 ## Troubleshoot
@@ -664,6 +682,7 @@ Happy building!!!
 [download-linux-rocky-server-8]: https://download.rockylinux.org/pub/rocky/8/isos/x86_64/
 [download-linux-ubuntu-server-18-04-lts]: http://cdimage.ubuntu.com/ubuntu/releases/18.04.5/release/
 [download-linux-ubuntu-server-20-04-lts]: https://releases.ubuntu.com/20.04/
+[gomplate-install]: https://gomplate.ca/
 [hashicorp]: https://www.hashicorp.com/
 [iso]: https://en.wikipedia.org/wiki/ISO_image
 [microsoft-kms]: https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys

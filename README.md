@@ -26,6 +26,7 @@ The following builds are available:
 
 **Linux Distributions**
 * VMware Photon OS 4
+* Ubuntu Server 22.04 LTS
 * Ubuntu Server 20.04 LTS
 * Ubuntu Server 18.04 LTS
 * Red Hat Enterprise Linux 8 Server
@@ -196,6 +197,8 @@ The files are distributed in the following directories.
     **Linux Distributions**
     * VMware Photon OS 4 Server
         * [Download][download-linux-photon-server-4] the 4.0 Rev2 release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-xxxxxxxxx.iso`)
+    * Ubuntu Server 22.04 LTS
+        * [Download][download-linux-ubuntu-server-22-04-lts] the latest **LIVE** release `.iso` image. (_e.g._ `ubuntu-22.04.x-live-server-amd64.iso`)
     * Ubuntu Server 20.04 LTS
         * [Download][download-linux-ubuntu-server-20-04-lts] the latest **LIVE** release `.iso` image. (_e.g._ `ubuntu-20.04.x-live-server-amd64.iso`)
     * Ubuntu Server 18.04 LTS
@@ -682,6 +685,7 @@ Happy building!!!
 [download-linux-rocky-server-8]: https://download.rockylinux.org/pub/rocky/8/isos/x86_64/
 [download-linux-ubuntu-server-18-04-lts]: http://cdimage.ubuntu.com/ubuntu/releases/18.04.5/release/
 [download-linux-ubuntu-server-20-04-lts]: https://releases.ubuntu.com/20.04/
+[download-linux-ubuntu-server-22-04-lts]: https://releases.ubuntu.com/22.04/
 [gomplate-install]: https://gomplate.ca/
 [hashicorp]: https://www.hashicorp.com/
 [iso]: https://en.wikipedia.org/wiki/ISO_image

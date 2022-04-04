@@ -229,13 +229,13 @@ The files are distributed in the following directories.
 
 4. [Upload][vsphere-upload] your guest operating system `.iso` images to the ISO datastore and paths that will be used in your variables.
 
-    **Example**: `builds/<type>/<build>/*.auto.pkvars.hcl`
+    **Example**: `config/common.pkvars.hcl`
 
     ```hcl
     common_iso_datastore = "sfo-w01-cl01-ds-nfs01"
     ```
 
-    **Example**: `config/common.pkvars.hcl`
+    **Example**: `builds/<type>/<build>/*.auto.pkvars.hcl`
 
     ```hcl
     iso_path           = "iso/linux/photon"

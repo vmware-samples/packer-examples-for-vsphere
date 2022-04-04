@@ -34,7 +34,7 @@ To send us a pull request, please:
 2. Modify the source; please focus on the **specific** change you are contributing.
 3. Ensure local tests pass.
 4. Updated the documentation, if required.
-4. Commit to your fork [using a clear commit messages](http://chris.beams.io/posts/git-commit/).
+4. Commit to your fork [using a clear commit messages](http://chris.beams.io/posts/git-commit/). We ask you to please use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 5. Send us a pull request, answering any default questions in the pull request.
 6. Pay attention to any automated failures reported in the pull request, and stay involved in the conversation.
 

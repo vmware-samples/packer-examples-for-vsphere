@@ -26,6 +26,7 @@ The following builds are available:
 
 **Linux Distributions**
 * VMware Photon OS 4
+* Debian 11
 * Ubuntu Server 22.04 LTS
 * Ubuntu Server 20.04 LTS
 * Ubuntu Server 18.04 LTS
@@ -197,6 +198,8 @@ The files are distributed in the following directories.
     **Linux Distributions**
     * VMware Photon OS 4 Server
         * [Download][download-linux-photon-server-4] the 4.0 Rev2 release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-xxxxxxxxx.iso`)
+    * Debian 11
+        * [Download][download-linux-debian-11] the latest **netinst** release `.iso` image. (_e.g._ `debian-11.x.0-amd64-netinst.iso `)
     * Ubuntu Server 22.04 LTS
         * [Download][download-linux-ubuntu-server-22-04-lts] the latest **LIVE** release `.iso` image. (_e.g._ `ubuntu-22.04.x-live-server-amd64.iso`)
     * Ubuntu Server 20.04 LTS
@@ -679,6 +682,7 @@ Happy building!!!
 [download-linux-centos-server-7]: http://isoredirect.centos.org/centos/7/isos/x86_64/
 [download-linux-centos-server-8]: http://isoredirect.centos.org/centos/8/isos/x86_64/
 [download-linux-centos-stream-8]: http://isoredirect.centos.org/centos/8-stream/isos/x86_64/
+[download-linux-debian-11]: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/
 [download-linux-photon-server-4]: https://packages.vmware.com/photon/4.0/
 [download-linux-redhat-server-8]: https://access.redhat.com/downloads/content/479/
 [download-linux-redhat-server-7]: https://access.redhat.com/downloads/content/69/

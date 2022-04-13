@@ -170,7 +170,7 @@ d-i passwd/user-password-crypted password ${build_password_encrypted}
 
 # Package Configuration
 d-i pkgsel/run_tasksel boolean false
-d-i pkgsel/include string openssh-server open-vm-tools
+d-i pkgsel/include string openssh-server open-vm-tools python3-apt
 
 # Add User to Sudoers
 d-i preseed/late_command string \

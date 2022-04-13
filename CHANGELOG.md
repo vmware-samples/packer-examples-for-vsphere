@@ -9,6 +9,7 @@
 
 🐞 **Bugfix**:
 * Updates the Python interpreter for Ansible on AlmaLinux to use `/usr/libexec/platform-python`. (GH-182)
+* Adds the use of `build_password` to the Linux distributions to ensure use of `set-envvars.sh` works as expected. (GH-197)
 
 🧹 **Chore**:
 * Updates the Windows Server 2022 .iso to February 2022 release. (GH-192)

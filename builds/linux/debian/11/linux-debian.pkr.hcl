@@ -96,7 +96,7 @@ source "vsphere-iso" "linux-debian" {
     "linux /install.amd/vmlinuz",
     " auto-install/enable=true",
     " debconf/priority=critical",
-    " url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg",
+    " ${local.data_source_command}",
     " noprompt --<enter>",
     "initrd /install.amd/initrd.gz<enter>",
     "boot<enter>"

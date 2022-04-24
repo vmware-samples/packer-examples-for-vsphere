@@ -52,7 +52,7 @@ menu_option_1() {
 
 menu_option_2() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/ubuntu/22-04-lts/
-  echo -e "\nCONFIRM: Build a Ubuntu Server 22.04 LTS Beta Template for VMware vSphere?"
+  echo -e "\nCONFIRM: Build a Ubuntu Server 22.04 LTS Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -60,8 +60,8 @@ menu_option_2() {
     exit 1
   fi
 
-  ### Build a Ubuntu Server 22.04 LTS Beta Template for VMware vSphere. ###
-  echo "Building a Ubuntu Server 22.04 LTS Beta Template for VMware vSphere..."
+  ### Build a Ubuntu Server 22.04 LTS Template for VMware vSphere. ###
+  echo "Building a Ubuntu Server 22.04 LTS Template for VMware vSphere..."
 
   ### Initialize HashiCorp Packer and required plugins. ###
   echo "Initializing HashiCorp Packer and required plugins..."
@@ -722,7 +722,7 @@ until [ "$selection" = "0" ]; do
   echo "      Linux Distribution:"
   echo ""
   echo "    	 1  -  VMware Photon OS 4"
-  echo "    	 2  -  Ubuntu Server 22.04 LTS Beta"
+  echo "    	 2  -  Ubuntu Server 22.04 LTS"
   echo "    	 3  -  Ubuntu Server 20.04 LTS"
   echo "    	 4  -  Ubuntu Server 18.04 LTS"
   echo "    	 5  -  Red Hat Enterprise Linux 8"

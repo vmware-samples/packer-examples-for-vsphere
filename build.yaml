@@ -11,7 +11,7 @@ menu:
       - entry: "VMware Photon OS 4"
         build:
           path: "builds/linux/photon/4/"
-      - entry: "Ubuntu Server 22.04 LTS Beta"
+      - entry: "Ubuntu Server 22.04 LTS"
         build:
           path: "builds/linux/ubuntu/22-04-lts/"
       - entry: "Ubuntu Server 20.04 LTS"

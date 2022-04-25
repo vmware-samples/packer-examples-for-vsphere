@@ -28,13 +28,13 @@ locals {
   data_source_content = {
     "/ks.cfg" = templatefile("${abspath(path.root)}/data/ks.pkrtpl.hcl", {
       build_username           = var.build_username
-      build_password           = var.build_password
       build_password_encrypted = var.build_password_encrypted
       vm_guest_os_language     = var.vm_guest_os_language
       vm_guest_os_keyboard     = var.vm_guest_os_keyboard
       vm_guest_os_timezone     = var.vm_guest_os_timezone
     })
   }
+  data_source_command = var.common_data_source == "http" ? "url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg" : "file=/media/ks.cfg"
 }
 
 //  BLOCK: source
@@ -79,11 +79,10 @@ source "vsphere-iso" "linux-debian" {
   notes                = "Version: v${local.build_version}\nBuilt on: ${local.build_date}\n${local.build_by}"
 
   // Removable Media Settings
-  iso_paths    = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}"]
-  iso_checksum = "${var.iso_checksum_type}:${var.iso_checksum_value}"
-  http_content = var.common_data_source == "http" ? local.data_source_content : null
-  cd_content   = var.common_data_source == "disk" ? local.data_source_content : null
-  cd_label     = var.common_data_source == "disk" ? "cidata" : null
+  iso_paths      = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}"]
+  iso_checksum   = "${var.iso_checksum_type}:${var.iso_checksum_value}"
+  http_content   = var.common_data_source == "http" ? local.data_source_content : null
+  floppy_content = var.common_data_source == "disk" ? local.data_source_content : null
 
   // Boot and Provisioning Settings
   http_ip       = var.common_data_source == "http" ? var.common_http_ip : null

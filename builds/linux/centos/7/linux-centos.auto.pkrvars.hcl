@@ -31,7 +31,7 @@ vm_network_card          = "vmxnet3"
 iso_path           = "iso/linux/centos"
 iso_file           = "CentOS-7-x86_64-DVD-2009.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "689531cce9cf484378481ae762fae362791a9be078fda10e4f6977bf8fa71350 "
+iso_checksum_value = "e33d7b1ea7a9e2f38c8f693215dd85254c3a4fe446f93f563279715b68d07987"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

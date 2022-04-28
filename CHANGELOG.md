@@ -5,6 +5,7 @@
 > Release Date: 2022-04-28
 
 💫  **Enhancement**:
+* Adds Ubuntu Server 22.04 LTS (GH-185)
 * Adds an option to generate a custom build script. (GH-188)
 
 🐞 **Bugfix**:

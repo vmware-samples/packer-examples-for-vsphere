@@ -1,8 +1,8 @@
 # CHANGELOG
 
-## v22.next
+## v22.04
 
-> Release Date: Unreleased
+> Release Date: 2022-02-28
 
 💫  **Enhancement**:
 * Adds an option to generate a custom build script. (GH-188)

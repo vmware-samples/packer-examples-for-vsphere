@@ -29,9 +29,9 @@ vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
 iso_path           = "iso/linux/rocky"
-iso_file           = "Rocky-8.5-x86_64-dvd1.iso"
+iso_file           = "Rocky-8.6-x86_64-dvd1.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "0081f8b969d0cef426530f6d618b962c7a01e71eb12a40581a83241f22dfdc25"
+iso_checksum_value = "1d48e0af63d07ff4e582a1819348e714c694e7fd33207f48879c2bc806960786"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

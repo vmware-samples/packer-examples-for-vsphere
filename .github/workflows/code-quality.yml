@@ -25,3 +25,4 @@ jobs:
           DISABLE_ERRORS: false
           VALIDATE_ANSIBLE: false
           VALIDATE_TERRAGRUNT: false
+          VALIDATE_MARKDOWN: false

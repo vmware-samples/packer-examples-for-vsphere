@@ -1,21 +1,43 @@
 # CHANGELOG
 
-## v22.04
+## Unreleased
+
+> Release Date: Unreleased. Available in `main`.
+
+🧹 **Chore**:
+
+* Updates Red Hat Enterprise Linux 8 .iso and checksum to 8.6 release.
+* Updates Rocky Linux 8 .iso and checksum to 8.6 release.
+* Updates Almalinux 8 .iso and checksum to 8.6 release.
+* Updates CentOS Stream 8 checksum to latest release.
+* Updates Windows Server 2022 .iso and checksum to April 2022 release.
+* Updates Windows 11 .iso and checksum to May 2022 release.
+* Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.4`.
+* Updates `required_plugins` and `packer-plugin-windows-update` to `>= v0.14.1`.
+* Updates `required_versons` for `terraform` to `>= v1.2.0`.
+* Updates requirements to include Ubuntu 22.04 as a tested operating system. <sup>*</sup>
+
+    > <sup>*</sup> You may be required to update your `.ssh/sshd_config` or `/etc/ssh/sshd_config` to allow authentication with RSA keys if you are using Ubuntu 22.04.
+
+## [v22.04](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.04)
 
 > Release Date: 2022-04-28
 
 💫  **Enhancement**:
+
 * Adds Ubuntu Server 22.04 LTS (GH-185)
 * Adds an option to generate a custom build script. (GH-188)
 
 🐞 **Bugfix**:
+
 * Updates the Python interpreter for Ansible on AlmaLinux to use `/usr/libexec/platform-python`. (GH-182)
 * Adds the use of `build_password` to the Linux distributions to ensure use of `set-envvars.sh` works as expected. (GH-197)
-* Updates the SHA256 checksum for the CentOS 7 ISO `CentOS-7-x86_64-DVD-2009.iso` (GH-201)
+* Updates the SHA256 checksum for the CentOS 7 .iso `CentOS-7-x86_64-DVD-2009.iso`. (GH-201)
 
 🧹 **Chore**:
+
 * Updates the Windows Server 2022 .iso to February 2022 release. (GH-192)
-* Updates the Ubuntu 20.04 LTS .iso to `v20.04.4`. (GH-184)
+* Updates the Ubuntu 20.04 LTS .iso to 20.04.4 release. (GH-184)
 
 ## [v22.03](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.03)
 
@@ -97,15 +119,20 @@
     common_content_library_ovf     = false
     common_content_library_destroy = false
     ```
+
 * Adds support for a SOCKS proxy by editing `config/proxy.pkvars.hcl`.
 * Adds the ability to set the IP address to bind the HTTP server by editing the `common_http_ip` in `config/common.pkvars.hcl` from `null` to an IP address on the Packer host:
+
     ```hcl
     common_http_ip = "172.16.11.100"
     ```
+
 * Add configurable data source provisioning for Linux images. By default, HTTP is used for the kickstart. By editing the `common_data_source` in `config/common.pkvars.hcl` from `http` to `disk` the build will use a disk-based method, such as a `.iso` as the secondary CD-ROM. This is useful for environments that can not communicate back to the Packer host's HTTP server.
+
     ```hcl
     common_data_source = "disk"
     ```
+
 * Renames all certificates to `*.ctr.example` and `*.pb7.example`. Please add your own custom certificates to the directories per the README.md.
 * Adds the ability for Packer to be run from any directory by including the use of `$(path.cwd)/`.
 * Adds the `ansible` provisioner to Linux builds for base configuration using roles. More updates to follow.

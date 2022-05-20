@@ -4,13 +4,11 @@
 
 [![The Changelog](https://img.shields.io/badge/The%20Changelog-Read-blue?style=for-the-badge&logo=github)](CHANGELOG.md)
 
-[![Open in Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-Open-blue?style=for-the-badge&logo=visualstudiocode)](https://open.vscode.dev/vmware-samples/packer-examples-for-vsphere)
-
 ![VMware vSphere 7.0 Update 2+](https://img.shields.io/badge/VMware%20vSphere-7.0%20Update%202+-blue?style=for-the-badge)
 
-![Packer 1.8.0+](https://img.shields.io/badge/HashiCorp%20Packer-1.8.0+-blue?style=for-the-badge&logo=packer)
+![Packer 1.8.0+](https://img.shields.io/badge/HashiCorp%20Packer-1.8.0+-blue?style=for-the-badge)
 
-![Ansible 2.9+](https://img.shields.io/badge/Ansible-2.9+-blue?style=for-the-badge&logo=ansible)
+![Ansible 2.9+](https://img.shields.io/badge/Ansible-2.9+-blue?style=for-the-badge)
 
 ## Table of Contents
 
@@ -74,13 +72,21 @@ The following builds are available:
 
 * HashiCorp [Packer][packer-install] 1.8.0 or higher.
   * Ubuntu:
-    * `sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl`
-    * `curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -`
-    * `sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"`
-    * `sudo apt-get update && sudo apt-get install terraform`
+    ```shell
+    sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl
+
+    curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+
+    sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+
+    sudo apt-get update && sudo apt-get install terraform
+    ```
   * macOS:
-    * `brew tap hashicorp/tap`
-    * `brew install hashicorp/tap/packer`
+    ```shell
+    brew tap hashicorp/tap
+
+    brew install hashicorp/tap/packer
+    ```
 * HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.3 or higher.
 * [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.1 or higher - a community plugin for HashiCorp Packer.
 
@@ -88,34 +94,96 @@ The following builds are available:
 
 **Additional Software Packages**:
 
-The following software packages must be installed on the Packer host:
+The following software packages must be installed on the opearing system running Packer:
 
 * [Git][download-git] command-line tools.
-  * Ubuntu: `apt-get install git`
-  * macOS: `brew install git`
+  * Ubuntu:
+
+    ```shell
+    apt-get install git
+    ```
+
+  * macOS:
+  
+    ```shell
+    brew install git
+    ```
+
 * [Ansible][ansible-docs] 2.9 or higher.
-  * Ubuntu: `apt-get install ansible`
-  * macOS: `brew install ansible`
+  * Ubuntu:
+  
+    ```shell
+    apt-get install ansible
+    ```
+
+  * macOS:
+  
+    ```shell
+    brew install ansible
+    ```
+
 * A command-line .iso creator. Packer will use one of the following:
-  * **xorriso** on Ubuntu: `apt-get install xorriso`
-  * **mkisofs** on Ubuntu: `apt-get install mkisofs`
+  * **xorriso** on Ubuntu:
+  
+    ```shell
+    apt-get install xorriso
+    ```
+
+  * **mkisofs** on Ubuntu:
+
+    ```shell
+    apt-get install mkisofs
+    ```
+
   * **hdiutil** on macOS: native
+
 * mkpasswd
-  * Ubuntu: `apt-get install whois`
-  * macOS: `brew install --cask docker`
+  * Ubuntu:
+
+    ```shell
+    apt-get install whois
+    ```
+
+  * macOS:
+
+    ```shell
+    brew install --cask docker
+    ```
+
 * Coreutils
-  * macOS: `brew install coreutils`
+  * macOS:
+
+    ```shell
+    brew install coreutils
+    ```
+
 * HashiCorp [Terraform][terraform-install] 1.2.0 or higher.
   * Ubuntu:
-    * `sudo apt-get update && sudo apt-get install terraform`
+
+    ```shell
+    sudo apt-get update && sudo apt-get install terraform
+    ```
+
   * macOS:
-    * `brew install hashicorp/tap/terraform`
+
+    ```shell
+    brew install hashicorp/tap/terraform
+    ```
+
 * [Gomplate](gomplate-install) 3.10.0 or higher.
   * Ubuntu:
-    * `sudo curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/3.10.0/gomplate_linux-amd64`
-    * `sudo chmod 755 /usr/local/bin/gomplate`
+
+    ```shell
+    sudo curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/3.10.0/gomplate_linux-amd64
+
+    sudo chmod 755 /usr/local/bin/gomplate
+    ```
+
   * macOS:
-    * `brew install gomplate`
+
+    ```shell
+    brew install gomplate
+    ```
 
 **Platform**:
 
@@ -509,7 +577,7 @@ The `cd_content` option is used when selecting `disk` unless the distribution do
 common_data_source = "disk"
 ```
 
-##### HTTP Binding
+##### HTTP Binding (Optional)
 
 If you need to define a specific IPv4 address from your host for Packer's HTTP Server, modify the `common_http_ip` variable from `null` to a `string` value that matches an IP address on your Packer host. For example:
 
@@ -569,9 +637,9 @@ vsphere_network              = "sfo-w01-seg-dhcp"
 vsphere_folder               = "sfo-w01-fd-templates"
 ```
 
-#### **Using Environment Variables**
+#### Using Environment Variables
 
-Alternatively, you can set your environment variables if you would prefer not to save sensitive potentially information in cleartext files. You can add these to environmental variables using the included `set-envvars.sh` script:
+If you prefer not to save sensitive potentially information in cleartext files, you add the variables to environmental variables using the included `set-envvars.sh` script:
 
 ```console
 rainpole@macos> . ./set-envvars.sh
@@ -579,7 +647,7 @@ rainpole@macos> . ./set-envvars.sh
 
 > **NOTE**: You need to run the script as source or the shorthand "`.`".
 
-#### **Machine Image Variables**
+#### Machine Image Variables (Optional)
 
 Edit the `*.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder to configure the following virtual machine hardware settings, as required:
 
@@ -604,11 +672,11 @@ Username and password variables are passed into the kickstart or cloud-init file
 
 #### Microsoft Windows Unattended amd Scripts
 
-Variables are passed into the [Microsoft Windows][microsoft-windows-unattend] unattend files (`autounattend.xml`) as Packer template files (`autounattend.pkrtpl.hcl`) to generate these on-demand. A PowerShell script is then used to configure the Linux machine image builds.
+Variables are passed into the [Microsoft Windows][microsoft-windows-unattend] unattend files (`autounattend.xml`) as Packer template files (`autounattend.pkrtpl.hcl`) to generate these on-demand. By default, each unattended file is set to use the [KMS client setup keys][microsoft-kms] as the **Product Key**.
 
-By default, each unattended file is set to use the [KMS client setup keys][microsoft-kms] as the **Product Key**.
+PowerShell scripts are used to configure the Windows machine image builds.
 
-**Need help customizing the configuration files?**
+Need help customizing the configuration files?
 
 * **VMware Photon OS** - Read the [Photon OS Kickstart Documentation][photon-kickstart].
 * **Ubuntu Server** - Install and run system-config-kickstart on a Ubuntu desktop.
@@ -630,6 +698,7 @@ Save a copy of your PEM encoded Root Certificate Authority certificate to the fo
 * `/certificates` for Windows machine images.
 
 These files are copied to the guest operating systems and added the certificate to the Trusted Certificate Authority of the guest operating system.
+
 Linux distributions uses the Ansible provisioner, but Windows still uses the shell provisioner at this time.
 
 ## Build
@@ -661,8 +730,9 @@ rainpole@macos> packer build -force \
 
 ### Build with Environmental Variables
 
-You can set your environment variables if you would prefer not to save sensitive potentially information in cleartext files.
-You can add these to environmental variables using the included `set-envvars.sh` script:
+You can set your environment variables if you would prefer not to save sensitive information in cleartext files.
+
+You can add these to environmental variables using the included `set-envvars.sh` script.
 
 ```console
 rainpole@macos> . ./set-envvars.sh

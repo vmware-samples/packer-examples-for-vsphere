@@ -1,8 +1,8 @@
 # CHANGELOG
 
-## [Unreleased](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/unreleased)
+## Unreleased
 
-> Release Date: Unreleased
+> Release Date: Unreleased. Available in `main`.
 
 🧹 **Chore**:
 
@@ -11,9 +11,13 @@
 * Updates Almalinux 8 .iso and checksum to 8.6 release.
 * Updates CentOS Stream 8 checksum to latest release.
 * Updates Windows Server 2022 .iso and checksum to April 2022 release.
-* Updates Windows Server 11 .iso and checksum to May 2022 release.
+* Updates Windows 11 .iso and checksum to May 2022 release.
 * Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.4`.
 * Updates `required_plugins` and `packer-plugin-windows-update` to `>= v0.14.1`.
+* Updates `required_versons` for `terraform` to `>= v1.2.0`.
+* Updates requirements to include Ubuntu 22.04 as a tested operating system. <sup>*</sup>
+
+    > <sup>*</sup> You may be required to update your `.ssh/sshd_config` or `/etc/ssh/sshd_config` to allow authentication with RSA keys if you are using Ubuntu 22.04.
 
 ## [v22.04](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.04)
 

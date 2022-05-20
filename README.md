@@ -629,7 +629,8 @@ Save a copy of your PEM encoded Root Certificate Authority certificate to the fo
 * `/ansible/roles/base/files` for Linux machine images.
 * `/certificates` for Windows machine images.
 
-These files are copied to the guest operating systems and added the certificate to the Trusted Certificate Authority of the guest operating system. Linux distributions uses the Ansible provisioner, but Windows still uses the shell provisioner at this time.
+These files are copied to the guest operating systems and added the certificate to the Trusted Certificate Authority of the guest operating system.
+Linux distributions uses the Ansible provisioner, but Windows still uses the shell provisioner at this time.
 
 ## Build
 
@@ -660,7 +661,8 @@ rainpole@macos> packer build -force \
 
 ### Build with Environmental Variables
 
-You can set your environment variables if you would prefer not to save sensitive potentially information in cleartext files. You can add these to environmental variables using the included `set-envvars.sh` script:
+You can set your environment variables if you would prefer not to save sensitive potentially information in cleartext files.
+You can add these to environmental variables using the included `set-envvars.sh` script:
 
 ```console
 rainpole@macos> . ./set-envvars.sh

@@ -29,9 +29,9 @@ vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
 iso_path           = "iso/linux/rhel"
-iso_file           = "rhel-8.5-x86_64-dvd.iso"
+iso_file           = "rhel-8.6-x86_64-dvd.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "1f78e705cd1d8897a05afa060f77d81ed81ac141c2465d4763c0382aa96cadd0"
+iso_checksum_value = "c324f3b07283f9393168f0a4ad2167ebbf7e4699d65c9670e0d9e58ba4e2a9a8"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

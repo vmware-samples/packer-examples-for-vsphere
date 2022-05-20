@@ -29,9 +29,9 @@ vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
 iso_path           = "iso/linux/almalinux"
-iso_file           = "AlmaLinux-8.5-x86_64-dvd.iso"
+iso_file           = "AlmaLinux-8.6-x86_64-dvd.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "54b8881bebd924e4699ed12634187a82156fdb0fa57ec24058d04d70d2f033b3"
+iso_checksum_value = "8c3bd1ff3d88b5599147626fa2616d85edcc861ec00edd6863b81dbfb135874c"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

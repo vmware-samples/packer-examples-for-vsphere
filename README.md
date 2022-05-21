@@ -51,7 +51,7 @@ The following builds are available:
 * Microsoft Windows 11
 * Microsoft Windows 10
 
-> **NOTES**:
+> **Note**
 >
 > * Guest customization is not currently supported for AlmaLinux OS and Rocky Linux in vCenter Server 7.0 Update 2.
 >
@@ -66,6 +66,8 @@ The following builds are available:
 * Ubuntu Server 22.04 LTS and 20.04 LTS
 * macOS Monterey and Big Sur (Intel)
 
+    > **Note**
+    >
     > Operating systems and versions tested with the project.
 
 **Packer**:
@@ -90,6 +92,8 @@ The following builds are available:
 * HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.3 or higher.
 * [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.1 or higher - a community plugin for HashiCorp Packer.
 
+    > **Note**
+    > 
     > Required plugins are automatically downloaded and initialized when using `./build.sh`. For dark sites, you may download the plugins and place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
 
 **Additional Software Packages**:
@@ -272,7 +276,9 @@ The files are distributed in the following directories.
 * **`manifests`** - manifests created after the completion of the machine image build.
 * **`terraform`** - contains example Terraform plans to test machine image builds.
 
-> ⚠️ **WARNING**: When forking the project for upstream contribution, please be mindful not to make changes that may expose your sensitive information, such as passwords, keys, certificates, etc.
+> **Warning**
+>
+> When forking the project for upstream contribution, please be mindful not to make changes that may expose your sensitive information, such as passwords, keys, certificates, etc.
 
 ### Step 2 - Download the Guest Operating Systems ISOs
 
@@ -370,15 +376,15 @@ If you would like to automate the creation of the custom vSphere role, a Terrafo
 
 1. Navigate to the directory for the example.
 
-```console
-cd terraform/vsphere-role
-```
+    ```console
+    cd terraform/vsphere-role
+    ```
 
 1. Duplicate the `terraform.tfvars.example` file to `terraform.tfvars` in the directory.
 
-```console
-cp terraform.tfvars.example terraform.tfvars
-```
+    ```console
+    cp terraform.tfvars.example terraform.tfvars
+    ```
 
 1. Open the `terraform.tfvars` file and update the variables according to your environment.
 
@@ -419,7 +425,7 @@ In an environment with many vCenter Server instances, such as management and wor
 
 The [variables][packer-variables] are defined in `.pkvars.hcl` files.
 
-#### **Copy the Example Variables**
+#### Copy the Example Variables
 
 Run the config script `./config.sh` to copy the `.pkvars.hcl.example` files to the `config` directory.
 
@@ -504,8 +510,10 @@ Your public key has been saved in /Users/rainpole/.ssh/id_ecdsa.pub.
 
 The content of the public key, `build_key`, is added the key to the `.ssh/authorized_keys` file of the `build_username` on the guest operating system.
 
->**WARNING**: Replace the default public keys and passwords.
->By default, both Public Key Authentication and Password Authentication are enabled for Linux distributions. If you wish to disable Password Authentication and only use Public Key Authentication, comment or remove the portion of the associated Ansible `configure` role.
+> **Warning**
+>
+> Replace the default public keys and passwords.
+> By default, both Public Key Authentication and Password Authentication are enabled for Linux distributions. If you wish to disable Password Authentication and only use Public Key Authentication, comment or remove the portion of the associated Ansible `configure` role.
 
 ##### Ansible Variables
 
@@ -520,7 +528,9 @@ ansible_username = "ansible"
 ansible_key      = "<public_key>"
 ```
 
->**NOTE**: A random password is generated for the Ansible user.
+> **Note**
+>
+> A random password is generated for the Ansible user.
 
 You can also override the `ansible_key` value with contents of a file, if required.
 
@@ -645,7 +655,9 @@ If you prefer not to save sensitive potentially information in cleartext files, 
 rainpole@macos> . ./set-envvars.sh
 ```
 
-> **NOTE**: You need to run the script as source or the shorthand "`.`".
+> **Note**
+>
+> You need to run the script as source or the shorthand "`.`".
 
 #### Machine Image Variables (Optional)
 
@@ -660,7 +672,8 @@ Edit the `*.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder to conf
 * .iso Checksum Type `(string)`
 * .iso Checksum Value `(string)`
 
-    >**Note**: All `variables.auto.pkvars.hcl` default to using the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types.
+    > **Note**
+    > All `variables.auto.pkvars.hcl` default to using the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types.
 
 ### Step 5 - Modify the Configurations (Optional)
 
@@ -738,7 +751,9 @@ You can add these to environmental variables using the included `set-envvars.sh`
 rainpole@macos> . ./set-envvars.sh
 ```
 
-> **NOTE**: You need to run the script as source or the shorthand "`.`".
+> **Note**
+>
+> You need to run the script as source or the shorthand "`.`".
 
 Initialize the plugins:
 

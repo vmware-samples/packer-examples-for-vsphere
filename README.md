@@ -480,7 +480,8 @@ Generate a SHA-512 encrypted password for the `build_password_encrypted` using t
 **Example**: mkpasswd using Docker on macOS:
 
 ```console
-rainpole@macos>  docker run -it --rm alpine:latestvmwar mkpasswd -m sha512
+rainpole@macos>  docker run -it --rm alpine:latest
+mkpasswd -m sha512
 Password: ***************
 [password hash]
 ```

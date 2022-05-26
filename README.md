@@ -131,182 +131,184 @@ The following builds are available:
 
 **Additional Software Packages**:
 
-The following software packages must be installed on the opearing system running Packer:
+The following software packages must be installed on the opearing system running Packer.
+
+Click on the operating system name to display the installation steps for the software package.
 
 * [Git][download-git] command-line tools.
-  <details>
-    <summary>Photon OS</summary>
+  * <details>
+      <summary>Photon OS</summary>
 
-    ```shell
-    tdnf install git
-    ```
+      ```shell
+      tdnf install git
+      ```
 
-  </details>
+    </details>
 
-  <details>
-    <summary>Ubuntu</summary>
+  * <details>
+      <summary>Ubuntu</summary>
 
-    ```shell
-    apt-get install git
-    ```
+      ```shell
+      apt-get install git
+      ```
 
-  </details>
+    </details>
 
-  <details>
-    <summary>macOS</summary>
+  * <details>
+      <summary>macOS</summary>
   
-    ```shell
-    brew install git
-    ```
+      ```shell
+      brew install git
+      ```
 
-  </details>
+    </details>
 
 * [Ansible][ansible-docs] 2.9 or higher.
-  <details>
-    <summary>Photon OS</summary>
+  * <details>
+      <summary>Photon OS</summary>
 
-    ```shell
-    tdnf install ansible
-    ```
+      ```shell
+      tdnf install ansible
+      ```
 
-  </details>
+    </details>
 
-  <details>
-    <summary>Ubuntu</summary>
-  
-    ```shell
-    apt-get install ansible
-    ```
+  * <details>
+      <summary>Ubuntu</summary>
+    
+      ```shell
+      apt-get install ansible
+      ```
 
-  </details>
+    </details>
 
-  <details>
-    <summary>macOS</summary>
-  
-    ```shell
-    brew install ansible
-    ```
+  * <details>
+      <summary>macOS</summary>
+    
+      ```shell
+      brew install ansible
+      ```
 
-  </details>
+    </details>
 
 * A command-line .iso creator. Packer will use one of the following:
-  <details>
-    <summary>Photon OS</summary>
+  * <details>
+      <summary>Photon OS</summary>
 
-    ```shell
-    tdnf install xorriso
-    ```
+      ```shell
+      tdnf install xorriso
+      ```
 
-  </details>
+    </details>
 
-  <details>
-    <summary>Ubuntu</summary>
-  
-    ```shell
-    apt-get install xorriso
-    ```
+  * <details>
+      <summary>Ubuntu</summary>
+    
+      ```shell
+      apt-get install xorriso
+      ```
 
-  </details>
+    </details>
 
-  <details>
-    <summary>macOS</summary>
-  
-    hdiutil (native)
+  * <details>
+      <summary>macOS</summary>
+    
+      hdiutil (native)
 
-  </details>
+    </details>
 
 * mkpasswd
-  <details>
-    <summary>Ubuntu</summary>
+  * <details>
+      <summary>Ubuntu</summary>
 
-    ```shell
-    apt-get install whois
-    ```
+      ```shell
+      apt-get install whois
+      ```
 
-  </details>
+    </details>
 
-  <details>
-    <summary>macOS</summary>
+  * <details>
+      <summary>macOS</summary>
 
-    ```shell
-    brew install --cask docker
-    ```
+      ```shell
+      brew install --cask docker
+      ```
 
-  </details>
+    </details>
 
 * Coreutils
-  <details>
-    <summary>macOS</summary>
+  * <details>
+      <summary>macOS</summary>
 
-    ```shell
-    brew install coreutils
-    ```
+      ```shell
+      brew install coreutils
+      ```
 
-  </details>
+    </details>
 
 * HashiCorp [Terraform][terraform-install] 1.2.1 or higher.
-  <details>
-    <summary>Photon OS</summary>
+  * <details>
+      <summary>Photon OS</summary>
 
-    ```shell
-    TERRAFORM_VERSION="1.2.1"
-    OS_PACKAGES="wget unzip"
+      ```shell
+      TERRAFORM_VERSION="1.2.1"
+      OS_PACKAGES="wget unzip"
 
-    if [[ $(uname -m) == "x86_64" ]]; then
-      LINUX_ARCH="amd64"
-    elif [[ $(uname -m) == "aarch64" ]]; then
-      LINUX_ARCH="arm64"
-    fi
+      if [[ $(uname -m) == "x86_64" ]]; then
+        LINUX_ARCH="amd64"
+      elif [[ $(uname -m) == "aarch64" ]]; then
+        LINUX_ARCH="arm64"
+      fi
 
-    tdnf install ${OS_PACKAGES} -y
+      tdnf install ${OS_PACKAGES} -y
 
-    wget -q https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
+      wget -q https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
 
-    unzip -o -d /usr/local/bin/ terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
-    ```
+      unzip -o -d /usr/local/bin/ terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
+      ```
 
-  </details>
+    </details>
 
-  <details>
-    <summary>Ubuntu</summary>
+  * <details>
+      <summary>Ubuntu</summary>
 
-    ```shell
-    sudo apt-get update && sudo apt-get install terraform
-    ```
+      ```shell
+      sudo apt-get update && sudo apt-get install terraform
+      ```
 
-  </details>
+    </details>
 
-  <details>
-    <summary>macOS</summary>
+  * <details>
+      <summary>macOS</summary>
 
-    ```shell
-    brew install hashicorp/tap/terraform
-    ```
+      ```shell
+      brew install hashicorp/tap/terraform
+      ```
 
-  </details>
+    </details>
 
 * [Gomplate](gomplate-install) 3.10.0 or higher.
-  <details>
-    <summary>Ubuntu</summary>
+  * <details>
+      <summary>Ubuntu</summary>
 
-    ```shell
-    GOMPLATE_VERSION="3.10.0"
+      ```shell
+      GOMPLATE_VERSION="3.10.0"
 
-    sudo curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-${LINUX_ARCH}
+      sudo curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-${LINUX_ARCH}
 
-    sudo chmod 755 /usr/local/bin/gomplate
-    ```
+      sudo chmod 755 /usr/local/bin/gomplate
+      ```
 
-  </details>
+    </details>
 
-  <details>
-    <summary>macOS</summary>
+  * <details>
+      <summary>macOS</summary>
 
-    ```shell
-    brew install gomplate
-    ```
+      ```shell
+      brew install gomplate
+      ```
 
-  </details>
+    </details>
 
 **Platform**:
 

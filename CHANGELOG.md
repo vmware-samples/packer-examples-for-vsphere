@@ -14,19 +14,19 @@
 * Updates Windows 11 .iso and checksum to May 2022 release.
 * Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.4`.
 * Updates `required_plugins` and `packer-plugin-windows-update` to `>= v0.14.1`.
-* Updates `required_versons` for `terraform` to `>= v1.2.0`.
-* Updates requirements to include Ubuntu 22.04 as a tested operating system. <sup>*</sup>
+* Updates `required_versons` for `terraform` to `>= v1.2.1`.
+* Updates requirements to include VMware Photon OS as a tested operating system.
+* Updates requirements to include Ubuntu 22.04 as a tested operating system.
 
     > **Note**
-    > 
-    > <sup>*</sup> You may be required to update your `.ssh/sshd_config` or `/etc/ssh/sshd_config` to allow authentication with RSA keys if you are using Ubuntu 22.04.
+    >
+    > You may be required to update your `/etc/ssh/ssh_config` or `.ssh/ssh_config` to allow authentication with RSA keys if you are using VMware Photon OS 4.0 or Ubuntu 22.04.
     >
     > Update to include the following:
     >
-    > `PubkeyAcceptedAlgorithms +ssh-rsa`
-    > 
-    > `HostkeyAlgorithms +ssh-rsa`
-
+    > `PubkeyAcceptedAlgorithms ssh-rsa`
+    >
+    > `HostkeyAlgorithms ssh-rsa`
 
 ## [v22.04](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.04)
 

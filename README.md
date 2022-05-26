@@ -63,6 +63,7 @@ The following builds are available:
 
 **Operating Systems**:
 
+* VMware Photon OS 4
 * Ubuntu Server 22.04 LTS and 20.04 LTS
 * macOS Monterey and Big Sur (Intel)
 
@@ -73,7 +74,31 @@ The following builds are available:
 **Packer**:
 
 * HashiCorp [Packer][packer-install] 1.8.0 or higher.
-  * Ubuntu:
+  <details>
+    <summary>Photon OS</summary>
+
+    ```shell
+    PACKER_VERSION="1.8.0"
+    OS_PACKAGES="wget unzip"
+
+    if [[ $(uname -m) == "x86_64" ]]; then
+      LINUX_ARCH="amd64"
+    elif [[ $(uname -m) == "aarch64" ]]; then
+      LINUX_ARCH="arm64"
+    fi
+
+    tdnf install ${OS_PACKAGES} -y
+
+    wget -q https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_${LINUX_ARCH}.zip
+
+    unzip -o -d /usr/local/bin/ packer_${PACKER_VERSION}_linux_${LINUX_ARCH}.zip
+    ```
+
+  </details>
+
+  <details>
+    <summary>Ubuntu</summary>
+
     ```shell
     sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl
 
@@ -83,17 +108,25 @@ The following builds are available:
 
     sudo apt-get update && sudo apt-get install terraform
     ```
-  * macOS:
+
+  </details>
+
+  <details>
+    <summary>macOS</summary>
+
     ```shell
     brew tap hashicorp/tap
 
     brew install hashicorp/tap/packer
     ```
+
+  </details>
+
 * HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.3 or higher.
 * [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.1 or higher - a community plugin for HashiCorp Packer.
 
     > **Note**
-    > 
+    >
     > Required plugins are automatically downloaded and initialized when using `./build.sh`. For dark sites, you may download the plugins and place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
 
 **Additional Software Packages**:
@@ -101,93 +134,179 @@ The following builds are available:
 The following software packages must be installed on the opearing system running Packer:
 
 * [Git][download-git] command-line tools.
-  * Ubuntu:
+  <details>
+    <summary>Photon OS</summary>
+
+    ```shell
+    tdnf install git
+    ```
+
+  </details>
+
+  <details>
+    <summary>Ubuntu</summary>
 
     ```shell
     apt-get install git
     ```
 
-  * macOS:
+  </details>
+
+  <details>
+    <summary>macOS</summary>
   
     ```shell
     brew install git
     ```
 
+  </details>
+
 * [Ansible][ansible-docs] 2.9 or higher.
-  * Ubuntu:
+  <details>
+    <summary>Photon OS</summary>
+
+    ```shell
+    tdnf install ansible
+    ```
+
+  </details>
+
+  <details>
+    <summary>Ubuntu</summary>
   
     ```shell
     apt-get install ansible
     ```
 
-  * macOS:
+  </details>
+
+  <details>
+    <summary>macOS</summary>
   
     ```shell
     brew install ansible
     ```
 
+  </details>
+
 * A command-line .iso creator. Packer will use one of the following:
-  * **xorriso** on Ubuntu:
+  <details>
+    <summary>Photon OS</summary>
+
+    ```shell
+    tdnf install xorriso
+    ```
+
+  </details>
+
+  <details>
+    <summary>Ubuntu</summary>
   
     ```shell
     apt-get install xorriso
     ```
 
-  * **mkisofs** on Ubuntu:
+  </details>
 
-    ```shell
-    apt-get install mkisofs
-    ```
+  <details>
+    <summary>macOS</summary>
+  
+    hdiutil (native)
 
-  * **hdiutil** on macOS: native
+  </details>
 
 * mkpasswd
-  * Ubuntu:
+  <details>
+    <summary>Ubuntu</summary>
 
     ```shell
     apt-get install whois
     ```
 
-  * macOS:
+  </details>
+
+  <details>
+    <summary>macOS</summary>
 
     ```shell
     brew install --cask docker
     ```
 
+  </details>
+
 * Coreutils
-  * macOS:
+  <details>
+    <summary>macOS</summary>
 
     ```shell
     brew install coreutils
     ```
 
-* HashiCorp [Terraform][terraform-install] 1.2.0 or higher.
-  * Ubuntu:
+  </details>
+
+* HashiCorp [Terraform][terraform-install] 1.2.1 or higher.
+  <details>
+    <summary>Photon OS</summary>
+
+    ```shell
+    TERRAFORM_VERSION="1.2.1"
+    OS_PACKAGES="wget unzip"
+
+    if [[ $(uname -m) == "x86_64" ]]; then
+      LINUX_ARCH="amd64"
+    elif [[ $(uname -m) == "aarch64" ]]; then
+      LINUX_ARCH="arm64"
+    fi
+
+    tdnf install ${OS_PACKAGES} -y
+
+    wget -q https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
+
+    unzip -o -d /usr/local/bin/ terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
+    ```
+
+  </details>
+
+  <details>
+    <summary>Ubuntu</summary>
 
     ```shell
     sudo apt-get update && sudo apt-get install terraform
     ```
 
-  * macOS:
+  </details>
+
+  <details>
+    <summary>macOS</summary>
 
     ```shell
     brew install hashicorp/tap/terraform
     ```
 
+  </details>
+
 * [Gomplate](gomplate-install) 3.10.0 or higher.
-  * Ubuntu:
+  <details>
+    <summary>Ubuntu</summary>
 
     ```shell
-    sudo curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/3.10.0/gomplate_linux-amd64
+    GOMPLATE_VERSION="3.10.0"
+
+    sudo curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-${LINUX_ARCH}
 
     sudo chmod 755 /usr/local/bin/gomplate
     ```
 
-  * macOS:
+  </details>
+
+  <details>
+    <summary>macOS</summary>
 
     ```shell
     brew install gomplate
     ```
+
+  </details>
 
 **Platform**:
 
@@ -477,6 +596,17 @@ build_key = file("${path.root}/config/ssh/build_id_ecdsa.pub")
 
 Generate a SHA-512 encrypted password for the `build_password_encrypted` using tools like mkpasswd.
 
+**Example**: mkpasswd using Docker on Photon:
+
+```console
+rainpole@photon> sudo systemctl start docker
+rainpole@photon>  sudo docker run -it --rm alpine:latest
+mkpasswd -m sha512
+Password: ***************
+[password hash]
+rainpole@photon> sudo systemctl stop docker
+```
+
 **Example**: mkpasswd using Docker on macOS:
 
 ```console
@@ -486,10 +616,10 @@ Password: ***************
 [password hash]
 ```
 
-**Example**: mkpasswd on Linux:
+**Example**: mkpasswd on Ubuntu:
 
 ```console
-rainpole@linux>  mkpasswd -m sha-512
+rainpole@ubuntu>  mkpasswd -m sha-512
 Password: ***************
 [password hash]
 ```
@@ -579,6 +709,14 @@ common_shutdown_timeout = "15m"
 ##### Data Source Options
 
 `http` is the default provisioning data source for Linux machine image builds.
+
+If iptables is enabled on your Packer host, you will need to open `common_http_port_min` through `common_http_port_max` ports.
+
+**Example**: Open a port range in iptables.
+
+```shell
+iptables -A INPUT -p tcp --match multiport --dports 8000:8099 -j ACCEPT`
+```
 
 You can change the `common_data_source` from `http` to `disk` to build supported Linux machine images without the need to use Packer's HTTP server. This is useful for environments that may not be able to route back to the system from which Packer is running.
 

@@ -17,7 +17,16 @@
 * Updates `required_versons` for `terraform` to `>= v1.2.0`.
 * Updates requirements to include Ubuntu 22.04 as a tested operating system. <sup>*</sup>
 
+    > **Note**
+    > 
     > <sup>*</sup> You may be required to update your `.ssh/sshd_config` or `/etc/ssh/sshd_config` to allow authentication with RSA keys if you are using Ubuntu 22.04.
+    >
+    > Update to include the following:
+    >
+    > `PubkeyAcceptedAlgorithms +ssh-rsa`
+    > 
+    > `HostkeyAlgorithms +ssh-rsa`
+
 
 ## [v22.04](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.04)
 

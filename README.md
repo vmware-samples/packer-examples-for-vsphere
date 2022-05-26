@@ -74,53 +74,58 @@ The following builds are available:
 **Packer**:
 
 * HashiCorp [Packer][packer-install] 1.8.0 or higher.
-  <details>
-    <summary>Photon OS</summary>
 
-    ```shell
-    PACKER_VERSION="1.8.0"
-    OS_PACKAGES="wget unzip"
+  > **Note**
+  >
+  > Click on the operating system name to display the installation steps.
 
-    if [[ $(uname -m) == "x86_64" ]]; then
-      LINUX_ARCH="amd64"
-    elif [[ $(uname -m) == "aarch64" ]]; then
-      LINUX_ARCH="arm64"
-    fi
+  * <details>
+      <summary>Photon OS</summary>
 
-    tdnf install ${OS_PACKAGES} -y
+      ```shell
+      PACKER_VERSION="1.8.0"
+      OS_PACKAGES="wget unzip"
 
-    wget -q https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_${LINUX_ARCH}.zip
+      if [[ $(uname -m) == "x86_64" ]]; then
+        LINUX_ARCH="amd64"
+      elif [[ $(uname -m) == "aarch64" ]]; then
+        LINUX_ARCH="arm64"
+      fi
 
-    unzip -o -d /usr/local/bin/ packer_${PACKER_VERSION}_linux_${LINUX_ARCH}.zip
-    ```
+      tdnf install ${OS_PACKAGES} -y
 
-  </details>
+      wget -q https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_${LINUX_ARCH}.zip
 
-  <details>
-    <summary>Ubuntu</summary>
+      unzip -o -d /usr/local/bin/ packer_${PACKER_VERSION}_linux_${LINUX_ARCH}.zip
+      ```
 
-    ```shell
-    sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl
+    </details>
 
-    curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+  * <details>
+      <summary>Ubuntu</summary>
 
-    sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+      ```shell
+      sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl
 
-    sudo apt-get update && sudo apt-get install terraform
-    ```
+      curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
 
-  </details>
+      sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
 
-  <details>
-    <summary>macOS</summary>
+      sudo apt-get update && sudo apt-get install terraform
+      ```
 
-    ```shell
-    brew tap hashicorp/tap
+    </details>
 
-    brew install hashicorp/tap/packer
-    ```
+  * <details>
+      <summary>macOS</summary>
 
-  </details>
+      ```shell
+      brew tap hashicorp/tap
+
+      brew install hashicorp/tap/packer
+      ```
+
+    </details>
 
 * HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.3 or higher.
 * [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.1 or higher - a community plugin for HashiCorp Packer.
@@ -133,7 +138,9 @@ The following builds are available:
 
 The following software packages must be installed on the opearing system running Packer.
 
-Click on the operating system name to display the installation steps for the software package.
+> **Note**
+>
+> Click on the operating system name to display the installation steps.
 
 * [Git][download-git] command-line tools.
   * <details>

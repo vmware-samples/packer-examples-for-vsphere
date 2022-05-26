@@ -15,7 +15,7 @@
 * Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.4`.
 * Updates `required_plugins` and `packer-plugin-windows-update` to `>= v0.14.1`.
 * Updates `required_versons` for `terraform` to `>= v1.2.1`.
-* Updates requirements to include VMware Photon OS as a tested operating system.
+* Updates requirements to include VMware Photon OS 4 as a tested operating system.
 * Updates requirements to include Ubuntu 22.04 as a tested operating system.
 
     > **Note**

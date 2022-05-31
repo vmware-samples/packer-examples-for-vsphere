@@ -30,11 +30,11 @@ body:
       description: Please provide the version of this project.
       options:
         - main
-        - 22.04 (latest)
+        - 22.05 (latest)
+        - 22.04
         - 22.03
         - 22.02
         - 22.01
-        - 21.11
     validations:
       required: true
   - type: textarea

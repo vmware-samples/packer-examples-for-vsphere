@@ -35,7 +35,8 @@ body:
       description: Please provide the version of this project.
       options:
         - main
-        - 22.04 (latest)
+        - 22.05 (latest)
+        - 22.04
         - 22.03
         - 22.02
         - 22.01
@@ -72,7 +73,7 @@ body:
     attributes:
       label: Guest Operating System
       description: Please provide the guest operating system.
-      placeholder: Ubuntu Server 20.04 LTS
+      placeholder: VMware Photon OS 4.0
     validations:
       required: true
   - type: textarea

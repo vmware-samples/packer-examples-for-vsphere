@@ -10,7 +10,7 @@ packer {
   required_version = ">= 1.8.0"
   required_plugins {
     vsphere = {
-      version = ">= v1.0.3"
+      version = ">= v1.0.4"
       source  = "github.com/hashicorp/vsphere"
     }
   }
@@ -28,6 +28,7 @@ locals {
   data_source_content = {
     "/ks.cfg" = templatefile("${abspath(path.root)}/data/ks.pkrtpl.hcl", {
       build_username           = var.build_username
+      build_password           = var.build_password
       build_password_encrypted = var.build_password_encrypted
       vm_guest_os_language     = var.vm_guest_os_language
       vm_guest_os_keyboard     = var.vm_guest_os_keyboard

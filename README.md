@@ -1,18 +1,23 @@
 # HashiCorp Packer and VMware vSphere to Build Private Cloud Machine Images
 
-<img alt="Last Commit" src="https://img.shields.io/github/last-commit/vmware-samples/packer-examples-for-vsphere?style=for-the-badge&logo=github"> [<img alt="The Changelog" src="https://img.shields.io/badge/The%20Changelog-Read-blue?style=for-the-badge&logo=github">](CHANGELOG.md) [<img alt="Open in Visual Studio Code" src="https://img.shields.io/badge/Visual%20Studio%20Code-Open-blue?style=for-the-badge&logo=visualstudiocode">](https://open.vscode.dev/vmware-samples/packer-examples-for-vsphere)
-<br/>
-<img alt="VMware vSphere 7.0 Update 2+" src="https://img.shields.io/badge/VMware%20vSphere-7.0%20Update%202+-blue?style=for-the-badge">
-<img alt="Packer 1.8.0+" src="https://img.shields.io/badge/HashiCorp%20Packer-1.8.0+-blue?style=for-the-badge&logo=packer">
-<img alt="Ansible 2.9+" src="https://img.shields.io/badge/Ansible-2.9+-blue?style=for-the-badge&logo=ansible">
+![Last Commit](https://img.shields.io/github/last-commit/vmware-samples/packer-examples-for-vsphere?style=for-the-badge&logo=github)
+
+[![The Changelog](https://img.shields.io/badge/The%20Changelog-Read-blue?style=for-the-badge&logo=github)](CHANGELOG.md)
+
+![VMware vSphere 7.0 Update 2+](https://img.shields.io/badge/VMware%20vSphere-7.0%20Update%202+-blue?style=for-the-badge)
+
+![Packer 1.8.0+](https://img.shields.io/badge/HashiCorp%20Packer-1.8.0+-blue?style=for-the-badge)
+
+![Ansible 2.9+](https://img.shields.io/badge/Ansible-2.9+-blue?style=for-the-badge)
 
 ## Table of Contents
+
 1. [Introduction](#Introduction)
-2. [Requirements](#Requirements)
-3. [Configuration](#Configuration)
-4. [Build](#Build)
-5. [Troubleshoot](#Troubleshoot)
-6. [Credits](#Credits)
+1. [Requirements](#Requirements)
+1. [Configuration](#Configuration)
+1. [Build](#Build)
+1. [Troubleshoot](#Troubleshoot)
+1. [Credits](#Credits)
 
 ## Introduction
 
@@ -24,7 +29,8 @@ By default, the machine image artifacts are transferred to a [vSphere Content Li
 
 The following builds are available:
 
-**Linux Distributions**
+### Linux Distributions
+
 * VMware Photon OS 4
 * Debian 11
 * Ubuntu Server 22.04 LTS
@@ -38,14 +44,16 @@ The following builds are available:
 * CentOS Linux 8
 * CentOS Linux 7
 
-**Microsoft Windows** - _Core and Desktop Experience_
+### Microsoft Windows - _Core and Desktop Experience_
+
 * Microsoft Windows Server 2022 - Standard and Datacenter
 * Microsoft Windows Server 2019 - Standard and Datacenter
 * Microsoft Windows Server 2016 - Standard and Datacenter
 * Microsoft Windows 11
 * Microsoft Windows 10
 
-> **NOTES**:
+> **Note**
+>
 > * Guest customization is not currently supported for AlmaLinux OS and Rocky Linux in vCenter Server 7.0 Update 2.
 >
 > * The Microsoft Windows 11 machine image uses a virtual trusted platform module (vTPM). Refer to the VMware vSphere [product documenation][vsphere-tpm] for requirements and pre-requisites.
@@ -54,55 +62,264 @@ The following builds are available:
 
 ## Requirements
 
-**Packer**:
-* HashiCorp [Packer][packer-install] 1.8.0 or higher.
-* HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.3 or higher.
-* [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.0 or higher - a community plugin for HashiCorp Packer.
-
-    > Required plugins are automatically downloaded and initialized when using `./build.sh`. For dark sites, you may download the plugins and place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
-
 **Operating Systems**:
-* Ubuntu Server 20.04 LTS
-* macOS Big Sur and Monterey (Intel)
 
+* VMware Photon OS 4
+* Ubuntu Server 22.04 LTS and 20.04 LTS
+* macOS Monterey and Big Sur (Intel)
+
+    > **Note**
+    >
     > Operating systems and versions tested with the project.
+
+**Packer**:
+
+* HashiCorp [Packer][packer-install] 1.8.0 or higher.
+
+  > **Note**
+  >
+  > Click on the operating system name to display the installation steps.
+
+  * <details>
+      <summary>Photon OS</summary>
+
+      ```shell
+      PACKER_VERSION="1.8.0"
+      OS_PACKAGES="wget unzip"
+
+      if [[ $(uname -m) == "x86_64" ]]; then
+        LINUX_ARCH="amd64"
+      elif [[ $(uname -m) == "aarch64" ]]; then
+        LINUX_ARCH="arm64"
+      fi
+
+      tdnf install ${OS_PACKAGES} -y
+
+      wget -q https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_${LINUX_ARCH}.zip
+
+      unzip -o -d /usr/local/bin/ packer_${PACKER_VERSION}_linux_${LINUX_ARCH}.zip
+      ```
+
+    </details>
+
+  * <details>
+      <summary>Ubuntu</summary>
+
+      ```shell
+      sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl
+
+      curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+
+      sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+
+      sudo apt-get update && sudo apt-get install terraform
+      ```
+
+    </details>
+
+  * <details>
+      <summary>macOS</summary>
+
+      ```shell
+      brew tap hashicorp/tap
+
+      brew install hashicorp/tap/packer
+      ```
+
+    </details>
+
+* HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.3 or higher.
+* [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.1 or higher - a community plugin for HashiCorp Packer.
+
+    > **Note**
+    >
+    > Required plugins are automatically downloaded and initialized when using `./build.sh`. For dark sites, you may download the plugins and place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
 
 **Additional Software Packages**:
 
-The following software packages must be installed on the Packer host:
+The following software packages must be installed on the opearing system running Packer.
+
+> **Note**
+>
+> Click on the operating system name to display the installation steps.
 
 * [Git][download-git] command-line tools.
-  - Ubuntu: `apt-get install git`
-  - macOS: `brew install git`
+  * <details>
+      <summary>Photon OS</summary>
+
+      ```shell
+      tdnf install git
+      ```
+
+    </details>
+
+  * <details>
+      <summary>Ubuntu</summary>
+
+      ```shell
+      apt-get install git
+      ```
+
+    </details>
+
+  * <details>
+      <summary>macOS</summary>
+  
+      ```shell
+      brew install git
+      ```
+
+    </details>
+
 * [Ansible][ansible-docs] 2.9 or higher.
-  - Ubuntu: `apt-get install ansible`
-  - macOS: `brew install ansible`
+  * <details>
+      <summary>Photon OS</summary>
+
+      ```shell
+      tdnf install ansible
+      ```
+
+    </details>
+
+  * <details>
+      <summary>Ubuntu</summary>
+    
+      ```shell
+      apt-get install ansible
+      ```
+
+    </details>
+
+  * <details>
+      <summary>macOS</summary>
+    
+      ```shell
+      brew install ansible
+      ```
+
+    </details>
+
 * A command-line .iso creator. Packer will use one of the following:
-  - **xorriso** on Ubuntu: `apt-get install xorriso`
-  - **mkisofs** on Ubuntu: `apt-get install mkisofs`
-  - **hdiutil** on macOS: native
+  * <details>
+      <summary>Photon OS</summary>
+
+      ```shell
+      tdnf install xorriso
+      ```
+
+    </details>
+
+  * <details>
+      <summary>Ubuntu</summary>
+    
+      ```shell
+      apt-get install xorriso
+      ```
+
+    </details>
+
+  * <details>
+      <summary>macOS</summary>
+    
+      hdiutil (native)
+
+    </details>
+
 * mkpasswd
-  - Ubuntu: `apt-get install whois`
-  - macOS: `brew install --cask docker`
+  * <details>
+      <summary>Ubuntu</summary>
+
+      ```shell
+      apt-get install whois
+      ```
+
+    </details>
+
+  * <details>
+      <summary>macOS</summary>
+
+      ```shell
+      brew install --cask docker
+      ```
+
+    </details>
+
 * Coreutils
-  - macOS: `brew install coreutils`
-* HashiCorp [Terraform][terraform-install] 1.1.7 or higher.
-  - Ubuntu:
-    - `sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl`
-    - `curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -`
-    - `sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"`
-    - `sudo apt-get update && sudo apt-get install terraform`
-  - macOS:
-    - `brew tap hashicorp/tap`
-    - `brew install hashicorp/tap/terraform`
+  * <details>
+      <summary>macOS</summary>
+
+      ```shell
+      brew install coreutils
+      ```
+
+    </details>
+
+* HashiCorp [Terraform][terraform-install] 1.2.1 or higher.
+  * <details>
+      <summary>Photon OS</summary>
+
+      ```shell
+      TERRAFORM_VERSION="1.2.1"
+      OS_PACKAGES="wget unzip"
+
+      if [[ $(uname -m) == "x86_64" ]]; then
+        LINUX_ARCH="amd64"
+      elif [[ $(uname -m) == "aarch64" ]]; then
+        LINUX_ARCH="arm64"
+      fi
+
+      tdnf install ${OS_PACKAGES} -y
+
+      wget -q https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
+
+      unzip -o -d /usr/local/bin/ terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
+      ```
+
+    </details>
+
+  * <details>
+      <summary>Ubuntu</summary>
+
+      ```shell
+      sudo apt-get update && sudo apt-get install terraform
+      ```
+
+    </details>
+
+  * <details>
+      <summary>macOS</summary>
+
+      ```shell
+      brew install hashicorp/tap/terraform
+      ```
+
+    </details>
+
 * [Gomplate](gomplate-install) 3.10.0 or higher.
-  - Ubuntu:
-    - `sudo curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/<version>/gomplate_<os>-<arch>`
-    - `sudo chmod 755 /usr/local/bin/gomplate`
-  - macOS:
-    - `brew install gomplate`
+  * <details>
+      <summary>Ubuntu</summary>
+
+      ```shell
+      GOMPLATE_VERSION="3.10.0"
+
+      sudo curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-${LINUX_ARCH}
+
+      sudo chmod 755 /usr/local/bin/gomplate
+      ```
+
+    </details>
+
+  * <details>
+      <summary>macOS</summary>
+
+      ```shell
+      brew install gomplate
+      ```
+
+    </details>
 
 **Platform**:
+
 * VMware Cloud Foundation 4.2 or higher, or
 * VMware vSphere 7.0 Update 2 or higher
 
@@ -180,6 +397,7 @@ The directory structure of the repository.
 ```
 
 The files are distributed in the following directories.
+
 * **`ansible`** - contains the Ansible roles to prepare a Linux machine image build.
 * **`builds`** - contains the templates, variables, and configuration files for the machine image build.
 * **`scripts`** - contains the scripts to initialize and prepare a Windows machine image build.
@@ -187,7 +405,7 @@ The files are distributed in the following directories.
 * **`manifests`** - manifests created after the completion of the machine image build.
 * **`terraform`** - contains example Terraform plans to test machine image builds.
 
-> ⚠️ **WARNING**:
+> **Warning**
 >
 > When forking the project for upstream contribution, please be mindful not to make changes that may expose your sensitive information, such as passwords, keys, certificates, etc.
 
@@ -195,42 +413,44 @@ The files are distributed in the following directories.
 
 1. Download the x64 guest operating system [.iso][iso] images.
 
-    **Linux Distributions**
+    Linux Distributions:
+
     * VMware Photon OS 4 Server
         * [Download][download-linux-photon-server-4] the 4.0 Rev2 release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-xxxxxxxxx.iso`)
     * Debian 11
         * [Download][download-linux-debian-11] the latest **netinst** release `.iso` image. (_e.g._ `debian-11.x.0-amd64-netinst.iso`)
     * Ubuntu Server 22.04 LTS
-        * [Download][download-linux-ubuntu-server-22-04-lts] the latest **LIVE** release `.iso` image. (_e.g._ `ubuntu-22.04.x-live-server-amd64.iso`)
+        * [Download][download-linux-ubuntu-server-22-04-lts] the latest **LIVE** release `.iso` image. (_e.g.,_ `ubuntu-22.04.x-live-server-amd64.iso`)
     * Ubuntu Server 20.04 LTS
-        * [Download][download-linux-ubuntu-server-20-04-lts] the latest **LIVE** release `.iso` image. (_e.g._ `ubuntu-20.04.x-live-server-amd64.iso`)
+        * [Download][download-linux-ubuntu-server-20-04-lts] the latest **LIVE** release `.iso` image. (_e.g.,_ `ubuntu-20.04.x-live-server-amd64.iso`)
     * Ubuntu Server 18.04 LTS
-        * [Download][download-linux-ubuntu-server-18-04-lts] the latest legacy **NON-LIVE** release `.iso` image. (_e.g._ `ubuntu-18.04.x-server-amd64.iso`)
+        * [Download][download-linux-ubuntu-server-18-04-lts] the latest legacy **NON-LIVE** release `.iso` image. (_e.g.,_ `ubuntu-18.04.x-server-amd64.iso`)
     * Red Hat Enterprise Linux 8 Server
-        * [Download][download-linux-redhat-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `rhel-8.x-x86_64-dvd1.iso`)
+        * [Download][download-linux-redhat-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-8.x-x86_64-dvd1.iso`)
     * Red Hat Enterprise Linux 7 Server
-        * [Download][download-linux-redhat-server-7] the latest release of the **FULL** `.iso` image. (_e.g._ `rhel-server-7.x-x86_64-dvd1.iso`)
+        * [Download][download-linux-redhat-server-7] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-server-7.x-x86_64-dvd1.iso`)
     * AlmaLinux OS 8
-        * [Download][download-linux-almalinux-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `AlmaLinux-8.x-x86_64-dvd1.iso`)
+        * [Download][download-linux-almalinux-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `AlmaLinux-8.x-x86_64-dvd1.iso`)
     * Rocky Linux 8
-        * [Download][download-linux-rocky-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `Rocky-8.x-x86_64-dvd1.iso`)
+        * [Download][download-linux-rocky-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `Rocky-8.x-x86_64-dvd1.iso`)
     * CentOS Stream 8
-        * [Download][download-linux-centos-stream-8] the latest release of the **FULL** `.iso` image. (_e.g._ `CentOS-Stream-8-x86_64-latest-dvd1.iso`)
+        * [Download][download-linux-centos-stream-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-Stream-8-x86_64-latest-dvd1.iso`)
     * CentOS Linux 8
-        * [Download][download-linux-centos-server-8] the latest release of the **FULL** `.iso` image. (_e.g._ `CentOS-8.x.xxxx-x86_64-dvd1.iso`)
+        * [Download][download-linux-centos-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-8.x.xxxx-x86_64-dvd1.iso`)
     * CentOS Linux 7
-        * [Download][download-linux-centos-server-7] the latest release of the **FULL** `.iso` image. (_e.g._ `CentOS-7-x86_64-DVD.iso`)
+        * [Download][download-linux-centos-server-7] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-7-x86_64-DVD.iso`)
 
-    **Microsoft Windows**
+    Microsoft Windows:
+
     * Microsoft Windows Server 2022
     * Microsoft Windows Server 2019
     * Microsoft Windows Server 2016
     * Microsoft Windows 11
     * Microsoft Windows 10
 
-3. Obtain the checksum type (_e.g._ `sha256`, `md5`, etc.) and checksum value for each guest operating system `.iso` image from the vendor. This will be use in the build input variables.
+1. Obtain the checksum type (_e.g.,_ `sha256`, `md5`, etc.) and checksum value for each guest operating system `.iso` image from the vendor. This will be use in the build input variables.
 
-4. [Upload][vsphere-upload] your guest operating system `.iso` images to the ISO datastore and paths that will be used in your variables.
+1. [Upload][vsphere-upload] your guest operating system `.iso` images to the ISO datastore and paths that will be used in your variables.
 
     **Example**: `config/common.pkvars.hcl`
 
@@ -287,54 +507,56 @@ If you would like to automate the creation of the custom vSphere role, a Terrafo
 
 1. Navigate to the directory for the example.
 
-```console
-cd terraform/vsphere-role
-```
+    ```console
+    cd terraform/vsphere-role
+    ```
 
-2. Duplicate the `terraform.tfvars.example` file to `terraform.tfvars` in the directory.
+1. Duplicate the `terraform.tfvars.example` file to `terraform.tfvars` in the directory.
 
-```console
-cp terraform.tfvars.example terraform.tfvars
-```
+    ```console
+    cp terraform.tfvars.example terraform.tfvars
+    ```
 
-3. Open the `terraform.tfvars` file and update the variables according to your environment.
+1. Open the `terraform.tfvars` file and update the variables according to your environment.
 
-4. Initialize the current directory and the required Terraform provider for VMware vSphere.
+1. Initialize the current directory and the required Terraform provider for VMware vSphere.
 
-```console
-terraform init
-```
+    ```console
+    terraform init
+    ```
 
-5. Create a Terraform plan and save the output to a file.
+1. Create a Terraform plan and save the output to a file.
 
-```console
-terraform plan -out=tfplan
-```
+    ```console
+    terraform plan -out=tfplan
+    ```
 
-6. Apply the Terraform plan.
+1. Apply the Terraform plan.
 
-```console
-terraform apply tfplan
-```
+    ```console
+    terraform apply tfplan
+    ```
 
 Once the custom vSphere role is created, assign **Global Permissions** in vSphere for the service account used for the HashiCorp Packer to VMware vSphere integration. Global permissions are required for the content library. For example:
 
 1. Log in to the vCenter Server at _<management_vcenter_server_fqdn>/ui_ as `administrator@vsphere.local`.
-2. Select **Menu** > **Administration**.
-3. In the left pane, select **Access control** > **Global permissions** and click the **Add permissions** icon.
-4. In the **Add permissions** dialog box, enter the service account (_e.g._ svc-packer-vsphere@rainpole.io), select the custom role (_e.g._ Packer to vSphere Integration Role) and the **Propagate to children** check box, and click OK.
+1. Select **Menu** > **Administration**.
+1. In the left pane, select **Access control** > **Global permissions** and click the **Add permissions** icon.
+1. In the **Add permissions** dialog box, enter the service account (_e.g.,_ svc-packer-vsphere@rainpole.io), select the custom role (_e.g.,_ Packer to vSphere Integration Role) and the **Propagate to children** check box, and click OK.
 
 In an environment with many vCenter Server instances, such as management and workload domains, you may wish to further reduce the scope of access across the infrastructure in vSphere for the service account. For example, if you do not want Packer to have access to your management domain, but only allow access to workload domains:
 
 1. From the **Hosts and clusters** inventory, select management domain vCenter Server to restrict scope, and click the **Permissions** tab.
-2. Select the service account with the custom role assigned and click the **Change role** icon.
-3. In the **Change role** dialog box, from the **Role** drop-down menu, select **No Access**, select the **Propagate to children** check box, and click **OK**.
+
+1. Select the service account with the custom role assigned and click the **Change role** icon.
+
+1. In the **Change role** dialog box, from the **Role** drop-down menu, select **No Access**, select the **Propagate to children** check box, and click **OK**.
 
 ### Step 4 - Configure the Variables
 
 The [variables][packer-variables] are defined in `.pkvars.hcl` files.
 
-#### **Copy the Example Variables**
+#### Copy the Example Variables
 
 Run the config script `./config.sh` to copy the `.pkvars.hcl.example` files to the `config` directory.
 
@@ -344,6 +566,7 @@ The `config` folder is the default folder, You may override the default by passi
 ./config.sh foo
 ./build.sh foo
 ```
+
 For example, this is useful for the purposes of running machine image builds for different environment.
 
 **San Francisco:** us-west-1
@@ -374,6 +597,7 @@ build_password           = "<plaintext_password>"
 build_password_encrypted = "<sha512_encrypted_password>"
 build_key                = "<public_key>"
 ```
+
 You can also override the `build_key` value with contents of a file, if required.
 
 For example:
@@ -384,21 +608,34 @@ build_key = file("${path.root}/config/ssh/build_id_ecdsa.pub")
 
 Generate a SHA-512 encrypted password for the `build_password_encrypted` using tools like mkpasswd.
 
+**Example**: mkpasswd using Docker on Photon:
+
+```console
+rainpole@photon> sudo systemctl start docker
+rainpole@photon>  sudo docker run -it --rm alpine:latest
+mkpasswd -m sha512
+Password: ***************
+[password hash]
+rainpole@photon> sudo systemctl stop docker
+```
+
 **Example**: mkpasswd using Docker on macOS:
 
 ```console
-rainpole@macos>  docker run -it --rm alpine:latestvmwar mkpasswd -m sha512
+rainpole@macos>  docker run -it --rm alpine:latest
+mkpasswd -m sha512
 Password: ***************
 [password hash]
 ```
 
-**Example**: mkpasswd on Linux:
+**Example**: mkpasswd on Ubuntu:
 
 ```console
-rainpole@linux>  mkpasswd -m sha-512
+rainpole@ubuntu>  mkpasswd -m sha-512
 Password: ***************
 [password hash]
 ```
+
 Generate a public key for the `build_key` for public key authentication.
 
 **Example**: macOS and Linux.
@@ -416,8 +653,10 @@ Your public key has been saved in /Users/rainpole/.ssh/id_ecdsa.pub.
 
 The content of the public key, `build_key`, is added the key to the `.ssh/authorized_keys` file of the `build_username` on the guest operating system.
 
->**WARNING**: Replace the default public keys and passwords.
->By default, both Public Key Authentication and Password Authentication are enabled for Linux distributions. If you wish to disable Password Authentication and only use Public Key Authentication, comment or remove the portion of the associated Ansible `configure` role.
+> **Warning**
+>
+> Replace the default public keys and passwords.
+> By default, both Public Key Authentication and Password Authentication are enabled for Linux distributions. If you wish to disable Password Authentication and only use Public Key Authentication, comment or remove the portion of the associated Ansible `configure` role.
 
 ##### Ansible Variables
 
@@ -431,7 +670,10 @@ Edit the `config/ansible.pkvars.hcl` file to configure the following:
 ansible_username = "ansible"
 ansible_key      = "<public_key>"
 ```
->**NOTE**: A random password is generated for the Ansible user.
+
+> **Note**
+>
+> A random password is generated for the Ansible user.
 
 You can also override the `ansible_key` value with contents of a file, if required.
 
@@ -480,6 +722,14 @@ common_shutdown_timeout = "15m"
 
 `http` is the default provisioning data source for Linux machine image builds.
 
+If iptables is enabled on your Packer host, you will need to open `common_http_port_min` through `common_http_port_max` ports.
+
+**Example**: Open a port range in iptables.
+
+```shell
+iptables -A INPUT -p tcp --match multiport --dports 8000:8099 -j ACCEPT`
+```
+
 You can change the `common_data_source` from `http` to `disk` to build supported Linux machine images without the need to use Packer's HTTP server. This is useful for environments that may not be able to route back to the system from which Packer is running.
 
 The `cd_content` option is used when selecting `disk` unless the distribution does not support a secondary CD-ROM. For distributions that do not support a secondary CD-ROM the `floppy_content` option is used.
@@ -488,7 +738,7 @@ The `cd_content` option is used when selecting `disk` unless the distribution do
 common_data_source = "disk"
 ```
 
-##### HTTP Binding
+##### HTTP Binding (Optional)
 
 If you need to define a specific IPv4 address from your host for Packer's HTTP Server, modify the `common_http_ip` variable from `null` to a `string` value that matches an IP address on your Packer host. For example:
 
@@ -511,6 +761,7 @@ communicator_proxy_port     = 1080
 communicator_proxy_username = "rainpole"
 communicator_proxy_password = "<plaintext_password>"
 ```
+
 ##### Red Hat Subscription Manager Variables
 
 Edit the `config/redhat.pkvars.hcl` file to configure the following:
@@ -546,17 +797,20 @@ vsphere_datastore            = "sfo-w01-cl01-ds-vsan01"
 vsphere_network              = "sfo-w01-seg-dhcp"
 vsphere_folder               = "sfo-w01-fd-templates"
 ```
-#### **Using Environment Variables**
 
-Alternatively, you can set your environment variables if you would prefer not to save sensitive potentially information in cleartext files. You can add these to environmental variables using the included `set-envvars.sh` script:
+#### Using Environment Variables
+
+If you prefer not to save sensitive potentially information in cleartext files, you add the variables to environmental variables using the included `set-envvars.sh` script:
 
 ```console
 rainpole@macos> . ./set-envvars.sh
 ```
 
-> **NOTE**: You need to run the script as source or the shorthand "`.`".
+> **Note**
+>
+> You need to run the script as source or the shorthand "`.`".
 
-#### **Machine Image Variables**
+#### Machine Image Variables (Optional)
 
 Edit the `*.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder to configure the following virtual machine hardware settings, as required:
 
@@ -569,8 +823,8 @@ Edit the `*.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder to conf
 * .iso Checksum Type `(string)`
 * .iso Checksum Value `(string)`
 
-    >**Note**: All `variables.auto.pkvars.hcl` default to using the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types.
-
+    > **Note**
+    > All `variables.auto.pkvars.hcl` default to using the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types.
 
 ### Step 5 - Modify the Configurations (Optional)
 
@@ -582,11 +836,11 @@ Username and password variables are passed into the kickstart or cloud-init file
 
 #### Microsoft Windows Unattended amd Scripts
 
-Variables are passed into the [Microsoft Windows][microsoft-windows-unattend] unattend files (`autounattend.xml`) as Packer template files (`autounattend.pkrtpl.hcl`) to generate these on-demand. A PowerShell script is then used to configure the Linux machine image builds.
+Variables are passed into the [Microsoft Windows][microsoft-windows-unattend] unattend files (`autounattend.xml`) as Packer template files (`autounattend.pkrtpl.hcl`) to generate these on-demand. By default, each unattended file is set to use the [KMS client setup keys][microsoft-kms] as the **Product Key**.
 
-By default, each unattended file is set to use the [KMS client setup keys][microsoft-kms] as the **Product Key**.
+PowerShell scripts are used to configure the Windows machine image builds.
 
-**Need help customizing the configuration files?**
+Need help customizing the configuration files?
 
 * **VMware Photon OS** - Read the [Photon OS Kickstart Documentation][photon-kickstart].
 * **Ubuntu Server** - Install and run system-config-kickstart on a Ubuntu desktop.
@@ -596,16 +850,20 @@ By default, each unattended file is set to use the [KMS client setup keys][micro
     ssh -X rainpole@ubuntu-desktop
     sudo system-config-kickstart
     ```
+
 * **Red Hat Enterprise Linux** (_as well as CentOS Linux/Stream, AlmaLinux OS, and Rocky Linux_) - Use the [Red Hat Kickstart Generator][redhat-kickstart].
 * **Microsoft Windows** - Use the Microsoft Windows [Answer File Generator][microsoft-windows-afg] if you need to customize the provided examples further.
 
 ### Step 6 - Add Certificates
 
 Save a copy of your PEM encoded Root Certificate Authority certificate to the following in `.cer` format.
-- `/ansible/roles/base/files` for Linux machine images.
-- `/certificates` for Windows machine images.
 
-These files are copied to the guest operating systems and added the certificate to the Trusted Certificate Authority of the guest operating system. Linux distributions uses the Ansible provisioner, but Windows still uses the shell provisioner at this time.
+* `/ansible/roles/base/files` for Linux machine images.
+* `/certificates` for Windows machine images.
+
+These files are copied to the guest operating systems and added the certificate to the Trusted Certificate Authority of the guest operating system.
+
+Linux distributions uses the Ansible provisioner, but Windows still uses the shell provisioner at this time.
 
 ## Build
 
@@ -635,6 +893,18 @@ rainpole@macos> packer build -force \
 ```
 
 ### Build with Environmental Variables
+
+You can set your environment variables if you would prefer not to save sensitive information in cleartext files.
+
+You can add these to environmental variables using the included `set-envvars.sh` script.
+
+```console
+rainpole@macos> . ./set-envvars.sh
+```
+
+> **Note**
+>
+> You need to run the script as source or the shorthand "`.`".
 
 Initialize the plugins:
 
@@ -667,6 +937,7 @@ Happy building!!!
 * Read [Debugging Packer Builds][packer-debug].
 
 ## Credits
+
 * Owen Reynolds [@OVDamn][credits-owen-reynolds-twitter]
 
     [VMware Tools for Windows][credits-owen-reynolds-github] installation PowerShell script.

@@ -4,9 +4,9 @@
 
 [![The Changelog](https://img.shields.io/badge/The%20Changelog-Read-blue?style=for-the-badge&logo=github)](CHANGELOG.md)
 
-![VMware vSphere 7.0 Update 2+](https://img.shields.io/badge/VMware%20vSphere-7.0%20Update%202+-blue?style=for-the-badge)
+![VMware vSphere 7.0 Update 3+](https://img.shields.io/badge/VMware%20vSphere-7.0%20Update%203+-blue?style=for-the-badge)
 
-![Packer 1.8.0+](https://img.shields.io/badge/HashiCorp%20Packer-1.8.0+-blue?style=for-the-badge)
+![Packer 1.8.2+](https://img.shields.io/badge/HashiCorp%20Packer-1.8.2+-blue?style=for-the-badge)
 
 ![Ansible 2.9+](https://img.shields.io/badge/Ansible-2.9+-blue?style=for-the-badge)
 
@@ -53,7 +53,7 @@ The following builds are available:
 
 > **Note**
 >
-> * Guest customization is not currently supported for AlmaLinux OS and Rocky Linux in vCenter Server 7.0 Update 2.
+> * Guest customization is not currently supported for AlmaLinux OS and Rocky Linux in vCenter Server 7.0 Update 3.
 >
 > * The Microsoft Windows 11 machine image uses a virtual trusted platform module (vTPM). Refer to the VMware vSphere [product documenation][vsphere-tpm] for requirements and pre-requisites.
 >
@@ -73,7 +73,7 @@ The following builds are available:
 
 **Packer**:
 
-* HashiCorp [Packer][packer-install] 1.8.0 or higher.
+* HashiCorp [Packer][packer-install] 1.8.2 or higher.
 
   > **Note**
   >
@@ -83,7 +83,7 @@ The following builds are available:
       <summary>Photon OS</summary>
 
       ```shell
-      PACKER_VERSION="1.8.0"
+      PACKER_VERSION="1.8.2"
       OS_PACKAGES="wget unzip"
 
       if [[ $(uname -m) == "x86_64" ]]; then
@@ -127,7 +127,7 @@ The following builds are available:
 
     </details>
 
-* HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.3 or higher.
+* HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.5 or higher.
 * [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.1 or higher - a community plugin for HashiCorp Packer.
 
     > **Note**
@@ -253,12 +253,12 @@ The following software packages must be installed on the opearing system running
 
     </details>
 
-* HashiCorp [Terraform][terraform-install] 1.2.1 or higher.
+* HashiCorp [Terraform][terraform-install] 1.2.3 or higher.
   * <details>
       <summary>Photon OS</summary>
 
       ```shell
-      TERRAFORM_VERSION="1.2.1"
+      TERRAFORM_VERSION="1.2.3"
       OS_PACKAGES="wget unzip"
 
       if [[ $(uname -m) == "x86_64" ]]; then
@@ -319,8 +319,7 @@ The following software packages must be installed on the opearing system running
 
 **Platform**:
 
-* VMware Cloud Foundation 4.2 or higher, or
-* VMware vSphere 7.0 Update 2 or higher
+* VMware vSphere 7.0 Update 3 or higher
 
 ## Configuration
 

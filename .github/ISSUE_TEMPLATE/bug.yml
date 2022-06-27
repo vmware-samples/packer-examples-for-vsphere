@@ -1,7 +1,7 @@
 ---
 name: Bug Report
 description: Is something not working as expected? Submit a bug.
-title: '[BUG] REPLACE WITH A SHORT DESCRIPTION'
+title: 'REPLACE WITH A SHORT DESCRIPTION'
 labels:
   - type/bug
   - status/needs-triage
@@ -16,7 +16,7 @@ body:
         relevant issues.
 
 
-        When filing a feature, please include the following information.
+        When filing a bug, please include the following information.
   - type: checkboxes
     id: terms
     attributes:
@@ -35,7 +35,8 @@ body:
       description: Please provide the version of this project.
       options:
         - main
-        - 22.05 (latest)
+        - 22.06 (latest)
+        - 22.05
         - 22.04
         - 22.03
         - 22.02
@@ -47,7 +48,7 @@ body:
     attributes:
       label: VMware vSphere
       description: Please provide the VMware vSphere version.
-      placeholder: 7.0 Update 2
+      placeholder: 7.0 Update 3
     validations:
       required: true
   - type: input
@@ -55,7 +56,7 @@ body:
     attributes:
       label: HashiCorp Packer
       description: Please provide the HashiCorp Packer version.
-      placeholder: 1.8.0
+      placeholder: 1.8.2
     validations:
       required: true
   - type: input
@@ -63,9 +64,8 @@ body:
     attributes:
       label: HashiCorp Packer Plugin for VMware vSphere
       description: >-
-        Please provide the HashiCorp Packer Plugin for VMware vSphere Version
-        version.
-      placeholder: 1.0.4
+        Please provide the HashiCorp Packer Plugin for VMware vSphere version.
+      placeholder: 1.0.5
     validations:
       required: true
   - type: input
@@ -134,7 +134,7 @@ body:
     id: screenshot
     attributes:
       label: Screenshots
-      description: 'Screenshots of the issue, if applicable.'
+      description: Screenshots of the issue, if applicable.
     validations:
       required: false
   - type: textarea

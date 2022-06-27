@@ -1,10 +1,10 @@
 ---
 name: Enhancement Request
 description: Is something critical missing? Suggest a feature or an enhancement.
-title: '[ENHANCEMENT] *REPLACE WITH SHORT DESCRIPTION*'
+title: 'REPLACE WITH SHORT DESCRIPTION'
 labels:
   - type/enhancement
-  - status/needs-triage
+  - status/needs-review
 assignees:
   - tenthirtyam
 body:
@@ -18,7 +18,7 @@ body:
         feature to add up-votes to existing requests.
 
 
-        When filing a feature, please include the following information.
+        When filing an enhancement, please include the following information.
   - type: checkboxes
     id: terms
     attributes:
@@ -34,7 +34,7 @@ body:
     id: description
     attributes:
       label: Description
-      description: A written overview of the feature.
+      description: A written overview of the enhancement.
     validations:
       required: true
   - type: textarea

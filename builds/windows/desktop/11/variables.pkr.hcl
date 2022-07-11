@@ -195,6 +195,18 @@ variable "vm_network_card" {
   default     = "vmxnet3"
 }
 
+variable "vm_video_mem_size" {
+  type        = number
+  description = "The size for the video memory in KB. (e.g. 4096)"
+  default     = 4096
+}
+
+variable "vm_video_displays" {
+  type        = number
+  description = "The number of video displays. (e.g. 1)"
+  default     = 1
+}
+
 variable "common_vm_version" {
   type        = number
   description = "The vSphere virtual hardware version. (e.g. '19')"

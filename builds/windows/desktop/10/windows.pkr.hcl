@@ -59,6 +59,8 @@ source "vsphere-iso" "windows-desktop" {
   CPU_hot_plug         = var.vm_cpu_hot_add
   RAM                  = var.vm_mem_size
   RAM_hot_plug         = var.vm_mem_hot_add
+  video_ram            = var.vm_video_mem_size
+  displays             = var.vm_video_displays
   cdrom_type           = var.vm_cdrom_type
   disk_controller_type = var.vm_disk_controller_type
   storage {
@@ -185,6 +187,8 @@ build {
       vm_guest_os_type         = var.vm_guest_os_type
       vm_mem_size              = var.vm_mem_size
       vm_network_card          = var.vm_network_card
+      vm_video_memory          = var.vm_video_mem_size
+      vm_video_displays        = var.vm_video_displays
       vsphere_cluster          = var.vsphere_cluster
       vsphere_datacenter       = var.vsphere_datacenter
       vsphere_datastore        = var.vsphere_datastore

@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## Unreleased
+
+> Release Date: Unreleased
+
+🧹 **Chore**:
+
+* Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.6`.
+
+
 ## [v22.06](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.06)
 
 > Release Date: 2022-06-27

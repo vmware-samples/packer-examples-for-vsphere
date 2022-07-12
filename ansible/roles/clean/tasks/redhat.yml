@@ -38,10 +38,17 @@
   args:
     warn: false
 - name: "Cleaning the machine-id."
+  when: "ansible_facts['distribution_major_version'] <= \"8\""
   shell: |
     truncate -s 0 /etc/machine-id
     rm /var/lib/dbus/machine-id
     ln -s /etc/machine-id /var/lib/dbus/machine-id
+  args:
+    warn: false
+- name: "Cleaning the machine-id."
+  when: "ansible_facts['distribution_major_version'] >= \"9\""
+  shell: |
+    truncate -s 0 /etc/machine-id
   args:
     warn: false
 - name: "Cleaning the shell history."

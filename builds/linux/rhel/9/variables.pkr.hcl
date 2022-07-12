@@ -1,10 +1,24 @@
 /*
     DESCRIPTION:
-    Rocky Linux 8 variables using the Packer Builder for VMware vSphere (vsphere-iso).
+    Red Hat Enterprise Linux 9 variables using the Packer Builder for VMware vSphere (vsphere-iso).
 */
 
 //  BLOCK: variable
 //  Defines the input variables.
+
+// Red Hat Subscription Manager Credentials
+
+variable "rhsm_username" {
+  type        = string
+  description = "The username to Red Hat Subscription Manager."
+  sensitive   = true
+}
+
+variable "rhsm_password" {
+  type        = string
+  description = "The password to login to Red Hat Subscription Manager."
+  sensitive   = true
+}
 
 // vSphere Credentials
 
@@ -85,23 +99,23 @@ variable "vm_guest_os_family" {
 
 variable "vm_guest_os_name" {
   type        = string
-  description = "The guest operating system name. Used for naming . (e.g. 'rocky')"
+  description = "The guest operating system name. Used for naming . (e.g. 'rhel')"
 }
 
 variable "vm_guest_os_version" {
   type        = string
-  description = "The guest operating system version. Used for naming. (e.g. '8')"
+  description = "The guest operating system version. Used for naming. (e.g. '9')"
 }
 
 variable "vm_guest_os_type" {
   type        = string
-  description = "The guest operating system type, also know as guestid. (e.g. 'other4xLinux64Guest')"
+  description = "The guest operating system type, also know as guestid. (e.g. 'rhel9_64Guest')"
 }
 
 variable "vm_firmware" {
   type        = string
-  description = "The virtual machine firmware. (e.g. 'efi-secure', 'efi', or 'bios')"
-  default     = "efi"
+  description = "The virtual machine firmware. (e.g. 'efi-secure'. 'efi', or 'bios')"
+  default     = "efi-secure"
 }
 
 variable "vm_cdrom_type" {
@@ -218,12 +232,12 @@ variable "common_iso_datastore" {
 
 variable "iso_path" {
   type        = string
-  description = "The path on the source vSphere datastore for ISO image. (e.g. 'iso/linux/rocky')"
+  description = "The path on the source vSphere datastore for ISO image. (e.g. 'iso/linux/rhel')"
 }
 
 variable "iso_file" {
   type        = string
-  description = "The file name of the ISO image used by the vendor. (e.g. 'Rocky-<version>-x86_64-dvd1.iso')"
+  description = "The file name of the ISO image used by the vendor. (e.g. 'rhel-<verssion>-x86_64-dvd.iso')"
 }
 
 variable "iso_checksum_type" {
@@ -326,7 +340,7 @@ variable "communicator_proxy_username" {
 
 variable "communicator_proxy_password" {
   type        = string
-  description = "The optional password to use to authenticate with the proxy server."
+  description = "The optional password to authenticate with the proxy server."
   sensitive   = true
   default     = null
 }

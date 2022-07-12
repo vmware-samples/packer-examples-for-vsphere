@@ -4,7 +4,7 @@
 
 [![The Changelog](https://img.shields.io/badge/The%20Changelog-Read-blue?style=for-the-badge&logo=github)](CHANGELOG.md)
 
-![VMware vSphere 7.0 Update 3+](https://img.shields.io/badge/VMware%20vSphere-7.0%20Update%203+-blue?style=for-the-badge)
+![VMware vSphere 7.0 Update 3d+](https://img.shields.io/badge/VMware%20vSphere-7.0%20Update%203d+-blue?style=for-the-badge)
 
 ![Packer 1.8.2+](https://img.shields.io/badge/HashiCorp%20Packer-1.8.2+-blue?style=for-the-badge)
 
@@ -32,28 +32,27 @@ The following builds are available:
 ### Linux Distributions
 
 * VMware Photon OS 4
-* Ubuntu Server 22.04 LTS
-* Ubuntu Server 20.04 LTS
+* Ubuntu Server 22.04 LTS (cloud-init)
+* Ubuntu Server 20.04 LTS (cloud-init)
 * Ubuntu Server 18.04 LTS
+* Red Hat Enterprise Linux 9 Server
 * Red Hat Enterprise Linux 8 Server
 * Red Hat Enterprise Linux 7 Server
+* AlmaLinux OS 9
 * AlmaLinux OS 8
 * Rocky Linux 8
+* CentOS Stream 9
 * CentOS Stream 8
-* CentOS Linux 8
 * CentOS Linux 7
 
 ### Microsoft Windows - _Core and Desktop Experience_
 
 * Microsoft Windows Server 2022 - Standard and Datacenter
 * Microsoft Windows Server 2019 - Standard and Datacenter
-* Microsoft Windows Server 2016 - Standard and Datacenter
 * Microsoft Windows 11
 * Microsoft Windows 10
 
 > **Note**
->
-> * Guest customization is not currently supported for AlmaLinux OS and Rocky Linux in vCenter Server 7.0 Update 3.
 >
 > * The Microsoft Windows 11 machine image uses a virtual trusted platform module (vTPM). Refer to the VMware vSphere [product documenation][vsphere-tpm] for requirements and pre-requisites.
 >
@@ -319,7 +318,7 @@ The following software packages must be installed on the opearing system running
 
 **Platform**:
 
-* VMware vSphere 7.0 Update 3 or higher
+* VMware vSphere 7.0 Update 3D or higher
 
 ## Configuration
 
@@ -413,7 +412,7 @@ The files are distributed in the following directories.
 
     Linux Distributions:
 
-    * VMware Photon OS 4 Server
+    * VMware Photon OS 4.0
         * [Download][download-linux-photon-server-4] the 4.0 Rev2 release of the **FULL** `.iso` image. (_e.g.,_ `photon-4.0-xxxxxxxxx.iso`)
     * Ubuntu Server 22.04 LTS
         * [Download][download-linux-ubuntu-server-22-04-lts] the latest **LIVE** release `.iso` image. (_e.g.,_ `ubuntu-22.04.x-live-server-amd64.iso`)
@@ -421,18 +420,22 @@ The files are distributed in the following directories.
         * [Download][download-linux-ubuntu-server-20-04-lts] the latest **LIVE** release `.iso` image. (_e.g.,_ `ubuntu-20.04.x-live-server-amd64.iso`)
     * Ubuntu Server 18.04 LTS
         * [Download][download-linux-ubuntu-server-18-04-lts] the latest legacy **NON-LIVE** release `.iso` image. (_e.g.,_ `ubuntu-18.04.x-server-amd64.iso`)
+    * Red Hat Enterprise Linux 9 Server
+        * [Download][download-linux-redhat-server-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-baseos-9.x-x86_64-dvd.iso`)
     * Red Hat Enterprise Linux 8 Server
         * [Download][download-linux-redhat-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-8.x-x86_64-dvd1.iso`)
     * Red Hat Enterprise Linux 7 Server
         * [Download][download-linux-redhat-server-7] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-server-7.x-x86_64-dvd1.iso`)
+    * AlmaLinux OS 9
+        * [Download][download-linux-almalinux-server-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `AlmaLinux-9.x-x86_64-dvd1.iso`)
     * AlmaLinux OS 8
         * [Download][download-linux-almalinux-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `AlmaLinux-8.x-x86_64-dvd1.iso`)
     * Rocky Linux 8
         * [Download][download-linux-rocky-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `Rocky-8.x-x86_64-dvd1.iso`)
+    * CentOS Stream 9
+        * [Download][download-linux-centos-stream-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-Stream-9-latest-x86_64-dvd1.iso`)
     * CentOS Stream 8
         * [Download][download-linux-centos-stream-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-Stream-8-x86_64-latest-dvd1.iso`)
-    * CentOS Linux 8
-        * [Download][download-linux-centos-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-8.x.xxxx-x86_64-dvd1.iso`)
     * CentOS Linux 7
         * [Download][download-linux-centos-server-7] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-7-x86_64-DVD.iso`)
 
@@ -440,7 +443,6 @@ The files are distributed in the following directories.
 
     * Microsoft Windows Server 2022
     * Microsoft Windows Server 2019
-    * Microsoft Windows Server 2016
     * Microsoft Windows 11
     * Microsoft Windows 10
 
@@ -820,6 +822,7 @@ Edit the `*.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder to conf
 * .iso Checksum Value `(string)`
 
     > **Note**
+    >
     > All `variables.auto.pkvars.hcl` default to using the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types.
 
 ### Step 5 - Modify the Configurations (Optional)
@@ -945,13 +948,15 @@ Happy building!!!
 [credits-owen-reynolds-twitter]: https://twitter.com/OVDamn
 [credits-owen-reynolds-github]: https://github.com/getvpro/Build-Packer/blob/master/Scripts/Install-VMTools.ps1
 [download-git]: https://git-scm.com/downloads
-[download-linux-almalinux-server-8]: https://mirrors.almalinux.org/isos.html
+[download-linux-almalinux-server-8]: https://mirrors.almalinux.org/isos/x86_64/8.6.html
+[download-linux-almalinux-server-9]: https://mirrors.almalinux.org/isos/x86_64/9.0.html
 [download-linux-centos-server-7]: http://isoredirect.centos.org/centos/7/isos/x86_64/
-[download-linux-centos-server-8]: http://isoredirect.centos.org/centos/8/isos/x86_64/
+[download-linux-centos-stream-9]: http://mirror.stream.centos.org/9-stream/BaseOS/x86_64/iso/
 [download-linux-centos-stream-8]: http://isoredirect.centos.org/centos/8-stream/isos/x86_64/
 [download-linux-photon-server-4]: https://packages.vmware.com/photon/4.0/
-[download-linux-redhat-server-8]: https://access.redhat.com/downloads/content/479/
-[download-linux-redhat-server-7]: https://access.redhat.com/downloads/content/69/
+[download-linux-redhat-server-7]: https://access.redhat.com/downloads/content/69/ver=/rhel---7/7.9/x86_64/product-software
+[download-linux-redhat-server-8]: https://access.redhat.com/downloads/content/479/ver=/rhel---8/8.6/x86_64/product-software
+[download-linux-redhat-server-9]: https://access.redhat.com/downloads/content/479/ver=/rhel---9/9.0/x86_64/product-software
 [download-linux-rocky-server-8]: https://download.rockylinux.org/pub/rocky/8/isos/x86_64/
 [download-linux-ubuntu-server-18-04-lts]: http://cdimage.ubuntu.com/ubuntu/releases/18.04.5/release/
 [download-linux-ubuntu-server-20-04-lts]: https://releases.ubuntu.com/20.04/
@@ -979,5 +984,5 @@ Happy building!!!
 [vsphere-content-library]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-254B2CE8-20A8-43F0-90E8-3F6776C2C896.html
 [vsphere-guestosid]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
 [vsphere-efi]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-898217D4-689D-4EB5-866C-888353FE241C.html
-[vsphere-upload]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.storage.doc/GUID-58D77EA5-50D9-4A8E-A15A-D7B3ABA11B87.html?hWord=N4IghgNiBcIK4AcIHswBMAEAzAlhApgM4gC+QA
+[vsphere-upload]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.storage.doc/GUID-58D77EA5-50D9-4A8E-A15A-D7B3ABA11B87.html
 [vsphere-tpm]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4DBF65A4-4BA0-4667-9725-AE9F047DE00A.html

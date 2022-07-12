@@ -218,7 +218,7 @@ variable "common_iso_datastore" {
 
 variable "iso_path" {
   type        = string
-  description = "The path on the source vSphere datastore for ISO image. (e.g. 'iso/linux/rhel-derivative')"
+  description = "The path on the source vSphere datastore for ISO image. (e.g. 'iso/linux/centos')"
 }
 
 variable "iso_file" {

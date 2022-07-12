@@ -104,12 +104,12 @@ variable "vm_guest_os_name" {
 
 variable "vm_guest_os_version" {
   type        = string
-  description = "The guest operating system version. Used for naming. (e.g. '8')"
+  description = "The guest operating system version. Used for naming. (e.g. '7')"
 }
 
 variable "vm_guest_os_type" {
   type        = string
-  description = "The guest operating system type, also know as guestid. (e.g. 'rhel8_64Guest')"
+  description = "The guest operating system type, also know as guestid. (e.g. 'rhel7_64Guest')"
 }
 
 variable "vm_firmware" {

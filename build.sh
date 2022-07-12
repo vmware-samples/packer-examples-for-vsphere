@@ -302,6 +302,37 @@ menu_option_9() {
 }
 
 menu_option_10() {
+  INPUT_PATH="$SCRIPT_PATH"/builds/linux/rocky/9/
+  echo -e "\nCONFIRM: Build a Rocky Linux 9 Template for VMware vSphere?"
+  echo -e "\nContinue? (y/n)"
+  read -r REPLY
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+    exit 1
+  fi
+
+  ### Build a Rocky Linux 9 Template for VMware vSphere. ###
+  echo "Building a Rocky Linux 9 Template for VMware vSphere..."
+
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
+  packer init "$INPUT_PATH"
+
+  ### Start the Build. ###
+  echo "Starting the build...."
+  packer build -force \
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      "$INPUT_PATH"
+
+  ### All done. ###
+  echo "Done."
+}
+
+menu_option_11() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/rocky/8/
   echo -e "\nCONFIRM: Build a Rocky Linux 8 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -332,7 +363,7 @@ menu_option_10() {
   echo "Done."
 }
 
-menu_option_11() {
+menu_option_12() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos/9-stream/
   echo -e "\nCONFIRM: Build a CentOS Stream 9 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -363,7 +394,7 @@ menu_option_11() {
   echo "Done."
 }
 
-menu_option_12() {
+menu_option_13() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos/8-stream/
   echo -e "\nCONFIRM: Build a CentOS Stream 8 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -394,7 +425,7 @@ menu_option_12() {
   echo "Done."
 }
 
-menu_option_13() {
+menu_option_14() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos/7/
   echo -e "\nCONFIRM: Build a CentOS Linux 7 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -426,7 +457,7 @@ menu_option_13() {
 }
 
 
-menu_option_14() {
+menu_option_15() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2022/
   echo -e "\nCONFIRM: Build all Windows Server 2022 Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -455,7 +486,7 @@ menu_option_14() {
   echo "Done."
 }
 
-menu_option_15() {
+menu_option_16() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2022/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2022 Standard Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -485,7 +516,7 @@ menu_option_15() {
   echo "Done."
 }
 
-menu_option_16() {
+menu_option_17() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2022/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2022 Datacenter Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -515,7 +546,7 @@ menu_option_16() {
   echo "Done."
 }
 
-menu_option_17() {
+menu_option_18() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2019/
   echo -e "\nCONFIRM: Build all Windows Server 2019 Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -544,7 +575,7 @@ menu_option_17() {
   echo "Done."
 }
 
-menu_option_18() {
+menu_option_19() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2019/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2019 Standard Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -574,7 +605,7 @@ menu_option_18() {
   echo "Done."
 }
 
-menu_option_19() {
+menu_option_20() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2019/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2019 Datacenter Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -604,7 +635,7 @@ menu_option_19() {
   echo "Done."
 }
 
-menu_option_20() {
+menu_option_21() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/11/
   echo -e "\nCONFIRM: Build a Windows 11 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -633,7 +664,7 @@ menu_option_20() {
   echo "Done."
 }
 
-menu_option_21() {
+menu_option_22() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/10/
   echo -e "\nCONFIRM: Build a Windows 10 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -704,21 +735,22 @@ until [ "$selection" = "0" ]; do
   echo "    	 7  -  Red Hat Enterprise Linux 7"
   echo "    	 8  -  AlmaLinux OS 9"
   echo "    	 9  -  AlmaLinux OS 8"
-  echo "    	10  -  Rocky Linux 8"
-  echo "    	11  -  CentOS Stream 9"
-  echo "    	12  -  CentOS Stream 8"
-  echo "    	13  -  CentOS Linux 7"
+  echo "    	10  -  Rocky Linux 9"
+  echo "    	11  -  Rocky Linux 8"
+  echo "    	12  -  CentOS Stream 9"
+  echo "    	13  -  CentOS Stream 8"
+  echo "    	14  -  CentOS Linux 7"
   echo ""
   echo "      Microsoft Windows:"
   echo ""
-  echo "    	14  -  Windows Server 2022 - All"
-  echo "    	15  -  Windows Server 2022 - Standard Only"
-  echo "    	16  -  Windows Server 2022 - Datacenter Only"
-  echo "    	17  -  Windows Server 2019 - All"
-  echo "    	18  -  Windows Server 2019 - Standard Only"
-  echo "    	19  -  Windows Server 2019 - Datacenter Only"
-  echo "    	20  -  Windows 11"
-  echo "    	21  -  Windows 10"
+  echo "    	15  -  Windows Server 2022 - All"
+  echo "    	16  -  Windows Server 2022 - Standard Only"
+  echo "    	17  -  Windows Server 2022 - Datacenter Only"
+  echo "    	18  -  Windows Server 2019 - All"
+  echo "    	19  -  Windows Server 2019 - Standard Only"
+  echo "    	20  -  Windows Server 2019 - Datacenter Only"
+  echo "    	21  -  Windows 11"
+  echo "    	22  -  Windows 10"
   echo ""
   echo "      Other:"
   echo ""
@@ -749,6 +781,7 @@ until [ "$selection" = "0" ]; do
     19 ) clear ; menu_option_19 ; press_enter ;;
     20 ) clear ; menu_option_20 ; press_enter ;;
     21 ) clear ; menu_option_21 ; press_enter ;;
+    22 ) clear ; menu_option_22 ; press_enter ;;
     I ) clear ; info ; press_enter ;;
     Q ) clear ; exit ;;
     * ) clear ; incorrect_selection ; press_enter ;;

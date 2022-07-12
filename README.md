@@ -318,7 +318,7 @@ The following software packages must be installed on the opearing system running
 
 **Platform**:
 
-* VMware vSphere 7.0 Update 3d or higher
+* VMware vSphere 7.0 Update 3D or higher
 
 ## Configuration
 

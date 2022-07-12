@@ -95,7 +95,7 @@ variable "vm_guest_os_version" {
 
 variable "vm_guest_os_type" {
   type        = string
-  description = "The guest operating system type, also know as guestid. (e.g. 'debian64Guest')"
+  description = "The guest operating system type, also know as guestid. (e.g. 'debian11_64Guest')"
 }
 
 variable "vm_firmware" {

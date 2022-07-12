@@ -95,7 +95,7 @@ variable "vm_guest_os_version" {
 
 variable "vm_guest_os_type" {
   type        = string
-  description = "The guest operating system type, also know as guestid. (e.g. 'centos8_64Guest')"
+  description = "The guest operating system type, also know as guestid. (e.g. 'other4xLinux64Guest')"
 }
 
 variable "vm_firmware" {
@@ -218,7 +218,7 @@ variable "common_iso_datastore" {
 
 variable "iso_path" {
   type        = string
-  description = "The path on the source vSphere datastore for ISO image. (e.g. 'iso'/linux/rhel-derivative)"
+  description = "The path on the source vSphere datastore for ISO image. (e.g. 'iso'/linux/almalinux')"
 }
 
 variable "iso_file" {

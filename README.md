@@ -252,12 +252,12 @@ The following software packages must be installed on the opearing system running
 
     </details>
 
-* HashiCorp [Terraform][terraform-install] 1.2.3 or higher.
+* HashiCorp [Terraform][terraform-install] 1.2.5 or higher.
   * <details>
       <summary>Photon OS</summary>
 
       ```shell
-      TERRAFORM_VERSION="1.2.3"
+      TERRAFORM_VERSION="1.2.5"
       OS_PACKAGES="wget unzip"
 
       if [[ $(uname -m) == "x86_64" ]]; then

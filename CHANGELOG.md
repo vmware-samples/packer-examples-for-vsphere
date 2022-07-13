@@ -5,7 +5,6 @@
 > Release Date: Unreleased
 
 💫  **Enhancement**:
-3d
 * Adds Red Hat Enterprise Linux 9.
 * Adds CentOS 9 Stream.
 * Adds AlmaLinux OS 9.

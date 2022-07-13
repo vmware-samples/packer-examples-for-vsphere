@@ -101,7 +101,7 @@ esac
 echo -e '\n> Set the default user account credentials.'
 read -r -p "Enter the username for the account: " build_username
 read -r -s -p "Enter the password for the account: " build_password
-echo # Needed for line breakd
+echo # Needed for line break.
 read -r -s -p "Enter the SHA-512 encrypted password for the account: " build_password_encrypted
 echo # Needed for line break.
 read -r -s -p "Enter the key for the account: " build_key

@@ -41,6 +41,9 @@ menu:
       - entry: "AlmaLinux OS 8"
         build:
           path: "builds/linux/almalinux/8/"
+      - entry: "Rocky Linux 9"
+        build:
+          path: "builds/linux/rocky/9/"
       - entry: "Rocky Linux 8"
         build:
           path: "builds/linux/rocky/8/"

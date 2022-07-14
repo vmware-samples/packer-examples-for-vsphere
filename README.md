@@ -40,6 +40,7 @@ The following builds are available:
 * Red Hat Enterprise Linux 7 Server
 * AlmaLinux OS 9
 * AlmaLinux OS 8
+* Rocky Linux 9
 * Rocky Linux 8
 * CentOS Stream 9
 * CentOS Stream 8
@@ -430,6 +431,8 @@ The files are distributed in the following directories.
         * [Download][download-linux-almalinux-server-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `AlmaLinux-9.x-x86_64-dvd1.iso`)
     * AlmaLinux OS 8
         * [Download][download-linux-almalinux-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `AlmaLinux-8.x-x86_64-dvd1.iso`)
+    * Rocky Linux 9
+        * [Download][download-linux-rocky-server-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `Rocky-9.x-x86_64-dvd1.iso`)
     * Rocky Linux 8
         * [Download][download-linux-rocky-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `Rocky-8.x-x86_64-dvd1.iso`)
     * CentOS Stream 9
@@ -957,6 +960,7 @@ Happy building!!!
 [download-linux-redhat-server-7]: https://access.redhat.com/downloads/content/69/ver=/rhel---7/7.9/x86_64/product-software
 [download-linux-redhat-server-8]: https://access.redhat.com/downloads/content/479/ver=/rhel---8/8.6/x86_64/product-software
 [download-linux-redhat-server-9]: https://access.redhat.com/downloads/content/479/ver=/rhel---9/9.0/x86_64/product-software
+[download-linux-rocky-server-9]: https://download.rockylinux.org/pub/rocky/9/isos/x86_64/
 [download-linux-rocky-server-8]: https://download.rockylinux.org/pub/rocky/8/isos/x86_64/
 [download-linux-ubuntu-server-18-04-lts]: http://cdimage.ubuntu.com/ubuntu/releases/18.04.5/release/
 [download-linux-ubuntu-server-20-04-lts]: https://releases.ubuntu.com/20.04/

@@ -81,8 +81,7 @@ source "vsphere-iso" "windows-desktop" {
   iso_paths    = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
   iso_checksum = "${var.iso_checksum_type}:${var.iso_checksum_value}"
   cd_files = [
-    "${path.cwd}/scripts/${var.vm_guest_os_family}/",
-    "${path.cwd}/certificates/"
+    "${path.cwd}/scripts/${var.vm_guest_os_family}/"
   ]
   cd_content = {
     "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", {
@@ -137,11 +136,6 @@ build {
   sources = [
     "source.vsphere-iso.windows-desktop",
   ]
-
-  provisioner "file" {
-    source      = "${path.cwd}/certificates/root-ca.cer"
-    destination = "C:\\windows\\temp\\root-ca.cer"
-  }
 
   provisioner "powershell" {
     environment_vars = [

@@ -38,11 +38,3 @@
       - unzip
       - ca-certificates
     state: latest     # noqa package-latest
-- name: "Importing certificate authority certificates."
-  copy:
-    dest: /etc/pki/ca-trust/source/anchors/root-ca.cer
-    group: root
-    mode: 420
-    owner: root
-    src: root-ca.cer
-  notify: "RedHat - Updating the certificate authority trust."

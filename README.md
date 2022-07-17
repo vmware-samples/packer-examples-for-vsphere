@@ -349,8 +349,6 @@ The directory structure of the repository.
 │   │   └── <role>
 │   │       ├── defaults
 │   │       │   └── main.yml
-│   │       ├── files
-│   │       │   └── root-ca.cer.example
 │   │       ├── handlers
 │   │       │   └── main.yml
 │   │       ├── meta
@@ -383,8 +381,6 @@ The directory structure of the repository.
 │               ├── *.auto.pkrvars.hcl
 │               └── data
 │                   └── autounattend.pkrtpl.hcl
-├── certificates
-│   └── root-ca.cer.example
 ├── manifests
 ├── scripts
 │   └── windows
@@ -399,7 +395,6 @@ The files are distributed in the following directories.
 * **`ansible`** - contains the Ansible roles to prepare a Linux machine image build.
 * **`builds`** - contains the templates, variables, and configuration files for the machine image build.
 * **`scripts`** - contains the scripts to initialize and prepare a Windows machine image build.
-* **`certificates`** - contains the Trusted Root Authority certificates for a Windows machine image build.
 * **`manifests`** - manifests created after the completion of the machine image build.
 * **`terraform`** - contains example Terraform plans to test machine image builds.
 
@@ -849,23 +844,12 @@ Need help customizing the configuration files?
 
     ```console
     sudo apt-get install system-config-kickstart
-    ssh -X rainpole@ubuntu-desktop
+    ssh -X rainpole@ubuntu
     sudo system-config-kickstart
     ```
 
 * **Red Hat Enterprise Linux** (_as well as CentOS Linux/Stream, AlmaLinux OS, and Rocky Linux_) - Use the [Red Hat Kickstart Generator][redhat-kickstart].
 * **Microsoft Windows** - Use the Microsoft Windows [Answer File Generator][microsoft-windows-afg] if you need to customize the provided examples further.
-
-### Step 6 - Add Certificates
-
-Save a copy of your PEM encoded Root Certificate Authority certificate to the following in `.cer` format.
-
-* `/ansible/roles/base/files` for Linux machine images.
-* `/certificates` for Windows machine images.
-
-These files are copied to the guest operating systems and added the certificate to the Trusted Certificate Authority of the guest operating system.
-
-Linux distributions uses the Ansible provisioner, but Windows still uses the shell provisioner at this time.
 
 ## Build
 

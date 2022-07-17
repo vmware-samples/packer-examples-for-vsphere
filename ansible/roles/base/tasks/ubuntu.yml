@@ -16,11 +16,3 @@
       - unzip
       - ca-certificates
     state: latest     # noqa package-latest
-- name: "Importing certificate authority certificates."
-  copy:
-    dest: /usr/local/share/ca-certificates/
-    group: root
-    mode: 420
-    owner: root
-    src: root-ca.cer
-  notify: "Ubuntu - Updating the certificate authority trust."

@@ -5,11 +5,13 @@
 > Release Date: Unreleased
 
 💫  **Enhancement**:
+
 * Adds Red Hat Enterprise Linux 9.
 * Adds CentOS 9 Stream.
 * Adds Rocky Linux 9.
 * Adds AlmaLinux OS 9.
 * Adds options for setting the number of video displays and the size for the video memory for both Windows 11 and 10, which is useful for virtual desktop use cases (_e.g._, Horizon). The ability to set the number of displays was added in  `v1.0.6` of `packer-plugin-vsphere`.
+* Removes the default requirement for a trusted root authority certificate to be imported and trusted by each machine image build. This will allow project users to get started more quickly without a pre-requisite.
 
 🧹 **Chore**:
 

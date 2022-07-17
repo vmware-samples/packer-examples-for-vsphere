@@ -14,15 +14,17 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-# Import the Root CA certificate to the Trusted Root Certification Authorities.
-Write-Output "Importing the Root CA certificate to the Trusted Root Certification Authorities..."
-Import-Certificate -FilePath C:\windows\temp\root-ca.cer -CertStoreLocation 'Cert:\LocalMachine\Root' | Out-Null
-Remove-Item C:\windows\temp\root-ca.cer -Confirm:$false
+# Optional: Import the Root CA certificate to the Trusted Root Certification Authorities.
+# This option will require the use of a file provisioner to copy the certificate to the guest.
+# Write-Output "Importing the Root CA certificate to the Trusted Root Certification Authorities..."
+# Import-Certificate -FilePath C:\windows\temp\root-ca.cer -CertStoreLocation 'Cert:\LocalMachine\Root' | Out-Null
+# Remove-Item C:\windows\temp\root-ca.cer -Confirm:$false
 
-# Import the Issuing CA certificate to the Trusted Root Certification Authoriries.
-### Write-Output "Importing the Issuing CA certificate to the Trusted Root Certification Authoriries..."
-### Import-Certificate -FilePath C:\windows\temp\issuing-ca.cer -CertStoreLocation 'Cert:\LocalMachine\CA' | Out-Null
-### Remove-Item C:\windows\temp\issuing-ca.cer -Confirm:$false
+# Optional: Import the Issuing CA certificate to the Trusted Root Certification Authoriries.
+# This option will require the use of a file provisioner to copy the certificate to the guest.
+# Write-Output "Importing the Issuing CA certificate to the Trusted Root Certification Authoriries..."
+# Import-Certificate -FilePath C:\windows\temp\issuing-ca.cer -CertStoreLocation 'Cert:\LocalMachine\CA' | Out-Null
+# Remove-Item C:\windows\temp\issuing-ca.cer -Confirm:$false
 
 # Set the Windows Explorer options.
 Write-Output "Setting the Windows Explorer options..."

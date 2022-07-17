@@ -1,7 +1,0 @@
----
-- name: "Ubuntu - Updating the certificate authority trust."
-  shell: update-ca-certificates
-- name: "RedHat - Updating the certificate authority trust."
-  shell: "update-ca-trust extract"
-- name: "VMware Photon OS - Updating the certificate authority trust."
-  shell: rehash_ca_certificates.sh

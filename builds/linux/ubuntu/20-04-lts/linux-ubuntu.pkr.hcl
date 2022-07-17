@@ -138,6 +138,7 @@ build {
   sources = ["source.vsphere-iso.linux-ubuntu"]
 
   provisioner "ansible" {
+    user          = var.build_username
     playbook_file = "${path.cwd}/ansible/main.yml"
     roles_path    = "${path.cwd}/ansible/roles"
     ansible_env_vars = [

@@ -26,11 +26,16 @@ packer {
 //  Defines the local variables.
 
 locals {
-  build_by      = "Built by: HashiCorp Packer ${packer.version}"
-  build_date    = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
-  build_version = formatdate("YY.MM", timestamp())
-  manifest_date = formatdate("YYYY-MM-DD hh:mm:ss", timestamp())
-  manifest_path = "${path.cwd}/manifests/"
+  build_by          = "Built by: HashiCorp Packer ${packer.version}"
+  build_date        = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
+  build_version     = formatdate("YY.MM", timestamp())
+  build_description = "Version: v${local.build_version}\nBuilt on: ${local.build_date}\n${local.build_by}"
+  iso_paths         = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
+  iso_checksum      = "${var.iso_checksum_type}:${var.iso_checksum_value}"
+  manifest_date     = formatdate("YYYY-MM-DD hh:mm:ss", timestamp())
+  manifest_path     = "${path.cwd}/manifests/"
+  manifest_output   = "${local.manifest_path}${local.manifest_date}.json"
+  vm_name           = "${var.vm_guest_os_family}-${var.vm_guest_os_name}-${var.vm_guest_os_version}-${var.vm_guest_os_edition}-v${local.build_version}"
 }
 
 //  BLOCK: source
@@ -51,8 +56,8 @@ source "vsphere-iso" "windows-desktop" {
   folder     = var.vsphere_folder
 
   // Virtual Machine Settings
+  vm_name              = local.vm_name
   guest_os_type        = var.vm_guest_os_type
-  vm_name              = "${var.vm_guest_os_family}-${var.vm_guest_os_name}-${var.vm_guest_os_version}-${var.vm_guest_os_edition}-v${local.build_version}"
   firmware             = var.vm_firmware
   CPUs                 = var.vm_cpu_sockets
   cpu_cores            = var.vm_cpu_cores
@@ -75,11 +80,11 @@ source "vsphere-iso" "windows-desktop" {
   vm_version           = var.common_vm_version
   remove_cdrom         = var.common_remove_cdrom
   tools_upgrade_policy = var.common_tools_upgrade_policy
-  notes                = "Version: v${local.build_version}\nBuilt on: ${local.build_date}\n${local.build_by}"
+  notes                = local.build_description
 
   // Removable Media Settings
-  iso_paths    = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
-  iso_checksum = "${var.iso_checksum_type}:${var.iso_checksum_value}"
+  iso_paths    = local.iso_paths
+  iso_checksum = local.iso_checksum
   cd_files = [
     "${path.cwd}/scripts/${var.vm_guest_os_family}/"
   ]
@@ -121,7 +126,7 @@ source "vsphere-iso" "windows-desktop" {
   #   for_each = var.common_content_library_name != null ? [1] : []
   #   content {
   #     library     = var.common_content_library_name
-  #     description = "Version: v${local.build_version}\nBuilt on: ${local.build_date}\n${local.build_by}"
+  #     description = local.build_description
   #     ovf         = false // Will transfer as a VM Template
   #     destroy     = var.common_content_library_destroy
   #     skip_import = var.common_content_library_skip_export
@@ -166,7 +171,7 @@ build {
   }
 
   post-processor "manifest" {
-    output     = "${local.manifest_path}${local.manifest_date}.json"
+    output     = local.manifest_output
     strip_path = true
     strip_time = true
     custom_data = {
@@ -191,7 +196,6 @@ build {
       vsphere_datastore        = var.vsphere_datastore
       vsphere_endpoint         = var.vsphere_endpoint
       vsphere_folder           = var.vsphere_folder
-      vsphere_iso_path         = "[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}"
     }
   }
 }

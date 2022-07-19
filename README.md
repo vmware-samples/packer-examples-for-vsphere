@@ -360,6 +360,7 @@ The directory structure of the repository.
 │   │           └── main.yml
 │   ├── ansible.cfg
 │   └── main.yml
+├── artifacts
 ├── builds
 │   ├── ansible.pkvars.hcl.example
 │   ├── build.pkvars.hcl.example
@@ -392,11 +393,12 @@ The directory structure of the repository.
 
 The files are distributed in the following directories.
 
-* **`ansible`** - contains the Ansible roles to prepare a Linux machine image build.
-* **`builds`** - contains the templates, variables, and configuration files for the machine image build.
-* **`scripts`** - contains the scripts to initialize and prepare a Windows machine image build.
-* **`manifests`** - manifests created after the completion of the machine image build.
-* **`terraform`** - contains example Terraform plans to test machine image builds.
+* **`ansible`** - contains the Ansible roles to prepare Linux machine image builds.
+* **`artifacts`** - contains the OVF artifacts created by the builds, if enabled.
+* **`builds`** - contains the templates, variables, and configuration files for the machine image builds.
+* **`scripts`** - contains the scripts to initialize and prepare Windows machine image builds.
+* **`manifests`** - manifests created after the completion of the machine image builds.
+* **`terraform`** - contains example Terraform plans to create a custom role and test machine image builds.
 
 > **Warning**
 >
@@ -608,7 +610,7 @@ Generate a SHA-512 encrypted password for the `build_password_encrypted` using t
 
 ```console
 rainpole@photon> sudo systemctl start docker
-rainpole@photon>  sudo docker run -it --rm alpine:latest
+rainpole@photon> sudo docker run -it --rm alpine:latest
 mkpasswd -m sha512
 Password: ***************
 [password hash]
@@ -618,7 +620,7 @@ rainpole@photon> sudo systemctl stop docker
 **Example**: mkpasswd using Docker on macOS:
 
 ```console
-rainpole@macos>  docker run -it --rm alpine:latest
+rainpole@macos> docker run -it --rm alpine:latest
 mkpasswd -m sha512
 Password: ***************
 [password hash]
@@ -627,7 +629,7 @@ Password: ***************
 **Example**: mkpasswd on Ubuntu:
 
 ```console
-rainpole@ubuntu>  mkpasswd -m sha-512
+rainpole@ubuntu> mkpasswd -m sha-512
 Password: ***************
 [password hash]
 ```
@@ -685,6 +687,7 @@ Edit the `config/common.pkvars.hcl` file to configure the following common varia
 
 * Virtual Machine Settings
 * Template and Content Library Settings
+* OVF Export Settings
 * Removable Media Settings
 * Boot and Provisioning Settings
 
@@ -701,6 +704,10 @@ common_template_conversion     = false
 common_content_library_name    = "sfo-w01-lib01"
 common_content_library_ovf     = true
 common_content_library_destroy = true
+
+// OVF Export Settings
+common_ovf_export_enabled   = false
+common_ovf_export_overwrite = true
 
 // Removable Media Settings
 common_iso_datastore = "sfo-w01-cl01-ds-nfs01"

@@ -441,7 +441,7 @@ The files are distributed in the following directories.
     * CentOS Linux 7
         * [Download][download-linux-centos-server-7] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-7-x86_64-DVD.iso`)
     * SUSE Linux Enterprise 15
-        * [Download][download-suse-linux-enterprise-15] the latest release of the **FULL** `.iso` image. (_e.g.,_ `SLE-15-SP3-Full-x86_64-GM-Media1.iso`)
+        * [Download][download-suse-linux-enterprise-15] the latest 15.3 release of the **FULL** `.iso` image. (_e.g.,_ `SLE-15-SP3-Full-x86_64-GM-Media1.iso`)
 
     Microsoft Windows:
 

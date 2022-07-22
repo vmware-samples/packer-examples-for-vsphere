@@ -1,6 +1,6 @@
 /*
     DESCRIPTION:
-    USE Customer Center credential variables used for SUSE Linux Enterprise Server builds.
+    SUSE Customer Center credential variables used for SUSE Linux Enterprise Server builds.
     - Variables are passed to and used by configuration scripts.
 */
 

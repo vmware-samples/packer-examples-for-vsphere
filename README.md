@@ -45,6 +45,7 @@ The following builds are available:
 * CentOS Stream 9
 * CentOS Stream 8
 * CentOS Linux 7
+* SUSE Linux Enterprise Server 15
 
 ### Microsoft Windows - _Core and Desktop Experience_
 
@@ -367,6 +368,7 @@ The directory structure of the repository.
 │   ├── common.pkvars.hcl.example
 │   ├── proxy.pkvars.hcl.example
 │   ├── rhsm.pkvars.hcl.example
+|   |── scc.pkvars.hcl.example
 │   ├── vsphere.pkvars.hcl.example
 │   ├── linux
 │   │   └── <distribution>
@@ -438,6 +440,8 @@ The files are distributed in the following directories.
         * [Download][download-linux-centos-stream-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-Stream-8-x86_64-latest-dvd1.iso`)
     * CentOS Linux 7
         * [Download][download-linux-centos-server-7] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-7-x86_64-DVD.iso`)
+    * SUSE Linux Enterprise 15
+        * [Download][download-suse-linux-enterprise-15] the latest 15.3 release of the **FULL** `.iso` image. (_e.g.,_ `SLE-15-SP3-Full-x86_64-GM-Media1.iso`)
 
     Microsoft Windows:
 
@@ -856,6 +860,7 @@ Need help customizing the configuration files?
     ```
 
 * **Red Hat Enterprise Linux** (_as well as CentOS Linux/Stream, AlmaLinux OS, and Rocky Linux_) - Use the [Red Hat Kickstart Generator][redhat-kickstart].
+* **SUSE Linux Enterprise Server** - Use the [SUSE Configuration Management System][suse-autoyast].
 * **Microsoft Windows** - Use the Microsoft Windows [Answer File Generator][microsoft-windows-afg] if you need to customize the provided examples further.
 
 ## Build
@@ -953,6 +958,7 @@ Happy building!!!
 [download-linux-redhat-server-9]: https://access.redhat.com/downloads/content/479/ver=/rhel---9/9.0/x86_64/product-software
 [download-linux-rocky-server-9]: https://download.rockylinux.org/pub/rocky/9/isos/x86_64/
 [download-linux-rocky-server-8]: https://download.rockylinux.org/pub/rocky/8/isos/x86_64/
+[download-suse-linux-enterprise-15]: https://www.suse.com/download/sles/#
 [download-linux-ubuntu-server-18-04-lts]: http://cdimage.ubuntu.com/ubuntu/releases/18.04.5/release/
 [download-linux-ubuntu-server-20-04-lts]: https://releases.ubuntu.com/20.04/
 [download-linux-ubuntu-server-22-04-lts]: https://releases.ubuntu.com/22.04/
@@ -971,6 +977,7 @@ Happy building!!!
 [packer-variables]: https://www.packer.io/docs/templates/hcl_templates/variables
 [photon-kickstart]: https://vmware.github.io/photon/docs/user-guide/kickstart-through-http/packer-template/
 [redhat-kickstart]: https://access.redhat.com/labs/kickstartconfig/
+[suse-autoyast]: https://documentation.suse.com/sles/15-SP3/single-html/SLES-autoyast/index.html#CreateProfile-CMS
 [ssh-keygen]: https://www.ssh.com/ssh/keygen/
 [terraform-install]: https://www.terraform.io/docs/cli/install/apt.html
 [vmware-pvscsi]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.hostclient.doc/GUID-7A595885-3EA5-4F18-A6E7-5952BFC341CC.html

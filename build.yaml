@@ -56,6 +56,11 @@ menu:
       - entry: "CentOS Linux 7"
         build:
           path: "builds/linux/centos/7/"
+      - entry: "SUSE Linux Enterprise Server 15"
+        build:
+          path: "builds/linux/sles/15/"
+          var_files:
+            - "scc.pkrvars.hcl"
   - entry: "Microsoft Windows"
     build:
       var_files:

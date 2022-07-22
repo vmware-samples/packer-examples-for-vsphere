@@ -125,6 +125,12 @@ read -r -p "Enter the username for the account: " rhsm_username
 read -r -s -p "Enter the password for the account: " rhsm_password
 echo # Needed for line break.
 
+# SUSE Customer Center Credentials
+echo -e '\n> Set the SUSE Customer Center credentials.'
+read -r -p "Enter the email for the account: " scc_email
+read -r -s -p "Enter the code for the account: " scc_code
+echo # Needed for line break.
+
 echo -e '\n> Setting the vSphere credentials...'
 # vSphere Credentials
 export PKR_VAR_vsphere_endpoint="${vsphere_endpoint}"
@@ -200,6 +206,12 @@ echo '> Setting the RedHat Subscription Manager credentials...'
 # Red Hat Subscription Manager Credentials
 export PKR_VAR_rhsm_username="${rhsm_username}"
 export PKR_VAR_rhsm_password="${rhsm_password}"
+echo
+
+echo '> Setting the SUSE Customer Center credentials...'
+# SUSE Customer Center Credentials
+export PKR_VAR_scc_email="${scc_email}"
+export PKR_VAR_scc_code="${scc_code}"
 echo
 
 read -r -p "Display the environment variables? (y/n): " display_environmental_variables
@@ -281,6 +293,11 @@ case $display_environmental_variables in
     echo -e '\nRedHat Subscription Manager Credentials'
     echo - PKR_VAR_rhsm_username: "$PKR_VAR_rhsm_username"
     echo - PKR_VAR_rhsm_password: "$PKR_VAR_rhsm_password"
+
+    # SUSE Customer Center Credentials
+    echo -e '\nSUSE Customer Center Credentials'
+    echo - PKR_VAR_scc_email: "$PKR_VAR_scc_email"
+    echo - PKR_VAR_scc_code: "$PKR_VAR_scc_code"
  ;;
     [nN][oO]|[nN])
        ;;

@@ -45,7 +45,7 @@ The following builds are available:
 * CentOS Stream 9
 * CentOS Stream 8
 * CentOS Linux 7
-* SUSE Linux Enterprise 15
+* SUSE Linux Enterprise Server 15
 
 ### Microsoft Windows - _Core and Desktop Experience_
 

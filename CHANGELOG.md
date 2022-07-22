@@ -10,6 +10,8 @@
 * Adds CentOS 9 Stream.
 * Adds Rocky Linux 9.
 * Adds AlmaLinux OS 9.
+* Adds SUSE Linux Enterprise Server 15.  
+  Contributed by [@gcblack](https://github.com/gcblack) in [GH-227](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/227). 🚀
 * Adds option for setting the number of video displays and the size for the video memory for both Windows 11 and 10, which is useful for virtual desktop use cases (_e.g._, Horizon). The ability to set the number of displays was added in  `v1.0.6` of `packer-plugin-vsphere`.
 * Adds a common option to export machine image artifacts (`.ovf`,`.vmdk`, and `.mf`) to an output path.
 * Removes the default requirement for a trusted root authority certificate to be imported and trusted by each machine image build. This will allow project users to get started more quickly without a pre-requisite.
@@ -29,6 +31,11 @@
 * Updates Almalinux 8 to use `other4xLinuxGuest64`.
 * Removes the deprecated CentOS 8 option; end-of-life as of December 31, 2021.
 * Removes the deprecated Windows Server 2016 option; end-of-life as of January 11, 2022.
+
+> **Note**
+>
+> - Supports 15.3 / 15 Service Pack 3. 15.4 planned.  
+> - HTTP-based deployment only. Disk-based deployment planned.
 
 ## [v22.06](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.06)
 

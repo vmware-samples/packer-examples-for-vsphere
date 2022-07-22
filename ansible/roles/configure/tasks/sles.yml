@@ -1,0 +1,24 @@
+---
+- name: "Configure SSH for Public Key Authentication."
+  shell: |
+    sudo sed -i 's/.*PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config
+    sudo sed -i 's/.*PubkeyAuthentication.*/PubkeyAuthentication yes/' /etc/ssh/sshd_config
+  args:
+    warn: false
+- name: "Setting hostname to localhost."
+  shell: |
+    cat /dev/null > /etc/hostname
+    hostnamectl set-hostname localhost
+  args:
+    warn: false
+- name: "Restarting the SSH daemon."
+  shell: |
+    sudo systemctl restart sshd
+  args:
+    warn: false
+- name: "Unregistering from SUSE Customer Center."
+  shell: |
+    sudo SUSEConnect -d
+    sudo SUSEConnect --cleanup
+  args:
+    warn: false

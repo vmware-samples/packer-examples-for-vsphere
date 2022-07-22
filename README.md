@@ -793,7 +793,7 @@ Edit the `config/scc.pkvars.hcl` file to configure the following:
 **Example**: `config/scc.pkvars.hcl`
 
 ```hcl
-scc_email = "hello#rainpole.io"
+scc_email = "hello@rainpole.io"
 scc_code = "<plaintext_code>"
 ```
 

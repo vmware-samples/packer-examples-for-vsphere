@@ -23,8 +23,13 @@ locals {
   build_by      = "Built by: HashiCorp Packer ${packer.version}"
   build_date    = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
   build_version = formatdate("YY.MM", timestamp())
+  build_description = "Version: v${local.build_version}\nBuilt on: ${local.build_date}\n${local.build_by}"
+  iso_paths         = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}"]
+  iso_checksum      = "${var.iso_checksum_type}:${var.iso_checksum_value}"
   manifest_date = formatdate("YYYY-MM-DD hh:mm:ss", timestamp())
   manifest_path = "${path.cwd}/manifests/"
+  manifest_output   = "${local.manifest_path}${local.manifest_date}.json"
+  ovf_export_path   = "${path.cwd}/artifacts/${local.vm_name}"
   data_source_content = {
     "/autoinst.xml" = templatefile("${abspath(path.root)}/data/autoinst.pkrtpl.hcl", {
       build_username           = var.build_username
@@ -38,6 +43,7 @@ locals {
     })
   }
   data_source_command = var.common_data_source == "http" ? " autoyast=http://{{ .HTTPIP }}:{{ .HTTPPort }}/autoinst.xml" : " autoyast=cdrom:/autoinst.xml"
+  vm_name             = "${var.vm_guest_os_family}-${var.vm_guest_os_name}-${var.vm_guest_os_version}-v${local.build_version}"
 }
 
 //  BLOCK: source

@@ -784,6 +784,21 @@ rhsm_password = "<plaintext_password>"
 
 These variables are **only** used if you are performing a Red Hat Enterprise Linux Server build and are used to register the image with Red Hat Subscription Manager during the build for system updates and package installation. Before the build completes, the machine image is unregistered from Red Hat Subscription Manager.
 
+##### SUSE Customer Connect Variables
+
+Edit the `config/scc.pkvars.hcl` file to configure the following:
+
+* Credentials for your SUSE Customer Connect account.
+
+**Example**: `config/scc.pkvars.hcl`
+
+```hcl
+scc_email = "hello#rainpole.io"
+scc_code = "<plaintext_code>"
+```
+
+These variables are **only** used if you are performing a SUSE Linux Enterprise Server build and are used to register the image with SUSE Customer Connect during the build for system updates and package installation. Before the build completes, the machine image is unregistered from  SUSE Customer Connect.
+
 ##### vSphere Variables
 
 Edit the `builds/vsphere.pkvars.hcl` file to configure the following:

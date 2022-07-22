@@ -8,4 +8,6 @@
 - name: "Prepare {{ ansible_facts['os_family'] }} guest operating system."
   include_tasks: "{{ ansible_facts['lsb']['codename'] | lower }}.yml"
   when: "ansible_facts['os_family'] == 'VMware Photon OS'"
-  
+- name: "Prepare {{ ansible_facts['distribution'] }} guest operating system."
+  include_tasks: sles.yml
+  when: "ansible_facts['distribution'] == 'SLES'"

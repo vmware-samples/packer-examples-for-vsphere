@@ -1,8 +1,8 @@
 # CHANGELOG
 
-## Unreleased
+## [v22.07](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.07)
 
-> Release Date: Unreleased
+> Release Date: 2022-07-26
 
 💫  **Enhancement**:
 

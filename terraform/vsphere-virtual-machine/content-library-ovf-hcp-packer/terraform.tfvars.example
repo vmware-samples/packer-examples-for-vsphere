@@ -1,0 +1,34 @@
+##################################################################################
+# VARIABLES
+##################################################################################
+
+# Credentials
+
+vsphere_server   = "sfo-w01-vc01.rainpole.io"
+vsphere_username = "svc-terraform-vsphere@rainpole.io"
+vsphere_password = "************"
+vsphere_insecure = false
+
+# vSphere Settings
+
+vsphere_datacenter          = "sfo-w01-dc01"
+vsphere_cluster             = "sfo-w01-cl01"
+vsphere_datastore           = "sfo-w01-cl01-ds-vsan01"
+vsphere_folder              = "workloads"
+vsphere_network             = "w01-172.16.100.0"
+
+# HCP Packer Settings
+
+hcp_packer_bucket_name = "linux-ubuntu-2204lts"
+hcp_packer_channel     = "stable"
+
+# Virtual Machines Settings
+
+vm_name                    = "ubuntu"
+vm_cpus                    = 2
+vm_memory                  = 4096
+vm_disk_size               = 60
+vm_firmware                = "efi"
+vm_efi_secure_boot_enabled = true
+vm_hostname                = "ubuntu"
+vm_domain                  = "rainpole.io"

@@ -196,4 +196,21 @@ build {
       vsphere_folder           = var.vsphere_folder
     }
   }
+
+  dynamic "hcp_packer_registry" {
+    for_each = var.common_hcp_packer_registry_enabled ? [1] : []
+    content {
+      bucket_name = replace("${var.vm_guest_os_family}-${var.vm_guest_os_name}-${var.vm_guest_os_version}", ".", "")
+      description = "${var.vm_guest_os_family} ${var.vm_guest_os_name} ${var.vm_guest_os_version}"
+      bucket_labels = {
+        "os_family": var.vm_guest_os_family,
+        "os_name": var.vm_guest_os_name,
+        "os_version": var.vm_guest_os_version,
+      }
+      build_labels = {
+        "build_version": local.build_version,
+        "packer_version": packer.version,
+      }
+    }
+  }
 }

@@ -694,6 +694,7 @@ Edit the `config/common.pkvars.hcl` file to configure the following common varia
 * OVF Export Settings
 * Removable Media Settings
 * Boot and Provisioning Settings
+* HCP Packer Registry
 
 **Example**: `config/common.pkvars.hcl`
 
@@ -723,6 +724,9 @@ common_http_port_min    = 8000
 common_http_port_max    = 8099
 common_ip_wait_timeout  = "20m"
 common_shutdown_timeout = "15m"
+
+// HCP Packer
+common_hcp_packer_registry_enabled = false
 ```
 
 ##### Data Source Options
@@ -878,6 +882,34 @@ Need help customizing the configuration files?
 * **SUSE Linux Enterprise Server** - Use the [SUSE Configuration Management System][suse-autoyast].
 * **Microsoft Windows** - Use the Microsoft Windows [Answer File Generator][microsoft-windows-afg] if you need to customize the provided examples further.
 
+### Step 6 - Enable the HCP Packer registry (Optional)
+
+If you don't know HCP Packer, you can have a look of the following documentation and video.
+
+- [What is HCP Packer?][hcp-packer-docs]
+- [Introduction to HCP Packer][hcp-packer-intro]
+
+#### Create HCP Packer registry
+
+Before you can use HCP Packer registry, you need to create it by following [Create HCP Packer registry
+][hcp-packer-create] procedure.
+
+#### Configura HCP Packer
+
+Edit the `config/common.pkvars.hcl` file to enable the HCP Packer registry.
+
+```hcl
+// HCP Packer
+common_hcp_packer_registry_enabled = true
+```
+
+Then, export your HCP credentials before building.
+
+```console
+rainpole@macos> export HCP_CLIENT_ID=<client-id>
+rainpole@macos> export HCP_CLIENT_SECRET=<secret>
+```
+
 ## Build
 
 ### Build with Variables Files
@@ -979,6 +1011,9 @@ Happy building!!!
 [download-linux-ubuntu-server-22-04-lts]: https://releases.ubuntu.com/22.04/
 [gomplate-install]: https://gomplate.ca/
 [hashicorp]: https://www.hashicorp.com/
+[hcp-packer-create]: https://learn.hashicorp.com/tutorials/packer/hcp-push-image-metadata?in=packer/hcp-get-started#create-hcp-packer-registry
+[hcp-packer-docs]: https://cloud.hashicorp.com/docs/packer
+[hcp-packer-intro]: https://www.youtube.com/watch?v=r0I4TTO957w
 [iso]: https://en.wikipedia.org/wiki/ISO_image
 [microsoft-kms]: https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys
 [microsoft-windows-afg]: https://www.windowsafg.com

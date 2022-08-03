@@ -1,0 +1,5 @@
+version: 2
+- package-ecosystem: "github-actions"
+  directory: "/"
+  schedule:
+      interval: "daily"

@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 1
       - name: Render Template
         id: template
-        uses: chuhlomin/render-template@v1.2
+        uses: chuhlomin/render-template@v1.5
         with:
           template: .github/comment-template.md
           vars: |

@@ -5,14 +5,14 @@ set -euo pipefail
 dependabot_file=.github/dependabot.yml
 
 # Get a list of Terraform examples.
-all_terraform_examples=`find . -type f -name '*.tf' | sed 's#/[^/]*$##' | sed 's/.\///'| sort | uniq`
+all_terraform_examples=$(find . -type f -name '*.tf' | sed 's#/[^/]*$##' | sed 's/.\///'| sort | uniq)
 
 # Write the dependabot configuation file.
-echo "Writing .github/dependabot.yml configuration file..."
+echo "> Generating the .github/dependabot.yml configuration file..."
 cat > $dependabot_file << EOL
 # This file is auto-generated. Do not manually amend the configuration.
 # https://github.com/vmware-samples/packer-examples-for-vsphere/blob/main/.github/generate-dependabot.sh
-#
+
 version: 2
 updates:
   - package-ecosystem: "github-actions"
@@ -25,10 +25,17 @@ EOL
 
 for example in $all_terraform_examples
 do
-echo "Adding an entry for ${example}."
-echo "  - package-ecosystem: \"terraform\"" >> $dependabot_file
-echo "    directory: \"/${example}\"" >> $dependabot_file
-echo "    schedule:" >> $dependabot_file
-echo "      interval: \"daily\"" >> $dependabot_file
+{
+  echo "  - package-ecosystem: \"terraform\""
+  echo "    directory: \"/$example\""
+  echo "    schedule:"
+  echo "      interval: \"daily\""
+} >> $dependabot_file
 done
-echo "Done."
+
+echo "> The .github/dependabot.yml file has been generated."
+echo ""
+
+echo "> Results:"
+echo ""
+cat $dependabot_file

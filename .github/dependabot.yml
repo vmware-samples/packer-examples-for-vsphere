@@ -1,6 +1,6 @@
 # This file is auto-generated. Do not manually amend the configuration.
 # https://github.com/vmware-samples/packer-examples-for-vsphere/blob/main/.github/generate-dependabot.sh
-#
+
 version: 2
 updates:
   - package-ecosystem: "github-actions"

@@ -1,11 +1,39 @@
----
+# This file is auto-generated. Do not manually amend the configuration.
+# https://github.com/vmware-samples/packer-examples-for-vsphere/blob/main/.github/generate-dependabot.sh
+
 version: 2
 updates:
-- package-ecosystem: "github-actions"
-  directory: "/"
-  schedule:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
       interval: "daily"
-- package-ecosystem: "terraform"
-  directory: /terraform
-  schedule:
+  # Dependabot does not currently support wildcard or multiple directory declarations.
+  # https://github.com/dependabot/dependabot-core/issues/2178
+  - package-ecosystem: "terraform"
+    directory: "/terraform/vsphere-role"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "terraform"
+    directory: "/terraform/vsphere-virtual-machine/content-library-ovf-linux-cloud-init"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "terraform"
+    directory: "/terraform/vsphere-virtual-machine/content-library-ovf-linux-guest-customization"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "terraform"
+    directory: "/terraform/vsphere-virtual-machine/content-library-ovf-windows-guest-customization"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "terraform"
+    directory: "/terraform/vsphere-virtual-machine/template-linux-cloud-init"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "terraform"
+    directory: "/terraform/vsphere-virtual-machine/template-linux-guest-customization"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "terraform"
+    directory: "/terraform/vsphere-virtual-machine/template-windows-guest-customization"
+    schedule:
       interval: "daily"

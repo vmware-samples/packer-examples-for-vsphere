@@ -1,6 +1,6 @@
 /*
     DESCRIPTION:
-    Ubuntu Server 22.04 LTS child template using the Packer Builder for VMware vSphere (vsphere-clone).
+    Ubuntu Server 22.04 LTS cloned template using the Packer Builder for VMware vSphere (vsphere-clone).
 */
 
 //  BLOCK: packer
@@ -16,6 +16,18 @@ packer {
   }
 }
 
+data "hcp-packer-iteration" "ubuntu" {
+  bucket_name = var.hcp_packer_bucket_name
+  channel     = var.hcp_packer_channel
+}
+
+data "hcp-packer-image" "image" {
+  bucket_name    = var.hcp_packer_bucket_name
+  iteration_id   = data.hcp-packer-iteration.ubuntu.id
+  cloud_provider = "vsphere"
+  region         = var.vsphere_datacenter
+}
+
 //  BLOCK: locals
 //  Defines the local variables.
 
@@ -28,11 +40,10 @@ locals {
   manifest_path     = "${path.cwd}/manifests/"
   manifest_output   = "${local.manifest_path}${local.manifest_date}.json"
   ovf_export_path   = "${path.cwd}/artifacts/${local.vm_name}"
-  template_name     = "${var.vm_guest_os_family}-${var.vm_guest_os_name}-${var.vm_guest_os_version}-v${local.build_version}"
-  vm_name           = "${local.template_name}-child"
+  vm_name           = "${var.hcp_packer_bucket_name}-clone"
 }
 
-source "vsphere-clone" "linux-ubuntu-child" {
+source "vsphere-clone" "linux-ubuntu-clone" {
 
   // vCenter Server Endpoint Settings and Credentials
   vcenter_server      = var.vsphere_endpoint
@@ -47,7 +58,7 @@ source "vsphere-clone" "linux-ubuntu-child" {
   folder     = var.vsphere_folder
 
   // Virtual Machine Settings
-  template             = local.template_name
+  template             = data.hcp-packer-image.image.id
   vm_name              = local.vm_name
   firmware             = var.vm_firmware
   CPUs                 = var.vm_cpu_sockets
@@ -110,7 +121,7 @@ source "vsphere-clone" "linux-ubuntu-child" {
 }
 
 build {
-  sources = ["source.vsphere-clone.linux-ubuntu-child"]
+  sources = ["source.vsphere-clone.linux-ubuntu-clone"]
 
   provisioner "ansible" {
     user          = var.build_username
@@ -152,6 +163,20 @@ build {
       vsphere_datastore        = var.vsphere_datastore
       vsphere_endpoint         = var.vsphere_endpoint
       vsphere_folder           = var.vsphere_folder
+    }
+  }
+
+  hcp_packer_registry {
+    bucket_name = local.vm_name
+    description = "${var.vm_guest_os_family} ${var.vm_guest_os_name} ${var.vm_guest_os_version}"
+    bucket_labels = {
+      "os_family": var.vm_guest_os_family,
+      "os_name": var.vm_guest_os_name,
+      "os_version": var.vm_guest_os_version,
+    }
+    build_labels = {
+      "build_version": local.build_version,
+      "packer_version": packer.version,
     }
   }
 }

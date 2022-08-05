@@ -1,6 +1,6 @@
 /*
     DESCRIPTION:
-    Ubuntu Server 22.04 LTS child template variables used by the Packer Plugin for VMware vSphere (vsphere-clone).
+    Ubuntu Server 22.04 LTS cloned template variables used by the Packer Plugin for VMware vSphere (vsphere-clone).
 */
 
 // Guest Operating System Metadata
@@ -34,3 +34,7 @@ vm_boot_wait  = "5s"
 // Communicator Settings
 communicator_port    = 22
 communicator_timeout = "30m"
+
+// HCP Packer Settings
+hcp_packer_bucket_name = "linux-ubuntu-2204lts"
+hcp_packer_channel     = "stable"

@@ -727,8 +727,8 @@ menu_option_23() {
 
 
 menu_option_24() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/childs/template
-  echo -e "\nCONFIRM: Build a Ubuntu Server 22.04 LTS child from VM Template for VMware vSphere?"
+  INPUT_PATH="$SCRIPT_PATH"/builds/clones/template
+  echo -e "\nCONFIRM: Build a Ubuntu Server 22.04 LTS cloned (based from VM Template) Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -736,8 +736,8 @@ menu_option_24() {
     exit 1
   fi
 
-  ### Build a Ubuntu Server 22.04 LTS child from VM Template for VMware vSphere. ###
-  echo "Building a Ubuntu Server 22.04 LTS child from VM Template for VMware vSphere..."
+  ### Build a Ubuntu Server 22.04 LTS cloned (based from VM Template) Template for VMware vSphere. ###
+  echo "Building a Ubuntu Server 22.04 LTS cloned (based from VM Template) Template for VMware vSphere..."
 
   ### Initialize HashiCorp Packer and required plugins. ###
   echo "Initializing HashiCorp Packer and required plugins..."
@@ -758,8 +758,8 @@ menu_option_24() {
 }
 
 menu_option_25() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/childs/hcp-packer
-  echo -e "\nCONFIRM: Build a Ubuntu Server 22.04 LTS child from HCP Packer Template for VMware vSphere?"
+  INPUT_PATH="$SCRIPT_PATH"/builds/clones/hcp-packer
+  echo -e "\nCONFIRM: Build a Ubuntu Server 22.04 LTS cloned (based from HCP Packer) Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -767,8 +767,8 @@ menu_option_25() {
     exit 1
   fi
 
-  ### Build a Ubuntu Server 22.04 LTS child from HCP Packer Template for VMware vSphere. ###
-  echo "Building a Ubuntu Server 22.04 LTS child from HCP Packer Template for VMware vSphere..."
+  ### Build a Ubuntu Server 22.04 LTS cloned (based from HCP Packer) Template for VMware vSphere. ###
+  echo "Building a Ubuntu Server 22.04 LTS cloned (based from HCP Packer) Template for VMware vSphere..."
 
   ### Initialize HashiCorp Packer and required plugins. ###
   echo "Initializing HashiCorp Packer and required plugins..."
@@ -848,10 +848,10 @@ until [ "$selection" = "0" ]; do
   echo "    	22  -  Windows 11"
   echo "    	23  -  Windows 10"
   echo ""
-  echo "      Child builds:"
+  echo "      Clone builds:"
   echo ""
-  echo "    	24  -  Ubuntu Server 22.04 LTS child from VM Template"
-  echo "    	25  -  Ubuntu Server 22.04 LTS child from HCP Packer"
+  echo "    	24  -  Ubuntu Server 22.04 LTS cloned (based from VM Template)"
+  echo "    	25  -  Ubuntu Server 22.04 LTS cloned (based from HCP Packer)"
   echo ""
   echo "      Other:"
   echo ""

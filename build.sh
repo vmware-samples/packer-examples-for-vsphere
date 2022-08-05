@@ -728,7 +728,7 @@ menu_option_23() {
 
 menu_option_24() {
   INPUT_PATH="$SCRIPT_PATH"/builds/childs/template
-  echo -e "\nCONFIRM: Build a Ubuntu Server 22.04 LTS child from VM Template Template for VMware vSphere?"
+  echo -e "\nCONFIRM: Build a Ubuntu Server 22.04 LTS child from VM Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -736,8 +736,8 @@ menu_option_24() {
     exit 1
   fi
 
-  ### Build a Ubuntu Server 22.04 LTS child from VM Template Template for VMware vSphere. ###
-  echo "Building a Ubuntu Server 22.04 LTS child from VM Template Template for VMware vSphere..."
+  ### Build a Ubuntu Server 22.04 LTS child from VM Template for VMware vSphere. ###
+  echo "Building a Ubuntu Server 22.04 LTS child from VM Template for VMware vSphere..."
 
   ### Initialize HashiCorp Packer and required plugins. ###
   echo "Initializing HashiCorp Packer and required plugins..."

@@ -42,6 +42,8 @@ locals {
   }
   data_source_command = var.common_data_source == "http" ? "inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg" : "inst.ks=cdrom:/ks.cfg"
   vm_name             = "${var.vm_guest_os_family}-${var.vm_guest_os_name}-${var.vm_guest_os_version}-v${local.build_version}"
+  bucket_name         = replace("${var.vm_guest_os_family}-${var.vm_guest_os_name}-${var.vm_guest_os_version}", ".", "")
+  bucket_description  = "${var.vm_guest_os_family} ${var.vm_guest_os_name} ${var.vm_guest_os_version}"
 }
 
 //  BLOCK: source
@@ -199,8 +201,8 @@ build {
   dynamic "hcp_packer_registry" {
     for_each = var.common_hcp_packer_registry_enabled ? [1] : []
     content {
-      bucket_name = replace("${var.vm_guest_os_family}-${var.vm_guest_os_name}-${var.vm_guest_os_version}", ".", "")
-      description = "${var.vm_guest_os_family} ${var.vm_guest_os_name} ${var.vm_guest_os_version}"
+      bucket_name = local.bucket_name
+      description = local.bucket_description
       bucket_labels = {
         "os_family": var.vm_guest_os_family,
         "os_name": var.vm_guest_os_name,

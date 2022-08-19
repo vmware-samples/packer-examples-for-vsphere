@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## v22.08
+
+> Release Date: Unreleased
+
+💫  **Enhancement**:
+
+* Adds Debian 11. *  
+  Contributed in colaboration with by [@evilaliv3](https://github.com/evilaliv3) in [GH-195](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/195). 🚀
+
+> **Note**
+>
+> - HTTP-based deployment only. Disk-based deployment planned.
+
 ## [v22.07](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.07)
 
 > Release Date: 2022-07-26
@@ -10,7 +23,7 @@
 * Adds CentOS 9 Stream.
 * Adds Rocky Linux 9.
 * Adds AlmaLinux OS 9.
-* Adds SUSE Linux Enterprise Server 15.  
+* Adds SUSE Linux Enterprise Server 15. *  
   Contributed by [@gcblack](https://github.com/gcblack) in [GH-227](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/227). 🚀
 * Adds option for setting the number of video displays and the size for the video memory for both Windows 11 and 10, which is useful for virtual desktop use cases (_e.g._, Horizon). The ability to set the number of displays was added in  `v1.0.6` of `packer-plugin-vsphere`.
 * Adds a common option to export machine image artifacts (`.ovf`,`.vmdk`, and `.mf`) to an output path.

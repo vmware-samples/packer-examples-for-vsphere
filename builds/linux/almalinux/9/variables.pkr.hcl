@@ -1,6 +1,6 @@
 /*
     DESCRIPTION:
-    CentOS Linux 8 variables using the Packer Builder for VMware vSphere (vsphere-iso).
+    AlmaLinux OS 9 variables using the Packer Builder for VMware vSphere (vsphere-iso).
 */
 
 //  BLOCK: variable
@@ -85,17 +85,17 @@ variable "vm_guest_os_family" {
 
 variable "vm_guest_os_name" {
   type        = string
-  description = "The guest operating system name. Used for naming . (e.g. 'centos')"
+  description = "The guest operating system name. Used for naming . (e.g. 'almalinux')"
 }
 
 variable "vm_guest_os_version" {
   type        = string
-  description = "The guest operating system version. Used for naming. (e.g. '8')"
+  description = "The guest operating system version. Used for naming. (e.g. '9')"
 }
 
 variable "vm_guest_os_type" {
   type        = string
-  description = "The guest operating system type, also know as guestid. (e.g. 'centos8_64Guest')"
+  description = "The guest operating system type, also know as guestid. (e.g. 'other5xLinux64Guest')"
 }
 
 variable "vm_firmware" {
@@ -209,6 +209,20 @@ variable "common_content_library_skip_export" {
   default     = false
 }
 
+// OVF Export Settings
+
+variable "common_ovf_export_enabled" {
+  type        = bool
+  description = "Enable OVF artifact export."
+  default     = false
+}
+
+variable "common_ovf_export_overwrite" {
+  type        = bool
+  description = "Overwrite existing OVF artifact."
+  default     = true
+}
+
 // Removable Media Settings
 
 variable "common_iso_datastore" {
@@ -218,12 +232,12 @@ variable "common_iso_datastore" {
 
 variable "iso_path" {
   type        = string
-  description = "The path on the source vSphere datastore for ISO image. (e.g. 'iso/linux/rhel-derivative')"
+  description = "The path on the source vSphere datastore for ISO image. (e.g. 'iso'/linux/almalinux')"
 }
 
 variable "iso_file" {
   type        = string
-  description = "The file name of the ISO image used by the vendor. (e.g. 'CentOS-<version>-x86_64-dvd1.iso')"
+  description = "The file name of the ISO image used by the vendor. (e.g. 'AlmaLinux-<version>-x86_64-dvd.iso')"
 }
 
 variable "iso_checksum_type" {

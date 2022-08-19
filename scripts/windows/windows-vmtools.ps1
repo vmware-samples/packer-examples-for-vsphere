@@ -8,7 +8,7 @@
     Installs VMware Tools and runs re-attempts if the services fail on the first attempt.
 
     .SYNOPSIS
-    - Packer requires the VMware Tools service is running at the end of the build.
+    - Packer requires that the VMware Tools service is running.
     - If the "VMware Tools Service" fails to start, the script initiates a reinstallation.
 
     .NOTES

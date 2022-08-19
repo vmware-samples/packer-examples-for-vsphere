@@ -1,6 +1,6 @@
 /*
     DESCRIPTION:
-    CentOS Linux 8 variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    AlmaLinux OS 9 variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
 */
 
 // Guest Operating System Metadata
@@ -8,11 +8,11 @@ vm_guest_os_language = "en_US"
 vm_guest_os_keyboard = "us"
 vm_guest_os_timezone = "UTC"
 vm_guest_os_family   = "linux"
-vm_guest_os_name     = "centos"
-vm_guest_os_version  = "8"
+vm_guest_os_name     = "almalinux"
+vm_guest_os_version  = "9"
 
 // Virtual Machine Guest Operating System Setting
-vm_guest_os_type = "centos8_64Guest"
+vm_guest_os_type = "other5xLinux64Guest"
 
 // Virtual Machine Hardware Settings
 vm_firmware              = "efi-secure"
@@ -28,10 +28,10 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_path           = "iso/linux/centos"
-iso_file           = "CentOS-8.5.2111-x86_64-dvd1.iso"
+iso_path           = "iso/linux/almalinux"
+iso_file           = "AlmaLinux-9.0-x86_64-dvd.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "3b795863001461d4f670b0dedd02d25296b6d64683faceb8f2b60c53ac5ebb3e"
+iso_checksum_value = "6617436f8f2ee5408ff448a4eedce4ce61e2fdb3153a646b875010256bc9fd6b"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

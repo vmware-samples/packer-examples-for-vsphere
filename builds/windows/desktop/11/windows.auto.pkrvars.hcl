@@ -34,12 +34,14 @@ vm_disk_size             = 102400
 vm_disk_controller_type  = ["pvscsi"]
 vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
+vm_video_mem_size        = 131072
+vm_video_displays        = 1
 
 // Removable Media Settings
 iso_path           = "iso/windows/desktop"
-iso_file           = "en-us_windows_11_business_editions_updated_may_2022_x64_dvd_f6700d97.iso"
+iso_file           = "en-us_windows_11_consumer_editions_updated_june_2022_x64_dvd_aec658b2.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "A138016401223BBE927A7930B0C70948FDBF0B2B1DEE216E6D559061493F2EC6"
+iso_checksum_value = "E2A671BAE4CA80A094A4D7932353135E3A24050902662CA3CC2E950C73B85D43"
 
 // Boot Settings
 vm_boot_order       = "disk,cdrom"

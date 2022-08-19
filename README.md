@@ -4,9 +4,9 @@
 
 [![The Changelog](https://img.shields.io/badge/The%20Changelog-Read-blue?style=for-the-badge&logo=github)](CHANGELOG.md)
 
-![VMware vSphere 7.0 Update 2+](https://img.shields.io/badge/VMware%20vSphere-7.0%20Update%202+-blue?style=for-the-badge)
+![VMware vSphere 7.0 Update 3d+](https://img.shields.io/badge/VMware%20vSphere-7.0%20Update%203d+-blue?style=for-the-badge)
 
-![Packer 1.8.0+](https://img.shields.io/badge/HashiCorp%20Packer-1.8.0+-blue?style=for-the-badge)
+![Packer 1.8.2+](https://img.shields.io/badge/HashiCorp%20Packer-1.8.2+-blue?style=for-the-badge)
 
 ![Ansible 2.9+](https://img.shields.io/badge/Ansible-2.9+-blue?style=for-the-badge)
 
@@ -33,28 +33,29 @@ The following builds are available:
 
 * VMware Photon OS 4
 * Debian 11
-* Ubuntu Server 22.04 LTS
-* Ubuntu Server 20.04 LTS
+* Ubuntu Server 22.04 LTS (cloud-init)
+* Ubuntu Server 20.04 LTS (cloud-init)
 * Ubuntu Server 18.04 LTS
+* Red Hat Enterprise Linux 9 Server
 * Red Hat Enterprise Linux 8 Server
 * Red Hat Enterprise Linux 7 Server
+* AlmaLinux OS 9
 * AlmaLinux OS 8
+* Rocky Linux 9
 * Rocky Linux 8
+* CentOS Stream 9
 * CentOS Stream 8
-* CentOS Linux 8
 * CentOS Linux 7
+* SUSE Linux Enterprise Server 15
 
 ### Microsoft Windows - _Core and Desktop Experience_
 
 * Microsoft Windows Server 2022 - Standard and Datacenter
 * Microsoft Windows Server 2019 - Standard and Datacenter
-* Microsoft Windows Server 2016 - Standard and Datacenter
 * Microsoft Windows 11
 * Microsoft Windows 10
 
 > **Note**
->
-> * Guest customization is not currently supported for AlmaLinux OS and Rocky Linux in vCenter Server 7.0 Update 2.
 >
 > * The Microsoft Windows 11 machine image uses a virtual trusted platform module (vTPM). Refer to the VMware vSphere [product documenation][vsphere-tpm] for requirements and pre-requisites.
 >
@@ -74,7 +75,7 @@ The following builds are available:
 
 **Packer**:
 
-* HashiCorp [Packer][packer-install] 1.8.0 or higher.
+* HashiCorp [Packer][packer-install] 1.8.2 or higher.
 
   > **Note**
   >
@@ -84,7 +85,7 @@ The following builds are available:
       <summary>Photon OS</summary>
 
       ```shell
-      PACKER_VERSION="1.8.0"
+      PACKER_VERSION="1.8.2"
       OS_PACKAGES="wget unzip"
 
       if [[ $(uname -m) == "x86_64" ]]; then
@@ -128,7 +129,7 @@ The following builds are available:
 
     </details>
 
-* HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.3 or higher.
+* HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.6 or higher.
 * [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.1 or higher - a community plugin for HashiCorp Packer.
 
     > **Note**
@@ -254,12 +255,12 @@ The following software packages must be installed on the opearing system running
 
     </details>
 
-* HashiCorp [Terraform][terraform-install] 1.2.1 or higher.
+* HashiCorp [Terraform][terraform-install] 1.2.5 or higher.
   * <details>
       <summary>Photon OS</summary>
 
       ```shell
-      TERRAFORM_VERSION="1.2.1"
+      TERRAFORM_VERSION="1.2.5"
       OS_PACKAGES="wget unzip"
 
       if [[ $(uname -m) == "x86_64" ]]; then
@@ -320,8 +321,7 @@ The following software packages must be installed on the opearing system running
 
 **Platform**:
 
-* VMware Cloud Foundation 4.2 or higher, or
-* VMware vSphere 7.0 Update 2 or higher
+* VMware vSphere 7.0 Update 3D or higher
 
 ## Configuration
 
@@ -351,8 +351,6 @@ The directory structure of the repository.
 │   │   └── <role>
 │   │       ├── defaults
 │   │       │   └── main.yml
-│   │       ├── files
-│   │       │   └── root-ca.cer.example
 │   │       ├── handlers
 │   │       │   └── main.yml
 │   │       ├── meta
@@ -364,12 +362,14 @@ The directory structure of the repository.
 │   │           └── main.yml
 │   ├── ansible.cfg
 │   └── main.yml
+├── artifacts
 ├── builds
 │   ├── ansible.pkvars.hcl.example
 │   ├── build.pkvars.hcl.example
 │   ├── common.pkvars.hcl.example
 │   ├── proxy.pkvars.hcl.example
 │   ├── rhsm.pkvars.hcl.example
+|   |── scc.pkvars.hcl.example
 │   ├── vsphere.pkvars.hcl.example
 │   ├── linux
 │   │   └── <distribution>
@@ -385,8 +385,6 @@ The directory structure of the repository.
 │               ├── *.auto.pkrvars.hcl
 │               └── data
 │                   └── autounattend.pkrtpl.hcl
-├── certificates
-│   └── root-ca.cer.example
 ├── manifests
 ├── scripts
 │   └── windows
@@ -398,12 +396,12 @@ The directory structure of the repository.
 
 The files are distributed in the following directories.
 
-* **`ansible`** - contains the Ansible roles to prepare a Linux machine image build.
-* **`builds`** - contains the templates, variables, and configuration files for the machine image build.
-* **`scripts`** - contains the scripts to initialize and prepare a Windows machine image build.
-* **`certificates`** - contains the Trusted Root Authority certificates for a Windows machine image build.
-* **`manifests`** - manifests created after the completion of the machine image build.
-* **`terraform`** - contains example Terraform plans to test machine image builds.
+* **`ansible`** - contains the Ansible roles to prepare Linux machine image builds.
+* **`artifacts`** - contains the OVF artifacts created by the builds, if enabled.
+* **`builds`** - contains the templates, variables, and configuration files for the machine image builds.
+* **`scripts`** - contains the scripts to initialize and prepare Windows machine image builds.
+* **`manifests`** - manifests created after the completion of the machine image builds.
+* **`terraform`** - contains example Terraform plans to create a custom role and test machine image builds.
 
 > **Warning**
 >
@@ -425,26 +423,33 @@ The files are distributed in the following directories.
         * [Download][download-linux-ubuntu-server-20-04-lts] the latest **LIVE** release `.iso` image. (_e.g.,_ `ubuntu-20.04.x-live-server-amd64.iso`)
     * Ubuntu Server 18.04 LTS
         * [Download][download-linux-ubuntu-server-18-04-lts] the latest legacy **NON-LIVE** release `.iso` image. (_e.g.,_ `ubuntu-18.04.x-server-amd64.iso`)
+    * Red Hat Enterprise Linux 9 Server
+        * [Download][download-linux-redhat-server-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-baseos-9.x-x86_64-dvd.iso`)
     * Red Hat Enterprise Linux 8 Server
         * [Download][download-linux-redhat-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-8.x-x86_64-dvd1.iso`)
     * Red Hat Enterprise Linux 7 Server
         * [Download][download-linux-redhat-server-7] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-server-7.x-x86_64-dvd1.iso`)
+    * AlmaLinux OS 9
+        * [Download][download-linux-almalinux-server-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `AlmaLinux-9.x-x86_64-dvd1.iso`)
     * AlmaLinux OS 8
         * [Download][download-linux-almalinux-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `AlmaLinux-8.x-x86_64-dvd1.iso`)
+    * Rocky Linux 9
+        * [Download][download-linux-rocky-server-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `Rocky-9.x-x86_64-dvd1.iso`)
     * Rocky Linux 8
         * [Download][download-linux-rocky-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `Rocky-8.x-x86_64-dvd1.iso`)
+    * CentOS Stream 9
+        * [Download][download-linux-centos-stream-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-Stream-9-latest-x86_64-dvd1.iso`)
     * CentOS Stream 8
         * [Download][download-linux-centos-stream-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-Stream-8-x86_64-latest-dvd1.iso`)
-    * CentOS Linux 8
-        * [Download][download-linux-centos-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-8.x.xxxx-x86_64-dvd1.iso`)
     * CentOS Linux 7
         * [Download][download-linux-centos-server-7] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-7-x86_64-DVD.iso`)
+    * SUSE Linux Enterprise 15
+        * [Download][download-suse-linux-enterprise-15] the latest 15.3 release of the **FULL** `.iso` image. (_e.g.,_ `SLE-15-SP3-Full-x86_64-GM-Media1.iso`)
 
     Microsoft Windows:
 
     * Microsoft Windows Server 2022
     * Microsoft Windows Server 2019
-    * Microsoft Windows Server 2016
     * Microsoft Windows 11
     * Microsoft Windows 10
 
@@ -612,7 +617,7 @@ Generate a SHA-512 encrypted password for the `build_password_encrypted` using t
 
 ```console
 rainpole@photon> sudo systemctl start docker
-rainpole@photon>  sudo docker run -it --rm alpine:latest
+rainpole@photon> sudo docker run -it --rm alpine:latest
 mkpasswd -m sha512
 Password: ***************
 [password hash]
@@ -622,7 +627,7 @@ rainpole@photon> sudo systemctl stop docker
 **Example**: mkpasswd using Docker on macOS:
 
 ```console
-rainpole@macos>  docker run -it --rm alpine:latest
+rainpole@macos> docker run -it --rm alpine:latest
 mkpasswd -m sha512
 Password: ***************
 [password hash]
@@ -631,7 +636,7 @@ Password: ***************
 **Example**: mkpasswd on Ubuntu:
 
 ```console
-rainpole@ubuntu>  mkpasswd -m sha-512
+rainpole@ubuntu> mkpasswd -m sha-512
 Password: ***************
 [password hash]
 ```
@@ -689,6 +694,7 @@ Edit the `config/common.pkvars.hcl` file to configure the following common varia
 
 * Virtual Machine Settings
 * Template and Content Library Settings
+* OVF Export Settings
 * Removable Media Settings
 * Boot and Provisioning Settings
 
@@ -705,6 +711,10 @@ common_template_conversion     = false
 common_content_library_name    = "sfo-w01-lib01"
 common_content_library_ovf     = true
 common_content_library_destroy = true
+
+// OVF Export Settings
+common_ovf_export_enabled   = false
+common_ovf_export_overwrite = true
 
 // Removable Media Settings
 common_iso_datastore = "sfo-w01-cl01-ds-nfs01"
@@ -777,6 +787,21 @@ rhsm_password = "<plaintext_password>"
 
 These variables are **only** used if you are performing a Red Hat Enterprise Linux Server build and are used to register the image with Red Hat Subscription Manager during the build for system updates and package installation. Before the build completes, the machine image is unregistered from Red Hat Subscription Manager.
 
+##### SUSE Customer Connect Variables
+
+Edit the `config/scc.pkvars.hcl` file to configure the following:
+
+* Credentials for your SUSE Customer Connect account.
+
+**Example**: `config/scc.pkvars.hcl`
+
+```hcl
+scc_email = "hello@rainpole.io"
+scc_code = "<plaintext_code>"
+```
+
+These variables are **only** used if you are performing a SUSE Linux Enterprise Server build and are used to register the image with SUSE Customer Connect during the build for system updates and package installation. Before the build completes, the machine image is unregistered from  SUSE Customer Connect.
+
 ##### vSphere Variables
 
 Edit the `builds/vsphere.pkvars.hcl` file to configure the following:
@@ -824,6 +849,7 @@ Edit the `*.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder to conf
 * .iso Checksum Value `(string)`
 
     > **Note**
+    >
     > All `variables.auto.pkvars.hcl` default to using the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types.
 
 ### Step 5 - Modify the Configurations (Optional)
@@ -847,23 +873,13 @@ Need help customizing the configuration files?
 
     ```console
     sudo apt-get install system-config-kickstart
-    ssh -X rainpole@ubuntu-desktop
+    ssh -X rainpole@ubuntu
     sudo system-config-kickstart
     ```
 
 * **Red Hat Enterprise Linux** (_as well as CentOS Linux/Stream, AlmaLinux OS, and Rocky Linux_) - Use the [Red Hat Kickstart Generator][redhat-kickstart].
+* **SUSE Linux Enterprise Server** - Use the [SUSE Configuration Management System][suse-autoyast].
 * **Microsoft Windows** - Use the Microsoft Windows [Answer File Generator][microsoft-windows-afg] if you need to customize the provided examples further.
-
-### Step 6 - Add Certificates
-
-Save a copy of your PEM encoded Root Certificate Authority certificate to the following in `.cer` format.
-
-* `/ansible/roles/base/files` for Linux machine images.
-* `/certificates` for Windows machine images.
-
-These files are copied to the guest operating systems and added the certificate to the Trusted Certificate Authority of the guest operating system.
-
-Linux distributions uses the Ansible provisioner, but Windows still uses the shell provisioner at this time.
 
 ## Build
 
@@ -949,15 +965,19 @@ Happy building!!!
 [credits-owen-reynolds-twitter]: https://twitter.com/OVDamn
 [credits-owen-reynolds-github]: https://github.com/getvpro/Build-Packer/blob/master/Scripts/Install-VMTools.ps1
 [download-git]: https://git-scm.com/downloads
-[download-linux-almalinux-server-8]: https://mirrors.almalinux.org/isos.html
+[download-linux-almalinux-server-8]: https://mirrors.almalinux.org/isos/x86_64/8.6.html
+[download-linux-almalinux-server-9]: https://mirrors.almalinux.org/isos/x86_64/9.0.html
 [download-linux-centos-server-7]: http://isoredirect.centos.org/centos/7/isos/x86_64/
-[download-linux-centos-server-8]: http://isoredirect.centos.org/centos/8/isos/x86_64/
+[download-linux-centos-stream-9]: http://mirror.stream.centos.org/9-stream/BaseOS/x86_64/iso/
 [download-linux-centos-stream-8]: http://isoredirect.centos.org/centos/8-stream/isos/x86_64/
 [download-linux-debian-11]: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/
 [download-linux-photon-server-4]: https://packages.vmware.com/photon/4.0/
-[download-linux-redhat-server-8]: https://access.redhat.com/downloads/content/479/
-[download-linux-redhat-server-7]: https://access.redhat.com/downloads/content/69/
+[download-linux-redhat-server-7]: https://access.redhat.com/downloads/content/69/ver=/rhel---7/7.9/x86_64/product-software
+[download-linux-redhat-server-8]: https://access.redhat.com/downloads/content/479/ver=/rhel---8/8.6/x86_64/product-software
+[download-linux-redhat-server-9]: https://access.redhat.com/downloads/content/479/ver=/rhel---9/9.0/x86_64/product-software
+[download-linux-rocky-server-9]: https://download.rockylinux.org/pub/rocky/9/isos/x86_64/
 [download-linux-rocky-server-8]: https://download.rockylinux.org/pub/rocky/8/isos/x86_64/
+[download-suse-linux-enterprise-15]: https://www.suse.com/download/sles/#
 [download-linux-ubuntu-server-18-04-lts]: http://cdimage.ubuntu.com/ubuntu/releases/18.04.5/release/
 [download-linux-ubuntu-server-20-04-lts]: https://releases.ubuntu.com/20.04/
 [download-linux-ubuntu-server-22-04-lts]: https://releases.ubuntu.com/22.04/
@@ -976,6 +996,7 @@ Happy building!!!
 [packer-variables]: https://www.packer.io/docs/templates/hcl_templates/variables
 [photon-kickstart]: https://vmware.github.io/photon/docs/user-guide/kickstart-through-http/packer-template/
 [redhat-kickstart]: https://access.redhat.com/labs/kickstartconfig/
+[suse-autoyast]: https://documentation.suse.com/sles/15-SP3/single-html/SLES-autoyast/index.html#CreateProfile-CMS
 [ssh-keygen]: https://www.ssh.com/ssh/keygen/
 [terraform-install]: https://www.terraform.io/docs/cli/install/apt.html
 [vmware-pvscsi]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.hostclient.doc/GUID-7A595885-3EA5-4F18-A6E7-5952BFC341CC.html
@@ -984,5 +1005,5 @@ Happy building!!!
 [vsphere-content-library]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-254B2CE8-20A8-43F0-90E8-3F6776C2C896.html
 [vsphere-guestosid]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
 [vsphere-efi]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-898217D4-689D-4EB5-866C-888353FE241C.html
-[vsphere-upload]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.storage.doc/GUID-58D77EA5-50D9-4A8E-A15A-D7B3ABA11B87.html?hWord=N4IghgNiBcIK4AcIHswBMAEAzAlhApgM4gC+QA
+[vsphere-upload]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.storage.doc/GUID-58D77EA5-50D9-4A8E-A15A-D7B3ABA11B87.html
 [vsphere-tpm]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4DBF65A4-4BA0-4667-9725-AE9F047DE00A.html

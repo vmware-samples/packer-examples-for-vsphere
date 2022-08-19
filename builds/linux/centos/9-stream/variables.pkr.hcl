@@ -1,12 +1,12 @@
 /*
     DESCRIPTION:
-    Microsoft Windows Server 2016 variables using the Packer Builder for VMware vSphere (vsphere-iso).
+    CentOS Stream 9 variables using the Packer Builder for VMware vSphere (vsphere-iso).
 */
 
 //  BLOCK: variable
 //  Defines the input variables.
 
-//  vSphere Credentials
+// vSphere Credentials
 
 variable "vsphere_endpoint" {
   type        = string
@@ -58,62 +58,18 @@ variable "vsphere_folder" {
   description = "The name of the target vSphere cluster. (e.g. 'sfo-w01-fd-templates')"
 }
 
-// Installer Settings
-
-variable "vm_inst_os_language" {
-  type        = string
-  description = "The installation operating system lanugage."
-  default     = "en-US"
-}
-
-variable "vm_inst_os_keyboard" {
-  type        = string
-  description = "The installation operating system keyboard input."
-  default     = "en-US"
-}
-
-variable "vm_inst_os_image_standard_core" {
-  type        = string
-  description = "The installation operating system image input for Microsoft Windwows Standard Core."
-}
-
-variable "vm_inst_os_image_standard_desktop" {
-  type        = string
-  description = "The installation operating system image input for Microsoft Windwows Standard."
-}
-
-variable "vm_inst_os_kms_key_standard" {
-  type        = string
-  description = "The installation operating system KMS key input for Microsoft Windwows Standard edition."
-}
-
-variable "vm_inst_os_image_datacenter_core" {
-  type        = string
-  description = "The installation operating system image input for Microsoft Windwows Datacenter Core."
-}
-
-variable "vm_inst_os_image_datacenter_desktop" {
-  type        = string
-  description = "The installation operating system image input for Microsoft Windwows Datacenter."
-}
-
-variable "vm_inst_os_kms_key_datacenter" {
-  type        = string
-  description = "The installation operating system KMS key input for Microsoft Windwows Datacenter edition."
-}
-
 // Virtual Machine Settings
 
 variable "vm_guest_os_language" {
   type        = string
   description = "The guest operating system lanugage."
-  default     = "en-US"
+  default     = "en_US"
 }
 
 variable "vm_guest_os_keyboard" {
   type        = string
   description = "The guest operating system keyboard input."
-  default     = "en-US"
+  default     = "us"
 }
 
 variable "vm_guest_os_timezone" {
@@ -124,46 +80,22 @@ variable "vm_guest_os_timezone" {
 
 variable "vm_guest_os_family" {
   type        = string
-  description = "The guest operating system family. Used for naming and VMware tools. (e.g.'windows')"
+  description = "The guest operating system family. Used for naming and VMware tools. (e.g. 'linux')"
 }
 
 variable "vm_guest_os_name" {
   type        = string
-  description = "The guest operating system name. Used for naming. (e.g. 'server')"
+  description = "The guest operating system name. Used for naming . (e.g. 'centos-stream')"
 }
 
 variable "vm_guest_os_version" {
   type        = string
-  description = "The guest operating system version. Used for naming. (e.g. '2022')"
-}
-
-variable "vm_guest_os_edition_standard" {
-  type        = string
-  description = "The guest operating system edition. Used for naming. (e.g. 'standard')"
-  default     = "standard"
-}
-
-variable "vm_guest_os_edition_datacenter" {
-  type        = string
-  description = "The guest operating system edition. Used for naming. (e.g. 'datacenter')"
-  default     = "datacenter"
-}
-
-variable "vm_guest_os_experience_core" {
-  type        = string
-  description = "The guest operating system minimal experience. Used for naming. (e.g. 'core')"
-  default     = "core"
-}
-
-variable "vm_guest_os_experience_desktop" {
-  type        = string
-  description = "The guest operating system desktop experience. Used for naming. (e.g. 'dexp')"
-  default     = "dexp"
+  description = "The guest operating system version. Used for naming. (e.g. '9')"
 }
 
 variable "vm_guest_os_type" {
   type        = string
-  description = "The guest operating system type, also know as guestid. (e.g. 'windows2019srv_64Guest')"
+  description = "The guest operating system type, also know as guestid. (e.g. 'other5xLinux64Guest')"
 }
 
 variable "vm_firmware" {
@@ -191,7 +123,7 @@ variable "vm_cpu_cores" {
 variable "vm_cpu_hot_add" {
   type        = bool
   description = "Enable hot add CPU."
-  default     = true
+  default     = false
 }
 
 variable "vm_mem_size" {
@@ -202,7 +134,7 @@ variable "vm_mem_size" {
 variable "vm_mem_hot_add" {
   type        = bool
   description = "Enable hot add memory."
-  default     = true
+  default     = false
 }
 
 variable "vm_disk_size" {
@@ -277,6 +209,20 @@ variable "common_content_library_skip_export" {
   default     = false
 }
 
+// OVF Export Settings
+
+variable "common_ovf_export_enabled" {
+  type        = bool
+  description = "Enable OVF artifact export."
+  default     = false
+}
+
+variable "common_ovf_export_overwrite" {
+  type        = bool
+  description = "Overwrite existing OVF artifact."
+  default     = true
+}
+
 // Removable Media Settings
 
 variable "common_iso_datastore" {
@@ -286,17 +232,17 @@ variable "common_iso_datastore" {
 
 variable "iso_path" {
   type        = string
-  description = "The path on the source vSphere datastore for ISO image. (e.g. 'iso/windows')"
+  description = "The path on the source vSphere datastore for ISO image. (e.g. 'iso/linux/centos')"
 }
 
 variable "iso_file" {
   type        = string
-  description = "The file name of the ISO image used by the vendor. (e.g. '<<language>_windows_server_<version?_x64_dvd_<string>.iso')"
+  description = "The file name of the ISO image used by the vendor. (e.g. 'CentOS-Stream-<version>-x86_64-latest-dvd1.iso')"
 }
 
 variable "iso_checksum_type" {
   type        = string
-  description = "The checksum algorithm used by the vendor. (e.g. 'sha1')"
+  description = "The checksum algorithm used by the vendor. (e.g. 'sha256')"
 }
 
 variable "iso_checksum_value" {
@@ -338,17 +284,6 @@ variable "vm_boot_wait" {
   description = "The time to wait before boot."
 }
 
-variable "vm_boot_command" {
-  type        = list(string)
-  description = "The virtual machine boot command."
-  default     = []
-}
-
-variable "vm_shutdown_command" {
-  type        = string
-  description = "Command(s) for guest operating system shutdown."
-}
-
 variable "common_ip_wait_timeout" {
   type        = string
   description = "Time to wait for guest operating system IP address response."
@@ -377,17 +312,38 @@ variable "build_password_encrypted" {
   type        = string
   description = "The SHA-512 encrypted password to login to the guest operating system."
   sensitive   = true
-  default     = ""
 }
 
 variable "build_key" {
   type        = string
   description = "The public key to login to the guest operating system."
   sensitive   = true
-  default     = ""
 }
 
-// Communicator Credentials
+variable "communicator_proxy_host" {
+  type        = string
+  description = "A SOCKS proxy host to use for SSH connection."
+  default     = null
+}
+
+variable "communicator_proxy_port" {
+  type        = number
+  description = "A port of the SOCKS proxy."
+  default     = null
+}
+
+variable "communicator_proxy_username" {
+  type        = string
+  description = "The optional username to authenticate with the proxy server."
+  default     = null
+}
+
+variable "communicator_proxy_password" {
+  type        = string
+  description = "The optional password to authenticate with the proxy server."
+  sensitive   = true
+  default     = null
+}
 
 variable "communicator_port" {
   type        = string
@@ -399,16 +355,16 @@ variable "communicator_timeout" {
   description = "The timeout for the communicator protocol."
 }
 
-// Provisioner Settings
+// Ansible Credentials
 
-variable "scripts" {
-  type        = list(string)
-  description = "A list of scripts and their relative paths to transfer and run."
-  default     = []
+variable "ansible_username" {
+  type        = string
+  description = "The username for Ansible to login to the guest operating system. (e.g. 'ansible')"
+  sensitive   = true
 }
 
-variable "inline" {
-  type        = list(string)
-  description = "A list of commands to run."
-  default     = []
+variable "ansible_key" {
+  type        = string
+  description = "The public key for Ansible to login to the guest operating system."
+  sensitive   = true
 }

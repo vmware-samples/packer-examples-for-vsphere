@@ -1,7 +1,7 @@
 ---
 name: Documentation
 description: Found a typo or something that needs clarification?
-title: '[DOCS] REPLACE WITH SHORT DESCRIPTION'
+title: 'REPLACE WITH SHORT DESCRIPTION'
 labels:
   - type/docs
   - status/needs-review
@@ -30,7 +30,8 @@ body:
       description: Please provide the version of this project.
       options:
         - main
-        - 22.05 (latest)
+        - 22.06 (latest)
+        - 22.05
         - 22.04
         - 22.03
         - 22.02

@@ -104,12 +104,12 @@ variable "vm_guest_os_name" {
 
 variable "vm_guest_os_version" {
   type        = string
-  description = "The guest operating system version. Used for naming. (e.g. '8')"
+  description = "The guest operating system version. Used for naming. (e.g. '7')"
 }
 
 variable "vm_guest_os_type" {
   type        = string
-  description = "The guest operating system type, also know as guestid. (e.g. 'rhel8_64Guest')"
+  description = "The guest operating system type, also know as guestid. (e.g. 'rhel7_64Guest')"
 }
 
 variable "vm_firmware" {
@@ -221,6 +221,20 @@ variable "common_content_library_skip_export" {
   type        = bool
   description = "Skip exporting the virtual machine to the content library. Option allows for testing / debugging without saving the machine image."
   default     = false
+}
+
+// OVF Export Settings
+
+variable "common_ovf_export_enabled" {
+  type        = bool
+  description = "Enable OVF artifact export."
+  default     = false
+}
+
+variable "common_ovf_export_overwrite" {
+  type        = bool
+  description = "Overwrite existing OVF artifact."
+  default     = true
 }
 
 // Removable Media Settings

@@ -209,6 +209,20 @@ variable "common_content_library_skip_export" {
   default     = false
 }
 
+// OVF Export Settings
+
+variable "common_ovf_export_enabled" {
+  type        = bool
+  description = "Enable OVF artifact export."
+  default     = false
+}
+
+variable "common_ovf_export_overwrite" {
+  type        = bool
+  description = "Overwrite existing OVF artifact."
+  default     = true
+}
+
 // Removable Media Settings
 
 variable "common_iso_datastore" {
@@ -218,7 +232,7 @@ variable "common_iso_datastore" {
 
 variable "iso_path" {
   type        = string
-  description = "The path on the source vSphere datastore for ISO image. (e.g. 'iso/linux/rhel-derivative')"
+  description = "The path on the source vSphere datastore for ISO image. (e.g. 'iso/linux/centos')"
 }
 
 variable "iso_file" {

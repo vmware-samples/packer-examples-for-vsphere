@@ -2,6 +2,14 @@
 ## Ignore desktop services files.
 **/.DS_Store
 
+# Certificates and Keys
+## Ignore certificates files.
+**/*.cer
+**/*.crt
+**/*.p7b
+## Ignore public key files
+**/*.pub
+
 # HashiCorp Packer
 ## Ignore cache directories.
 packer_cache/
@@ -16,26 +24,27 @@ crash.log
 *.tfstate.*
 ## Ignore crash.log files.
 crash.log
-## Ignore .tfvars files, which are likely to contain sentitive data.
+## Ignore .tfvars files.
 *.tfvars
 ## Ignore override files.
 override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
-## Ignore Terraform CLI configuration files.
+## Ignore configuration files.
 .terraformrc
 terraform.rc
 
 # Configurations
 ## Ignore default config directory.
 config/
-## Ignore certificates files.
-**/*.cer
-**/*.crt
-**/*.p7b
-## Ignore public key files
-**/*.pub
+
+# Artifacts
+## Ignore artifacts directory.
+artifacts/*.mf
+artifacts/*.nvram
+artifacts/*.ovf
+artifacts/*.vmdk
 
 # Manifests
 ## Ignore manifests directory.

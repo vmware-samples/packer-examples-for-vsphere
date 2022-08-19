@@ -1,5 +1,57 @@
 # CHANGELOG
 
+## [v22.07](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.07)
+
+> Release Date: 2022-07-26
+
+💫  **Enhancement**:
+
+* Adds Red Hat Enterprise Linux 9.
+* Adds CentOS 9 Stream.
+* Adds Rocky Linux 9.
+* Adds AlmaLinux OS 9.
+* Adds SUSE Linux Enterprise Server 15.  
+  Contributed by [@gcblack](https://github.com/gcblack) in [GH-227](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/227). 🚀
+* Adds option for setting the number of video displays and the size for the video memory for both Windows 11 and 10, which is useful for virtual desktop use cases (_e.g._, Horizon). The ability to set the number of displays was added in  `v1.0.6` of `packer-plugin-vsphere`.
+* Adds a common option to export machine image artifacts (`.ovf`,`.vmdk`, and `.mf`) to an output path.
+* Removes the default requirement for a trusted root authority certificate to be imported and trusted by each machine image build. This will allow project users to get started more quickly without a pre-requisite.
+
+🛠️ **Refactor**:
+
+* Refactors builds to use local variables for virtual machine image names and descriptions.
+* Refactors builds to use local variables for ISO paths and checksums.
+* Refactors builds to use local variables for manifest data and output path.
+
+🧹 **Chore**:
+
+* Updates vSphere to version 7.0.3D ([vCenter Server](https://docs.vmware.com/en/VMware-vSphere/7.0/rn/vsphere-vcenter-server-70u3d-release-notes.html) and [ESXi](https://docs.vmware.com/en/VMware-vSphere/7.0/rn/vsphere-esxi-70u3d-release-notes.html)) or higher to address a [known issue](https://kb.vmware.com/s/article/88255) with the Red Hat Enterprise Linux 9 with EFI firmware.
+* Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.6`.
+* Updates `required_versions` for `terraform` to `>= v1.2.5`.
+* Updates Rocky Linux 8 to use `other4xLinuxGuest64`.
+* Updates Almalinux 8 to use `other4xLinuxGuest64`.
+* Removes the deprecated CentOS 8 option; end-of-life as of December 31, 2021.
+* Removes the deprecated Windows Server 2016 option; end-of-life as of January 11, 2022.
+
+> **Note**
+>
+> - Supports 15.3 / 15 Service Pack 3. 15.4 planned.  
+> - HTTP-based deployment only. Disk-based deployment planned.
+
+## [v22.06](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.06)
+
+> Release Date: 2022-06-27
+
+🧹 **Chore**:
+
+* Updates vSphere to version 7.0.3 or higher.
+* Updates Windows Server 2022 .iso and checksum to June 2022 release.
+* Updates Windows 11 .iso and checksum to June 2022 release.
+* Updates `vm_guest_os_type` for Windows Server 2022 guest ID to `windows2019srvNext_64Guest`.
+* Updates `required_versions` for `packer` to `>= v1.8.2`.
+* Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.5`.
+* Updates `required_versions` for `terraform` to `>= v1.2.3`.
+* Updates `required_versions` for `hashicorp/vsphere` to `>= v2.2.0`.
+
 ## [v22.05](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.05)
 
 > Release Date: 2022-05-31
@@ -14,7 +66,7 @@
 * Updates Windows 11 .iso and checksum to May 2022 release.
 * Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.4`.
 * Updates `required_plugins` and `packer-plugin-windows-update` to `>= v0.14.1`.
-* Updates `required_versons` for `terraform` to `>= v1.2.1`.
+* Updates `required_versions` for `terraform` to `>= v1.2.1`.
 * Updates requirements to include VMware Photon OS 4 as a tested operating system.
 * Updates requirements to include Ubuntu 22.04 as a tested operating system.
 
@@ -53,8 +105,8 @@
 > Release Date: 2022-03-17
 
 * Updates `required_versions` for `packer` to `>= v1.8.0`.
-* Updates `required_versons` for `terraform` to `>= v1.1.7`.
-* Updates `required_versons` for `hashicorp/vsphere` to `>= v2.1.1`.
+* Updates `required_versions` for `terraform` to `>= v1.1.7`.
+* Updates `required_versions` for `hashicorp/vsphere` to `>= v2.1.1`.
 
 ## [v22.02](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.02)
 
@@ -62,7 +114,7 @@
 
 * Updates the configuration of Linux machine images to use the Ansible roles instead of shell scripts.
 * Updates `required_versions` for `packer` to `>= v1.7.10`.
-* Updates `required_versons` for `terraform` to `>= v1.1.5`.
+* Updates `required_versions` for `terraform` to `>= v1.1.5`.
 
 ## [v22.01](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.01)
 
@@ -71,7 +123,7 @@
 * Updates the structure of the subdirectories in `builds/`.
 * Updates `required_versions` for `packer` to `>= v1.7.9`.
 * Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.3`.
-* Updates `required_versons` for `terraform` to `>= v1.1.4`.
+* Updates `required_versions` for `terraform` to `>= v1.1.4`.
 * Updates Microsoft Windows 11 Professional to use virtual trusted platform module (vTPM) and removes experimental project support. vTPM is now supported by `packer-plugin-vsphere` to `>= v1.0.3`.
 * Updates VMware Photon OS 4.0 to [Revision 2](https://github.com/vmware/photon/wiki/Downloading-Photon-OS).
 * Adds configurable data source provisioning for VMware Photon OS 4.0. Revision 2 adds support for secondary devices with kickstart. Edit the `common_data_source` in `common.pkvars.hcl` from `http` to `disk`. The build will attach an on-demand `.iso` as the secondary CD-ROM for the kickstart. This is useful for environments that can not use HTTP-based kickstart.

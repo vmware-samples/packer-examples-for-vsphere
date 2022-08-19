@@ -19,11 +19,3 @@
       jq \
       parted \
       openssl-c_rehash
-- name: "Importing certificate authortiy certificates."
-  copy:
-    dest: /etc/ssl/certs/root-ca.pem
-    group: root
-    mode: 420
-    owner: root
-    src: root-ca.cer
-  notify: "VMware Photon OS - Updating the certificate authority trust."

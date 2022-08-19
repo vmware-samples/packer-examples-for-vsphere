@@ -195,6 +195,18 @@ variable "vm_network_card" {
   default     = "vmxnet3"
 }
 
+variable "vm_video_mem_size" {
+  type        = number
+  description = "The size for the video memory in KB. (e.g. 4096)"
+  default     = 4096
+}
+
+variable "vm_video_displays" {
+  type        = number
+  description = "The number of video displays. (e.g. 1)"
+  default     = 1
+}
+
 variable "common_vm_version" {
   type        = number
   description = "The vSphere virtual hardware version. (e.g. '19')"
@@ -242,6 +254,20 @@ variable "common_content_library_skip_export" {
   type        = bool
   description = "Skip exporting the virtual machine to the content library. Option allows for testing / debugging without saving the machine image."
   default     = false
+}
+
+// OVF Export Settings
+
+variable "common_ovf_export_enabled" {
+  type        = bool
+  description = "Enable OVF artifact export."
+  default     = false
+}
+
+variable "common_ovf_export_overwrite" {
+  type        = bool
+  description = "Overwrite existing OVF artifact."
+  default     = true
 }
 
 // Removable Media Settings

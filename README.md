@@ -6,7 +6,7 @@
 
 ![VMware vSphere 7.0 Update 3d+](https://img.shields.io/badge/VMware%20vSphere-7.0%20Update%203d+-blue?style=for-the-badge)
 
-![Packer 1.8.2+](https://img.shields.io/badge/HashiCorp%20Packer-1.8.2+-blue?style=for-the-badge)
+![Packer 1.8.3+](https://img.shields.io/badge/HashiCorp%20Packer-1.8.3+-blue?style=for-the-badge)
 
 ![Ansible 2.9+](https://img.shields.io/badge/Ansible-2.9+-blue?style=for-the-badge)
 
@@ -129,7 +129,7 @@ The following builds are available:
 
     </details>
 
-* HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.6 or higher.
+* HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.7 or higher.
 * [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.1 or higher - a community plugin for HashiCorp Packer.
 
     > **Note**
@@ -255,12 +255,12 @@ The following software packages must be installed on the opearing system running
 
     </details>
 
-* HashiCorp [Terraform][terraform-install] 1.2.5 or higher.
+* HashiCorp [Terraform][terraform-install] 1.2.7 or higher.
   * <details>
       <summary>Photon OS</summary>
 
       ```shell
-      TERRAFORM_VERSION="1.2.5"
+      TERRAFORM_VERSION="1.2.7"
       OS_PACKAGES="wget unzip"
 
       if [[ $(uname -m) == "x86_64" ]]; then
@@ -296,12 +296,12 @@ The following software packages must be installed on the opearing system running
 
     </details>
 
-* [Gomplate](gomplate-install) 3.10.0 or higher.
+* [Gomplate](gomplate-install) 3.11.2 or higher.
   * <details>
       <summary>Ubuntu</summary>
 
       ```shell
-      GOMPLATE_VERSION="3.10.0"
+      GOMPLATE_VERSION="3.11.2"
 
       sudo curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-${LINUX_ARCH}
 

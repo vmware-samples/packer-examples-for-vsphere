@@ -1,6 +1,9 @@
 ---
 - name: "Configure users on {{ ansible_facts['distribution'] }} guest operating system."
   include_tasks: linux.yml
+  when: "ansible_facts['distribution'] == 'Debian'"
+- name: "Configure users on {{ ansible_facts['distribution'] }} guest operating system."
+  include_tasks: linux.yml
   when: "ansible_facts['distribution'] == 'Ubuntu'"
 - name: "Configure users on {{ ansible_facts['distribution'] }} guest operating system."
   include_tasks: linux.yml

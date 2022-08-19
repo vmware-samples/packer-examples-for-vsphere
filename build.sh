@@ -519,6 +519,7 @@ menu_option_16() {
   echo "Done."
 }
 
+
 menu_option_17() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2022/
   echo -e "\nCONFIRM: Build all Windows Server 2022 Templates for VMware vSphere?"
@@ -802,7 +803,7 @@ until [ "$selection" = "0" ]; do
   echo "    	12  -  Rocky Linux 8"
   echo "    	13  -  CentOS Stream 9"
   echo "    	14  -  CentOS Stream 8"
-  echo "    	15  -  CentOS 7"
+  echo "    	15  -  CentOS Linux 7"
   echo "    	16  -  SUSE Linux Enterprise Server 15"
   echo ""
   echo "      Microsoft Windows:"

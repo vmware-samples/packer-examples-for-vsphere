@@ -9,6 +9,12 @@
 * Adds Debian 11. *  
   Contributed in colaboration with by [@evilaliv3](https://github.com/evilaliv3) in [GH-195](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/195). 🚀
 
+🧹 **Chore**:
+
+* Updates `required_versions` for `packer` to `>= v1.8.3`.
+* Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.7`.
+* Updates `required_versions` for `terraform` to `>= v1.2.7`.
+
 > **Note**
 >
 > - HTTP-based deployment only. Disk-based deployment planned.

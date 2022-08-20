@@ -86,6 +86,7 @@ source "vsphere-iso" "linux-rocky" {
   notes                = local.build_description
 
   // Removable Media Settings
+  iso_url      = var.iso_url
   iso_paths    = local.iso_paths
   iso_checksum = local.iso_checksum
   http_content = var.common_data_source == "http" ? local.data_source_content : null

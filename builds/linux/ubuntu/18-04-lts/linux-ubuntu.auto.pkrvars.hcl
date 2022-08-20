@@ -28,6 +28,7 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
+iso_url            = null
 iso_path           = "iso/linux/ubuntu"
 iso_file           = "ubuntu-18.04.6-server-amd64.iso"
 iso_checksum_type  = "sha256"

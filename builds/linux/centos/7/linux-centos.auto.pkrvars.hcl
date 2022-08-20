@@ -28,6 +28,7 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
+iso_url            = null
 iso_path           = "iso/linux/centos"
 iso_file           = "CentOS-7-x86_64-DVD-2009.iso"
 iso_checksum_type  = "sha256"

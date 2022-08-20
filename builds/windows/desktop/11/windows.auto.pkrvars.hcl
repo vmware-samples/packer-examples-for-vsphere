@@ -38,6 +38,7 @@ vm_video_mem_size        = 131072
 vm_video_displays        = 1
 
 // Removable Media Settings
+iso_url            = null
 iso_path           = "iso/windows/desktop"
 iso_file           = "en-us_windows_11_consumer_editions_updated_june_2022_x64_dvd_aec658b2.iso"
 iso_checksum_type  = "sha256"

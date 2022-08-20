@@ -20,9 +20,9 @@ packer {
 //  Defines the local variables.
 
 locals {
-  build_by      = "Built by: HashiCorp Packer ${packer.version}"
-  build_date    = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
-  build_version = formatdate("YY.MM", timestamp())
+  build_by          = "Built by: HashiCorp Packer ${packer.version}"
+  build_date        = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
+  build_version     = formatdate("YY.MM", timestamp())
   build_description = "Version: v${local.build_version}\nBuilt on: ${local.build_date}\n${local.build_by}"
   iso_paths         = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}"]
   iso_checksum      = "${var.iso_checksum_type}:${var.iso_checksum_value}"
@@ -85,8 +85,9 @@ source "vsphere-iso" "linux-debian" {
   notes                = local.build_description
 
   // Removable Media Settings
-  iso_paths    = local.iso_paths
-  iso_checksum = local.iso_checksum
+  iso_url        = var.iso_url
+  iso_paths      = local.iso_paths
+  iso_checksum   = local.iso_checksum
   http_content   = var.common_data_source == "http" ? local.data_source_content : null
   floppy_content = var.common_data_source == "disk" ? local.data_source_content : null
 
@@ -133,7 +134,7 @@ source "vsphere-iso" "linux-debian" {
       skip_import = var.common_content_library_skip_export
     }
   }
-  
+
   // OVF Export Settings
   dynamic "export" {
     for_each = var.common_ovf_export_enabled == true ? [1] : []

@@ -28,6 +28,7 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
+iso_url            = null
 iso_path           = "iso/linux/almalinux"
 iso_file           = "AlmaLinux-9.0-x86_64-dvd.iso"
 iso_checksum_type  = "sha256"

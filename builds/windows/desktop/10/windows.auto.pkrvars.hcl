@@ -37,6 +37,7 @@ vm_video_mem_size        = 131072
 vm_video_displays        = 1
 
 // Removable Media Settings
+iso_url            = null
 iso_path           = "iso/windows/desktop"
 iso_file           = "en-us_windows_10_business_editions_version_21h1_updated_sep_2021_x64_dvd_56628c48.iso"
 iso_checksum_type  = "sha256"

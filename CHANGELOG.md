@@ -6,8 +6,9 @@
 
 💫  **Enhancement**:
 
-* Adds Debian 11. *  
-  Contributed in colaboration with by [@evilaliv3](https://github.com/evilaliv3) in [GH-195](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/195). 🚀
+* Adds Debian 11. [GH-195](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/195). *  
+  Contributed in colaboration with by [@evilaliv3](https://github.com/evilaliv3).  🚀
+* Adds support to use the `iso_url` variable to download the guest operating system `.iso` from a URL. [GH-249](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/249).
 
 🧹 **Chore**:
 

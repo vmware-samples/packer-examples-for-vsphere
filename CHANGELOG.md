@@ -15,6 +15,9 @@
 * Updates `required_versions` for `packer` to `>= v1.8.3`.
 * Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.8`.
 * Updates `required_versions` for `terraform` to `>= v1.2.7`.
+* Updates Windows Server 2022 .iso and checksum to August 2022 release.
+* Updates Windows 11 .iso and checksum to August 2022 release.
+* Updates Windows 10 .iso and checksum to August 2022 release.
 
 > **Note**
 >

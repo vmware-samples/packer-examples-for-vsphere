@@ -1,6 +1,6 @@
 /*
     DESCRIPTION:
-    CentOS Stream 9 template using the Packer Builder for VMware vSphere (vsphere-iso).
+    Debian Linux 11 template using the Packer Builder for VMware vSphere (vsphere-iso).
 */
 
 //  BLOCK: packer
@@ -33,23 +33,20 @@ locals {
   data_source_content = {
     "/ks.cfg" = templatefile("${abspath(path.root)}/data/ks.pkrtpl.hcl", {
       build_username           = var.build_username
-      build_password           = var.build_password
       build_password_encrypted = var.build_password_encrypted
       vm_guest_os_language     = var.vm_guest_os_language
       vm_guest_os_keyboard     = var.vm_guest_os_keyboard
       vm_guest_os_timezone     = var.vm_guest_os_timezone
     })
   }
-  data_source_command = var.common_data_source == "http" ? "inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg" : "inst.ks=cdrom:/ks.cfg"
+  data_source_command = var.common_data_source == "http" ? "url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg" : "file=/media/ks.cfg"
   vm_name             = "${var.vm_guest_os_family}-${var.vm_guest_os_name}-${var.vm_guest_os_version}-v${local.build_version}"
-  bucket_name         = replace("${var.vm_guest_os_family}-${var.vm_guest_os_name}-${var.vm_guest_os_version}", ".", "")
-  bucket_description  = "${var.vm_guest_os_family} ${var.vm_guest_os_name} ${var.vm_guest_os_version}"
 }
 
 //  BLOCK: source
 //  Defines the builder configuration blocks.
 
-source "vsphere-iso" "linux-centos-stream" {
+source "vsphere-iso" "linux-debian" {
 
   // vCenter Server Endpoint Settings and Credentials
   vcenter_server      = var.vsphere_endpoint
@@ -88,11 +85,11 @@ source "vsphere-iso" "linux-centos-stream" {
   notes                = local.build_description
 
   // Removable Media Settings
-  iso_url      = var.iso_url
-  iso_paths    = local.iso_paths
-  iso_checksum = local.iso_checksum
-  http_content = var.common_data_source == "http" ? local.data_source_content : null
-  cd_content   = var.common_data_source == "disk" ? local.data_source_content : null
+  iso_url        = var.iso_url
+  iso_paths      = local.iso_paths
+  iso_checksum   = local.iso_checksum
+  http_content   = var.common_data_source == "http" ? local.data_source_content : null
+  floppy_content = var.common_data_source == "disk" ? local.data_source_content : null
 
   // Boot and Provisioning Settings
   http_ip       = var.common_data_source == "http" ? var.common_http_ip : null
@@ -101,11 +98,14 @@ source "vsphere-iso" "linux-centos-stream" {
   boot_order    = var.vm_boot_order
   boot_wait     = var.vm_boot_wait
   boot_command = [
-    "<up>",
-    "e",
-    "<down><down><end><wait>",
-    "text ${local.data_source_command}",
-    "<enter><wait><leftCtrlOn>x<leftCtrlOff>"
+    "<wait3s>c<wait3s>",
+    "linux /install.amd/vmlinuz",
+    " auto-install/enable=true",
+    " debconf/priority=critical",
+    " ${local.data_source_command}",
+    " noprompt --<enter>",
+    "initrd /install.amd/initrd.gz<enter>",
+    "boot<enter>"
   ]
   ip_wait_timeout  = var.common_ip_wait_timeout
   shutdown_command = "echo '${var.build_password}' | sudo -S -E shutdown -P now"
@@ -153,15 +153,14 @@ source "vsphere-iso" "linux-centos-stream" {
 //  Defines the builders to run, provisioners, and post-processors.
 
 build {
-  sources = ["source.vsphere-iso.linux-centos-stream"]
+  sources = ["source.vsphere-iso.linux-debian"]
 
   provisioner "ansible" {
-    user          = var.build_username
     playbook_file = "${path.cwd}/ansible/main.yml"
     roles_path    = "${path.cwd}/ansible/roles"
     ansible_env_vars = [
       "ANSIBLE_CONFIG=${path.cwd}/ansible/ansible.cfg",
-      "ANSIBLE_PYTHON_INTERPRETER=/usr/libexec/platform-python"
+      "ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3"
     ]
     extra_arguments = [
       "--extra-vars", "display_skipped_hosts=false",
@@ -173,7 +172,7 @@ build {
   }
 
   post-processor "manifest" {
-    output     = local.manifest_output
+    output     = "${local.manifest_path}${local.manifest_date}.json"
     strip_path = true
     strip_time = true
     custom_data = {
@@ -196,23 +195,6 @@ build {
       vsphere_datastore        = var.vsphere_datastore
       vsphere_endpoint         = var.vsphere_endpoint
       vsphere_folder           = var.vsphere_folder
-    }
-  }
-
-  dynamic "hcp_packer_registry" {
-    for_each = var.common_hcp_packer_registry_enabled ? [1] : []
-    content {
-      bucket_name = local.bucket_name
-      description = local.bucket_description
-      bucket_labels = {
-        "os_family": var.vm_guest_os_family,
-        "os_name": var.vm_guest_os_name,
-        "os_version": var.vm_guest_os_version,
-      }
-      build_labels = {
-        "build_version": local.build_version,
-        "packer_version": packer.version,
-      }
     }
   }
 }

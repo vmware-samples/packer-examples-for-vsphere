@@ -6,7 +6,7 @@
 
 ![VMware vSphere 7.0 Update 3d+](https://img.shields.io/badge/VMware%20vSphere-7.0%20Update%203d+-blue?style=for-the-badge)
 
-![Packer 1.8.2+](https://img.shields.io/badge/HashiCorp%20Packer-1.8.2+-blue?style=for-the-badge)
+![Packer 1.8.3+](https://img.shields.io/badge/HashiCorp%20Packer-1.8.3+-blue?style=for-the-badge)
 
 ![Ansible 2.9+](https://img.shields.io/badge/Ansible-2.9+-blue?style=for-the-badge)
 
@@ -32,6 +32,7 @@ The following builds are available:
 ### Linux Distributions
 
 * VMware Photon OS 4
+* Debian 11
 * Ubuntu Server 22.04 LTS (cloud-init)
 * Ubuntu Server 20.04 LTS (cloud-init)
 * Ubuntu Server 18.04 LTS
@@ -128,7 +129,7 @@ The following builds are available:
 
     </details>
 
-* HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.6 or higher.
+* HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.8 or higher.
 * [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.1 or higher - a community plugin for HashiCorp Packer.
 
     > **Note**
@@ -254,12 +255,12 @@ The following software packages must be installed on the opearing system running
 
     </details>
 
-* HashiCorp [Terraform][terraform-install] 1.2.5 or higher.
+* HashiCorp [Terraform][terraform-install] 1.2.7 or higher.
   * <details>
       <summary>Photon OS</summary>
 
       ```shell
-      TERRAFORM_VERSION="1.2.5"
+      TERRAFORM_VERSION="1.2.7"
       OS_PACKAGES="wget unzip"
 
       if [[ $(uname -m) == "x86_64" ]]; then
@@ -295,12 +296,12 @@ The following software packages must be installed on the opearing system running
 
     </details>
 
-* [Gomplate](gomplate-install) 3.10.0 or higher.
+* [Gomplate](gomplate-install) 3.11.2 or higher.
   * <details>
       <summary>Ubuntu</summary>
 
       ```shell
-      GOMPLATE_VERSION="3.10.0"
+      GOMPLATE_VERSION="3.11.2"
 
       sudo curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-${LINUX_ARCH}
 
@@ -348,17 +349,7 @@ The directory structure of the repository.
 ├── ansible
 │   ├── roles
 │   │   └── <role>
-│   │       ├── defaults
-│   │       │   └── main.yml
-│   │       ├── handlers
-│   │       │   └── main.yml
-│   │       ├── meta
-│   │       │   └── main.yml
-│   │       ├── tasks
-│   │       │   └── main.yml
-│   │       │   └── *.yml
-│   │       └── vars
-│   │           └── main.yml
+│   │       └── *.yml
 │   ├── ansible.cfg
 │   └── main.yml
 ├── artifacts
@@ -396,7 +387,7 @@ The directory structure of the repository.
 The files are distributed in the following directories.
 
 * **`ansible`** - contains the Ansible roles to prepare Linux machine image builds.
-* **`artifacts`** - contains the OVF artifacts created by the builds, if enabled.
+* **`artifacts`** - contains the OVF artifacts exported by the builds, if enabled.
 * **`builds`** - contains the templates, variables, and configuration files for the machine image builds.
 * **`scripts`** - contains the scripts to initialize and prepare Windows machine image builds.
 * **`manifests`** - manifests created after the completion of the machine image builds.
@@ -406,14 +397,23 @@ The files are distributed in the following directories.
 >
 > When forking the project for upstream contribution, please be mindful not to make changes that may expose your sensitive information, such as passwords, keys, certificates, etc.
 
-### Step 2 - Download the Guest Operating Systems ISOs
+### Step 2 - Guest Operating Systems ISOs
 
-1. Download the x64 guest operating system [.iso][iso] images.
+The project supports configuring the ISO from either a datastore or URL source. By default, the project uses the datastore source.
+
+Follow the steps below to configure either option.
+#### Using a Datastore Source
+
+If you are using a datastore to store your guest operating system [`.iso`][iso] files, you must download and upload these to a datastore path.
+
+1. Download the x64 guest operating system `.iso` files.
 
     Linux Distributions:
 
-    * VMware Photon OS 4.0
-        * [Download][download-linux-photon-server-4] the 4.0 Rev2 release of the **FULL** `.iso` image. (_e.g.,_ `photon-4.0-xxxxxxxxx.iso`)
+    * VMware Photon OS 4
+        * [Download][download-linux-photon-server-4] the 4.0 Rev2 release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-xxxxxxxxx.iso`)
+    * Debian 11
+        * [Download][download-linux-debian-11] the latest **netinst** release `.iso` image. (_e.g._ `debian-11.x.0-amd64-netinst.iso`)
     * Ubuntu Server 22.04 LTS
         * [Download][download-linux-ubuntu-server-22-04-lts] the latest **LIVE** release `.iso` image. (_e.g.,_ `ubuntu-22.04.x-live-server-amd64.iso`)
     * Ubuntu Server 20.04 LTS
@@ -450,9 +450,9 @@ The files are distributed in the following directories.
     * Microsoft Windows 11
     * Microsoft Windows 10
 
-1. Obtain the checksum type (_e.g.,_ `sha256`, `md5`, etc.) and checksum value for each guest operating system `.iso` image from the vendor. This will be use in the build input variables.
+1. Obtain the checksum type (_e.g.,_ `sha256`, `md5`, etc.) and checksum value for each guest operating system `.iso` from the vendor. This will be use in the build input variables.
 
-1. [Upload][vsphere-upload] your guest operating system `.iso` images to the ISO datastore and paths that will be used in your variables.
+1. [Upload][vsphere-upload] or your guest operating system `.iso` files to the datastore and update the configuration variables, leaving the `iso_url` variable as `null`.
 
     **Example**: `config/common.pkvars.hcl`
 
@@ -463,11 +463,24 @@ The files are distributed in the following directories.
     **Example**: `builds/<type>/<build>/*.auto.pkvars.hcl`
 
     ```hcl
+    iso_url            = null
     iso_path           = "iso/linux/photon"
     iso_file           = "photon-4.0-xxxxxxxxx.iso"
     iso_checksum_type  = "md5"
     iso_checksum_value = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     ```
+
+#### Using a URL Source
+
+If you are using a URL source to obtain your guest operating system [`.iso`][iso] files, you must update the input variables to use the URL source.
+
+Update the `iso_url` variable to download the `.iso` from a URL. The `iso_url` variable takes presedence over any other `iso_*` variables.
+
+  **Example**: `builds/<type>/<build>/*.auto.pkvars.hcl`
+
+```hcl
+iso_url = "https://artifactory.rainpole.io/iso/linux/photon/4.0/x86_64/photon-4.0-xxxxxxxxx.iso"
+```
 
 ### Step 3 - Configure Service Account Privileges in vSphere
 
@@ -657,7 +670,8 @@ The content of the public key, `build_key`, is added the key to the `.ssh/author
 
 > **Warning**
 >
-> Replace the default public keys and passwords.
+> Replace the default public keys and passwords.  
+>
 > By default, both Public Key Authentication and Password Authentication are enabled for Linux distributions. If you wish to disable Password Authentication and only use Public Key Authentication, comment or remove the portion of the associated Ansible `configure` role.
 
 ##### Ansible Variables
@@ -768,7 +782,7 @@ Edit the `config/proxy.pkvars.hcl` file to configure the following:
 
 ```hcl
 communicator_proxy_host     = "proxy.rainpole.io"
-communicator_proxy_port     = 1080
+communicator_proxy_port     = 8080
 communicator_proxy_username = "rainpole"
 communicator_proxy_password = "<plaintext_password>"
 ```
@@ -999,6 +1013,7 @@ Happy building!!!
 [download-linux-centos-server-7]: http://isoredirect.centos.org/centos/7/isos/x86_64/
 [download-linux-centos-stream-9]: http://mirror.stream.centos.org/9-stream/BaseOS/x86_64/iso/
 [download-linux-centos-stream-8]: http://isoredirect.centos.org/centos/8-stream/isos/x86_64/
+[download-linux-debian-11]: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/
 [download-linux-photon-server-4]: https://packages.vmware.com/photon/4.0/
 [download-linux-redhat-server-7]: https://access.redhat.com/downloads/content/69/ver=/rhel---7/7.9/x86_64/product-software
 [download-linux-redhat-server-8]: https://access.redhat.com/downloads/content/479/ver=/rhel---8/8.6/x86_64/product-software

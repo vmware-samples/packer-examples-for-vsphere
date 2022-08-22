@@ -11,18 +11,18 @@ jobs:
     if: github.event.issue.author_association == 'NONE'
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 1
       - name: Render Template
         id: template
-        uses: chuhlomin/render-template@v1.2
+        uses: chuhlomin/render-template@v1.5
         with:
           template: .github/comment-template.md
           vars: |
             author: ${{ github.actor }}
       - name: Create Comment
-        uses: peter-evans/create-or-update-comment@v1
+        uses: peter-evans/create-or-update-comment@v2
         with:
           issue-number: '${{ github.event.issue.number }}'
           body: '${{ steps.template.outputs.result }}'

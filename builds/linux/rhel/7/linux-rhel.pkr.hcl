@@ -7,10 +7,10 @@
 //  The Packer configuration.
 
 packer {
-  required_version = ">= 1.8.2"
+  required_version = ">= 1.8.3"
   required_plugins {
     vsphere = {
-      version = ">= v1.0.6"
+      version = ">= v1.0.8"
       source  = "github.com/hashicorp/vsphere"
     }
   }
@@ -90,6 +90,7 @@ source "vsphere-iso" "linux-rhel" {
   notes                = local.build_description
 
   // Removable Media Settings
+  iso_url      = var.iso_url
   iso_paths    = local.iso_paths
   iso_checksum = local.iso_checksum
   http_content = var.common_data_source == "http" ? local.data_source_content : null

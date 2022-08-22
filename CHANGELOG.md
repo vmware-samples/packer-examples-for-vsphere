@@ -1,8 +1,31 @@
 # CHANGELOG
 
-## Unreleased
+## v22.08
 
 > Release Date: Unreleased
+
+💫  **Enhancement**:
+
+* Adds Debian 11. [GH-195](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/195). *  
+  Contributed in colaboration with by [@evilaliv3](https://github.com/evilaliv3).  🚀
+* Adds support to use the `iso_url` variable to download the guest operating system `.iso` from a URL. [GH-249](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/249).
+
+🧹 **Chore**:
+
+* Updates `required_versions` for `packer` to `>= v1.8.3`.
+* Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.8`.
+* Updates `required_versions` for `terraform` to `>= v1.2.7`.
+* Updates Windows Server 2022 .iso and checksum to August 2022 release.
+* Updates Windows 11 .iso and checksum to August 2022 release.
+* Updates Windows 10 .iso and checksum to August 2022 release.
+
+> **Note**
+>
+> - HTTP-based deployment only. Disk-based deployment planned.
+
+## [v22.07](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.07)
+
+> Release Date: 2022-07-26
 
 💫  **Enhancement**:
 
@@ -10,7 +33,7 @@
 * Adds CentOS 9 Stream.
 * Adds Rocky Linux 9.
 * Adds AlmaLinux OS 9.
-* Adds SUSE Linux Enterprise Server 15.  
+* Adds SUSE Linux Enterprise Server 15. *  
   Contributed by [@gcblack](https://github.com/gcblack) in [GH-227](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/227). 🚀
 * Adds option for setting the number of video displays and the size for the video memory for both Windows 11 and 10, which is useful for virtual desktop use cases (_e.g._, Horizon). The ability to set the number of displays was added in  `v1.0.6` of `packer-plugin-vsphere`.
 * Adds a common option to export machine image artifacts (`.ovf`,`.vmdk`, and `.mf`) to an output path.
@@ -43,14 +66,14 @@
 
 🧹 **Chore**:
 
-* Updates vSphere to version 7.0.3 or higher.
-* Updates Windows Server 2022 .iso and checksum to June 2022 release.
-* Updates Windows 11 .iso and checksum to June 2022 release.
-* Updates `vm_guest_os_type` for Windows Server 2022 guest ID to `windows2019srvNext_64Guest`.
 * Updates `required_versions` for `packer` to `>= v1.8.2`.
 * Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.5`.
 * Updates `required_versions` for `terraform` to `>= v1.2.3`.
 * Updates `required_versions` for `hashicorp/vsphere` to `>= v2.2.0`.
+* Updates vSphere to version 7.0.3 or higher.
+* Updates Windows Server 2022 .iso and checksum to June 2022 release.
+* Updates Windows 11 .iso and checksum to June 2022 release.
+* Updates `vm_guest_os_type` for Windows Server 2022 guest ID to `windows2019srvNext_64Guest`.
 
 ## [v22.05](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.05)
 
@@ -58,15 +81,15 @@
 
 🧹 **Chore**:
 
+* Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.4`.
+* Updates `required_plugins` and `packer-plugin-windows-update` to `>= v0.14.1`.
+* Updates `required_versions` for `terraform` to `>= v1.2.1`.
 * Updates Red Hat Enterprise Linux 8 .iso and checksum to 8.6 release.
 * Updates Rocky Linux 8 .iso and checksum to 8.6 release.
 * Updates Almalinux 8 .iso and checksum to 8.6 release.
 * Updates CentOS Stream 8 checksum to latest release.
 * Updates Windows Server 2022 .iso and checksum to April 2022 release.
 * Updates Windows 11 .iso and checksum to May 2022 release.
-* Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.4`.
-* Updates `required_plugins` and `packer-plugin-windows-update` to `>= v0.14.1`.
-* Updates `required_versions` for `terraform` to `>= v1.2.1`.
 * Updates requirements to include VMware Photon OS 4 as a tested operating system.
 * Updates requirements to include Ubuntu 22.04 as a tested operating system.
 
@@ -104,6 +127,8 @@
 
 > Release Date: 2022-03-17
 
+🧹 **Chore**:
+
 * Updates `required_versions` for `packer` to `>= v1.8.0`.
 * Updates `required_versions` for `terraform` to `>= v1.1.7`.
 * Updates `required_versions` for `hashicorp/vsphere` to `>= v2.1.1`.
@@ -112,13 +137,26 @@
 
 > Release Date: 2022-02-22
 
+💫  **Enhancement**:
+
 * Updates the configuration of Linux machine images to use the Ansible roles instead of shell scripts.
+
+🧹 **Chore**:
+
 * Updates `required_versions` for `packer` to `>= v1.7.10`.
 * Updates `required_versions` for `terraform` to `>= v1.1.5`.
 
 ## [v22.01](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.01)
 
 > Release Date: 2022-01-21
+
+💫  **Enhancement**:
+
+* Updates the `notes` to automatically include the Packer version and a `build_version`.
+* Updates the naming for the machine image output and includes a `build_version` (_e.g._, `linux-photon-4-v22.01`).
+* Updates all Microsoft Windows Server machine image builds to a default of 4096 MB of memory to increase performance during operating system patching.
+
+🧹 **Chore**:
 
 * Updates the structure of the subdirectories in `builds/`.
 * Updates `required_versions` for `packer` to `>= v1.7.9`.
@@ -127,15 +165,14 @@
 * Updates Microsoft Windows 11 Professional to use virtual trusted platform module (vTPM) and removes experimental project support. vTPM is now supported by `packer-plugin-vsphere` to `>= v1.0.3`.
 * Updates VMware Photon OS 4.0 to [Revision 2](https://github.com/vmware/photon/wiki/Downloading-Photon-OS).
 * Adds configurable data source provisioning for VMware Photon OS 4.0. Revision 2 adds support for secondary devices with kickstart. Edit the `common_data_source` in `common.pkvars.hcl` from `http` to `disk`. The build will attach an on-demand `.iso` as the secondary CD-ROM for the kickstart. This is useful for environments that can not use HTTP-based kickstart.
-* Updates the `notes` to automatically include the Packer version and a `build_version`.
-* Updates the naming for the machine image output and includes a `build_version` (_e.g._, `linux-photon-4-v22.01`).
-* Updates all Microsoft Windows Server machine image builds to a default of 4096 MB of memory to increase performance during operating system patching.
 * Adds a GitHub Action on pull requests to check code quality using linters.
 * Updates all of project code to address issues found by the linter(s).
 
 ## [v21.11](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.11)
 
 > Release Date: 2021-11-09
+
+💫  **Enhancement**:
 
 * Adds support for `cloud-init` and the `[VMware]` data source introduced in cloud-init v21.3 for Ubuntu Server 20.04 LTS
 

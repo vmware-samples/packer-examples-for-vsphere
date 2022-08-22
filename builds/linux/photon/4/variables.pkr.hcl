@@ -92,9 +92,9 @@ variable "vm_cdrom_type" {
   default     = "sata"
 }
 
-variable "vm_cpu_sockets" {
+variable "vm_cpu_count" {
   type        = number
-  description = "The number of virtual CPUs sockets. (e.g. '2')"
+  description = "The number of virtual CPUs. (e.g. '2')"
 }
 
 variable "vm_cpu_cores" {

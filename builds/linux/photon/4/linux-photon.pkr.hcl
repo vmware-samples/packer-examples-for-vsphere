@@ -62,7 +62,7 @@ source "vsphere-iso" "linux-photon" {
   vm_name              = local.vm_name
   guest_os_type        = var.vm_guest_os_type
   firmware             = var.vm_firmware
-  CPUs                 = var.vm_cpu_sockets
+  CPUs                 = var.vm_cpu_count
   cpu_cores            = var.vm_cpu_cores
   CPU_hot_plug         = var.vm_cpu_hot_add
   RAM                  = var.vm_mem_size
@@ -180,7 +180,7 @@ build {
       common_data_source       = var.common_data_source
       common_vm_version        = var.common_vm_version
       vm_cpu_cores             = var.vm_cpu_cores
-      vm_cpu_sockets           = var.vm_cpu_sockets
+      vm_cpu_count             = var.vm_cpu_count
       vm_disk_size             = var.vm_disk_size
       vm_disk_thin_provisioned = var.vm_disk_thin_provisioned
       vm_firmware              = var.vm_firmware

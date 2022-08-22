@@ -850,10 +850,11 @@ rainpole@macos> . ./set-envvars.sh
 
 Edit the `*.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder to configure the following virtual machine hardware settings, as required:
 
-* CPU Sockets `(int)`
+* CPUs `(int)`
 * CPU Cores `(int)`
 * Memory in MB `(int)`
 * Primary Disk in MB `(int)`
+* .iso URL `(string)`
 * .iso Path `(string)`
 * .iso File `(string)`
 * .iso Checksum Type `(string)`

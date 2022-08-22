@@ -31,7 +31,7 @@ vm_guest_os_type = "windows2019srvNext_64Guest"
 // Virtual Machine Hardware Settings
 vm_firmware              = "efi-secure"
 vm_cdrom_type            = "sata"
-vm_cpu_sockets           = 2
+vm_cpu_count             = 2
 vm_cpu_cores             = 1
 vm_cpu_hot_add           = false
 vm_mem_size              = 4096

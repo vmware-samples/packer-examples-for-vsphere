@@ -42,6 +42,8 @@ locals {
   }
   data_source_command = var.common_data_source == "http" ? "url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg" : "file=/media/ks.cfg"
   vm_name             = "${var.vm_guest_os_family}-${var.vm_guest_os_name}-${var.vm_guest_os_version}-v${local.build_version}"
+  bucket_name         = replace("${var.vm_guest_os_family}-${var.vm_guest_os_name}-${var.vm_guest_os_version}", ".", "")
+  bucket_description  = "${var.vm_guest_os_family} ${var.vm_guest_os_name} ${var.vm_guest_os_version}"
 }
 
 //  BLOCK: source
@@ -201,6 +203,23 @@ build {
       vsphere_datastore        = var.vsphere_datastore
       vsphere_endpoint         = var.vsphere_endpoint
       vsphere_folder           = var.vsphere_folder
+    }
+  }
+
+  dynamic "hcp_packer_registry" {
+    for_each = var.common_hcp_packer_registry_enabled ? [1] : []
+    content {
+      bucket_name = local.bucket_name
+      description = local.bucket_description
+      bucket_labels = {
+        "os_family": var.vm_guest_os_family,
+        "os_name": var.vm_guest_os_name,
+        "os_version": var.vm_guest_os_version,
+      }
+      build_labels = {
+        "build_version": local.build_version,
+        "packer_version": packer.version,
+      }
     }
   }
 }

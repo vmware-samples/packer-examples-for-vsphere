@@ -26,17 +26,19 @@ packer {
 //  Defines the local variables.
 
 locals {
-  build_by          = "Built by: HashiCorp Packer ${packer.version}"
-  build_date        = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
-  build_version     = formatdate("YY.MM", timestamp())
-  build_description = "Version: v${local.build_version}\nBuilt on: ${local.build_date}\n${local.build_by}"
-  iso_paths         = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
-  iso_checksum      = "${var.iso_checksum_type}:${var.iso_checksum_value}"
-  manifest_date     = formatdate("YYYY-MM-DD hh:mm:ss", timestamp())
-  manifest_path     = "${path.cwd}/manifests/"
-  manifest_output   = "${local.manifest_path}${local.manifest_date}.json"
-  ovf_export_path   = "${path.cwd}/artifacts/${local.vm_name}"
-  vm_name           = "${var.vm_guest_os_family}-${var.vm_guest_os_name}-${var.vm_guest_os_version}-${var.vm_guest_os_edition}-v${local.build_version}"
+  build_by           = "Built by: HashiCorp Packer ${packer.version}"
+  build_date         = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
+  build_version      = formatdate("YY.MM", timestamp())
+  build_description  = "Version: v${local.build_version}\nBuilt on: ${local.build_date}\n${local.build_by}"
+  iso_paths          = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
+  iso_checksum       = "${var.iso_checksum_type}:${var.iso_checksum_value}"
+  manifest_date      = formatdate("YYYY-MM-DD hh:mm:ss", timestamp())
+  manifest_path      = "${path.cwd}/manifests/"
+  manifest_output    = "${local.manifest_path}${local.manifest_date}.json"
+  ovf_export_path    = "${path.cwd}/artifacts/${local.vm_name}"
+  vm_name            = "${var.vm_guest_os_family}-${var.vm_guest_os_name}-${var.vm_guest_os_version}-${var.vm_guest_os_edition}-v${local.build_version}"
+  bucket_name        = replace("${var.vm_guest_os_family}-${var.vm_guest_os_name}-${var.vm_guest_os_version}-${var.vm_guest_os_edition}", ".", "")
+  bucket_description = "${var.vm_guest_os_family} ${var.vm_guest_os_name} ${var.vm_guest_os_version} ${var.vm_guest_os_edition}"
 }
 
 //  BLOCK: source
@@ -208,6 +210,24 @@ build {
       vsphere_datastore        = var.vsphere_datastore
       vsphere_endpoint         = var.vsphere_endpoint
       vsphere_folder           = var.vsphere_folder
+    }
+  }
+
+  dynamic "hcp_packer_registry" {
+    for_each = var.common_hcp_packer_registry_enabled ? [1] : []
+    content {
+      bucket_name = local.bucket_name
+      description = local.bucket_description
+      bucket_labels = {
+        "os_family": var.vm_guest_os_family,
+        "os_name": var.vm_guest_os_name,
+        "os_version": var.vm_guest_os_version,
+        "os_edition": var.vm_guest_os_edition,
+      }
+      build_labels = {
+        "build_version": local.build_version,
+        "packer_version": packer.version,
+      }
     }
   }
 }

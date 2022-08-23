@@ -46,7 +46,7 @@ case $skip_ssl_verification in
     vsphere_insecure_connection=false
        ;;
     *)
- echo -e "\n> Invalid input; skipping SSL verification settings. Using default values." 
+ echo -e "\n> Invalid input; skipping SSL verification settings. Using default values."
  ;;
 esac
 
@@ -99,7 +99,7 @@ case $use_socks_proxy in
     [nN][oO]|[nN])
        ;;
     *)
- echo -e "\n> Invalid input; skipping Socks Proxy settings. Using defaults values." 
+ echo -e "\n> Invalid input; skipping Socks Proxy settings. Using defaults values."
  ;;
 esac
 
@@ -129,6 +129,11 @@ echo # Needed for line break.
 echo -e '\n> Set the SUSE Customer Center credentials.'
 read -r -p "Enter the email for the account: " scc_email
 read -r -s -p "Enter the code for the account: " scc_code
+echo # Needed for line break.
+
+# HCP Packer
+echo -e '\n> Set the HCP Packer registry.'
+read -r -p "Enable the HCP Packer registry: " common_hcp_packer_registry_enabled
 echo # Needed for line break.
 
 echo -e '\n> Setting the vSphere credentials...'
@@ -214,6 +219,11 @@ export PKR_VAR_scc_email="${scc_email}"
 export PKR_VAR_scc_code="${scc_code}"
 echo
 
+echo '> Setting the HCP Packer...'
+# HCP Packer
+export PKR_VAR_common_hcp_packer_registry_enabled="${common_hcp_packer_registry_enabled}"
+echo
+
 read -r -p "Display the environment variables? (y/n): " display_environmental_variables
 case $display_environmental_variables in
     [yY][eE][sS]|[yY])
@@ -247,7 +257,7 @@ case $display_environmental_variables in
     echo - PKR_VAR_common_content_library_destroy: "$PKR_VAR_common_content_library_destroy"
     echo - PKR_VAR_common_content_library_skip_export: "$PKR_VAR_common_content_library_skip_export"
 
-   # OVF Export Settings
+    # OVF Export Settings
     echo -e '\nOVF Export Settings'
     echo - PKR_VAR_common_ovf_export_enabled: "$PKR_VAR_common_ovf_export_enabled"
     echo - PKR_VAR_common_ovf_export_overwrite: "$PKR_VAR_common_ovf_export_overwrite"
@@ -273,7 +283,7 @@ case $display_environmental_variables in
     ;;
         [nN][oO]|[nN])
         ;;
-        *) 
+        *)
     ;;
     esac
 
@@ -298,10 +308,14 @@ case $display_environmental_variables in
     echo -e '\nSUSE Customer Center Credentials'
     echo - PKR_VAR_scc_email: "$PKR_VAR_scc_email"
     echo - PKR_VAR_scc_code: "$PKR_VAR_scc_code"
+
+    # HCP Packer
+    echo -e '\nHCP Packer'
+    echo - PKR_VAR_common_hcp_packer_registry_enabled "$PKR_VAR_common_hcp_packer_registry_enabled"
  ;;
     [nN][oO]|[nN])
        ;;
     *)
- echo -e "\n> Invalid input; skipping display of the environmental variables." 
+ echo -e "\n> Invalid input; skipping display of the environmental variables."
  ;;
 esac

@@ -431,3 +431,11 @@ variable "inline" {
   description = "A list of commands to run."
   default     = []
 }
+
+// HCP Packer Settings
+
+variable "common_hcp_packer_registry_enabled" {
+  type        = bool
+  description = "Enable the HCP Packer registry."
+  default     = false
+}

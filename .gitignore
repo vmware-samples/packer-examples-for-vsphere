@@ -19,6 +19,7 @@ crash.log
 # HashiCorp Terraform
 ## Ignore .terraform directories.
 **/.terraform/*
+.terraform.lock.hcl
 ## Ignore .tfstate files
 *.tfstate
 *.tfstate.*

@@ -387,3 +387,11 @@ variable "ansible_key" {
   description = "The public key for Ansible to login to the guest operating system."
   sensitive   = true
 }
+
+// HCP Packer Settings
+
+variable "common_hcp_packer_registry_enabled" {
+  type        = bool
+  description = "Enable the HCP Packer registry."
+  default     = false
+}

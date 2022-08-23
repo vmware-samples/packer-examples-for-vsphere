@@ -896,19 +896,18 @@ Need help customizing the configuration files?
 * **SUSE Linux Enterprise Server** - Use the [SUSE Configuration Management System][suse-autoyast].
 * **Microsoft Windows** - Use the Microsoft Windows [Answer File Generator][microsoft-windows-afg] if you need to customize the provided examples further.
 
-### Step 6 - Enable the HCP Packer registry (Optional)
+### Step 6 - Enable HCP Packer Registry (Optional)
 
-If you don't know HCP Packer, you can have a look of the following documentation and video.
+If you are new to HCP Packer, review the following documentation and video to learn more before enabling an HCP Packer registry:
 
 - [What is HCP Packer?][hcp-packer-docs]
 - [Introduction to HCP Packer][hcp-packer-intro]
 
-#### Create HCP Packer registry
+#### Create an HCP Packer Registry
 
-Before you can use HCP Packer registry, you need to create it by following [Create HCP Packer registry
-][hcp-packer-create] procedure.
+Before you can use the HCP Packer registry, you need to create it by following [Create HCP Packer Registry][hcp-packer-create] procedure.
 
-#### Configura HCP Packer
+#### Configure an HCP Packer Registry
 
 Edit the `config/common.pkvars.hcl` file to enable the HCP Packer registry.
 
@@ -920,8 +919,8 @@ common_hcp_packer_registry_enabled = true
 Then, export your HCP credentials before building.
 
 ```console
-rainpole@macos> export HCP_CLIENT_ID=<client-id>
-rainpole@macos> export HCP_CLIENT_SECRET=<secret>
+rainpole@macos> export HCP_CLIENT_ID=<client_id>
+rainpole@macos> export HCP_CLIENT_SECRET=<client_secret>
 ```
 
 ## Build

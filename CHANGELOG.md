@@ -4,15 +4,19 @@
 
 > Release Date: Unreleased
 
-💫  **Enhancement**:
+:boom:  **Enhancement**:
 
 * Adds Debian 11. [GH-195](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/195). *  
-  Contributed in colaboration with [@evilaliv3](https://github.com/evilaliv3).  🚀
+  Contributed in colaboration with [@evilaliv3](https://github.com/evilaliv3). :rocket:
 * Adds support for initial configuration and use of the HCP Packer Registry. [GH-236](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/236).  
-  Contributed in colaboration with [@sestegra](https://github.com/sestegra).  🚀
+  Contributed in colaboration with [@sestegra](https://github.com/sestegra). :rocket:
 * Adds support to use the `iso_url` variable to download the guest operating system `.iso` from a URL. [GH-249](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/249).
 
-🧹 **Chore**:
+:warning: **Breaking Change**:
+
+* Updates `vm_cpu_sockets` to `vm_cpu_count` for CPUs. The value of the sockets is determined by dividing the number of CPUs by the number of cores per socket defined. [GH-253](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/253).  
+
+:sweat_drops: **Chore**:
 
 * Updates `required_versions` for `packer` to `>= v1.8.3`.
 * Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.8`.
@@ -29,7 +33,7 @@
 
 > Release Date: 2022-07-26
 
-💫  **Enhancement**:
+:boom:  **Enhancement**:
 
 * Adds Red Hat Enterprise Linux 9.
 * Adds CentOS 9 Stream.
@@ -41,13 +45,13 @@
 * Adds a common option to export machine image artifacts (`.ovf`,`.vmdk`, and `.mf`) to an output path.
 * Removes the default requirement for a trusted root authority certificate to be imported and trusted by each machine image build. This will allow project users to get started more quickly without a pre-requisite.
 
-🛠️ **Refactor**:
+:wrench: **Refactor**:
 
 * Refactors builds to use local variables for virtual machine image names and descriptions.
 * Refactors builds to use local variables for ISO paths and checksums.
 * Refactors builds to use local variables for manifest data and output path.
 
-🧹 **Chore**:
+:sweat_drops: **Chore**:
 
 * Updates vSphere to version 7.0.3D ([vCenter Server](https://docs.vmware.com/en/VMware-vSphere/7.0/rn/vsphere-vcenter-server-70u3d-release-notes.html) and [ESXi](https://docs.vmware.com/en/VMware-vSphere/7.0/rn/vsphere-esxi-70u3d-release-notes.html)) or higher to address a [known issue](https://kb.vmware.com/s/article/88255) with the Red Hat Enterprise Linux 9 with EFI firmware.
 * Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.6`.
@@ -66,7 +70,7 @@
 
 > Release Date: 2022-06-27
 
-🧹 **Chore**:
+:sweat_drops: **Chore**:
 
 * Updates `required_versions` for `packer` to `>= v1.8.2`.
 * Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.5`.
@@ -81,7 +85,7 @@
 
 > Release Date: 2022-05-31
 
-🧹 **Chore**:
+:sweat_drops: **Chore**:
 
 * Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.4`.
 * Updates `required_plugins` and `packer-plugin-windows-update` to `>= v0.14.1`.
@@ -109,7 +113,7 @@
 
 > Release Date: 2022-04-28
 
-💫  **Enhancement**:
+:boom:  **Enhancement**:
 
 * Adds Ubuntu Server 22.04 LTS (GH-185)
 * Adds an option to generate a custom build script. (GH-188)
@@ -120,7 +124,7 @@
 * Adds the use of `build_password` to the Linux distributions to ensure use of `set-envvars.sh` works as expected. (GH-197)
 * Updates the SHA256 checksum for the CentOS 7 .iso `CentOS-7-x86_64-DVD-2009.iso`. (GH-201)
 
-🧹 **Chore**:
+:sweat_drops: **Chore**:
 
 * Updates the Windows Server 2022 .iso to February 2022 release. (GH-192)
 * Updates the Ubuntu 20.04 LTS .iso to 20.04.4 release. (GH-184)
@@ -129,7 +133,7 @@
 
 > Release Date: 2022-03-17
 
-🧹 **Chore**:
+:sweat_drops: **Chore**:
 
 * Updates `required_versions` for `packer` to `>= v1.8.0`.
 * Updates `required_versions` for `terraform` to `>= v1.1.7`.
@@ -139,11 +143,11 @@
 
 > Release Date: 2022-02-22
 
-💫  **Enhancement**:
+:boom:  **Enhancement**:
 
 * Updates the configuration of Linux machine images to use the Ansible roles instead of shell scripts.
 
-🧹 **Chore**:
+:sweat_drops: **Chore**:
 
 * Updates `required_versions` for `packer` to `>= v1.7.10`.
 * Updates `required_versions` for `terraform` to `>= v1.1.5`.
@@ -152,13 +156,13 @@
 
 > Release Date: 2022-01-21
 
-💫  **Enhancement**:
+:boom:  **Enhancement**:
 
 * Updates the `notes` to automatically include the Packer version and a `build_version`.
 * Updates the naming for the machine image output and includes a `build_version` (_e.g._, `linux-photon-4-v22.01`).
 * Updates all Microsoft Windows Server machine image builds to a default of 4096 MB of memory to increase performance during operating system patching.
 
-🧹 **Chore**:
+:sweat_drops: **Chore**:
 
 * Updates the structure of the subdirectories in `builds/`.
 * Updates `required_versions` for `packer` to `>= v1.7.9`.
@@ -174,7 +178,7 @@
 
 > Release Date: 2021-11-09
 
-💫  **Enhancement**:
+:boom:  **Enhancement**:
 
 * Adds support for `cloud-init` and the `[VMware]` data source introduced in cloud-init v21.3 for Ubuntu Server 20.04 LTS
 

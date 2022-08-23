@@ -86,3 +86,23 @@ variable "vm_hostname" {
 variable "vm_domain" {
   type = string
 }
+
+variable "vm_ipv4_address" {
+  type = string
+}
+
+variable "vm_ipv4_netmask" {
+  type = string
+}
+
+variable "vm_ipv4_gateway" {
+  type = string
+}
+
+variable "vm_dns_suffix_list" {
+  type = list(string)
+}
+
+variable "vm_dns_server_list" {
+  type = list(string)
+}

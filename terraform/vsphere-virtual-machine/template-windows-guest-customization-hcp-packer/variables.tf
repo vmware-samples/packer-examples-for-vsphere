@@ -60,15 +60,11 @@ variable "vm_name" {
 }
 
 variable "vm_cpus" {
-  type = string
+  type = number
 }
 
 variable "vm_memory" {
-  type = string
-}
-
-variable "vm_disk_size" {
-  type = string
+  type = number
 }
 
 variable "vm_firmware" {
@@ -105,4 +101,20 @@ variable "vm_dns_suffix_list" {
 
 variable "vm_dns_server_list" {
   type = list(string)
+}
+
+variable "domain" {
+  type = string
+}
+
+variable "domain_admin_username" {
+  type = string
+}
+
+variable "domain_admin_password" {
+  type = string
+}
+
+variable "vm_admin_password" {
+  type = string
 }

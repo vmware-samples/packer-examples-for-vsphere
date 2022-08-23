@@ -60,15 +60,11 @@ variable "vm_name" {
 }
 
 variable "vm_cpus" {
-  type = string
+  type = number
 }
 
 variable "vm_memory" {
-  type = string
-}
-
-variable "vm_disk_size" {
-  type = string
+  type = number
 }
 
 variable "vm_firmware" {

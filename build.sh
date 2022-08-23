@@ -756,69 +756,6 @@ menu_option_24() {
   echo "Done."
 }
 
-
-menu_option_25() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/clones/template
-  echo -e "\nCONFIRM: Build a Ubuntu Server 22.04 LTS cloned (based from VM Template) Template for VMware vSphere?"
-  echo -e "\nContinue? (y/n)"
-  read -r REPLY
-  if [[ ! $REPLY =~ ^[Yy]$ ]]
-  then
-    exit 1
-  fi
-
-  ### Build a Ubuntu Server 22.04 LTS cloned (based from VM Template) Template for VMware vSphere. ###
-  echo "Building a Ubuntu Server 22.04 LTS cloned (based from VM Template) Template for VMware vSphere..."
-
-  ### Initialize HashiCorp Packer and required plugins. ###
-  echo "Initializing HashiCorp Packer and required plugins..."
-  packer init "$INPUT_PATH"
-
-  ### Start the Build. ###
-  echo "Starting the build...."
-  packer build -force \
-      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
-      "$INPUT_PATH"
-
-  ### All done. ###
-  echo "Done."
-}
-
-menu_option_26() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/clones/hcp-packer
-  echo -e "\nCONFIRM: Build a Ubuntu Server 22.04 LTS cloned (based from HCP Packer) Template for VMware vSphere?"
-  echo -e "\nContinue? (y/n)"
-  read -r REPLY
-  if [[ ! $REPLY =~ ^[Yy]$ ]]
-  then
-    exit 1
-  fi
-
-  ### Build a Ubuntu Server 22.04 LTS cloned (based from HCP Packer) Template for VMware vSphere. ###
-  echo "Building a Ubuntu Server 22.04 LTS cloned (based from HCP Packer) Template for VMware vSphere..."
-
-  ### Initialize HashiCorp Packer and required plugins. ###
-  echo "Initializing HashiCorp Packer and required plugins..."
-  packer init "$INPUT_PATH"
-
-  ### Start the Build. ###
-  echo "Starting the build...."
-  packer build -force \
-      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
-      "$INPUT_PATH"
-
-  ### All done. ###
-  echo "Done."
-}
-
 press_enter() {
   cd "$SCRIPT_PATH"
   echo -n "Press Enter to continue."
@@ -880,11 +817,6 @@ until [ "$selection" = "0" ]; do
   echo "    	23  -  Windows 11"
   echo "    	24  -  Windows 10"
   echo ""
-  echo "      Clone builds:"
-  echo ""
-  echo "    	25  -  Ubuntu Server 22.04 LTS cloned (based from VM Template)"
-  echo "    	26  -  Ubuntu Server 22.04 LTS cloned (based from HCP Packer)"
-  echo ""
   echo "      Other:"
   echo ""
   echo "        I   -  Information"
@@ -917,8 +849,6 @@ until [ "$selection" = "0" ]; do
     22 ) clear ; menu_option_22 ; press_enter ;;
     23 ) clear ; menu_option_23 ; press_enter ;;
     24 ) clear ; menu_option_24 ; press_enter ;;
-    25 ) clear ; menu_option_25 ; press_enter ;;
-    26 ) clear ; menu_option_26 ; press_enter ;;
     I ) clear ; info ; press_enter ;;
     Q ) clear ; exit ;;
     * ) clear ; incorrect_selection ; press_enter ;;

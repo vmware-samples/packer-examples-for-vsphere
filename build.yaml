@@ -113,18 +113,3 @@ menu:
       - entry: "Windows 10"
         build:
           path: "builds/windows/desktop/10/"
-  - entry: "Clone builds"
-    build:
-      var_files:
-        - "vsphere.pkrvars.hcl"
-        - "build.pkrvars.hcl"
-        - "ansible.pkrvars.hcl"
-        - "proxy.pkrvars.hcl"
-        - "common.pkrvars.hcl"
-    submenu:
-      - entry: "Ubuntu Server 22.04 LTS cloned (based from VM Template)"
-        build:
-          path: "builds/clones/template"
-      - entry: "Ubuntu Server 22.04 LTS cloned (based from HCP Packer)"
-        build:
-          path: "builds/clones/hcp-packer"

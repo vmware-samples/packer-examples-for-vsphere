@@ -36,14 +36,9 @@ data "hcp_packer_image" "image" {
   region         = var.vsphere_datacenter
 }
 
-data "vsphere_content_library" "content_library" {
-  name = split("/", data.hcp_packer_image.image.labels.content_library_destination)[0]
-}
-
-data "vsphere_content_library_item" "content_library_item" {
-  name       = split("/", data.hcp_packer_image.image.labels.content_library_destination)[1]
-  type       = "ovf"
-  library_id = data.vsphere_content_library.content_library.id
+data "vsphere_virtual_machine" "template" {
+  name          = data.hcp_packer_image.image.cloud_image_id
+  datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 
 resource "vsphere_virtual_machine" "vm" {
@@ -53,6 +48,7 @@ resource "vsphere_virtual_machine" "vm" {
   memory                  = var.vm_memory
   firmware                = var.vm_firmware
   efi_secure_boot_enabled = var.vm_efi_secure_boot_enabled
+  guest_id                = data.vsphere_virtual_machine.template.guest_id
   datastore_id            = data.vsphere_datastore.datastore.id
   resource_pool_id        = data.vsphere_resource_pool.pool.id
   network_interface {
@@ -60,15 +56,19 @@ resource "vsphere_virtual_machine" "vm" {
   }
   disk {
     label            = "disk0"
-    size             = var.vm_disk_size
-    thin_provisioned = true
+    size             = data.vsphere_virtual_machine.template.disks.0.size
+    eagerly_scrub    = data.vsphere_virtual_machine.template.disks.0.eagerly_scrub
+    thin_provisioned = data.vsphere_virtual_machine.template.disks.0.thin_provisioned
   }
   clone {
-    template_uuid = data.vsphere_content_library_item.content_library_item.id
+    template_uuid = data.vsphere_virtual_machine.template.id
     customize {
-      linux_options {
-        host_name = var.vm_hostname
-        domain    = var.vm_domain
+      windows_options {
+        computer_name         = var.vm_name
+        join_domain           = var.domain
+        domain_admin_user     = var.domain_admin_username
+        domain_admin_password = var.domain_admin_password
+        admin_password        = var.vm_admin_password
       }
       network_interface {
         ipv4_address = var.vm_ipv4_address
@@ -79,5 +79,11 @@ resource "vsphere_virtual_machine" "vm" {
       dns_suffix_list = var.vm_dns_suffix_list
       dns_server_list = var.vm_dns_server_list
     }
+  }
+
+  lifecycle {
+    ignore_changes = [
+      clone[0].template_uuid,
+    ]
   }
 }

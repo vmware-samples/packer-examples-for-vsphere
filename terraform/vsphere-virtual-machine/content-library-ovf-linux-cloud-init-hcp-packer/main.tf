@@ -65,19 +65,16 @@ resource "vsphere_virtual_machine" "vm" {
   }
   clone {
     template_uuid = data.vsphere_content_library_item.content_library_item.id
-    customize {
-      linux_options {
-        host_name = var.vm_hostname
-        domain    = var.vm_domain
-      }
-      network_interface {
-        ipv4_address = var.vm_ipv4_address
-        ipv4_netmask = var.vm_ipv4_netmask
-      }
-
-      ipv4_gateway    = var.vm_ipv4_gateway
-      dns_suffix_list = var.vm_dns_suffix_list
-      dns_server_list = var.vm_dns_server_list
-    }
+  }
+  lifecycle {
+    ignore_changes = [
+      clone[0].template_uuid,
+    ]
+  }
+  extra_config = {
+    "guestinfo.metadata"          = base64encode(file("${path.module}/metadata.yml"))
+    "guestinfo.metadata.encoding" = "base64"
+    "guestinfo.userdata"          = base64encode(file("${path.module}/userdata.yml"))
+    "guestinfo.userdata.encoding" = "base64"
   }
 }

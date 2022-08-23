@@ -1,0 +1,13 @@
+---
+#cloud-config
+
+users:
+  - default
+  - name: terraform
+    primary_group: terraform
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: sudo, wheel
+    ssh_import_id: None
+    lock_passwd: true
+    ssh_authorized_keys:
+    - <public_key>

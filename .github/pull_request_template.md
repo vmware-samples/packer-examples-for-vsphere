@@ -16,7 +16,7 @@ In order to have a good experience with our community, we recommend that you rea
     Please check the one that applies to this pull request using "[x]".
 -->
 
-- [ ] This is a bug fix. `type/bug`
+- [ ] This is a bugfix. `type/bug`
 - [ ] This is an enhancement or feature. `type/feature` or `type/enhancement`
 - [ ] This is a documentation update. `type/docs`
 - [ ] This is a refactoring update. `type/refactor`

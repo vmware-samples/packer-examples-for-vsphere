@@ -35,7 +35,8 @@ body:
       description: Please provide the version of this project.
       options:
         - main
-        - 22.07 (latest)
+        - 22.08 (latest)
+        - 22.07
         - 22.06
         - 22.05
         - 22.04
@@ -57,7 +58,7 @@ body:
     attributes:
       label: HashiCorp Packer
       description: Please provide the HashiCorp Packer version.
-      placeholder: 1.8.2
+      placeholder: 1.8.3
     validations:
       required: true
   - type: input
@@ -66,7 +67,7 @@ body:
       label: HashiCorp Packer Plugin for VMware vSphere
       description: >-
         Please provide the HashiCorp Packer Plugin for VMware vSphere version.
-      placeholder: 1.0.7
+      placeholder: 1.0.8
     validations:
       required: true
   - type: input

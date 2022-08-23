@@ -6,9 +6,9 @@
 
 ![VMware vSphere 7.0 Update 3d+](https://img.shields.io/badge/VMware%20vSphere-7.0%20Update%203d+-blue?style=for-the-badge)
 
-![Packer 1.8.3+](https://img.shields.io/badge/HashiCorp%20Packer-1.8.3+-blue?style=for-the-badge)
+![Packer 1.8.3+](https://img.shields.io/badge/HashiCorp%20Packer-1.8.3+-blue?style=for-the-badge&logo=packer&logoColor=white)
 
-![Ansible 2.9+](https://img.shields.io/badge/Ansible-2.9+-blue?style=for-the-badge)
+![Ansible 2.9+](https://img.shields.io/badge/Ansible-2.9+-blue?style=for-the-badge&logo=ansible)
 
 ## Table of Contents
 

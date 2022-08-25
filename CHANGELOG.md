@@ -2,7 +2,7 @@
 
 ## [v22.08](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.08)
 
-> Release Date: 2022-00-25
+> Release Date: 2022-08-25
 
 :boom:  **Enhancement**:
 

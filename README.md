@@ -72,6 +72,14 @@ The following builds are available:
     > **Note**
     >
     > Operating systems and versions tested with the project.
+    >
+    > Update your `/etc/ssh/ssh_config` or `.ssh/ssh_config` to allow authentication with RSA keys if you are using VMware Photon OS 4.0 or Ubuntu 22.04.
+    >
+    > Update to include the following:
+    >
+    > `PubkeyAcceptedAlgorithms ssh-rsa`
+    >
+    > `HostkeyAlgorithms ssh-rsa`
 
 **Packer**:
 

@@ -37,6 +37,7 @@ locals {
       vm_guest_os_language     = var.vm_guest_os_language
       vm_guest_os_keyboard     = var.vm_guest_os_keyboard
       vm_guest_os_timezone     = var.vm_guest_os_timezone
+      common_data_source       = var.common_data_source
     })
   }
   data_source_command = var.common_data_source == "http" ? "url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg" : "file=/media/ks.cfg"
@@ -91,7 +92,7 @@ source "vsphere-iso" "linux-debian" {
   iso_paths      = local.iso_paths
   iso_checksum   = local.iso_checksum
   http_content   = var.common_data_source == "http" ? local.data_source_content : null
-  floppy_content = var.common_data_source == "disk" ? local.data_source_content : null
+  cd_content     = var.common_data_source == "disk" ? local.data_source_content : null
 
   // Boot and Provisioning Settings
   http_ip       = var.common_data_source == "http" ? var.common_http_ip : null
@@ -107,7 +108,15 @@ source "vsphere-iso" "linux-debian" {
     " ${local.data_source_command}",
     " noprompt --<enter>",
     "initrd /install.amd/initrd.gz<enter>",
-    "boot<enter>"
+    "boot<enter>",
+    "<wait30s>",
+    "<enter><wait>",
+    "<enter><wait>",
+    "<leftAltOn><f2><leftAltOff>",
+    "<enter><wait>",
+    "mount /dev/sr1 /media<enter>",
+    "<leftAltOn><f1><leftAltOff>",
+    "<down><down><down><down><enter>"
   ]
   ip_wait_timeout  = var.common_ip_wait_timeout
   shutdown_command = "echo '${var.build_password}' | sudo -S -E shutdown -P now"

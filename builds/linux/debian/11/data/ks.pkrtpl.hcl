@@ -176,3 +176,9 @@ d-i pkgsel/include string openssh-server open-vm-tools python3-apt perl
 d-i preseed/late_command string \
     echo '${build_username} ALL=(ALL) NOPASSWD: ALL' > /target/etc/sudoers.d/${build_username} ; \
     in-target chmod 440 /etc/sudoers.d/${build_username} ;
+
+%{ if common_data_source == "disk" ~}
+# Umount preseed media early
+d-i preseed/early_command string \
+    umount /media && echo 1 > /sys/block/sr1/device/delete ;
+%{ endif ~}

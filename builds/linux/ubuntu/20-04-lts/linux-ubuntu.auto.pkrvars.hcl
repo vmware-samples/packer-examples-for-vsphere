@@ -1,6 +1,6 @@
 /*
     DESCRIPTION:
-    Ubuntu Server 20.04 LTS  variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    Ubuntu Server 20.04 LTS variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
 */
 
 // Guest Operating System Metadata
@@ -30,9 +30,9 @@ vm_network_card          = "vmxnet3"
 // Removable Media Settings
 iso_url            = null
 iso_path           = "iso/linux/ubuntu"
-iso_file           = "ubuntu-20.04.4-live-server-amd64.iso"
+iso_file           = "ubuntu-20.04.5-live-server-amd64.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "28ccdb56450e643bad03bb7bcf7507ce3d8d90e8bf09e38f6bd9ac298a98eaad"
+iso_checksum_value = "5035be37a7e9abbdc09f0d257f3e33416c1a0fb322ba860d42d74aa75c3468d4"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

@@ -1,6 +1,6 @@
 /*
     DESCRIPTION:
-    Ubuntu Server 22.04 LTS  variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    Ubuntu Server 22.04 LTS variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
 */
 
 // Guest Operating System Metadata
@@ -30,9 +30,9 @@ vm_network_card          = "vmxnet3"
 // Removable Media Settings
 iso_url            = null
 iso_path           = "iso/linux/ubuntu"
-iso_file           = "ubuntu-22.04-live-server-amd64.iso"
+iso_file           = "ubuntu-22.04.1-live-server-amd64.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "84aeaf7823c8c61baa0ae862d0a06b03409394800000b3235854a6b38eb4856f"
+iso_checksum_value = "10f19c5b2b8d6db711582e0e27f5116296c34fe4b313ba45f9b201a5007056cb"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

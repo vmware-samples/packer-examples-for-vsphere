@@ -42,7 +42,7 @@ locals {
       vm_guest_os_timezone     = var.vm_guest_os_timezone
     })
   }
-  data_source_command = var.common_data_source == "http" ? " autoyast=http://{{ .HTTPIP }}:{{ .HTTPPort }}/autoinst.xml" : " autoyast=device://sr1:/autoinst.xml"
+  data_source_command = var.common_data_source == "http" ? " autoyast=http://{{ .HTTPIP }}:{{ .HTTPPort }}/autoinst.xml" : " netsetup=dhcp autoyast=device://sr1/autoinst.xml"
   vm_name             = "${var.vm_guest_os_family}-${var.vm_guest_os_name}-${var.vm_guest_os_version}-v${local.build_version}"
   bucket_name         = replace("${var.vm_guest_os_family}-${var.vm_guest_os_name}-${var.vm_guest_os_version}", ".", "")
   bucket_description  = "${var.vm_guest_os_family} ${var.vm_guest_os_name} ${var.vm_guest_os_version}"

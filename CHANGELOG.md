@@ -8,6 +8,10 @@
 
 * Adds support for disk-based deployment mode for Debian 11. [GH-272](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/272).  
   Contributed in collaboration with [@ukushisanet](https://github.com/ukushisanet). :rocket:
+  
+:sweat_drops: **Chore**:
+
+* Updates Debian 11 .iso and checksum to 11.5.0 release. [GH-273](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/273).  
 
 ## [v22.08](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.08)
 

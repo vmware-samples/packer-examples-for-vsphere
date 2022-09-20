@@ -8,6 +8,7 @@
 
 * Adds support for disk-based deployment mode for Debian 11. [GH-272](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/272).  
   Contributed in collaboration with [@ukushisanet](https://github.com/ukushisanet). :rocket:
+* Adds support for disk-based deployment mode for SLES 15. [GH-276](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/2726).
   
 :sweat_drops: **Chore**:
 

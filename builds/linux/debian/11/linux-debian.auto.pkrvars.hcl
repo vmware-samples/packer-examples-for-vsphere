@@ -30,9 +30,9 @@ vm_network_card          = "vmxnet3"
 // Removable Media Settings
 iso_url            = null
 iso_path           = "iso/linux/debian"
-iso_file           = "debian-11.4.0-amd64-netinst.iso"
-iso_checksum_type  = "sha256"
-iso_checksum_value = "d490a35d36030592839f24e468a5b818c919943967012037d6ab3d65d030ef7f"
+iso_file           = "debian-11.5.0-amd64-netinst.iso"
+iso_checksum_type  = "sha512"
+iso_checksum_value = "6a6607a05d57b7c62558e9c462fe5c6c04b9cfad2ce160c3e9140aa4617ab73aff7f5f745dfe51bbbe7b33c9b0e219a022ad682d6c327de0e53e40f079abf66a"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

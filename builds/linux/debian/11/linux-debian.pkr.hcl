@@ -88,11 +88,11 @@ source "vsphere-iso" "linux-debian" {
   notes                = local.build_description
 
   // Removable Media Settings
-  iso_url        = var.iso_url
-  iso_paths      = local.iso_paths
-  iso_checksum   = local.iso_checksum
-  http_content   = var.common_data_source == "http" ? local.data_source_content : null
-  cd_content     = var.common_data_source == "disk" ? local.data_source_content : null
+  iso_url      = var.iso_url
+  iso_paths    = local.iso_paths
+  iso_checksum = local.iso_checksum
+  http_content = var.common_data_source == "http" ? local.data_source_content : null
+  cd_content   = var.common_data_source == "disk" ? local.data_source_content : null
 
   // Boot and Provisioning Settings
   http_ip       = var.common_data_source == "http" ? var.common_http_ip : null
@@ -182,7 +182,7 @@ build {
     ]
   }
 
-    post-processor "manifest" {
+  post-processor "manifest" {
     output     = local.manifest_output
     strip_path = true
     strip_time = true
@@ -215,13 +215,13 @@ build {
       bucket_name = local.bucket_name
       description = local.bucket_description
       bucket_labels = {
-        "os_family": var.vm_guest_os_family,
-        "os_name": var.vm_guest_os_name,
-        "os_version": var.vm_guest_os_version,
+        "os_family" : var.vm_guest_os_family,
+        "os_name" : var.vm_guest_os_name,
+        "os_version" : var.vm_guest_os_version,
       }
       build_labels = {
-        "build_version": local.build_version,
-        "packer_version": packer.version,
+        "build_version" : local.build_version,
+        "packer_version" : packer.version,
       }
     }
   }

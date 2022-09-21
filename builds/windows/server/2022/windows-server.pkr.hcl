@@ -150,7 +150,7 @@ source "vsphere-iso" "windows-server-standard-core" {
   }
 }
 
-source "vsphere-iso" "windows-server-standard-desktop" {
+source "vsphere-iso" "windows-server-standard-dexp" {
 
   // vCenter Server Endpoint Settings and Credentials
   vcenter_server      = var.vsphere_endpoint
@@ -360,7 +360,7 @@ source "vsphere-iso" "windows-server-datacenter-core" {
   }
 }
 
-source "vsphere-iso" "windows-server-datacenter-desktop" {
+source "vsphere-iso" "windows-server-datacenter-dexp" {
 
   // vCenter Server Endpoint Settings and Credentials
   vcenter_server      = var.vsphere_endpoint
@@ -470,9 +470,9 @@ source "vsphere-iso" "windows-server-datacenter-desktop" {
 build {
   sources = [
     "source.vsphere-iso.windows-server-standard-core",
-    "source.vsphere-iso.windows-server-standard-desktop",
+    "source.vsphere-iso.windows-server-standard-dexp",
     "source.vsphere-iso.windows-server-datacenter-core",
-    "source.vsphere-iso.windows-server-datacenter-desktop"
+    "source.vsphere-iso.windows-server-datacenter-dexp"
   ]
 
   provisioner "powershell" {

@@ -39,9 +39,9 @@ vm_video_displays        = 1
 // Removable Media Settings
 iso_url            = null
 iso_path           = "iso/windows/desktop"
-iso_file           = "en-us_windows_10_business_editions_version_21h1_updated_aug_2022_x64_dvd_b3dc85d2.iso"
+iso_file           = "en-us_windows_10_business_editions_version_21h2_updated_sep_2022_x64_dvd_c9733841.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "BC0278961FDB5219C647C20119734389EDC43BB3933B3BE804F8B9C5B2A45A1B"
+iso_checksum_value = "1B72D486C3ABB89E0859970D5325163D289D82BB45D577A9A88536029B79FDAA"
 
 // Boot Settings
 vm_boot_order       = "disk,cdrom"

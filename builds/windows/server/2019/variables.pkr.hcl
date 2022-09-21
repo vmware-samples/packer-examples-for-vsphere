@@ -74,32 +74,32 @@ variable "vm_inst_os_keyboard" {
 
 variable "vm_inst_os_image_standard_core" {
   type        = string
-  description = "The installation operating system image input for Microsoft Windwows Standard Core."
+  description = "The installation operating system image input for Microsoft Windows Standard Core."
 }
 
 variable "vm_inst_os_image_standard_desktop" {
   type        = string
-  description = "The installation operating system image input for Microsoft Windwows Standard."
+  description = "The installation operating system image input for Microsoft Windows Standard."
 }
 
 variable "vm_inst_os_kms_key_standard" {
   type        = string
-  description = "The installation operating system KMS key input for Microsoft Windwows Standard edition."
+  description = "The installation operating system KMS key input for Microsoft Windows Standard edition."
 }
 
 variable "vm_inst_os_image_datacenter_core" {
   type        = string
-  description = "The installation operating system image input for Microsoft Windwows Datacenter Core."
+  description = "The installation operating system image input for Microsoft Windows Datacenter Core."
 }
 
 variable "vm_inst_os_image_datacenter_desktop" {
   type        = string
-  description = "The installation operating system image input for Microsoft Windwows Datacenter."
+  description = "The installation operating system image input for Microsoft Windows Datacenter."
 }
 
 variable "vm_inst_os_kms_key_datacenter" {
   type        = string
-  description = "The installation operating system KMS key input for Microsoft Windwows Datacenter edition."
+  description = "The installation operating system KMS key input for Microsoft Windows Datacenter edition."
 }
 
 // Virtual Machine Settings

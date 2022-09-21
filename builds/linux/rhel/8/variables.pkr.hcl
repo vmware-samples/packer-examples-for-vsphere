@@ -42,7 +42,6 @@ variable "vsphere_password" {
 variable "vsphere_insecure_connection" {
   type        = bool
   description = "Do not validate vCenter Server TLS certificate."
-  default     = true
 }
 
 // vSphere Settings

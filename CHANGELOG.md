@@ -6,7 +6,7 @@
 
 :boom:  **Enhancement**:
 
-* Adds support for disk-based deployment mode for Debian 11. [GH-272](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/272).
+* Adds support for disk-based deployment mode for Debian 11. [GH-272](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/272).  
   Contributed in collaboration with [@ukushisanet](https://github.com/ukushisanet). :rocket:
 * Adds support for disk-based deployment mode for SLES 15. [GH-276](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/2726).
 
@@ -22,9 +22,9 @@
 
 :boom:  **Enhancement**:
 
-* Adds Debian 11. [GH-195](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/195). *
+* Adds Debian 11. [GH-195](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/195). *  
   Contributed in collaboration with [@evilaliv3](https://github.com/evilaliv3). :rocket:
-* Adds support for initial configuration and use of the HCP Packer Registry. [GH-236](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/236) and [GH-256](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/256)
+* Adds support for initial configuration and use of the HCP Packer Registry. [GH-236](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/236) and [GH-256](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/256). 
   Contributed in collaboration with [@sestegra](https://github.com/sestegra). :rocket:
 * Adds support to use the `iso_url` variable to download the guest operating system `.iso` from a URL. [GH-249](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/249).
 
@@ -55,7 +55,7 @@
 * Adds CentOS 9 Stream.
 * Adds Rocky Linux 9.
 * Adds AlmaLinux OS 9.
-* Adds SUSE Linux Enterprise Server 15. *
+* Adds SUSE Linux Enterprise Server 15. *. 
   Contributed by [@gcblack](https://github.com/gcblack) in [GH-227](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/227). 🚀
 * Adds option for setting the number of video displays and the size for the video memory for both Windows 11 and 10, which is useful for virtual desktop use cases (_e.g._, Horizon). The ability to set the number of displays was added in  `v1.0.6` of `packer-plugin-vsphere`.
 * Adds a common option to export machine image artifacts (`.ovf`,`.vmdk`, and `.mf`) to an output path.

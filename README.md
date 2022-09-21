@@ -173,7 +173,7 @@ The following software packages must be installed on the opearing system running
 
   * <details>
       <summary>macOS</summary>
-  
+
       ```shell
       brew install git
       ```
@@ -192,7 +192,7 @@ The following software packages must be installed on the opearing system running
 
   * <details>
       <summary>Ubuntu</summary>
-    
+
       ```shell
       apt-get install ansible
       ```
@@ -201,7 +201,7 @@ The following software packages must be installed on the opearing system running
 
   * <details>
       <summary>macOS</summary>
-    
+
       ```shell
       brew install ansible
       ```
@@ -220,7 +220,7 @@ The following software packages must be installed on the opearing system running
 
   * <details>
       <summary>Ubuntu</summary>
-    
+
       ```shell
       apt-get install xorriso
       ```
@@ -229,7 +229,7 @@ The following software packages must be installed on the opearing system running
 
   * <details>
       <summary>macOS</summary>
-    
+
       hdiutil (native)
 
     </details>
@@ -304,7 +304,7 @@ The following software packages must be installed on the opearing system running
 
     </details>
 
-* [Gomplate](gomplate-install) 3.11.2 or higher.
+* [Gomplate][gomplate-install] 3.11.2 or higher.
   * <details>
       <summary>Ubuntu</summary>
 
@@ -410,6 +410,7 @@ The files are distributed in the following directories.
 The project supports configuring the ISO from either a datastore or URL source. By default, the project uses the datastore source.
 
 Follow the steps below to configure either option.
+
 #### Using a Datastore Source
 
 If you are using a datastore to store your guest operating system [`.iso`][iso] files, you must download and upload these to a datastore path.
@@ -678,7 +679,7 @@ The content of the public key, `build_key`, is added the key to the `.ssh/author
 
 > **Warning**
 >
-> Replace the default public keys and passwords.  
+> Replace the default public keys and passwords.
 >
 > By default, both Public Key Authentication and Password Authentication are enabled for Linux distributions. If you wish to disable Password Authentication and only use Public Key Authentication, comment or remove the portion of the associated Ansible `configure` role.
 
@@ -882,7 +883,7 @@ If required, modify the configuration files for the Linux distributions and Micr
 
 #### Linux Distribution Kickstart and Ansible Roles
 
-Username and password variables are passed into the kickstart or cloud-init files for each Linux distribution as Packer template files (`.pkrtpl.hcl`) to generate these on-demand. Ansible roles are then used to configure the Linux machine image builds.
+Username and password variables are passed into the kickstart or [cloud-init][cloud-init] files for each Linux distribution as Packer template files (`.pkrtpl.hcl`) to generate these on-demand. Ansible roles are then used to configure the Linux machine image builds.
 
 #### Microsoft Windows Unattended amd Scripts
 
@@ -909,8 +910,8 @@ Need help customizing the configuration files?
 
 If you are new to HCP Packer, review the following documentation and video to learn more before enabling an HCP Packer registry:
 
-- [What is HCP Packer?][hcp-packer-docs]
-- [Introduction to HCP Packer][hcp-packer-intro]
+* [What is HCP Packer?][hcp-packer-docs]
+* [Introduction to HCP Packer][hcp-packer-intro]
 
 #### Create an HCP Packer Registry
 
@@ -1033,14 +1034,12 @@ Happy building!!!
 [download-linux-ubuntu-server-20-04-lts]: https://releases.ubuntu.com/20.04/
 [download-linux-ubuntu-server-22-04-lts]: https://releases.ubuntu.com/22.04/
 [gomplate-install]: https://gomplate.ca/
-[hashicorp]: https://www.hashicorp.com/
 [hcp-packer-create]: https://learn.hashicorp.com/tutorials/packer/hcp-push-image-metadata?in=packer/hcp-get-started#create-hcp-packer-registry
 [hcp-packer-docs]: https://cloud.hashicorp.com/docs/packer
 [hcp-packer-intro]: https://www.youtube.com/watch?v=r0I4TTO957w
 [iso]: https://en.wikipedia.org/wiki/ISO_image
 [microsoft-kms]: https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys
 [microsoft-windows-afg]: https://www.windowsafg.com
-[microsoft-windows-autologon]: https://docs.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup-autologon-password-value
 [microsoft-windows-unattend]: https://docs.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/
 [packer]: https://www.packer.io
 [packer-debug]: https://www.packer.io/docs/debugging
@@ -1051,13 +1050,9 @@ Happy building!!!
 [photon-kickstart]: https://vmware.github.io/photon/docs/user-guide/kickstart-through-http/packer-template/
 [redhat-kickstart]: https://access.redhat.com/labs/kickstartconfig/
 [suse-autoyast]: https://documentation.suse.com/sles/15-SP3/single-html/SLES-autoyast/index.html#CreateProfile-CMS
-[ssh-keygen]: https://www.ssh.com/ssh/keygen/
 [terraform-install]: https://www.terraform.io/docs/cli/install/apt.html
 [vmware-pvscsi]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.hostclient.doc/GUID-7A595885-3EA5-4F18-A6E7-5952BFC341CC.html
 [vmware-vmxnet3]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-AF9E24A8-2CFA-447B-AC83-35D563119667.html
-[vsphere-api]: https://code.vmware.com/apis/968
 [vsphere-content-library]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-254B2CE8-20A8-43F0-90E8-3F6776C2C896.html
-[vsphere-guestosid]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
-[vsphere-efi]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-898217D4-689D-4EB5-866C-888353FE241C.html
 [vsphere-upload]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.storage.doc/GUID-58D77EA5-50D9-4A8E-A15A-D7B3ABA11B87.html
 [vsphere-tpm]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4DBF65A4-4BA0-4667-9725-AE9F047DE00A.html

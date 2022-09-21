@@ -219,14 +219,14 @@ build {
       bucket_name = local.bucket_name
       description = local.bucket_description
       bucket_labels = {
-        "os_family": var.vm_guest_os_family,
-        "os_name": var.vm_guest_os_name,
-        "os_version": var.vm_guest_os_version,
-        "os_edition": var.vm_guest_os_edition,
+        "os_family" : var.vm_guest_os_family,
+        "os_name" : var.vm_guest_os_name,
+        "os_version" : var.vm_guest_os_version,
+        "os_edition" : var.vm_guest_os_edition,
       }
       build_labels = {
-        "build_version": local.build_version,
-        "packer_version": packer.version,
+        "build_version" : local.build_version,
+        "packer_version" : packer.version,
       }
     }
   }

@@ -28,7 +28,6 @@ variable "vsphere_password" {
 variable "vsphere_insecure_connection" {
   type        = bool
   description = "Do not validate vCenter Server TLS certificate."
-  default     = true
 }
 
 // vSphere Settings
@@ -152,7 +151,6 @@ variable "vm_cpu_cores" {
 variable "vm_cpu_hot_add" {
   type        = bool
   description = "Enable hot add CPU."
-  default     = true
 }
 
 variable "vm_mem_size" {
@@ -163,7 +161,6 @@ variable "vm_mem_size" {
 variable "vm_mem_hot_add" {
   type        = bool
   description = "Enable hot add memory."
-  default     = true
 }
 
 variable "vm_disk_size" {

@@ -21,6 +21,7 @@
 * Updates Ubuntu 20.04 .iso and checksum to 20.04.15 release. [GH-275](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/275)
 * Updates Windows Server 2022 .iso and checksum to September 2022 release. [GH-282](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/282)
 * Updates Windows 10 .iso and checksum to 21H2 September 2022 release. [GH-283](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/283)
+* Updates `required_versions` for `terraform` to `>= 1.3.0`. [GH-286](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/286)
 
 ## [v22.08](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.08)
 
@@ -40,9 +41,9 @@
 
 :sweat_drops: **Chore**:
 
-* Updates `required_versions` for `packer` to `>= v1.8.3`.
-* Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.8`.
-* Updates `required_versions` for `terraform` to `>= v1.2.8`.
+* Updates `required_versions` for `packer` to `>= 1.8.3`.
+* Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.0.8`.
+* Updates `required_versions` for `terraform` to `>= 1.2.8`.
 * Updates Windows Server 2022 .iso and checksum to August 2022 release.
 * Updates Windows 11 .iso and checksum to August 2022 release.
 * Updates Windows 10 .iso and checksum to August 2022 release.
@@ -76,8 +77,8 @@
 :sweat_drops: **Chore**:
 
 * Updates vSphere to version 7.0.3D ([vCenter Server](https://docs.vmware.com/en/VMware-vSphere/7.0/rn/vsphere-vcenter-server-70u3d-release-notes.html) and [ESXi](https://docs.vmware.com/en/VMware-vSphere/7.0/rn/vsphere-esxi-70u3d-release-notes.html)) or higher to address a [known issue](https://kb.vmware.com/s/article/88255) with the Red Hat Enterprise Linux 9 with EFI firmware.
-* Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.6`.
-* Updates `required_versions` for `terraform` to `>= v1.2.5`.
+* Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.0.6`.
+* Updates `required_versions` for `terraform` to `>= 1.2.5`.
 * Updates Rocky Linux 8 to use `other4xLinuxGuest64`.
 * Updates Almalinux 8 to use `other4xLinuxGuest64`.
 * Removes the deprecated CentOS 8 option; end-of-life as of December 31, 2021.
@@ -94,10 +95,10 @@
 
 :sweat_drops: **Chore**:
 
-* Updates `required_versions` for `packer` to `>= v1.8.2`.
-* Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.5`.
-* Updates `required_versions` for `terraform` to `>= v1.2.3`.
-* Updates `required_versions` for `hashicorp/vsphere` to `>= v2.2.0`.
+* Updates `required_versions` for `packer` to `>= 1.8.2`.
+* Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.0.5`.
+* Updates `required_versions` for `terraform` to `>= 1.2.3`.
+* Updates `required_versions` for `hashicorp/vsphere` to `>= 2.2.0`.
 * Updates vSphere to version 7.0.3 or higher.
 * Updates Windows Server 2022 .iso and checksum to June 2022 release.
 * Updates Windows 11 .iso and checksum to June 2022 release.
@@ -109,9 +110,9 @@
 
 :sweat_drops: **Chore**:
 
-* Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.4`.
-* Updates `required_plugins` and `packer-plugin-windows-update` to `>= v0.14.1`.
-* Updates `required_versions` for `terraform` to `>= v1.2.1`.
+* Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.0.4`.
+* Updates `required_plugins` and `packer-plugin-windows-update` to `>= 0.14.1`.
+* Updates `required_versions` for `terraform` to `>= 1.2.1`.
 * Updates Red Hat Enterprise Linux 8 .iso and checksum to 8.6 release.
 * Updates Rocky Linux 8 .iso and checksum to 8.6 release.
 * Updates Almalinux 8 .iso and checksum to 8.6 release.
@@ -157,9 +158,9 @@
 
 :sweat_drops: **Chore**:
 
-* Updates `required_versions` for `packer` to `>= v1.8.0`.
-* Updates `required_versions` for `terraform` to `>= v1.1.7`.
-* Updates `required_versions` for `hashicorp/vsphere` to `>= v2.1.1`.
+* Updates `required_versions` for `packer` to `>= 1.8.0`.
+* Updates `required_versions` for `terraform` to `>= 1.1.7`.
+* Updates `required_versions` for `hashicorp/vsphere` to `>= 2.1.1`.
 
 ## [v22.02](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.02)
 
@@ -171,8 +172,8 @@
 
 :sweat_drops: **Chore**:
 
-* Updates `required_versions` for `packer` to `>= v1.7.10`.
-* Updates `required_versions` for `terraform` to `>= v1.1.5`.
+* Updates `required_versions` for `packer` to `>= 1.7.10`.
+* Updates `required_versions` for `terraform` to `>= 1.1.5`.
 
 ## [v22.01](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.01)
 
@@ -187,10 +188,10 @@
 :sweat_drops: **Chore**:
 
 * Updates the structure of the subdirectories in `builds/`.
-* Updates `required_versions` for `packer` to `>= v1.7.9`.
-* Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.3`.
-* Updates `required_versions` for `terraform` to `>= v1.1.4`.
-* Updates Microsoft Windows 11 Professional to use virtual trusted platform module (vTPM) and removes experimental project support. vTPM is now supported by `packer-plugin-vsphere` to `>= v1.0.3`.
+* Updates `required_versions` for `packer` to `>= 1.7.9`.
+* Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.0.3`.
+* Updates `required_versions` for `terraform` to `>= 1.1.4`.
+* Updates Microsoft Windows 11 Professional to use virtual trusted platform module (vTPM) and removes experimental project support. vTPM is now supported by `packer-plugin-vsphere` to `>= 1.0.3`.
 * Updates VMware Photon OS 4.0 to [Revision 2](https://github.com/vmware/photon/wiki/Downloading-Photon-OS).
 * Adds configurable data source provisioning for VMware Photon OS 4.0. Revision 2 adds support for secondary devices with kickstart. Edit the `common_data_source` in `common.pkvars.hcl` from `http` to `disk`. The build will attach an on-demand `.iso` as the secondary CD-ROM for the kickstart. This is useful for environments that can not use HTTP-based kickstart.
 * Adds a GitHub Action on pull requests to check code quality using linters.
@@ -223,8 +224,8 @@
 > Release Date: 2021-10-20
 
 * Updates `LICENSE` and `NOTICE` to BSD-2.
-* Updates `required_versions` for `packer` to `>= v1.7.7`.
-* Updates `required_plugins` for `packer-plugin-vsphere` to `>= v1.0.2`.
+* Updates `required_versions` for `packer` to `>= 1.7.7`.
+* Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.0.2`.
 * Updates Linux distributions to generate new host keys on first-boot.
 * Adds option to use`floppy_content` included in `packer-plugin-vsphere` release`v1.0.2`. Ubuntu Server 18.04 LTS will toggle to use `floppy_content` from `http_content` when `common_data_source = "disk"` is enabled.
 * Updates VMware Photon OS 4.0 to Revision 1.
@@ -321,7 +322,7 @@
 * Moves public keys to variables.
 * Adds a user for Ansible to Linux machine images with authorized_keys. Uses `builds/ansible.pkrvars.hcl`. Password is randomized.
 * Updates the Packer block to all builds with `required_versions >= "1.7.4"` for Packer.
-* Adds the `required_plugins` to the Packer block for all builds to use the `vsphere` plugin `version = ">= v1.0.1"`.
+* Adds the `required_plugins` to the Packer block for all builds to use the `vsphere` plugin `version = ">= 1.0.1"`.
 * Updates the Packer block for Windows builds with `required_plugins` and `version = "0.14.0"` for the [Windows-Update plugin](https://github.com/rgl/packer-plugin-windows-update).
 * All builds automatically run `packer init` to initialize required plugins before running a build with `build.sh`.
 * Updates Microsoft Windows `autounattend.xml` files to use the attached VMware Tools `.iso` for PVSCSI driver.

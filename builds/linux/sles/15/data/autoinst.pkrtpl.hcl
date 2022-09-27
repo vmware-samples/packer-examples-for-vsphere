@@ -16,6 +16,9 @@
     </global>
     <loader_type>grub2-efi</loader_type>
   </bootloader>
+  <kdump>
+    <add_crash_kernel config:type="boolean">false</add_crash_kernel>
+  </kdump>
   <firewall t="map">
     <default_zone>public</default_zone>
     <enable_firewall t="boolean">true</enable_firewall>
@@ -761,13 +764,13 @@
         <arch>x86_64</arch>
         <name>sle-module-server-applications</name>
         <release_type>nil</release_type>
-        <version>15.3</version>
+        <version>15.4</version>
       </addon>
       <addon t="map">
         <arch>x86_64</arch>
         <name>sle-module-basesystem</name>
         <release_type>nil</release_type>
-        <version>15.3</version>
+        <version>15.4</version>
       </addon>
     </addons>
     <do_registration t="boolean">true</do_registration>

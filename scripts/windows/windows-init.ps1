@@ -10,14 +10,14 @@
 
 $ErrorActionPreference = 'Stop'
 
-# Set network connections profiles to Private.
+# Set network connections provile to Private mode.
 Write-Output 'Setting the network connection profiles to Private...'
-$profile = Get-NetConnectionProfile
-While ($profile.Name -eq 'Identifying...') {
+$connectionProfile = Get-NetConnectionProfile
+While ($connectionProfile.Name -eq 'Identifying...') {
     Start-Sleep -Seconds 10
-    $profile = Get-NetConnectionProfile
+    $connectionProfile = Get-NetConnectionProfile
 }
-Set-NetConnectionProfile -Name $profile.Name -NetworkCategory Private
+Set-NetConnectionProfile -Name $connectionProfile.Name -NetworkCategory Private
 
 # Set the Windows Remote Management configuration.
 Write-Output 'Setting the Windows Remote Management configuration...'

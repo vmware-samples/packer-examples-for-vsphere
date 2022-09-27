@@ -65,21 +65,21 @@ The following builds are available:
 
 **Operating Systems**:
 
-* VMware Photon OS 4
-* Ubuntu Server 22.04 LTS and 20.04 LTS
+Operating systems and versions tested with the project:
+
+* VMware Photon OS 4 (`x86_64`)
+* Ubuntu Server 22.04 LTS and 20.04 LTS (`x86_64`)
 * macOS Monterey and Big Sur (Intel)
 
-    > **Note**
-    >
-    > Operating systems and versions tested with the project.
-    >
-    > Update your `/etc/ssh/ssh_config` or `.ssh/ssh_config` to allow authentication with RSA keys if you are using VMware Photon OS 4.0 or Ubuntu 22.04.
-    >
-    > Update to include the following:
-    >
-    > `PubkeyAcceptedAlgorithms ssh-rsa`
-    >
-    > `HostkeyAlgorithms ssh-rsa`
+> **Note**
+>
+> Update your `/etc/ssh/ssh_config` or `~/.ssh/ssh_config` to allow ssh authentication with RSA keys if you are using VMware Photon OS 4.0 or Ubuntu 22.04.
+>
+> Update to include the following:
+>
+> `PubkeyAcceptedAlgorithms ssh-rsa`
+>
+> `HostkeyAlgorithms ssh-rsa`
 
 **Packer**:
 
@@ -114,16 +114,28 @@ The following builds are available:
   * <details>
       <summary>Ubuntu</summary>
 
+      The Terraform packages are signed using a private key controlled by HashiCorp, so you must configure your system to trust that HashiCorp key for package authentication.
+
+      To configure your repository:
       ```shell
-      sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl
-
-      curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-
-      sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-
-      sudo apt-get update && sudo apt-get install packer
+      sudo bash -c 'wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor > /usr/share/keyrings/hashicorp-archive-keyring.gpg'
+      ```
+      Verify the key's fingerprint:
+      ```shell
+      gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint
+      ```
+      The fingerprint must match E8A0 32E0 94D8 EB4E A189 D270 DA41 8C88 A321 9F7B. You can also verify the key on [Security at HashiCorp][hcp-security] under Linux Package Checksum Verification.
+      
+      Add the official HashiCorp repository to your system:
+      ```shell
+      sudo bash -c 'echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+      https://apt.releases.hashicorp.com $(lsb_release -cs) main" > /etc/apt/sources.list.d/hashicorp.list'
       ```
 
+      Install Packer from HashiCorp repository:
+      ```shell
+      sudo apt update && sudo apt install packer
+      ```
     </details>
 
   * <details>
@@ -136,196 +148,109 @@ The following builds are available:
       ```
 
     </details>
-
-* HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.8 or higher.
-* [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.1 or higher - a community plugin for HashiCorp Packer.
-
+* Packer plugins:
     > **Note**
     >
     > Required plugins are automatically downloaded and initialized when using `./build.sh`. For dark sites, you may download the plugins and place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
+  * HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.8 or higher.
+  * [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.1 or higher - a community plugin for HashiCorp Packer.
+
 
 **Additional Software Packages**:
 
-The following software packages must be installed on the opearing system running Packer.
+The following additional software packages must be installed on the operating system running Packer.
 
 > **Note**
 >
-> Click on the operating system name to display the installation steps.
+> Click on the operating system name to display the installation steps for all prerequisites.
 
-* [Git][download-git] command-line tools.
   * <details>
       <summary>Photon OS</summary>
 
-      ```shell
-      tdnf install git
-      ```
+      * [Git][download-git] command-line tools.
 
-    </details>
+      * [Ansible][ansible-docs] 2.9 or higher.
+
+      * xorriso - A command-line .iso creator.
+      
+        ```shell
+        tdnf -y install git ansible xorriso
+        ```
+  
+      * HashiCorp [Terraform][terraform-install] 1.3.0 or higher.
+  
+        ```shell
+        TERRAFORM_VERSION="1.3.0"
+        OS_PACKAGES="wget unzip"
+
+        if [[ $(uname -m) == "x86_64" ]]; then
+          LINUX_ARCH="amd64"
+        elif [[ $(uname -m) == "aarch64" ]]; then
+          LINUX_ARCH="arm64"
+        fi
+
+        tdnf install ${OS_PACKAGES} -y
+
+        wget -q https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
+
+        unzip -o -d /usr/local/bin/ terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
+        ```
+  
+  </details>
 
   * <details>
       <summary>Ubuntu</summary>
 
-      ```shell
-      apt-get install git
-      ```
+      * [Git][download-git] command-line tools.
 
-    </details>
+      * [Ansible][ansible-docs] 2.9 or higher.
 
-  * <details>
-      <summary>macOS</summary>
+      * xorriso - A command-line .iso creator.
 
-      ```shell
-      brew install git
-      ```
+      * mkpasswd - Password generating utility
 
-    </details>
+      * HashiCorp [Terraform][terraform-install] 1.3.0 or higher.
+  
+        ```shell
+        sudo apt -y install git ansible xorriso whois terraform
+        ```
 
-* [Ansible][ansible-docs] 2.9 or higher.
-  * <details>
-      <summary>Photon OS</summary>
-
-      ```shell
-      tdnf install ansible
-      ```
-
-    </details>
-
-  * <details>
-      <summary>Ubuntu</summary>
-
-      ```shell
-      apt-get install ansible
-      ```
-
-    </details>
-
-  * <details>
-      <summary>macOS</summary>
-
-      ```shell
-      brew install ansible
-      ```
-
-    </details>
-
-* A command-line .iso creator. Packer will use one of the following:
-  * <details>
-      <summary>Photon OS</summary>
-
-      ```shell
-      tdnf install xorriso
-      ```
-
-    </details>
-
-  * <details>
-      <summary>Ubuntu</summary>
-
-      ```shell
-      apt-get install xorriso
-      ```
-
-    </details>
-
-  * <details>
-      <summary>macOS</summary>
-
-      hdiutil (native)
-
-    </details>
-
-* mkpasswd
-  * <details>
-      <summary>Ubuntu</summary>
-
-      ```shell
-      apt-get install whois
-      ```
-
-    </details>
-
-  * <details>
-      <summary>macOS</summary>
-
-      ```shell
-      brew install --cask docker
-      ```
-
-    </details>
-
-* Coreutils
-  * <details>
-      <summary>macOS</summary>
-
-      ```shell
-      brew install coreutils
-      ```
-
-    </details>
-
-* HashiCorp [Terraform][terraform-install] 1.3.0 or higher.
-  * <details>
-      <summary>Photon OS</summary>
-
-      ```shell
-      TERRAFORM_VERSION="1.3.0"
-      OS_PACKAGES="wget unzip"
-
-      if [[ $(uname -m) == "x86_64" ]]; then
+      * [Gomplate][gomplate-install] 3.11.2 or higher.
+  
+        ```shell
+        GOMPLATE_VERSION="3.11.2"
         LINUX_ARCH="amd64"
-      elif [[ $(uname -m) == "aarch64" ]]; then
-        LINUX_ARCH="arm64"
-      fi
 
-      tdnf install ${OS_PACKAGES} -y
-
-      wget -q https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
-
-      unzip -o -d /usr/local/bin/ terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
-      ```
-
-    </details>
-
-  * <details>
-      <summary>Ubuntu</summary>
-
-      ```shell
-      sudo apt-get update && sudo apt-get install terraform
-      ```
-
-    </details>
+        sudo curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-${LINUX_ARCH}
+        sudo chmod 755 /usr/local/bin/gomplate
+        ```
+  
+  </details>
 
   * <details>
       <summary>macOS</summary>
 
-      ```shell
-      brew install hashicorp/tap/terraform
-      ```
+      * [Git][download-git] command-line tools.
 
-    </details>
+      * [Ansible][ansible-docs] 2.9 or higher.
 
-* [Gomplate][gomplate-install] 3.11.2 or higher.
-  * <details>
-      <summary>Ubuntu</summary>
+      * Coreutils
+      
+      * HashiCorp [Terraform][terraform-install] 1.3.0 or higher.
+      
+      * [Gomplate][gomplate-install] 3.11.2 or higher.
 
-      ```shell
-      GOMPLATE_VERSION="3.11.2"
+        ```shell
+        brew install git ansible coreutils hashicorp/tap/terraform gomplate
+        ```
 
-      sudo curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-${LINUX_ARCH}
+      * mkpasswd - Password generating utility
+  
+        ```shell
+        brew install --cask docker
+        ```
 
-      sudo chmod 755 /usr/local/bin/gomplate
-      ```
-
-    </details>
-
-  * <details>
-      <summary>macOS</summary>
-
-      ```shell
-      brew install gomplate
-      ```
-
-    </details>
+  </details>
 
 **Platform**:
 
@@ -349,26 +274,32 @@ The directory structure of the repository.
 
 ```console
 ├── build.sh
+├── build.tmpl
+├── build.yaml
+├── CHANGELOG.md
+├── CODE_OF_CONDUCT.md
 ├── config.sh
-├── set-envvars.sh
+├── CONTRIBUTING.md
 ├── LICENSE
+├── MAINTAINERS.md
 ├── NOTICE
 ├── README.md
+├── set-envvars.sh
 ├── ansible
-│   ├── roles
-│   │   └── <role>
-│   │       └── *.yml
-│   ├── ansible.cfg
-│   └── main.yml
+│   ├── ansible.cfg
+│   ├── main.yml
+│   └── roles
+│       └── <role>
+│           └── *.yml
 ├── artifacts
 ├── builds
-│   ├── ansible.pkvars.hcl.example
-│   ├── build.pkvars.hcl.example
-│   ├── common.pkvars.hcl.example
-│   ├── proxy.pkvars.hcl.example
-│   ├── rhsm.pkvars.hcl.example
-|   |── scc.pkvars.hcl.example
-│   ├── vsphere.pkvars.hcl.example
+│   ├── ansible.pkrvars.hcl.example
+│   ├── build.pkrvars.hcl.example
+│   ├── common.pkrvars.hcl.example
+│   ├── proxy.pkrvars.hcl.example
+│   ├── rhsm.pkrvars.hcl.example
+│   ├── scc.pkrvars.hcl.example
+│   ├── vsphere.pkrvars.hcl.example
 │   ├── linux
 │   │   └── <distribution>
 │   │       └── <version>
@@ -385,11 +316,41 @@ The directory structure of the repository.
 │                   └── autounattend.pkrtpl.hcl
 ├── manifests
 ├── scripts
+│   ├── linux
 │   └── windows
 │       └── *.ps1
 └── terraform
-    │── vsphere-role
+    ├── vsphere-role
+    │   └── *.tf
     └── vsphere-virtual-machine
+        ├── content-library-ovf-linux-cloud-init
+        │   └── *.tf
+        ├── content-library-ovf-linux-cloud-init-hcp-packer
+        │   └── *.tf
+        ├── content-library-ovf-linux-guest-customization
+        │   └── *.tf
+        ├── content-library-ovf-linux-guest-customization-hcp-packer
+        │   └── *.tf
+        ├── content-library-ovf-windows-guest-customization
+        │   └── *.tf
+        ├── content-library-ovf-windows-guest-customization-hcp-packer
+        │   └── *.tf
+        ├── content-library-template-linux-guest-customization-hcp-packer
+        │   └── *.tf
+        ├── content-library-template-windows-guest-customization-hcp-packer
+        │   └── *.tf
+        ├── template-linux-cloud-init
+        │   └── *.tf
+        ├── template-linux-cloud-init-hcp-packer
+        │   └── *.tf
+        ├── template-linux-guest-customization
+        │   └── *.tf
+        ├── template-linux-guest-customization-hcp-packer
+        │   └── *.tf
+        ├── template-windows-guest-customization
+        │   └── *.tf
+        └── template-windows-guest-customization-hcp-packer
+            └── *.tf
 ```
 
 The files are distributed in the following directories.
@@ -405,93 +366,7 @@ The files are distributed in the following directories.
 >
 > When forking the project for upstream contribution, please be mindful not to make changes that may expose your sensitive information, such as passwords, keys, certificates, etc.
 
-### Step 2 - Guest Operating Systems ISOs
-
-The project supports configuring the ISO from either a datastore or URL source. By default, the project uses the datastore source.
-
-Follow the steps below to configure either option.
-
-#### Using a Datastore Source
-
-If you are using a datastore to store your guest operating system [`.iso`][iso] files, you must download and upload these to a datastore path.
-
-1. Download the x64 guest operating system `.iso` files.
-
-    Linux Distributions:
-
-    * VMware Photon OS 4
-        * [Download][download-linux-photon-server-4] the 4.0 Rev2 release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-xxxxxxxxx.iso`)
-    * Debian 11
-        * [Download][download-linux-debian-11] the latest **netinst** release `.iso` image. (_e.g._ `debian-11.x.0-amd64-netinst.iso`)
-    * Ubuntu Server 22.04 LTS
-        * [Download][download-linux-ubuntu-server-22-04-lts] the latest **LIVE** release `.iso` image. (_e.g.,_ `ubuntu-22.04.x-live-server-amd64.iso`)
-    * Ubuntu Server 20.04 LTS
-        * [Download][download-linux-ubuntu-server-20-04-lts] the latest **LIVE** release `.iso` image. (_e.g.,_ `ubuntu-20.04.x-live-server-amd64.iso`)
-    * Ubuntu Server 18.04 LTS
-        * [Download][download-linux-ubuntu-server-18-04-lts] the latest legacy **NON-LIVE** release `.iso` image. (_e.g.,_ `ubuntu-18.04.x-server-amd64.iso`)
-    * Red Hat Enterprise Linux 9 Server
-        * [Download][download-linux-redhat-server-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-baseos-9.x-x86_64-dvd.iso`)
-    * Red Hat Enterprise Linux 8 Server
-        * [Download][download-linux-redhat-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-8.x-x86_64-dvd1.iso`)
-    * Red Hat Enterprise Linux 7 Server
-        * [Download][download-linux-redhat-server-7] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-server-7.x-x86_64-dvd1.iso`)
-    * AlmaLinux OS 9
-        * [Download][download-linux-almalinux-server-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `AlmaLinux-9.x-x86_64-dvd1.iso`)
-    * AlmaLinux OS 8
-        * [Download][download-linux-almalinux-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `AlmaLinux-8.x-x86_64-dvd1.iso`)
-    * Rocky Linux 9
-        * [Download][download-linux-rocky-server-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `Rocky-9.x-x86_64-dvd1.iso`)
-    * Rocky Linux 8
-        * [Download][download-linux-rocky-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `Rocky-8.x-x86_64-dvd1.iso`)
-    * CentOS Stream 9
-        * [Download][download-linux-centos-stream-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-Stream-9-latest-x86_64-dvd1.iso`)
-    * CentOS Stream 8
-        * [Download][download-linux-centos-stream-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-Stream-8-x86_64-latest-dvd1.iso`)
-    * CentOS Linux 7
-        * [Download][download-linux-centos-server-7] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-7-x86_64-DVD.iso`)
-    * SUSE Linux Enterprise 15
-        * [Download][download-suse-linux-enterprise-15] the latest 15.4 release of the **FULL** `.iso` image. (_e.g.,_ `SLE-15-SP4-Full-x86_64-GM-Media1.iso`)
-
-    Microsoft Windows:
-
-    * Microsoft Windows Server 2022
-    * Microsoft Windows Server 2019
-    * Microsoft Windows 11
-    * Microsoft Windows 10
-
-1. Obtain the checksum type (_e.g.,_ `sha256`, `md5`, etc.) and checksum value for each guest operating system `.iso` from the vendor. This will be use in the build input variables.
-
-1. [Upload][vsphere-upload] or your guest operating system `.iso` files to the datastore and update the configuration variables, leaving the `iso_url` variable as `null`.
-
-    **Example**: `config/common.pkvars.hcl`
-
-    ```hcl
-    common_iso_datastore = "sfo-w01-cl01-ds-nfs01"
-    ```
-
-    **Example**: `builds/<type>/<build>/*.auto.pkvars.hcl`
-
-    ```hcl
-    iso_url            = null
-    iso_path           = "iso/linux/photon"
-    iso_file           = "photon-4.0-xxxxxxxxx.iso"
-    iso_checksum_type  = "md5"
-    iso_checksum_value = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-    ```
-
-#### Using a URL Source
-
-If you are using a URL source to obtain your guest operating system [`.iso`][iso] files, you must update the input variables to use the URL source.
-
-Update the `iso_url` variable to download the `.iso` from a URL. The `iso_url` variable takes presedence over any other `iso_*` variables.
-
-  **Example**: `builds/<type>/<build>/*.auto.pkvars.hcl`
-
-```hcl
-iso_url = "https://artifactory.rainpole.io/iso/linux/photon/4.0/x86_64/photon-4.0-xxxxxxxxx.iso"
-```
-
-### Step 3 - Configure Service Account Privileges in vSphere
+### Step 2 - Configure Service Account Privileges in vSphere
 
 Create a custom vSphere role with the required privileges to integrate HashiCorp Packer with VMware vSphere. A service account can be added to the role to ensure that Packer has least privilege access to the infrastructure. Clone the default **Read-Only** vSphere role and add the following privileges:
 
@@ -561,10 +436,11 @@ If you would like to automate the creation of the custom vSphere role, a Terrafo
     terraform apply tfplan
     ```
 
-Once the custom vSphere role is created, assign **Global Permissions** in vSphere for the service account used for the HashiCorp Packer to VMware vSphere integration. Global permissions are required for the content library. For example:
+Once the custom vSphere role is created, assign **Global Permissions** in vSphere for the service account that will be used for the HashiCorp Packer to VMware vSphere integration in the next step. Global permissions are required for the content library. For example:
 
 1. Log in to the vCenter Server at _<management_vcenter_server_fqdn>/ui_ as `administrator@vsphere.local`.
 1. Select **Menu** > **Administration**.
+1. Create service account in vSphere SSO if it does not exist: In the left pane, select **Single Sign On** > **Users and Groups** and click on **Users**, from the dropdown select the domain in which you want to create the user (_e.g.,_ rainpole.io) and click **ADD**, fill all the username (_e.g.,_ svc-packer-vsphere) and all required details, then click **ADD** to create the user.
 1. In the left pane, select **Access control** > **Global permissions** and click the **Add permissions** icon.
 1. In the **Add permissions** dialog box, enter the service account (_e.g.,_ svc-packer-vsphere@rainpole.io), select the custom role (_e.g.,_ Packer to vSphere Integration Role) and the **Propagate to children** check box, and click OK.
 
@@ -572,17 +448,17 @@ In an environment with many vCenter Server instances, such as management and wor
 
 1. From the **Hosts and clusters** inventory, select management domain vCenter Server to restrict scope, and click the **Permissions** tab.
 
-1. Select the service account with the custom role assigned and click the **Change role** icon.
+1. Select the service account with the custom role assigned and click the **Edit**.
 
 1. In the **Change role** dialog box, from the **Role** drop-down menu, select **No Access**, select the **Propagate to children** check box, and click **OK**.
 
-### Step 4 - Configure the Variables
+### Step 3 - Configure the Variables
 
-The [variables][packer-variables] are defined in `.pkvars.hcl` files.
+The [variables][packer-variables] are defined in `.pkrvars.hcl` files.
 
 #### Copy the Example Variables
 
-Run the config script `./config.sh` to copy the `.pkvars.hcl.example` files to the `config` directory.
+Run the config script `./config.sh` to copy the `.pkrvars.hcl.example` files to the `config` directory.
 
 The `config` folder is the default folder, You may override the default by passing an alternate value as the first argument.
 
@@ -609,11 +485,11 @@ For example, this is useful for the purposes of running machine image builds for
 
 ##### Build Variables
 
-Edit the `config/build.pkvars.hcl` file to configure the following:
+Edit the `config/build.pkrvars.hcl` file to configure the following:
 
 * Credentials for the default account on machine images.
 
-**Example**: `config/build.pkvars.hcl`
+**Example**: `config/build.pkrvars.hcl`
 
 ```hcl
 build_username           = "rainpole"
@@ -665,8 +541,7 @@ Generate a public key for the `build_key` for public key authentication.
 **Example**: macOS and Linux.
 
 ```console
-rainpole@macos> cd .ssh/
-rainpole@macos ~/.ssh> ssh-keygen -t ecdsa -b 521 -C "code@rainpole.io"
+rainpole@macos> ssh-keygen -t ecdsa -b 512 -C "code@rainpole.io"
 Generating public/private ecdsa key pair.
 Enter file in which to save the key (/Users/rainpole/.ssh/id_ecdsa):
 Enter passphrase (empty for no passphrase): **************
@@ -675,7 +550,7 @@ Your identification has been saved in /Users/rainpole/.ssh/id_ecdsa.
 Your public key has been saved in /Users/rainpole/.ssh/id_ecdsa.pub.
 ```
 
-The content of the public key, `build_key`, is added the key to the `.ssh/authorized_keys` file of the `build_username` on the guest operating system.
+The content of the public key, `build_key`, is added the key to the `~/.ssh/authorized_keys` file of the `build_username` on the guest operating system.
 
 > **Warning**
 >
@@ -685,11 +560,11 @@ The content of the public key, `build_key`, is added the key to the `.ssh/author
 
 ##### Ansible Variables
 
-Edit the `config/ansible.pkvars.hcl` file to configure the following:
+Edit the `config/ansible.pkrvars.hcl` file to configure the following:
 
 * Credentials for the Ansible account on Linux machine images.
 
-**Example**: `config/ansible.pkvars.hcl`
+**Example**: `config/ansible.pkrvars.hcl`
 
 ```hcl
 ansible_username = "ansible"
@@ -710,7 +585,7 @@ ansible_key = file("${path.root}/config/ssh/ansible_id_ecdsa.pub")
 
 ##### Common Variables
 
-Edit the `config/common.pkvars.hcl` file to configure the following common variables:
+Edit the `config/common.pkrvars.hcl` file to configure the following common variables:
 
 * Virtual Machine Settings
 * Template and Content Library Settings
@@ -719,7 +594,7 @@ Edit the `config/common.pkvars.hcl` file to configure the following common varia
 * Boot and Provisioning Settings
 * HCP Packer Registry
 
-**Example**: `config/common.pkvars.hcl`
+**Example**: `config/common.pkrvars.hcl`
 
 ```hcl
 // Virtual Machine Settings
@@ -782,12 +657,12 @@ common_http_ip = "172.16.11.254"
 
 ##### Proxy Variables (Optional)
 
-Edit the `config/proxy.pkvars.hcl` file to configure the following:
+Edit the `config/proxy.pkrvars.hcl` file to configure the following:
 
 * SOCKS proxy settings used for connecting to Linux machine images.
 * Credentials for the proxy server.
 
-**Example**: `config/proxy.pkvars.hcl`
+**Example**: `config/proxy.pkrvars.hcl`
 
 ```hcl
 communicator_proxy_host     = "proxy.rainpole.io"
@@ -798,11 +673,11 @@ communicator_proxy_password = "<plaintext_password>"
 
 ##### Red Hat Subscription Manager Variables
 
-Edit the `config/redhat.pkvars.hcl` file to configure the following:
+Edit the `config/redhat.pkrvars.hcl` file to configure the following:
 
 * Credentials for your Red Hat Subscription Manager account.
 
-**Example**: `config/redhat.pkvars.hcl`
+**Example**: `config/redhat.pkrvars.hcl`
 
 ```hcl
 rhsm_username = "rainpole"
@@ -813,11 +688,11 @@ These variables are **only** used if you are performing a Red Hat Enterprise Lin
 
 ##### SUSE Customer Connect Variables
 
-Edit the `config/scc.pkvars.hcl` file to configure the following:
+Edit the `config/scc.pkrvars.hcl` file to configure the following:
 
 * Credentials for your SUSE Customer Connect account.
 
-**Example**: `config/scc.pkvars.hcl`
+**Example**: `config/scc.pkrvars.hcl`
 
 ```hcl
 scc_email = "hello@rainpole.io"
@@ -828,12 +703,12 @@ These variables are **only** used if you are performing a SUSE Linux Enterprise 
 
 ##### vSphere Variables
 
-Edit the `builds/vsphere.pkvars.hcl` file to configure the following:
+Edit the `builds/vsphere.pkrvars.hcl` file to configure the following:
 
 * vSphere Endpoint and Credentials
 * vSphere Settings
 
-**Example**: `config/vsphere.pkvars.hcl`
+**Example**: `config/vsphere.pkrvars.hcl`
 
 ```hcl
 vsphere_endpoint             = "sfo-w01-vc01.sfo.rainpole.io"
@@ -849,7 +724,7 @@ vsphere_folder               = "sfo-w01-fd-templates"
 
 #### Using Environment Variables
 
-If you prefer not to save sensitive potentially information in cleartext files, you add the variables to environmental variables using the included `set-envvars.sh` script:
+If you prefer not to save potentially sensitive information in cleartext files, you add the variables to environmental variables using the included `set-envvars.sh` script:
 
 ```console
 rainpole@macos> . ./set-envvars.sh
@@ -861,7 +736,7 @@ rainpole@macos> . ./set-envvars.sh
 
 #### Machine Image Variables (Optional)
 
-Edit the `*.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder to configure the following virtual machine hardware settings, as required:
+Edit the `*.auto.pkrvars.hcl` file in each `builds/<type>/<build>` folder to configure the following virtual machine hardware settings, as required:
 
 * CPUs `(int)`
 * CPU Cores `(int)`
@@ -875,8 +750,94 @@ Edit the `*.auto.pkvars.hcl` file in each `builds/<type>/<build>` folder to conf
 
     > **Note**
     >
-    > All `variables.auto.pkvars.hcl` default to using the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types.
+    > All `variables.auto.pkrvars.hcl` default to using the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types.
 
+
+### Step 4 - Guest Operating Systems ISOs
+
+The project supports configuring the ISO from either a datastore or URL source. By default, the project uses the datastore source.
+
+Follow the steps below to configure either option.
+
+#### Using a Datastore Source
+
+If you are using a datastore to store your guest operating system [`.iso`][iso] files, you must download and upload these to a datastore path.
+
+1. Download the x64 guest operating system `.iso` files.
+
+    Linux Distributions:
+
+    * VMware Photon OS 4
+        * [Download][download-linux-photon-server-4] the 4.0 Rev2 release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-xxxxxxxxx.iso`)
+    * Debian 11
+        * [Download][download-linux-debian-11] the latest **netinst** release `.iso` image. (_e.g._ `debian-11.x.0-amd64-netinst.iso`)
+    * Ubuntu Server 22.04 LTS
+        * [Download][download-linux-ubuntu-server-22-04-lts] the latest **LIVE** release `.iso` image. (_e.g.,_ `ubuntu-22.04.x-live-server-amd64.iso`)
+    * Ubuntu Server 20.04 LTS
+        * [Download][download-linux-ubuntu-server-20-04-lts] the latest **LIVE** release `.iso` image. (_e.g.,_ `ubuntu-20.04.x-live-server-amd64.iso`)
+    * Ubuntu Server 18.04 LTS
+        * [Download][download-linux-ubuntu-server-18-04-lts] the latest legacy **NON-LIVE** release `.iso` image. (_e.g.,_ `ubuntu-18.04.x-server-amd64.iso`)
+    * Red Hat Enterprise Linux 9 Server
+        * [Download][download-linux-redhat-server-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-baseos-9.x-x86_64-dvd.iso`)
+    * Red Hat Enterprise Linux 8 Server
+        * [Download][download-linux-redhat-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-8.x-x86_64-dvd1.iso`)
+    * Red Hat Enterprise Linux 7 Server
+        * [Download][download-linux-redhat-server-7] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-server-7.x-x86_64-dvd1.iso`)
+    * AlmaLinux OS 9
+        * [Download][download-linux-almalinux-server-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `AlmaLinux-9.x-x86_64-dvd1.iso`)
+    * AlmaLinux OS 8
+        * [Download][download-linux-almalinux-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `AlmaLinux-8.x-x86_64-dvd1.iso`)
+    * Rocky Linux 9
+        * [Download][download-linux-rocky-server-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `Rocky-9.x-x86_64-dvd1.iso`)
+    * Rocky Linux 8
+        * [Download][download-linux-rocky-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `Rocky-8.x-x86_64-dvd1.iso`)
+    * CentOS Stream 9
+        * [Download][download-linux-centos-stream-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-Stream-9-latest-x86_64-dvd1.iso`)
+    * CentOS Stream 8
+        * [Download][download-linux-centos-stream-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-Stream-8-x86_64-latest-dvd1.iso`)
+    * CentOS Linux 7
+        * [Download][download-linux-centos-server-7] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-7-x86_64-DVD.iso`)
+    * SUSE Linux Enterprise 15
+        * [Download][download-suse-linux-enterprise-15] the latest 15.4 release of the **FULL** `.iso` image. (_e.g.,_ `SLE-15-SP4-Full-x86_64-GM-Media1.iso`)
+
+    Microsoft Windows:
+
+    * Microsoft Windows Server 2022
+    * Microsoft Windows Server 2019
+    * Microsoft Windows 11
+    * Microsoft Windows 10
+
+1. Obtain the checksum type (_e.g.,_ `sha256`, `md5`, etc.) and checksum value for each guest operating system `.iso` from the vendor. This will be use in the build input variables.
+
+1. [Upload][vsphere-upload] or your guest operating system `.iso` files to the datastore and update the configuration variables, leaving the `iso_url` variable as `null`.
+
+    **Example**: `config/common.pkrvars.hcl`
+
+    ```hcl
+    common_iso_datastore = "sfo-w01-cl01-ds-nfs01"
+    ```
+
+    **Example**: `builds/<type>/<build>/*.auto.pkrvars.hcl`
+
+    ```hcl
+    iso_url            = null
+    iso_path           = "iso/linux/photon"
+    iso_file           = "photon-4.0-xxxxxxxxx.iso"
+    iso_checksum_type  = "md5"
+    iso_checksum_value = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    ```
+
+#### Using a URL Source
+
+If you are using a URL source to obtain your guest operating system [`.iso`][iso] files, you must update the input variables to use the URL source.
+
+Update the `iso_url` variable to download the `.iso` from a URL. The `iso_url` variable takes presedence over any other `iso_*` variables.
+
+  **Example**: `builds/<type>/<build>/*.auto.pkrvars.hcl`
+
+```hcl
+iso_url = "https://artifactory.rainpole.io/iso/linux/photon/4.0/x86_64/photon-4.0-xxxxxxxxx.iso"
+```
 ### Step 5 - Modify the Configurations (Optional)
 
 If required, modify the configuration files for the Linux distributions and Microsoft Windows.
@@ -919,7 +880,7 @@ Before you can use the HCP Packer registry, you need to create it by following [
 
 #### Configure an HCP Packer Registry
 
-Edit the `config/common.pkvars.hcl` file to enable the HCP Packer registry.
+Edit the `config/common.pkrvars.hcl` file to enable the HCP Packer registry.
 
 ```hcl
 // HCP Packer
@@ -1037,6 +998,7 @@ Happy building!!!
 [hcp-packer-create]: https://learn.hashicorp.com/tutorials/packer/hcp-push-image-metadata?in=packer/hcp-get-started#create-hcp-packer-registry
 [hcp-packer-docs]: https://cloud.hashicorp.com/docs/packer
 [hcp-packer-intro]: https://www.youtube.com/watch?v=r0I4TTO957w
+[hcp-security]: https://www.hashicorp.com/security
 [iso]: https://en.wikipedia.org/wiki/ISO_image
 [microsoft-kms]: https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys
 [microsoft-windows-afg]: https://www.windowsafg.com

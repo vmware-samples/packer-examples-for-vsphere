@@ -67,8 +67,8 @@ The following builds are available:
 
 Operating systems and versions tested with the project:
 
-* VMware Photon OS 4
-* Ubuntu Server 22.04 LTS and 20.04 LTS (running on x86_64 architecture)
+* VMware Photon OS 4 (`x86_64`)
+* Ubuntu Server 22.04 LTS and 20.04 LTS (`x86_64`)
 * macOS Monterey and Big Sur (Intel)
 
 > **Note**

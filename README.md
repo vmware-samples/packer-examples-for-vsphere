@@ -172,30 +172,31 @@ The following additional software packages must be installed on the operating sy
       * [Ansible][ansible-docs] 2.9 or higher.
 
       * xorriso - A command-line .iso creator.
-
       
-      ```shell
-      tdnf -y install git ansible xorriso
-      ```
+        ```shell
+        tdnf -y install git ansible xorriso
+        ```
+  
       * HashiCorp [Terraform][terraform-install] 1.3.0 or higher.
-      ```shell
-      TERRAFORM_VERSION="1.3.0"
-      OS_PACKAGES="wget unzip"
+  
+        ```shell
+        TERRAFORM_VERSION="1.3.0"
+        OS_PACKAGES="wget unzip"
 
-      if [[ $(uname -m) == "x86_64" ]]; then
-        LINUX_ARCH="amd64"
-      elif [[ $(uname -m) == "aarch64" ]]; then
-        LINUX_ARCH="arm64"
-      fi
+        if [[ $(uname -m) == "x86_64" ]]; then
+          LINUX_ARCH="amd64"
+        elif [[ $(uname -m) == "aarch64" ]]; then
+          LINUX_ARCH="arm64"
+        fi
 
-      tdnf install ${OS_PACKAGES} -y
+        tdnf install ${OS_PACKAGES} -y
 
-      wget -q https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
+        wget -q https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
 
-      unzip -o -d /usr/local/bin/ terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
-      ```
+        unzip -o -d /usr/local/bin/ terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
+        ```
+  
   </details>
-
 
   * <details>
       <summary>Ubuntu</summary>
@@ -209,18 +210,21 @@ The following additional software packages must be installed on the operating sy
       * mkpasswd - Password generating utility
 
       * HashiCorp [Terraform][terraform-install] 1.3.0 or higher.
-      ```shell
-      sudo apt -y install git ansible xorriso whois terraform
-      ```
+  
+        ```shell
+        sudo apt -y install git ansible xorriso whois terraform
+        ```
 
       * [Gomplate][gomplate-install] 3.11.2 or higher.
-      ```shell
-      GOMPLATE_VERSION="3.11.2"
-      LINUX_ARCH="amd64"
+  
+        ```shell
+        GOMPLATE_VERSION="3.11.2"
+        LINUX_ARCH="amd64"
 
-      sudo curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-${LINUX_ARCH}
-      sudo chmod 755 /usr/local/bin/gomplate
-      ```
+        sudo curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-${LINUX_ARCH}
+        sudo chmod 755 /usr/local/bin/gomplate
+        ```
+  
   </details>
 
   * <details>
@@ -236,14 +240,15 @@ The following additional software packages must be installed on the operating sy
       
       * [Gomplate][gomplate-install] 3.11.2 or higher.
 
-      ```shell
-      brew install git ansible coreutils hashicorp/tap/terraform gomplate
-      ```
+        ```shell
+        brew install git ansible coreutils hashicorp/tap/terraform gomplate
+        ```
 
       * mkpasswd - Password generating utility
-      ```shell
-      brew install --cask docker
-      ```
+  
+        ```shell
+        brew install --cask docker
+        ```
 
   </details>
 

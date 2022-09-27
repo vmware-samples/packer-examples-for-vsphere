@@ -10,7 +10,8 @@
 
 $ErrorActionPreference = 'Stop'
 
-# Set network connections profile to Private.
+# Set network connections profiles to Private.
+Write-Output 'Setting the network connection profiles to Private...'
 $profile = Get-NetConnectionProfile
 While ($profile.Name -eq 'Identifying...') {
     Start-Sleep -Seconds 10

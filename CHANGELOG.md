@@ -17,6 +17,7 @@
 :sweat_drops: **Chore**:
 
 * Updates Debian 11 .iso and checksum to 11.5.0 release. [GH-273](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/273)
+* Updates SLES 15 .iso and checksum to 15.4 release. [GH-287](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/287)
 * Updates Ubuntu 22.04 .iso and checksum to 22.04.1 release. [GH-274](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/274)
 * Updates Ubuntu 20.04 .iso and checksum to 20.04.15 release. [GH-275](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/275)
 * Updates Windows Server 2022 .iso and checksum to September 2022 release. [GH-282](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/282)

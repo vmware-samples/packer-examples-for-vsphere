@@ -30,7 +30,8 @@ body:
       description: Please provide the version of this project.
       options:
         - main
-        - 22.08 (latest)
+        - 22.09 (latest)
+        - 22.08
         - 22.07
         - 22.06
         - 22.05

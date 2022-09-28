@@ -6,7 +6,7 @@
 // Installation Operating System Metadata
 vm_inst_os_language = "en-US"
 vm_inst_os_keyboard = "en-US"
-vm_inst_os_image    = "Windows 10 Pro" // Must be of `Windows 10`
+vm_inst_os_image    = "Windows 11 Pro"
 vm_inst_os_kms_key  = "W269N-WFGWX-YVC9B-4J6C9-T83GX"
 
 // Guest Operating System Metadata
@@ -40,9 +40,9 @@ vm_video_displays        = 1
 // Removable Media Settings
 iso_url            = null
 iso_path           = "iso/windows/desktop"
-iso_file           = "en-us_windows_11_business_editions_version_21h2_updated_aug_2022_x64_dvd_50c9cab3.iso"
+iso_file           = "en-us_windows_11_business_editions_version_22h2_x64_dvd_17a08ce3.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "8B5FE1C2FDB14BD9561460D976E9040FBB7B3CEEDF9DD20FFA1CD9984C6286A0"
+iso_checksum_value = "6E3A101C6E97D8E68F576DDBCED9BE34CBA949F750DA3C83F7D4791401068C9F"
 
 // Boot Settings
 vm_boot_order       = "disk,cdrom"

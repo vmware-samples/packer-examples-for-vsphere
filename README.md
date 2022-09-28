@@ -177,10 +177,10 @@ The following additional software packages must be installed on the operating sy
         tdnf -y install git ansible xorriso
         ```
   
-      * HashiCorp [Terraform][terraform-install] 1.3.0 or higher.
+      * HashiCorp [Terraform][terraform-install] 1.3.1 or higher.
   
         ```shell
-        TERRAFORM_VERSION="1.3.0"
+        TERRAFORM_VERSION="1.3.1"
         OS_PACKAGES="wget unzip"
 
         if [[ $(uname -m) == "x86_64" ]]; then
@@ -209,7 +209,7 @@ The following additional software packages must be installed on the operating sy
 
       * mkpasswd - Password generating utility
 
-      * HashiCorp [Terraform][terraform-install] 1.3.0 or higher.
+      * HashiCorp [Terraform][terraform-install] 1.3.1 or higher.
   
         ```shell
         sudo apt -y install git ansible xorriso whois terraform
@@ -236,7 +236,7 @@ The following additional software packages must be installed on the operating sy
 
       * Coreutils
       
-      * HashiCorp [Terraform][terraform-install] 1.3.0 or higher.
+      * HashiCorp [Terraform][terraform-install] 1.3.1 or higher.
       
       * [Gomplate][gomplate-install] 3.11.2 or higher.
 

@@ -1,8 +1,8 @@
 # CHANGELOG
 
-## v22.09
+## [v22.09](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.09)
 
-> Release Date: Unreleased
+> Release Date: 2022-09-28
 
 :boom:  **Enhancement**:
 
@@ -16,13 +16,13 @@
 
 :sweat_drops: **Chore**:
 
-* Updates Debian 11 .iso and checksum to 11.5.0 release. [GH-273](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/273)
-* Updates SLES 15 .iso and checksum to 15.4 release. [GH-287](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/287)
-* Updates Ubuntu 22.04 .iso and checksum to 22.04.1 release. [GH-274](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/274)
-* Updates Ubuntu 20.04 .iso and checksum to 20.04.5 release. [GH-275](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/275)
-* Updates Windows Server 2022 .iso and checksum to September 2022 release. [GH-282](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/282)
-* Updates Windows 11 .iso and checksum to 22H2 September 2022 release. [GH-284](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/284)
-* Updates Windows 10 .iso and checksum to 21H2 September 2022 release. [GH-283](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/283)
+* Updates Debian 11 to 11.5.0 release. [GH-273](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/273)
+* Updates SLES 15 to 15.4 release. [GH-287](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/287)
+* Updates Ubuntu 22.04 to 22.04.1 release. [GH-274](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/274)
+* Updates Ubuntu 20.04 to 20.04.5 release. [GH-275](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/275)
+* Updates Windows Server 2022 to September 2022 release. [GH-282](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/282)
+* Updates Windows 11 to 22H2 September 2022 release. [GH-284](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/284)
+* Updates Windows 10 to 21H2 September 2022 release. [GH-283](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/283)
 * Updates `required_versions` for `terraform` to `>= 1.3.1`. [GH-292](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/292)
 
 ## [v22.08](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.08)
@@ -46,9 +46,9 @@
 * Updates `required_versions` for `packer` to `>= 1.8.3`.
 * Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.0.8`.
 * Updates `required_versions` for `terraform` to `>= 1.2.8`.
-* Updates Windows Server 2022 .iso and checksum to August 2022 release.
-* Updates Windows 11 .iso and checksum to August 2022 release.
-* Updates Windows 10 .iso and checksum to August 2022 release.
+* Updates Windows Server 2022 to August 2022 release.
+* Updates Windows 11 to August 2022 release.
+* Updates Windows 10 to August 2022 release.
 
 > **Note**
 >
@@ -102,8 +102,8 @@
 * Updates `required_versions` for `terraform` to `>= 1.2.3`.
 * Updates `required_versions` for `hashicorp/vsphere` to `>= 2.2.0`.
 * Updates vSphere to version 7.0.3 or higher.
-* Updates Windows Server 2022 .iso and checksum to June 2022 release.
-* Updates Windows 11 .iso and checksum to June 2022 release.
+* Updates Windows Server 2022 to June 2022 release.
+* Updates Windows 11 to June 2022 release.
 * Updates `vm_guest_os_type` for Windows Server 2022 guest ID to `windows2019srvNext_64Guest`.
 
 ## [v22.05](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.05)
@@ -115,12 +115,12 @@
 * Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.0.4`.
 * Updates `required_plugins` and `packer-plugin-windows-update` to `>= 0.14.1`.
 * Updates `required_versions` for `terraform` to `>= 1.2.1`.
-* Updates Red Hat Enterprise Linux 8 .iso and checksum to 8.6 release.
-* Updates Rocky Linux 8 .iso and checksum to 8.6 release.
-* Updates Almalinux 8 .iso and checksum to 8.6 release.
+* Updates Red Hat Enterprise Linux 8 to 8.6 release.
+* Updates Rocky Linux 8 to 8.6 release.
+* Updates Almalinux 8 to 8.6 release.
 * Updates CentOS Stream 8 checksum to latest release.
-* Updates Windows Server 2022 .iso and checksum to April 2022 release.
-* Updates Windows 11 .iso and checksum to May 2022 release.
+* Updates Windows Server 2022 to April 2022 release.
+* Updates Windows 11 to May 2022 release.
 * Updates requirements to include VMware Photon OS 4 as a tested operating system.
 * Updates requirements to include Ubuntu 22.04 as a tested operating system.
 

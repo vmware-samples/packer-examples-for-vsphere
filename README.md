@@ -12,12 +12,12 @@
 
 ## Table of Contents
 
-1. [Introduction](#Introduction)
-1. [Requirements](#Requirements)
-1. [Configuration](#Configuration)
-1. [Build](#Build)
-1. [Troubleshoot](#Troubleshoot)
-1. [Credits](#Credits)
+1. [Introduction](#introduction)
+1. [Requirements](#requirements)
+1. [Configuration](#configuration)
+1. [Build](#build)
+1. [Troubleshoot](#troubleshoot)
+1. [Credits](#credits)
 
 ## Introduction
 
@@ -765,7 +765,8 @@ If you are using a datastore to store your guest operating system [`.iso`][iso] 
 
 1. Download the x64 guest operating system `.iso` files.
 
-    Linux Distributions:
+    <details>
+    <summary>Linux Distributions:</summary>
 
     * VMware Photon OS 4
         * [Download][download-linux-photon-server-4] the 4.0 Rev2 release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-xxxxxxxxx.iso`)
@@ -799,13 +800,17 @@ If you are using a datastore to store your guest operating system [`.iso`][iso] 
         * [Download][download-linux-centos-server-7] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-7-x86_64-DVD.iso`)
     * SUSE Linux Enterprise 15
         * [Download][download-suse-linux-enterprise-15] the latest 15.4 release of the **FULL** `.iso` image. (_e.g.,_ `SLE-15-SP4-Full-x86_64-GM-Media1.iso`)
+    </details>
 
-    Microsoft Windows:
+    <details>
+    <summary>Microsoft Windows:</summary>
 
     * Microsoft Windows Server 2022
     * Microsoft Windows Server 2019
     * Microsoft Windows 11
     * Microsoft Windows 10
+    </details>
+
 
 1. Obtain the checksum type (_e.g.,_ `sha256`, `md5`, etc.) and checksum value for each guest operating system `.iso` from the vendor. This will be use in the build input variables.
 

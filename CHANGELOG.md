@@ -23,7 +23,7 @@
 * Updates Windows Server 2022 .iso and checksum to September 2022 release. [GH-282](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/282)
 * Updates Windows 11 .iso and checksum to 22H2 September 2022 release. [GH-284](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/284)
 * Updates Windows 10 .iso and checksum to 21H2 September 2022 release. [GH-283](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/283)
-* Updates `required_versions` for `terraform` to `>= 1.3.0`. [GH-286](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/286)
+* Updates `required_versions` for `terraform` to `>= 1.3.1`. [GH-292](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/292)
 
 ## [v22.08](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.08)
 

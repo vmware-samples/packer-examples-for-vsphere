@@ -4,11 +4,7 @@
 
 [![The Changelog](https://img.shields.io/badge/The%20Changelog-Read-blue?style=for-the-badge&logo=github)](CHANGELOG.md)
 
-![VMware vSphere 7.0 Update 3d+](https://img.shields.io/badge/VMware%20vSphere-7.0%20Update%203d+-blue?style=for-the-badge)
-
 ![Packer 1.8.3+](https://img.shields.io/badge/HashiCorp%20Packer-1.8.3+-blue?style=for-the-badge&logo=packer&logoColor=white)
-
-![Ansible 2.9+](https://img.shields.io/badge/Ansible-2.9+-blue?style=for-the-badge&logo=ansible)
 
 ## Table of Contents
 
@@ -254,7 +250,8 @@ The following additional software packages must be installed on the operating sy
 
 **Platform**:
 
-* VMware vSphere 7.0 Update 3D or higher
+* VMware vSphere 8.0
+* VMware vSphere 7.0 Update 3D or later.
 
 ## Configuration
 

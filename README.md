@@ -79,7 +79,7 @@ Operating systems and versions tested with the project:
 
 **Packer**:
 
-* HashiCorp [Packer][packer-install] 1.8.2 or higher.
+* HashiCorp [Packer][packer-install] 1.8.3 or higher.
 
   > **Note**
   >
@@ -89,7 +89,7 @@ Operating systems and versions tested with the project:
       <summary>Photon OS</summary>
 
       ```shell
-      PACKER_VERSION="1.8.2"
+      PACKER_VERSION="1.8.3"
       OS_PACKAGES="wget unzip"
 
       if [[ $(uname -m) == "x86_64" ]]; then
@@ -113,22 +113,28 @@ Operating systems and versions tested with the project:
       The Terraform packages are signed using a private key controlled by HashiCorp, so you must configure your system to trust that HashiCorp key for package authentication.
 
       To configure your repository:
+
       ```shell
       sudo bash -c 'wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor > /usr/share/keyrings/hashicorp-archive-keyring.gpg'
       ```
+
       Verify the key's fingerprint:
+
       ```shell
       gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint
       ```
+
       The fingerprint must match E8A0 32E0 94D8 EB4E A189 D270 DA41 8C88 A321 9F7B. You can also verify the key on [Security at HashiCorp][hcp-security] under Linux Package Checksum Verification.
       
       Add the official HashiCorp repository to your system:
+
       ```shell
       sudo bash -c 'echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
       https://apt.releases.hashicorp.com $(lsb_release -cs) main" > /etc/apt/sources.list.d/hashicorp.list'
       ```
 
       Install Packer from HashiCorp repository:
+
       ```shell
       sudo apt update && sudo apt install packer
       ```
@@ -145,9 +151,11 @@ Operating systems and versions tested with the project:
 
     </details>
 * Packer plugins:
+
     > **Note**
     >
     > Required plugins are automatically downloaded and initialized when using `./build.sh`. For dark sites, you may download the plugins and place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
+
   * HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.8 or higher.
   * [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.1 or higher - a community plugin for HashiCorp Packer.
 

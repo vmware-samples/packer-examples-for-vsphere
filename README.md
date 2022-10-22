@@ -381,7 +381,7 @@ Content Library | Add library item                                    | `Content
  ...            | Update Library Item                                 | `ContentLibrary.UpdateLibraryItem`
 Datastore       | Allocate space                                      | `Datastore.AllocateSpace`
 ...             | Browse datastore                                    | `Datastore.Browse`
-...             | Low level file operations                           | `Datastore.Browse`
+...             | Low level file operations                           | `Datastore.FileManagement`
 Network         | Assign network                                      | `Network.Assign`
 Resource        | Assign virtual machine to resource pool             | `Resource.AssignVMToPool`
 vApp            | Export                                              | `vApp.Export`

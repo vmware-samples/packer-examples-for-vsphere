@@ -26,6 +26,7 @@ packer_vsphere_privileges = [
   "Datastore.AllocateSpace",
   "Datastore.Browse",
   "Datastore.FileManagement",
+  "Host.Config.SystemManagement",
   "Network.Assign",
   "Resource.AssignVMToPool",
   "VApp.Export",

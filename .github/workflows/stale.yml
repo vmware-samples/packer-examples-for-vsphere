@@ -1,6 +1,6 @@
 ---
 name: Manage Stale Items
-'on':
+"on":
   schedule:
     - cron: 00 00 * * *
 jobs:
@@ -12,27 +12,29 @@ jobs:
     steps:
       - uses: actions/stale@v6
         with:
-          repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
           days-before-stale: 60
           days-before-close: 30
-          exempt-issue-labels: 'status/needs-triage, status/in-progress, status/planned'
-          exempt-pr-labels: 'status/needs-review, status/under-review, status/planned'
+          exempt-issue-labels: "status/needs-triage, status/planned"
+          exempt-pr-labels: "status/needs-review, status/planned"
           remove-stale-when-updated: true
           delete-branch: false
           stale-issue-label: status/stale
-          stale-issue-message: >
+          stale-issue-message: >-
             Marking this issue as stale due to inactivity. This helps us focus
             on the active issues. If this issue receives no comments in the next
             30 days it will automatically be closed.
+
 
             If this issue was automatically closed and you feel this issue
             should be reopened, we encourage creating a new issue linking back
             to this one for added context. Thank you!
           stale-pr-label: status/stale
-          stale-pr-message: >
+          stale-pr-message: >-
             Marking this pull request as stale due to inactivity. This helps us
             focus on the active pull requests. If this pull request receives no
             comments in the next 30 days it will automatically be closed.
+
 
             If this pull request was automatically closed and you feel this pull
             request should be reopened, we encourage creating a new pull request

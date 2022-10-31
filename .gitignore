@@ -50,3 +50,7 @@ artifacts/*.vmdk
 # Manifests
 ## Ignore manifests directory.
 manifests/*.json
+
+# Trunk.io
+## Ignore trunk directory.
+.trunk/*

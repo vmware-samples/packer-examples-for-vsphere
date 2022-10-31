@@ -39,15 +39,15 @@ read -r -s -p "Enter the password for the user account: " vsphere_password
 echo # Needed for line break.
 read -r -p "Skip vCenter Server instance SSL verification? (y/n): " skip_ssl_verification
 case $skip_ssl_verification in
-    [yY][eE][sS]|[yY])
-    vsphere_insecure_connection=true
- ;;
-    [nN][oO]|[nN])
-    vsphere_insecure_connection=false
-       ;;
-    *)
- echo -e "\n> Invalid input; skipping SSL verification settings. Using default values."
- ;;
+[yY][eE][sS] | [yY])
+	vsphere_insecure_connection=true
+	;;
+[nN][oO] | [nN])
+	vsphere_insecure_connection=false
+	;;
+*)
+	echo -e "\n> Invalid input; skipping SSL verification settings. Using default values."
+	;;
 esac
 
 # vSphere Settings
@@ -88,19 +88,19 @@ read -r -p "Enter the virtual machine shutdown timeout (recommended: ""${common_
 echo -e '\n> Set proxy credentials.'
 read -r -p "Use SOCKS Proxy? (y/n): " use_socks_proxy
 case $use_socks_proxy in
-    [yY][eE][sS]|[yY])
-    echo '> Set the proxy credentials.'
-    read -r -p "Enter the FQDN/IP of the proxy: " communicator_proxy_host
-    read -r -p "Enter the port for the proxy: " communicator_proxy_port
-    read -r -p "Enter the username for the proxy: " communicator_proxy_username
-    read -r -s -p "Enter the password for the proxy: " communicator_proxy_password
-    echo
- ;;
-    [nN][oO]|[nN])
-       ;;
-    *)
- echo -e "\n> Invalid input; skipping Socks Proxy settings. Using defaults values."
- ;;
+[yY][eE][sS] | [yY])
+	echo '> Set the proxy credentials.'
+	read -r -p "Enter the FQDN/IP of the proxy: " communicator_proxy_host
+	read -r -p "Enter the port for the proxy: " communicator_proxy_port
+	read -r -p "Enter the username for the proxy: " communicator_proxy_username
+	read -r -s -p "Enter the password for the proxy: " communicator_proxy_password
+	echo
+	;;
+[nN][oO] | [nN]) ;;
+
+*)
+	echo -e "\n> Invalid input; skipping Socks Proxy settings. Using defaults values."
+	;;
 esac
 
 # Default Account Credentials
@@ -182,17 +182,17 @@ export PKR_VAR_common_shutdown_timeout="${common_shutdown_timeout}"
 
 # Proxy Credentials
 case $use_socks_proxy in
-    [yY][eE][sS]|[yY])
-    echo '> Setting the proxy credentials...'
-    export PKR_VAR_communicator_proxy_host="${communicator_proxy_host}"
-    export PKR_VAR_communicator_proxy_port="${communicator_proxy_port}"
-    export PKR_VAR_communicator_proxy_username="${communicator_proxy_username}"
-    export PKR_VAR_communicator_proxy_password="${communicator_proxy_password}"
- ;;
-    [nN][oO]|[nN])
-       ;;
-    *)
- ;;
+[yY][eE][sS] | [yY])
+	echo '> Setting the proxy credentials...'
+	export PKR_VAR_communicator_proxy_host="${communicator_proxy_host}"
+	export PKR_VAR_communicator_proxy_port="${communicator_proxy_port}"
+	export PKR_VAR_communicator_proxy_username="${communicator_proxy_username}"
+	export PKR_VAR_communicator_proxy_password="${communicator_proxy_password}"
+	;;
+[nN][oO] | [nN]) ;;
+
+*) ;;
+
 esac
 
 echo '> Setting the default account credentials...'
@@ -226,96 +226,96 @@ echo
 
 read -r -p "Display the environment variables? (y/n): " display_environmental_variables
 case $display_environmental_variables in
-    [yY][eE][sS]|[yY])
-    # vSphere Credentials
-    echo -e '\nvSphere Credentials'
-    echo - PKR_VAR_vsphere_endpoint: "$PKR_VAR_vsphere_endpoint"
-    echo - PKR_VAR_vsphere_username: "$PKR_VAR_vsphere_username"
-    echo - PKR_VAR_vsphere_password: "$PKR_VAR_vsphere_password"
-    echo - PKR_VAR_vsphere_insecure_connection: "$PKR_VAR_vsphere_insecure_connection"
+[yY][eE][sS] | [yY])
+	# vSphere Credentials
+	echo -e '\nvSphere Credentials'
+	echo - PKR_VAR_vsphere_endpoint: "$PKR_VAR_vsphere_endpoint"
+	echo - PKR_VAR_vsphere_username: "$PKR_VAR_vsphere_username"
+	echo - PKR_VAR_vsphere_password: "$PKR_VAR_vsphere_password"
+	echo - PKR_VAR_vsphere_insecure_connection: "$PKR_VAR_vsphere_insecure_connection"
 
-    #vSphere Settings
-    echo -e '\nvSphere Settings'
-    echo - PKR_VAR_vsphere_datacenter: "$PKR_VAR_vsphere_datacenter"
-    echo - PKR_VAR_vsphere_cluster: "$PKR_VAR_vsphere_cluster"
-    echo - PKR_VAR_vsphere_datastore: "$PKR_VAR_vsphere_datastore"
-    echo - PKR_VAR_vsphere_network: "$PKR_VAR_vsphere_network"
-    echo - PKR_VAR_vsphere_folder: "$PKR_VAR_vsphere_folder"
-    echo - PKR_VAR_common_content_library_name: "$PKR_VAR_common_content_library_name"
-    echo - PKR_VAR_common_iso_datastore: "$PKR_VAR_common_iso_datastore"
+	#vSphere Settings
+	echo -e '\nvSphere Settings'
+	echo - PKR_VAR_vsphere_datacenter: "$PKR_VAR_vsphere_datacenter"
+	echo - PKR_VAR_vsphere_cluster: "$PKR_VAR_vsphere_cluster"
+	echo - PKR_VAR_vsphere_datastore: "$PKR_VAR_vsphere_datastore"
+	echo - PKR_VAR_vsphere_network: "$PKR_VAR_vsphere_network"
+	echo - PKR_VAR_vsphere_folder: "$PKR_VAR_vsphere_folder"
+	echo - PKR_VAR_common_content_library_name: "$PKR_VAR_common_content_library_name"
+	echo - PKR_VAR_common_iso_datastore: "$PKR_VAR_common_iso_datastore"
 
-    # Virtual Machine Settings
-    echo -e '\nCommon Virtual Machine Settings'
-    echo - PKR_VAR_common_vm_version: "$PKR_VAR_common_vm_version"
-    echo - PKR_VAR_common_tools_upgrade_policy: "$PKR_VAR_common_tools_upgrade_policy"
-    echo - PKR_VAR_common_remove_cdrom: "$PKR_VAR_common_remove_cdrom"
+	# Virtual Machine Settings
+	echo -e '\nCommon Virtual Machine Settings'
+	echo - PKR_VAR_common_vm_version: "$PKR_VAR_common_vm_version"
+	echo - PKR_VAR_common_tools_upgrade_policy: "$PKR_VAR_common_tools_upgrade_policy"
+	echo - PKR_VAR_common_remove_cdrom: "$PKR_VAR_common_remove_cdrom"
 
-    # Template and Content Library Settings
-    echo -e '\nCommon Template and Content Library Settings'
-    echo - PKR_VAR_common_template_conversion: "$PKR_VAR_common_template_conversion"
-    echo - PKR_VAR_common_content_library_ovf: "$PKR_VAR_common_content_library_ovf"
-    echo - PKR_VAR_common_content_library_destroy: "$PKR_VAR_common_content_library_destroy"
-    echo - PKR_VAR_common_content_library_skip_export: "$PKR_VAR_common_content_library_skip_export"
+	# Template and Content Library Settings
+	echo -e '\nCommon Template and Content Library Settings'
+	echo - PKR_VAR_common_template_conversion: "$PKR_VAR_common_template_conversion"
+	echo - PKR_VAR_common_content_library_ovf: "$PKR_VAR_common_content_library_ovf"
+	echo - PKR_VAR_common_content_library_destroy: "$PKR_VAR_common_content_library_destroy"
+	echo - PKR_VAR_common_content_library_skip_export: "$PKR_VAR_common_content_library_skip_export"
 
-    # OVF Export Settings
-    echo -e '\nOVF Export Settings'
-    echo - PKR_VAR_common_ovf_export_enabled: "$PKR_VAR_common_ovf_export_enabled"
-    echo - PKR_VAR_common_ovf_export_overwrite: "$PKR_VAR_common_ovf_export_overwrite"
+	# OVF Export Settings
+	echo -e '\nOVF Export Settings'
+	echo - PKR_VAR_common_ovf_export_enabled: "$PKR_VAR_common_ovf_export_enabled"
+	echo - PKR_VAR_common_ovf_export_overwrite: "$PKR_VAR_common_ovf_export_overwrite"
 
-    # Boot and Provisioning Settings
-    echo -e '\nBoot and Provisioning Settings'
-    echo - PKR_VAR_common_data_source: "$PKR_VAR_common_data_source"
-    echo - PKR_VAR_common_http_ip: "$PKR_VAR_common_http_ip"
-    echo - PKR_VAR_common_http_port_min: "$PKR_VAR_common_http_port_min"
-    echo - PKR_VAR_common_http_port_max: "$PKR_VAR_common_http_port_max"
-    echo - PKR_VAR_common_ip_wait_timeout: "$PKR_VAR_common_ip_wait_timeout"
-    echo - PKR_VAR_common_shutdown_timeout: "$PKR_VAR_common_shutdown_timeout"
+	# Boot and Provisioning Settings
+	echo -e '\nBoot and Provisioning Settings'
+	echo - PKR_VAR_common_data_source: "$PKR_VAR_common_data_source"
+	echo - PKR_VAR_common_http_ip: "$PKR_VAR_common_http_ip"
+	echo - PKR_VAR_common_http_port_min: "$PKR_VAR_common_http_port_min"
+	echo - PKR_VAR_common_http_port_max: "$PKR_VAR_common_http_port_max"
+	echo - PKR_VAR_common_ip_wait_timeout: "$PKR_VAR_common_ip_wait_timeout"
+	echo - PKR_VAR_common_shutdown_timeout: "$PKR_VAR_common_shutdown_timeout"
 
-    # Proxy Credentials
+	# Proxy Credentials
 
-    case $use_socks_proxy in
-        [yY][eE][sS]|[yY])
-        echo -e '\nProxy Credentials'
-        echo - PKR_VAR_communicator_proxy_host: "$PKR_VAR_communicator_proxy_host"
-        echo - PKR_VAR_communicator_proxy_port: "$PKR_VAR_communicator_proxy_port"
-        echo - PKR_VAR_communicator_proxy_username: "$PKR_VAR_communicator_proxy_username"
-        echo - PKR_VAR_communicator_proxy_password: "$PKR_VAR_communicator_proxy_password"
-    ;;
-        [nN][oO]|[nN])
-        ;;
-        *)
-    ;;
-    esac
+	case $use_socks_proxy in
+	[yY][eE][sS] | [yY])
+		echo -e '\nProxy Credentials'
+		echo - PKR_VAR_communicator_proxy_host: "$PKR_VAR_communicator_proxy_host"
+		echo - PKR_VAR_communicator_proxy_port: "$PKR_VAR_communicator_proxy_port"
+		echo - PKR_VAR_communicator_proxy_username: "$PKR_VAR_communicator_proxy_username"
+		echo - PKR_VAR_communicator_proxy_password: "$PKR_VAR_communicator_proxy_password"
+		;;
+	[nN][oO] | [nN]) ;;
 
-    # Default User Account Credentials
-    echo -e '\nDefault User Account Credentials'
-    echo - PKR_VAR_build_username: "$PKR_VAR_build_username"
-    echo - PKR_VAR_build_password: "$PKR_VAR_build_password"
-    echo - PKR_VAR_build_password_encrypted: "$PKR_VAR_build_password_encrypted"
-    echo - PKR_VAR_build_key: "$PKR_VAR_build_key"
+	*) ;;
 
-    # Ansible Credentials
-    echo -e '\nAnsible Credentials'
-    echo - PKR_VAR_ansible_username: "$PKR_VAR_ansible_username"
-    echo - PKR_VAR_ansible_key: "$PKR_VAR_ansible_key"
+	esac
 
-    # RedHat Subscription Manager Credentials
-    echo -e '\nRedHat Subscription Manager Credentials'
-    echo - PKR_VAR_rhsm_username: "$PKR_VAR_rhsm_username"
-    echo - PKR_VAR_rhsm_password: "$PKR_VAR_rhsm_password"
+	# Default User Account Credentials
+	echo -e '\nDefault User Account Credentials'
+	echo - PKR_VAR_build_username: "$PKR_VAR_build_username"
+	echo - PKR_VAR_build_password: "$PKR_VAR_build_password"
+	echo - PKR_VAR_build_password_encrypted: "$PKR_VAR_build_password_encrypted"
+	echo - PKR_VAR_build_key: "$PKR_VAR_build_key"
 
-    # SUSE Customer Center Credentials
-    echo -e '\nSUSE Customer Center Credentials'
-    echo - PKR_VAR_scc_email: "$PKR_VAR_scc_email"
-    echo - PKR_VAR_scc_code: "$PKR_VAR_scc_code"
+	# Ansible Credentials
+	echo -e '\nAnsible Credentials'
+	echo - PKR_VAR_ansible_username: "$PKR_VAR_ansible_username"
+	echo - PKR_VAR_ansible_key: "$PKR_VAR_ansible_key"
 
-    # HCP Packer
-    echo -e '\nHCP Packer'
-    echo - PKR_VAR_common_hcp_packer_registry_enabled "$PKR_VAR_common_hcp_packer_registry_enabled"
- ;;
-    [nN][oO]|[nN])
-       ;;
-    *)
- echo -e "\n> Invalid input; skipping display of the environmental variables."
- ;;
+	# RedHat Subscription Manager Credentials
+	echo -e '\nRedHat Subscription Manager Credentials'
+	echo - PKR_VAR_rhsm_username: "$PKR_VAR_rhsm_username"
+	echo - PKR_VAR_rhsm_password: "$PKR_VAR_rhsm_password"
+
+	# SUSE Customer Center Credentials
+	echo -e '\nSUSE Customer Center Credentials'
+	echo - PKR_VAR_scc_email: "$PKR_VAR_scc_email"
+	echo - PKR_VAR_scc_code: "$PKR_VAR_scc_code"
+
+	# HCP Packer
+	echo -e '\nHCP Packer'
+	echo - PKR_VAR_common_hcp_packer_registry_enabled "$PKR_VAR_common_hcp_packer_registry_enabled"
+	;;
+[nN][oO] | [nN]) ;;
+
+*)
+	echo -e "\n> Invalid input; skipping display of the environmental variables."
+	;;
 esac

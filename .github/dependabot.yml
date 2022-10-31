@@ -1,3 +1,4 @@
+---
 # This file is auto-generated. Do not manually amend the configuration.
 # https://github.com/vmware-samples/packer-examples-for-vsphere/blob/main/.github/generate-dependabot.sh
 
@@ -18,7 +19,15 @@ updates:
     schedule:
       interval: "daily"
   - package-ecosystem: "terraform"
+    directory: "/terraform/vsphere-virtual-machine/content-library-ovf-linux-cloud-init-hcp-packer"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "terraform"
     directory: "/terraform/vsphere-virtual-machine/content-library-ovf-linux-guest-customization"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "terraform"
+    directory: "/terraform/vsphere-virtual-machine/content-library-ovf-linux-guest-customization-hcp-packer"
     schedule:
       interval: "daily"
   - package-ecosystem: "terraform"
@@ -26,7 +35,23 @@ updates:
     schedule:
       interval: "daily"
   - package-ecosystem: "terraform"
+    directory: "/terraform/vsphere-virtual-machine/content-library-ovf-windows-guest-customization-hcp-packer"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "terraform"
+    directory: "/terraform/vsphere-virtual-machine/content-library-template-linux-guest-customization-hcp-packer"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "terraform"
+    directory: "/terraform/vsphere-virtual-machine/content-library-template-windows-guest-customization-hcp-packer"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "terraform"
     directory: "/terraform/vsphere-virtual-machine/template-linux-cloud-init"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "terraform"
+    directory: "/terraform/vsphere-virtual-machine/template-linux-cloud-init-hcp-packer"
     schedule:
       interval: "daily"
   - package-ecosystem: "terraform"
@@ -34,6 +59,14 @@ updates:
     schedule:
       interval: "daily"
   - package-ecosystem: "terraform"
+    directory: "/terraform/vsphere-virtual-machine/template-linux-guest-customization-hcp-packer"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "terraform"
     directory: "/terraform/vsphere-virtual-machine/template-windows-guest-customization"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "terraform"
+    directory: "/terraform/vsphere-virtual-machine/template-windows-guest-customization-hcp-packer"
     schedule:
       interval: "daily"

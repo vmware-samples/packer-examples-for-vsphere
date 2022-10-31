@@ -27,13 +27,6 @@ variable "vsphere_insecure" {
   default     = false
 }
 
-# vSphere Settings
-
-variable "vsphere_datacenter" {
-  type        = string
-  description = "The target vSphere datacenter object name. (e.g. sfo-m01-dc01)."
-}
-
 # Roles
 
 variable "packer_vsphere_role" {

@@ -10,10 +10,12 @@ variable "vsphere_server" {
 
 variable "vsphere_username" {
   type = string
+  sensitive = true
 }
 
 variable "vsphere_password" {
   type = string
+  sensitive = true
 }
 
 variable "vsphere_insecure" {
@@ -73,14 +75,6 @@ variable "vm_firmware" {
 
 variable "vm_efi_secure_boot_enabled" {
   type = bool
-}
-
-variable "vm_hostname" {
-  type = string
-}
-
-variable "vm_domain" {
-  type = string
 }
 
 variable "vm_ipv4_address" {

@@ -50,7 +50,16 @@ artifacts/*.vmdk
 # Manifests
 ## Ignore manifests directory.
 manifests/*.json
+<<<<<<< Updated upstream
 
 # Trunk.io
 ## Ignore trunk directory.
 .trunk/*
+=======
+.trunk/actions
+.trunk/logs
+.trunk/notifications
+.trunk/out
+.trunk/plugins/trunk
+.trunk/trunk.yaml
+>>>>>>> Stashed changes

@@ -1,6 +1,6 @@
 ---
 name: Issue Greeting
-'on':
+"on":
   issues:
     types:
       - opened
@@ -24,5 +24,5 @@ jobs:
       - name: Create Comment
         uses: peter-evans/create-or-update-comment@v2
         with:
-          issue-number: '${{ github.event.issue.number }}'
-          body: '${{ steps.template.outputs.result }}'
+          issue-number: "${{ github.event.issue.number }}"
+          body: "${{ steps.template.outputs.result }}"

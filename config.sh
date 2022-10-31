@@ -8,12 +8,12 @@
 set -e
 
 follow_link() {
-  FILE="$1"
-  while [ -h "$FILE" ]; do
-    # On macOS, readlink -f doesn't work.
-    FILE="$(readlink "$FILE")"
-  done
-  echo "$FILE"
+	FILE="$1"
+	while [ -h "$FILE" ]; do
+		# On macOS, readlink -f doesn't work.
+		FILE="$(readlink "$FILE")"
+	done
+	echo "$FILE"
 }
 
 SCRIPT_PATH=$(realpath "$(dirname "$(follow_link "$0")")")
@@ -32,9 +32,9 @@ srcext=".pkrvars.hcl.example"
 dstext=".pkrvars.hcl"
 
 for f in "$CONFIG_PATH"/*"${srcext}"; do
-  bname="${f%"${srcext}"}"
-  echo "${bname}{${srcext} → ${dstext}}"
-  mv "${f}" "${bname}${dstext}"
+	bname="${f%"${srcext}"}"
+	echo "${bname}{${srcext} → ${dstext}}"
+	mv "${f}" "${bname}${dstext}"
 done
 
 echo

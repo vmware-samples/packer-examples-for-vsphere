@@ -15,9 +15,9 @@ reported the issue.
 
 Please try to include as much information as you can. Details like these are incredibly useful:
 
-* A reproducible test case or series of steps.
-* Any modifications you've made relevant to the bug.
-* Anything unusual about your environment or deployment.
+- A reproducible test case or series of steps.
+- Any modifications you've made relevant to the bug.
+- Anything unusual about your environment or deployment.
 
 ## Contributing via Pull Requests
 
@@ -47,15 +47,15 @@ GitHub provides additional document on [forking a repository](https://help.githu
 
 This is a rough outline of what a contributor's workflow looks like:
 
-* Create a topic branch from where you want to base your work.
-* Make commits of logical units.
-* Make sure your commit messages are [in the proper format](http://chris.beams.io/posts/git-commit/).
-* Push your changes to a topic branch in your fork of the repository.
-* Submit a pull request.
+- Create a topic branch from where you want to base your work.
+- Make commits of logical units.
+- Make sure your commit messages are [in the proper format](http://chris.beams.io/posts/git-commit/).
+- Push your changes to a topic branch in your fork of the repository.
+- Submit a pull request.
 
 Example:
 
-``` shell
+```shell
 git remote add upstream https://github.com/vmware-samples/packer-examples-for-vsphere.git
 git checkout -b feat/foo main
 git commit -s -a
@@ -66,7 +66,7 @@ git push origin feat/foo
 
 When your branch gets out of sync with the vmware-samples/main branch, use the following to update:
 
-``` shell
+```shell
 git checkout feat/foo
 git fetch -a
 git pull --rebase upstream main
@@ -81,7 +81,7 @@ changes into existing commits.
 If your pull request contains a single commit or your changes are related to the most recent commit, you can simply
 amend the commit.
 
-``` shell
+```shell
 git add .
 git commit --amend
 git push --force-with-lease origin feat/foo
@@ -89,7 +89,7 @@ git push --force-with-lease origin feat/foo
 
 If you need to squash changes into an earlier commit, you can use:
 
-``` shell
+```shell
 git add .
 git commit --fixup <commit>
 git rebase -i --autosquash main

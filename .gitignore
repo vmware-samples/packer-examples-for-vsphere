@@ -54,12 +54,9 @@ manifests/*.json
 
 # Trunk.io
 ## Ignore trunk directory.
-.trunk/*
-=======
 .trunk/actions
 .trunk/logs
 .trunk/notifications
 .trunk/out
 .trunk/plugins/trunk
 .trunk/trunk.yaml
->>>>>>> Stashed changes

@@ -1,30 +1,26 @@
 ---
 name: Bug Report
 description: Is something not working as expected? Submit a bug.
-title: 'REPLACE WITH A SHORT DESCRIPTION'
+title: "REPLACE WITH A SHORT DESCRIPTION"
 labels:
   - type/bug
   - status/needs-triage
-assignees:
-  - tenthirtyam
 body:
   - type: markdown
     attributes:
-      value: >
-        Before filing a bug, please search the existing issues and
-        [discussions](https://github.com/vmware-samples/packer-examples-for-vsphere/discussions)
+      value: >-
+        Before filing a bug, please search the existing issues and discussions
         relevant issues.
 
 
-        When filing a bug, please include the following information.
+        When filing an issue, please include the following information.
   - type: checkboxes
     id: terms
     attributes:
       label: Code of Conduct
       description: >-
-        This project has a [Code of
-        Conduct](https://github.com/vmware-samples/packer-examples-for-vsphere/blob/main/CODE_OF_CONDUCT.md)
-        that all participants are expected to understand and follow.
+        This project has a Code of Conduct that all participants are expected
+        to understand and follow.
       options:
         - label: I have read and agree to the project's Code of Conduct.
           required: true
@@ -83,7 +79,8 @@ body:
     id: environment
     attributes:
       label: Environment Details
-      description: Please add any information you can provide about the environment.
+      description: >-
+        Please add any information you can provide about the environment.
     validations:
       required: false
   - type: textarea
@@ -99,7 +96,7 @@ body:
     id: expected-behavior
     attributes:
       label: Expected Behavior
-      description: >
+      description: >-
         What is it you expected to happen?
 
         This should be a description of how the functionality you tried to use
@@ -111,7 +108,8 @@ body:
     id: actual-behavior
     attributes:
       label: Actual Behavior
-      description: What actually happened that's different from the expected behavior?
+      description: >-
+        What actually happened that's different from the expected behavior?
     validations:
       required: true
   - type: textarea
@@ -125,12 +123,11 @@ body:
     id: logs
     attributes:
       label: Log Fragments and Files
-      description: >
+      description: >-
         Please include appropriate log fragments. If the log is longer than a
-        few dozen lines, please include the URL to the
-        [Gist](https://gist.github.com/) of the log or use the [GitHub detailed
-        format](https://gist.github.com/ericclemmons/b146fe5da72ca1f706b2ef72a20ac39d)
-        instead of posting it directly in the issue.
+        few dozen lines, please include the URL to a 
+        [Gist](https://gist.github.com/) of the log instead of posting it
+        directly in the issue.
     validations:
       required: false
   - type: textarea
@@ -152,4 +149,15 @@ body:
       required: false
   - type: markdown
     attributes:
-      value: "## Community Note\n* Please vote on this issue by adding a \U0001F44D [reaction](https://blog.github.com/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/) to the original issue to help the community and maintainers prioritize this request\n* Please do not leave \"+1\" or other comments that do not add relevant new information or questions, they generate extra noise for issue followers and do not help prioritize the request\n* If you are interested in working on this issue or have submitted a pull request, please leave a comment.\n"
+      value: >-
+        ## Community Note
+
+        - Please vote on this issue by adding a reaction to the original issue
+        to help the community and maintainers prioritize this request.
+
+        - Please do not leave comments that do not add relevant new information
+        or questions, they generate extra noise for issue followers and do not
+        help prioritize the request
+
+        - If you are interested in working on this issue or have submitted a
+        pull request, please leave a comment.

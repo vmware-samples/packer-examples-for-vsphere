@@ -2,15 +2,15 @@
 blank_issues_enabled: false
 contact_links:
   - name: GitHub Discussions
-    url: 'https://github.com/vmware-samples/packer-examples-for-vsphere/discussions'
+    url: "https://github.com/vmware-samples/packer-examples-for-vsphere/discussions"
     about: >-
       Having trouble working with the examples? Join the discussions to ask and
       answer questions in the community.
   - name: Packer Documentation
-    url: 'https://www.packer.io/docs'
+    url: "https://developer.hashicorp.com/packer/docs"
     about: Having trouble with Packer? Check out the product documentation.
   - name: Packer Plugin for vSphere
-    url: 'https://github.com/hashicorp/packer-plugin-vsphere/issues/new/choose'
+    url: "https://github.com/hashicorp/packer-plugin-vsphere/issues/new/choose"
     about: >-
       Having trouble with the Packer Plugin for vSphere? Check out the GitHub
       Issues.

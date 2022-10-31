@@ -1,32 +1,27 @@
 ---
 name: Enhancement Request
 description: Is something critical missing? Suggest a feature or an enhancement.
-title: 'REPLACE WITH SHORT DESCRIPTION'
+title: "REPLACE WITH SHORT DESCRIPTION"
 labels:
   - type/enhancement
   - status/needs-review
-assignees:
-  - tenthirtyam
 body:
   - type: markdown
     attributes:
       value: >
         Before filing a feature, please search the existing issues and
-        [discussions](https://github.com/vmware-samples/packer-examples-for-vsphere/discussions)
-        relevant feature requests, and use the
-        [reaction](https://blog.github.com/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/)
-        feature to add up-votes to existing requests.
+        discussions for relevant feature requests. Use the reactions to add
+        up-votes to existing requests.
 
 
-        When filing an enhancement, please include the following information.
+        When filing an issue, please include the following information.
   - type: checkboxes
     id: terms
     attributes:
       label: Code of Conduct
       description: >-
-        This project has a [Code of
-        Conduct](https://github.com/vmware-samples/packer-examples-for-vspheree/blob/main/CODE_OF_CONDUCT.md)
-        that all participants are expected to understand and follow.
+        This project has a Code of Conduct that all participants are expected
+        to understand and follow.
       options:
         - label: I have read and agree to the project's Code of Conduct.
           required: true
@@ -60,4 +55,15 @@ body:
       required: false
   - type: markdown
     attributes:
-      value: "### Community Note\n* Please vote on this issue by adding a \U0001F44D [reaction](https://blog.github.com/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/) to the original issue to help the community and maintainers prioritize this request.\n* Please do not leave \"+1\" or other comments that do not add relevant new information or questions, they generate extra noise for issue followers and do not help prioritize the request.\n* If you are interested in working on this issue or have submitted a pull request, please leave a comment.\n"
+      value: >-
+        ## Community Note
+
+        - Please vote on this issue by adding a reaction to the original issue
+        to help the community and maintainers prioritize this request.
+
+        - Please do not leave comments that do not add relevant new information
+        or questions, they generate extra noise for issue followers and do not
+        help prioritize the request
+
+        - If you are interested in working on this issue or have submitted a
+        pull request, please leave a comment.

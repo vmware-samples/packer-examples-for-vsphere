@@ -57,9 +57,8 @@ body:
       value: >-
         ## Community Note
 
-        - Please vote on this issue by adding a \U0001F44D reaction to the
-        original issue to help the community and maintainers prioritize this
-        request.
+        - Please vote on this issue by adding a reaction to the original issue
+        to help the community and maintainers prioritize this request.
 
         - Please do not leave comments that do not add relevant new information
         or questions, they generate extra noise for issue followers and do not

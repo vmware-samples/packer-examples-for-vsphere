@@ -125,11 +125,9 @@ body:
       label: Log Fragments and Files
       description: >-
         Please include appropriate log fragments. If the log is longer than a
-        few dozen lines, please include the URL to the
-        [Gist](https://gist.github.com/) of the log or use the
-        [GitHub detailed format]
-        (https://gist.github.com/ericclemmons/b146fe5da72ca1f706b2ef72a20ac39d)
-        instead of posting it directly in the issue.
+        few dozen lines, please include the URL to a 
+        [Gist](https://gist.github.com/) of the log instead of posting it
+        directly in the issue.
     validations:
       required: false
   - type: textarea
@@ -154,9 +152,8 @@ body:
       value: >-
         ## Community Note
 
-        - Please vote on this issue by adding a \U0001F44D reaction to the
-        original issue to help the community and maintainers prioritize this
-        request.
+        - Please vote on this issue by adding a reaction to the original issue
+        to help the community and maintainers prioritize this request.
 
         - Please do not leave comments that do not add relevant new information
         or questions, they generate extra noise for issue followers and do not

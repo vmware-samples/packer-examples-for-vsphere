@@ -4,6 +4,8 @@ In order to have a good experience with our community, we recommend that you rea
 
 -->
 
+# <!-- Intentionally left blank. -->
+
 ## Summary of Pull Request
 
 <!--
@@ -27,9 +29,9 @@ In order to have a good experience with our community, we recommend that you rea
 ## Related to Existing Issues
 
 <!--
-  Is this related to any GitHub issue(s)? 
-  
-  For example: 
+  Is this related to any GitHub issue(s)?
+
+  For example:
   - Resolves #1234
 -->
 

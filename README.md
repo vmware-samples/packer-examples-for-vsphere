@@ -27,35 +27,35 @@ The following builds are available:
 
 ### Linux Distributions
 
-* VMware Photon OS 4
-* Debian 11
-* Ubuntu Server 22.04 LTS (cloud-init)
-* Ubuntu Server 20.04 LTS (cloud-init)
-* Ubuntu Server 18.04 LTS
-* Red Hat Enterprise Linux 9 Server
-* Red Hat Enterprise Linux 8 Server
-* Red Hat Enterprise Linux 7 Server
-* AlmaLinux OS 9
-* AlmaLinux OS 8
-* Rocky Linux 9
-* Rocky Linux 8
-* CentOS Stream 9
-* CentOS Stream 8
-* CentOS Linux 7
-* SUSE Linux Enterprise Server 15
+- VMware Photon OS 4
+- Debian 11
+- Ubuntu Server 22.04 LTS (cloud-init)
+- Ubuntu Server 20.04 LTS (cloud-init)
+- Ubuntu Server 18.04 LTS
+- Red Hat Enterprise Linux 9 Server
+- Red Hat Enterprise Linux 8 Server
+- Red Hat Enterprise Linux 7 Server
+- AlmaLinux OS 9
+- AlmaLinux OS 8
+- Rocky Linux 9
+- Rocky Linux 8
+- CentOS Stream 9
+- CentOS Stream 8
+- CentOS Linux 7
+- SUSE Linux Enterprise Server 15
 
 ### Microsoft Windows - _Core and Desktop Experience_
 
-* Microsoft Windows Server 2022 - Standard and Datacenter
-* Microsoft Windows Server 2019 - Standard and Datacenter
-* Microsoft Windows 11
-* Microsoft Windows 10
+- Microsoft Windows Server 2022 - Standard and Datacenter
+- Microsoft Windows Server 2019 - Standard and Datacenter
+- Microsoft Windows 11
+- Microsoft Windows 10
 
 > **Note**
 >
-> * The Microsoft Windows 11 machine image uses a virtual trusted platform module (vTPM). Refer to the VMware vSphere [product documenation][vsphere-tpm] for requirements and pre-requisites.
+> - The Microsoft Windows 11 machine image uses a virtual trusted platform module (vTPM). Refer to the VMware vSphere [product documenation][vsphere-tpm] for requirements and pre-requisites.
 >
-> * The Microsoft Windows 11 machine image is not transferred to the content library by default. It is **not supported** to clone an encrypted virtual machine to the content library as an OVF Template. You can adjust the common content library settings to use VM Templates.
+> - The Microsoft Windows 11 machine image is not transferred to the content library by default. It is **not supported** to clone an encrypted virtual machine to the content library as an OVF Template. You can adjust the common content library settings to use VM Templates.
 
 ## Requirements
 
@@ -63,9 +63,9 @@ The following builds are available:
 
 Operating systems and versions tested with the project:
 
-* VMware Photon OS 4 (`x86_64`)
-* Ubuntu Server 22.04 LTS and 20.04 LTS (`x86_64`)
-* macOS Monterey and Big Sur (Intel)
+- VMware Photon OS 4 (`x86_64`)
+- Ubuntu Server 22.04 LTS and 20.04 LTS (`x86_64`)
+- macOS Monterey and Big Sur (Intel)
 
 > **Note**
 >
@@ -79,86 +79,87 @@ Operating systems and versions tested with the project:
 
 **Packer**:
 
-* HashiCorp [Packer][packer-install] 1.8.3 or higher.
+- HashiCorp [Packer][packer-install] 1.8.3 or higher.
 
   > **Note**
   >
   > Click on the operating system name to display the installation steps.
 
-  * <details>
+  - <details>
       <summary>Photon OS</summary>
 
-      ```shell
-      PACKER_VERSION="1.8.3"
-      OS_PACKAGES="wget unzip"
+    ```shell
+    PACKER_VERSION="1.8.3"
+    OS_PACKAGES="wget unzip"
 
-      if [[ $(uname -m) == "x86_64" ]]; then
-        LINUX_ARCH="amd64"
-      elif [[ $(uname -m) == "aarch64" ]]; then
-        LINUX_ARCH="arm64"
-      fi
+    if [[ $(uname -m) == "x86_64" ]]; then
+      LINUX_ARCH="amd64"
+    elif [[ $(uname -m) == "aarch64" ]]; then
+      LINUX_ARCH="arm64"
+    fi
 
-      tdnf install ${OS_PACKAGES} -y
+    tdnf install ${OS_PACKAGES} -y
 
-      wget -q https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_${LINUX_ARCH}.zip
+    wget -q https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_${LINUX_ARCH}.zip
 
-      unzip -o -d /usr/local/bin/ packer_${PACKER_VERSION}_linux_${LINUX_ARCH}.zip
-      ```
+    unzip -o -d /usr/local/bin/ packer_${PACKER_VERSION}_linux_${LINUX_ARCH}.zip
+    ```
 
     </details>
 
-  * <details>
+  - <details>
       <summary>Ubuntu</summary>
 
-      The Terraform packages are signed using a private key controlled by HashiCorp, so you must configure your system to trust that HashiCorp key for package authentication.
+    The Terraform packages are signed using a private key controlled by HashiCorp, so you must configure your system to trust that HashiCorp key for package authentication.
 
-      To configure your repository:
+    To configure your repository:
 
-      ```shell
-      sudo bash -c 'wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor > /usr/share/keyrings/hashicorp-archive-keyring.gpg'
-      ```
+    ```shell
+    sudo bash -c 'wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor > /usr/share/keyrings/hashicorp-archive-keyring.gpg'
+    ```
 
-      Verify the key's fingerprint:
+    Verify the key's fingerprint:
 
-      ```shell
-      gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint
-      ```
+    ```shell
+    gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint
+    ```
 
-      The fingerprint must match E8A0 32E0 94D8 EB4E A189 D270 DA41 8C88 A321 9F7B. You can also verify the key on [Security at HashiCorp][hcp-security] under Linux Package Checksum Verification.
-      
-      Add the official HashiCorp repository to your system:
+    The fingerprint must match E8A0 32E0 94D8 EB4E A189 D270 DA41 8C88 A321 9F7B. You can also verify the key on [Security at HashiCorp][hcp-security] under Linux Package Checksum Verification.
 
-      ```shell
-      sudo bash -c 'echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
-      https://apt.releases.hashicorp.com $(lsb_release -cs) main" > /etc/apt/sources.list.d/hashicorp.list'
-      ```
+    Add the official HashiCorp repository to your system:
 
-      Install Packer from HashiCorp repository:
+    ```shell
+    sudo bash -c 'echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+    https://apt.releases.hashicorp.com $(lsb_release -cs) main" > /etc/apt/sources.list.d/hashicorp.list'
+    ```
 
-      ```shell
-      sudo apt update && sudo apt install packer
-      ```
+    Install Packer from HashiCorp repository:
+
+    ```shell
+    sudo apt update && sudo apt install packer
+    ```
+
     </details>
 
-  * <details>
+  - <details>
       <summary>macOS</summary>
 
-      ```shell
-      brew tap hashicorp/tap
+    ```shell
+    brew tap hashicorp/tap
 
-      brew install hashicorp/tap/packer
-      ```
+    brew install hashicorp/tap/packer
+    ```
 
     </details>
-* Packer plugins:
 
-    > **Note**
-    >
-    > Required plugins are automatically downloaded and initialized when using `./build.sh`. For dark sites, you may download the plugins and place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
+- Packer plugins:
 
-  * HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.8 or higher.
-  * [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.1 or higher - a community plugin for HashiCorp Packer.
+  > **Note**
+  >
+  > Required plugins are automatically downloaded and initialized when using `./build.sh`. For dark sites, you may download the plugins and place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
 
+  - HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.0.8 or higher.
+  - [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.1 or higher - a community plugin for HashiCorp Packer.
 
 **Additional Software Packages**:
 
@@ -168,98 +169,98 @@ The following additional software packages must be installed on the operating sy
 >
 > Click on the operating system name to display the installation steps for all prerequisites.
 
-  * <details>
-      <summary>Photon OS</summary>
+- <details>
+    <summary>Photon OS</summary>
 
-      * [Git][download-git] command-line tools.
+  - [Git][download-git] command-line tools.
 
-      * [Ansible][ansible-docs] 2.9 or higher.
+  - [Ansible][ansible-docs] 2.9 or higher.
 
-      * xorriso - A command-line .iso creator.
-      
-        ```shell
-        tdnf -y install git ansible xorriso
-        ```
-  
-      * HashiCorp [Terraform][terraform-install] 1.3.1 or higher.
-  
-        ```shell
-        TERRAFORM_VERSION="1.3.1"
-        OS_PACKAGES="wget unzip"
+  - xorriso - A command-line .iso creator.
 
-        if [[ $(uname -m) == "x86_64" ]]; then
-          LINUX_ARCH="amd64"
-        elif [[ $(uname -m) == "aarch64" ]]; then
-          LINUX_ARCH="arm64"
-        fi
+    ```shell
+    tdnf -y install git ansible xorriso
+    ```
 
-        tdnf install ${OS_PACKAGES} -y
+  - HashiCorp [Terraform][terraform-install] 1.3.1 or higher.
 
-        wget -q https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
+    ```shell
+    TERRAFORM_VERSION="1.3.1"
+    OS_PACKAGES="wget unzip"
 
-        unzip -o -d /usr/local/bin/ terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
-        ```
-  
+    if [[ $(uname -m) == "x86_64" ]]; then
+      LINUX_ARCH="amd64"
+    elif [[ $(uname -m) == "aarch64" ]]; then
+      LINUX_ARCH="arm64"
+    fi
+
+    tdnf install ${OS_PACKAGES} -y
+
+    wget -q https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
+
+    unzip -o -d /usr/local/bin/ terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
+    ```
+
   </details>
 
-  * <details>
-      <summary>Ubuntu</summary>
+- <details>
+    <summary>Ubuntu</summary>
 
-      * [Git][download-git] command-line tools.
+  - [Git][download-git] command-line tools.
 
-      * [Ansible][ansible-docs] 2.9 or higher.
+  - [Ansible][ansible-docs] 2.9 or higher.
 
-      * xorriso - A command-line .iso creator.
+  - xorriso - A command-line .iso creator.
 
-      * mkpasswd - Password generating utility
+  - mkpasswd - Password generating utility
 
-      * HashiCorp [Terraform][terraform-install] 1.3.1 or higher.
-  
-        ```shell
-        sudo apt -y install git ansible xorriso whois terraform
-        ```
+  - HashiCorp [Terraform][terraform-install] 1.3.1 or higher.
 
-      * [Gomplate][gomplate-install] 3.11.2 or higher.
-  
-        ```shell
-        GOMPLATE_VERSION="3.11.2"
-        LINUX_ARCH="amd64"
+    ```shell
+    sudo apt -y install git ansible xorriso whois terraform
+    ```
 
-        sudo curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-${LINUX_ARCH}
-        sudo chmod 755 /usr/local/bin/gomplate
-        ```
-  
+  - [Gomplate][gomplate-install] 3.11.2 or higher.
+
+    ```shell
+    GOMPLATE_VERSION="3.11.2"
+    LINUX_ARCH="amd64"
+
+    sudo curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-${LINUX_ARCH}
+    sudo chmod 755 /usr/local/bin/gomplate
+    ```
+
   </details>
 
-  * <details>
-      <summary>macOS</summary>
+- <details>
+    <summary>macOS</summary>
 
-      * [Git][download-git] command-line tools.
+  - [Git][download-git] command-line tools.
 
-      * [Ansible][ansible-docs] 2.9 or higher.
+  - [Ansible][ansible-docs] 2.9 or higher.
 
-      * Coreutils
-      
-      * HashiCorp [Terraform][terraform-install] 1.3.1 or higher.
-      
-      * [Gomplate][gomplate-install] 3.11.2 or higher.
+  - Coreutils
 
-        ```shell
-        brew install git ansible coreutils hashicorp/tap/terraform gomplate
-        ```
+  - HashiCorp [Terraform][terraform-install] 1.3.1 or higher.
 
-      * mkpasswd - Password generating utility
-  
-        ```shell
-        brew install --cask docker
-        ```
+  - [Gomplate][gomplate-install] 3.11.2 or higher.
+
+    ```shell
+    brew install git ansible coreutils hashicorp/tap/terraform gomplate
+    ```
+
+  - mkpasswd - Password generating utility
+
+    ```shell
+    brew install --cask docker
+    ```
 
   </details>
 
 **Platform**:
 
-* VMware vSphere 8.0
-* VMware vSphere 7.0 Update 3D or later.
+- VMware vSphere 8.0
+- VMware vSphere 7.0 Update 3D or later.
 
 ## Configuration
 
@@ -360,12 +361,12 @@ The directory structure of the repository.
 
 The files are distributed in the following directories.
 
-* **`ansible`** - contains the Ansible roles to prepare Linux machine image builds.
-* **`artifacts`** - contains the OVF artifacts exported by the builds, if enabled.
-* **`builds`** - contains the templates, variables, and configuration files for the machine image builds.
-* **`scripts`** - contains the scripts to initialize and prepare Windows machine image builds.
-* **`manifests`** - manifests created after the completion of the machine image builds.
-* **`terraform`** - contains example Terraform plans to create a custom role and test machine image builds.
+- **`ansible`** - contains the Ansible roles to prepare Linux machine image builds.
+- **`artifacts`** - contains the OVF artifacts exported by the builds, if enabled.
+- **`builds`** - contains the templates, variables, and configuration files for the machine image builds.
+- **`scripts`** - contains the scripts to initialize and prepare Windows machine image builds.
+- **`manifests`** - manifests created after the completion of the machine image builds.
+- **`terraform`** - contains example Terraform plans to create a custom role and test machine image builds.
 
 > **Warning**
 >
@@ -375,72 +376,72 @@ The files are distributed in the following directories.
 
 Create a custom vSphere role with the required privileges to integrate HashiCorp Packer with VMware vSphere. A service account can be added to the role to ensure that Packer has least privilege access to the infrastructure. Clone the default **Read-Only** vSphere role and add the following privileges:
 
-Category        | Privilege                                           | Reference
-----------------|-----------------------------------------------------|---------
-Content Library | Add library item                                    | `ContentLibrary.AddLibraryItem`
- ...            | Update Library Item                                 | `ContentLibrary.UpdateLibraryItem`
-Datastore       | Allocate space                                      | `Datastore.AllocateSpace`
-...             | Browse datastore                                    | `Datastore.Browse`
-...             | Low level file operations                           | `Datastore.FileManagement`
-Host            | Configuration > System Management                   | `Host.Config.SystemManagement`
-Network         | Assign network                                      | `Network.Assign`
-Resource        | Assign virtual machine to resource pool             | `Resource.AssignVMToPool`
-vApp            | Export                                              | `vApp.Export`
-Virtual Machine | Configuration > Add new disk                        | `VirtualMachine.Config.AddNewDisk`
-...             | Configuration > Add or remove device                | `VirtualMachine.Config.AddRemoveDevice`
-...             | Configuration > Advanced configuration              | `VirtualMachine.Config.AdvancedConfig`
-...             | Configuration > Change CPU count                    | `VirtualMachine.Config.CPUCount`
-...             | Configuration > Change memory                       | `VirtualMachine.Config.Memory`
-...             | Configuration > Change settings                     | `VirtualMachine.Config.Settings`
-...             | Configuration > Change Resource                     | `VirtualMachine.Config.Resource`
-...             | Configuration > Set annotation                      | `VirtualMachine.Config.Annotation`
-...             | Edit Inventory > Create from existing               | `VirtualMachine.Inventory.CreateFromExisting`
-...             | Edit Inventory > Create new                         | `VirtualMachine.Inventory.Create`
-...             | Edit Inventory > Remove                             | `VirtualMachine.Inventory.Delete`
-...             | Interaction > Configure CD media                    | `VirtualMachine.Interact.SetCDMedia`
-...             | Interaction > Configure floppy media                | `VirtualMachine.Interact.SetFloppyMedia`
-...             | Interaction > Connect devices                       | `VirtualMachine.Interact.DeviceConnection`
-...             | Interaction > Inject USB HID scan codes             | `VirtualMachine.Interact.PutUsbScanCodes`
-...             | Interaction > Power off                             | `VirtualMachine.Interact.PowerOff`
-...             | Interaction > Power on                              | `VirtualMachine.Interact.PowerOn`
-...             | Provisioning > Create template from virtual machine | `VirtualMachine.Provisioning.CreateTemplateFromVM`
-...             | Provisioning > Mark as template                     | `VirtualMachine.Provisioning.MarkAsTemplate`
-...             | Provisioning > Mark as virtual machine              | `VirtualMachine.Provisioning.MarkAsVM`
-...             | State > Create snapshot                             | `VirtualMachine.State.CreateSnapshot`
+| Category        | Privilege                                           | Reference                                          |
+| --------------- | --------------------------------------------------- | -------------------------------------------------- |
+| Content Library | Add library item                                    | `ContentLibrary.AddLibraryItem`                    |
+| ...             | Update Library Item                                 | `ContentLibrary.UpdateLibraryItem`                 |
+| Datastore       | Allocate space                                      | `Datastore.AllocateSpace`                          |
+| ...             | Browse datastore                                    | `Datastore.Browse`                                 |
+| ...             | Low level file operations                           | `Datastore.FileManagement`                         |
+| Host            | Configuration > System Management                   | `Host.Config.SystemManagement`                     |
+| Network         | Assign network                                      | `Network.Assign`                                   |
+| Resource        | Assign virtual machine to resource pool             | `Resource.AssignVMToPool`                          |
+| vApp            | Export                                              | `vApp.Export`                                      |
+| Virtual Machine | Configuration > Add new disk                        | `VirtualMachine.Config.AddNewDisk`                 |
+| ...             | Configuration > Add or remove device                | `VirtualMachine.Config.AddRemoveDevice`            |
+| ...             | Configuration > Advanced configuration              | `VirtualMachine.Config.AdvancedConfig`             |
+| ...             | Configuration > Change CPU count                    | `VirtualMachine.Config.CPUCount`                   |
+| ...             | Configuration > Change memory                       | `VirtualMachine.Config.Memory`                     |
+| ...             | Configuration > Change settings                     | `VirtualMachine.Config.Settings`                   |
+| ...             | Configuration > Change Resource                     | `VirtualMachine.Config.Resource`                   |
+| ...             | Configuration > Set annotation                      | `VirtualMachine.Config.Annotation`                 |
+| ...             | Edit Inventory > Create from existing               | `VirtualMachine.Inventory.CreateFromExisting`      |
+| ...             | Edit Inventory > Create new                         | `VirtualMachine.Inventory.Create`                  |
+| ...             | Edit Inventory > Remove                             | `VirtualMachine.Inventory.Delete`                  |
+| ...             | Interaction > Configure CD media                    | `VirtualMachine.Interact.SetCDMedia`               |
+| ...             | Interaction > Configure floppy media                | `VirtualMachine.Interact.SetFloppyMedia`           |
+| ...             | Interaction > Connect devices                       | `VirtualMachine.Interact.DeviceConnection`         |
+| ...             | Interaction > Inject USB HID scan codes             | `VirtualMachine.Interact.PutUsbScanCodes`          |
+| ...             | Interaction > Power off                             | `VirtualMachine.Interact.PowerOff`                 |
+| ...             | Interaction > Power on                              | `VirtualMachine.Interact.PowerOn`                  |
+| ...             | Provisioning > Create template from virtual machine | `VirtualMachine.Provisioning.CreateTemplateFromVM` |
+| ...             | Provisioning > Mark as template                     | `VirtualMachine.Provisioning.MarkAsTemplate`       |
+| ...             | Provisioning > Mark as virtual machine              | `VirtualMachine.Provisioning.MarkAsVM`             |
+| ...             | State > Create snapshot                             | `VirtualMachine.State.CreateSnapshot`              |
 
 If you would like to automate the creation of the custom vSphere role, a Terraform example is included in the project.
 
 1. Navigate to the directory for the example.
 
-    ```console
-    cd terraform/vsphere-role
-    ```
+   ```console
+   cd terraform/vsphere-role
+   ```
 
 1. Duplicate the `terraform.tfvars.example` file to `terraform.tfvars` in the directory.
 
-    ```console
-    cp terraform.tfvars.example terraform.tfvars
-    ```
+   ```console
+   cp terraform.tfvars.example terraform.tfvars
+   ```
 
 1. Open the `terraform.tfvars` file and update the variables according to your environment.
 
 1. Initialize the current directory and the required Terraform provider for VMware vSphere.
 
-    ```console
-    terraform init
-    ```
+   ```console
+   terraform init
+   ```
 
 1. Create a Terraform plan and save the output to a file.
 
-    ```console
-    terraform plan -out=tfplan
-    ```
+   ```console
+   terraform plan -out=tfplan
+   ```
 
 1. Apply the Terraform plan.
 
-    ```console
-    terraform apply tfplan
-    ```
+   ```console
+   terraform apply tfplan
+   ```
 
 Once the custom vSphere role is created, assign **Global Permissions** in vSphere for the service account that will be used for the HashiCorp Packer to VMware vSphere integration in the next step. Global permissions are required for the content library. For example:
 
@@ -448,7 +449,7 @@ Once the custom vSphere role is created, assign **Global Permissions** in vSpher
 1. Select **Menu** > **Administration**.
 1. Create service account in vSphere SSO if it does not exist: In the left pane, select **Single Sign On** > **Users and Groups** and click on **Users**, from the dropdown select the domain in which you want to create the user (_e.g.,_ rainpole.io) and click **ADD**, fill all the username (_e.g.,_ svc-packer-vsphere) and all required details, then click **ADD** to create the user.
 1. In the left pane, select **Access control** > **Global permissions** and click the **Add permissions** icon.
-1. In the **Add permissions** dialog box, enter the service account (_e.g.,_ svc-packer-vsphere@rainpole.io), select the custom role (_e.g.,_ Packer to vSphere Integration Role) and the **Propagate to children** check box, and click OK.
+1. In the **Add permissions** dialog box, enter the service account (_e.g.,_ svc-packer-vsphere@rainpole.io), select the custom role (_e.g.,_ Packer to vSphere Integration Role) and the **Propagate to children** checkbox, and click OK.
 
 In an environment with many vCenter Server instances, such as management and workload domains, you may wish to further reduce the scope of access across the infrastructure in vSphere for the service account. For example, if you do not want Packer to have access to your management domain, but only allow access to workload domains:
 
@@ -456,7 +457,7 @@ In an environment with many vCenter Server instances, such as management and wor
 
 1. Select the service account with the custom role assigned and click the **Edit**.
 
-1. In the **Change role** dialog box, from the **Role** drop-down menu, select **No Access**, select the **Propagate to children** check box, and click **OK**.
+1. In the **Change role** dialog box, from the **Role** drop-down menu, select **No Access**, select the **Propagate to children** checkbox, and click **OK**.
 
 ### Step 3 - Configure the Variables
 
@@ -493,7 +494,7 @@ For example, this is useful for the purposes of running machine image builds for
 
 Edit the `config/build.pkrvars.hcl` file to configure the following:
 
-* Credentials for the default account on machine images.
+- Credentials for the default account on machine images.
 
 **Example**: `config/build.pkrvars.hcl`
 
@@ -568,7 +569,7 @@ The content of the public key, `build_key`, is added the key to the `~/.ssh/auth
 
 Edit the `config/ansible.pkrvars.hcl` file to configure the following:
 
-* Credentials for the Ansible account on Linux machine images.
+- Credentials for the Ansible account on Linux machine images.
 
 **Example**: `config/ansible.pkrvars.hcl`
 
@@ -593,12 +594,12 @@ ansible_key = file("${path.root}/config/ssh/ansible_id_ecdsa.pub")
 
 Edit the `config/common.pkrvars.hcl` file to configure the following common variables:
 
-* Virtual Machine Settings
-* Template and Content Library Settings
-* OVF Export Settings
-* Removable Media Settings
-* Boot and Provisioning Settings
-* HCP Packer Registry
+- Virtual Machine Settings
+- Template and Content Library Settings
+- OVF Export Settings
+- Removable Media Settings
+- Boot and Provisioning Settings
+- HCP Packer Registry
 
 **Example**: `config/common.pkrvars.hcl`
 
@@ -665,8 +666,8 @@ common_http_ip = "172.16.11.254"
 
 Edit the `config/proxy.pkrvars.hcl` file to configure the following:
 
-* SOCKS proxy settings used for connecting to Linux machine images.
-* Credentials for the proxy server.
+- SOCKS proxy settings used for connecting to Linux machine images.
+- Credentials for the proxy server.
 
 **Example**: `config/proxy.pkrvars.hcl`
 
@@ -681,7 +682,7 @@ communicator_proxy_password = "<plaintext_password>"
 
 Edit the `config/redhat.pkrvars.hcl` file to configure the following:
 
-* Credentials for your Red Hat Subscription Manager account.
+- Credentials for your Red Hat Subscription Manager account.
 
 **Example**: `config/redhat.pkrvars.hcl`
 
@@ -696,23 +697,23 @@ These variables are **only** used if you are performing a Red Hat Enterprise Lin
 
 Edit the `config/scc.pkrvars.hcl` file to configure the following:
 
-* Credentials for your SUSE Customer Connect account.
+- Credentials for your SUSE Customer Connect account.
 
 **Example**: `config/scc.pkrvars.hcl`
 
 ```hcl
 scc_email = "hello@rainpole.io"
-scc_code = "<plaintext_code>"
+scc_code  = "<plaintext_code>"
 ```
 
-These variables are **only** used if you are performing a SUSE Linux Enterprise Server build and are used to register the image with SUSE Customer Connect during the build for system updates and package installation. Before the build completes, the machine image is unregistered from  SUSE Customer Connect.
+These variables are **only** used if you are performing a SUSE Linux Enterprise Server build and are used to register the image with SUSE Customer Connect during the build for system updates and package installation. Before the build completes, the machine image is unregistered from SUSE Customer Connect.
 
 ##### vSphere Variables
 
 Edit the `builds/vsphere.pkrvars.hcl` file to configure the following:
 
-* vSphere Endpoint and Credentials
-* vSphere Settings
+- vSphere Endpoint and Credentials
+- vSphere Settings
 
 **Example**: `config/vsphere.pkrvars.hcl`
 
@@ -744,20 +745,19 @@ rainpole@macos> . ./set-envvars.sh
 
 Edit the `*.auto.pkrvars.hcl` file in each `builds/<type>/<build>` folder to configure the following virtual machine hardware settings, as required:
 
-* CPUs `(int)`
-* CPU Cores `(int)`
-* Memory in MB `(int)`
-* Primary Disk in MB `(int)`
-* .iso URL `(string)`
-* .iso Path `(string)`
-* .iso File `(string)`
-* .iso Checksum Type `(string)`
-* .iso Checksum Value `(string)`
+- CPUs `(int)`
+- CPU Cores `(int)`
+- Memory in MB `(int)`
+- Primary Disk in MB `(int)`
+- .iso URL `(string)`
+- .iso Path `(string)`
+- .iso File `(string)`
+- .iso Checksum Type `(string)`
+- .iso Checksum Value `(string)`
 
-    > **Note**
-    >
-    > All `variables.auto.pkrvars.hcl` default to using the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types.
-
+  > **Note**
+  >
+  > All `variables.auto.pkrvars.hcl` default to using the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types.
 
 ### Step 4 - Guest Operating Systems ISOs
 
@@ -771,72 +771,70 @@ If you are using a datastore to store your guest operating system [`.iso`][iso] 
 
 1. Download the x64 guest operating system `.iso` files.
 
-    <details>
-    <summary>Linux Distributions:</summary>
+   <details>
+   <summary>Linux Distributions:</summary>
 
-    * VMware Photon OS 4
-        * [Download][download-linux-photon-server-4] the 4.0 Rev2 release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-xxxxxxxxx.iso`)
-    * Debian 11
-        * [Download][download-linux-debian-11] the latest **netinst** release `.iso` image. (_e.g._ `debian-11.x.0-amd64-netinst.iso`)
-    * Ubuntu Server 22.04 LTS
-        * [Download][download-linux-ubuntu-server-22-04-lts] the latest **LIVE** release `.iso` image. (_e.g.,_ `ubuntu-22.04.x-live-server-amd64.iso`)
-    * Ubuntu Server 20.04 LTS
-        * [Download][download-linux-ubuntu-server-20-04-lts] the latest **LIVE** release `.iso` image. (_e.g.,_ `ubuntu-20.04.x-live-server-amd64.iso`)
-    * Ubuntu Server 18.04 LTS
-        * [Download][download-linux-ubuntu-server-18-04-lts] the latest legacy **NON-LIVE** release `.iso` image. (_e.g.,_ `ubuntu-18.04.x-server-amd64.iso`)
-    * Red Hat Enterprise Linux 9 Server
-        * [Download][download-linux-redhat-server-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-baseos-9.x-x86_64-dvd.iso`)
-    * Red Hat Enterprise Linux 8 Server
-        * [Download][download-linux-redhat-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-8.x-x86_64-dvd1.iso`)
-    * Red Hat Enterprise Linux 7 Server
-        * [Download][download-linux-redhat-server-7] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-server-7.x-x86_64-dvd1.iso`)
-    * AlmaLinux OS 9
-        * [Download][download-linux-almalinux-server-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `AlmaLinux-9.x-x86_64-dvd1.iso`)
-    * AlmaLinux OS 8
-        * [Download][download-linux-almalinux-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `AlmaLinux-8.x-x86_64-dvd1.iso`)
-    * Rocky Linux 9
-        * [Download][download-linux-rocky-server-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `Rocky-9.x-x86_64-dvd1.iso`)
-    * Rocky Linux 8
-        * [Download][download-linux-rocky-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `Rocky-8.x-x86_64-dvd1.iso`)
-    * CentOS Stream 9
-        * [Download][download-linux-centos-stream-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-Stream-9-latest-x86_64-dvd1.iso`)
-    * CentOS Stream 8
-        * [Download][download-linux-centos-stream-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-Stream-8-x86_64-latest-dvd1.iso`)
-    * CentOS Linux 7
-        * [Download][download-linux-centos-server-7] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-7-x86_64-DVD.iso`)
-    * SUSE Linux Enterprise 15
-        * [Download][download-suse-linux-enterprise-15] the latest 15.4 release of the **FULL** `.iso` image. (_e.g.,_ `SLE-15-SP4-Full-x86_64-GM-Media1.iso`)
-    </details>
+   - VMware Photon OS 4
+     - [Download][download-linux-photon-server-4] the 4.0 Rev2 release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-xxxxxxxxx.iso`)
+   - Debian 11
+     - [Download][download-linux-debian-11] the latest **netinst** release `.iso` image. (_e.g._ `debian-11.x.0-amd64-netinst.iso`)
+   - Ubuntu Server 22.04 LTS
+     - [Download][download-linux-ubuntu-server-22-04-lts] the latest **LIVE** release `.iso` image. (_e.g.,_ `ubuntu-22.04.x-live-server-amd64.iso`)
+   - Ubuntu Server 20.04 LTS
+     - [Download][download-linux-ubuntu-server-20-04-lts] the latest **LIVE** release `.iso` image. (_e.g.,_ `ubuntu-20.04.x-live-server-amd64.iso`)
+   - Ubuntu Server 18.04 LTS
+     - [Download][download-linux-ubuntu-server-18-04-lts] the latest legacy **NON-LIVE** release `.iso` image. (_e.g.,_ `ubuntu-18.04.x-server-amd64.iso`)
+   - Red Hat Enterprise Linux 9 Server
+     - [Download][download-linux-redhat-server-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-baseos-9.x-x86_64-dvd.iso`)
+   - Red Hat Enterprise Linux 8 Server
+     - [Download][download-linux-redhat-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-8.x-x86_64-dvd1.iso`)
+   - Red Hat Enterprise Linux 7 Server
+     - [Download][download-linux-redhat-server-7] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-server-7.x-x86_64-dvd1.iso`)
+   - AlmaLinux OS 9
+     - [Download][download-linux-almalinux-server-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `AlmaLinux-9.x-x86_64-dvd1.iso`)
+   - AlmaLinux OS 8
+     - [Download][download-linux-almalinux-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `AlmaLinux-8.x-x86_64-dvd1.iso`)
+   - Rocky Linux 9
+     - [Download][download-linux-rocky-server-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `Rocky-9.x-x86_64-dvd1.iso`)
+   - Rocky Linux 8
+     - [Download][download-linux-rocky-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `Rocky-8.x-x86_64-dvd1.iso`)
+   - CentOS Stream 9
+     - [Download][download-linux-centos-stream-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-Stream-9-latest-x86_64-dvd1.iso`)
+   - CentOS Stream 8
+     - [Download][download-linux-centos-stream-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-Stream-8-x86_64-latest-dvd1.iso`)
+   - CentOS Linux 7
+     - [Download][download-linux-centos-server-7] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-7-x86_64-DVD.iso`)
+   - SUSE Linux Enterprise 15 \* [Download][download-suse-linux-enterprise-15] the latest 15.4 release of the **FULL** `.iso` image. (_e.g.,_ `SLE-15-SP4-Full-x86_64-GM-Media1.iso`)
+   </details>
 
-    <details>
-    <summary>Microsoft Windows:</summary>
+   <details>
+   <summary>Microsoft Windows:</summary>
 
-    * Microsoft Windows Server 2022
-    * Microsoft Windows Server 2019
-    * Microsoft Windows 11
-    * Microsoft Windows 10
-    </details>
-
+   - Microsoft Windows Server 2022
+   - Microsoft Windows Server 2019
+   - Microsoft Windows 11
+   - Microsoft Windows 10
+   </details>
 
 1. Obtain the checksum type (_e.g.,_ `sha256`, `md5`, etc.) and checksum value for each guest operating system `.iso` from the vendor. This will be use in the build input variables.
 
 1. [Upload][vsphere-upload] or your guest operating system `.iso` files to the datastore and update the configuration variables, leaving the `iso_url` variable as `null`.
 
-    **Example**: `config/common.pkrvars.hcl`
+   **Example**: `config/common.pkrvars.hcl`
 
-    ```hcl
-    common_iso_datastore = "sfo-w01-cl01-ds-nfs01"
-    ```
+   ```hcl
+   common_iso_datastore = "sfo-w01-cl01-ds-nfs01"
+   ```
 
-    **Example**: `builds/<type>/<build>/*.auto.pkrvars.hcl`
+   **Example**: `builds/<type>/<build>/*.auto.pkrvars.hcl`
 
-    ```hcl
-    iso_url            = null
-    iso_path           = "iso/linux/photon"
-    iso_file           = "photon-4.0-xxxxxxxxx.iso"
-    iso_checksum_type  = "md5"
-    iso_checksum_value = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-    ```
+   ```hcl
+   iso_url            = null
+   iso_path           = "iso/linux/photon"
+   iso_file           = "photon-4.0-xxxxxxxxx.iso"
+   iso_checksum_type  = "md5"
+   iso_checksum_value = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   ```
 
 #### Using a URL Source
 
@@ -844,11 +842,12 @@ If you are using a URL source to obtain your guest operating system [`.iso`][iso
 
 Update the `iso_url` variable to download the `.iso` from a URL. The `iso_url` variable takes presedence over any other `iso_*` variables.
 
-  **Example**: `builds/<type>/<build>/*.auto.pkrvars.hcl`
+**Example**: `builds/<type>/<build>/*.auto.pkrvars.hcl`
 
 ```hcl
 iso_url = "https://artifactory.rainpole.io/iso/linux/photon/4.0/x86_64/photon-4.0-xxxxxxxxx.iso"
 ```
+
 ### Step 5 - Modify the Configurations (Optional)
 
 If required, modify the configuration files for the Linux distributions and Microsoft Windows.
@@ -865,25 +864,25 @@ PowerShell scripts are used to configure the Windows machine image builds.
 
 Need help customizing the configuration files?
 
-* **VMware Photon OS** - Read the [Photon OS Kickstart Documentation][photon-kickstart].
-* **Ubuntu Server** - Install and run system-config-kickstart on a Ubuntu desktop.
+- **VMware Photon OS** - Read the [Photon OS Kickstart Documentation][photon-kickstart].
+- **Ubuntu Server** - Install and run system-config-kickstart on a Ubuntu desktop.
 
-    ```console
-    sudo apt-get install system-config-kickstart
-    ssh -X rainpole@ubuntu
-    sudo system-config-kickstart
-    ```
+  ```console
+  sudo apt-get install system-config-kickstart
+  ssh -X rainpole@ubuntu
+  sudo system-config-kickstart
+  ```
 
-* **Red Hat Enterprise Linux** (_as well as CentOS Linux/Stream, AlmaLinux OS, and Rocky Linux_) - Use the [Red Hat Kickstart Generator][redhat-kickstart].
-* **SUSE Linux Enterprise Server** - Use the [SUSE Configuration Management System][suse-autoyast].
-* **Microsoft Windows** - Use the Microsoft Windows [Answer File Generator][microsoft-windows-afg] if you need to customize the provided examples further.
+- **Red Hat Enterprise Linux** (_as well as CentOS Linux/Stream, AlmaLinux OS, and Rocky Linux_) - Use the [Red Hat Kickstart Generator][redhat-kickstart].
+- **SUSE Linux Enterprise Server** - Use the [SUSE Configuration Management System][suse-autoyast].
+- **Microsoft Windows** - Use the Microsoft Windows [Answer File Generator][microsoft-windows-afg] if you need to customize the provided examples further.
 
 ### Step 6 - Enable HCP Packer Registry (Optional)
 
 If you are new to HCP Packer, review the following documentation and video to learn more before enabling an HCP Packer registry:
 
-* [What is HCP Packer?][hcp-packer-docs]
-* [Introduction to HCP Packer][hcp-packer-intro]
+- [What is HCP Packer?][hcp-packer-docs]
+- [Introduction to HCP Packer][hcp-packer-intro]
 
 #### Create an HCP Packer Registry
 
@@ -974,16 +973,15 @@ Happy building!!!
 
 ## Troubleshoot
 
-* Read [Debugging Packer Builds][packer-debug].
+- Read [Debugging Packer Builds][packer-debug].
 
 ## Credits
 
-* Owen Reynolds [@OVDamn][credits-owen-reynolds-twitter]
+- Owen Reynolds [@OVDamn][credits-owen-reynolds-twitter]
 
-    [VMware Tools for Windows][credits-owen-reynolds-github] installation PowerShell script.
+  [VMware Tools for Windows][credits-owen-reynolds-github] installation PowerShell script.
 
 [//]: Links
-
 [ansible-docs]: https://docs.ansible.com
 [cloud-init]: https://cloudinit.readthedocs.io/en/latest/
 [credits-owen-reynolds-twitter]: https://twitter.com/OVDamn
@@ -1007,7 +1005,7 @@ Happy building!!!
 [download-linux-ubuntu-server-22-04-lts]: https://releases.ubuntu.com/22.04/
 [gomplate-install]: https://gomplate.ca/
 [hcp-packer-create]: https://learn.hashicorp.com/tutorials/packer/hcp-push-image-metadata?in=packer/hcp-get-started#create-hcp-packer-registry
-[hcp-packer-docs]: https://cloud.hashicorp.com/docs/packer
+[hcp-packer-docs]: https://developer.hashicorp.com/hcp/docs/packer
 [hcp-packer-intro]: https://www.youtube.com/watch?v=r0I4TTO957w
 [hcp-security]: https://www.hashicorp.com/security
 [iso]: https://en.wikipedia.org/wiki/ISO_image
@@ -1015,11 +1013,11 @@ Happy building!!!
 [microsoft-windows-afg]: https://www.windowsafg.com
 [microsoft-windows-unattend]: https://docs.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/
 [packer]: https://www.packer.io
-[packer-debug]: https://www.packer.io/docs/debugging
-[packer-install]: https://www.packer.io/intro/getting-started/install.html
-[packer-plugin-vsphere]: https://www.packer.io/docs/builders/vsphere/vsphere-iso
+[packer-debug]: https://developer.hashicorp.com/packer/docs/debugging
+[packer-install]: https://developer.hashicorp.com/packer/tutorials/docker-get-started/get-started-install-cli
+[packer-plugin-vsphere]: https://developer.hashicorp.com/packer/plugins/builders/vsphere/vsphere-iso
 [packer-plugin-windows-update]: https://github.com/rgl/packer-plugin-windows-update
-[packer-variables]: https://www.packer.io/docs/templates/hcl_templates/variables
+[packer-variables]: https://developer.hashicorp.com/packer/docs/templates/hcl_templates/variables
 [photon-kickstart]: https://vmware.github.io/photon/docs/user-guide/kickstart-through-http/packer-template/
 [redhat-kickstart]: https://access.redhat.com/labs/kickstartconfig/
 [suse-autoyast]: https://documentation.suse.com/sles/15-SP3/single-html/SLES-autoyast/index.html#CreateProfile-CMS

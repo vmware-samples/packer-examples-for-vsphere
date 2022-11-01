@@ -1,6 +1,5 @@
 ---
--
-  become: "yes"
+- become: "yes"
   become_method: sudo
   debugger: never
   gather_facts: "yes"

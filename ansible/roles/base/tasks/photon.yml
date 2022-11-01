@@ -9,13 +9,13 @@
   args:
     warn: false
   command: |
-      tdnf -y install \
-      minimal \
-      logrotate \
-      wget \
-      git \
-      unzip \
-      tar \
-      jq \
-      parted \
-      openssl-c_rehash
+    tdnf -y install \
+    minimal \
+    logrotate \
+    wget \
+    git \
+    unzip \
+    tar \
+    jq \
+    parted \
+    openssl-c_rehash

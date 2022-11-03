@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## .Next
+
+> Release Date: Unreleased
+
+:sweat_drops: **Chore**:
+
+- Updates `required_versions` for `packer` to `>= 1.8.4`. [GH-328](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/328)
+- Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.1.0`. [GH-329](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/329)
+- Updates `required_versions` for `terraform` to `>= 1.3.4`. [GH-330](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/330)
+- Updates `required_versions` for `hashicorp/hcp` to `>= 0.47.0`. [GH-302](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/302), [GH-303](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/303), [GH-304](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/304), [GH-305](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/305), [GH-306](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/306), [GH-307](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/302), [GH-308](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/308)
+
 ## [v22.09](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.09)
 
 > Release Date: 2022-09-28

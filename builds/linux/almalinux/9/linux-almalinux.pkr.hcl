@@ -10,7 +10,7 @@ packer {
   required_version = ">= 1.8.4"
   required_plugins {
     vsphere = {
-      version = ">= v1.0.8"
+      version = ">= v1.1.0"
       source  = "github.com/hashicorp/vsphere"
     }
   }

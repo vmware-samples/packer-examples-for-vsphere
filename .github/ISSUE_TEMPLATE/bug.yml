@@ -64,7 +64,7 @@ body:
       label: HashiCorp Packer Plugin for VMware vSphere
       description: >-
         Please provide the HashiCorp Packer Plugin for VMware vSphere version.
-      placeholder: 1.0.8
+      placeholder: 1.1.0
     validations:
       required: true
   - type: input

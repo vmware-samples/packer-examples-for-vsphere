@@ -1,0 +1,16 @@
+title = "Gitleaks Configuration"
+
+[extend]
+# useDefault will extend the base configuration with the default gitleaks config:
+# https://github.com/zricethezav/gitleaks/blob/master/config/gitleaks.toml
+useDefault = true
+
+[allowlist]
+    description = "Allowlist"
+    files = [
+    '''builds/windows/desktop/11/data/autounattend.pkrtpl.hcl''',
+    '''builds/windows/desktop/10/data/autounattend.pkrtpl.hcl''',
+    '''builds/windows/server/2022/data/autounattend.pkrtpl.hcl''',
+    '''builds/windows/server/2019/data/autounattend.pkrtpl.hcl''',
+    '''^\.gitignore$''',
+    '''^\.gitleaks.toml$''',]

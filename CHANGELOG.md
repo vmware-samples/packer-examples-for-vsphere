@@ -4,6 +4,11 @@
 
 > Release Date: Unreleased
 
+:boom: **Enhancement**:
+
+- Add support for disabling password expiration for the local administrator account on localized (non-English) Windows guest operating systems. [GH-334](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/334).
+- Add support for enabling Remote Desktop on localized (non-English) Windows guest operating systems. [GH-335](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/335).
+
 :sweat_drops: **Chore**:
 
 - Updates `required_versions` for `packer` to `>= 1.8.4`. [GH-328](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/328)

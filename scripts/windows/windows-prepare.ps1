@@ -68,4 +68,4 @@ Set-LocalUser -Name $BUILD_USERNAME -PasswordNeverExpires $true
 Write-Output "Enabling Remote Desktop..."
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0 | Out-Null
 Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 0
-Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
+Enable-NetFirewallRule -Group '@FirewallAPI.dll,-28752'

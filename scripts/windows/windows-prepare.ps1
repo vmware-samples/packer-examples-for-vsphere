@@ -60,8 +60,9 @@ New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders
 
 # Disable Password Expiration for the Administrator Accounts - (Administrator and Build)
 Write-Output "Disabling password expiration for the local Administrator accounts..."
-Set-LocalUser Administrator -PasswordNeverExpires $true
-Set-LocalUser $BUILD_USERNAME -PasswordNeverExpires $true
+$localAdministrator = (Get-LocalUser | Where-Object { $_.sid -like '*-500' }).name
+Set-LocalUser -Name $localAdministrator -PasswordNeverExpires $true
+Set-LocalUser -Name $BUILD_USERNAME -PasswordNeverExpires $true
 
 # Enable Remote Desktop.
 Write-Output "Enabling Remote Desktop..."

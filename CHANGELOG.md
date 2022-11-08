@@ -9,6 +9,10 @@
 - Add support for disabling password expiration for the local administrator account on localized (non-English) Windows guest operating systems. [GH-334](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/334).
 - Add support for enabling Remote Desktop on localized (non-English) Windows guest operating systems. [GH-335](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/335).
 
+:bug: **Bugfix**:
+
+- Fixes missing privileges for the custom role in vSphere that effected the ability to build using disk-based deployment modes and Windows 11 with vTPM. [GH-295](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/295), [GH-339](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/339), [GH-340](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/340)
+
 :sweat_drops: **Chore**:
 
 - Updates `required_versions` for `packer` to `>= 1.8.4`. [GH-328](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/328)

@@ -394,6 +394,7 @@ Create a custom vSphere role with the required privileges to integrate HashiCorp
 | ...             | Configuration > Change memory                       | `VirtualMachine.Config.Memory`                     |
 | ...             | Configuration > Change settings                     | `VirtualMachine.Config.Settings`                   |
 | ...             | Configuration > Change Resource                     | `VirtualMachine.Config.Resource`                   |
+| ...             | Configuration > Modify device settings              | `VirtualMachine.Config.EditDevice`                 |
 | ...             | Configuration > Set annotation                      | `VirtualMachine.Config.Annotation`                 |
 | ...             | Edit Inventory > Create from existing               | `VirtualMachine.Inventory.CreateFromExisting`      |
 | ...             | Edit Inventory > Create new                         | `VirtualMachine.Inventory.Create`                  |

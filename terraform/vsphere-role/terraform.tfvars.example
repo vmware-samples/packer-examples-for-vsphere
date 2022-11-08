@@ -35,6 +35,7 @@ packer_vsphere_privileges = [
   "VirtualMachine.Config.AdvancedConfig",
   "VirtualMachine.Config.Annotation",
   "VirtualMachine.Config.CPUCount",
+  "VirtualMachine.Config.EditDevice",
   "VirtualMachine.Config.Memory",
   "VirtualMachine.Config.Resource",
   "VirtualMachine.Config.Settings",

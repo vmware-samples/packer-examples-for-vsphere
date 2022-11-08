@@ -23,6 +23,8 @@ packer_vsphere_privileges = [
   "System.View",
   "ContentLibrary.AddLibraryItem",
   "ContentLibrary.UpdateLibraryItem",
+  "Cryptographer.Access",
+  "Cryptographer.Encrypt",
   "Datastore.AllocateSpace",
   "Datastore.Browse",
   "Datastore.FileManagement",

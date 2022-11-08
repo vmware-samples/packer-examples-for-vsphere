@@ -38,6 +38,7 @@ packer_vsphere_privileges = [
   "VirtualMachine.Config.Memory",
   "VirtualMachine.Config.Resource",
   "VirtualMachine.Config.Settings",
+  "VirtualMachine.Config.EditDevice",
   "VirtualMachine.Interact.DeviceConnection",
   "VirtualMachine.Interact.PowerOff",
   "VirtualMachine.Interact.PowerOn",

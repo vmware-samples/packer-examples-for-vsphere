@@ -6,7 +6,7 @@
 // Guest Operating Systtem Metadata
 vm_guest_os_family  = "linux"
 vm_guest_os_name    = "photon"
-vm_guest_os_version = "4"
+vm_guest_os_version = "4.0"
 
 // Virtual Machine Guest Operating Systtem Setting
 vm_guest_os_type = "vmwarePhoton64Guest"

@@ -9,7 +9,7 @@ vm_guest_os_keyboard = "us"
 vm_guest_os_timezone = "UTC"
 vm_guest_os_family   = "linux"
 vm_guest_os_name     = "debian"
-vm_guest_os_version  = "11"
+vm_guest_os_version  = "11.5"
 
 // Virtual Machine Guest Operating System Setting
 vm_guest_os_type = "other4xLinux64Guest"

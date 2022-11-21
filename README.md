@@ -778,9 +778,9 @@ If you are using a datastore to store your guest operating system [`.iso`][iso] 
    <summary>Linux Distributions:</summary>
 
    - VMware Photon OS 4
-     - [Download][download-linux-photon-server-4] the 4.0 Rev2 release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-xxxxxxxxx.iso`)
+     - [Download][download-linux-photon-server-4] the latest release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-xxxxxxxxx.iso`)
    - Debian 11
-     - [Download][download-linux-debian-11] the latest **netinst** release `.iso` image. (_e.g._ `debian-11.x.0-amd64-netinst.iso`)
+     - [Download][download-linux-debian-11] the 11.5 **netinst** release `.iso` image. (_e.g._ `debian-11.x.0-amd64-netinst.iso`)
    - Ubuntu Server 22.04 LTS
      - [Download][download-linux-ubuntu-server-22-04-lts] the latest **LIVE** release `.iso` image. (_e.g.,_ `ubuntu-22.04.x-live-server-amd64.iso`)
    - Ubuntu Server 20.04 LTS
@@ -802,9 +802,9 @@ If you are using a datastore to store your guest operating system [`.iso`][iso] 
    - Rocky Linux 8
      - [Download][download-linux-rocky-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `Rocky-8.x-x86_64-dvd1.iso`)
    - CentOS Stream 9
-     - [Download][download-linux-centos-stream-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-Stream-9-latest-x86_64-dvd1.iso`)
+     - [Download][download-linux-centos-stream-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-Stream-9-xxxxxxxx.x-x86_64-dvd1.iso`)
    - CentOS Stream 8
-     - [Download][download-linux-centos-stream-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-Stream-8-x86_64-latest-dvd1.iso`)
+     - [Download][download-linux-centos-stream-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-Stream-8-x86_64-xxxxxxxx-dvd1.iso`)
    - CentOS Linux 7
      - [Download][download-linux-centos-server-7] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-7-x86_64-DVD.iso`)
    - SUSE Linux Enterprise 15 \* [Download][download-suse-linux-enterprise-15] the latest 15.4 release of the **FULL** `.iso` image. (_e.g.,_ `SLE-15-SP4-Full-x86_64-GM-Media1.iso`)
@@ -998,8 +998,8 @@ Happy building!!!
 [download-linux-debian-11]: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/
 [download-linux-photon-server-4]: https://packages.vmware.com/photon/4.0/
 [download-linux-redhat-server-7]: https://access.redhat.com/downloads/content/69/ver=/rhel---7/7.9/x86_64/product-software
-[download-linux-redhat-server-8]: https://access.redhat.com/downloads/content/479/ver=/rhel---8/8.6/x86_64/product-software
-[download-linux-redhat-server-9]: https://access.redhat.com/downloads/content/479/ver=/rhel---9/9.0/x86_64/product-software
+[download-linux-redhat-server-8]: https://access.redhat.com/downloads/content/479/ver=/rhel---8/8.7/x86_64/product-software
+[download-linux-redhat-server-9]: https://access.redhat.com/downloads/content/479/ver=/rhel---9/9.1/x86_64/product-software
 [download-linux-rocky-server-9]: https://download.rockylinux.org/pub/rocky/9/isos/x86_64/
 [download-linux-rocky-server-8]: https://download.rockylinux.org/pub/rocky/8/isos/x86_64/
 [download-suse-linux-enterprise-15]: https://www.suse.com/download/sles/#

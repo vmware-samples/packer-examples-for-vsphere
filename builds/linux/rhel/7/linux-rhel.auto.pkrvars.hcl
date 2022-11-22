@@ -9,7 +9,7 @@ vm_guest_os_keyboard = "us"
 vm_guest_os_timezone = "UTC"
 vm_guest_os_family   = "linux"
 vm_guest_os_name     = "rhel"
-vm_guest_os_version  = "7"
+vm_guest_os_version  = "7.9"
 
 // Virtual Machine Guest Operating System Setting
 vm_guest_os_type = "rhel7_64Guest"
@@ -32,7 +32,7 @@ iso_url            = null
 iso_path           = "iso/linux/rhel"
 iso_file           = "rhel-server-7.9-x86_64-dvd.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "19d653ce2f04f202e79773a0cbeda82070e7527557e814ebbce658773fbe8191"
+iso_checksum_value = "2cb36122a74be084c551bc7173d2d38a1cfb75c8ffbc1489c630c916d1b31b25"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

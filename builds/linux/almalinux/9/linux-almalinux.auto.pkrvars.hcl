@@ -9,7 +9,7 @@ vm_guest_os_keyboard = "us"
 vm_guest_os_timezone = "UTC"
 vm_guest_os_family   = "linux"
 vm_guest_os_name     = "almalinux"
-vm_guest_os_version  = "9"
+vm_guest_os_version  = "9.1"
 
 // Virtual Machine Guest Operating System Setting
 vm_guest_os_type = "other5xLinux64Guest"
@@ -30,9 +30,9 @@ vm_network_card          = "vmxnet3"
 // Removable Media Settings
 iso_url            = null
 iso_path           = "iso/linux/almalinux"
-iso_file           = "AlmaLinux-9.0-x86_64-dvd.iso"
+iso_file           = "AlmaLinux-9.1-x86_64-dvd.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "6617436f8f2ee5408ff448a4eedce4ce61e2fdb3153a646b875010256bc9fd6b"
+iso_checksum_value = "2a44e3f8a012c132da19b9aae2bf949e20b116f0a2a7ac3eca111972f4ac952f"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

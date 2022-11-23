@@ -220,10 +220,10 @@ The following additional software packages must be installed on the operating sy
     sudo apt -y install git ansible xorriso whois terraform
     ```
 
-  - [Gomplate][gomplate-install] 3.11.2 or higher.
+  - [Gomplate][gomplate-install] 3.11.3 or higher.
 
     ```shell
-    GOMPLATE_VERSION="3.11.2"
+    GOMPLATE_VERSION="3.11.3"
     LINUX_ARCH="amd64"
 
     sudo curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-${LINUX_ARCH}

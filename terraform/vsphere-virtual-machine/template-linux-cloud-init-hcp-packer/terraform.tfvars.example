@@ -19,7 +19,7 @@ vsphere_network    = "w01-172.16.100.0"
 
 # HCP Packer Settings
 
-hcp_packer_bucket_name = "linux-ubuntu-2204lts"
+hcp_packer_bucket_name = "linux-ubuntu-2204-lts"
 hcp_packer_channel     = "stable"
 
 # Virtual Machines Settings

@@ -67,15 +67,6 @@ Operating systems and versions tested with the project:
 - Ubuntu Server 22.04 LTS and 20.04 LTS (`x86_64`)
 - macOS Monterey and Big Sur (Intel)
 
-> **Note**
->
-> Update your `/etc/ssh/ssh_config` or `~/.ssh/ssh_config` to allow ssh authentication with RSA keys if you are using VMware Photon OS 4.0 or Ubuntu 22.04.
->
-> Update to include the following:
->
-> `HostKeyAlgorithms +ssh-rsa`
-> `PubKeyAcceptedAlgorithms +ssh-rsa`
-
 **Packer**:
 
 - HashiCorp [Packer][packer-install] 1.8.4 or higher.

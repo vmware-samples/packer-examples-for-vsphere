@@ -73,9 +73,8 @@ Operating systems and versions tested with the project:
 >
 > Update to include the following:
 >
-> `PubkeyAcceptedAlgorithms ssh-rsa`
->
-> `HostkeyAlgorithms ssh-rsa`
+> `HostKeyAlgorithms +ssh-rsa`
+> `PubKeyAcceptedAlgorithms +ssh-rsa`
 
 **Packer**:
 

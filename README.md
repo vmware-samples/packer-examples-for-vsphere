@@ -243,7 +243,7 @@ The following additional software packages must be installed on the operating sy
 
   - HashiCorp [Terraform][terraform-install] 1.3.5 or higher.
 
-  - [Gomplate][gomplate-install] 3.11.2 or higher.
+  - [Gomplate][gomplate-install] 3.11.3 or higher.
 
     ```shell
     brew install git ansible coreutils hashicorp/tap/terraform gomplate

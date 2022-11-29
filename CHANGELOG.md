@@ -13,10 +13,15 @@
 
 - Fixes missing privileges for the custom role in vSphere that effected the ability to build using disk-based deployment modes and Windows 11 22H2 with vTPM. [GH-295](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/295), [GH-339](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/339), [GH-340](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/340)
 
+:page_facing_up: **Documenation**:
+
+- Updates syntax to append RSA algorithm to `HostKeyAlgorithms +ssh-rsa` and`PubKeyAcceptedAlgorithms +ssh-rsa`. [GH-386](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/386)
+
 :sweat_drops: **Chore**:
 
 - Updates Red Hat Enterprise Linux 9 to 9.1 release. [GH-366](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/366)
 - Updates Red Hat Enterprise Linux 8 to 8.7 release. [GH-365](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/365)
+- Updates Rocky Linux 9 to 9.1 release. [GH-381](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/381)
 - Updates Rocky Linux 8 to 8.7 release. [GH-368](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/368)
 - Updates Almalinux 9 to 9.1 release. [GH-362](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/362)
 - Updates Almalinux 8 to 8.7 release. [GH-361](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/361)
@@ -30,6 +35,7 @@
 - Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.1.0`. [GH-329](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/329)
 - Updates `required_versions` for `terraform` to `>= 1.3.5`. [GH-378](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/378)
 - Updates `required_versions` for `hashicorp/hcp` to `>= 0.49.0`. [GH-352](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/352), [GH-353](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/353), [GH-354](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/354), [GH-355](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/355), [GH-356](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/356), [GH-357](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/352), [GH-358](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/358), [GH-359](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/359)
+- Updates Gomplate to `3.11.3`. [GH-380](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/380), [GH-382](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/382)
 
 ## [v22.09](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.09)
 
@@ -81,7 +87,7 @@
 
 > **Note**
 >
-> - HTTP-based deployment only. Disk-based deployment planned.
+> - HTTP-based deployment only.
 
 ## [v22.07](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.07)
 
@@ -116,7 +122,7 @@
 
 > **Note**
 >
-> - Supports 15.3 / 15 Service Pack 3. 15.4 planned.
+> - Supports 15.3 / 15 Service Pack 3.
 > - HTTP-based deployment only. Disk-based deployment planned.
 
 ## [v22.06](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.06)
@@ -151,16 +157,6 @@
 - Updates Windows 11 to May 2022 (US English) release.
 - Updates requirements to include VMware Photon OS 4 as a tested operating system.
 - Updates requirements to include Ubuntu 22.04 as a tested operating system.
-
-  > **Note**
-  >
-  > You may be required to update your `/etc/ssh/ssh_config` or `.ssh/ssh_config` to allow authentication with RSA keys if you are using VMware Photon OS 4.0 or Ubuntu 22.04.
-  >
-  > Update to include the following:
-  >
-  > `PubkeyAcceptedAlgorithms ssh-rsa`
-  >
-  > `HostkeyAlgorithms ssh-rsa`
 
 ## [v22.04](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.04)
 

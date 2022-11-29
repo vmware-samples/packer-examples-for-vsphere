@@ -175,10 +175,12 @@ The following additional software packages must be installed on the operating sy
 
   - [Ansible][ansible-docs] 2.9 or higher.
 
+  - [jq][jq] A command-line JSON processor.
+
   - xorriso - A command-line .iso creator.
 
     ```shell
-    tdnf -y install git ansible xorriso
+    tdnf -y install git ansible jq xorriso
     ```
 
   - HashiCorp [Terraform][terraform-install] 1.3.5 or higher.
@@ -209,6 +211,8 @@ The following additional software packages must be installed on the operating sy
 
   - [Ansible][ansible-docs] 2.9 or higher.
 
+  - [jq][jq] A command-line JSON processor.
+
   - xorriso - A command-line .iso creator.
 
   - mkpasswd - Password generating utility
@@ -216,7 +220,7 @@ The following additional software packages must be installed on the operating sy
   - HashiCorp [Terraform][terraform-install] 1.3.5 or higher.
 
     ```shell
-    sudo apt -y install git ansible xorriso whois terraform
+    sudo apt -y install git ansible jq xorriso whois terraform
     ```
 
   - [Gomplate][gomplate-install] 3.11.3 or higher.
@@ -238,6 +242,8 @@ The following additional software packages must be installed on the operating sy
 
   - [Ansible][ansible-docs] 2.9 or higher.
 
+  - [jq][jq] A command-line JSON processor.
+
   - Coreutils
 
   - HashiCorp [Terraform][terraform-install] 1.3.5 or higher.
@@ -245,7 +251,7 @@ The following additional software packages must be installed on the operating sy
   - [Gomplate][gomplate-install] 3.11.3 or higher.
 
     ```shell
-    brew install git ansible coreutils hashicorp/tap/terraform gomplate
+    brew install git ansible jq coreutils hashicorp/tap/terraform gomplate
     ```
 
   - mkpasswd - Password generating utility
@@ -263,16 +269,42 @@ The following additional software packages must be installed on the operating sy
 
 ## Configuration
 
-### Step 1 - Download the Release
+### Step 1 - Download the Source
 
-Download the [**latest**](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/latest) release.
+You can choose between two options to get the source code. Either via the checkout of a Git repository or the download of a release archive.
 
-You may also clone `main` for the latest prerelease updates.
 
-**Example**:
+> **Warning**
+>
+> A branch is mandatory because it is used for the build version and the virtual machine name. It does not matter if it is based on the HEAD or a release tag.
 
-```console
+#### Clone the Repository
+
+```shell
+TAG_NAME=$(curl -s https://api.github.com/repos/vmware-samples/packer-examples-for-vsphere/releases | jq  -r '.[0].tag_name')
+
 git clone https://github.com/vmware-samples/packer-examples-for-vsphere.git
+cd packer-examples-for-vsphere
+git switch -c $TAG_NAME $TAG_NAME
+```
+
+> **Note**
+>
+> You may also clone `main` for the latest prerelease updates.
+
+#### Download the latest release
+
+```shell
+TAG_NAME=$(curl -s https://api.github.com/repos/vmware-samples/packer-examples-for-vsphere/releases | jq  -r '.[0].tag_name')
+TARBALL_URL=$(curl -s https://api.github.com/repos/vmware-samples/packer-examples-for-vsphere/releases | jq  -r '.[0].tarball_url')
+
+mkdir packer-examples-for-vsphere
+cd packer-examples-for-vsphere
+curl -sL $TARBALL_URL | tar xvfz - --strip-components 1
+git init -b main
+git add .
+git commit -m "Initial commit"
+git switch -c $TAG_NAME HEAD
 ```
 
 The directory structure of the repository.
@@ -1011,6 +1043,7 @@ Happy building!!!
 [hcp-packer-intro]: https://www.youtube.com/watch?v=r0I4TTO957w
 [hcp-security]: https://www.hashicorp.com/security
 [iso]: https://en.wikipedia.org/wiki/ISO_image
+[jq]: https://stedolan.github.io/jq/
 [microsoft-kms]: https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys
 [microsoft-windows-afg]: https://www.windowsafg.com
 [microsoft-windows-unattend]: https://docs.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/

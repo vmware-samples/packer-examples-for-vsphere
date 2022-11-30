@@ -15,7 +15,13 @@
 
 :page_facing_up: **Documenation**:
 
+- Updates options to download a release or clone the project. [GH-385](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/385)
 - Updates syntax to append RSA algorithm to `HostKeyAlgorithms +ssh-rsa` and`PubKeyAcceptedAlgorithms +ssh-rsa`. [GH-386](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/386)
+
+:wrench: **Refactor**:
+
+- Refactors builds to use the current Git branch / tag as the `build_version` local varaible used for virtual machine image names and descriptions. [GH-385](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/385) \* Contributed by [dhoppe](https://github.com/dhoppe) :rocket:
+
 
 :sweat_drops: **Chore**:
 

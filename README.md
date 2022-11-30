@@ -158,6 +158,7 @@ Operating systems and versions tested with the project:
   > Required plugins are automatically downloaded and initialized when using `./build.sh`. For dark sites, you may download the plugins and place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
 
   - HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.1.0 or higher.
+  - [Packer Plugin for Git][packer-plugin-git] 0.3.2 or higher - a community plugin for HashiCorp Packer.
   - [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.1 or higher - a community plugin for HashiCorp Packer.
 
 **Additional Software Packages**:
@@ -175,10 +176,12 @@ The following additional software packages must be installed on the operating sy
 
   - [Ansible][ansible-docs] 2.9 or higher.
 
+  - [jq][jq] A command-line JSON processor.
+
   - xorriso - A command-line .iso creator.
 
     ```shell
-    tdnf -y install git ansible xorriso
+    tdnf -y install git ansible jq xorriso
     ```
 
   - HashiCorp [Terraform][terraform-install] 1.3.5 or higher.
@@ -209,6 +212,8 @@ The following additional software packages must be installed on the operating sy
 
   - [Ansible][ansible-docs] 2.9 or higher.
 
+  - [jq][jq] A command-line JSON processor.
+
   - xorriso - A command-line .iso creator.
 
   - mkpasswd - Password generating utility
@@ -216,7 +221,7 @@ The following additional software packages must be installed on the operating sy
   - HashiCorp [Terraform][terraform-install] 1.3.5 or higher.
 
     ```shell
-    sudo apt -y install git ansible xorriso whois terraform
+    sudo apt -y install git ansible jq xorriso whois terraform
     ```
 
   - [Gomplate][gomplate-install] 3.11.3 or higher.
@@ -238,6 +243,8 @@ The following additional software packages must be installed on the operating sy
 
   - [Ansible][ansible-docs] 2.9 or higher.
 
+  - [jq][jq] A command-line JSON processor.
+
   - Coreutils
 
   - HashiCorp [Terraform][terraform-install] 1.3.5 or higher.
@@ -245,7 +252,7 @@ The following additional software packages must be installed on the operating sy
   - [Gomplate][gomplate-install] 3.11.3 or higher.
 
     ```shell
-    brew install git ansible coreutils hashicorp/tap/terraform gomplate
+    brew install git ansible jq coreutils hashicorp/tap/terraform gomplate
     ```
 
   - mkpasswd - Password generating utility
@@ -263,17 +270,45 @@ The following additional software packages must be installed on the operating sy
 
 ## Configuration
 
-### Step 1 - Download the Release
+### Step 1 - Download the Source
 
-Download the [**latest**](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/latest) release.
+You can choose between two options to get the source code:
 
-You may also clone `main` for the latest prerelease updates.
+1. [Download the Release Archive](#download-the-latest-release)
+1. [Clone the Repository](#clone-the-repository)
 
-**Example**:
+#### Download the Latest Release
 
 ```console
-git clone https://github.com/vmware-samples/packer-examples-for-vsphere.git
+TAG_NAME=$(curl -s https://api.github.com/repos/vmware-samples/packer-examples-for-vsphere/releases | jq  -r '.[0].tag_name')
+TARBALL_URL=$(curl -s https://api.github.com/repos/vmware-samples/packer-examples-for-vsphere/releases | jq  -r '.[0].tarball_url')
+
+mkdir packer-examples-for-vsphere
+cd packer-examples-for-vsphere
+curl -sL $TARBALL_URL | tar xvfz - --strip-components 1
+git init -b main
+git add .
+git commit -m "Initial commit"
+git switch -c $TAG_NAME HEAD
 ```
+
+#### Clone the Repository
+
+> **Note**
+>
+> You may also clone `main` for the latest prerelease updates.
+
+```console
+TAG_NAME=$(curl -s https://api.github.com/repos/vmware-samples/packer-examples-for-vsphere/releases | jq  -r '.[0].tag_name')
+
+git clone https://github.com/vmware-samples/packer-examples-for-vsphere.git
+cd packer-examples-for-vsphere
+git switch -c $TAG_NAME $TAG_NAME
+```
+
+> **Warning**
+>
+> A branch is mandatory because it is used for the build version and the virtual machine name. It does not matter if it is based on the HEAD or a release tag.
 
 The directory structure of the repository.
 
@@ -1011,12 +1046,14 @@ Happy building!!!
 [hcp-packer-intro]: https://www.youtube.com/watch?v=r0I4TTO957w
 [hcp-security]: https://www.hashicorp.com/security
 [iso]: https://en.wikipedia.org/wiki/ISO_image
+[jq]: https://stedolan.github.io/jq/
 [microsoft-kms]: https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys
 [microsoft-windows-afg]: https://www.windowsafg.com
 [microsoft-windows-unattend]: https://docs.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/
 [packer]: https://www.packer.io
 [packer-debug]: https://developer.hashicorp.com/packer/docs/debugging
 [packer-install]: https://developer.hashicorp.com/packer/tutorials/docker-get-started/get-started-install-cli
+[packer-plugin-git]: https://github.com/ethanmdavidson/packer-plugin-git
 [packer-plugin-vsphere]: https://developer.hashicorp.com/packer/plugins/builders/vsphere/vsphere-iso
 [packer-plugin-windows-update]: https://github.com/rgl/packer-plugin-windows-update
 [packer-variables]: https://developer.hashicorp.com/packer/docs/templates/hcl_templates/variables

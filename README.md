@@ -277,11 +277,6 @@ You can choose between two options to get the source code:
 1. [Download the Release Archive](#download-the-latest-release)
 1. [Clone the Repository](#clone-the-repository)
 
-   > **Warning**
-   >
-   > A branch is mandatory because it is used for the build version and the virtual machine name. It does not matter if it is based on the HEAD or a release tag.
-
-
 #### Download the Latest Release
 
 ```console

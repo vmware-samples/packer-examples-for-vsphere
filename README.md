@@ -69,12 +69,12 @@ Operating systems and versions tested with the project:
 
 > **Note**
 >
-> Update your `/etc/ssh/ssh_config` or `~/.ssh/ssh_config` to allow ssh authentication with RSA keys if you are using VMware Photon OS 4.0 or Ubuntu 22.04.
+> If your [Ansible][ansible-ssh-connection] control node already uses OpenSSH >= 9.0 you must add an additional option to enable scp (scp_extra_args="-O").
 >
-> Update to include the following:
+> Update the `packer-examples-for-vsphere/ansible/ansible.cfg` to include the following:
 >
-> `HostKeyAlgorithms +ssh-rsa`
-> `PubKeyAcceptedAlgorithms +ssh-rsa`
+> `[ssh_connection]` \
+> `scp_extra_args = "-O"`
 
 **Packer**:
 
@@ -1020,6 +1020,7 @@ Happy building!!!
 
 [//]: Links
 [ansible-docs]: https://docs.ansible.com
+[ansible-ssh-connection]: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/ssh_connection.html#parameter-scp_if_ssh
 [cloud-init]: https://cloudinit.readthedocs.io/en/latest/
 [credits-owen-reynolds-twitter]: https://twitter.com/OVDamn
 [credits-owen-reynolds-github]: https://github.com/getvpro/Build-Packer/blob/master/Scripts/Install-VMTools.ps1

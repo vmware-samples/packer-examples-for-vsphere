@@ -6,8 +6,9 @@
 
 :boom: **Enhancement**:
 
-- Add support for disabling password expiration for the local administrator account on localized (non-English) Windows guest operating systems. [GH-334](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/334).
-- Add support for enabling Remote Desktop on localized (non-English) Windows guest operating systems. [GH-335](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/335).
+- Adds support for disabling password expiration for the local administrator account on localized (non-English) Windows guest operating systems. [GH-334](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/334).
+- Adds support for enabling Remote Desktop on localized (non-English) Windows guest operating systems. [GH-335](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/335).
+- Adds support to allow SSH authentication with RSA keys for Ansible, if necessary. Adds a note related to OpenSSH >= 9.0 in the documentation. [GH-387](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/387).
 
 :bug: **Bugfix**:
 
@@ -21,7 +22,6 @@
 :wrench: **Refactor**:
 
 - Refactors builds to use the current Git branch / tag as the `build_version` local varaible used for virtual machine image names and descriptions. [GH-385](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/385) \* Contributed by [dhoppe](https://github.com/dhoppe) :rocket:
-
 
 :sweat_drops: **Chore**:
 
@@ -42,6 +42,7 @@
 - Updates `required_versions` for `terraform` to `>= 1.3.6`. [GH-391](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/391)
 - Updates `required_versions` for `hashicorp/hcp` to `>= 0.49.0`. [GH-352](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/352), [GH-353](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/353), [GH-354](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/354), [GH-355](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/355), [GH-356](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/356), [GH-357](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/352), [GH-358](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/358), [GH-359](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/359)
 - Updates Gomplate to `3.11.3`. [GH-380](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/380), [GH-382](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/382)
+- Removes Ubuntu 20.04 LTS (`x86_64`) and macOS Big Sur (Intel) as tested operating systems for the Packer host. [GH-393](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/393)
 
 ## [v22.09](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.09)
 

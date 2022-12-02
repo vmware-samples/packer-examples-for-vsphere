@@ -5,7 +5,7 @@
 - name: "Configure the {{ ansible_facts['distribution'] }} guest operating system."
   include_tasks: "{{ ansible_facts['distribution'] | lower }}.yml"
   when: "ansible_facts['distribution'] == 'Ubuntu'"
-- name: "Configure the {{ ansible_facts['distribution'] }} ansible_facts['os_family']."
+- name: "Configure the {{ ansible_facts['distribution'] }} guest operating system."
   include_tasks: redhat.yml
   when: "ansible_facts['distribution'] in ['RedHat', 'CentOS', 'Rocky', 'AlmaLinux']"
 - name: "Configure the {{ ansible_facts['os_family'] }} guest operating system."

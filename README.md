@@ -1,9 +1,7 @@
-# HashiCorp Packer and VMware vSphere to Build Private Cloud Machine Images
+# Packer Examples for VMware vSphere
 
-![Last Commit](https://img.shields.io/github/last-commit/vmware-samples/packer-examples-for-vsphere?style=for-the-badge&logo=github)
-
-[![The Changelog](https://img.shields.io/badge/The%20Changelog-Read-blue?style=for-the-badge&logo=github)](CHANGELOG.md)
-
+![Last Commit](https://img.shields.io/github/last-commit/vmware-samples/packer-examples-for-vsphere?style=for-the-badge&logo=github)&nbsp;&nbsp;
+[![The Changelog](https://img.shields.io/badge/The%20Changelog-Read-blue?style=for-the-badge&logo=github)](CHANGELOG.md)&nbsp;&nbsp;
 ![Packer 1.8.4+](https://img.shields.io/badge/HashiCorp%20Packer-1.8.4+-blue?style=for-the-badge&logo=packer&logoColor=white)
 
 ## Table of Contents
@@ -172,16 +170,18 @@ The following additional software packages must be installed on the operating sy
 - <details>
     <summary>Photon OS</summary>
 
-  - [Git][download-git] command-line tools.
+  - [git][download-git] command-line tools.
 
-  - [Ansible][ansible-docs] 2.9 or higher.
+  - [ansible-core][ansible-docs] 2.13.
 
   - [jq][jq] A command-line JSON processor.
 
   - xorriso - A command-line .iso creator.
 
     ```shell
-    tdnf -y install git ansible jq xorriso
+    pip3 install --user ansible-core==2.13
+    export PATH="$HOME/.local/bin:$PATH"
+    tdnf -y install git jq xorriso
     ```
 
   - HashiCorp [Terraform][terraform-install] 1.3.6 or higher.
@@ -208,9 +208,9 @@ The following additional software packages must be installed on the operating sy
 - <details>
     <summary>Ubuntu</summary>
 
-  - [Git][download-git] command-line tools.
+  - [git][download-git] command-line tools.
 
-  - [Ansible][ansible-docs] 2.9 or higher.
+  - [ansible-core][ansible-docs] 2.13.
 
   - [jq][jq] A command-line JSON processor.
 
@@ -221,10 +221,11 @@ The following additional software packages must be installed on the operating sy
   - HashiCorp [Terraform][terraform-install] 1.3.6 or higher.
 
     ```shell
-    sudo apt -y install git ansible jq xorriso whois terraform
+    pip3 install --user ansible-core==2.13
+    sudo apt -y install git jq xorriso whois terraform
     ```
 
-  - [Gomplate][gomplate-install] 3.11.3 or higher.
+  - [gomplate][gomplate-install] 3.11.3 or higher.
 
     ```shell
     GOMPLATE_VERSION="3.11.3"
@@ -239,9 +240,9 @@ The following additional software packages must be installed on the operating sy
 - <details>
     <summary>macOS</summary>
 
-  - [Git][download-git] command-line tools.
+  - [git][download-git] command-line tools.
 
-  - [Ansible][ansible-docs] 2.9 or higher.
+  - [ansible-core][ansible-docs] 2.13.
 
   - [jq][jq] A command-line JSON processor.
 
@@ -249,10 +250,11 @@ The following additional software packages must be installed on the operating sy
 
   - HashiCorp [Terraform][terraform-install] 1.3.6 or higher.
 
-  - [Gomplate][gomplate-install] 3.11.3 or higher.
+  - [gomplate][gomplate-install] 3.11.3 or higher.
 
     ```shell
-    brew install git ansible jq coreutils hashicorp/tap/terraform gomplate
+    pip3 install --user ansible-core==2.13
+    brew install git jq coreutils hashicorp/tap/terraform gomplate
     ```
 
   - mkpasswd - Password generating utility
@@ -265,7 +267,6 @@ The following additional software packages must be installed on the operating sy
 
 **Platform**:
 
-- VMware vSphere 8.0
 - VMware vSphere 7.0 Update 3D or later.
 
 ## Configuration

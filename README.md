@@ -63,16 +63,18 @@ Operating systems and versions tested with the project:
 
 - VMware Photon OS 4.0 (`x86_64`)
 - Ubuntu Server 22.04 LTS (`x86_64`)
-- macOS Monterey (Intel)
+- macOS Monterey and Ventura (Intel)
 
 > **Note**
 >
-> If your [Ansible][ansible-ssh-connection] control node already uses OpenSSH >= 9.0 you must add an additional option to enable scp (scp_extra_args="-O").
+> If your [Ansible][ansible-ssh-connection] control node already uses OpenSSH >= 9.0 (_e.g._, macOS Ventura) you must add an additional option to enable scp.
 >
-> Update the `packer-examples-for-vsphere/ansible/ansible.cfg` to include the following:
+> Update the `ansible/ansible.cfg` to include the following:
 >
-> `[ssh_connection]` \
-> `scp_extra_args = "-O"`
+> ```vi
+> [ssh_connection]
+> scp_extra_args = "-O"
+> ```
 
 **Packer**:
 

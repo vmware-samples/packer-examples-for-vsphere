@@ -14,7 +14,7 @@ packer {
       source  = "github.com/ethanmdavidson/git"
     }
     vsphere = {
-      version = ">= v1.1.0"
+      version = ">= v1.1.1"
       source  = "github.com/hashicorp/vsphere"
     }
     windows-update = {

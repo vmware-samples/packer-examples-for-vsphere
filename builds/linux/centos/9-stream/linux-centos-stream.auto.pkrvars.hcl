@@ -30,9 +30,9 @@ vm_network_card          = "vmxnet3"
 // Removable Media Settings
 iso_url            = null
 iso_path           = "iso/linux/centos"
-iso_file           = "CentOS-Stream-9-20221110.0-x86_64-dvd1.iso"
+iso_file           = "CentOS-Stream-9-latest-x86_64-dvd1.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "eadfa45db468c44ef6c13a0ff8cd4dfb78de0cb9aa53275fcf0614336877303d"
+iso_checksum_value = "58d2124a29ad3ab40cfb2f1b06b04e456f0c15b4d2a145a8a4594df99f5e6ca4"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

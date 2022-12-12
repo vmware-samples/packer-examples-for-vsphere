@@ -14,7 +14,7 @@ autoinstall:
     preserve_sources_list: false
     primary:
       - arches: [amd64, i386]
-        uri: http://us.archive.ubuntu.com/ubuntu
+        uri: http://archive.ubuntu.com/ubuntu
       - arches: [default]
         uri: http://ports.ubuntu.com/ubuntu-ports
   early-commands:

@@ -38,7 +38,7 @@
 - Updates Windows Server 2019 to November 2022 (US English) release. [GH-373](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/373)
 - Updates Windows 11 22H2 to November 2022 (US English) release. [GH-419](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/419)
 - Updates Windows 10 22H2 to November 2022 (US English) release. [GH-374](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/374)
-- Updates `required_versions` for `packer` to `>= 1.8.4`. [GH-328](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/328)
+- Updates `required_versions` for `packer` to `>= 1.8.5`. [GH-423](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/423)
 - Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.1.1`. [GH-416](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/416)
 - Updates `required_versions` for `terraform` to `>= 1.3.6`. [GH-391](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/391)
 - Updates `required_versions` for `hashicorp/hcp` to `>= 0.51.0`. [GH-408](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/408), [GH-409](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/396), [GH-410](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/410), [GH-411](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/411), [GH-412](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/412), [GH-413](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/413), [GH-414](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/414), [GH-415](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/415)

@@ -55,7 +55,7 @@ body:
     attributes:
       label: HashiCorp Packer
       description: Please provide the HashiCorp Packer version.
-      placeholder: 1.8.4
+      placeholder: 1.8.5
     validations:
       required: true
   - type: input

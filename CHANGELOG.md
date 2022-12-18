@@ -34,6 +34,7 @@
 - Updates Almalinux 8 to 8.7 release. [GH-361](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/361)
 - Updates CentOS Stream 9 to December 2022 release. [GH-418](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/418)
 - Updates CentOS Stream 8 to November 2022 release. [GH-417](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/417)
+- Updates Debian 11 to 11.6 release. [GH-432](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/432)
 - Updates Windows Server 2022 to November 2022 (US English) release. [GH-376](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/376)
 - Updates Windows Server 2019 to November 2022 (US English) release. [GH-373](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/373)
 - Updates Windows 11 22H2 to November 2022 (US English) release. [GH-419](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/419)

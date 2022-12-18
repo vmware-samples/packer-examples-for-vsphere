@@ -34,7 +34,7 @@
   shell: |
     sudo tee -a /etc/vmware-tools/tools.conf << EOF
     [guestosinfo]
-    short-name = other4xLinux64Guest
+    short-name = other5xLinux64Guest
     EOF
   args:
     warn: false

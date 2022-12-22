@@ -50,7 +50,7 @@ vm_boot_command     = ["<spacebar><spacebar>"]
 vm_shutdown_command = "shutdown /s /t 10 /f /d p:4:1 /c \"Shutdown by Packer\""
 
 // Communicator Settings
-communicator_port    = 5986
+communicator_port    = 5985
 communicator_timeout = "12h"
 
 // Provisioner Settings

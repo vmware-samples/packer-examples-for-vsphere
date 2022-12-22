@@ -28,7 +28,6 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_url            = null
 iso_path           = "iso/linux/suse"
 iso_file           = "SLE-15-SP4-Full-x86_64-GM-Media1.iso"
 iso_checksum_type  = "sha256"

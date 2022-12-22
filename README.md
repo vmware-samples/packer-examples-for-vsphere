@@ -801,13 +801,7 @@ Edit the `*.auto.pkrvars.hcl` file in each `builds/<type>/<build>` folder to con
 
 ### Step 4 - Guest Operating Systems ISOs
 
-The project supports configuring the ISO from either a datastore or URL source. By default, the project uses the datastore source.
-
-Follow the steps below to configure either option.
-
-#### Using a Datastore Source
-
-If you are using a datastore to store your guest operating system [`.iso`][iso] files, you must download and upload these to a datastore path.
+The project supports using a datastore to store your guest operating system [`.iso`][iso] files, you must download and upload these to a datastore path.
 
 1. Download the x64 guest operating system `.iso` files.
 
@@ -858,7 +852,7 @@ If you are using a datastore to store your guest operating system [`.iso`][iso] 
 
 1. Obtain the checksum type (_e.g.,_ `sha256`, `md5`, etc.) and checksum value for each guest operating system `.iso` from the vendor. This will be use in the build input variables.
 
-1. [Upload][vsphere-upload] or your guest operating system `.iso` files to the datastore and update the configuration variables, leaving the `iso_url` variable as `null`.
+1. [Upload][vsphere-upload] or your guest operating system `.iso` files to the datastore and update the configuration variables.
 
    **Example**: `config/common.pkrvars.hcl`
 
@@ -869,24 +863,11 @@ If you are using a datastore to store your guest operating system [`.iso`][iso] 
    **Example**: `builds/<type>/<build>/*.auto.pkrvars.hcl`
 
    ```hcl
-   iso_url            = null
    iso_path           = "iso/linux/photon"
    iso_file           = "photon-4.0-xxxxxxxxx.iso"
    iso_checksum_type  = "md5"
    iso_checksum_value = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
    ```
-
-#### Using a URL Source
-
-If you are using a URL source to obtain your guest operating system [`.iso`][iso] files, you must update the input variables to use the URL source.
-
-Update the `iso_url` variable to download the `.iso` from a URL. The `iso_url` variable takes presedence over any other `iso_*` variables.
-
-**Example**: `builds/<type>/<build>/*.auto.pkrvars.hcl`
-
-```hcl
-iso_url = "https://artifactory.rainpole.io/iso/linux/photon/4.0/x86_64/photon-4.0-xxxxxxxxx.iso"
-```
 
 ### Step 5 - Modify the Configurations (Optional)
 

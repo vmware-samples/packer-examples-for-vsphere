@@ -127,9 +127,6 @@ source "vsphere-iso" "windows-desktop" {
   winrm_password = var.build_password
   winrm_port     = var.communicator_port
   winrm_timeout  = var.communicator_timeout
-  winrm_insecure = true
-  winrm_use_ssl  = true
-  winrm_use_ntlm = true
 
   // Template and Content Library Settings
   convert_to_template = var.common_template_conversion

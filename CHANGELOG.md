@@ -45,6 +45,10 @@
 - Updates Gomplate to `3.11.3`. [GH-380](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/380), [GH-382](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/382)
 - Removes Ubuntu 20.04 LTS (`x86_64`) and macOS Big Sur (Intel) as tested operating systems for the Packer host. [GH-393](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/393)
 
+:warning: **Breaking Change**:
+
+- Removes support to use the `iso_url` variable to download the guest operating system `.iso` from a URL introduced in [GH-249](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/249) due to [GH-343](https://github.com/vmware-samples/packer-examples-for-vsphere/issues/343). [GH-xxx](https://github.com/vmware-samples/packer-examples-for-vsphere/issues/xxx)
+
 ## [v22.09](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.09)
 
 > Release Date: 2022-09-28

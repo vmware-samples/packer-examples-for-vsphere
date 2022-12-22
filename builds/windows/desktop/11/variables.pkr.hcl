@@ -274,11 +274,6 @@ variable "common_iso_datastore" {
   description = "The name of the source vSphere datastore for ISO images. (e.g. 'sfo-w01-cl01-nfs01')"
 }
 
-variable "iso_url" {
-  type        = string
-  description = "The URL source of the ISO image. (e.g. 'https://artifactory.rainpole.io/.../os.iso')"
-}
-
 variable "iso_path" {
   type        = string
   description = "The path on the source vSphere datastore for ISO image. (e.g. 'iso/windows')"

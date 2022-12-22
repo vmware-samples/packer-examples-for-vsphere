@@ -28,7 +28,6 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_url            = null
 iso_path           = "iso/linux/ubuntu"
 iso_file           = "ubuntu-20.04.5-live-server-amd64.iso"
 iso_checksum_type  = "sha256"

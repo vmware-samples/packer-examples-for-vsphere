@@ -93,7 +93,6 @@ source "vsphere-iso" "windows-server-standard-core" {
   notes                = local.build_description
 
   // Removable Media Settings
-  iso_url      = var.iso_url
   iso_paths    = local.iso_paths
   iso_checksum = local.iso_checksum
   cd_files = [
@@ -129,6 +128,9 @@ source "vsphere-iso" "windows-server-standard-core" {
   winrm_password = var.build_password
   winrm_port     = var.communicator_port
   winrm_timeout  = var.communicator_timeout
+  winrm_insecure = true
+  winrm_use_ssl  = true
+  winrm_use_ntlm = true
 
   // Template and Content Library Settings
   convert_to_template = var.common_template_conversion
@@ -197,7 +199,6 @@ source "vsphere-iso" "windows-server-standard-dexp" {
   notes                = local.build_description
 
   // Removable Media Settings
-  iso_url      = var.iso_url
   iso_paths    = local.iso_paths
   iso_checksum = local.iso_checksum
   cd_files = [
@@ -233,6 +234,9 @@ source "vsphere-iso" "windows-server-standard-dexp" {
   winrm_password = var.build_password
   winrm_port     = var.communicator_port
   winrm_timeout  = var.communicator_timeout
+  winrm_insecure = true
+  winrm_use_ssl  = true
+  winrm_use_ntlm = true
 
   // Template and Content Library Settings
   convert_to_template = var.common_template_conversion
@@ -301,7 +305,6 @@ source "vsphere-iso" "windows-server-datacenter-core" {
   notes                = local.build_description
 
   // Removable Media Settings
-  iso_url      = var.iso_url
   iso_paths    = local.iso_paths
   iso_checksum = local.iso_checksum
   cd_files = [
@@ -339,6 +342,9 @@ source "vsphere-iso" "windows-server-datacenter-core" {
   winrm_password = var.build_password
   winrm_port     = var.communicator_port
   winrm_timeout  = var.communicator_timeout
+  winrm_insecure = true
+  winrm_use_ssl  = true
+  winrm_use_ntlm = true
 
   // Template and Content Library Settings
   convert_to_template = var.common_template_conversion
@@ -407,7 +413,6 @@ source "vsphere-iso" "windows-server-datacenter-dexp" {
   notes                = local.build_description
 
   // Removable Media Settings
-  iso_url      = var.iso_url
   iso_paths    = local.iso_paths
   iso_checksum = local.iso_checksum
   cd_files = [
@@ -443,6 +448,9 @@ source "vsphere-iso" "windows-server-datacenter-dexp" {
   winrm_password = var.build_password
   winrm_port     = var.communicator_port
   winrm_timeout  = var.communicator_timeout
+  winrm_insecure = true
+  winrm_use_ssl  = true
+  winrm_use_ntlm = true
 
   // Template and Content Library Settings
   convert_to_template = var.common_template_conversion

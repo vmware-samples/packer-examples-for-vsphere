@@ -37,7 +37,6 @@ vm_video_mem_size        = 131072
 vm_video_displays        = 1
 
 // Removable Media Settings
-iso_url            = null
 iso_path           = "iso/windows/desktop"
 iso_file           = "en-us_windows_10_business_editions_version_22h2_updated_nov_2022_x64_dvd_e8577df7.iso"
 iso_checksum_type  = "sha256"
@@ -50,7 +49,7 @@ vm_boot_command     = ["<spacebar>"]
 vm_shutdown_command = "shutdown /s /t 10 /f /d p:4:1 /c \"Shutdown by Packer\""
 
 // Communicator Settings
-communicator_port    = 5985
+communicator_port    = 5986
 communicator_timeout = "12h"
 
 // Provisioner Settings

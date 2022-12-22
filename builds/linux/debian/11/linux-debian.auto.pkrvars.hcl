@@ -28,7 +28,6 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_url            = null
 iso_path           = "iso/linux/debian"
 iso_file           = "debian-11.5.0-amd64-netinst.iso"
 iso_checksum_type  = "sha512"

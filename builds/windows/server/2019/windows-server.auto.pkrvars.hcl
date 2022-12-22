@@ -42,7 +42,6 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_url            = null
 iso_path           = "iso/windows/server"
 iso_file           = "en-us_windows_server_2019_x64_dvd_f9475476.iso"
 iso_checksum_type  = "sha256"
@@ -55,7 +54,7 @@ vm_boot_command     = ["<spacebar>"]
 vm_shutdown_command = "shutdown /s /t 10 /f /d p:4:1 /c \"Shutdown by Packer\""
 
 // Communicator Settings
-communicator_port    = 5985
+communicator_port    = 5986
 communicator_timeout = "12h"
 
 // Provisioner Settings

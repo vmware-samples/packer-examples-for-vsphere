@@ -368,7 +368,7 @@ source "vsphere-iso" "windows-server-datacenter-core" {
       options = [
         "extraconfig"
       ]
-      output_directory = "${local.ovf_export_path}/${local.vm_inst_os_image_datacenter_core}"
+      output_directory = "${local.ovf_export_path}/${local.vm_name_datacenter_core}"
     }
   }
 }

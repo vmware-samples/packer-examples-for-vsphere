@@ -588,7 +588,7 @@ Generate a public key for the `build_key` for public key authentication.
 **Example**: macOS and Linux.
 
 ```console
-rainpole@macos> ssh-keygen -t ecdsa -b 512 -C "code@rainpole.io"
+rainpole@macos> ssh-keygen -t ecdsa -b 521 -C "code@rainpole.io"
 Generating public/private ecdsa key pair.
 Enter file in which to save the key (/Users/rainpole/.ssh/id_ecdsa):
 Enter passphrase (empty for no passphrase): **************

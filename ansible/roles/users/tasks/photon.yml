@@ -8,11 +8,6 @@
     sudo chown -R {{BUILD_USERNAME}} /home/{{BUILD_USERNAME}}/.ssh
     sudo chmod 700 /home/{{BUILD_USERNAME}}/.ssh
     sudo chmod 644 /home/{{BUILD_USERNAME}}/.ssh/authorized_keys
-  args:
-    warn: false
-
 - name: "Adding the default local user to passwordless sudoers."
   shell: |
     sudo bash -c "echo \"""{{BUILD_USERNAME}}"" ALL=(ALL) NOPASSWD:ALL\" >> /etc/sudoers"
-  args:
-    warn: false

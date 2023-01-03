@@ -1,13 +1,9 @@
 ---
 - name: "Updating the guest operating system."
-  args:
-    warn: false
   command: "{{ item }}"
   with_items:
     - "tdnf -y update"
 - name: "Installing additional packages."
-  args:
-    warn: false
   command: |
     tdnf -y install \
     minimal \

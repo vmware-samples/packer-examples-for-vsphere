@@ -10,38 +10,26 @@
     if [ -f /var/log/lastlog ]; then
     cat /dev/null > /var/log/lastlog
     fi
-  args:
-    warn: false
 - name: "Cleaning persistent udev rules."
   shell: |
     if [ -f /etc/udev/rules.d/70-persistent-net.rules ]; then
     rm /etc/udev/rules.d/70-persistent-net.rules
     fi
-  args:
-    warn: false
 - name: "Cleaning the /tmp directories"
   shell: |
     rm -rf /tmp/*
     rm -rf /var/tmp/*
-  args:
-    warn: false
 - name: "Cleaning the SSH host keys."
   shell: |
     rm -f /etc/ssh/ssh_host_*
-  args:
-    warn: false
 - name: "Cleaning the machine-id."
   shell: |
     truncate -s 0 /etc/machine-id
     rm /var/lib/dbus/machine-id
     ln -s /etc/machine-id /var/lib/dbus/machine-id
-  args:
-    warn: false
 - name: "Cleaning the shell history."
   shell: |
     unset HISTFILE
     history -cw
     echo > ~/.bash_history
     rm -fr /root/.bash_history
-  args:
-    warn: false

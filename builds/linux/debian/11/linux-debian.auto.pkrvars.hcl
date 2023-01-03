@@ -9,10 +9,10 @@ vm_guest_os_keyboard = "us"
 vm_guest_os_timezone = "UTC"
 vm_guest_os_family   = "linux"
 vm_guest_os_name     = "debian"
-vm_guest_os_version  = "11.5"
+vm_guest_os_version  = "11.6"
 
 // Virtual Machine Guest Operating System Setting
-vm_guest_os_type = "other4xLinux64Guest"
+vm_guest_os_type = "other5xLinux64Guest"
 
 // Virtual Machine Hardware Settings
 vm_firmware              = "efi-secure"
@@ -29,9 +29,9 @@ vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
 iso_path           = "iso/linux/debian"
-iso_file           = "debian-11.5.0-amd64-netinst.iso"
+iso_file           = "debian-11.6.0-amd64-netinst.iso"
 iso_checksum_type  = "sha512"
-iso_checksum_value = "6a6607a05d57b7c62558e9c462fe5c6c04b9cfad2ce160c3e9140aa4617ab73aff7f5f745dfe51bbbe7b33c9b0e219a022ad682d6c327de0e53e40f079abf66a"
+iso_checksum_value = "224cd98011b9184e49f858a46096c6ff4894adff8945ce89b194541afdfd93b73b4666b0705234bd4dff42c0a914fdb6037dd0982efb5813e8a553d8e92e6f51"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

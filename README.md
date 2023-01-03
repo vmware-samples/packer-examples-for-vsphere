@@ -811,7 +811,7 @@ The project supports using a datastore to store your guest operating system [`.i
    - VMware Photon OS 4
      - [Download][download-linux-photon-server-4] the latest release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-xxxxxxxxx.iso`)
    - Debian 11
-     - [Download][download-linux-debian-11] the 11.5 **netinst** release `.iso` image. (_e.g._ `debian-11.x.0-amd64-netinst.iso`)
+     - [Download][download-linux-debian-11] the latest **netinst** release `.iso` image. (_e.g._ `debian-11.x.0-amd64-netinst.iso`)
    - Ubuntu Server 22.04 LTS
      - [Download][download-linux-ubuntu-server-22-04-lts] the latest **LIVE** release `.iso` image. (_e.g.,_ `ubuntu-22.04.x-live-server-amd64.iso`)
    - Ubuntu Server 20.04 LTS

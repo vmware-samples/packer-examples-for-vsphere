@@ -14,15 +14,18 @@
 
 - Fixes missing privileges for the custom role in vSphere that effected the ability to build using disk-based deployment modes and Windows 11 22H2 with vTPM. [GH-295](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/295), [GH-339](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/339), [GH-340](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/340)
 - Updates the URI in `user-data.pkrtpl.hcl` for Ubuntu 20.04 and 22.04 to remove the country code. This will help to ensure that GeoIP lookup works for all users. [GH-421](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/421)
+- Updates the install commands for Red Hat Enterprise Linux 9 to use the correct EPEL repository version. [GH-440](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/440)
 
 :page_facing_up: **Documenation**:
 
 - Updates options to download a release or clone the project. [GH-385](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/385)
 - Updates syntax to append RSA algorithm to `HostKeyAlgorithms +ssh-rsa` and`PubKeyAcceptedAlgorithms +ssh-rsa`. [GH-386](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/386)
+- Updates the ssh-keygen example for generating the ECDSA public key to use a 521 bit key length. Valid key lengths are 256, 384, or 521. [GH-439](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/439)
 
 :wrench: **Refactor**:
 
 - Refactors builds to use the current Git branch / tag as the `build_version` local variable used for virtual machine image names and descriptions. [GH-385](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/385)
+- Refactors Ansible roles to remove the `warn: false` args for ansible-core 2.14 compatibility. [GH-443](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/443)
 
 :sweat_drops: **Chore**:
 

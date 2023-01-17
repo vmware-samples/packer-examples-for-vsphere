@@ -1,8 +1,8 @@
 # CHANGELOG
 
-## .Next
+## [v23.01](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v23.01)
 
-> Release Date: Unreleased
+> Release Date: 2023-01-17
 
 :boom: **Enhancement**:
 

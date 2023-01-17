@@ -27,7 +27,8 @@ body:
       description: Please provide the version of this project.
       options:
         - main
-        - 22.09 (latest)
+        - 23.01 (latest)
+        - 22.09
         - 22.08
         - 22.07
         - 22.06

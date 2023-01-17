@@ -51,7 +51,7 @@
 
 :warning: **Breaking Change**:
 
-- Removes support to use the `iso_url` variable to download the guest operating system `.iso` from a URL introduced in [GH-249](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/249) due to [GH-343](https://github.com/vmware-samples/packer-examples-for-vsphere/issues/343). [GH-xxx](https://github.com/vmware-samples/packer-examples-for-vsphere/issues/xxx)
+- Removes support to use the `iso_url` variable to download the guest operating system `.iso` from a URL introduced in [GH-249](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/249) due to [GH-343](https://github.com/vmware-samples/packer-examples-for-vsphere/issues/343). [GH-435](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/435)
 
 ## [v22.09](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v22.09)
 

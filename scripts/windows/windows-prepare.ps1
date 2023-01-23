@@ -69,3 +69,13 @@ Write-Output "Enabling Remote Desktop..."
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0 | Out-Null
 Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 0
 Enable-NetFirewallRule -Group '@FirewallAPI.dll,-28752'
+
+# Check if the OS is Windows 11
+if ((Get-ComputerInfo | Select-Object -expand OsName) -match 11) {
+    # Remove Appx Packages causing Sysprep to fail - https://kb.vmware.com/s/article/82532
+    Write-Output "Removing Appx Packages causing Sysprep to fail..."
+    Write-Output "Setting the Non-Removable App Policy for TikTok..."
+    Set-NonRemovableAppsPolicy -Online -PackageFamilyName "BytedancePte.Ltd.TikTok_1.0.5.0_neutral__6yccndn6064se" -NonRemovable 0
+    Write-Output "Removing Appx Package for TikTok for all users..."
+    Remove-AppxPackage -AllUsers -Package "BytedancePte.Ltd.TikTok_1.0.5.0_neutral__6yccndn6064se"
+}

@@ -54,6 +54,7 @@ esac
 echo -e '\n> Set the vSphere settings.'
 read -r -p "Enter the vSphere datacenter name: " vsphere_datacenter
 read -r -p "Enter the vSphere cluster name: " vsphere_cluster
+read -r -p "Enter the ESXi host FQDN or IP: " vsphere_host
 read -r -p "Enter the datastore name virtual machines: " vsphere_datastore
 read -r -p "Enter the network name: " vsphere_network
 read -r -p "Enter the folder name: " vsphere_folder
@@ -147,6 +148,7 @@ echo '> Setting the vSphere settings...'
 # vSphere Settings
 export PKR_VAR_vsphere_datacenter="${vsphere_datacenter}"
 export PKR_VAR_vsphere_cluster="${vsphere_cluster}"
+export PKR_VAR_vsphere_host="${vsphere_host}"
 export PKR_VAR_vsphere_datastore="${vsphere_datastore}"
 export PKR_VAR_vsphere_network="${vsphere_network}"
 export PKR_VAR_vsphere_folder="${vsphere_folder}"
@@ -238,6 +240,7 @@ case $display_environmental_variables in
 	echo -e '\nvSphere Settings'
 	echo - PKR_VAR_vsphere_datacenter: "$PKR_VAR_vsphere_datacenter"
 	echo - PKR_VAR_vsphere_cluster: "$PKR_VAR_vsphere_cluster"
+	echo - PKR_VAR_vsphere_host: "$PKR_VAR_vsphere_host"
 	echo - PKR_VAR_vsphere_datastore: "$PKR_VAR_vsphere_datastore"
 	echo - PKR_VAR_vsphere_network: "$PKR_VAR_vsphere_network"
 	echo - PKR_VAR_vsphere_folder: "$PKR_VAR_vsphere_folder"

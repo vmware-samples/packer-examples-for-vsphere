@@ -35,13 +35,20 @@ variable "vsphere_insecure_connection" {
 variable "vsphere_datacenter" {
   type        = string
   description = "The name of the target vSphere datacenter. (e.g. 'sfo-w01-dc01')"
+  default     = ""
 }
 
 variable "vsphere_cluster" {
   type        = string
   description = "The name of the target vSphere cluster. (e.g. 'sfo-w01-cl01')"
+  default     = ""
 }
 
+variable "vsphere_host" {
+  type        = string
+  description = "The name of the target ESXi host. (e.g. 'sfo-w01-esx01')"
+  default     = ""
+}
 variable "vsphere_datastore" {
   type        = string
   description = "The name of the target vSphere datastore. (e.g. 'sfo-w01-cl01-vsan01')"
@@ -54,7 +61,8 @@ variable "vsphere_network" {
 
 variable "vsphere_folder" {
   type        = string
-  description = "The name of the target vSphere cluster. (e.g. 'sfo-w01-fd-templates')"
+  description = "The name of the target vSphere folder. (e.g. 'sfo-w01-fd-templates')"
+  default     = ""
 }
 
 // Virtual Machine Settings

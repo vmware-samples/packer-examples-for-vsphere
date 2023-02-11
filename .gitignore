@@ -19,19 +19,24 @@ crash.log
 # HashiCorp Terraform
 ## Ignore .terraform directories.
 **/.terraform/*
+## Ignore dependency lock files.
 .terraform.lock.hcl
 ## Ignore .tfstate files
 *.tfstate
 *.tfstate.*
 ## Ignore crash.log files.
 crash.log
+crash.*.log
 ## Ignore .tfvars files.
 *.tfvars
+*.tfvars.json
 ## Ignore override files.
 override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
+## Ignore tfplan files.
+*tfplan*
 ## Ignore configuration files.
 .terraformrc
 terraform.rc
@@ -42,10 +47,10 @@ config/
 
 # Artifacts
 ## Ignore artifacts directory.
-artifacts/*.mf
-artifacts/*.nvram
-artifacts/*.ovf
-artifacts/*.vmdk
+artifacts/**/*.mf
+artifacts/**/*.nvram
+artifacts/**/*.ovf
+artifacts/**/*.vmdk
 
 # Manifests
 ## Ignore manifests directory.

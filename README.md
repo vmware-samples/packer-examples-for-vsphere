@@ -1042,7 +1042,7 @@ Happy building!!!
 [packer-plugin-vsphere]: https://developer.hashicorp.com/packer/plugins/builders/vsphere/vsphere-iso
 [packer-plugin-windows-update]: https://github.com/rgl/packer-plugin-windows-update
 [packer-variables]: https://developer.hashicorp.com/packer/docs/templates/hcl_templates/variables
-[photon-kickstart]: https://vmware.github.io/photon/docs/user-guide/kickstart-through-http/packer-template/
+[photon-kickstart]: https://vmware.github.io/photon/docs/user-guide/working-with-kickstart/
 [redhat-kickstart]: https://access.redhat.com/labs/kickstartconfig/
 [suse-autoyast]: https://documentation.suse.com/sles/15-SP3/single-html/SLES-autoyast/index.html#CreateProfile-CMS
 [terraform-install]: https://www.terraform.io/docs/cli/install/apt.html

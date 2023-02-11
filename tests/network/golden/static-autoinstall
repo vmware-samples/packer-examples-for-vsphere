@@ -1,0 +1,14 @@
+  network:
+    network:
+      version: 2
+      ethernets:
+        ens192:
+          dhcp4: false
+          addresses:
+            - 172.16.100.192/24
+          gateway4: 172.16.100.1
+          nameservers:
+            addresses:
+              - 172.16.11.4
+              - 172.16.11.5
+

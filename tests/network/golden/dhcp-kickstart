@@ -1,0 +1,3 @@
+### Configure network information for target system and activate network devices in the installer environment (optional)
+network --device=ens192 --bootproto=dhcp
+

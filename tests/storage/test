@@ -1,0 +1,99 @@
+#!/usr/bin/env bats
+
+setup() {
+  DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" >/dev/null 2>&1 && pwd )"
+  echo "$DIR"
+  packer init -upgrade "$DIR"
+}
+
+## Test LVM layout
+###############################################################################
+@test "storage with Autoinstall using LVM layout" {
+  mkdir -p "$DIR/output/lvm"
+  packer build -var-file="$DIR/test-lvm.pkrvars.hcl" -var "output_folder=$DIR/output/lvm" -only "autoinstall.*" "$DIR"
+  run diff -u "$DIR/output/lvm/autoinstall" "$DIR/golden/lvm-autoinstall"
+  [ "$status" -eq 0 ]
+}
+
+@test "storage with Kickstart using LVM layout" {
+  mkdir -p "$DIR/output/lvm"
+  packer build -var-file="$DIR/test-lvm.pkrvars.hcl" -var "output_folder=$DIR/output/lvm" -only "kickstart.*" "$DIR"
+  run diff -u "$DIR/output/lvm/kickstart" "$DIR/golden/lvm-kickstart"
+  [ "$status" -eq 0 ]
+}
+
+@test "storage with Preseed using LVM layout" {
+  mkdir -p "$DIR/output/lvm"
+  packer build -var-file="$DIR/test-lvm.pkrvars.hcl" -var "output_folder=$DIR/output/lvm" -only "preseed.*" "$DIR"
+  run diff -u "$DIR/output/lvm/preseed" "$DIR/golden/lvm-preseed"
+  [ "$status" -eq 0 ]
+}
+
+## Test LVM layout with SWAP
+###############################################################################
+@test "storage with Autoinstall using LVM layout with SWAP" {
+  mkdir -p "$DIR/output/lvm-swap"
+  packer build -var-file="$DIR/test-lvm-swap.pkrvars.hcl" -var "output_folder=$DIR/output/lvm-swap" -only "autoinstall.*" "$DIR"
+  run diff -u "$DIR/output/lvm-swap/autoinstall" "$DIR/golden/lvm-autoinstall-swap"
+  [ "$status" -eq 0 ]
+}
+
+@test "storage with Kickstart using LVM layout with SWAP" {
+  mkdir -p "$DIR/output/lvm-swap"
+  packer build -var-file="$DIR/test-lvm-swap.pkrvars.hcl" -var "output_folder=$DIR/output/lvm-swap" -only "kickstart.*" "$DIR"
+  run diff -u "$DIR/output/lvm-swap/kickstart" "$DIR/golden/lvm-kickstart-swap"
+  [ "$status" -eq 0 ]
+}
+
+@test "storage with Preseed using LVM layout with SWAP" {
+  mkdir -p "$DIR/output/lvm-swap"
+  packer build -var-file="$DIR/test-lvm-swap.pkrvars.hcl" -var "output_folder=$DIR/output/lvm-swap" -only "preseed.*" "$DIR"
+  run diff -u "$DIR/output/lvm-swap/preseed" "$DIR/golden/lvm-preseed-swap"
+  [ "$status" -eq 0 ]
+}
+
+## Test direct layout
+###############################################################################
+@test "storage with Autoinstall using direct layout" {
+  mkdir -p "$DIR/output/direct"
+  packer build -var-file="$DIR/test-direct.pkrvars.hcl" -var "output_folder=$DIR/output/direct" -only "autoinstall.*" "$DIR"
+  run diff -u "$DIR/output/direct/autoinstall" "$DIR/golden/direct-autoinstall"
+  [ "$status" -eq 0 ]
+}
+
+@test "storage with Kickstart using direct layout" {
+  mkdir -p "$DIR/output/direct"
+  packer build -var-file="$DIR/test-direct.pkrvars.hcl" -var "output_folder=$DIR/output/direct" -only "kickstart.*" "$DIR"
+  run diff -u "$DIR/output/direct/kickstart" "$DIR/golden/direct-kickstart"
+  [ "$status" -eq 0 ]
+}
+
+@test "storage with Preseed using direct layout" {
+  mkdir -p "$DIR/output/direct"
+  packer build -var-file="$DIR/test-direct.pkrvars.hcl" -var "output_folder=$DIR/output/direct" -only "preseed.*" "$DIR"
+  run diff -u "$DIR/output/direct/preseed" "$DIR/golden/direct-preseed"
+  [ "$status" -eq 0 ]
+}
+
+## Test direct layout with SWAP
+###############################################################################
+@test "storage with Autoinstall using direct layout with SWAP" {
+  mkdir -p "$DIR/output/direct-swap"
+  packer build -var-file="$DIR/test-direct-swap.pkrvars.hcl" -var "output_folder=$DIR/output/direct-swap" -only "autoinstall.*" "$DIR"
+  run diff -u "$DIR/output/direct-swap/autoinstall" "$DIR/golden/direct-autoinstall-swap"
+  [ "$status" -eq 0 ]
+}
+
+@test "storage with Kickstart using direct layout with SWAP" {
+  mkdir -p "$DIR/output/direct-swap"
+  packer build -var-file="$DIR/test-direct-swap.pkrvars.hcl" -var "output_folder=$DIR/output/direct-swap" -only "kickstart.*" "$DIR"
+  run diff -u "$DIR/output/direct-swap/kickstart" "$DIR/golden/direct-kickstart-swap"
+  [ "$status" -eq 0 ]
+}
+
+@test "storage with Preseed using direct layout with SWAP" {
+  mkdir -p "$DIR/output/direct-swap"
+  packer build -var-file="$DIR/test-direct-swap.pkrvars.hcl" -var "output_folder=$DIR/output/direct-swap" -only "preseed.*" "$DIR"
+  run diff -u "$DIR/output/direct-swap/preseed" "$DIR/golden/direct-preseed-swap"
+  [ "$status" -eq 0 ]
+}

@@ -14,13 +14,11 @@ menu:
           path: "builds/linux/photon/5/"
           var_files:
             - "network.pkrvars.hcl"
-            - "storage.pkrvars.hcl"
       - entry: "VMware Photon OS 4"
         build:
           path: "builds/linux/photon/4/"
           var_files:
             - "network.pkrvars.hcl"
-            - "storage.pkrvars.hcl"
       - entry: "Debian 12"
         build:
           path: "builds/linux/debian/12/"

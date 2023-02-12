@@ -175,6 +175,7 @@ autoinstall:
         device: format-audit
         type: mount
         id: mount-audit
+${network}
   identity:
     hostname: ubuntu-server
     username: ${build_username}

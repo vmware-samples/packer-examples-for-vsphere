@@ -1,3 +1,2 @@
-# Network configuration
 d-i netcfg/choose_interface select ens192
 

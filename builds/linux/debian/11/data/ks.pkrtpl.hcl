@@ -151,9 +151,7 @@ d-i partman/confirm boolean true
 d-i partman/confirm_nooverwrite boolean true
 
 # Network configuration
-d-i netcfg/choose_interface select auto
-d-i netcfg/get_hostname string unassigned-hostname
-d-i netcfg/get_domain string unassigned-domain
+${network}
 
 # Mirror settings
 d-i mirror/country string manual

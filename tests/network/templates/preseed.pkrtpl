@@ -1,4 +1,3 @@
-# Network configuration
 d-i netcfg/choose_interface select ${device}
 %{ if ip != null ~}
 d-i netcfg/get_ipaddress string $(ip)

@@ -6,7 +6,7 @@
 ### Installs from the first attached CD-ROM/DVD on the system.
 cdrom
 
-### Performs the kickstart installation in text mode. 
+### Performs the kickstart installation in text mode.
 ### By default, kickstart installations are performed in graphical mode.
 text
 
@@ -24,9 +24,7 @@ keyboard ${vm_guest_os_keyboard}
 ### --device	  device to be activated and / or configured with the network command
 ### --bootproto	  method to obtain networking configuration for device (default dhcp)
 ### --noipv6	  disable IPv6 on this device
-###
-### network  --bootproto=static --ip=172.16.11.200 --netmask=255.255.255.0 --gateway=172.16.11.200 --nameserver=172.16.11.4 --hostname centos-linux-8
-network --bootproto=dhcp
+${network}
 
 ### Lock the root account.
 rootpw --lock
@@ -58,7 +56,7 @@ bootloader --location=mbr
 ### Initialize any invalid partition tables found on disks.
 zerombr
 
-### Removes partitions from the system, prior to creation of new partitions. 
+### Removes partitions from the system, prior to creation of new partitions.
 ### By default, no partitions are removed.
 ### --linux	erases all Linux partitions.
 ### --initlabel Initializes a disk (or disks) by creating a default disk label for all disks in their respective architecture.

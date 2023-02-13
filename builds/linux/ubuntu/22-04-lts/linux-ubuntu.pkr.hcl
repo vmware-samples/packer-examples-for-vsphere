@@ -61,6 +61,13 @@ locals {
         netmask = var.vm_ip_netmask
         gateway = var.vm_ip_gateway
         dns     = var.vm_dns_list
+      })
+      storage                  = templatefile("${abspath(path.root)}/data/storage.pkrtpl.hcl", {
+        device     = var.vm_disk_device
+        swap       = var.vm_disk_use_swap
+        partitions = var.vm_disk_partitions
+        lvm        = var.vm_disk_lvm
+      })
     })
   }
   data_source_command = var.common_data_source == "http" ? "ds=\"nocloud-net;seedfrom=http://{{.HTTPIP}}:{{.HTTPPort}}/\"" : "ds=\"nocloud\""

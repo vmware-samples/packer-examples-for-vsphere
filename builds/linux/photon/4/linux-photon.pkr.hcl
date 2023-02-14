@@ -57,6 +57,7 @@ locals {
         netmask = var.vm_ip_netmask
         gateway = var.vm_ip_gateway
         dns     = var.vm_dns_list
+      })
     })
   }
   data_source_command = var.common_data_source == "http" ? "ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.json" : "ks=/dev/sr1:/ks.json"

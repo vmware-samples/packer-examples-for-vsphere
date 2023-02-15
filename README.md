@@ -415,7 +415,7 @@ The files are distributed in the following directories.
 Create a custom vSphere role with the required privileges to integrate HashiCorp Packer with VMware vSphere. A service account can be added to the role to ensure that Packer has least privilege access to the infrastructure. Clone the default **Read-Only** vSphere role and add the following privileges:
 
 | Category                 | Privilege                                           | Reference                                          |
-| ---------------          | --------------------------------------------------- | -------------------------------------------------- |
+| ------------------------ | --------------------------------------------------- | -------------------------------------------------- |
 | Content Library          | Add library item                                    | `ContentLibrary.AddLibraryItem`                    |
 | ...                      | Update Library Item                                 | `ContentLibrary.UpdateLibraryItem`                 |
 | Cryptographic Operations | Direct Access (Required for `packer_cache` upload.) | `Cryptographer.Access`                             |
@@ -684,7 +684,7 @@ If iptables is enabled on your Packer host, you will need to open `common_http_p
 **Example**: Open a port range in iptables.
 
 ```shell
-iptables -A INPUT -p tcp --match multiport --dports 8000:8099 -j ACCEPT`
+iptables -A INPUT -p tcp --match multiport --dports 8000:8099 -j ACCEPT
 ```
 
 You can change the `common_data_source` from `http` to `disk` to build supported Linux machine images without the need to use Packer's HTTP server. This is useful for environments that may not be able to route back to the system from which Packer is running.
@@ -765,10 +765,52 @@ vsphere_password             = "<plaintext_password>"
 vsphere_insecure_connection  = true
 vsphere_datacenter           = "sfo-w01-dc01"
 vsphere_cluster              = "sfo-w01-cl01"
+//vsphere_host               = "sfo-w01-esx01"
 vsphere_datastore            = "sfo-w01-cl01-ds-vsan01"
 vsphere_network              = "sfo-w01-seg-dhcp"
 vsphere_folder               = "sfo-w01-fd-templates"
 ```
+
+> **Note**
+>
+> When targeting standalone ESXi hosts or vSphere clusters with vSphere DRS disabled, you must set the `vsphere_host` variable.
+>
+> **Example** (vSphere Clusters with vSphere DRS Disabled):
+>
+> ```hcl
+> ...
+> vsphere_datacenter           = "sfo-w01-dc01"
+> vsphere_cluster              = "sfo-w01-cl01"
+> vsphere_host                 = "sfo-w01-esx01"
+> vsphere_folder               = "sfo-w01-fd-templates"
+> ...
+> ```
+>
+> **Example** (Standalone ESXi Host Managed by vCenter Server):
+>
+> For a standalone ESXi host managed by vCenter Server, comment or remove `vsphere_cluster`.
+>
+> ```hcl
+> ...
+> vsphere_datacenter           = "sfo-w01-dc01"
+> //vsphere_cluster            = "sfo-w01-cl01"
+> vsphere_host                 = "sfo-w01-esx01"
+> vsphere_folder               = "sfo-w01-fd-templates"
+> ...
+> ```
+>
+> **Example** (Standalone ESXi Host):
+>
+> For a standalone, unmanaged ESXi host, comment or remove `vsphere_datacenter`, `vsphere_cluster`, and `vsphere_folder`.
+>
+> ```hcl
+> ...
+> //vsphere_datacenter         = "sfo-w01-dc01"
+> //vsphere_cluster            = "sfo-w01-cl01"
+> vsphere_host                 = "sfo-w01-esx01"
+> //vsphere_folder             = "sfo-w01-fd-templates"
+> ...
+> ```
 
 #### Using Environment Variables
 

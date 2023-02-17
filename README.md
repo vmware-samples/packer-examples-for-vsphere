@@ -2,7 +2,7 @@
 
 ![Last Commit](https://img.shields.io/github/last-commit/vmware-samples/packer-examples-for-vsphere?style=for-the-badge&logo=github)&nbsp;&nbsp;
 [![The Changelog](https://img.shields.io/badge/The%20Changelog-Read-blue?style=for-the-badge&logo=github)](CHANGELOG.md)&nbsp;&nbsp;
-![Packer 1.8.5+](https://img.shields.io/badge/HashiCorp%20Packer-1.8.5+-blue?style=for-the-badge&logo=packer&logoColor=white)
+![Packer 1.8.6+](https://img.shields.io/badge/HashiCorp%20Packer-1.8.6+-blue?style=for-the-badge&logo=packer&logoColor=white)
 
 ## Table of Contents
 
@@ -78,7 +78,7 @@ Operating systems and versions tested with the project:
 
 **Packer**:
 
-- HashiCorp [Packer][packer-install] 1.8.5 or higher.
+- HashiCorp [Packer][packer-install] 1.8.6 or higher.
 
   > **Note**
   >
@@ -88,7 +88,7 @@ Operating systems and versions tested with the project:
       <summary>Photon OS</summary>
 
     ```shell
-    PACKER_VERSION="1.8.5"
+    PACKER_VERSION="1.8.6"
     OS_PACKAGES="wget unzip"
 
     if [[ $(uname -m) == "x86_64" ]]; then

@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## .Next
+
+:sweat_drops: **Chore**:
+- Updates `required_versions` for `packer` to `>= 1.8.6`. [GH-486](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/486)
+
 ## [v23.01](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v23.01)
 
 > Release Date: 2023-01-17

@@ -9,6 +9,7 @@
 - Updates `required_plugins` for `ethanmdavidson/packer-plugin-git` to `>= 0.3.3`. [GH-487](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/487)
 - Updates `required_versions` for `hashicorp/vsphere` to `>= 2.3.1`. [GH-488](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/488)
 - Updates `required_versions` for `terraform` to `>= 1.3.9`. [GH-489](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/489)
+- Updates Ubuntu 22.04 to 22.04.2 release. [GH-492](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/492)
 
 ## [v23.01](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v23.01)
 

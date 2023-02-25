@@ -29,9 +29,9 @@ vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
 iso_path           = "iso/linux/ubuntu"
-iso_file           = "ubuntu-22.04.1-live-server-amd64.iso"
+iso_file           = "ubuntu-22.04.2-live-server-amd64.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "10f19c5b2b8d6db711582e0e27f5116296c34fe4b313ba45f9b201a5007056cb"
+iso_checksum_value = "5e38b55d57d94ff029719342357325ed3bda38fa80054f9330dc789cd2d43931"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

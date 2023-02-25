@@ -1,7 +1,7 @@
 /*
     DESCRIPTION:
     Storage variables used for all builds.
-    - Variables are passed to and used by guest operating system configuration files (e.g., ks.cfg, autounattend.xml).
+    - Variables are passed to and used by guest operating system configuration files (e.g., ks.cfg).
 */
 
 // VM Storage Settings

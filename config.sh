@@ -21,6 +21,11 @@ mkdir -p "$CONFIG_PATH"
 echo
 echo "> Copying the example input variables..."
 cp -av "$SCRIPT_PATH"/builds/*.pkrvars.hcl.example "$CONFIG_PATH"
+find "$SCRIPT_PATH"/builds/*/ -type f -name "*.pkrvars.hcl.example" -print0 | while IFS= read -r -d '' srcfile; do
+	srcdir=$(dirname "${srcfile}" | tr -s /)
+	dstfile=$(echo "${srcdir#"${SCRIPT_PATH}"/builds/}" | tr '/' '-')
+	cp -av "${srcfile}" "${CONFIG_PATH}/${dstfile}.pkrvars.hcl.example"
+done
 
 ### Rename the example input variables.
 echo

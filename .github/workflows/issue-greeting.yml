@@ -22,7 +22,7 @@ jobs:
           vars: |
             author: ${{ github.actor }}
       - name: Create Comment
-        uses: peter-evans/create-or-update-comment@v2
+        uses: peter-evans/create-or-update-comment@v3
         with:
           issue-number: "${{ github.event.issue.number }}"
           body: "${{ steps.template.outputs.result }}"

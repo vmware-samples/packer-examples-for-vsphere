@@ -6,6 +6,7 @@
 
 :sweat_drops: **Chore**:
 
+- Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.2.0`. [GH-564](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/564)
 - Updates `required_versions` for `packer` to `>= 1.9.1`. [GH-563](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/563)
 - Updates `required_plugins` for `ethanmdavidson/packer-plugin-git` to `>= 0.4.2`. [GH-562](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/562)
 - Updates `required_versions` for `hashicorp/vsphere` to `>= 2.4.0`. [GH-561](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/561)

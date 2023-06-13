@@ -6,13 +6,14 @@
 
 :sweat_drops: **Chore**:
 
-- Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.2.0`. [GH-564](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/564)
 - Updates `required_versions` for `packer` to `>= 1.9.1`. [GH-563](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/563)
+- Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.2.0`. [GH-564](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/564)
 - Updates `required_plugins` for `ethanmdavidson/packer-plugin-git` to `>= 0.4.2`. [GH-562](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/562)
-- Updates `required_versions` for `hashicorp/vsphere` to `>= 2.4.0`. [GH-561](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/561)
+- Updates `required_plugins` for `rgl/packer-plugin-windows-update` to `>= 0.14.3`. [GH-565](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/565)
 - Updates `required_versions` for `terraform` to `>= 1.5.0`. [GH-560](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/560)
-- Updates Ubuntu 22.04 to 22.04.2 release. [GH-492](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/492)
+- Updates `required_versions` for `hashicorp/vsphere` to `>= 2.4.0`. [GH-561](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/561)
 - Updates Gomplate to `3.11.5`. [GH-559](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/559)
+- Updates Ubuntu 22.04 to 22.04.2 release. [GH-492](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/492)
 
 ## [v23.01](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v23.01)
 

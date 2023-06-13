@@ -159,7 +159,7 @@ Operating systems and versions tested with the project:
 
   - HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.2.0 or higher.
   - [Packer Plugin for Git][packer-plugin-git] 0.4.2 or higher - a community plugin for HashiCorp Packer.
-  - [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.1 or higher - a community plugin for HashiCorp Packer.
+  - [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.3 or higher - a community plugin for HashiCorp Packer.
 
 **Additional Software Packages**:
 

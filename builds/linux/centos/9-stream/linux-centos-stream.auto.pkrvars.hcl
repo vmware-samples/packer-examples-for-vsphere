@@ -31,7 +31,7 @@ vm_network_card          = "vmxnet3"
 iso_path           = "iso/linux/centos"
 iso_file           = "CentOS-Stream-9-latest-x86_64-dvd1.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "93d7cf8ec497353fc1372c1bf01f2c8d42016a9dfb81b996722acf24f0d7c106"
+iso_checksum_value = "a8b4ae4aa0edcd911aa35205f27a4592d361f771d8e68cad34664b15612fb396"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

@@ -4,6 +4,10 @@
 
 > Release Date: Unreleased
 
+:boom: **Enhancement**:
+
+- Adds VMware Photon OS 5.0 to the project. [GH-582](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/582)
+
 :sweat_drops: **Chore**:
 
 - Updates `required_versions` for `packer` to `>= 1.9.1`. [GH-563](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/563)
@@ -20,7 +24,7 @@
 - Removes Ubuntu 18.04 from the project. [GH-578](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/578)
   
     On 31 May 2023, Ubuntu 18.04 LTS reached the end of standard support. See [Ubuntu Lifecycle](https://ubuntu.com/about/release-cycle) for more information.
-    
+
 - Updates Red Hat Enterprise Linux 9 to 9.2 release. [GH-576](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/576)
 - Updates Red Hat Enterprise Linux 8 to 8.8 release. [GH-577](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/577)
 - Updates Almalinux 9 to 9.2 release. [GH-569](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/569)

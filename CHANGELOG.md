@@ -22,6 +22,7 @@
 - Updates Almalinux 8 to 8.8 release. [GH-570](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/570)
 - Updates Rocky Linux 9 to 9.2 release. [GH-571](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/571)
 - Updates Rocky Linux 8 to 8.8 release. [GH-572](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/572)
+- Updates Debian 11 to 11.7 release. [GH-574](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/574)
 
 ## [v23.01](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v23.01)
 

@@ -15,6 +15,7 @@
 - Updates Gomplate to `3.11.5`. [GH-559](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/559)
 - Updates Ubuntu 22.04 to 22.04.2 release. [GH-492](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/492)
 - Updates Ubuntu 20.04 to 20.04.6 release. [GH-566](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/566)
+- Updates CentOS Stream 9 to latest June 2023 release. [GH-567](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/567)
 
 ## [v23.01](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v23.01)
 

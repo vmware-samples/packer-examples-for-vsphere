@@ -13,6 +13,7 @@
 - Updates `required_versions` for `terraform` to `>= 1.5.0`. [GH-560](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/560)
 - Updates `required_versions` for `hashicorp/vsphere` to `>= 2.4.0`. [GH-561](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/561)
 - Updates Gomplate to `3.11.5`. [GH-559](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/559)
+- Updates ansible-core to `2.15`. [GH-573](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/573)
 - Updates Ubuntu 22.04 to 22.04.2 release. [GH-492](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/492)
 - Updates Ubuntu 20.04 to 20.04.6 release. [GH-566](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/566)
 - Updates CentOS Stream 9 to latest June 2023 release. [GH-567](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/567)

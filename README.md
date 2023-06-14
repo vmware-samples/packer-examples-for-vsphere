@@ -174,14 +174,14 @@ The following additional software packages must be installed on the operating sy
 
   - [git][download-git] command-line tools.
 
-  - [ansible-core][ansible-docs] 2.13.
+  - [ansible-core][ansible-docs] 2.15.
 
   - [jq][jq] A command-line JSON processor.
 
   - xorriso - A command-line .iso creator.
 
     ```shell
-    pip3 install --user ansible-core==2.13
+    pip3 install --user ansible-core==2.15
     export PATH="$HOME/.local/bin:$PATH"
     tdnf -y install git jq xorriso
     ```
@@ -212,7 +212,7 @@ The following additional software packages must be installed on the operating sy
 
   - [git][download-git] command-line tools.
 
-  - [ansible-core][ansible-docs] 2.13.
+  - [ansible-core][ansible-docs] 2.15.
 
   - [jq][jq] A command-line JSON processor.
 
@@ -223,7 +223,7 @@ The following additional software packages must be installed on the operating sy
   - HashiCorp [Terraform][terraform-install] 1.5.0 or higher.
 
     ```shell
-    pip3 install --user ansible-core==2.13
+    pip3 install --user ansible-core==2.15
     sudo apt -y install git jq xorriso whois terraform
     ```
 
@@ -244,7 +244,7 @@ The following additional software packages must be installed on the operating sy
 
   - [git][download-git] command-line tools.
 
-  - [ansible-core][ansible-docs] 2.13.
+  - [ansible-core][ansible-docs] 2.15.
 
   - [jq][jq] A command-line JSON processor.
 
@@ -255,7 +255,7 @@ The following additional software packages must be installed on the operating sy
   - [gomplate][gomplate-install] 3.11.5 or higher.
 
     ```shell
-    pip3 install --user ansible-core==2.13
+    pip3 install --user ansible-core==2.15
     brew install git jq coreutils hashicorp/tap/terraform gomplate
     ```
 

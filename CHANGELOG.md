@@ -16,6 +16,7 @@
 - Updates Ubuntu 22.04 to 22.04.2 release. [GH-492](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/492)
 - Updates Ubuntu 20.04 to 20.04.6 release. [GH-566](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/566)
 - Updates CentOS Stream 9 to latest June 2023 release. [GH-567](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/567)
+- Updates CentOS Stream 8 to latest June 2023 release. [GH-568](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/568)
 
 ## [v23.01](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v23.01)
 

@@ -21,9 +21,6 @@ menu:
       - entry: "Ubuntu Server 20.04 LTS (cloud-init)"
         build:
           path: "builds/linux/ubuntu/20-04-lts/"
-      - entry: "Ubuntu Server 18.04 LTS"
-        build:
-          path: "builds/linux/ubuntu/18-04-lts/"
       - entry: "Red Hat Enterprise Linux 9"
         build:
           path: "builds/linux/rhel/9/"

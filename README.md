@@ -29,7 +29,6 @@ The following builds are available:
 - Debian 11
 - Ubuntu Server 22.04 LTS (cloud-init)
 - Ubuntu Server 20.04 LTS (cloud-init)
-- Ubuntu Server 18.04 LTS
 - Red Hat Enterprise Linux 9 Server
 - Red Hat Enterprise Linux 8 Server
 - Red Hat Enterprise Linux 7 Server
@@ -816,8 +815,6 @@ The project supports using a datastore to store your guest operating system [`.i
      - [Download][download-linux-ubuntu-server-22-04-lts] the latest **LIVE** release `.iso` image. (_e.g.,_ `ubuntu-22.04.x-live-server-amd64.iso`)
    - Ubuntu Server 20.04 LTS
      - [Download][download-linux-ubuntu-server-20-04-lts] the latest **LIVE** release `.iso` image. (_e.g.,_ `ubuntu-20.04.x-live-server-amd64.iso`)
-   - Ubuntu Server 18.04 LTS
-     - [Download][download-linux-ubuntu-server-18-04-lts] the latest legacy **NON-LIVE** release `.iso` image. (_e.g.,_ `ubuntu-18.04.x-server-amd64.iso`)
    - Red Hat Enterprise Linux 9 Server
      - [Download][download-linux-redhat-server-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-baseos-9.x-x86_64-dvd.iso`)
    - Red Hat Enterprise Linux 8 Server
@@ -1017,16 +1014,15 @@ Happy building!!!
 [download-linux-debian-11]: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/
 [download-linux-photon-server-4]: https://packages.vmware.com/photon/4.0/
 [download-linux-redhat-server-7]: https://access.redhat.com/downloads/content/69/ver=/rhel---7/7.9/x86_64/product-software
-[download-linux-redhat-server-8]: https://access.redhat.com/downloads/content/479/ver=/rhel---8/8.7/x86_64/product-software
-[download-linux-redhat-server-9]: https://access.redhat.com/downloads/content/479/ver=/rhel---9/9.1/x86_64/product-software
+[download-linux-redhat-server-8]: https://access.redhat.com/downloads/content/479/ver=/rhel---8/8.8/x86_64/product-software
+[download-linux-redhat-server-9]: https://access.redhat.com/downloads/content/479/ver=/rhel---9/9.2/x86_64/product-software
 [download-linux-rocky-server-9]: https://download.rockylinux.org/pub/rocky/9/isos/x86_64/
 [download-linux-rocky-server-8]: https://download.rockylinux.org/pub/rocky/8/isos/x86_64/
-[download-suse-linux-enterprise-15]: https://www.suse.com/download/sles/#
-[download-linux-ubuntu-server-18-04-lts]: http://cdimage.ubuntu.com/ubuntu/releases/18.04.5/release/
+[download-suse-linux-enterprise-15]: https://www.suse.com/download/sles/
 [download-linux-ubuntu-server-20-04-lts]: https://releases.ubuntu.com/20.04/
 [download-linux-ubuntu-server-22-04-lts]: https://releases.ubuntu.com/22.04/
 [gomplate-install]: https://gomplate.ca/
-[hcp-packer-create]: https://learn.hashicorp.com/tutorials/packer/hcp-push-image-metadata?in=packer/hcp-get-started#create-hcp-packer-registry
+[hcp-packer-create]: https://developer.hashicorp.com/packer/tutorials/hcp-get-started/hcp-push-image-metadata?in=packer%2Fhcp-get-started#create-hcp-packer-registry
 [hcp-packer-docs]: https://developer.hashicorp.com/hcp/docs/packer
 [hcp-packer-intro]: https://www.youtube.com/watch?v=r0I4TTO957w
 [hcp-security]: https://www.hashicorp.com/security

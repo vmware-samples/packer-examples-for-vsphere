@@ -17,6 +17,10 @@
 - Updates Debian 11 to 11.7 release. [GH-574](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/574)
 - Updates Ubuntu 22.04 to 22.04.2 release. [GH-492](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/492)
 - Updates Ubuntu 20.04 to 20.04.6 release. [GH-566](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/566)
+- Removes Ubuntu 18.04 from the project. [GH-578](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/578)
+  
+    On 31 May 2023, Ubuntu 18.04 LTS reached the end of standard support. See [Ubuntu Lifecycle](https://ubuntu.com/about/release-cycle) for more information.
+    
 - Updates Red Hat Enterprise Linux 9 to 9.2 release. [GH-576](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/576)
 - Updates Red Hat Enterprise Linux 8 to 8.8 release. [GH-577](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/577)
 - Updates Almalinux 9 to 9.2 release. [GH-569](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/569)

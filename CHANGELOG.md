@@ -1,4 +1,4 @@
-# CHANGELOG
+# Release History
 
 ## .Next
 
@@ -17,7 +17,8 @@
 - Updates Debian 11 to 11.7 release. [GH-574](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/574)
 - Updates Ubuntu 22.04 to 22.04.2 release. [GH-492](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/492)
 - Updates Ubuntu 20.04 to 20.04.6 release. [GH-566](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/566)
-- Updates Red Hat Enterprise Linux 9 to 9.2 release. [GH-575](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/575)
+- Updates Red Hat Enterprise Linux 9 to 9.2 release. [GH-576](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/576)
+- Updates Red Hat Enterprise Linux 8 to 8.8 release. [GH-577](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/577)
 - Updates Almalinux 9 to 9.2 release. [GH-569](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/569)
 - Updates Almalinux 8 to 8.8 release. [GH-570](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/570)
 - Updates Rocky Linux 9 to 9.2 release. [GH-571](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/571)
@@ -54,6 +55,12 @@
 
 :sweat_drops: **Chore**:
 
+- Updates `required_versions` for `packer` to `>= 1.8.5`. [GH-423](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/423)
+- Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.1.1`. [GH-416](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/416)
+- Updates `required_versions` for `terraform` to `>= 1.3.7`. [GH-456](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/456)
+- Updates `required_versions` for `hashicorp/hcp` to `>= 0.51.0`. [GH-408](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/408), [GH-409](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/396), [GH-410](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/410), [GH-411](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/411), [GH-412](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/412), [GH-413](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/413), [GH-414](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/414), [GH-415](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/415)
+- Updates Gomplate to `3.11.3`. [GH-380](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/380), [GH-382](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/382)
+- Updates Debian 11 to 11.6 release. [GH-432](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/432)
 - Updates Red Hat Enterprise Linux 9 to 9.1 release. [GH-366](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/366)
 - Updates Red Hat Enterprise Linux 8 to 8.7 release. [GH-365](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/365)
 - Updates Rocky Linux 9 to 9.1 release. [GH-381](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/381)
@@ -62,16 +69,10 @@
 - Updates Almalinux 8 to 8.7 release. [GH-361](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/361)
 - Updates CentOS Stream 9 to latest December 2022 release. [GH-454](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/454)
 - Updates CentOS Stream 8 to latest December 2022 release. [GH-453](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/453)
-- Updates Debian 11 to 11.6 release. [GH-432](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/432)
 - Updates Windows Server 2022 to December 2022 (US English) release. [GH-452](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/452)
 - Updates Windows Server 2019 to November 2022 (US English) release. [GH-373](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/373)
 - Updates Windows 11 22H2 to December 2022 (US English) release. [GH-451](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/451)
 - Updates Windows 10 22H2 to December 2022 (US English) release. [GH-450](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/450)
-- Updates `required_versions` for `packer` to `>= 1.8.5`. [GH-423](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/423)
-- Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.1.1`. [GH-416](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/416)
-- Updates `required_versions` for `terraform` to `>= 1.3.7`. [GH-456](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/456)
-- Updates `required_versions` for `hashicorp/hcp` to `>= 0.51.0`. [GH-408](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/408), [GH-409](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/396), [GH-410](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/410), [GH-411](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/411), [GH-412](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/412), [GH-413](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/413), [GH-414](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/414), [GH-415](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/415)
-- Updates Gomplate to `3.11.3`. [GH-380](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/380), [GH-382](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/382)
 - Removes Ubuntu 20.04 LTS (`x86_64`) and macOS Big Sur (Intel) as tested operating systems for the Packer host. [GH-393](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/393)
 
 :warning: **Breaking Change**:
@@ -94,9 +95,9 @@
 :sweat_drops: **Chore**:
 
 - Updates Debian 11 to 11.5.0 release. [GH-273](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/273)
-- Updates SLES 15 to 15.4 release. [GH-287](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/287)
 - Updates Ubuntu 22.04 to 22.04.1 release. [GH-274](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/274)
 - Updates Ubuntu 20.04 to 20.04.5 release. [GH-275](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/275)
+- Updates SLES 15 to 15.4 release. [GH-287](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/287)
 - Updates Windows Server 2022 to September 2022 (US English) release. [GH-282](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/282)
 - Updates Windows 11 to 22H2 September 2022 (US English) release. [GH-284](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/284)
 - Updates Windows 10 to 21H2 September 2022 (US English) release. [GH-283](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/283)

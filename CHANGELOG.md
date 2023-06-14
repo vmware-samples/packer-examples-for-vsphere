@@ -18,6 +18,7 @@
 - Updates CentOS Stream 9 to latest June 2023 release. [GH-567](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/567)
 - Updates CentOS Stream 8 to latest June 2023 release. [GH-568](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/568)
 - Updates Almalinux 9 to 9.2 release. [GH-569](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/569)
+- Updates Almalinux 8 to 8.8 release. [GH-570](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/570)
 
 ## [v23.01](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v23.01)
 

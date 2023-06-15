@@ -9,6 +9,9 @@ menu:
         - "proxy.pkrvars.hcl"
         - "common.pkrvars.hcl"
     submenu:
+      - entry: "VMware Photon OS 5"
+        build:
+          path: "builds/linux/photon/5/"
       - entry: "VMware Photon OS 4"
         build:
           path: "builds/linux/photon/4/"

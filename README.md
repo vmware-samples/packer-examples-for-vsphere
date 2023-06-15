@@ -25,6 +25,7 @@ The following builds are available:
 
 ### Linux Distributions
 
+- VMware Photon OS 5
 - VMware Photon OS 4
 - Debian 11
 - Ubuntu Server 22.04 LTS (cloud-init)
@@ -807,6 +808,8 @@ The project supports using a datastore to store your guest operating system [`.i
    <details>
    <summary>Linux Distributions:</summary>
 
+   - VMware Photon OS 5
+     - [Download][download-linux-photon-5] the latest release of the **FULL** `.iso` image. (_e.g.,_ `photon-5.0-xxxxxxxxx.x86_64.iso`)
    - VMware Photon OS 4
      - [Download][download-linux-photon-4] the latest release of the **FULL** `.iso` image. (_e.g.,_ `photon-4.0-xxxxxxxxx.iso`)
    - Debian 11
@@ -1013,12 +1016,13 @@ Happy building!!!
 [download-linux-centos-stream-8]: http://isoredirect.centos.org/centos/8-stream/isos/x86_64/
 [download-linux-centos-stream-9]: http://mirror.stream.centos.org/9-stream/BaseOS/x86_64/iso/
 [download-linux-debian-11]: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/
-[download-linux-photon-4]: https://packages.vmware.com/photon/4.0/
+[download-linux-photon-5]: https://packages.vmware.com/photon/5.0/GA/iso/
+[download-linux-photon-4]: https://packages.vmware.com/photon/4.0/Rev2/iso/
 [download-linux-rhel-7]: https://access.redhat.com/downloads/content/69/ver=/rhel---7/7.9/x86_64/product-software
 [download-linux-rhel-8]: https://access.redhat.com/downloads/content/479/ver=/rhel---8/8.8/x86_64/product-software
 [download-linux-rhel-9]: https://access.redhat.com/downloads/content/479/ver=/rhel---9/9.2/x86_64/product-software
-[download-linux-rocky-8]: https://download.rockylinux.org/pub/rocky/8/isos/x86_64/
 [download-linux-rocky-9]: https://download.rockylinux.org/pub/rocky/9/isos/x86_64/
+[download-linux-rocky-8]: https://download.rockylinux.org/pub/rocky/8/isos/x86_64/
 [download-linux-sles-15]: https://www.suse.com/download/sles/
 [download-linux-ubuntu-2004]: https://releases.ubuntu.com/20.04/
 [download-linux-ubuntu-2204]: https://releases.ubuntu.com/22.04/

@@ -27,6 +27,7 @@ The following builds are available:
 
 - VMware Photon OS 5
 - VMware Photon OS 4
+- Debian 12
 - Debian 11
 - Ubuntu Server 22.04 LTS (cloud-init)
 - Ubuntu Server 20.04 LTS (cloud-init)
@@ -812,6 +813,8 @@ The project supports using a datastore to store your guest operating system [`.i
      - [Download][download-linux-photon-5] the latest release of the **FULL** `.iso` image. (_e.g.,_ `photon-5.0-xxxxxxxxx.x86_64.iso`)
    - VMware Photon OS 4
      - [Download][download-linux-photon-4] the latest release of the **FULL** `.iso` image. (_e.g.,_ `photon-4.0-xxxxxxxxx.iso`)
+   - Debian 12
+     - [Download][download-linux-debian-12] the latest **netinst** release `.iso` image. (_e.g.,_ `debian-12.x.x-amd64-netinst.iso`)
    - Debian 11
      - [Download][download-linux-debian-11] the latest **netinst** release `.iso` image. (_e.g.,_ `debian-11.x.x-amd64-netinst.iso`)
    - Ubuntu Server 22.04 LTS
@@ -1015,7 +1018,8 @@ Happy building!!!
 [download-linux-centos-7]: http://isoredirect.centos.org/centos/7/isos/x86_64/
 [download-linux-centos-stream-8]: http://isoredirect.centos.org/centos/8-stream/isos/x86_64/
 [download-linux-centos-stream-9]: http://mirror.stream.centos.org/9-stream/BaseOS/x86_64/iso/
-[download-linux-debian-11]: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/
+[download-linux-debian-12]: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/
+[download-linux-debian-11]: https://cdimage.debian.org/cdimage/archive/11.7.0/amd64/iso-cd/
 [download-linux-photon-5]: https://packages.vmware.com/photon/5.0/GA/iso/
 [download-linux-photon-4]: https://packages.vmware.com/photon/4.0/Rev2/iso/
 [download-linux-rhel-7]: https://access.redhat.com/downloads/content/69/ver=/rhel---7/7.9/x86_64/product-software

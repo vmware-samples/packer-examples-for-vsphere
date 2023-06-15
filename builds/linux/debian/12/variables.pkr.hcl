@@ -1,6 +1,6 @@
 /*
     DESCRIPTION:
-    Debian 11 (Bullseye) input variables.
+    Debian 12 (Bookworm) input variables.
     Packer Plugin for VMware vSphere (`vsphere-iso` builder).
 */
 
@@ -90,12 +90,12 @@ variable "vm_guest_os_name" {
 
 variable "vm_guest_os_version" {
   type        = string
-  description = "The guest operating system version. Used for naming. (e.g. '11')"
+  description = "The guest operating system version. Used for naming. (e.g. '12')"
 }
 
 variable "vm_guest_os_type" {
   type        = string
-  description = "The guest operating system type, also know as guestid. (e.g. 'debian11_64Guest')"
+  description = "The guest operating system type, also know as guestid. (e.g. 'debian12_64Guest')"
 }
 
 variable "vm_firmware" {

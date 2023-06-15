@@ -1,6 +1,6 @@
 /*
     DESCRIPTION:
-    Debian 11 (Bullseye) build variables.
+    Debian 12 (Bookworm) build variables.
 */
 
 // Guest Operating System Metadata
@@ -9,7 +9,7 @@ vm_guest_os_keyboard = "us"
 vm_guest_os_timezone = "UTC"
 vm_guest_os_family   = "linux"
 vm_guest_os_name     = "debian"
-vm_guest_os_version  = "11.7"
+vm_guest_os_version  = "12.0"
 
 // Virtual Machine Guest Operating System Setting
 vm_guest_os_type = "other5xLinux64Guest"
@@ -29,9 +29,9 @@ vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
 iso_path           = "iso/linux/debian"
-iso_file           = "debian-11.7.0-amd64-netinst.iso"
+iso_file           = "debian-12.0.0-amd64-netinst.iso"
 iso_checksum_type  = "sha512"
-iso_checksum_value = "4460ef6470f6d8ae193c268e213d33a6a5a0da90c2d30c1024784faa4e4473f0c9b546a41e2d34c43fbbd43542ae4fb93cfd5cb6ac9b88a476f1a6877c478674"
+iso_checksum_value = "b462643a7a1b51222cd4a569dad6051f897e815d10aa7e42b68adc8d340932d861744b5ea14794daa5cc0ccfa48c51d248eda63f150f8845e8055d0a5d7e58e6"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

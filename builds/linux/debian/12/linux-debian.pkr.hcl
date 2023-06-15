@@ -1,6 +1,6 @@
 /*
     DESCRIPTION:
-    Debian 11 (Bullseye) build definition.
+    Debian 12 (Bookworm) build definition.
     Packer Plugin for VMware vSphere (`vsphere-iso` builder).
 */
 

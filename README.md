@@ -15,7 +15,7 @@
 
 ## Introduction
 
-This repository provides infrastructure-as-code examples to automate the creation of virtual machine images and their guest operating systems on VMware vSphere using [HashiCorp Packer][packer] and the [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`). All examples are authored in the HashiCorp Configuration Language ("HCL2").
+This repository provides infrastructure-as-code examples to automate the creation of virtual machine images and their guest operating systems on VMware vSphere using [HashiCorp Packer][packer] and the [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso` builder). All examples are authored in the HashiCorp Configuration Language ("HCL2").
 
 Use of this project is mentioned in the **_VMware Validated Solution: Private Cloud Automation for VMware Cloud Foundation_** authored by the maintainer. Learn more about this solution at [vmware.com/go/vvs](https://vmware.com/go/vvs).
 
@@ -66,7 +66,7 @@ Operating systems and versions tested with the project:
 
 > **Note**
 >
-> If your [Ansible][ansible-ssh-connection] control node already uses OpenSSH >= 9.0 (_e.g._, macOS Ventura) you must add an additional option to enable scp.
+> If your [Ansible][ansible-ssh-connection] control node already uses OpenSSH >= 9.0 (_e.g.,_, macOS Ventura) you must add an additional option to enable scp.
 >
 > Update the `ansible/ansible.cfg` to include the following:
 >
@@ -156,9 +156,9 @@ Operating systems and versions tested with the project:
   >
   > Required plugins are automatically downloaded and initialized when using `./build.sh`. For dark sites, you may download the plugins and place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
 
-  - HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.2.0 or higher.
-  - [Packer Plugin for Git][packer-plugin-git] 0.4.2 or higher - a community plugin for HashiCorp Packer.
-  - [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.3 or higher - a community plugin for HashiCorp Packer.
+  - HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] 1.2.0 or later.
+  - [Packer Plugin for Git][packer-plugin-git] 0.4.2 or later - a community plugin for HashiCorp Packer.
+  - [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.3 or later - a community plugin for HashiCorp Packer.
 
 **Additional Software Packages**:
 
@@ -808,34 +808,35 @@ The project supports using a datastore to store your guest operating system [`.i
    <summary>Linux Distributions:</summary>
 
    - VMware Photon OS 4
-     - [Download][download-linux-photon-server-4] the latest release of the **FULL** `.iso` image. (_e.g._ `photon-4.0-xxxxxxxxx.iso`)
+     - [Download][download-linux-photon-4] the latest release of the **FULL** `.iso` image. (_e.g.,_ `photon-4.0-xxxxxxxxx.iso`)
    - Debian 11
-     - [Download][download-linux-debian-11] the latest **netinst** release `.iso` image. (_e.g._ `debian-11.x.0-amd64-netinst.iso`)
+     - [Download][download-linux-debian-11] the latest **netinst** release `.iso` image. (_e.g.,_ `debian-11.x.x-amd64-netinst.iso`)
    - Ubuntu Server 22.04 LTS
-     - [Download][download-linux-ubuntu-server-22-04-lts] the latest **LIVE** release `.iso` image. (_e.g.,_ `ubuntu-22.04.x-live-server-amd64.iso`)
+     - [Download][download-linux-ubuntu-2204] the latest **LIVE** release `.iso` image. (_e.g.,_ `ubuntu-22.04.x-live-server-amd64.iso`)
    - Ubuntu Server 20.04 LTS
-     - [Download][download-linux-ubuntu-server-20-04-lts] the latest **LIVE** release `.iso` image. (_e.g.,_ `ubuntu-20.04.x-live-server-amd64.iso`)
+     - [Download][download-linux-ubuntu-2004] the latest **LIVE** release `.iso` image. (_e.g.,_ `ubuntu-20.04.x-live-server-amd64.iso`)
    - Red Hat Enterprise Linux 9 Server
-     - [Download][download-linux-redhat-server-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-baseos-9.x-x86_64-dvd.iso`)
+     - [Download][download-linux-rhel-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-9.x-x86_64-dvd.iso`)
    - Red Hat Enterprise Linux 8 Server
-     - [Download][download-linux-redhat-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-8.x-x86_64-dvd1.iso`)
+     - [Download][download-linux-rhel-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-8.x-x86_64-dvd.iso`)
    - Red Hat Enterprise Linux 7 Server
-     - [Download][download-linux-redhat-server-7] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-server-7.x-x86_64-dvd1.iso`)
+     - [Download][download-linux-rhel-7] the latest release of the **FULL** `.iso` image. (_e.g.,_ `rhel-server-7.x-x86_64-dvd.iso`)
    - AlmaLinux OS 9
-     - [Download][download-linux-almalinux-server-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `AlmaLinux-9.x-x86_64-dvd1.iso`)
+     - [Download][download-linux-alma-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `AlmaLinux-9.x-x86_64-dvd.iso`)
    - AlmaLinux OS 8
-     - [Download][download-linux-almalinux-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `AlmaLinux-8.x-x86_64-dvd1.iso`)
+     - [Download][download-linux-alma-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `AlmaLinux-8.x-x86_64-dvd.iso`)
    - Rocky Linux 9
-     - [Download][download-linux-rocky-server-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `Rocky-9.x-x86_64-dvd1.iso`)
+     - [Download][download-linux-rocky-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `Rocky-9.x-x86_64-dvd.iso`)
    - Rocky Linux 8
-     - [Download][download-linux-rocky-server-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `Rocky-8.x-x86_64-dvd1.iso`)
+     - [Download][download-linux-rocky-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `Rocky-8.x-x86_64-dvd.iso`)
    - CentOS Stream 9
      - [Download][download-linux-centos-stream-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-Stream-9-latest-x86_64-dvd1.iso`)
    - CentOS Stream 8
      - [Download][download-linux-centos-stream-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-Stream-8-x86_64-latest-dvd1.iso`)
    - CentOS Linux 7
-     - [Download][download-linux-centos-server-7] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-7-x86_64-DVD.iso`)
-   - SUSE Linux Enterprise 15 \* [Download][download-suse-linux-enterprise-15] the latest 15.4 release of the **FULL** `.iso` image. (_e.g.,_ `SLE-15-SP4-Full-x86_64-GM-Media1.iso`)
+     - [Download][download-linux-centos-7] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-7-x86_64-DVD.iso`)
+   - SUSE Linux Enterprise 15
+     - [Download][download-linux-sles-15] the latest 15.4 release of the **FULL** `.iso` image. (_e.g.,_ `SLE-15-SP4-Full-x86_64-GM-Media1.iso`)
    </details>
 
    <details>
@@ -843,11 +844,11 @@ The project supports using a datastore to store your guest operating system [`.i
 
    - Microsoft Windows Server 2022
    - Microsoft Windows Server 2019
-   - Microsoft Windows 11
-   - Microsoft Windows 10
+   - Microsoft Windows 11 22H2
+   - Microsoft Windows 10 22H2
    </details>
 
-1. Obtain the checksum type (_e.g.,_ `sha256`, `md5`, etc.) and checksum value for each guest operating system `.iso` from the vendor. This will be use in the build input variables.
+1. Obtain the checksum type (_e.g.,_ `sha512`, `sha256`, `md5`, etc.) and checksum value for each guest operating system `.iso` from the vendor. This will be use in the build input variables.
 
 1. [Upload][vsphere-upload] or your guest operating system `.iso` files to the datastore and update the configuration variables.
 
@@ -1006,21 +1007,21 @@ Happy building!!!
 [credits-owen-reynolds-twitter]: https://twitter.com/OVDamn
 [credits-owen-reynolds-github]: https://github.com/getvpro/Build-Packer/blob/master/Scripts/Install-VMTools.ps1
 [download-git]: https://git-scm.com/downloads
-[download-linux-almalinux-server-8]: https://mirrors.almalinux.org/isos/x86_64/8.6.html
-[download-linux-almalinux-server-9]: https://mirrors.almalinux.org/isos/x86_64/9.0.html
-[download-linux-centos-server-7]: http://isoredirect.centos.org/centos/7/isos/x86_64/
-[download-linux-centos-stream-9]: http://mirror.stream.centos.org/9-stream/BaseOS/x86_64/iso/
+[download-linux-alma-8]: https://mirrors.almalinux.org/isos/x86_64/8.8.html
+[download-linux-alma-9]: https://mirrors.almalinux.org/isos/x86_64/9.2.html
+[download-linux-centos-7]: http://isoredirect.centos.org/centos/7/isos/x86_64/
 [download-linux-centos-stream-8]: http://isoredirect.centos.org/centos/8-stream/isos/x86_64/
+[download-linux-centos-stream-9]: http://mirror.stream.centos.org/9-stream/BaseOS/x86_64/iso/
 [download-linux-debian-11]: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/
-[download-linux-photon-server-4]: https://packages.vmware.com/photon/4.0/
-[download-linux-redhat-server-7]: https://access.redhat.com/downloads/content/69/ver=/rhel---7/7.9/x86_64/product-software
-[download-linux-redhat-server-8]: https://access.redhat.com/downloads/content/479/ver=/rhel---8/8.8/x86_64/product-software
-[download-linux-redhat-server-9]: https://access.redhat.com/downloads/content/479/ver=/rhel---9/9.2/x86_64/product-software
-[download-linux-rocky-server-9]: https://download.rockylinux.org/pub/rocky/9/isos/x86_64/
-[download-linux-rocky-server-8]: https://download.rockylinux.org/pub/rocky/8/isos/x86_64/
-[download-suse-linux-enterprise-15]: https://www.suse.com/download/sles/
-[download-linux-ubuntu-server-20-04-lts]: https://releases.ubuntu.com/20.04/
-[download-linux-ubuntu-server-22-04-lts]: https://releases.ubuntu.com/22.04/
+[download-linux-photon-4]: https://packages.vmware.com/photon/4.0/
+[download-linux-rhel-7]: https://access.redhat.com/downloads/content/69/ver=/rhel---7/7.9/x86_64/product-software
+[download-linux-rhel-8]: https://access.redhat.com/downloads/content/479/ver=/rhel---8/8.8/x86_64/product-software
+[download-linux-rhel-9]: https://access.redhat.com/downloads/content/479/ver=/rhel---9/9.2/x86_64/product-software
+[download-linux-rocky-8]: https://download.rockylinux.org/pub/rocky/8/isos/x86_64/
+[download-linux-rocky-9]: https://download.rockylinux.org/pub/rocky/9/isos/x86_64/
+[download-linux-sles-15]: https://www.suse.com/download/sles/
+[download-linux-ubuntu-2004]: https://releases.ubuntu.com/20.04/
+[download-linux-ubuntu-2204]: https://releases.ubuntu.com/22.04/
 [gomplate-install]: https://gomplate.ca/
 [hcp-packer-create]: https://developer.hashicorp.com/packer/tutorials/hcp-get-started/hcp-push-image-metadata?in=packer%2Fhcp-get-started#create-hcp-packer-registry
 [hcp-packer-docs]: https://developer.hashicorp.com/hcp/docs/packer

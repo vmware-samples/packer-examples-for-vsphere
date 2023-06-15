@@ -36,7 +36,11 @@
 - Updates CentOS Stream 8 to latest June 2023 release. [GH-568](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/568)
 - Updates Windows Server 2022 to May 2023 (US English) release. [GH-579](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/579)
 - Updates Windows 11 22H2 to May 2023 (US English) release. [GH-580](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/580), [GH-583](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/583)
-- Updates Windows 10 22H2 to May 2023 (US English) release. [GH-581](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/581)
+- Updates Windows 10 22H2 to May 2023 (US English) release. [GH-575](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/581)
+
+:wrench: **Refactor**:
+
+- Removes the installation of Chocolatey from the Microsoft Windows guest operating system builds. [GH-586](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/586)
 
 ## [v23.01](https://github.com/vmware-samples/packer-examples-for-vsphere/releases/tag/v23.01)
 

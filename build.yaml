@@ -15,6 +15,9 @@ menu:
       - entry: "VMware Photon OS 4"
         build:
           path: "builds/linux/photon/4/"
+      - entry: "Debian 12"
+        build:
+          path: "builds/linux/debian/12/"
       - entry: "Debian 11"
         build:
           path: "builds/linux/debian/11/"

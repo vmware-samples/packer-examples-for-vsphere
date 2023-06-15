@@ -7,6 +7,7 @@
 :boom: **Enhancement**:
 
 - Adds VMware Photon OS 5.0 to the project. [GH-582](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/582)
+- Adds Debian 12 to the project. [GH-584](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/584)
 
 :sweat_drops: **Chore**:
 

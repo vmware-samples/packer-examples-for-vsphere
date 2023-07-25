@@ -1,6 +1,6 @@
 ---
 name: Manage Stale Items
-"on":
+on:
   schedule:
     - cron: 00 00 * * *
 jobs:

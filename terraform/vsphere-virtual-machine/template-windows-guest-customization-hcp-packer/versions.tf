@@ -6,7 +6,7 @@ terraform {
   required_providers {
     hcp = {
       source  = "hashicorp/hcp"
-      version = "~> 0.66.0"
+      version = "~> 0.68.0"
     }
     vsphere = {
       source  = "hashicorp/vsphere"

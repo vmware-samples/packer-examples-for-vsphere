@@ -9,6 +9,10 @@
 - Adds VMware Photon OS 5.0 to the project. [GH-582](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/582)
 - Adds Debian 12 to the project. [GH-584](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/584)
 
+:bug: **Bugfix**:
+
+- Updates Debian 11 to include `build_password` in the `linux-debian.pkr.hcl` configuration file. [GH-653](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/653)
+
 :sweat_drops: **Chore**:
 
 - Updates `required_versions` for `packer` to `>= 1.9.1`. [GH-563](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/563)

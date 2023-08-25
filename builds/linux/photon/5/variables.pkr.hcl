@@ -35,13 +35,20 @@ variable "vsphere_insecure_connection" {
 variable "vsphere_datacenter" {
   type        = string
   description = "The name of the target vSphere datacenter. (e.g. 'sfo-w01-dc01')"
+  default     = ""
 }
 
 variable "vsphere_cluster" {
   type        = string
   description = "The name of the target vSphere cluster. (e.g. 'sfo-w01-cl01')"
+  default     = ""
 }
 
+variable "vsphere_host" {
+  type        = string
+  description = "The name of the target ESXi host. (e.g. 'sfo-w01-esx01')"
+  default     = ""
+}
 variable "vsphere_datastore" {
   type        = string
   description = "The name of the target vSphere datastore. (e.g. 'sfo-w01-cl01-vsan01')"
@@ -54,7 +61,8 @@ variable "vsphere_network" {
 
 variable "vsphere_folder" {
   type        = string
-  description = "The name of the target vSphere cluster. (e.g. 'sfo-w01-fd-templates')"
+  description = "The name of the target vSphere folder. (e.g. 'sfo-w01-fd-templates')"
+  default     = ""
 }
 
 // Virtual Machine Settings
@@ -71,7 +79,7 @@ variable "vm_guest_os_name" {
 
 variable "vm_guest_os_version" {
   type        = string
-  description = "The guest operating system version. Used for naming. (e.g. '5')"
+  description = "The guest operating system version. Used for naming. (e.g. '4')"
 }
 
 variable "vm_guest_os_type" {
@@ -223,7 +231,7 @@ variable "iso_file" {
 
 variable "iso_checksum_type" {
   type        = string
-  description = "The checksum algorithm used by the vendor. (e.g. 'sha512')"
+  description = "The checksum algorithm used by the vendor. (e.g. 'md5')"
 }
 
 variable "iso_checksum_value" {

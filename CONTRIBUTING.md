@@ -25,7 +25,7 @@ Contributions via pull requests are appreciated. Before sending us a pull reques
 
 1. You [open a discussion](https://github.com/vmware-samples/packer-examples-for-vsphere/discussions) to discuss any significant work with the maintainer(s).
 1. You open an issue and link your pull request to the issue for context.
-1. You are working against the latest source on the `main` branch.
+1. You are working against the latest source on the `develop` branch.
 1. You check existing open, and recently merged, pull requests to make sure someone else hasn't already addressed
    the problem.
 
@@ -57,19 +57,19 @@ Example:
 
 ```shell
 git remote add upstream https://github.com/vmware-samples/packer-examples-for-vsphere.git
-git checkout -b feat/foo main
+git checkout -b feat/foo develop
 git commit -s -a
 git push origin feat/foo
 ```
 
 ### Staying In Sync With Upstream
 
-When your branch gets out of sync with the vmware-samples/main branch, use the following to update:
+When your branch gets out of sync with the `vmware-samples/develop`` branch, use the following to update:
 
 ```shell
 git checkout feat/foo
 git fetch -a
-git pull --rebase upstream main
+git pull --rebase upstream develop
 git push --force-with-lease origin feat/foo
 ```
 
@@ -92,7 +92,7 @@ If you need to squash changes into an earlier commit, you can use:
 ```shell
 git add .
 git commit --fixup <commit>
-git rebase -i --autosquash main
+git rebase -i --autosquash develop
 git push --force-with-lease origin feat/foo
 ```
 

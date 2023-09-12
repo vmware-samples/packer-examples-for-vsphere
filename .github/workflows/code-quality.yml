@@ -18,7 +18,7 @@ jobs:
           FILTER_REGEX_EXCLUDE: "build.tmpl"
           IGNORE_GITIGNORED_FILES: true
           VALIDATE_ALL_CODEBASE: true
-          DEFAULT_BRANCH: "main"
+          DEFAULT_BRANCH: "develop"
           DISABLE_ERRORS: false
           VALIDATE_ANSIBLE: false
           VALIDATE_TERRAGRUNT: false

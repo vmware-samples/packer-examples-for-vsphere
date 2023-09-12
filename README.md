@@ -300,7 +300,7 @@ git switch -c $TAG_NAME HEAD
 
 > **Note**
 >
-> You may also clone `main` for the latest prerelease updates.
+> You may also clone `develop` for the latest prerelease updates.
 
 ```console
 TAG_NAME=$(curl -s https://api.github.com/repos/vmware-samples/packer-examples-for-vsphere/releases | jq  -r '.[0].tag_name')

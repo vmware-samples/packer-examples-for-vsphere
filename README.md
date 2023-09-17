@@ -42,6 +42,7 @@ The following builds are available:
 - CentOS Stream 8
 - CentOS Linux 7
 - SUSE Linux Enterprise Server 15
+- Oracle Enterprise Linux 8 Server
 
 ### Microsoft Windows - _Core and Desktop Experience_
 

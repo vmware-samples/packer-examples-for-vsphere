@@ -550,7 +550,7 @@ menu_option_17() {
   echo "Done."
 }
 
-menu_option_19() {
+menu_option_18() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/oracle/8/
   echo -e "\nCONFIRM: Build a Oracle Enterprise Linux 8 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -575,14 +575,14 @@ menu_option_19() {
       -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/scc.pkrvars.hcl" \
       "$INPUT_PATH"
 
   ### All done. ###
   echo "Done."
 }
 
-menu_option_20() {
+
+menu_option_19() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2022/
   echo -e "\nCONFIRM: Build all Windows Server 2022 Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -611,7 +611,7 @@ menu_option_20() {
   echo "Done."
 }
 
-menu_option_21() {
+menu_option_20() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2022/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2022 Standard Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -641,7 +641,7 @@ menu_option_21() {
   echo "Done."
 }
 
-menu_option_22() {
+menu_option_21() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2022/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2022 Datacenter Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -671,7 +671,7 @@ menu_option_22() {
   echo "Done."
 }
 
-menu_option_23() {
+menu_option_22() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2019/
   echo -e "\nCONFIRM: Build all Windows Server 2019 Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -700,7 +700,7 @@ menu_option_23() {
   echo "Done."
 }
 
-menu_option_24() {
+menu_option_23() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2019/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2019 Standard Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -730,7 +730,7 @@ menu_option_24() {
   echo "Done."
 }
 
-menu_option_25() {
+menu_option_24() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2019/
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2019 Datacenter Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -760,7 +760,7 @@ menu_option_25() {
   echo "Done."
 }
 
-menu_option_26() {
+menu_option_25() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/11/
   echo -e "\nCONFIRM: Build a Windows 11 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -789,7 +789,7 @@ menu_option_26() {
   echo "Done."
 }
 
-menu_option_27() {
+menu_option_26() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/10/
   echo -e "\nCONFIRM: Build a Windows 10 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -868,18 +868,18 @@ until [ "$selection" = "0" ]; do
   echo "    	15  -  CentOS Stream 8"
   echo "    	16  -  CentOS Linux 7"
   echo "    	17  -  SUSE Linux Enterprise Server 15"
-  echo "    	19  -  Oracle Linux 8"
+  echo "    	18  -  Oracle Enterprise Linux 8"
   echo ""
   echo "      Microsoft Windows:"
   echo ""
-  echo "    	20  -  Windows Server 2022 - All"
-  echo "    	21  -  Windows Server 2022 - Standard Only"
-  echo "    	22  -  Windows Server 2022 - Datacenter Only"
-  echo "    	23  -  Windows Server 2019 - All"
-  echo "    	24  -  Windows Server 2019 - Standard Only"
-  echo "    	25  -  Windows Server 2019 - Datacenter Only"
-  echo "    	26  -  Windows 11"
-  echo "    	27  -  Windows 10"
+  echo "    	19  -  Windows Server 2022 - All"
+  echo "    	20  -  Windows Server 2022 - Standard Only"
+  echo "    	21  -  Windows Server 2022 - Datacenter Only"
+  echo "    	22  -  Windows Server 2019 - All"
+  echo "    	23  -  Windows Server 2019 - Standard Only"
+  echo "    	24  -  Windows Server 2019 - Datacenter Only"
+  echo "    	25  -  Windows 11"
+  echo "    	26  -  Windows 10"
   echo ""
   echo "      Other:"
   echo ""
@@ -906,6 +906,7 @@ until [ "$selection" = "0" ]; do
     15 ) clear ; menu_option_15 ; press_enter ;;
     16 ) clear ; menu_option_16 ; press_enter ;;
     17 ) clear ; menu_option_17 ; press_enter ;;
+    18 ) clear ; menu_option_18 ; press_enter ;;
     19 ) clear ; menu_option_19 ; press_enter ;;
     20 ) clear ; menu_option_20 ; press_enter ;;
     21 ) clear ; menu_option_21 ; press_enter ;;
@@ -914,7 +915,6 @@ until [ "$selection" = "0" ]; do
     24 ) clear ; menu_option_24 ; press_enter ;;
     25 ) clear ; menu_option_25 ; press_enter ;;
     26 ) clear ; menu_option_26 ; press_enter ;;
-    27 ) clear ; menu_option_27 ; press_enter ;;
     I ) clear ; info ; press_enter ;;
     Q ) clear ; exit ;;
     * ) clear ; incorrect_selection ; press_enter ;;

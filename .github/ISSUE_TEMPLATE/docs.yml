@@ -1,7 +1,7 @@
 ---
 name: Documentation
 description: Found a typo or something that needs clarification?
-title: Please add a short decsription.
+title: Please add a short description.
 labels:
   - type/docs
   - status/needs-review

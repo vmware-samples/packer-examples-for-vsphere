@@ -845,7 +845,7 @@ The project supports using a datastore to store your guest operating system [`.i
    - SUSE Linux Enterprise 15
      - [Download][download-linux-sles-15] the latest 15.4 release of the **FULL** `.iso` image. (_e.g.,_ `SLE-15-SP4-Full-x86_64-GM-Media1.iso`)
    - Oracle Enterprise Linux 8
-     - [Download][download-linux-oel-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `oraclelinux-r8-u8-x86_64-dvd.iso`)
+     - [Download][download-linux-oel-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `OracleLinux-R8-U8-x86_64-dvd.iso`)
    </details>
 
    <details>

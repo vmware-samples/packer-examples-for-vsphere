@@ -28,8 +28,8 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_path           = "iso/misc/"
-iso_file           = "oraclelinux-r8-u8-x86_64-dvd.iso"
+iso_path           = "iso/linux/oel"
+iso_file           = "OracleLinux-R8-U8-x86_64-dvd.iso"
 iso_checksum_type  = "sha256"
 iso_checksum_value = "cae39116245ff7c3c86d5305d9c11430ce5c4e512987563435ac59c37a082d7e"
 

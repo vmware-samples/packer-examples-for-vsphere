@@ -84,7 +84,7 @@ variable "vm_guest_os_family" {
 
 variable "vm_guest_os_name" {
   type        = string
-  description = "The guest operating system name. Used for naming . (e.g. 'rhel')"
+  description = "The guest operating system name. Used for naming . (e.g. 'oel')"
 }
 
 variable "vm_guest_os_version" {
@@ -94,7 +94,7 @@ variable "vm_guest_os_version" {
 
 variable "vm_guest_os_type" {
   type        = string
-  description = "The guest operating system type, also know as guestid. (e.g. 'rhel8_64Guest')"
+  description = "The guest operating system type, also know as guestid. (e.g. 'oracleLinux8_64Guest')"
 }
 
 variable "vm_firmware" {
@@ -231,12 +231,12 @@ variable "common_iso_datastore" {
 
 variable "iso_path" {
   type        = string
-  description = "The path on the source vSphere datastore for ISO image. (e.g. 'iso/linux/rhel')"
+  description = "The path on the source vSphere datastore for ISO image. (e.g. 'iso/linux/oel')"
 }
 
 variable "iso_file" {
   type        = string
-  description = "The file name of the ISO image used by the vendor. (e.g. 'rhel-<verssion>-x86_64-dvd.iso')"
+  description = "The file name of the ISO image used by the vendor. (e.g. 'OracleLinux-<version>-x86_64-dvd.iso')"
 }
 
 variable "iso_checksum_type" {

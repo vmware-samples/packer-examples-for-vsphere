@@ -14,6 +14,7 @@
 :bug: **Bugfix**:
 
 - Updates Debian 11 to include `build_password` in the `linux-debian.pkr.hcl` configuration file. [GH-653](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/653)
+- Updates Debian 11 to ensure `/dev/sr1` is not mounted with use of the default `http` data source. No changes to the `disk` data source. [GH-686](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/686)
 - Updates Debian 12 to ensure `/dev/sr1` is not mounted with use of the default `http` data source. No changes to the `disk` data source. [GH-685](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/685)
 
 :sweat_drops: **Chore**:

@@ -8,6 +8,8 @@
 
 - Adds VMware Photon OS 5.0 to the project. [GH-582](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/582)
 - Adds Debian 12 to the project. [GH-584](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/584)
+- Adds an example `.gitlab.yml` file for GitLab CI/CD. [GH-675](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/675)
+- Adds a `build-ci.tmpl` that can be used to create or update the `.gitlab-ci.yml` file using gomplate. [GH-675](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/675)
 
 :bug: **Bugfix**:
 

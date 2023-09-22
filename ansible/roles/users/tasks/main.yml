@@ -7,7 +7,7 @@
   when: "ansible_facts['distribution'] == 'Ubuntu'"
 - name: "Configure users on {{ ansible_facts['distribution'] }} guest operating system."
   include_tasks: linux.yml
-  when: "ansible_facts['distribution'] in ['RedHat', 'CentOS', 'Rocky', 'AlmaLinux']"
+  when: "ansible_facts['distribution'] in ['RedHat', 'CentOS', 'Rocky', 'AlmaLinux', 'OracleLinux']"
 - name: "Configure users on {{ ansible_facts['os_family'] }} guest operating system."
   include_tasks: linux.yml
   when: "ansible_facts['os_family'] == 'VMware Photon OS'"

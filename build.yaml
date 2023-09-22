@@ -68,6 +68,9 @@ menu:
           path: "builds/linux/sles/15/"
           var_files:
             - "scc.pkrvars.hcl"
+      - entry: "Oracle Enterprise Linux 9"
+        build:
+          path: "builds/linux/oracle/9/"
       - entry: "Oracle Enterprise Linux 8"
         build:
           path: "builds/linux/oracle/8/"

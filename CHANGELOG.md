@@ -10,10 +10,14 @@
 - Adds Debian 12 to the project. [GH-584](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/584)
 - Adds Oracle Enterprise Linux 9 to the project. [GH-670](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/670)
 - Adds Oracle Enterprise Linux 8 to the project. [GH-670](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/670)
+- Adds an example `.gitlab.yml` file for GitLab CI/CD. [GH-675](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/675)
+- Adds a `build-ci.tmpl` that can be used to create or update the `.gitlab-ci.yml` file using gomplate. [GH-675](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/675)
 
 :bug: **Bugfix**:
 
 - Updates Debian 11 to include `build_password` in the `linux-debian.pkr.hcl` configuration file. [GH-653](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/653)
+- Updates Debian 11 to ensure `/dev/sr1` is not mounted with use of the default `http` data source. No changes to the `disk` data source. [GH-686](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/686)
+- Updates Debian 12 to ensure `/dev/sr1` is not mounted with use of the default `http` data source. No changes to the `disk` data source. [GH-685](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/685)
 
 :sweat_drops: **Chore**:
 

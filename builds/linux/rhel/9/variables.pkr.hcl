@@ -98,7 +98,7 @@ variable "vm_guest_os_family" {
 
 variable "vm_guest_os_name" {
   type        = string
-  description = "The guest operating system name. Used for naming . (e.g. 'rhel')"
+  description = "The guest operating system name. Used for naming. (e.g. 'rhel')"
 }
 
 variable "vm_guest_os_version" {
@@ -250,7 +250,7 @@ variable "iso_path" {
 
 variable "iso_file" {
   type        = string
-  description = "The file name of the ISO image used by the vendor. (e.g. 'rhel-<verssion>-x86_64-dvd.iso')"
+  description = "The file name of the ISO image used by the vendor. (e.g. 'rhel-<version>-x86_64-dvd.iso')"
 }
 
 variable "iso_checksum_type" {

@@ -321,6 +321,7 @@ The directory structure of the repository.
 ```console
 ├── build.sh
 ├── build.tmpl
+├── build-ci.tmpl
 ├── build.yaml
 ├── CHANGELOG.md
 ├── CODE_OF_CONDUCT.md
@@ -998,6 +999,16 @@ Generate a custom build script:
 
 ```console
 rainpole@macos> gomplate -c build.yaml -f build.tmpl -o build.sh
+```
+
+### Generate a Custom GitLab CI/CD pipeline
+
+The GitLab CI/CD YAML (`.gitlab-ci.yml`) can be generated using a template (`./build-ci.tmpl`) and a configuration file in YAML (`./build.yaml`).
+
+Generate a custom `.gitlab-ci.yml`:
+
+```console
+rainpole@macos> gomplate -c build.yaml -f build-ci.tmpl -o .gitlab-ci.yml
 ```
 
 Happy building!!!

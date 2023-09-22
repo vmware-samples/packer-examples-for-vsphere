@@ -118,9 +118,29 @@ menu:
           only:
             - vsphere-iso.windows-server-datacenter-dexp
             - vsphere-iso.windows-server-datacenter-core
-      - entry: "Windows 11"
+      - entry: "Windows 11 - All"
         build:
           path: "builds/windows/desktop/11/"
-      - entry: "Windows 10"
+      - entry: "Windows 11 - Enterprise Only"
+        build:
+          path: "builds/windows/desktop/11/"
+          only:
+            - vsphere-iso.windows-desktop-ent
+      - entry: "Windows 11 - Professional Only"
+        build:
+          path: "builds/windows/desktop/11/"
+          only:
+            - vsphere-iso.windows-desktop-pro
+      - entry: "Windows 10 - All"
         build:
           path: "builds/windows/desktop/10/"
+      - entry: "Windows 10 - Enterprise Only"
+        build:
+          path: "builds/windows/desktop/10/"
+          only:
+            - vsphere-iso.windows-desktop-ent
+      - entry: "Windows 10 - Professional Only"
+        build:
+          path: "builds/windows/desktop/10/"
+          only:
+            - vsphere-iso.windows-desktop-pro

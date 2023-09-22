@@ -793,7 +793,7 @@ menu_option_25() {
 
 menu_option_26() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/11/
-  echo -e "\nCONFIRM: Build a Windows 11 Template for VMware vSphere?"
+  echo -e "\nCONFIRM: Build a Windows 11 - All Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -801,8 +801,8 @@ menu_option_26() {
     exit 1
   fi
 
-  ### Build a Windows 11 Template for VMware vSphere. ###
-  echo "Building a Windows 11 Template for VMware vSphere..."
+  ### Build a Windows 11 - All Template for VMware vSphere. ###
+  echo "Building a Windows 11 - All Template for VMware vSphere..."
 
   ### Initialize HashiCorp Packer and required plugins. ###
   echo "Initializing HashiCorp Packer and required plugins..."
@@ -821,8 +821,8 @@ menu_option_26() {
 }
 
 menu_option_27() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/10/
-  echo -e "\nCONFIRM: Build a Windows 10 Template for VMware vSphere?"
+  INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/11/
+  echo -e "\nCONFIRM: Build a Windows 11 - Enterprise Only Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -830,8 +830,8 @@ menu_option_27() {
     exit 1
   fi
 
-  ### Build a Windows 10 Template for VMware vSphere. ###
-  echo "Building a Windows 10 Template for VMware vSphere..."
+  ### Build a Windows 11 - Enterprise Only Template for VMware vSphere. ###
+  echo "Building a Windows 11 - Enterprise Only Template for VMware vSphere..."
 
   ### Initialize HashiCorp Packer and required plugins. ###
   echo "Initializing HashiCorp Packer and required plugins..."
@@ -840,6 +840,126 @@ menu_option_27() {
   ### Start the Build. ###
   echo "Starting the build...."
   packer build -force \
+      --only vsphere-iso.windows-desktop-ent \
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      "$INPUT_PATH"
+
+  ### All done. ###
+  echo "Done."
+}
+
+menu_option_28() {
+  INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/11/
+  echo -e "\nCONFIRM: Build a Windows 11 - Professional Only Template for VMware vSphere?"
+  echo -e "\nContinue? (y/n)"
+  read -r REPLY
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+    exit 1
+  fi
+
+  ### Build a Windows 11 - Professional Only Template for VMware vSphere. ###
+  echo "Building a Windows 11 - Professional Only Template for VMware vSphere..."
+
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
+  packer init "$INPUT_PATH"
+
+  ### Start the Build. ###
+  echo "Starting the build...."
+  packer build -force \
+      --only vsphere-iso.windows-desktop-pro \
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      "$INPUT_PATH"
+
+  ### All done. ###
+  echo "Done."
+}
+
+menu_option_29() {
+  INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/10/
+  echo -e "\nCONFIRM: Build a Windows 10 - All Template for VMware vSphere?"
+  echo -e "\nContinue? (y/n)"
+  read -r REPLY
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+    exit 1
+  fi
+
+  ### Build a Windows 10 - All Template for VMware vSphere. ###
+  echo "Building a Windows 10 - All Template for VMware vSphere..."
+
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
+  packer init "$INPUT_PATH"
+
+  ### Start the Build. ###
+  echo "Starting the build...."
+  packer build -force \
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      "$INPUT_PATH"
+
+  ### All done. ###
+  echo "Done."
+}
+
+menu_option_30() {
+  INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/10/
+  echo -e "\nCONFIRM: Build a Windows 10 - Enterprise Only Template for VMware vSphere?"
+  echo -e "\nContinue? (y/n)"
+  read -r REPLY
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+    exit 1
+  fi
+
+  ### Build a Windows 10 - Enterprise Only Template for VMware vSphere. ###
+  echo "Building a Windows 10 - Enterprise Only Template for VMware vSphere..."
+
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
+  packer init "$INPUT_PATH"
+
+  ### Start the Build. ###
+  echo "Starting the build...."
+  packer build -force \
+      --only vsphere-iso.windows-desktop-ent \
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      "$INPUT_PATH"
+
+  ### All done. ###
+  echo "Done."
+}
+
+menu_option_31() {
+  INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/10/
+  echo -e "\nCONFIRM: Build a Windows 10 - Professional Only Template for VMware vSphere?"
+  echo -e "\nContinue? (y/n)"
+  read -r REPLY
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+    exit 1
+  fi
+
+  ### Build a Windows 10 - Professional Only Template for VMware vSphere. ###
+  echo "Building a Windows 10 - Professional Only Template for VMware vSphere..."
+
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
+  packer init "$INPUT_PATH"
+
+  ### Start the Build. ###
+  echo "Starting the build...."
+  packer build -force \
+      --only vsphere-iso.windows-desktop-pro \
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
@@ -910,8 +1030,12 @@ until [ "$selection" = "0" ]; do
   echo "    	23  -  Windows Server 2019 - All"
   echo "    	24  -  Windows Server 2019 - Standard Only"
   echo "    	25  -  Windows Server 2019 - Datacenter Only"
-  echo "    	26  -  Windows 11"
-  echo "    	27  -  Windows 10"
+  echo "    	26  -  Windows 11 - All"
+  echo "    	27  -  Windows 11 - Enterprise Only"
+  echo "    	28  -  Windows 11 - Professional Only"
+  echo "    	29  -  Windows 10 - All"
+  echo "    	30  -  Windows 10 - Enterprise Only"
+  echo "    	31  -  Windows 10 - Professional Only"
   echo ""
   echo "      Other:"
   echo ""
@@ -948,6 +1072,10 @@ until [ "$selection" = "0" ]; do
     25 ) clear ; menu_option_25 ; press_enter ;;
     26 ) clear ; menu_option_26 ; press_enter ;;
     27 ) clear ; menu_option_27 ; press_enter ;;
+    28 ) clear ; menu_option_28 ; press_enter ;;
+    29 ) clear ; menu_option_29 ; press_enter ;;
+    30 ) clear ; menu_option_30 ; press_enter ;;
+    31 ) clear ; menu_option_31 ; press_enter ;;
     I ) clear ; info ; press_enter ;;
     Q ) clear ; exit ;;
     * ) clear ; incorrect_selection ; press_enter ;;

@@ -49,8 +49,8 @@ The following builds are available:
 
 - Microsoft Windows Server 2022 - Standard and Datacenter
 - Microsoft Windows Server 2019 - Standard and Datacenter
-- Microsoft Windows 11
-- Microsoft Windows 10
+- Microsoft Windows 11 - Professional and Enterprise
+- Microsoft Windows 10 - Professional and Enterprise
 
 > **Note**
 >

@@ -209,17 +209,49 @@ Windows-Server-2019-Datacenter-Only:
 
 ##############################################################################
 
-Windows-11:
+Windows-11-All:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/windows/desktop/11/"
 
 ##############################################################################
 
-Windows-10:
+Windows-11-Enterprise-Only:
+    extends: .packer-build
+    variables:
+        INPUT_PATH: "$SCRIPT_PATH/builds/windows/desktop/11/"
+        BUILD_ONLY: "--only vsphere-iso.windows-desktop-ent"
+
+##############################################################################
+
+Windows-11-Professional-Only:
+    extends: .packer-build
+    variables:
+        INPUT_PATH: "$SCRIPT_PATH/builds/windows/desktop/11/"
+        BUILD_ONLY: "--only vsphere-iso.windows-desktop-pro"
+
+##############################################################################
+
+Windows-10-All:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/windows/desktop/10/"
+
+##############################################################################
+
+Windows-10-Enterprise-Only:
+    extends: .packer-build
+    variables:
+        INPUT_PATH: "$SCRIPT_PATH/builds/windows/desktop/10/"
+        BUILD_ONLY: "--only vsphere-iso.windows-desktop-ent"
+
+##############################################################################
+
+Windows-10-Professional-Only:
+    extends: .packer-build
+    variables:
+        INPUT_PATH: "$SCRIPT_PATH/builds/windows/desktop/10/"
+        BUILD_ONLY: "--only vsphere-iso.windows-desktop-pro"
 
 ##############################################################################
 

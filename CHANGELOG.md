@@ -10,6 +10,8 @@
 - Adds Debian 12 to the project. [GH-584](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/584)
 - Adds Oracle Enterprise Linux 9 to the project. [GH-670](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/670)
 - Adds Oracle Enterprise Linux 8 to the project. [GH-670](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/670)
+- Adds Windows 11 Enterprise to the project. [GH-688](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/688)
+- Adds Windows 10 Enterprise to the project. [GH-688](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/688)
 - Adds an example `.gitlab.yml` file for GitLab CI/CD. [GH-675](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/675)
 - Adds a `build-ci.tmpl` that can be used to create or update the `.gitlab-ci.yml` file using gomplate. [GH-675](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/675)
 

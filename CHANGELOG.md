@@ -8,6 +8,8 @@
 
 - Adds VMware Photon OS 5.0 to the project. [GH-582](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/582)
 - Adds Debian 12 to the project. [GH-584](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/584)
+- Adds Oracle Enterprise Linux 9 to the project. [GH-670](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/670)
+- Adds Oracle Enterprise Linux 8 to the project. [GH-670](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/670)
 
 :bug: **Bugfix**:
 

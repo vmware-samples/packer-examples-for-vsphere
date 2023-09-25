@@ -12,7 +12,6 @@
     "ghcr.io/devcontainers/features/powershell:1": {},
     "ghcr.io/devcontainers-contrib/features/ansible:2": {},
     "ghcr.io/devcontainers-contrib/features/packer-asdf:2": {},
-    "ghcr.io/devcontainers-contrib/features/starship:1": {},
     "ghcr.io/devcontainers-contrib/features/terraform-asdf:2": {},
     "ghcr.io/gickis/devcontainer-features/gomplate:1": {}
   },

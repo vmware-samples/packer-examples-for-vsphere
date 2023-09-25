@@ -33,7 +33,7 @@ variables:
     #    - packer
     before_script:
         - "packer init \"$INPUT_PATH\""
-        - "packer validate \"$INPUT_PATH\""
+        - "packer validate -var-file=\"$CONFIG_PATH/vsphere.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/build.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/ansible.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/proxy.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/common.pkrvars.hcl\" ${EXTRA_VAR_FILES} \"$INPUT_PATH\""
     script:
         - "packer build -force -on-error=ask -var-file=\"$CONFIG_PATH/vsphere.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/build.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/ansible.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/proxy.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/common.pkrvars.hcl\" ${EXTRA_VAR_FILES} ${BUILD_ONLY} \"$INPUT_PATH\""
     when: manual

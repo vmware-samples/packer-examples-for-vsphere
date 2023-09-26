@@ -31,6 +31,57 @@ communicator_proxy_username=""
 communicator_proxy_password=""
 ansible_username="ansible"
 
+# Packer Logging
+while true; do
+    read -r -p "Enable logging for Packer? (y/n): " enable_logging_input
+    case $enable_logging_input in
+    [yY][eE][sS] | [yY])
+        enable_logging=true
+        while true; do
+            read -r -p "Enable log to file? (y/n): " enable_log_path_input
+            case $enable_log_path_input in
+            [yY][eE][sS] | [yY])
+                enable_log_path=true
+                while true; do
+                    read -r -p "Enter the log path (e.g. /tmp/packer/): " log_dir_input
+                    if [[ -n "$log_dir_input" ]]; then
+                        if test -d "$log_dir_input"; then
+                            log_dir="$log_dir_input"
+                            break
+                        else
+                            echo -e "\n> Invalid input; path does not exist."
+                        fi
+                    else
+                        unset -v log_dir
+                        break
+                    fi
+                done
+                break
+                ;;
+            [nN][oO] | [nN])
+                unset -v enable_log_path
+                unset -v log_dir
+                break
+                ;;
+            *)
+                echo -e "\n> Invalid input; please enter 'y' or 'n'."
+                ;;
+            esac
+        done
+        break
+        ;;
+    [nN][oO] | [nN])
+        unset -v enable_logging
+        unset -v PACKER_LOG
+        unset -v PACKER_LOG_PATH
+        break
+        ;;
+    *)
+        echo -e "\n> Invalid input; please enter 'y' or 'n'."
+        ;;
+    esac
+done
+
 # vSphere Credentials
 echo -e '\n> Set the vSphere credentials.'
 read -r -p "Enter the FQDN of your vCenter Server instance: " vsphere_endpoint
@@ -136,6 +187,24 @@ echo -e '\n> Set the HCP Packer registry.'
 read -r -p "Enable the HCP Packer registry: " common_hcp_packer_registry_enabled
 echo # Needed for line break.
 
+# Packer Logging
+echo -e '\n> Set the Packer logging.'
+if [[ $enable_logging == true ]]; then
+    export PACKER_LOG=1
+    if [[ $enable_log_path == true ]]; then
+        if [[ -n "$log_dir" ]]; then
+            export PACKER_LOG_PATH="${log_dir}/packer.log"
+        else
+            unset -v PACKER_LOG_PATH
+        fi
+    else
+        unset -v PACKER_LOG_PATH
+    fi
+else
+    unset -v PACKER_LOG
+    unset -v PACKER_LOG_PATH
+fi
+
 echo -e '\n> Setting the vSphere credentials...'
 # vSphere Credentials
 export PKR_VAR_vsphere_endpoint="${vsphere_endpoint}"
@@ -227,6 +296,12 @@ echo
 read -r -p "Display the environment variables? (y/n): " display_environmental_variables
 case $display_environmental_variables in
 [yY][eE][sS] | [yY])
+
+	# Packer Logging
+    echo -e '\nPacker Logging'
+    echo - PACKER_LOG: "$PACKER_LOG"
+    echo - PACKER_LOG_PATH: "$PACKER_LOG_PATH"
+
 	# vSphere Credentials
 	echo -e '\nvSphere Credentials'
 	echo - PKR_VAR_vsphere_endpoint: "$PKR_VAR_vsphere_endpoint"

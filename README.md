@@ -984,6 +984,38 @@ rainpole@macos> export HCP_CLIENT_SECRET=<client_secret>
 
 Start a build by running the build script (`./build.sh`). The script presents a menu the which simply calls Packer and the respective build(s).
 
+```console
+./build.sh
+```
+
+This example will look for the configuration files in the `config` directory.
+
+```console
+./build.sh us-west-1
+```
+
+This example will look for the configuration files in the `us-west-1` directory.
+
+If you need help for script options, pass the `--help` or `-h` flag to the build script to display the help for the build script.
+
+```console
+./build.sh --help
+```
+
+If you need to enable debugging, pass the `--debug` or `-d` flag to the build script to enable debug mode for Packer.
+
+```console
+./build.sh --debug
+```
+
+This example will look for the configuration files in the `config` directory and enable debug mode for Packer.
+
+```console
+./build.sh --debug us-west-1
+```
+
+This example will look for the configuration files in the `us-west-1` directory and enable debug mode for Packer.
+
 You can also start a build based on a specific source for some of the virtual machine images.
 
 For example, if you simply want to build a Microsoft Windows Server 2022 Standard Core, run the following:
@@ -997,17 +1029,17 @@ rainpole@macos> packer init builds/windows/server/2022/.
 Build a specific machine image:
 
 ```console
-rainpole@macos> packer build -force \
-      --only vsphere-iso.windows-server-standard-core \
-      -var-file="config/vsphere.pkrvars.hcl" \
-      -var-file="config/build.pkrvars.hcl" \
-      -var-file="config/common.pkrvars.hcl" \
-      builds/windows/server/2022
+rainpole@macos> packer build -force on-error=ask\
+--only vsphere-iso.windows-server-standard-core \
+-var-file="config/vsphere.pkrvars.hcl" \
+-var-file="config/build.pkrvars.hcl" \
+-var-file="config/common.pkrvars.hcl" \
+builds/windows/server/2022
 ```
 
 ### Build with Environmental Variables
 
-You can set your environment variables if you would prefer not to save sensitive information in cleartext files.
+You can set your environment variables if you would prefer not to save sensitive information in clear-text files.
 
 You can add these to environmental variables using the included `set-envvars.sh` script.
 
@@ -1028,7 +1060,7 @@ rainpole@macos> packer init builds/windows/server/2022/.
 Build a specific machine image using environmental variables:
 
 ```console
-rainpole@macos> packer build -force \
+rainpole@macos> packer build -force -on-error=ask\
       --only vsphere-iso.windows-server-standard-core \
       builds/windows/server/2022
 ```

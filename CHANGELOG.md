@@ -15,6 +15,7 @@
 - Adds a development container for Visual Studio Code. [GH-700](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/700)
 - Adds an example `.gitlab.yml` file for GitLab CI/CD. [GH-675](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/675)
 - Adds a `build-ci.tmpl` that can be used to create or update the `.gitlab-ci.yml` file using gomplate. [GH-675](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/675)
+- Adds Packer logging settings to `set-envvars.sh`. [GH-705](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/705)
 
 :bug: **Bugfix**:
 

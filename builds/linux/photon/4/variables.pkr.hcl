@@ -49,6 +49,7 @@ variable "vsphere_host" {
   description = "The name of the target ESXi host. (e.g. 'sfo-w01-esx01')"
   default     = ""
 }
+
 variable "vsphere_datastore" {
   type        = string
   description = "The name of the target vSphere datastore. (e.g. 'sfo-w01-cl01-vsan01')"

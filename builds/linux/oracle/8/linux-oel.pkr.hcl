@@ -1,7 +1,6 @@
 /*
     DESCRIPTION:
-    Debian 12 (Bookworm) build definition.
-    Packer Plugin for VMware vSphere (`vsphere-iso` builder).
+    Oracle Enterprise Linux 8 template using the Packer Builder for VMware vSphere (vsphere-iso).
 */
 
 //  BLOCK: packer
@@ -48,12 +47,9 @@ locals {
       vm_guest_os_language     = var.vm_guest_os_language
       vm_guest_os_keyboard     = var.vm_guest_os_keyboard
       vm_guest_os_timezone     = var.vm_guest_os_timezone
-      common_data_source       = var.common_data_source
     })
   }
-  data_source_command = var.common_data_source == "http" ? "url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg" : "file=/media/ks.cfg"
-  mount_cdrom_command = "<leftAltOn><f2><leftAltOff> <enter><wait> mount /dev/sr1 /media<enter> <leftAltOn><f1><leftAltOff>"
-  mount_cdrom         = var.common_data_source == "http" ? " " : local.mount_cdrom_command
+  data_source_command = var.common_data_source == "http" ? "inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg" : "inst.ks=cdrom:/ks.cfg"
   vm_name             = "${var.vm_guest_os_family}-${var.vm_guest_os_name}-${var.vm_guest_os_version}-${local.build_version}"
   bucket_name         = replace("${var.vm_guest_os_family}-${var.vm_guest_os_name}-${var.vm_guest_os_version}", ".", "")
   bucket_description  = "${var.vm_guest_os_family} ${var.vm_guest_os_name} ${var.vm_guest_os_version}"
@@ -62,7 +58,7 @@ locals {
 //  BLOCK: source
 //  Defines the builder configuration blocks.
 
-source "vsphere-iso" "linux-debian" {
+source "vsphere-iso" "linux-oel" {
 
   // vCenter Server Endpoint Settings and Credentials
   vcenter_server      = var.vsphere_endpoint
@@ -113,19 +109,11 @@ source "vsphere-iso" "linux-debian" {
   boot_order    = var.vm_boot_order
   boot_wait     = var.vm_boot_wait
   boot_command = [
-    "<wait3s>c<wait3s>",
-    "linux /install.amd/vmlinuz",
-    " auto-install/enable=true",
-    " debconf/priority=critical",
-    " ${local.data_source_command}",
-    " noprompt --<enter>",
-    "initrd /install.amd/initrd.gz<enter>",
-    "boot<enter>",
-    "<wait30s>",
-    "<enter><wait>",
-    "<enter><wait>",
-    " ${local.mount_cdrom}",
-    "<down><down><down><down><enter>"
+    "<up>",
+    "e",
+    "<down><down><end><wait>",
+    "text ${local.data_source_command}",
+    "<enter><wait><leftCtrlOn>x<leftCtrlOff>"
   ]
   ip_wait_timeout  = var.common_ip_wait_timeout
   shutdown_command = "echo '${var.build_password}' | sudo -S -E shutdown -P now"
@@ -173,14 +161,14 @@ source "vsphere-iso" "linux-debian" {
 //  Defines the builders to run, provisioners, and post-processors.
 
 build {
-  sources = ["source.vsphere-iso.linux-debian"]
+  sources = ["source.vsphere-iso.linux-oel"]
 
   provisioner "ansible" {
+    user          = var.build_username
     playbook_file = "${path.cwd}/ansible/main.yml"
     roles_path    = "${path.cwd}/ansible/roles"
     ansible_env_vars = [
-      "ANSIBLE_CONFIG=${path.cwd}/ansible/ansible.cfg",
-      "ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3"
+      "ANSIBLE_CONFIG=${path.cwd}/ansible/ansible.cfg"
     ]
     extra_arguments = [
       "--extra-vars", "display_skipped_hosts=false",

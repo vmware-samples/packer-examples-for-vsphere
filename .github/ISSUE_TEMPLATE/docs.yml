@@ -1,7 +1,7 @@
 ---
 name: Documentation
 description: Found a typo or something that needs clarification?
-title: "REPLACE WITH SHORT DESCRIPTION"
+title: Please add a short description.
 labels:
   - type/docs
   - status/needs-review
@@ -26,17 +26,8 @@ body:
       label: Project Version
       description: Please provide the version of this project.
       options:
-        - main
-        - 23.01 (latest)
-        - 22.09
-        - 22.08
-        - 22.07
-        - 22.06
-        - 22.05
-        - 22.04
-        - 22.03
-        - 22.02
-        - 22.01
+        - develop
+        - latest
     validations:
       required: true
   - type: textarea

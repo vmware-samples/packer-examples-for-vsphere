@@ -1,7 +1,7 @@
 ---
 name: Enhancement Request
 description: Is something critical missing? Suggest a feature or an enhancement.
-title: "REPLACE WITH SHORT DESCRIPTION"
+title: Please add a short description.
 labels:
   - type/enhancement
   - status/needs-review

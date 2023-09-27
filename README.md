@@ -42,13 +42,15 @@ The following builds are available:
 - CentOS Stream 8
 - CentOS Linux 7
 - SUSE Linux Enterprise Server 15
+- Oracle Enterprise Linux 9 Server
+- Oracle Enterprise Linux 8 Server
 
 ### Microsoft Windows - _Core and Desktop Experience_
 
 - Microsoft Windows Server 2022 - Standard and Datacenter
 - Microsoft Windows Server 2019 - Standard and Datacenter
-- Microsoft Windows 11
-- Microsoft Windows 10
+- Microsoft Windows 11 - Professional and Enterprise
+- Microsoft Windows 10 - Professional and Enterprise
 
 > **Note**
 >
@@ -300,7 +302,7 @@ git switch -c $TAG_NAME HEAD
 
 > **Note**
 >
-> You may also clone `main` for the latest prerelease updates.
+> You may also clone `develop` for the latest prerelease updates.
 
 ```console
 TAG_NAME=$(curl -s https://api.github.com/repos/vmware-samples/packer-examples-for-vsphere/releases | jq  -r '.[0].tag_name')
@@ -319,6 +321,7 @@ The directory structure of the repository.
 ```console
 ├── build.sh
 ├── build.tmpl
+├── build-ci.tmpl
 ├── build.yaml
 ├── CHANGELOG.md
 ├── CODE_OF_CONDUCT.md
@@ -885,6 +888,10 @@ The project supports using a datastore to store your guest operating system [`.i
      - [Download][download-linux-centos-7] the latest release of the **FULL** `.iso` image. (_e.g.,_ `CentOS-7-x86_64-DVD.iso`)
    - SUSE Linux Enterprise 15
      - [Download][download-linux-sles-15] the latest 15.4 release of the **FULL** `.iso` image. (_e.g.,_ `SLE-15-SP4-Full-x86_64-GM-Media1.iso`)
+   - Oracle Enterprise Linux 9
+     - [Download][download-linux-oel-9] the latest release of the **FULL** `.iso` image. (_e.g.,_ `OracleLinux-R9-U2-x86_64-dvd.iso`)
+   - Oracle Enterprise Linux 8
+     - [Download][download-linux-oel-8] the latest release of the **FULL** `.iso` image. (_e.g.,_ `OracleLinux-R8-U8-x86_64-dvd.iso`)
    </details>
 
    <details>
@@ -1036,6 +1043,16 @@ Generate a custom build script:
 rainpole@macos> gomplate -c build.yaml -f build.tmpl -o build.sh
 ```
 
+### Generate a Custom GitLab CI/CD pipeline
+
+The GitLab CI/CD YAML (`.gitlab-ci.yml`) can be generated using a template (`./build-ci.tmpl`) and a configuration file in YAML (`./build.yaml`).
+
+Generate a custom `.gitlab-ci.yml`:
+
+```console
+rainpole@macos> gomplate -c build.yaml -f build-ci.tmpl -o .gitlab-ci.yml
+```
+
 Happy building!!!
 
 ## Troubleshoot
@@ -1070,6 +1087,8 @@ Happy building!!!
 [download-linux-rocky-9]: https://download.rockylinux.org/pub/rocky/9/isos/x86_64/
 [download-linux-rocky-8]: https://download.rockylinux.org/pub/rocky/8/isos/x86_64/
 [download-linux-sles-15]: https://www.suse.com/download/sles/
+[download-linux-oel-9]: https://yum.oracle.com/oracle-linux-isos.html
+[download-linux-oel-8]: https://yum.oracle.com/oracle-linux-isos.html
 [download-linux-ubuntu-2004]: https://releases.ubuntu.com/20.04/
 [download-linux-ubuntu-2204]: https://releases.ubuntu.com/22.04/
 [gomplate-install]: https://gomplate.ca/

@@ -1,0 +1,60 @@
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+# WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+# COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+# OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+##############################################################################
+##
+## Auto-generated .gitlab-ci.yml for building Packer Example for vSphere
+##
+## Do not modify this file directly, either:
+##
+##     - modify the source build.yaml
+##     - modify the template build-ci.tmpl
+##
+## then run the following command to re-create the .gitlab-ci.yml file:
+##
+##     gomplate -c build.yaml -f build-ci.tmpl -o .gitlab-ci.yml
+##
+##############################################################################
+
+variables:
+    SCRIPT_PATH: "${CI_PROJECT_DIR}"
+    CONFIG_PATH: "${CI_PROJECT_DIR}/config"
+    INPUT_PATH: ""
+    EXTRA_VAR_FILES: ""
+    BUILD_ONLY: ""
+
+##############################################################################
+
+.packer-build:
+    stage: build
+    #tags: 
+    #    - packer
+    before_script:
+        - "packer init \"$INPUT_PATH\""
+        - "packer validate -var-file=\"$CONFIG_PATH/vsphere.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/build.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/ansible.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/proxy.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/common.pkrvars.hcl\" ${EXTRA_VAR_FILES} \"$INPUT_PATH\""
+    script:
+        - "packer build -force -on-error=ask -var-file=\"$CONFIG_PATH/vsphere.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/build.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/ansible.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/proxy.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/common.pkrvars.hcl\" ${EXTRA_VAR_FILES} ${BUILD_ONLY} \"$INPUT_PATH\""
+    when: manual
+
+##############################################################################
+
+{{ range $menu := (ds "build").menu -}}
+{{ range $submenu := $menu.submenu -}}
+
+{{ $submenu.entry | strings.ReplaceAll " (cloud-init)" "" | strings.ReplaceAll " " "-" | strings.ReplaceAll "---" "-" }}:
+    extends: .packer-build
+    variables:
+        INPUT_PATH: "$SCRIPT_PATH/{{ $submenu.build.path }}"
+{{- if (coll.Has $submenu.build "only") }}
+        BUILD_ONLY: "--only {{ join $submenu.build.only "," }}"
+{{- end -}}
+{{- if (coll.Has $submenu.build "var_files") -}}
+{{ range $submenu.build.var_files }}
+        EXTRA_VAR_FILES: " -var-file=$CONFIG_PATH/{{ . }}"
+{{- end -}}{{- end }}
+
+##############################################################################
+
+{{ end }}{{ end -}}

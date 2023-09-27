@@ -106,7 +106,7 @@ variable "vm_guest_os_family" {
 
 variable "vm_guest_os_name" {
   type        = string
-  description = "The guest operating system name. Used for naming . (e.g. 'sles')"
+  description = "The guest operating system name. Used for naming. (e.g. 'sles')"
 }
 
 variable "vm_guest_os_version" {

@@ -92,7 +92,7 @@ variable "vm_guest_os_family" {
 
 variable "vm_guest_os_name" {
   type        = string
-  description = "The guest operating system name. Used for naming . (e.g. 'almalinux')"
+  description = "The guest operating system name. Used for naming. (e.g. 'almalinux')"
 }
 
 variable "vm_guest_os_version" {

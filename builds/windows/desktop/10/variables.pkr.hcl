@@ -79,12 +79,21 @@ variable "vm_inst_os_keyboard" {
   default     = "en-US"
 }
 
-variable "vm_inst_os_image" {
+variable "vm_inst_os_image_pro" {
   type        = string
   description = "The installation operating system image input."
 }
 
-variable "vm_inst_os_kms_key" {
+variable "vm_inst_os_image_ent" {
+  type        = string
+  description = "The installation operating system image input."
+}
+
+variable "vm_inst_os_kms_key_pro" {
+  type        = string
+  description = "The installation operating system KMS key input."
+}
+variable "vm_inst_os_kms_key_ent" {
   type        = string
   description = "The installation operating system KMS key input."
 }
@@ -116,7 +125,7 @@ variable "vm_guest_os_family" {
 
 variable "vm_guest_os_name" {
   type        = string
-  description = "The guest operating system name. Used for naming . (e.g. 'desktop')"
+  description = "The guest operating system name. Used for naming. (e.g. 'desktop')"
 }
 
 variable "vm_guest_os_version" {
@@ -124,9 +133,14 @@ variable "vm_guest_os_version" {
   description = "The guest operating system version. Used for naming. (e.g. '10')"
 }
 
-variable "vm_guest_os_edition" {
+variable "vm_guest_os_edition_pro" {
   type        = string
   description = "The guest operating system edition. Used for naming. (e.g. 'pro')"
+}
+
+variable "vm_guest_os_edition_ent" {
+  type        = string
+  description = "The guest operating system edition. Used for naming. (e.g. 'ent')"
 }
 
 variable "vm_guest_os_type" {
@@ -194,7 +208,7 @@ variable "vm_network_card" {
   default     = "vmxnet3"
 }
 
-variable "vm_video_mem_size" {
+variable "vm_video_ram" {
   type        = number
   description = "The size for the video memory in KB. (e.g. 4096)"
   default     = 4096

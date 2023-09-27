@@ -1,7 +1,7 @@
 ---
 name: Bug Report
 description: Is something not working as expected? Submit a bug.
-title: "REPLACE WITH A SHORT DESCRIPTION"
+title: Please add a short description.
 labels:
   - type/bug
   - status/needs-triage
@@ -30,17 +30,8 @@ body:
       label: Project Version
       description: Please provide the version of this project.
       options:
-        - main
-        - 23.01 (latest)
-        - 22.09 
-        - 22.08
-        - 22.07
-        - 22.06
-        - 22.05
-        - 22.04
-        - 22.03
-        - 22.02
-        - 22.01
+        - develop
+        - latest
     validations:
       required: true
   - type: input
@@ -48,7 +39,7 @@ body:
     attributes:
       label: VMware vSphere
       description: Please provide the VMware vSphere version.
-      placeholder: 7.0.3d
+      placeholder: x.y.z
     validations:
       required: true
   - type: input
@@ -56,7 +47,7 @@ body:
     attributes:
       label: HashiCorp Packer
       description: Please provide the HashiCorp Packer version.
-      placeholder: 1.9.1
+      placeholder: x.y.z
     validations:
       required: true
   - type: input
@@ -65,7 +56,7 @@ body:
       label: HashiCorp Packer Plugin for VMware vSphere
       description: >-
         Please provide the HashiCorp Packer Plugin for VMware vSphere version.
-      placeholder: 1.2.0
+      placeholder: x.y.z
     validations:
       required: true
   - type: input
@@ -73,7 +64,7 @@ body:
     attributes:
       label: Guest Operating System
       description: Please provide the guest operating system.
-      placeholder: VMware Photon OS 4.0
+      placeholder: Ubuntu Server 22.04 LTS
     validations:
       required: true
   - type: textarea

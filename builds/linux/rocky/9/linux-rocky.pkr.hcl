@@ -69,6 +69,7 @@ source "vsphere-iso" "linux-rocky" {
   // vSphere Settings
   datacenter = var.vsphere_datacenter
   cluster    = var.vsphere_cluster
+  host       = var.vsphere_host
   datastore  = var.vsphere_datastore
   folder     = var.vsphere_folder
 
@@ -200,6 +201,7 @@ build {
       vm_mem_size              = var.vm_mem_size
       vm_network_card          = var.vm_network_card
       vsphere_cluster          = var.vsphere_cluster
+      vsphere_host             = var.vsphere_host
       vsphere_datacenter       = var.vsphere_datacenter
       vsphere_datastore        = var.vsphere_datastore
       vsphere_endpoint         = var.vsphere_endpoint

@@ -63,6 +63,7 @@ source "vsphere-iso" "windows-desktop-pro" {
   // vSphere Settings
   datacenter = var.vsphere_datacenter
   cluster    = var.vsphere_cluster
+  host       = var.vsphere_host
   datastore  = var.vsphere_datastore
   folder     = var.vsphere_folder
 
@@ -324,6 +325,7 @@ build {
       vm_video_displays        = var.vm_video_displays
       vm_vtpm                  = var.vm_vtpm
       vsphere_cluster          = var.vsphere_cluster
+      vsphere_host             = var.vsphere_host
       vsphere_datacenter       = var.vsphere_datacenter
       vsphere_datastore        = var.vsphere_datastore
       vsphere_endpoint         = var.vsphere_endpoint

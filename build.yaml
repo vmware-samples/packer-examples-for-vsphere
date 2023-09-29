@@ -119,6 +119,7 @@ menu:
             - vsphere-iso.windows-server-datacenter-dexp
             - vsphere-iso.windows-server-datacenter-core
       - entry: "Windows 11 - All"
+        message: "all Windows 11 Templates"
         build:
           path: "builds/windows/desktop/11/"
       - entry: "Windows 11 - Enterprise Only"
@@ -132,6 +133,7 @@ menu:
           only:
             - vsphere-iso.windows-desktop-pro
       - entry: "Windows 10 - All"
+        message: "all Windows 10 Templates"
         build:
           path: "builds/windows/desktop/10/"
       - entry: "Windows 10 - Enterprise Only"

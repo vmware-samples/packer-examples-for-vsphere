@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Copyright 2023 VMware, Inc. All rights reserved.
+# SPDX-License-Identifier: BSD-2
 
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
 # WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
@@ -16,8 +18,58 @@ follow_link() {
   echo "$FILE"
 }
 
+if [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
+  echo "Usage: script.sh [OPTIONS] [CONFIG_PATH]"
+  echo ""
+  echo "Options:"
+  echo "  -h, --help    Show this help message and exit."
+  echo "  -d, --debug   Run builds in debug mode."
+  echo ""
+  echo "Arguments:"
+  echo "  CONFIG_PATH   Path to the configuration directory."
+  echo ""
+  echo "Examples:"
+  echo "  ./build.sh"
+  echo "  ./build.sh --help"
+  echo "  ./build.sh --debug"
+  echo "  ./build.sh config"
+  echo "  ./build.sh us-west-1"
+  echo "  ./build.sh --debug config"
+  echo "  ./build.sh --debug us-west-1"
+  exit 0
+fi
+
+if [ "$1" == "--debug" ] || [ "$1" == "-d" ]; then
+  debug_mode=true
+  debug_option="-debug"
+  shift
+else
+  debug_mode=false
+  debug_option=""
+fi
+
 SCRIPT_PATH=$(realpath "$(dirname "$(follow_link "$0")")")
-CONFIG_PATH=$(realpath "${1:-${SCRIPT_PATH}/config}")
+
+if [ -n "$1" ]; then
+  CONFIG_PATH=$(realpath "$1")
+else
+  CONFIG_PATH=$(realpath "${SCRIPT_PATH}/config")
+fi
+
+menu_banner=$(cat << "EOF"
+    ____             __                ____        _ __    __     
+   / __ \____ ______/ /_____  _____   / __ )__  __(_) /___/ /____ 
+  / /_/ / __  / ___/ //_/ _ \/ ___/  / __  / / / / / / __  / ___/ 
+ / ____/ /_/ / /__/ ,< /  __/ /     / /_/ / /_/ / / / /_/ (__  )  
+/_/    \__,_/\___/_/|_|\___/_/     /_____/\__,_/_/_/\__,_/____/   
+EOF
+)
+
+menu_message="Select a HashiCorp Packer build for VMware vSphere."
+
+if [ "$debug_mode" = true ]; then
+  menu_message+=" \e[31m(Debug Mode)\e[0m"
+fi
 
 {{- $func_index := 0 }}
 {{ range $menu := (ds "build").menu -}}
@@ -34,8 +86,7 @@ menu_option_{{ $func_index }}() {
   echo -e "\nCONFIRM: Build {{ $message }} for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
-  if [[ ! $REPLY =~ ^[Yy]$ ]]
-  then
+  if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     exit 1
   fi
 
@@ -48,7 +99,8 @@ menu_option_{{ $func_index }}() {
 
   ### Start the Build. ###
   echo "Starting the build...."
-  packer build -force \
+  echo "packer build -force -on-error=ask $debug_option"
+  packer build -force -on-error=ask $debug_option \
   {{- if (coll.Has $submenu.build "only") }}
       --only {{ join $submenu.build.only "," }} \
   {{- end -}}
@@ -64,8 +116,8 @@ menu_option_{{ $func_index }}() {
   {{- end }}
       "$INPUT_PATH"
 
-  ### All done. ###
-  echo "Done."
+  ### Build Complete. ###
+  echo "Build Complete."
 }
 {{ end }}
 {{ end -}}
@@ -78,28 +130,23 @@ press_enter() {
 }
 
 info() {
+  echo "Copyright 2023 VMware, Inc. All rights reserved."
   echo "License: BSD-2"
   echo ""
-  echo "For more information, review the project README."
   echo "GitHub Repository: github.com/vmware-samples/packer-examples-for-vsphere/"
   read -r
 }
 
 incorrect_selection() {
-  echo "Do or do not. There is no try."
+  echo "Invalid selection, please try again."
 }
 
 until [ "$selection" = "0" ]; do
   clear
   echo ""
-  echo "    ____             __                ____        _ __    __     "
-  echo "   / __ \____ ______/ /_____  _____   / __ )__  __(_) /___/ /____ "
-  echo "  / /_/ / __  / ___/ //_/ _ \/ ___/  / __  / / / / / / __  / ___/ "
-  echo " / ____/ /_/ / /__/ ,< /  __/ /     / /_/ / /_/ / / / /_/ (__  )  "
-  echo "/_/    \__,_/\___/_/|_|\___/_/     /_____/\__,_/_/_/\__,_/____/   "
+  echo -e "$menu_banner"
   echo ""
-  echo -n "  Select a HashiCorp Packer build for VMware vSphere:"
-  echo ""
+  echo -e "$menu_message"
   echo ""
 {{- $menu_index := 0 }}
 {{- range $menu := (ds "build").menu }}

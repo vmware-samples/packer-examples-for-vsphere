@@ -1,3 +1,6 @@
+# Copyright 2023 VMware, Inc. All rights reserved
+# SPDX-License-Identifier: BSD-2
+
 /*
     DESCRIPTION:
     VMware Photon OS 5 variables used by the Packer Plugin for VMware vSphere (vsphere-iso).

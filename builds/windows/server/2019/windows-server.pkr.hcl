@@ -1,3 +1,6 @@
+# Copyright 2023 VMware, Inc. All rights reserved
+# SPDX-License-Identifier: BSD-2
+
 /*
     DESCRIPTION:
     Microsoft Windows Server 2019 template using the Packer Builder for VMware vSphere (vsphere-iso).

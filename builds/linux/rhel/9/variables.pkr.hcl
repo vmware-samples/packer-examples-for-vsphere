@@ -1,3 +1,6 @@
+# Copyright 2023 VMware, Inc. All rights reserved
+# SPDX-License-Identifier: BSD-2
+
 /*
     DESCRIPTION:
     Red Hat Enterprise Linux 9 variables using the Packer Builder for VMware vSphere (vsphere-iso).

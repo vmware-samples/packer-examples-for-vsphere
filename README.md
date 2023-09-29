@@ -1,3 +1,10 @@
+<!--
+Copyright 2023 VMware, Inc. All rights reserved
+# SPDX-License-Identifier: BSD-2
+-->
+
+<!-- markdownlint-disable first-line-h1 no-inline-html -->
+
 # Packer Examples for VMware vSphere
 
 ![Last Commit](https://img.shields.io/github/last-commit/vmware-samples/packer-examples-for-vsphere?style=for-the-badge&logo=github)&nbsp;&nbsp;

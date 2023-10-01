@@ -32,7 +32,7 @@
 
 - Updates `required_versions` for `packer` to `>= 1.9.1`. [GH-563](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/563)
 - Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.2.0`. [GH-564](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/564)
-- Updates `required_plugins` for `ethanmdavidson/packer-plugin-git` to `>= 0.4.2`. [GH-562](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/562)
+- Updates `required_plugins` for `ethanmdavidson/packer-plugin-git` to `>= 0.4.3`. [GH-717](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/717)
 - Updates `required_plugins` for `rgl/packer-plugin-windows-update` to `>= 0.14.3`. [GH-565](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/565)
 - Updates `required_versions` for `terraform` to `>= 1.5.0`. [GH-560](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/560)
 - Updates `required_versions` for `hashicorp/vsphere` to `>= 2.4.0`. [GH-561](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/561)

@@ -168,7 +168,7 @@ Operating systems and versions tested with the project:
   > Required plugins are automatically downloaded and initialized when using `./build.sh`. For dark sites, you may download the plugins and place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
 
   - HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] 1.2.0 or later.
-  - [Packer Plugin for Git][packer-plugin-git] 0.4.2 or later - a community plugin for HashiCorp Packer.
+  - [Packer Plugin for Git][packer-plugin-git] 0.4.3 or later - a community plugin for HashiCorp Packer.
   - [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.3 or later - a community plugin for HashiCorp Packer.
 
 **Additional Software Packages**:

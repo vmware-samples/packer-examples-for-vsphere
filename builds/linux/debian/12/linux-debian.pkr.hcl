@@ -11,7 +11,7 @@
 //  The Packer configuration.
 
 packer {
-  required_version = ">= 1.9.1"
+  required_version = ">= 1.9.4"
   required_plugins {
     git = {
       version = ">= 0.4.3"

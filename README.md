@@ -71,13 +71,19 @@ The following builds are available:
 
 Operating systems and versions tested with the project:
 
-- VMware Photon OS 4.0 (`x86_64`)
+- VMware Photon OS 5.0 (`x86_64`)
 - Ubuntu Server 22.04 LTS (`x86_64`)
-- macOS Monterey and Ventura (Intel)
+- macOS Ventura and Sonoma (Intel)
 
 > **Note**
 >
-> If your [Ansible][ansible-ssh-connection] control node already uses OpenSSH >= 9.0 (_e.g.,_, macOS Ventura) you must add an additional option to enable scp.
+> If your [Ansible][ansible-ssh-connection] control node already uses OpenSSH >= 9.0 you must add an additional option to enable scp.
+>
+> Check your OpenSSH version:
+>
+> ```shell
+> ssh -V
+> ```
 >
 > Update the `ansible/ansible.cfg` to include the following:
 >

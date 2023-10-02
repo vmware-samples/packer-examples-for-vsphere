@@ -18,7 +18,7 @@ packer {
       source  = "github.com/ethanmdavidson/git"
     }
     vsphere = {
-      version = ">= v1.2.0"
+      version = ">= v1.2.1"
       source  = "github.com/hashicorp/vsphere"
     }
   }

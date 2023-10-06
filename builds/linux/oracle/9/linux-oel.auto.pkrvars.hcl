@@ -33,8 +33,6 @@ vm_network_card          = "vmxnet3"
 // Removable Media Settings
 iso_path           = "iso/linux/oel"
 iso_file           = "OracleLinux-R9-U2-x86_64-dvd.iso"
-iso_checksum_type  = "sha256"
-iso_checksum_value = "cac3c41cc2d3467ba8902a5d74575bcf460f129634d5a0d1d67d87094dd70b09"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

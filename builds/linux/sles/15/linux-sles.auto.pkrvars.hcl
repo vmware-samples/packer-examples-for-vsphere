@@ -33,8 +33,6 @@ vm_network_card          = "vmxnet3"
 // Removable Media Settings
 iso_path           = "iso/linux/suse"
 iso_file           = "SLE-15-SP4-Full-x86_64-GM-Media1.iso"
-iso_checksum_type  = "sha256"
-iso_checksum_value = "1727b873723229f824e6141248b284020f4b8536c8df8d3be7ec255078103fc3"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

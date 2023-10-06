@@ -265,16 +265,6 @@ variable "iso_file" {
   description = "The file name of the ISO image used by the vendor. (e.g. 'SLE-<version>>-Full-x86_64-GM-Media1.iso')"
 }
 
-variable "iso_checksum_type" {
-  type        = string
-  description = "The checksum algorithm used by the vendor. (e.g. 'sha256')"
-}
-
-variable "iso_checksum_value" {
-  type        = string
-  description = "The checksum value provided by the vendor."
-}
-
 // Boot Settings
 
 variable "common_data_source" {

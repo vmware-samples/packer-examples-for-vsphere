@@ -37,7 +37,6 @@ locals {
   build_version     = data.git-repository.cwd.head
   build_description = "Version: ${local.build_version}\nBuilt on: ${local.build_date}\n${local.build_by}"
   iso_paths         = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}"]
-  iso_checksum      = "${var.iso_checksum_type}:${var.iso_checksum_value}"
   manifest_date     = formatdate("YYYY-MM-DD hh:mm:ss", timestamp())
   manifest_path     = "${path.cwd}/manifests/"
   manifest_output   = "${local.manifest_path}${local.manifest_date}.json"
@@ -103,7 +102,6 @@ source "vsphere-iso" "linux-ubuntu" {
 
   // Removable Media Settings
   iso_paths    = local.iso_paths
-  iso_checksum = local.iso_checksum
   http_content = var.common_data_source == "http" ? local.data_source_content : null
   cd_content   = var.common_data_source == "disk" ? local.data_source_content : null
   cd_label     = var.common_data_source == "disk" ? "cidata" : null

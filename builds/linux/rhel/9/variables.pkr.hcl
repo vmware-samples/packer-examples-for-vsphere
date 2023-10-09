@@ -265,16 +265,6 @@ variable "iso_file" {
   description = "The file name of the ISO image used by the vendor. (e.g. 'rhel-<version>-x86_64-dvd.iso')"
 }
 
-variable "iso_checksum_type" {
-  type        = string
-  description = "The checksum algorithm used by the vendor. (e.g. 'sha256')"
-}
-
-variable "iso_checksum_value" {
-  type        = string
-  description = "The checksum value provided by the vendor."
-}
-
 // Boot Settings
 
 variable "common_data_source" {

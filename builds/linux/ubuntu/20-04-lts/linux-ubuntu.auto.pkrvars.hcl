@@ -33,8 +33,6 @@ vm_network_card          = "vmxnet3"
 // Removable Media Settings
 iso_path           = "iso/linux/ubuntu"
 iso_file           = "ubuntu-20.04.6-live-server-amd64.iso"
-iso_checksum_type  = "sha256"
-iso_checksum_value = "b8f31413336b9393ad5d8ef0282717b2ab19f007df2e9ed5196c13d8f9153c8b"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

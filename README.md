@@ -851,8 +851,6 @@ Edit the `*.auto.pkrvars.hcl` file in each `builds/<type>/<build>` folder to con
 - .iso URL `(string)`
 - .iso Path `(string)`
 - .iso File `(string)`
-- .iso Checksum Type `(string)`
-- .iso Checksum Value `(string)`
 
   > **Note**
   >
@@ -916,7 +914,7 @@ The project supports using a datastore to store your guest operating system [`.i
    - Microsoft Windows 10 22H2
    </details>
 
-1. Obtain the checksum type (_e.g.,_ `sha512`, `sha256`, `md5`, etc.) and checksum value for each guest operating system `.iso` from the vendor. This will be use in the build input variables.
+1. Verify the checksum value for each guest operating system `.iso` from the vendor.
 
 1. [Upload][vsphere-upload] or your guest operating system `.iso` files to the datastore and update the configuration variables.
 
@@ -930,9 +928,7 @@ The project supports using a datastore to store your guest operating system [`.i
 
    ```hcl
    iso_path           = "iso/linux/photon"
-   iso_file           = "photon-4.0-xxxxxxxxx.iso"
-   iso_checksum_type  = "md5"
-   iso_checksum_value = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   iso_file           = "photon-5.0-xxxxxxxxx.iso"
    ```
 
 ### Step 5 - Modify the Configurations (Optional)

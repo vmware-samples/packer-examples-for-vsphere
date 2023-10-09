@@ -41,7 +41,6 @@ locals {
   build_version              = data.git-repository.cwd.head
   build_description          = "Version: ${local.build_version}\nBuilt on: ${local.build_date}\n${local.build_by}"
   iso_paths                  = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
-  iso_checksum               = "${var.iso_checksum_type}:${var.iso_checksum_value}"
   manifest_date              = formatdate("YYYY-MM-DD hh:mm:ss", timestamp())
   manifest_path              = "${path.cwd}/manifests/"
   manifest_output            = "${local.manifest_path}${local.manifest_date}.json"
@@ -98,7 +97,6 @@ source "vsphere-iso" "windows-server-standard-core" {
 
   // Removable Media Settings
   iso_paths    = local.iso_paths
-  iso_checksum = local.iso_checksum
   cd_files = [
     "${path.cwd}/scripts/${var.vm_guest_os_family}/"
   ]
@@ -202,7 +200,6 @@ source "vsphere-iso" "windows-server-standard-dexp" {
 
   // Removable Media Settings
   iso_paths    = local.iso_paths
-  iso_checksum = local.iso_checksum
   cd_files = [
     "${path.cwd}/scripts/${var.vm_guest_os_family}/"
   ]
@@ -306,7 +303,6 @@ source "vsphere-iso" "windows-server-datacenter-core" {
 
   // Removable Media Settings
   iso_paths    = local.iso_paths
-  iso_checksum = local.iso_checksum
   cd_files = [
     "${path.cwd}/scripts/${var.vm_guest_os_family}/"
   ]
@@ -412,7 +408,6 @@ source "vsphere-iso" "windows-server-datacenter-dexp" {
 
   // Removable Media Settings
   iso_paths    = local.iso_paths
-  iso_checksum = local.iso_checksum
   cd_files = [
     "${path.cwd}/scripts/${var.vm_guest_os_family}/"
   ]

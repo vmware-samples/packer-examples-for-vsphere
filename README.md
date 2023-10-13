@@ -10,7 +10,7 @@ Copyright 2023 VMware, Inc. All rights reserved
 # Packer Examples for VMware vSphere
 
 ![Last Commit](https://img.shields.io/github/last-commit/vmware-samples/packer-examples-for-vsphere?style=for-the-badge&logo=github)&nbsp;&nbsp;
-[![Documentation](https://img.shields.io/badge/Documentation-Read-blue?style=for-the-badge&logo=readthedocs&logoColor=white)]([CHANGELOG.md](https://vmware-samples.github.io/packer-examples-for-vsphere))
+[![Documentation](https://img.shields.io/badge/Documentation-Read-blue?style=for-the-badge&logo=readthedocs&logoColor=white)](https://vmware-samples.github.io/packer-examples-for-vsphere)
 
 This repository provides a collection of opinionated examples that demonstrate how you can use both [HashiCorp Packer][packer] and the [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso` builder) to automate the creation of virtual machine images for VMware vSphere environments.
 

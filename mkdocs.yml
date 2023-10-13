@@ -1,0 +1,144 @@
+# Project Information
+site_name: Packer Examples for VMware vSphere
+site_description: Packer Examples for VMware vSphere
+site_url: https://vmware-samples.github.io/packer-examples-for-vsphere/
+site_author: VMware, Inc.
+docs_dir: docs
+site_dir: .site
+use_directory_urls: true
+
+# Repository
+repo_url: https://github.com/vmware-samples/packer-examples-for-vsphere
+edit_uri: blob/main/docs/
+
+# Copyright
+copyright: Copyright &copy; 2023 - VMware, Inc.
+
+# Configuration
+theme:
+  name: material
+  favicon: favicon.ico
+  logo: assets/images/icon-white.svg
+  icon:
+    repo: fontawesome/brands/github
+  palette:  
+  - media: "(prefers-color-scheme: light)"
+    scheme: default
+    primary: indigo
+    accent: indigo
+    toggle:
+      icon: material/toggle-switch
+      name: Dark Theme
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    primary: indigo
+    accent: indigo
+    toggle:
+      icon: material/toggle-switch-off-outline
+      name: Light Theme
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+  - content.action.edit
+  - content.action.view
+  - content.code.annotate
+  - content.code.copy
+  - content.tabs.link
+  - navigation.footer
+  - navigation.header
+  - navigation.indexes
+  - navigation.instant
+  - navigation.sections
+  - navigation.tabs
+  - navigation.tabs.sticky
+  - navigation.top
+  - navigation.tracking
+  - search.highlight
+  - search.share
+  - search.suggest
+  - toc.follow
+
+# Plugins
+plugins:
+- search:
+    separator: '[\s\u200b\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+- open-in-new-tab
+- markdownextradata:
+    jinja_options:
+      variable_start_string: "${{"
+      variable_end_string: "}}"
+- git-revision-date-localized:
+    enabled: !ENV [CI, false]
+    enable_creation_date: false
+    exclude:
+      - index.md
+    fallback_to_build_date: true
+    type: timeago
+
+# Customization
+extra:
+  config:
+    repo_url: https://github.com/vmware-samples/packer-examples-for-vsphere
+    repo_url_raw: https://raw.githubusercontent.com/vmware-samples/packer-examples-for-vsphere/develop
+  version:
+    default: latest
+    provider: mike
+extra_css:
+  - assets/stylesheets/extra.css
+  - assets/stylesheets/spanable.css
+
+# Extensions
+markdown_extensions:
+- admonition
+- attr_list
+- footnotes
+- md_in_html
+- neoteroi.spantable
+- pymdownx.critic
+- pymdownx.emoji:
+    emoji_index: !!python/name:materialx.emoji.twemoji
+    emoji_generator: !!python/name:materialx.emoji.to_svg
+    options:
+      custom_icons:
+      - material/.icons
+- pymdownx.inlinehilite
+- pymdownx.highlight:
+    use_pygments: true
+- pymdownx.snippets:
+    check_paths: true
+- pymdownx.superfences:
+    custom_fences:
+    - name: mermaid
+      class: mermaid
+      format: !!python/name:pymdownx.superfences.fence_code_format
+- pymdownx.tabbed:
+    alternate_style: true
+- pymdownx.details
+- tables
+- toc:
+    permalink: true
+
+# Navigation
+nav:
+- Home: 
+  - index.md
+  - Release Notes: release-notes.md
+  - Release Milestones: https://github.com/vmware-samples/packer-examples-for-vsphere/milestones  
+  - License: license.md
+- Getting Started:
+  - Requirements: getting-started/requirements.md
+  - Download: getting-started/download.md
+  - Guest Operating Systems: getting-started/iso.md
+  - Privileges: getting-started/privileges.md
+  - Configuration: getting-started/configuration.md
+  - Build: getting-started/build.md
+  - GitLab CI/CD: getting-started/gitlab-ci-cd.md
+  - FAQ: getting-started/faq.md
+- Community:
+  - Contributing: community/contributing.md
+  - Discussions: https://github.com/vmware-samples/packer-examples-for-vsphere/discussions
+  - Search Issues: https://github.com/vmware-samples/packer-examples-for-vsphere/issues
+  - Open an Issue: https://github.com/vmware-samples/packer-examples-for-vsphere/issues/new/choose
+  - Support: community/support.md
+  - Code of Conduct: community/code-of-conduct.md

@@ -473,6 +473,68 @@ menu_option_13() {
 }
 
 menu_option_14() {
+  INPUT_PATH="$SCRIPT_PATH"/builds/linux/oracle/9/
+  echo -e "\nCONFIRM: Build a Oracle Linux 9 Template for VMware vSphere?"
+  echo -e "\nContinue? (y/n)"
+  read -r REPLY
+  if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    exit 1
+  fi
+
+  ### Build a Oracle Linux 9 Template for VMware vSphere. ###
+  echo "Building a Oracle Linux 9 Template for VMware vSphere..."
+
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
+  packer init "$INPUT_PATH"
+
+  ### Start the Build. ###
+  echo "Starting the build...."
+  echo "packer build -force -on-error=ask $debug_option"
+  packer build -force -on-error=ask $debug_option \
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      "$INPUT_PATH"
+
+  ### Build Complete. ###
+  echo "Build Complete."
+}
+
+menu_option_15() {
+  INPUT_PATH="$SCRIPT_PATH"/builds/linux/oracle/8/
+  echo -e "\nCONFIRM: Build a Oracle Linux 8 Template for VMware vSphere?"
+  echo -e "\nContinue? (y/n)"
+  read -r REPLY
+  if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    exit 1
+  fi
+
+  ### Build a Oracle Linux 8 Template for VMware vSphere. ###
+  echo "Building a Oracle Linux 8 Template for VMware vSphere..."
+
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
+  packer init "$INPUT_PATH"
+
+  ### Start the Build. ###
+  echo "Starting the build...."
+  echo "packer build -force -on-error=ask $debug_option"
+  packer build -force -on-error=ask $debug_option \
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      "$INPUT_PATH"
+
+  ### Build Complete. ###
+  echo "Build Complete."
+}
+
+menu_option_16() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos/9-stream/
   echo -e "\nCONFIRM: Build a CentOS Stream 9 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -503,7 +565,7 @@ menu_option_14() {
   echo "Build Complete."
 }
 
-menu_option_15() {
+menu_option_17() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos/8-stream/
   echo -e "\nCONFIRM: Build a CentOS Stream 8 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -534,7 +596,7 @@ menu_option_15() {
   echo "Build Complete."
 }
 
-menu_option_16() {
+menu_option_18() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos/7/
   echo -e "\nCONFIRM: Build a CentOS Linux 7 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -565,7 +627,7 @@ menu_option_16() {
   echo "Build Complete."
 }
 
-menu_option_17() {
+menu_option_19() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/sles/15/
   echo -e "\nCONFIRM: Build a SUSE Linux Enterprise Server 15 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
@@ -591,68 +653,6 @@ menu_option_17() {
       -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/scc.pkrvars.hcl" \
-      "$INPUT_PATH"
-
-  ### Build Complete. ###
-  echo "Build Complete."
-}
-
-menu_option_18() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/linux/oracle/9/
-  echo -e "\nCONFIRM: Build a Oracle Enterprise Linux 9 Template for VMware vSphere?"
-  echo -e "\nContinue? (y/n)"
-  read -r REPLY
-  if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-    exit 1
-  fi
-
-  ### Build a Oracle Enterprise Linux 9 Template for VMware vSphere. ###
-  echo "Building a Oracle Enterprise Linux 9 Template for VMware vSphere..."
-
-  ### Initialize HashiCorp Packer and required plugins. ###
-  echo "Initializing HashiCorp Packer and required plugins..."
-  packer init "$INPUT_PATH"
-
-  ### Start the Build. ###
-  echo "Starting the build...."
-  echo "packer build -force -on-error=ask $debug_option"
-  packer build -force -on-error=ask $debug_option \
-      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
-      "$INPUT_PATH"
-
-  ### Build Complete. ###
-  echo "Build Complete."
-}
-
-menu_option_19() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/linux/oracle/8/
-  echo -e "\nCONFIRM: Build a Oracle Enterprise Linux 8 Template for VMware vSphere?"
-  echo -e "\nContinue? (y/n)"
-  read -r REPLY
-  if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-    exit 1
-  fi
-
-  ### Build a Oracle Enterprise Linux 8 Template for VMware vSphere. ###
-  echo "Building a Oracle Enterprise Linux 8 Template for VMware vSphere..."
-
-  ### Initialize HashiCorp Packer and required plugins. ###
-  echo "Initializing HashiCorp Packer and required plugins..."
-  packer init "$INPUT_PATH"
-
-  ### Start the Build. ###
-  echo "Starting the build...."
-  echo "packer build -force -on-error=ask $debug_option"
-  packer build -force -on-error=ask $debug_option \
-      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
       "$INPUT_PATH"
 
   ### Build Complete. ###
@@ -1057,12 +1057,12 @@ until [ "$selection" = "0" ]; do
   echo "    	11  -  AlmaLinux OS 8"
   echo "    	12  -  Rocky Linux 9"
   echo "    	13  -  Rocky Linux 8"
-  echo "    	14  -  CentOS Stream 9"
-  echo "    	15  -  CentOS Stream 8"
-  echo "    	16  -  CentOS Linux 7"
-  echo "    	17  -  SUSE Linux Enterprise Server 15"
-  echo "    	18  -  Oracle Enterprise Linux 9"
-  echo "    	19  -  Oracle Enterprise Linux 8"
+  echo "    	14  -  Oracle Linux 9"
+  echo "    	15  -  Oracle Linux 8"
+  echo "    	16  -  CentOS Stream 9"
+  echo "    	17  -  CentOS Stream 8"
+  echo "    	18  -  CentOS Linux 7"
+  echo "    	19  -  SUSE Linux Enterprise Server 15"
   echo ""
   echo "      Microsoft Windows:"
   echo ""
@@ -1118,8 +1118,8 @@ until [ "$selection" = "0" ]; do
     29 ) clear ; menu_option_29 ; press_enter ;;
     30 ) clear ; menu_option_30 ; press_enter ;;
     31 ) clear ; menu_option_31 ; press_enter ;;
-    I ) clear ; info ; press_enter ;;
-    Q ) clear ; exit ;;
+    i|I ) clear ; info ; press_enter ;;
+    q|Q ) clear ; exit ;;
     * ) clear ; incorrect_selection ; press_enter ;;
   esac
 done

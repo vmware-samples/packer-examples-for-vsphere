@@ -26,8 +26,8 @@ Download the Linux distribution ISO files from the publisher.
 |                                                                         | 8         | [:fontawesome-solid-cloud-arrow-down:][download-linux-alma-8] &nbsp; `AlmaLinux-8.x-x86_64-dvd.iso`                    |
 | :simple-rockylinux: &nbsp;&nbsp; Rocky Linux @span                      | 9         | [:fontawesome-solid-cloud-arrow-down:][download-linux-rocky-9] &nbsp; `Rocky-9.x-x86_64-dvd.iso`                       |
 |                                                                         | 8         | [:fontawesome-solid-cloud-arrow-down:][download-linux-rocky-8] &nbsp; `Rocky-8.x-x86_64-dvd.iso`                       |
-| :simple-oracle: &nbsp;&nbsp; Oracle Enterprise Linux @span              | 9         | [:fontawesome-solid-cloud-arrow-down:][download-linux-oel-9] &nbsp; `OracleLinux-R9-U2-x86_64-dvd.iso`                 |
-|                                                                         | 8         | [:fontawesome-solid-cloud-arrow-down:][download-linux-oel-8] &nbsp; `OracleLinux-R8-U8-x86_64-dvd.iso`                 |
+| :simple-oracle: &nbsp;&nbsp; Oracle Linux @span                         | 9         | [:fontawesome-solid-cloud-arrow-down:][download-linux-oracle-9] &nbsp; `OracleLinux-R9-U2-x86_64-dvd.iso`                 |
+|                                                                         | 8         | [:fontawesome-solid-cloud-arrow-down:][download-linux-oracle-8] &nbsp; `OracleLinux-R8-U8-x86_64-dvd.iso`                 |
 | :fontawesome-brands-centos: &nbsp;&nbsp; CentOS @span                   | 9 Stream  | [:fontawesome-solid-cloud-arrow-down:][download-linux-centos-stream-9] &nbsp; `CentOS-Stream-9-latest-x86_64-dvd1.iso` |
 |                                                                         | 8 Stream  | [:fontawesome-solid-cloud-arrow-down:][download-linux-centos-stream-8] &nbsp; `CentOS-Stream-8-x86_64-latest-dvd1.iso` |
 |                                                                         | 7         | [:fontawesome-solid-cloud-arrow-down:][download-linux-centos-7] &nbsp; `CentOS-7-x86_64-DVD.iso`                       |
@@ -68,8 +68,8 @@ iso_file           = "photon-5.0-xxxxxxxxx.iso"
 [download-linux-centos-stream-9]: http://mirror.stream.centos.org/9-stream/BaseOS/x86_64/iso/
 [download-linux-debian-12]: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/
 [download-linux-debian-11]: https://cdimage.debian.org/cdimage/archive/11.7.0/amd64/iso-cd/
-[download-linux-oel-9]: https://yum.oracle.com/oracle-linux-isos.html
-[download-linux-oel-8]: https://yum.oracle.com/oracle-linux-isos.html
+[download-linux-oracle-9]: https://yum.oracle.com/oracle-linux-isos.html
+[download-linux-oracle-8]: https://yum.oracle.com/oracle-linux-isos.html
 [download-linux-photon-5]: https://packages.vmware.com/photon/5.0/GA/iso/
 [download-linux-photon-4]: https://packages.vmware.com/photon/4.0/Rev2/iso/
 [download-linux-rhel-7]: https://access.redhat.com/downloads/content/69/ver=/rhel---7/7.9/x86_64/product-software

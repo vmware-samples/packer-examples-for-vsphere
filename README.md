@@ -37,8 +37,8 @@ This project supports the following guest operating systems:
 | AlmaLinux OS                 | 8         |
 | Rocky Linux                  | 9         |
 | Rocky Linux                  | 8         |
-| Oracle Enterprise Linux      | 9         |
-| Oracle Enterprise Linux      | 8         |
+| Oracle Linux                 | 9         |
+| Oracle Linux                 | 8         |
 | CentOS Stream                | 9         |
 | CentOS Stream                | 8         |
 | CentOS Linux                 | 7         |

@@ -172,8 +172,8 @@ until [ "$selection" = "0" ]; do
     {{ $selection_index }} ) clear ; menu_option_{{ $selection_index }} ; press_enter ;;
 {{- end }}
 {{- end }}
-    I ) clear ; info ; press_enter ;;
-    Q ) clear ; exit ;;
+    i|I ) clear ; info ; press_enter ;;
+    q|Q ) clear ; exit ;;
     * ) clear ; incorrect_selection ; press_enter ;;
   esac
 done

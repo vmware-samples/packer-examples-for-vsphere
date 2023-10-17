@@ -54,6 +54,12 @@ menu:
       - entry: "Rocky Linux 8"
         build:
           path: "builds/linux/rocky/8/"
+      - entry: "Oracle Linux 9"
+        build:
+          path: "builds/linux/oracle/9/"
+      - entry: "Oracle Linux 8"
+        build:
+          path: "builds/linux/oracle/8/"
       - entry: "CentOS Stream 9"
         build:
           path: "builds/linux/centos/9-stream/"
@@ -68,12 +74,6 @@ menu:
           path: "builds/linux/sles/15/"
           var_files:
             - "scc.pkrvars.hcl"
-      - entry: "Oracle Enterprise Linux 9"
-        build:
-          path: "builds/linux/oracle/9/"
-      - entry: "Oracle Enterprise Linux 8"
-        build:
-          path: "builds/linux/oracle/8/"
 
   - entry: "Microsoft Windows"
     build:

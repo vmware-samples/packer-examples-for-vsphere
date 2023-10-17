@@ -1,7 +1,7 @@
 # Copyright 2023 VMware, Inc. All rights reserved
 # SPDX-License-Identifier: BSD-2
 
-# Debian 12 (Bookworm) Preseed File
+# Debian 12
 # https://www.debian.org/releases/bookworm/amd64/
 
 # Locale and Keyboard

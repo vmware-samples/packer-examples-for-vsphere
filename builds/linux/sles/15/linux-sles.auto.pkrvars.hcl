@@ -3,7 +3,8 @@
 
 /*
     DESCRIPTION:
-    SUSE Linux Enterprise Server 15 variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    SUSE Linux Enterprise Server 15 build variables.
+    Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 
 // Guest Operating System Metadata
@@ -31,8 +32,8 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_path           = "iso/linux/suse"
-iso_file           = "SLE-15-SP4-Full-x86_64-GM-Media1.iso"
+iso_path = "iso/linux/suse"
+iso_file = "SLE-15-SP4-Full-x86_64-GM-Media1.iso"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

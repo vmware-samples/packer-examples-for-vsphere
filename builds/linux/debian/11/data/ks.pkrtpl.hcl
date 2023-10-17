@@ -1,7 +1,7 @@
 # Copyright 2023 VMware, Inc. All rights reserved
 # SPDX-License-Identifier: BSD-2
 
-# Debian 11 (Bullseye) Preseed File
+# Debian 11
 # https://www.debian.org/releases/bullseye/amd64/
 
 # Locale and Keyboard

@@ -3,7 +3,8 @@
 
 /*
     DESCRIPTION:
-    VMware Photon OS 5 variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    VMware Photon OS 5 build variables.
+    Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 
 // Guest Operating Systtem Metadata
@@ -28,8 +29,8 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_path           = "iso/linux/photon"
-iso_file           = "photon-5.0-dde71ec57.x86_64.iso"
+iso_path = "iso/linux/photon"
+iso_file = "photon-5.0-dde71ec57.x86_64.iso"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

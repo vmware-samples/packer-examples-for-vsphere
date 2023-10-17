@@ -3,7 +3,8 @@
 
 /*
     DESCRIPTION:
-    Ubuntu Server 22.04 LTS template using the Packer Builder for VMware vSphere (vsphere-iso).
+    Ubuntu Server 22.04 LTS build definition.
+    Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 
 //  BLOCK: packer
@@ -12,13 +13,17 @@
 packer {
   required_version = ">= 1.9.4"
   required_plugins {
-    git = {
-      version = ">= 0.4.3"
-      source  = "github.com/ethanmdavidson/git"
-    }
     vsphere = {
-      version = ">= v1.2.1"
       source  = "github.com/hashicorp/vsphere"
+      version = ">= 1.2.1"
+    }
+    ansible = {
+      source  = "github.com/hashicorp/ansible"
+      version = ">= 1.1.0"
+    }
+    git = {
+      source  = "github.com/ethanmdavidson/git"
+      version = ">= 0.4.3"
     }
   }
 }

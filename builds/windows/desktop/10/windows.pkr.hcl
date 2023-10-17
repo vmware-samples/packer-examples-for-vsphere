@@ -3,7 +3,8 @@
 
 /*
     DESCRIPTION:
-    Microsoft Windows 10 template using the Packer Builder for VMware vSphere (vsphere-iso).
+    Microsoft Windows 10 build definition.
+    Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 
 //  BLOCK: packer
@@ -12,17 +13,17 @@
 packer {
   required_version = ">= 1.9.4"
   required_plugins {
-    git = {
-      version = ">= 0.4.3"
-      source  = "github.com/ethanmdavidson/git"
-    }
     vsphere = {
-      version = ">= v1.2.1"
       source  = "github.com/hashicorp/vsphere"
+      version = ">= 1.2.1"
     }
     windows-update = {
-      version = ">= 0.14.3"
       source  = "github.com/rgl/windows-update"
+      version = ">= 0.14.3"
+    }
+    git = {
+      source  = "github.com/ethanmdavidson/git"
+      version = ">= 0.4.3"
     }
   }
 }
@@ -96,7 +97,7 @@ source "vsphere-iso" "windows-desktop-pro" {
   notes                = local.build_description
 
   // Removable Media Settings
-  iso_paths    = local.iso_paths
+  iso_paths = local.iso_paths
   cd_files = [
     "${path.cwd}/scripts/${var.vm_guest_os_family}/"
   ]
@@ -199,7 +200,7 @@ source "vsphere-iso" "windows-desktop-ent" {
   notes                = local.build_description
 
   // Removable Media Settings
-  iso_paths    = local.iso_paths
+  iso_paths = local.iso_paths
   cd_files = [
     "${path.cwd}/scripts/${var.vm_guest_os_family}/"
   ]

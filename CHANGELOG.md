@@ -52,6 +52,7 @@
 - Updates Rocky Linux 8 to 8.8 release. [GH-572](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/572)
 - Updates CentOS Stream 9 to latest June 2023 release. [GH-567](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/567)
 - Updates CentOS Stream 8 to latest June 2023 release. [GH-568](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/568)
+- Updates SLES 15 to 15.5 release. [GH-740](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/740)
 - Updates Windows Server 2022 to May 2023 (US English) release. [GH-579](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/579)
 - Updates Windows 11 22H2 to May 2023 (US English) release. [GH-580](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/580), [GH-583](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/583)
 - Updates Windows 10 22H2 to May 2023 (US English) release. [GH-575](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/581)

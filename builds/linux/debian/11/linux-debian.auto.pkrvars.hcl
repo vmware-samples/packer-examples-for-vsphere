@@ -3,7 +3,7 @@
 
 /*
     DESCRIPTION:
-    Debian 11 (Bullseye) build variables.
+    Debian 11 build variables.
 */
 
 // Guest Operating System Metadata
@@ -12,7 +12,7 @@ vm_guest_os_keyboard = "us"
 vm_guest_os_timezone = "UTC"
 vm_guest_os_family   = "linux"
 vm_guest_os_name     = "debian"
-vm_guest_os_version  = "11.7"
+vm_guest_os_version  = "11.8"
 
 // Virtual Machine Guest Operating System Setting
 vm_guest_os_type = "other5xLinux64Guest"
@@ -31,8 +31,8 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_path           = "iso/linux/debian"
-iso_file           = "debian-11.7.0-amd64-netinst.iso"
+iso_path = "iso/linux/debian"
+iso_file = "debian-11.8.0-amd64-netinst.iso"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

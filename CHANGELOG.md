@@ -37,7 +37,7 @@
 - Updates `required_versions` for `hashicorp/vsphere` to `>= 2.4.0`. [GH-561](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/561)
 - Updates Gomplate to `3.11.5`. [GH-559](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/559)
 - Updates ansible-core to `2.15`. [GH-573](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/573)
-- Updates Debian 11 to 11.7 release. [GH-574](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/574)
+- Updates Debian 11 to 11.8 release. [GH-738](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/738)
 - Updates Ubuntu 22.04 to 22.04.3 release. [GH-720](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/720)
 - Updates Ubuntu 20.04 to 20.04.6 release. [GH-566](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/566)
 - Removes Ubuntu 18.04 from the project. [GH-578](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/578)

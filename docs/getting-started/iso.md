@@ -31,7 +31,7 @@ Download the Linux distribution ISO files from the publisher.
 | :fontawesome-brands-centos: &nbsp;&nbsp; CentOS @span                   | 9 Stream  | [:fontawesome-solid-cloud-arrow-down:][download-linux-centos-stream-9] &nbsp; `CentOS-Stream-9-latest-x86_64-dvd1.iso` |
 |                                                                         | 8 Stream  | [:fontawesome-solid-cloud-arrow-down:][download-linux-centos-stream-8] &nbsp; `CentOS-Stream-8-x86_64-latest-dvd1.iso` |
 |                                                                         | 7         | [:fontawesome-solid-cloud-arrow-down:][download-linux-centos-7] &nbsp; `CentOS-7-x86_64-DVD.iso`                       |
-| :fontawesome-brands-suse: &nbsp;&nbsp; SUSE Linux Enterprise @span      | 15        | [:fontawesome-solid-cloud-arrow-down:][download-linux-sles-15] &nbsp; `SLE-15-SP4-Full-x86_64-GM-Media1.iso`           |
+| :fontawesome-brands-suse: &nbsp;&nbsp; SUSE Linux Enterprise @span      | 15        | [:fontawesome-solid-cloud-arrow-down:][download-linux-sles-15] &nbsp; `SLE-15-SPx-Full-x86_64-GM-Media1.iso`           |
 ::end-spantable::
 
 ## :fontawesome-brands-windows: Microsoft Windows

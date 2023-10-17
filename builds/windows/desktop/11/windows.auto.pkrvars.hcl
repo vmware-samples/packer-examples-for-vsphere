@@ -3,7 +3,8 @@
 
 /*
     DESCRIPTION:
-    Microsoft Windows 11 Professional variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    Microsoft Windows 11 build variables.
+    Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 
 // Installation Operating System Metadata
@@ -44,9 +45,9 @@ vm_video_ram             = 32768
 vm_video_displays        = 1
 
 // Removable Media Settings
-iso_path           = "iso/windows/desktop"
-iso_file           = "en-us_windows_11_business_editions_version_22h2_updated_sep_2023_x64_dvd_f2ea646d.iso"
- 
+iso_path = "iso/windows/desktop"
+iso_file = "en-us_windows_11_business_editions_version_22h2_updated_sep_2023_x64_dvd_f2ea646d.iso"
+
 // Boot Settings
 vm_boot_order       = "disk,cdrom"
 vm_boot_wait        = "3s"

@@ -3,7 +3,8 @@
 
 /*
     DESCRIPTION:
-    Red Hat Enterprise Linux 9 variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    Red Hat Enterprise Linux 9 build variables.
+    Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 
 // Guest Operating System Metadata
@@ -31,8 +32,8 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_path           = "iso/linux/rhel"
-iso_file           = "rhel-9.2-x86_64-dvd.iso"
+iso_path = "iso/linux/rhel"
+iso_file = "rhel-9.2-x86_64-dvd.iso"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

@@ -3,7 +3,8 @@
 
 /*
     DESCRIPTION:
-    Microsoft Windows Server 2019 variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    Microsoft Windows Server 2019 build variables.
+    Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 
 // Installation Operating System Metadata
@@ -45,8 +46,8 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_path           = "iso/windows/server"
-iso_file           = "en-us_windows_server_2019_x64_dvd_f9475476.iso"
+iso_path = "iso/windows/server"
+iso_file = "en-us_windows_server_2019_x64_dvd_f9475476.iso"
 
 // Boot Settings
 vm_boot_order       = "disk,cdrom"

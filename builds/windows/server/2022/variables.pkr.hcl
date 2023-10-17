@@ -3,7 +3,8 @@
 
 /*
     DESCRIPTION:
-    Microsoft Windows Server 2022 variables using the Packer Builder for VMware vSphere (vsphere-iso).
+    Microsoft Windows Server 2022 input variables.
+    Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 
 //  BLOCK: variable
@@ -13,12 +14,12 @@
 
 variable "vsphere_endpoint" {
   type        = string
-  description = "The fully qualified domain name or IP address of the vCenter Server instance. (e.g. 'sfo-w01-vc01.sfo.rainpole.io')"
+  description = "The fully qualified domain name or IP address of the vCenter Server instance."
 }
 
 variable "vsphere_username" {
   type        = string
-  description = "The username to login to the vCenter Server instance. (e.g. 'svc-packer-vsphere@rainpole.io')"
+  description = "The username to login to the vCenter Server instance."
   sensitive   = true
 }
 
@@ -37,35 +38,35 @@ variable "vsphere_insecure_connection" {
 
 variable "vsphere_datacenter" {
   type        = string
-  description = "The name of the target vSphere datacenter. (e.g. 'sfo-w01-dc01')"
+  description = "The name of the target vSphere datacenter."
   default     = ""
 }
 
 variable "vsphere_cluster" {
   type        = string
-  description = "The name of the target vSphere cluster. (e.g. 'sfo-w01-cl01')"
+  description = "The name of the target vSphere cluster."
   default     = ""
 }
 
 variable "vsphere_host" {
   type        = string
-  description = "The name of the target ESXi host. (e.g. 'sfo-w01-esx01')"
+  description = "The name of the target ESXi host."
   default     = ""
 }
 
 variable "vsphere_datastore" {
   type        = string
-  description = "The name of the target vSphere datastore. (e.g. 'sfo-w01-cl01-vsan01')"
+  description = "The name of the target vSphere datastore."
 }
 
 variable "vsphere_network" {
   type        = string
-  description = "The name of the target vSphere network segment. (e.g. 'sfo-w01-dhcp')"
+  description = "The name of the target vSphere network segment."
 }
 
 variable "vsphere_folder" {
   type        = string
-  description = "The name of the target vSphere folder. (e.g. 'sfo-w01-fd-templates')"
+  description = "The name of the target vSphere folder."
   default     = ""
 }
 
@@ -135,68 +136,68 @@ variable "vm_guest_os_timezone" {
 
 variable "vm_guest_os_family" {
   type        = string
-  description = "The guest operating system family. Used for naming and VMware tools. (e.g.'windows')"
+  description = "The guest operating system family. Used for naming and VMware Tools."
 }
 
 variable "vm_guest_os_name" {
   type        = string
-  description = "The guest operating system name. Used for naming. (e.g. 'server')"
+  description = "The guest operating system name. Used for naming."
 }
 
 variable "vm_guest_os_version" {
   type        = string
-  description = "The guest operating system version. Used for naming. (e.g. '2022')"
+  description = "The guest operating system version. Used for naming."
 }
 
 variable "vm_guest_os_edition_standard" {
   type        = string
-  description = "The guest operating system edition. Used for naming. (e.g. 'standard')"
+  description = "The guest operating system edition. Used for naming."
   default     = "standard"
 }
 
 variable "vm_guest_os_edition_datacenter" {
   type        = string
-  description = "The guest operating system edition. Used for naming. (e.g. 'datacenter')"
+  description = "The guest operating system edition. Used for naming."
   default     = "datacenter"
 }
 
 variable "vm_guest_os_experience_core" {
   type        = string
-  description = "The guest operating system minimal experience. Used for naming. (e.g. 'core')"
+  description = "The guest operating system minimal experience. Used for naming."
   default     = "core"
 }
 
 variable "vm_guest_os_experience_desktop" {
   type        = string
-  description = "The guest operating system desktop experience. Used for naming. (e.g. 'dexp')"
+  description = "The guest operating system desktop experience. Used for naming."
   default     = "dexp"
 }
 
 variable "vm_guest_os_type" {
   type        = string
-  description = "The guest operating system type, also know as guestid. (e.g. 'windows2019srv_64Guest')"
+  description = "The guest operating system type, also know as guestid."
 }
 
 variable "vm_firmware" {
   type        = string
-  description = "The virtual machine firmware. (e.g. 'efi-secure'. 'efi', or 'bios')"
+  description = "The virtual machine firmware."
   default     = "efi-secure"
 }
 
 variable "vm_cdrom_type" {
   type        = string
-  description = "The virtual machine CD-ROM type. (e.g. 'sata', or 'ide')"
+  description = "The virtual machine CD-ROM type."
   default     = "sata"
 }
 
 variable "vm_cpu_count" {
   type        = number
-  description = "The number of virtual CPUs. (e.g. '2')"
+  description = "The number of virtual CPUs."
 }
 
 variable "vm_cpu_cores" {
   type        = number
-  description = "The number of virtual CPUs cores per socket. (e.g. '1')"
+  description = "The number of virtual CPUs cores per socket."
 }
 
 variable "vm_cpu_hot_add" {
@@ -206,7 +207,7 @@ variable "vm_cpu_hot_add" {
 
 variable "vm_mem_size" {
   type        = number
-  description = "The size for the virtual memory in MB. (e.g. '2048')"
+  description = "The size for the virtual memory in MB."
 }
 
 variable "vm_mem_hot_add" {
@@ -216,12 +217,12 @@ variable "vm_mem_hot_add" {
 
 variable "vm_disk_size" {
   type        = number
-  description = "The size for the virtual disk in MB. (e.g. '40960')"
+  description = "The size for the virtual disk in MB."
 }
 
 variable "vm_disk_controller_type" {
   type        = list(string)
-  description = "The virtual disk controller types in sequence. (e.g. 'pvscsi')"
+  description = "The virtual disk controller types in sequence."
   default     = ["pvscsi"]
 }
 
@@ -233,13 +234,13 @@ variable "vm_disk_thin_provisioned" {
 
 variable "vm_network_card" {
   type        = string
-  description = "The virtual network card type. (e.g. 'vmxnet3' or 'e1000e')"
+  description = "The virtual network card type."
   default     = "vmxnet3"
 }
 
 variable "common_vm_version" {
   type        = number
-  description = "The vSphere virtual hardware version. (e.g. '19')"
+  description = "The vSphere virtual hardware version."
 }
 
 variable "common_tools_upgrade_policy" {
@@ -264,7 +265,7 @@ variable "common_template_conversion" {
 
 variable "common_content_library_name" {
   type        = string
-  description = "The name of the target vSphere content library, if used. (e.g. 'sfo-w01-cl01-lib01')"
+  description = "The name of the target vSphere content library, if used."
   default     = null
 }
 
@@ -282,7 +283,7 @@ variable "common_content_library_destroy" {
 
 variable "common_content_library_skip_export" {
   type        = bool
-  description = "Skip exporting the virtual machine to the content library. Option allows for testing / debugging without saving the machine image."
+  description = "Skip exporting the virtual machine to the content library. Option allows for testing/debugging without saving the machine image."
   default     = false
 }
 
@@ -304,24 +305,24 @@ variable "common_ovf_export_overwrite" {
 
 variable "common_iso_datastore" {
   type        = string
-  description = "The name of the source vSphere datastore for ISO images. (e.g. 'sfo-w01-cl01-nfs01')"
+  description = "The name of the source vSphere datastore for the guest operating system ISO."
 }
 
 variable "iso_path" {
   type        = string
-  description = "The path on the source vSphere datastore for ISO image. (e.g. 'iso/windows')"
+  description = "The path on the source vSphere datastore for the guest operating system ISO."
 }
 
 variable "iso_file" {
   type        = string
-  description = "The file name of the ISO image used by the vendor. (e.g. '<language>_windows_server_version_<version>_updated_<month_year>_x64_dvd_<string>.iso')"
+  description = "The file name of the guest operating system ISO."
 }
 
 // Boot Settings
 
 variable "common_data_source" {
   type        = string
-  description = "The provisioning data source. (e.g. 'http' or 'disk')"
+  description = "The provisioning data source. One of `http` or `disk`."
 }
 
 variable "common_http_ip" {
@@ -342,7 +343,7 @@ variable "common_http_port_max" {
 
 variable "vm_boot_order" {
   type        = string
-  description = "The boot order for virtual machines devices. (e.g. 'disk,cdrom')"
+  description = "The boot order for virtual machines devices."
   default     = "disk,cdrom"
 }
 
@@ -376,7 +377,7 @@ variable "common_shutdown_timeout" {
 
 variable "build_username" {
   type        = string
-  description = "The username to login to the guest operating system. (e.g. 'rainpole')"
+  description = "The username to login to the guest operating system."
   sensitive   = true
 }
 

@@ -56,6 +56,12 @@ Generate a custom build script:
 gomplate -c build.yaml -f build.tmpl -o build.sh
 ```
 
+or
+
+```shell
+make update-build-script
+```
+
 ## Build Directly with Packer
 
 You can also start a build based on a specific source for some of the virtual machine images.

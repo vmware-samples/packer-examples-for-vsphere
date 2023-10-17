@@ -1,6 +1,8 @@
 # Copyright 2023 VMware, Inc. All rights reserved
 # SPDX-License-Identifier: BSD-2
 
+
+
 ##############################################################################
 ##
 ## Auto-generated .gitlab-ci.yml for building Packer Example for vSphere
@@ -132,6 +134,20 @@ Rocky-Linux-8:
 
 ##############################################################################
 
+Oracle-Linux-9:
+    extends: .packer-build
+    variables:
+        INPUT_PATH: "$SCRIPT_PATH/builds/linux/oracle/9/"
+
+##############################################################################
+
+Oracle-Linux-8:
+    extends: .packer-build
+    variables:
+        INPUT_PATH: "$SCRIPT_PATH/builds/linux/oracle/8/"
+
+##############################################################################
+
 CentOS-Stream-9:
     extends: .packer-build
     variables:
@@ -158,20 +174,6 @@ SUSE-Linux-Enterprise-Server-15:
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/linux/sles/15/"
         EXTRA_VAR_FILES: " -var-file=$CONFIG_PATH/scc.pkrvars.hcl"
-
-##############################################################################
-
-Oracle-Enterprise-Linux-9:
-    extends: .packer-build
-    variables:
-        INPUT_PATH: "$SCRIPT_PATH/builds/linux/oracle/9/"
-
-##############################################################################
-
-Oracle-Enterprise-Linux-8:
-    extends: .packer-build
-    variables:
-        INPUT_PATH: "$SCRIPT_PATH/builds/linux/oracle/8/"
 
 ##############################################################################
 

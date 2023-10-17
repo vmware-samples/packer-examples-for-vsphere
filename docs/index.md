@@ -30,7 +30,7 @@ This project supports the following guest operating systems:
 |                                                                         | 8         | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               |
 | :simple-rockylinux: &nbsp;&nbsp; Rocky Linux @span                      | 9         | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               |
 |                                                                         | 8         | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               |
-| :simple-oracle: &nbsp;&nbsp; Oracle Enterprise Linux @span              | 9         | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               |
+| :simple-oracle: &nbsp;&nbsp; Oracle Linux @span                         | 9         | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               |
 |                                                                         | 8         | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               |
 | :fontawesome-brands-centos: &nbsp;&nbsp; CentOS @span                   | 9 Stream  | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               |
 |                                                                         | 8 Stream  | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               |

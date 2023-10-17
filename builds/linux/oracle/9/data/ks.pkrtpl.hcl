@@ -1,7 +1,7 @@
 # Copyright 2023 VMware, Inc. All rights reserved
 # SPDX-License-Identifier: BSD-2
 
-# Oracle Enterprise Linux Server 9
+# Oracle Linux Server 9
 
 ### Installs from the first attached CD-ROM/DVD on the system.
 cdrom

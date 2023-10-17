@@ -8,8 +8,8 @@
 
 - Adds VMware Photon OS 5.0 to the project. [GH-582](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/582)
 - Adds Debian 12 to the project. [GH-584](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/584)
-- Adds Oracle Enterprise Linux 9 to the project. [GH-670](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/670)
-- Adds Oracle Enterprise Linux 8 to the project. [GH-670](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/670)
+- Adds Oracle Linux 9 to the project. [GH-670](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/670)
+- Adds Oracle Linux 8 to the project. [GH-670](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/670)
 - Adds Windows 11 Enterprise to the project. [GH-688](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/688)
 - Adds Windows 10 Enterprise to the project. [GH-688](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/688)
 - Adds the option to configure the following target for builds: [GH-471](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/471)
@@ -26,7 +26,6 @@
 
 - Updates Debian 11 to include `build_password` in the `linux-debian.pkr.hcl` configuration file. [GH-653](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/653)
 - Updates Debian 11 to ensure `/dev/sr1` is not mounted with use of the default `http` data source. No changes to the `disk` data source. [GH-686](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/686)
-- Updates Debian 12 to ensure `/dev/sr1` is not mounted with use of the default `http` data source. No changes to the `disk` data source. [GH-685](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/685)
 
 :sweat_drops: **Chore**:
 
@@ -333,7 +332,7 @@
 - Adds option to use`floppy_content` included in `packer-plugin-vsphere` release`v1.0.2`. Ubuntu Server 18.04 LTS will toggle to use `floppy_content` from `http_content` when `common_data_source = "disk"` is enabled.
 - Updates VMware Photon OS 4.0 to Revision 1.
 - Adds Microsoft Windows 11 Professional as experimental until `vsphere-iso` supports vTPM.
-- Adds support for `skip_import` Adds to `packer-plugin-vsphere` in `v1.0.2`. When set to `true` the virtual machine will not be imported into the content library. This is useful for testing / debugging. Defaults to false.
+- Adds support for `skip_import` Adds to `packer-plugin-vsphere` in `v1.0.2`. When set to `true` the virtual machine will not be imported into the content library. This is useful for testing/debugging. Defaults to false.
 
 ## v21.10
 

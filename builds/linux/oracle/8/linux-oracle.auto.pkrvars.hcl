@@ -3,7 +3,8 @@
 
 /*
     DESCRIPTION:
-    Oracle Enterprise Linux 8 variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    Oracle Linux 8 build variables.
+    Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 
 // Guest Operating System Metadata
@@ -11,7 +12,7 @@ vm_guest_os_language = "en_US"
 vm_guest_os_keyboard = "us"
 vm_guest_os_timezone = "UTC"
 vm_guest_os_family   = "linux"
-vm_guest_os_name     = "oracle-linux"
+vm_guest_os_name     = "oracle"
 vm_guest_os_version  = "8.8"
 
 // Virtual Machine Guest Operating System Setting
@@ -31,8 +32,8 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_path           = "iso/linux/oel"
-iso_file           = "OracleLinux-R8-U8-x86_64-dvd.iso"
+iso_path = "iso/linux/oracle"
+iso_file = "OracleLinux-R8-U8-x86_64-dvd.iso"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

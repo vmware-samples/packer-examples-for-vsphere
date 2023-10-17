@@ -764,13 +764,13 @@
         <arch>x86_64</arch>
         <name>sle-module-server-applications</name>
         <release_type>nil</release_type>
-        <version>15.4</version>
+        <version>15.5</version>
       </addon>
       <addon t="map">
         <arch>x86_64</arch>
         <name>sle-module-basesystem</name>
         <release_type>nil</release_type>
-        <version>15.4</version>
+        <version>15.5</version>
       </addon>
     </addons>
     <do_registration t="boolean">true</do_registration>

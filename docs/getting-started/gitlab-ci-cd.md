@@ -12,6 +12,12 @@ The GitLab CI/CD YAML (`.gitlab-ci.yml`) can be generated with Gomplate using a 
 gomplate -c build.yaml -f build-ci.tmpl -o .gitlab-ci.yml
 ```
 
+or
+
+```shell
+make update-gitlab-ci
+```
+
 ???- example "Example `.gitlab-ci.yml`"
     ```yaml title=".gitlab-ci.yml" linenums="1"
     --8<-- "./.gitlab-ci.yml"

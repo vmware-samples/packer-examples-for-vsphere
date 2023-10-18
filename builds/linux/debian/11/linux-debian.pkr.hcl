@@ -198,6 +198,7 @@ build {
   sources = ["source.vsphere-iso.linux-debian"]
 
   provisioner "ansible" {
+    user                   = var.build_username
     galaxy_file            = "${path.cwd}/ansible/requirements.yml"
     galaxy_force_with_deps = true
     playbook_file          = "${path.cwd}/ansible/main.yml"

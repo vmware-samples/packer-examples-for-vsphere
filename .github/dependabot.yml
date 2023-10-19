@@ -1,72 +1,66 @@
 ---
-# This file is auto-generated. Do not manually amend the configuration.
-# https://github.com/vmware-samples/packer-examples-for-vsphere/blob/main/.github/generate-dependabot.sh
-
 version: 2
 updates:
   - package-ecosystem: "github-actions"
+    target-branch: develop
     directory: "/"
     schedule:
-      interval: "daily"
-  # Dependabot does not currently support wildcard or multiple directory declarations.
-  # https://github.com/dependabot/dependabot-core/issues/2178
+      interval: weekly
+      timezone: "America/New_York"
+      day: "sunday"
+      time: "00:00"
+    labels:
+      - "area/dependencies"
+      - "area/github-actions"
+      - "type/chore"
+    commit-message:
+      prefix: "chore(deps):"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
   - package-ecosystem: "terraform"
-    directory: "/terraform/vsphere-role"
+    target-branch: develop
+    directory: "/"
     schedule:
-      interval: "daily"
-  - package-ecosystem: "terraform"
-    directory: "/terraform/vsphere-virtual-machine/content-library-ovf-linux-cloud-init"
+      interval: weekly
+      timezone: "America/New_York"
+      day: "sunday"
+      time: "00:00"
+    labels:
+      - "area/dependencies"
+      - "type/chore"
+    commit-message:
+      prefix: "chore(deps):"
+    ignore:
+      - dependency-name: "terraform"
+        update-types: ["version-update:semver-patch"]
+      - dependency-name: "hashicorp/vsphere"
+        update-types: ["version-update:semver-patch"]
+      - dependency-name: "hashicorp/hcp"
+        update-types: ["version-update:semver-patch"]
+    groups:
+      terraform:
+        patterns:
+          - "terraform"
+      terraform-vsphere:
+        patterns:
+          - "hashicorp/vsphere"
+      terraform-hcp:
+        patterns:
+          - "hashicorp/hcp"
+  - package-ecosystem: "pip"
+    target-branch: develop
+    directory: "/"
     schedule:
-      interval: "daily"
-  - package-ecosystem: "terraform"
-    directory: "/terraform/vsphere-virtual-machine/content-library-ovf-linux-cloud-init-hcp-packer"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "terraform"
-    directory: "/terraform/vsphere-virtual-machine/content-library-ovf-linux-guest-customization"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "terraform"
-    directory: "/terraform/vsphere-virtual-machine/content-library-ovf-linux-guest-customization-hcp-packer"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "terraform"
-    directory: "/terraform/vsphere-virtual-machine/content-library-ovf-windows-guest-customization"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "terraform"
-    directory: "/terraform/vsphere-virtual-machine/content-library-ovf-windows-guest-customization-hcp-packer"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "terraform"
-    directory: "/terraform/vsphere-virtual-machine/content-library-template-linux-guest-customization-hcp-packer"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "terraform"
-    directory: "/terraform/vsphere-virtual-machine/content-library-template-windows-guest-customization-hcp-packer"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "terraform"
-    directory: "/terraform/vsphere-virtual-machine/template-linux-cloud-init"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "terraform"
-    directory: "/terraform/vsphere-virtual-machine/template-linux-cloud-init-hcp-packer"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "terraform"
-    directory: "/terraform/vsphere-virtual-machine/template-linux-guest-customization"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "terraform"
-    directory: "/terraform/vsphere-virtual-machine/template-linux-guest-customization-hcp-packer"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "terraform"
-    directory: "/terraform/vsphere-virtual-machine/template-windows-guest-customization"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "terraform"
-    directory: "/terraform/vsphere-virtual-machine/template-windows-guest-customization-hcp-packer"
-    schedule:
-      interval: "daily"
+      interval: weekly
+      timezone: "America/New_York"
+      day: "sunday"
+      time: "00:00"
+    labels:
+      - "area/dependencies"
+      - "type/chore"
+    commit-message:
+      prefix: "chore(deps):"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]

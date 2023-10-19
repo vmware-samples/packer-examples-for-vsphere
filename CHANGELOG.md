@@ -34,7 +34,7 @@
 - Updates `required_plugins` for `ethanmdavidson/packer-plugin-git` to `>= 0.4.3`. [GH-717](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/717)
 - Updates `required_plugins` for `rgl/packer-plugin-windows-update` to `>= 0.14.3`. [GH-565](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/565)
 - Updates `required_versions` for `terraform` to `>= 1.6.0`. [GH-757](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/757)
-- Updates `required_versions` for `hashicorp/vsphere` to `>= 2.4.0`. [GH-561](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/561)
+- Updates `required_versions` for `hashicorp/vsphere` to `>= 2.5.1`. [GH-758](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/758)
 - Updates Gomplate to `3.11.5`. [GH-559](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/559)
 - Updates ansible-core to `2.15`. [GH-573](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/573)
 - Updates Debian 11 to 11.8 release. [GH-738](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/738)

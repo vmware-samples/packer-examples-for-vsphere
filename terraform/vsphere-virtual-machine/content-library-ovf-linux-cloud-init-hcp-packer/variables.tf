@@ -9,12 +9,12 @@ variable "vsphere_server" {
 }
 
 variable "vsphere_username" {
-  type = string
+  type      = string
   sensitive = true
 }
 
 variable "vsphere_password" {
-  type = string
+  type      = string
   sensitive = true
 }
 

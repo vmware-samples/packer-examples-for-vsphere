@@ -1,0 +1,11 @@
+---
+
+# MD013: Line length
+MD013: false
+
+# MD026: Trailing Punctuation in Header
+MD026:
+  punctuation: ".,;:"
+
+# MD033" Inline HTML
+MD033: false

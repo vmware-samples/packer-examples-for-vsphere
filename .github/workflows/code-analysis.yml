@@ -19,6 +19,7 @@ jobs:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           DEFAULT_BRANCH: "develop"
           DISABLE_ERRORS: false
+          DOCKERFILE_HADOLINT_FILE_NAME: .github/linters/.hadolint.yml
           FILTER_REGEX_EXCLUDE: "build.tmpl"
           IGNORE_GITIGNORED_FILES: true
           VALIDATE_ALL_CODEBASE: true

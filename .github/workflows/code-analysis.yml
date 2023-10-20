@@ -27,8 +27,6 @@ jobs:
           VALIDATE_DOCKERFILE_HADOLINT: true
           DOCKERFILE_HADOLINT_FILE_NAME: .hadolint.yml
           VALIDATE_GITHUB_ACTIONS: true
-          VALIDATE_MARKDOWN: false
-          MARKDOWN_CONFIG_FILE: .markdownlint.yml
           VALIDATE_NATURAL_LANGUAGE: true
           VALIDATE_POWERSHELL: true
           VALIDATE_TERRAFORM_FMT: true

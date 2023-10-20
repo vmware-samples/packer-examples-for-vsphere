@@ -19,12 +19,19 @@ jobs:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           DEFAULT_BRANCH: "develop"
           DISABLE_ERRORS: false
-          DOCKERFILE_HADOLINT_FILE_NAME: .github/linters/.hadolint.yml
           FILTER_REGEX_EXCLUDE: "build.tmpl"
           IGNORE_GITIGNORED_FILES: true
-          VALIDATE_ALL_CODEBASE: true
-          VALIDATE_ANSIBLE: false
-          VALIDATE_CSS: false
-          VALIDATE_GITLEAKS: false
-          VALIDATE_TERRAGRUNT: false
+          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_BASH: true
+          VALIDATE_BASH_EXEC: true
+          VALIDATE_DOCKERFILE_HADOLINT: true
+          DOCKERFILE_HADOLINT_FILE_NAME: .hadolint.yml
+          VALIDATE_GITHUB_ACTIONS: true
           VALIDATE_MARKDOWN: false
+          MARKDOWN_CONFIG_FILE: .markdownlint.yml
+          VALIDATE_NATURAL_LANGUAGE: true
+          VALIDATE_POWERSHELL: true
+          VALIDATE_TERRAFORM_FMT: true
+          VALIDATE_TERRAFORM_TFLINT: true
+          VALIDATE_YAML: true
+          YAML_CONFIG_FILE: .yamllint.yml

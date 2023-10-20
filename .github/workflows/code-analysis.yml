@@ -24,5 +24,6 @@ jobs:
           VALIDATE_ALL_CODEBASE: true
           VALIDATE_ANSIBLE: false
           VALIDATE_CSS: false
+          VALIDATE_GITLEAKS: false
           VALIDATE_TERRAGRUNT: false
           VALIDATE_MARKDOWN: false

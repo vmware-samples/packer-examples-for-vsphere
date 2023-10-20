@@ -1,11 +1,8 @@
 {
-  // Set the name of the development container.
   "name": "Packer Examples for vSphere",
-  // Use a Dockerfile to build the development container.
   "build": {
     "dockerfile": "Dockerfile"
   },
-  // Set the features used in the development container.
   "features": {
     "ghcr.io/devcontainers/features/powershell:1": {},
     "ghcr.io/devcontainers-contrib/features/ansible:2": {},
@@ -13,7 +10,6 @@
     "ghcr.io/devcontainers-contrib/features/terraform-asdf:2": {},
     "ghcr.io/gickis/devcontainer-features/gomplate:1": {}
   },
-  // Set the Visual Studio Code extensions to include in the development container.
   "customizations": {
     "vscode": {
       "extensions": [

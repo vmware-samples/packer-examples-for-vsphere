@@ -17,11 +17,12 @@ jobs:
         uses: github/super-linter@45fc0d88288beee4701c62761281edfee85655d7 # v5.0.0
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          DEFAULT_BRANCH: "develop"
+          DISABLE_ERRORS: false
           FILTER_REGEX_EXCLUDE: "build.tmpl"
           IGNORE_GITIGNORED_FILES: true
           VALIDATE_ALL_CODEBASE: true
-          DEFAULT_BRANCH: "develop"
-          DISABLE_ERRORS: false
           VALIDATE_ANSIBLE: false
+          VALIDATE_CSS: false
           VALIDATE_TERRAGRUNT: false
           VALIDATE_MARKDOWN: false

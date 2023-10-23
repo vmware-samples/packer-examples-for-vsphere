@@ -1,8 +1,8 @@
 # Release History
 
-## .Next
+## v23.10
 
-> Release Date: Unreleased
+> Release Date: 2023-10-23
 
 :boom: **Enhancement**:
 

@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.3">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
     
     
       
@@ -30,10 +30,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.79e020e9.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.35e1ed30.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.a5377069.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
       
       
 
@@ -51,6 +51,8 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
+    
+      <link rel="stylesheet" href="../css/timeago.css">
     
       <link rel="stylesheet" href="../assets/stylesheets/extra.css">
     
@@ -451,6 +453,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#v2310" class="md-nav__link">
+    v23.10
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v2301" class="md-nav__link">
     v23.01
   </a>
@@ -654,6 +663,8 @@
       
         
       
+        
+      
     
     
     
@@ -810,6 +821,28 @@
   
   <span class="md-ellipsis">
     Build
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/gitlab-ci-cd/" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.94 13.11-1.05-3.22c0-.03-.01-.06-.02-.09l-2.11-6.48a.859.859 0 0 0-.8-.57c-.36 0-.68.25-.79.58l-2 6.17H8.84L6.83 3.33a.851.851 0 0 0-.79-.58c-.37 0-.69.25-.8.58L3.13 9.82v.01l-1.07 3.28c-.16.5.01 1.04.44 1.34l9.22 6.71c.17.12.39.12.56-.01l9.22-6.7c.43-.3.6-.84.44-1.34M8.15 10.45l2.57 7.91-6.17-7.91m8.73 7.92 2.47-7.59.1-.33h3.61l-5.59 7.16m4.1-13.67 1.81 5.56h-3.62m-1.3.95-1.79 5.51L12 19.24l-2.86-8.79M6.03 3.94 7.84 9.5H4.23m-1.18 4.19c-.09-.07-.13-.19-.09-.29l.79-2.43 5.82 7.45m11.38-4.73-6.51 4.73.02-.03 5.79-7.42.79 2.43c.04.1 0 .22-.09.29"/></svg>
+  
+  <span class="md-ellipsis">
+    GitLab CI/CD
   </span>
   
 
@@ -1055,6 +1088,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#v2310" class="md-nav__link">
+    v23.10
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v2301" class="md-nav__link">
     v23.01
   </a>
@@ -1212,34 +1252,98 @@
 
 
 <h1 id="release-history">Release History<a class="headerlink" href="#release-history" title="Permanent link">&para;</a></h1>
+<h2 id="v2310">v23.10<a class="headerlink" href="#v2310" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Release Date: 2023-10-23</p>
+</blockquote>
+<p><img alt="💥" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4a5.svg" title=":boom:" /> <strong>Enhancement</strong>:</p>
+<ul>
+<li>Adds VMware Photon OS 5.0 to the project. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/582">GH-582</a></li>
+<li>Adds Debian 12 to the project. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/584">GH-584</a></li>
+<li>Adds Oracle Linux 9 to the project. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/670">GH-670</a></li>
+<li>Adds Oracle Linux 8 to the project. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/670">GH-670</a></li>
+<li>Adds Windows 11 Enterprise to the project. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/688">GH-688</a></li>
+<li>Adds Windows 10 Enterprise to the project. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/688">GH-688</a></li>
+<li>Adds the option to configure the following target for builds: <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/471">GH-471</a></li>
+<li>a vSphere cluster with Distributed Resource Scheduling enabled. (Default)</li>
+<li>an ESXi host in vSphere cluster with Distributed Resource Scheduling disabled. (Override)</li>
+<li>an ESXi host not in a vSphere cluster. (Override)</li>
+<li>Adds a development container for Visual Studio Code. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/700">GH-700</a></li>
+<li>Adds an example <code>.gitlab.yml</code> file for GitLab CI/CD. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/675">GH-675</a></li>
+<li>Adds a <code>build-ci.tmpl</code> that can be used to create or update the <code>.gitlab-ci.yml</code> file using gomplate. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/675">GH-675</a></li>
+<li>Adds Packer logging settings to <code>set-envvars.sh</code>. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/705">GH-705</a></li>
+<li>Adds a debug option (<code>--debug</code> or <code>-d</code>) to<code>./build.sh</code> to enable debug logging for Packer. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/706">GH-706</a></li>
+</ul>
+<p><img alt="🐛" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f41b.svg" title=":bug:" /> <strong>Bugfix</strong>:</p>
+<ul>
+<li>Updates Debian 11 to include <code>build_password</code> in the <code>linux-debian.pkr.hcl</code> configuration file. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/653">GH-653</a></li>
+<li>Updates Debian 11 to ensure <code>/dev/sr1</code> is not mounted with use of the default <code>http</code> data source. No changes to the <code>disk</code> data source. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/686">GH-686</a></li>
+</ul>
+<p><img alt="💦" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4a6.svg" title=":sweat_drops:" /> <strong>Chore</strong>:</p>
+<ul>
+<li>Updates <code>required_versions</code> for <code>packer</code> to <code>&gt;= 1.9.4</code>. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/718">GH-718</a></li>
+<li>Updates <code>required_plugins</code> for <code>packer-plugin-vsphere</code> to <code>&gt;= 1.2.1</code>. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/564">GH-564</a></li>
+<li>Updates <code>required_plugins</code> for <code>ethanmdavidson/packer-plugin-git</code> to <code>&gt;= 0.4.3</code>. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/717">GH-717</a></li>
+<li>Updates <code>required_plugins</code> for <code>rgl/packer-plugin-windows-update</code> to <code>&gt;= 0.14.3</code>. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/565">GH-565</a></li>
+<li>Updates <code>required_versions</code> for <code>terraform</code> to <code>&gt;= 1.6.0</code>. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/757">GH-757</a></li>
+<li>Updates <code>required_versions</code> for <code>hashicorp/vsphere</code> to <code>&gt;= 2.5.1</code>. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/758">GH-758</a></li>
+<li>Updates Gomplate to <code>3.11.5</code>. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/559">GH-559</a></li>
+<li>Updates ansible-core to <code>2.15</code>. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/573">GH-573</a></li>
+<li>Updates Debian 11 to 11.8 release. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/738">GH-738</a></li>
+<li>Updates Ubuntu 22.04 to 22.04.3 release. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/720">GH-720</a></li>
+<li>Updates Ubuntu 20.04 to 20.04.6 release. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/566">GH-566</a></li>
+<li>
+<p>Removes Ubuntu 18.04 from the project. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/578">GH-578</a></p>
+<p>On 31 May 2023, Ubuntu 18.04 LTS reached the end of standard support. See <a href="https://ubuntu.com/about/release-cycle">Ubuntu Lifecycle</a> for more information.</p>
+</li>
+<li>
+<p>Updates Red Hat Enterprise Linux 9 to 9.2 release. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/576">GH-576</a>, <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/587">GH-587</a></p>
+</li>
+<li>Updates Red Hat Enterprise Linux 8 to 8.8 release. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/577">GH-577</a></li>
+<li>Updates Almalinux 9 to 9.2 release. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/569">GH-569</a></li>
+<li>Updates Almalinux 8 to 8.8 release. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/570">GH-570</a></li>
+<li>Updates Rocky Linux 9 to 9.2 release. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/571">GH-571</a></li>
+<li>Updates Rocky Linux 8 to 8.8 release. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/572">GH-572</a></li>
+<li>Updates CentOS Stream 9 to latest June 2023 release. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/567">GH-567</a></li>
+<li>Updates CentOS Stream 8 to latest June 2023 release. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/568">GH-568</a></li>
+<li>Updates SLES 15 to 15.5 release. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/740">GH-740</a></li>
+<li>Updates Windows Server 2022 to October 2023 (US English) release. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/744">GH-744</a></li>
+<li>Updates Windows 11 22H2 to October 2023 (US English) release. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/743">GH-743</a></li>
+<li>Updates Windows 10 22H2 to October 2023 (US English) release. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/742">GH-742</a></li>
+</ul>
+<p><img alt="🔧" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f527.svg" title=":wrench:" /> <strong>Refactor</strong>:</p>
+<ul>
+<li>Removes the use of <code>iso_checksum</code> and <code>iso_checksum_type</code> as they are not needed since the ISOs are not being downloaded by the plugin and are expected to be present and already verified by the user after download. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/722">GH-722</a></li>
+<li>Removes the installation of Chocolatey from the Microsoft Windows guest operating system builds. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/586">GH-586</a></li>
+</ul>
 <h2 id="v2301">v23.01<a class="headerlink" href="#v2301" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>Release Date: 2023-01-17</p>
 </blockquote>
-<p><strong>Enhancement</strong>:</p>
+<p><img alt="💥" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4a5.svg" title=":boom:" /> <strong>Enhancement</strong>:</p>
 <ul>
 <li>Adds support for disabling password expiration for the local administrator account on localized (non-English) Windows guest operating systems. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/334">GH-334</a>.</li>
 <li>Adds support for enabling Remote Desktop on localized (non-English) Windows guest operating systems. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/335">GH-335</a>.</li>
 <li>Adds support to allow SSH authentication with RSA keys for Ansible, if necessary. Adds a note related to OpenSSH &gt;= 9.0 in the documentation. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/387">GH-387</a>.</li>
 </ul>
-<p><strong>Bugfix</strong>:</p>
+<p><img alt="🐛" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f41b.svg" title=":bug:" /> <strong>Bugfix</strong>:</p>
 <ul>
 <li>Fixes missing privileges for the custom role in vSphere that effected the ability to build using disk-based deployment modes and Windows 11 22H2 with vTPM. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/295">GH-295</a>, <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/339">GH-339</a>, <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/340">GH-340</a></li>
 <li>Updates the URI in <code>user-data.pkrtpl.hcl</code> for Ubuntu 20.04 and 22.04 to remove the country code. This will help to ensure that GeoIP lookup works for all users. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/421">GH-421</a></li>
 <li>Updates the install commands for Red Hat Enterprise Linux 9 to use the correct EPEL repository version. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/440">GH-440</a></li>
 </ul>
-<p><strong>Documentation</strong>:</p>
+<p><img alt="📄" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4c4.svg" title=":page_facing_up:" /> <strong>Documenation</strong>:</p>
 <ul>
 <li>Updates options to download a release or clone the project. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/385">GH-385</a></li>
 <li>Updates syntax to append RSA algorithm to <code>HostKeyAlgorithms +ssh-rsa</code> and<code>PubKeyAcceptedAlgorithms +ssh-rsa</code>. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/386">GH-386</a></li>
 <li>Updates the ssh-keygen example for generating the ECDSA public key to use a 521 bit key length. Valid key lengths are 256, 384, or 521. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/439">GH-439</a></li>
 </ul>
-<p><strong>Refactor</strong>:</p>
+<p><img alt="🔧" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f527.svg" title=":wrench:" /> <strong>Refactor</strong>:</p>
 <ul>
 <li>Refactors builds to use the current Git branch / tag as the <code>build_version</code> local variable used for virtual machine image names and descriptions. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/385">GH-385</a></li>
 <li>Refactors Ansible roles to remove the <code>warn: false</code> args for ansible-core 2.14 compatibility. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/443">GH-443</a></li>
 </ul>
-<p><strong>Chore</strong>:</p>
+<p><img alt="💦" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4a6.svg" title=":sweat_drops:" /> <strong>Chore</strong>:</p>
 <ul>
 <li>Updates <code>required_versions</code> for <code>packer</code> to <code>&gt;= 1.8.5</code>. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/423">GH-423</a></li>
 <li>Updates <code>required_plugins</code> for <code>packer-plugin-vsphere</code> to <code>&gt;= 1.1.1</code>. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/416">GH-416</a></li>
@@ -1261,7 +1365,7 @@
 <li>Updates Windows 10 22H2 to December 2022 (US English) release. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/450">GH-450</a></li>
 <li>Removes Ubuntu 20.04 LTS (<code>x86_64</code>) and macOS Big Sur (Intel) as tested operating systems for the Packer host. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/393">GH-393</a></li>
 </ul>
-<p><strong>Breaking Change</strong>:</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> <strong>Breaking Change</strong>:</p>
 <ul>
 <li>Removes support to use the <code>iso_url</code> variable to download the guest operating system <code>.iso</code> from a URL introduced in <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/249">GH-249</a> due to <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/issues/343">GH-343</a>. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/435">GH-435</a></li>
 </ul>
@@ -1269,16 +1373,16 @@
 <blockquote>
 <p>Release Date: 2022-09-28</p>
 </blockquote>
-<p><strong>Enhancement</strong>:</p>
+<p><img alt="💥" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4a5.svg" title=":boom:" /> <strong>Enhancement</strong>:</p>
 <ul>
 <li>Adds support for disk-based deployment mode for Debian 11. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/272">GH-272</a>.</li>
 <li>Adds support for disk-based deployment mode for SLES 15. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/276">GH-276</a></li>
 </ul>
-<p><strong>Bugfix</strong>:</p>
+<p><img alt="🐛" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f41b.svg" title=":bug:" /> <strong>Bugfix</strong>:</p>
 <ul>
 <li>Fixes mismatches in source names for Windows Server when only builds for Standard or Datacenter are launched using <code>./build.sh</code>. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/281">GH-281</a></li>
 </ul>
-<p><strong>Chore</strong>:</p>
+<p><img alt="💦" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4a6.svg" title=":sweat_drops:" /> <strong>Chore</strong>:</p>
 <ul>
 <li>Updates Debian 11 to 11.5.0 release. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/273">GH-273</a></li>
 <li>Updates Ubuntu 22.04 to 22.04.1 release. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/274">GH-274</a></li>
@@ -1293,17 +1397,17 @@
 <blockquote>
 <p>Release Date: 2022-08-25</p>
 </blockquote>
-<p><strong>Enhancement</strong>:</p>
+<p><img alt="💥" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4a5.svg" title=":boom:" /> <strong>Enhancement</strong>:</p>
 <ul>
 <li>Adds Debian 11. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/195">GH-195</a></li>
 <li>Adds support for initial configuration and use of the HCP Packer Registry. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/236">GH-236</a> and <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/256">GH-256</a></li>
 <li>Adds support to use the <code>iso_url</code> variable to download the guest operating system <code>.iso</code> from a URL. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/249">GH-249</a></li>
 </ul>
-<p><strong>Breaking Change</strong>:</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> <strong>Breaking Change</strong>:</p>
 <ul>
 <li>Updates <code>vm_cpu_sockets</code> to <code>vm_cpu_count</code> for CPUs. The value of the sockets is determined by dividing the number of CPUs by the number of cores per socket defined. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/253">GH-253</a></li>
 </ul>
-<p><strong>Chore</strong>:</p>
+<p><img alt="💦" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4a6.svg" title=":sweat_drops:" /> <strong>Chore</strong>:</p>
 <ul>
 <li>Updates <code>required_versions</code> for <code>packer</code> to <code>&gt;= 1.8.3</code>.</li>
 <li>Updates <code>required_plugins</code> for <code>packer-plugin-vsphere</code> to <code>&gt;= 1.0.8</code>.</li>
@@ -1322,7 +1426,7 @@
 <blockquote>
 <p>Release Date: 2022-07-26</p>
 </blockquote>
-<p><strong>Enhancement</strong>:</p>
+<p><img alt="💥" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4a5.svg" title=":boom:" /> <strong>Enhancement</strong>:</p>
 <ul>
 <li>Adds Red Hat Enterprise Linux 9.</li>
 <li>Adds CentOS 9 Stream.</li>
@@ -1333,13 +1437,13 @@
 <li>Adds a common option to export machine image artifacts (<code>.ovf</code>,<code>.vmdk</code>, and <code>.mf</code>) to an output path.</li>
 <li>Removes the default requirement for a trusted root authority certificate to be imported and trusted by each machine image build. This will allow project users to get started more quickly without a pre-requisite.</li>
 </ul>
-<p><strong>Refactor</strong>:</p>
+<p><img alt="🔧" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f527.svg" title=":wrench:" /> <strong>Refactor</strong>:</p>
 <ul>
 <li>Refactors builds to use local variables for virtual machine image names and descriptions.</li>
 <li>Refactors builds to use local variables for ISO paths and checksums.</li>
 <li>Refactors builds to use local variables for manifest data and output path.</li>
 </ul>
-<p><strong>Chore</strong>:</p>
+<p><img alt="💦" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4a6.svg" title=":sweat_drops:" /> <strong>Chore</strong>:</p>
 <ul>
 <li>Updates vSphere to version 7.0.3D (<a href="https://docs.vmware.com/en/VMware-vSphere/7.0/rn/vsphere-vcenter-server-70u3d-release-notes.html">vCenter Server</a> and <a href="https://docs.vmware.com/en/VMware-vSphere/7.0/rn/vsphere-esxi-70u3d-release-notes.html">ESXi</a>) or higher to address a <a href="https://kb.vmware.com/s/article/88255">known issue</a> with the Red Hat Enterprise Linux 9 with EFI firmware.</li>
 <li>Updates <code>required_plugins</code> for <code>packer-plugin-vsphere</code> to <code>&gt;= 1.0.6</code>.</li>
@@ -1360,7 +1464,7 @@
 <blockquote>
 <p>Release Date: 2022-06-27</p>
 </blockquote>
-<p><strong>Chore</strong>:</p>
+<p><img alt="💦" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4a6.svg" title=":sweat_drops:" /> <strong>Chore</strong>:</p>
 <ul>
 <li>Updates <code>required_versions</code> for <code>packer</code> to <code>&gt;= 1.8.2</code>.</li>
 <li>Updates <code>required_plugins</code> for <code>packer-plugin-vsphere</code> to <code>&gt;= 1.0.5</code>.</li>
@@ -1375,7 +1479,7 @@
 <blockquote>
 <p>Release Date: 2022-05-31</p>
 </blockquote>
-<p><strong>Chore</strong>:</p>
+<p><img alt="💦" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4a6.svg" title=":sweat_drops:" /> <strong>Chore</strong>:</p>
 <ul>
 <li>Updates <code>required_plugins</code> for <code>packer-plugin-vsphere</code> to <code>&gt;= 1.0.4</code>.</li>
 <li>Updates <code>required_plugins</code> and <code>packer-plugin-windows-update</code> to <code>&gt;= 0.14.1</code>.</li>
@@ -1393,7 +1497,7 @@
 <blockquote>
 <p>Release Date: 2022-04-28</p>
 </blockquote>
-<p><strong>Enhancement</strong>:</p>
+<p><img alt="💥" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4a5.svg" title=":boom:" /> <strong>Enhancement</strong>:</p>
 <ul>
 <li>Adds Ubuntu Server 22.04 LTS (GH-185)</li>
 <li>Adds an option to generate a custom build script. (GH-188)</li>
@@ -1404,7 +1508,7 @@
 <li>Adds the use of <code>build_password</code> to the Linux distributions to ensure use of <code>set-envvars.sh</code> works as expected. (GH-197)</li>
 <li>Updates the SHA256 checksum for the CentOS 7 .iso <code>CentOS-7-x86_64-DVD-2009.iso</code>. (GH-201)</li>
 </ul>
-<p><strong>Chore</strong>:</p>
+<p><img alt="💦" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4a6.svg" title=":sweat_drops:" /> <strong>Chore</strong>:</p>
 <ul>
 <li>Updates the Windows Server 2022 February 2022 (US English) release. (GH-192)</li>
 <li>Updates the Ubuntu 20.04 LTS to 20.04.4 release. (GH-184)</li>
@@ -1413,7 +1517,7 @@
 <blockquote>
 <p>Release Date: 2022-03-17</p>
 </blockquote>
-<p><strong>Chore</strong>:</p>
+<p><img alt="💦" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4a6.svg" title=":sweat_drops:" /> <strong>Chore</strong>:</p>
 <ul>
 <li>Updates <code>required_versions</code> for <code>packer</code> to <code>&gt;= 1.8.0</code>.</li>
 <li>Updates <code>required_versions</code> for <code>terraform</code> to <code>&gt;= 1.1.7</code>.</li>
@@ -1423,11 +1527,11 @@
 <blockquote>
 <p>Release Date: 2022-02-22</p>
 </blockquote>
-<p><strong>Enhancement</strong>:</p>
+<p><img alt="💥" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4a5.svg" title=":boom:" /> <strong>Enhancement</strong>:</p>
 <ul>
 <li>Updates the configuration of Linux machine images to use the Ansible roles instead of shell scripts.</li>
 </ul>
-<p><strong>Chore</strong>:</p>
+<p><img alt="💦" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4a6.svg" title=":sweat_drops:" /> <strong>Chore</strong>:</p>
 <ul>
 <li>Updates <code>required_versions</code> for <code>packer</code> to <code>&gt;= 1.7.10</code>.</li>
 <li>Updates <code>required_versions</code> for <code>terraform</code> to <code>&gt;= 1.1.5</code>.</li>
@@ -1436,13 +1540,13 @@
 <blockquote>
 <p>Release Date: 2022-01-21</p>
 </blockquote>
-<p><strong>Enhancement</strong>:</p>
+<p><img alt="💥" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4a5.svg" title=":boom:" /> <strong>Enhancement</strong>:</p>
 <ul>
 <li>Updates the <code>notes</code> to automatically include the Packer version and a <code>build_version</code>.</li>
 <li>Updates the naming for the machine image output and includes a <code>build_version</code> (<em>e.g.</em>, <code>linux-photon-4-v22.01</code>).</li>
 <li>Updates all Microsoft Windows Server machine image builds to a default of 4096 MB of memory to increase performance during operating system patching.</li>
 </ul>
-<p><strong>Chore</strong>:</p>
+<p><img alt="💦" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4a6.svg" title=":sweat_drops:" /> <strong>Chore</strong>:</p>
 <ul>
 <li>Updates the structure of the subdirectories in <code>builds/</code>.</li>
 <li>Updates <code>required_versions</code> for <code>packer</code> to <code>&gt;= 1.7.9</code>.</li>
@@ -1458,7 +1562,7 @@
 <blockquote>
 <p>Release Date: 2021-11-09</p>
 </blockquote>
-<p><strong>Enhancement</strong>:</p>
+<p><img alt="💥" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4a5.svg" title=":boom:" /> <strong>Enhancement</strong>:</p>
 <ul>
 <li>Adds support for <code>cloud-init</code> and the <code>[VMware]</code> data source introduced in cloud-init v21.3 for Ubuntu Server 20.04 LTS</li>
 </ul>
@@ -1486,7 +1590,7 @@
 <li>Adds option to use<code>floppy_content</code> included in <code>packer-plugin-vsphere</code> release<code>v1.0.2</code>. Ubuntu Server 18.04 LTS will toggle to use <code>floppy_content</code> from <code>http_content</code> when <code>common_data_source = "disk"</code> is enabled.</li>
 <li>Updates VMware Photon OS 4.0 to Revision 1.</li>
 <li>Adds Microsoft Windows 11 Professional as experimental until <code>vsphere-iso</code> supports vTPM.</li>
-<li>Adds support for <code>skip_import</code> Adds to <code>packer-plugin-vsphere</code> in <code>v1.0.2</code>. When set to <code>true</code> the virtual machine will not be imported into the content library. This is useful for testing / debugging. Defaults to false.</li>
+<li>Adds support for <code>skip_import</code> Adds to <code>packer-plugin-vsphere</code> in <code>v1.0.2</code>. When set to <code>true</code> the virtual machine will not be imported into the content library. This is useful for testing/debugging. Defaults to false.</li>
 </ul>
 <h2 id="v2110">v21.10<a class="headerlink" href="#v2110" title="Permanent link">&para;</a></h2>
 <blockquote>
@@ -1615,6 +1719,17 @@
 <li>Initial release.</li>
 </ul>
 
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-10-13T02:03:59+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-13</span>
+      
+    
+  </small>
+</div>
+
 
 
 
@@ -1704,10 +1819,14 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.header", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.header", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.6eac0284.min.js"></script>
+      <script src="../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+        <script src="../js/timeago.min.js"></script>
+      
+        <script src="../js/timeago_mkdocs_material.js"></script>
       
         <script src="../js/open_in_new_tab.js"></script>
       

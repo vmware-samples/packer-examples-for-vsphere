@@ -1,5 +1,3 @@
-# Copyright 2023 VMware, Inc. All rights reserved
-# SPDX-License-Identifier: BSD-2
 
 /*
     DESCRIPTION:
@@ -46,7 +44,7 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_path = "iso/windows/server"
+iso_path = "ISO/Windows"
 iso_file = "en-us_windows_server_2022_updated_oct_2023_x64_dvd_63dab61a.iso"
 
 // Boot Settings

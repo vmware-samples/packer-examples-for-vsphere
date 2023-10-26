@@ -25,7 +25,6 @@ crash.log
 *.tfstate
 *.tfstate.*
 ## Ignore crash.log files.
-crash.log
 crash.*.log
 ## Ignore .tfvars files.
 *.tfvars
@@ -64,3 +63,7 @@ manifests/*.json
 .trunk/out
 .trunk/plugins/trunk
 .trunk/trunk.yaml
+/.idea/.gitignore
+/.idea/fork-packer-examples.iml
+/.idea/modules.xml
+/.idea/vcs.xml

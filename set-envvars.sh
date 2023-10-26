@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
-# Copyright 2023 VMware, Inc. All rights reserved
-# SPDX-License-Identifier: BSD-2
 
 # This script allows you to set the environment variables on the system for use by Packer instead of using cleartext.
 
 # Defaults
 
-vsphere_insecure_connection="false"
-common_vm_version="19"
+vsphere_insecure_connection="true"
+common_vm_version="20"
 common_tools_upgrade_policy="true"
 common_remove_cdrom="true"
 common_template_conversion="false"
@@ -22,11 +20,11 @@ common_http_port_min="8000"
 common_http_port_max="8099"
 common_ip_wait_timeout="20m"
 common_shutdown_timeout="15m"
-communicator_proxy_host=""
-communicator_proxy_port=""
-communicator_proxy_username=""
-communicator_proxy_password=""
-ansible_username="ansible"
+#communicator_proxy_host=""
+#communicator_proxy_port=""
+#communicator_proxy_username=""
+#communicator_proxy_password=""
+#ansible_username="ansible"
 
 # Packer Logging
 while true; do
@@ -134,23 +132,23 @@ read -r -p "Enter the IP wait timeout (recommended: ""${common_ip_wait_timeout}"
 read -r -p "Enter the virtual machine shutdown timeout (recommended: ""${common_shutdown_timeout}""): " common_shutdown_timeout
 
 # Proxy Credentials
-echo -e '\n> Set proxy credentials.'
-read -r -p "Use SOCKS Proxy? (y/n): " use_socks_proxy
-case $use_socks_proxy in
-[yY][eE][sS] | [yY])
-	echo '> Set the proxy credentials.'
-	read -r -p "Enter the FQDN/IP of the proxy: " communicator_proxy_host
-	read -r -p "Enter the port for the proxy: " communicator_proxy_port
-	read -r -p "Enter the username for the proxy: " communicator_proxy_username
-	read -r -s -p "Enter the password for the proxy: " communicator_proxy_password
-	echo
-	;;
-[nN][oO] | [nN]) ;;
-
-*)
-	echo -e "\n> Invalid input; skipping Socks Proxy settings. Using defaults values."
-	;;
-esac
+#echo -e '\n> Set proxy credentials.'
+#read -r -p "Use SOCKS Proxy? (y/n): " use_socks_proxy
+#case $use_socks_proxy in
+#[yY][eE][sS] | [yY])
+#	echo '> Set the proxy credentials.'
+#	read -r -p "Enter the FQDN/IP of the proxy: " communicator_proxy_host
+#	read -r -p "Enter the port for the proxy: " communicator_proxy_port
+#	read -r -p "Enter the username for the proxy: " communicator_proxy_username
+#	read -r -s -p "Enter the password for the proxy: " communicator_proxy_password
+#	echo
+#	;;
+#[nN][oO] | [nN]) ;;
+#
+#*)
+#	echo -e "\n> Invalid input; skipping Socks Proxy settings. Using defaults values."
+#	;;
+#esac
 
 # Default Account Credentials
 echo -e '\n> Set the default user account credentials.'
@@ -163,22 +161,22 @@ read -r -s -p "Enter the key for the account: " build_key
 echo # Needed for line break.
 
 # Ansible Credentials
-echo -e '\n> Set the Ansible credentials.'
-read -r -p "Enter the username for the account: " ansible_username
-read -r -s -p "Enter the key for the account: " ansible_key
-echo # Needed for line break.
+#echo -e '\n> Set the Ansible credentials.'
+#read -r -p "Enter the username for the account: " ansible_username
+#read -r -s -p "Enter the key for the account: " ansible_key
+#echo # Needed for line break.
 
 # Red Hat Subscription Manager Credentials
-echo -e '\n> Set the RedHat Subscription Manager credentials.'
-read -r -p "Enter the username for the account: " rhsm_username
-read -r -s -p "Enter the password for the account: " rhsm_password
-echo # Needed for line break.
+#echo -e '\n> Set the RedHat Subscription Manager credentials.'
+#read -r -p "Enter the username for the account: " rhsm_username
+#read -r -s -p "Enter the password for the account: " rhsm_password
+#echo # Needed for line break.
 
 # SUSE Customer Center Credentials
-echo -e '\n> Set the SUSE Customer Center credentials.'
-read -r -p "Enter the email for the account: " scc_email
-read -r -s -p "Enter the code for the account: " scc_code
-echo # Needed for line break.
+#echo -e '\n> Set the SUSE Customer Center credentials.'
+#read -r -p "Enter the email for the account: " scc_email
+#read -r -s -p "Enter the code for the account: " scc_code
+#echo # Needed for line break.
 
 # HCP Packer
 echo -e '\n> Set the HCP Packer registry.'
@@ -249,19 +247,19 @@ export PKR_VAR_common_ip_wait_timeout="${common_ip_wait_timeout}"
 export PKR_VAR_common_shutdown_timeout="${common_shutdown_timeout}"
 
 # Proxy Credentials
-case $use_socks_proxy in
-[yY][eE][sS] | [yY])
-	echo '> Setting the proxy credentials...'
-	export PKR_VAR_communicator_proxy_host="${communicator_proxy_host}"
-	export PKR_VAR_communicator_proxy_port="${communicator_proxy_port}"
-	export PKR_VAR_communicator_proxy_username="${communicator_proxy_username}"
-	export PKR_VAR_communicator_proxy_password="${communicator_proxy_password}"
-	;;
-[nN][oO] | [nN]) ;;
-
-*) ;;
-
-esac
+#case $use_socks_proxy in
+#[yY][eE][sS] | [yY])
+#	echo '> Setting the proxy credentials...'
+#	export PKR_VAR_communicator_proxy_host="${communicator_proxy_host}"
+#	export PKR_VAR_communicator_proxy_port="${communicator_proxy_port}"
+#	export PKR_VAR_communicator_proxy_username="${communicator_proxy_username}"
+#	export PKR_VAR_communicator_proxy_password="${communicator_proxy_password}"
+#	;;
+#[nN][oO] | [nN]) ;;
+#
+#*) ;;
+#
+#esac
 
 echo '> Setting the default account credentials...'
 # Default Account Credentials
@@ -272,20 +270,20 @@ export PKR_VAR_build_key="${build_key}"
 
 echo '> Setting the Ansible credentials...'
 # Ansible Credentials
-export PKR_VAR_ansible_username="${ansible_username}"
-export PKR_VAR_ansible_key="${ansible_key}"
+#export PKR_VAR_ansible_username="${ansible_username}"
+#export PKR_VAR_ansible_key="${ansible_key}"
 
-echo '> Setting the RedHat Subscription Manager credentials...'
-# Red Hat Subscription Manager Credentials
-export PKR_VAR_rhsm_username="${rhsm_username}"
-export PKR_VAR_rhsm_password="${rhsm_password}"
-echo
+#echo '> Setting the RedHat Subscription Manager credentials...'
+## Red Hat Subscription Manager Credentials
+#export PKR_VAR_rhsm_username="${rhsm_username}"
+#export PKR_VAR_rhsm_password="${rhsm_password}"
+#echo
 
-echo '> Setting the SUSE Customer Center credentials...'
-# SUSE Customer Center Credentials
-export PKR_VAR_scc_email="${scc_email}"
-export PKR_VAR_scc_code="${scc_code}"
-echo
+#echo '> Setting the SUSE Customer Center credentials...'
+## SUSE Customer Center Credentials
+#export PKR_VAR_scc_email="${scc_email}"
+#export PKR_VAR_scc_code="${scc_code}"
+#echo
 
 echo '> Setting the HCP Packer...'
 # HCP Packer
@@ -348,19 +346,19 @@ case $display_environmental_variables in
 
 	# Proxy Credentials
 
-	case $use_socks_proxy in
-	[yY][eE][sS] | [yY])
-		echo -e '\nProxy Credentials'
-		echo - PKR_VAR_communicator_proxy_host: "$PKR_VAR_communicator_proxy_host"
-		echo - PKR_VAR_communicator_proxy_port: "$PKR_VAR_communicator_proxy_port"
-		echo - PKR_VAR_communicator_proxy_username: "$PKR_VAR_communicator_proxy_username"
-		echo - PKR_VAR_communicator_proxy_password: "$PKR_VAR_communicator_proxy_password"
-		;;
-	[nN][oO] | [nN]) ;;
-
-	*) ;;
-
-	esac
+#	case $use_socks_proxy in
+#	[yY][eE][sS] | [yY])
+#		echo -e '\nProxy Credentials'
+#		echo - PKR_VAR_communicator_proxy_host: "$PKR_VAR_communicator_proxy_host"
+#		echo - PKR_VAR_communicator_proxy_port: "$PKR_VAR_communicator_proxy_port"
+#		echo - PKR_VAR_communicator_proxy_username: "$PKR_VAR_communicator_proxy_username"
+#		echo - PKR_VAR_communicator_proxy_password: "$PKR_VAR_communicator_proxy_password"
+#		;;
+#	[nN][oO] | [nN]) ;;
+#
+#	*) ;;
+#
+#	esac
 
 	# Default User Account Credentials
 	echo -e '\nDefault User Account Credentials'
@@ -369,20 +367,20 @@ case $display_environmental_variables in
 	echo - PKR_VAR_build_password_encrypted: "$PKR_VAR_build_password_encrypted"
 	echo - PKR_VAR_build_key: "$PKR_VAR_build_key"
 
-	# Ansible Credentials
-	echo -e '\nAnsible Credentials'
-	echo - PKR_VAR_ansible_username: "$PKR_VAR_ansible_username"
-	echo - PKR_VAR_ansible_key: "$PKR_VAR_ansible_key"
+#	# Ansible Credentials
+#	echo -e '\nAnsible Credentials'
+#	echo - PKR_VAR_ansible_username: "$PKR_VAR_ansible_username"
+#	echo - PKR_VAR_ansible_key: "$PKR_VAR_ansible_key"
 
-	# RedHat Subscription Manager Credentials
-	echo -e '\nRedHat Subscription Manager Credentials'
-	echo - PKR_VAR_rhsm_username: "$PKR_VAR_rhsm_username"
-	echo - PKR_VAR_rhsm_password: "$PKR_VAR_rhsm_password"
-
-	# SUSE Customer Center Credentials
-	echo -e '\nSUSE Customer Center Credentials'
-	echo - PKR_VAR_scc_email: "$PKR_VAR_scc_email"
-	echo - PKR_VAR_scc_code: "$PKR_VAR_scc_code"
+#	# RedHat Subscription Manager Credentials
+#	echo -e '\nRedHat Subscription Manager Credentials'
+#	echo - PKR_VAR_rhsm_username: "$PKR_VAR_rhsm_username"
+#	echo - PKR_VAR_rhsm_password: "$PKR_VAR_rhsm_password"
+#
+#	# SUSE Customer Center Credentials
+#	echo -e '\nSUSE Customer Center Credentials'
+#	echo - PKR_VAR_scc_email: "$PKR_VAR_scc_email"
+#	echo - PKR_VAR_scc_code: "$PKR_VAR_scc_code"
 
 	# HCP Packer
 	echo -e '\nHCP Packer'

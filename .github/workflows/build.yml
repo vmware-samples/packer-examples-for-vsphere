@@ -1,0 +1,96 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+        - main
+  repository_dispatch:
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PRODUCT_VERSION: 1.8.6
+  PACKER_GITHUB_API_TOKEN: ${{ github.token}}
+  # build secrets
+  PKR_VAR_build_username: ${{ secrets.BUILD_USERNAME }}
+  PKR_VAR_build_password: ${{ secrets.BUILD_PASSWORD }}
+  PKR_VAR_build_password_encrypted: ${{ secrets.BUILD_PASSWORD_ENCRYPTED }}
+  PKR_VAR_build_key: ${{ secrets.BUILD_KEY }}
+  # vcenter secrets
+  PKR_VAR_vsphere_endpoint: ${{ secrets.VSPHERE_ENDPOINT }}
+  PKR_VAR_vsphere_username: ${{ secrets.VSPHERE_USERNAME }}
+  PKR_VAR_vsphere_password: ${{ secrets.VSPHERE_PASSWORD }}
+  PKR_VAR_vsphere_insecure_connection: true
+  # common variables
+  PKR_VAR_common_iso_datastore: ${{ vars.COMMON_ISO_DATASTORE }}
+  PKR_VAR_common_iso_path: ${{ vars.COMMON_ISO_PATH }}
+  # vcenter variables
+  PKR_VAR_vsphere_datacenter: ${{ vars.VSPHERE_DATACENTER }}
+  PKR_VAR_vsphere_cluster: ${{ vars.VSPHERE_CLUSTER }}
+  PKR_VAR_vsphere_datastore: ${{ vars.VSPHERE_DATASTORE }}
+  PKR_VAR_vsphere_network: ${{ vars.VSPHERE_NETWORK }}
+  PKR_VAR_vsphere_folder: ${{ vars.VSPHERE_FOLDER }}
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+  repository-projects: write
+  id-token: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup `packer`
+        uses: hashicorp/setup-packer@v2.0.0
+        id: setup
+      - name: Initialize
+        run: packer init ${{ github.workspace }}/builds/windows/server/2022/
+
+      - name: Validate
+        run: |
+          packer validate \
+            -evaluate-datasources \
+            ./builds/windows/server/2022/
+
+  core-std-build:
+    runs-on: [self-hosted, packer]
+    needs: validate
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/packer-build
+        with:
+          pkr-source: standard-core
+
+  core-dc-build:
+    runs-on: [self-hosted, packer]
+    needs: validate
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/packer-build
+        with:
+          pkr-source: datacenter-core
+
+  dexp-std-build:
+    runs-on: [self-hosted, packer]
+    needs: validate
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/packer-build
+        with:
+          pkr-source: standard-dexp
+
+  dexp-dc-build:
+    runs-on: [self-hosted, packer]
+    needs: validate
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/packer-build
+        with:
+          pkr-source: datacenter-dexp

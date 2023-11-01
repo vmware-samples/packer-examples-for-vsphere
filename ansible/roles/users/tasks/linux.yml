@@ -26,6 +26,3 @@
     sudo chown -R {{ANSIBLE_USERNAME}} /home/{{ANSIBLE_USERNAME}}/.ssh
     sudo chmod 700 /home/{{ANSIBLE_USERNAME}}/.ssh
     sudo chmod 644 /home/{{ANSIBLE_USERNAME}}/.ssh/authorized_keys
-- name: "Adding the local user for Ansible to passwordless sudoers."
-  shell: |
-    sudo bash -c "echo \"""{{ANSIBLE_USERNAME}}"" ALL=(ALL) NOPASSWD:ALL\" >> /etc/sudoers"

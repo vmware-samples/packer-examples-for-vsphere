@@ -1,5 +1,13 @@
 # Release History
 
+## .Next
+
+> Release Date: Unreleased
+
+:sweat_drops: **Chore**:
+
+- Updates `ansible/ansible.cfg` to use `scp_extra_args = "-O"` by default. See the Ansible [documentation](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/ssh_connection.html#parameter-scp_if_ssh). [GH-767](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/767)
+
 ## v23.10
 
 > Release Date: 2023-10-23

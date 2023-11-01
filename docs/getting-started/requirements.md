@@ -28,22 +28,6 @@ The project is tested on the following operating systems for the Packer host [^1
 |                                                          | Sonoma    | Intel        |
 ::end-spantable::
 
-???+ tip ":material-greater-than-or-equal: OpenSSH 9.0"
-    If your :material-ansible: [Ansible][ansible-ssh-connection] control node uses OpenSSH 9.0 or higher, you must add an additional option to enable `scp`.
-
-    1. Check the OpenSSH version:
-
-        ```shell
-        ssh -V
-        ```
-
-    2. If the version is 9.0 or higher, add the following to your the `ansible/ansible.cfg` file:
-
-        ```vi
-        [ssh_connection]
-        scp_extra_args = "-O"
-        ```
-
 ## :simple-packer: &nbsp; Packer
 
 ### :octicons-terminal-24: &nbsp; Packer CLI

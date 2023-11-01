@@ -11,13 +11,13 @@
 - name: "Installing additional packages."
   dnf:
     name:
+      - ca-certificates
       - curl
-      - wget
       - git
-      - vim
       - net-tools
       - unzip
-      - ca-certificates
+      - vim
+      - wget
     state: latest     # noqa package-latest
   when: "ansible_facts['distribution_major_version'] >= \"8\""
 - name: "Updating the guest operating system."
@@ -30,11 +30,11 @@
   when: "ansible_facts['distribution_major_version'] <= \"7\""
   yum:
     name:
+      - ca-certificates
       - curl
-      - wget
       - git
-      - vim
       - net-tools
       - unzip
-      - ca-certificates
+      - vim
+      - wget
     state: latest     # noqa package-latest

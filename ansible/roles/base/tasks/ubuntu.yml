@@ -9,10 +9,10 @@
   apt:
     name:
       - bash-completion
+      - ca-certificates
       - curl
-      - wget
       - git
       - net-tools
       - unzip
-      - ca-certificates
+      - wget
     state: latest     # noqa package-latest

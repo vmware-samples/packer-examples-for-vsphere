@@ -7,6 +7,7 @@
 :sweat_drops: **Chore**:
 
 - Updates `ansible/ansible.cfg` to use `scp_extra_args = "-O"` by default. See the Ansible [documentation](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/ssh_connection.html#parameter-scp_if_ssh). [GH-767](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/767)
+- Removes unused files from `ansible/`. [GH-768](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/768)
 
 ## v23.10
 

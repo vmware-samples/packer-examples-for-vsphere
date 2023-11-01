@@ -68,6 +68,13 @@ Debian-11:
 
 ##############################################################################
 
+Ubuntu-Server-23.10:
+    extends: .packer-build
+    variables:
+        INPUT_PATH: "$SCRIPT_PATH/builds/linux/ubuntu/23-10/"
+
+##############################################################################
+
 Ubuntu-Server-22.04-LTS:
     extends: .packer-build
     variables:

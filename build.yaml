@@ -21,6 +21,9 @@ menu:
       - entry: "Debian 11"
         build:
           path: "builds/linux/debian/11/"
+      - entry: "Ubuntu Server 23.10 (cloud-init)"
+        build:
+          path: "builds/linux/ubuntu/23-10/"
       - entry: "Ubuntu Server 22.04 LTS (cloud-init)"
         build:
           path: "builds/linux/ubuntu/22-04-lts/"

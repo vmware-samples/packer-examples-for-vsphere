@@ -3,10 +3,10 @@
   zypper:
     name:
       - bash-completion
+      - ca-certificates
       - curl
-      - wget
       - git-core
       - net-tools
       - unzip
-      - ca-certificates
+      - wget
     state: latest

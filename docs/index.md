@@ -21,7 +21,8 @@ This project supports the following guest operating systems:
 |                                                                         | 4.0       | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               |
 | :fontawesome-brands-debian: &nbsp;&nbsp; Debian @span                   | 12        | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               |
 |                                                                         | 11        | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               |
-| :fontawesome-brands-ubuntu: &nbsp;&nbsp; Ubuntu Server @span            | 22.04 LTS | :octicons-x-circle-24:               | :octicons-check-circle-24:{ .green } |
+| :fontawesome-brands-ubuntu: &nbsp;&nbsp; Ubuntu Server @span            | 23.10     | :octicons-x-circle-24:               | :octicons-check-circle-24:{ .green } |
+|                                                                         | 22.04 LTS | :octicons-x-circle-24:               | :octicons-check-circle-24:{ .green } |
 |                                                                         | 20.04 LTS | :octicons-x-circle-24:               | :octicons-check-circle-24:{ .green } |
 | :fontawesome-brands-redhat: &nbsp;&nbsp; Red Hat Enterprise Linux @span | 9         | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               |
 |                                                                         | 8         | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               |

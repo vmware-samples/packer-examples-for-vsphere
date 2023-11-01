@@ -8,7 +8,7 @@
     hostnamectl set-hostname localhost
 - name: "Restarting the SSH daemon."
   shell: |
-    sudo systemctl restart sshd
+    sudo systemctl restart ssh
 - name: "Disabling and clean tmp."
   shell: |
     sudo sed -i 's/D/#&/' /usr/lib/tmpfiles.d/tmp.conf
@@ -19,13 +19,11 @@
     rm -rf /etc/netplan/00-installer-config.yaml
     echo "disable_vmware_customization: false" >> /etc/cloud/cloud.cfg
     echo "datasource_list: [ VMware, OVF, None ]" > /etc/cloud/cloud.cfg.d/90_dpkg.cfg
-  when: ansible_distribution_version == "20.04" or ansible_distribution_version == "22.04"
 - name: "Modifying GRUB."
   shell: |
     sed -i -e "s/GRUB_CMDLINE_LINUX_DEFAULT=\"\(.*\)\"/GRUB_CMDLINE_LINUX_DEFAULT=\"\"/" /etc/default/grub
     update-grub
-  when: ansible_distribution_version == "20.04" or ansible_distribution_version == "22.04"
-- name: "Setting SSH keys to regenerate on reboot, if neccessary."
+- name: "Setting SSH keys to regenerate on reboot, if necessary."
   shell: |
     sudo tee /etc/rc.local << EOF
     #!/bin/bash

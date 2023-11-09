@@ -7,6 +7,7 @@
 # Defaults
 
 vsphere_insecure_connection="false"
+vsphere_set_host_for_datastore_uploads="false"
 common_vm_version="19"
 common_tools_upgrade_policy="true"
 common_remove_cdrom="true"
@@ -21,6 +22,7 @@ common_http_ip=""
 common_http_port_min="8000"
 common_http_port_max="8099"
 common_ip_wait_timeout="20m"
+common_ip_settle_timeout="5s"
 common_shutdown_timeout="15m"
 communicator_proxy_host=""
 communicator_proxy_port=""
@@ -106,6 +108,8 @@ read -r -p "Enter the ESXi host FQDN or IP: " vsphere_host
 read -r -p "Enter the datastore name virtual machines: " vsphere_datastore
 read -r -p "Enter the network name: " vsphere_network
 read -r -p "Enter the folder name: " vsphere_folder
+read -r -p "Enter the resource pool name: " vsphere_resource_pool
+read -r -p "Set the host for datastore uploads (recommended: ""${vsphere_set_host_for_datastore_uploads}""): " vsphere_set_host_for_datastore_uploads
 read -r -p "Enter the content library name: " common_content_library_name
 read -r -p "Enter the datastore name for .iso files: " common_iso_datastore
 
@@ -131,6 +135,7 @@ read -r -p "Enter the IP address of the interface on this host: " common_http_ip
 read -r -p "Enter the starting HTTP port (recommended: ""${common_http_port_min}""): " common_http_port_min
 read -r -p "Enter the ending HTTP port (recommended: ""${common_http_port_max}""): " common_http_port_max
 read -r -p "Enter the IP wait timeout (recommended: ""${common_ip_wait_timeout}""): " common_ip_wait_timeout
+read -r -p "Enter the IP settle timeout (recommended: ""${common_ip_settle_timeout}""): " common_ip_settle_timeout
 read -r -p "Enter the virtual machine shutdown timeout (recommended: ""${common_shutdown_timeout}""): " common_shutdown_timeout
 
 # Proxy Credentials
@@ -218,6 +223,8 @@ export PKR_VAR_vsphere_host="${vsphere_host}"
 export PKR_VAR_vsphere_datastore="${vsphere_datastore}"
 export PKR_VAR_vsphere_network="${vsphere_network}"
 export PKR_VAR_vsphere_folder="${vsphere_folder}"
+export PKR_VAR_vsphere_resource_pool="${vsphere_resource_pool}"
+export PKR_VAR_vsphere_set_host_for_datastore_uploads="${vsphere_set_host_for_datastore_uploads}"
 export PKR_VAR_common_content_library_name="${common_content_library_name}"
 export PKR_VAR_common_iso_datastore="${common_iso_datastore}"
 
@@ -246,6 +253,7 @@ export PKR_VAR_common_http_ip="${common_http_ip}"
 export PKR_VAR_common_http_port_min="${common_http_port_min}"
 export PKR_VAR_common_http_port_max="${common_http_port_max}"
 export PKR_VAR_common_ip_wait_timeout="${common_ip_wait_timeout}"
+export PKR_VAR_common_ip_settle_timeout="${common_ip_settle_timeout}"
 export PKR_VAR_common_shutdown_timeout="${common_shutdown_timeout}"
 
 # Proxy Credentials
@@ -316,6 +324,8 @@ case $display_environmental_variables in
 	echo - PKR_VAR_vsphere_datastore: "$PKR_VAR_vsphere_datastore"
 	echo - PKR_VAR_vsphere_network: "$PKR_VAR_vsphere_network"
 	echo - PKR_VAR_vsphere_folder: "$PKR_VAR_vsphere_folder"
+	echo - PKR_VAR_vsphere_resource_pool: "$PKR_VAR_vsphere_resource_pool"
+	echo - PKR_VAR_vsphere_set_host_for_datastore_uploads: "$PKR_VAR_vsphere_set_host_for_datastore_uploads"
 	echo - PKR_VAR_common_content_library_name: "$PKR_VAR_common_content_library_name"
 	echo - PKR_VAR_common_iso_datastore: "$PKR_VAR_common_iso_datastore"
 
@@ -344,6 +354,7 @@ case $display_environmental_variables in
 	echo - PKR_VAR_common_http_port_min: "$PKR_VAR_common_http_port_min"
 	echo - PKR_VAR_common_http_port_max: "$PKR_VAR_common_http_port_max"
 	echo - PKR_VAR_common_ip_wait_timeout: "$PKR_VAR_common_ip_wait_timeout"
+	echo - PKR_VAR_common_ip_settle_timeout: "$PKR_VAR_common_ip_settle_timeout"
 	echo - PKR_VAR_common_shutdown_timeout: "$PKR_VAR_common_shutdown_timeout"
 
 	# Proxy Credentials

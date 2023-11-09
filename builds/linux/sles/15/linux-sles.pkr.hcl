@@ -76,11 +76,13 @@ source "vsphere-iso" "linux-sles" {
   insecure_connection = var.vsphere_insecure_connection
 
   // vSphere Settings
-  datacenter = var.vsphere_datacenter
-  cluster    = var.vsphere_cluster
-  host       = var.vsphere_host
-  datastore  = var.vsphere_datastore
-  folder     = var.vsphere_folder
+  datacenter                     = var.vsphere_datacenter
+  cluster                        = var.vsphere_cluster
+  host                           = var.vsphere_host
+  datastore                      = var.vsphere_datastore
+  folder                         = var.vsphere_folder
+  resource_pool                  = var.vsphere_resource_pool
+  set_host_for_datastore_uploads = var.vsphere_set_host_for_datastore_uploads
 
   // Virtual Machine Settings
   guest_os_type        = var.vm_guest_os_type
@@ -129,9 +131,10 @@ source "vsphere-iso" "linux-sles" {
     // This sends the "F10" key. In the GRUB boot loader, this is used to save the changes and exit the boot menu option's configuration, and then continue the boot process.
     "<f10>"
   ]
-  ip_wait_timeout  = var.common_ip_wait_timeout
-  shutdown_command = "echo '${var.build_password}' | sudo -S -E shutdown -P now"
-  shutdown_timeout = var.common_shutdown_timeout
+  ip_wait_timeout   = var.common_ip_wait_timeout
+  ip_settle_timeout = var.common_ip_settle_timeout
+  shutdown_command  = "echo '${var.build_password}' | sudo -S -E shutdown -P now"
+  shutdown_timeout  = var.common_shutdown_timeout
 
   // Communicator Settings and Credentials
   communicator       = "ssh"

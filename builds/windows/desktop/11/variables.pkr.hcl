@@ -70,6 +70,18 @@ variable "vsphere_folder" {
   default     = ""
 }
 
+variable "vsphere_resource_pool" {
+  type        = string
+  description = "The name of the target vSphere resource pool."
+  default     = ""
+}
+
+variable "vsphere_set_host_for_datastore_uploads" {
+  type        = bool
+  description = "Set this to true if packer should use the host for uploading files to the datastore."
+  default     = false
+}
+
 // Installer Settings
 
 variable "vm_inst_os_language" {
@@ -359,6 +371,12 @@ variable "vm_shutdown_command" {
 variable "common_ip_wait_timeout" {
   type        = string
   description = "Time to wait for guest operating system IP address response."
+}
+
+variable "common_ip_settle_timeout" {
+  type        = string
+  description = "Time to wait for guest operating system IP to settle down."
+  default     = "5s"
 }
 
 variable "common_shutdown_timeout" {

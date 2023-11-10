@@ -7,6 +7,7 @@
 :boom: **Enhancement**:
 
 - Adds Ubuntu Server 23.10 to the project. [GH-769](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/769)
+- Adds support for setting additional options. (`vsphere_resource_pool`, `set_host_for_datastore_uploads`, and `ip_settle_timeout`). [GH-771](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/771)
 
 :sweat_drops: **Chore**:
 

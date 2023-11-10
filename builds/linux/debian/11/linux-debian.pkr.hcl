@@ -77,11 +77,13 @@ source "vsphere-iso" "linux-debian" {
   insecure_connection = var.vsphere_insecure_connection
 
   // vSphere Settings
-  datacenter = var.vsphere_datacenter
-  cluster    = var.vsphere_cluster
-  host       = var.vsphere_host
-  datastore  = var.vsphere_datastore
-  folder     = var.vsphere_folder
+  datacenter                     = var.vsphere_datacenter
+  cluster                        = var.vsphere_cluster
+  host                           = var.vsphere_host
+  datastore                      = var.vsphere_datastore
+  folder                         = var.vsphere_folder
+  resource_pool                  = var.vsphere_resource_pool
+  set_host_for_datastore_uploads = var.vsphere_set_host_for_datastore_uploads
 
   // Virtual Machine Settings
   vm_name              = local.vm_name
@@ -146,9 +148,10 @@ source "vsphere-iso" "linux-debian" {
     // This sends four "down arrow" keys and then the "enter" key. This is typically used to select a specific option in a menu.
     "<down><down><down><down><enter>"
   ]
-  ip_wait_timeout  = var.common_ip_wait_timeout
-  shutdown_command = "echo '${var.build_password}' | sudo -S -E shutdown -P now"
-  shutdown_timeout = var.common_shutdown_timeout
+  ip_wait_timeout   = var.common_ip_wait_timeout
+  ip_settle_timeout = var.common_ip_settle_timeout
+  shutdown_command  = "echo '${var.build_password}' | sudo -S -E shutdown -P now"
+  shutdown_timeout  = var.common_shutdown_timeout
 
   // Communicator Settings and Credentials
   communicator       = "ssh"

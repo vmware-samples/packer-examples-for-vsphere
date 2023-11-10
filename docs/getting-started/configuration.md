@@ -224,12 +224,13 @@ common_ovf_export_overwrite = true
 common_iso_datastore = "sfo-w01-cl01-ds-nfs01"
 
 // Boot and Provisioning Settings
-common_data_source      = "http"
-common_http_ip          = null
-common_http_port_min    = 8000
-common_http_port_max    = 8099
-common_ip_wait_timeout  = "20m"
-common_shutdown_timeout = "15m"
+common_data_source       = "http"
+common_http_ip           = null
+common_http_port_min     = 8000
+common_http_port_max     = 8099
+common_ip_wait_timeout   = "20m"
+common_ip_settle_timeout = "5s"
+common_shutdown_timeout  = "15m"
 
 // HCP Packer
 common_hcp_packer_registry_enabled = false
@@ -316,16 +317,18 @@ Edit the `builds/vsphere.pkrvars.hcl` file to configure the following:
 - vSphere Settings
 
 ```hcl title="config/vsphere.pkrvars.hcl"
-vsphere_endpoint             = "sfo-w01-vc01.sfo.example.com"
-vsphere_username             = "svc-packer-vsphere@example.com"
-vsphere_password             = "<plaintext_password>"
-vsphere_insecure_connection  = true
-vsphere_datacenter           = "sfo-w01-dc01"
-vsphere_cluster              = "sfo-w01-cl01"
-//vsphere_host               = "sfo-w01-esx01"
-vsphere_datastore            = "sfo-w01-cl01-ds-vsan01"
-vsphere_network              = "sfo-w01-seg-dhcp"
-vsphere_folder               = "sfo-w01-fd-templates"
+vsphere_endpoint                         = "sfo-w01-vc01.sfo.example.com"
+vsphere_username                         = "svc-packer-vsphere@example.com"
+vsphere_password                         = "<plaintext_password>"
+vsphere_insecure_connection              = true
+vsphere_datacenter                       = "sfo-w01-dc01"
+vsphere_cluster                          = "sfo-w01-cl01"
+//vsphere_host                           = "sfo-w01-esx01"
+vsphere_datastore                        = "sfo-w01-cl01-ds-vsan01"
+vsphere_network                          = "sfo-w01-seg-dhcp"
+vsphere_folder                           = "sfo-w01-fd-templates"
+//vsphere_resource_pool                  = "sfo-w01-rp01"
+vsphere_set_host_for_datastore_uploads   = false
 ```
 
 ???- note "vSphere DRs Disabled or Standalone ESXi Hosts"

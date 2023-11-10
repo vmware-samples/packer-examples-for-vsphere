@@ -113,11 +113,20 @@ source "vsphere-iso" "linux-photon" {
   boot_order    = var.vm_boot_order
   boot_wait     = var.vm_boot_wait
   boot_command = [
+    // This sends the "escape" key, waits, and then sends the "c" key. In the GRUB boot loader, this is used to enter command line mode.
     "<esc><wait>c",
+    // This types a command to load the Linux kernel from the specified path, with the specified boot parameters.
+    // The 'data_source_command' local variable is used to specify the kickstart data source configured in the common variables.
     "linux /isolinux/vmlinuz root=/dev/ram0 loglevel=3 insecure_installation=1 ${local.data_source_command} photon.media=cdrom",
-    "<enter>", "initrd /isolinux/initrd.img",
+    // This sends the "enter" key, which executes the command.
     "<enter>",
+    // This types a command to load the initial RAM disk from the specified path.
+    "initrd /isolinux/initrd.img",
+    // This sends the "enter" key, which executes the command.
+    "<enter>",
+    // This types the "boot" command, which starts the boot process using the loaded kernel and initial RAM disk.
     "boot",
+    // This sends the "enter" key, which executes the command.
     "<enter>"
   ]
   ip_wait_timeout  = var.common_ip_wait_timeout

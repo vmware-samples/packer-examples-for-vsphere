@@ -118,10 +118,15 @@ source "vsphere-iso" "linux-sles" {
   boot_order    = var.vm_boot_order
   boot_wait     = var.vm_boot_wait
   boot_command = [
+    // This sends the "escape" key. In the GRUB boot loader, this is used to enter command line mode.
     "<esc>",
+    // This sends the "e" key. In the GRUB boot loader, this is used to edit the selected boot menu option.
     "e",
+    // This sends four "down arrow" keys and then the "end" key. This is used to navigate to a specific line in the boot menu option's configuration.
     "<down><down><down><down><end>",
+    // This types the value of the 'data_source_command' local variable. This is used to specify the kickstart data source configured in the common variables. 
     "${local.data_source_command}",
+    // This sends the "F10" key. In the GRUB boot loader, this is used to save the changes and exit the boot menu option's configuration, and then continue the boot process.
     "<f10>"
   ]
   ip_wait_timeout  = var.common_ip_wait_timeout

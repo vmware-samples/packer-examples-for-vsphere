@@ -119,18 +119,31 @@ source "vsphere-iso" "linux-debian" {
   boot_order    = var.vm_boot_order
   boot_wait     = var.vm_boot_wait
   boot_command = [
+    // This waits for 3 seconds, sends the "c" key, and then waits for another 3 seconds. In the GRUB boot loader, this is used to enter command line mode.
     "<wait3s>c<wait3s>",
+    // This types a command to load the Linux kernel from the specified path.
     "linux /install.amd/vmlinuz",
+    // This types a string that sets the auto-install/enable option to true. This is used to automate the installation process.
     " auto-install/enable=true",
+    // This types a string that sets the debconf/priority option to critical. This is used to minimize the number of questions asked during the installation process.
     " debconf/priority=critical",
+    // This types the value of the 'data_source_command' local variable. This is used to specify the kickstart data source configured in the common variables. 
     " ${local.data_source_command}",
+    // This types a string that sets the noprompt option and then sends the "enter" key. This is used to prevent the installer from pausing for user input.
     " noprompt --<enter>",
+    // This types a command to load the initial RAM disk from the specified path and then sends the "enter" key.
     "initrd /install.amd/initrd.gz<enter>",
+    // This types the "boot" command and then sends the "enter" key. This starts the boot process using the loaded kernel and initial RAM disk.
     "boot<enter>",
+    // This waits for 30 seconds. This is typically used to give the system time to boot before sending more commands.
     "<wait30s>",
+    // This sends the "enter" key and then waits. This is typically used to dismiss any prompts or messages that appear during boot.
     "<enter><wait>",
+    // This sends the "enter" key and then waits. This is typically used to dismiss any prompts or messages that appear during boot.
     "<enter><wait>",
+    // This types the value of the `mount_cdrom` local variable. This is typically used to mount the installation media.
     " ${local.mount_cdrom}",
+    // This sends four "down arrow" keys and then the "enter" key. This is typically used to select a specific option in a menu.
     "<down><down><down><down><enter>"
   ]
   ip_wait_timeout  = var.common_ip_wait_timeout

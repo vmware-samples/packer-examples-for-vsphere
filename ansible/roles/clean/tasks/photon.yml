@@ -1,19 +1,76 @@
 ---
-- name: "Cleaning tdnf cache."
-  shell: |
-    tdnf clean all
-- name: "Cleaning log files."
-  shell: |
-    find /var/log -type f -delete
-    rm -rf /var/log/journal/*
-- name: "Cleaning SSH host keys."
-  shell: |
-    rm -f /etc/ssh/ssh_host_*
+# Tasks to clean the audit logs.
+- name: "Cleaning the audit logs."
+  file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - /var/log/audit/audit.log
+    - /var/log/lastlog
+    - /var/log/wtmp
+
+# Tasks to clean the persistent udev rules.
+- name: "Cleaning persistent udev rules."
+  file:
+    path: /etc/udev/rules.d/70-persistent-net.rules
+    state: absent
+
+# Tasks to find the /tmp directories.
+- name: "Finding the /tmp directories."
+  find:
+    paths:
+      - /tmp
+      - /var/tmp
+    file_type: any
+  register: find_tmp_directories
+
+# Tasks to clean the /tmp directories.
+- name: "Cleaning the /tmp directories."
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  loop: "{{ find_tmp_directories.files }}"
+  loop_control:
+    label: "{{ item.path }}"
+
+# Tasks to find the SSH host keys.
+- name: "Finding the SSH host keys."
+  find:
+    paths: /etc/ssh
+    patterns: 'ssh_host_*'
+  register: find_ssh_host_keys
+
+# Tasks to clean the SSH host keys.
+- name: "Cleaning the SSH host keys."
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  loop: "{{ find_ssh_host_keys.files }}"
+  loop_control:
+    label: "{{ item.path }}"
+
+# Tasks to clean the machine-id.
 - name: "Cleaning the machine-id."
-  shell: |
-    truncate -s 0 /etc/machine-id
-    rm /var/lib/dbus/machine-id
-    ln -s /etc/machine-id /var/lib/dbus/machine-id
+  block:
+    - name: "Resizing the /etc/machine-id."
+      file:
+        path: /etc/machine-id
+        state: touch
+        mode: '0000'
+    - name: "Removing /var/lib/dbus/machine-id."
+      file:
+        path: /var/lib/dbus/machine-id
+        state: absent
+    - name: "Creating a symbolic link to /etc/machine-id."
+      file:
+        src: /etc/machine-id
+        dest: /var/lib/dbus/machine-id
+        state: link
+
+# Tasks to clean the shell history.
 - name: "Cleaning the shell history."
-  shell: |
-    history -c
+  block:
+  - name: "Cleaning the shell history."
+    file:
+      path: "{{ ansible_env.HOME }}/.bash_history"
+      state: absent

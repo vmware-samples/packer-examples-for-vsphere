@@ -1,16 +1,8 @@
 ---
-- name: "Clean the {{ ansible_facts['distribution'] }} guest operating system."
-  include_tasks: "{{ ansible_facts['distribution'] | lower }}.yml"
-  when: "ansible_facts['distribution'] == 'Debian'"
-- name: "Clean the {{ ansible_facts['distribution'] }} guest operating system."
-  include_tasks: "{{ ansible_facts['distribution'] | lower }}.yml"
-  when: "ansible_facts['distribution'] == 'Ubuntu'"
-- name: "Clean the {{ ansible_facts['distribution'] }} guest operating system."
-  include_tasks: redhat.yml
-  when: "ansible_facts['distribution'] in ['RedHat', 'CentOS', 'Rocky', 'AlmaLinux', 'OracleLinux']"
-- name: "Clean the {{ ansible_facts['os_family'] }} guest operating system."
-  include_tasks: "{{ ansible_facts['lsb']['codename'] | lower }}.yml"
-  when: "ansible_facts['os_family'] == 'VMware Photon OS'"
-- name: "Clean the {{ ansible_facts['distribution'] }} guest operating system."
-  include_tasks: sles.yml
-  when: "ansible_facts['distribution'] == 'SLES'"
+- name: "{{ task_name }}"
+  include_tasks: "{{ ansible_os_family | lower }}.yml"
+  when: ansible_os_family in ['Debian', 'RedHat', 'Suse']
+
+- name: "{{ task_name }}"
+  include_tasks: "{{ ansible_lsb.codename | lower }}.yml"
+  when: ansible_distribution == 'VMware Photon OS'

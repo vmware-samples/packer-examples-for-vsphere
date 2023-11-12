@@ -1,35 +1,82 @@
 ---
-- name: "Cleaning all audit logs."
-  shell: |
-    if [ -f /var/log/audit/audit.log ]; then
-    cat /dev/null > /var/log/audit/audit.log
-    fi
-    if [ -f /var/log/wtmp ]; then
-    cat /dev/null > /var/log/wtmp
-    fi
-    if [ -f /var/log/lastlog ]; then
-    cat /dev/null > /var/log/lastlog
-    fi
+# Tasks to clean the audit logs.
+- name: "Cleaning the audit logs."
+  file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - /var/log/audit/audit.log
+    - /var/log/auth.log
+    - /var/log/btmp
+    - /var/log/dpkg.log
+    - /var/log/faillog
+    - /var/log/kern.log
+    - /var/log/lastlog
+    - /var/log/syslog
+    - /var/log/wtmp
+
+# Tasks to clean the persistent udev rules.
 - name: "Cleaning persistent udev rules."
-  shell: |
-    if [ -f /etc/udev/rules.d/70-persistent-net.rules ]; then
-    rm /etc/udev/rules.d/70-persistent-net.rules
-    fi
-- name: "Cleaning the /tmp directories"
-  shell: |
-    rm -rf /tmp/*
-    rm -rf /var/tmp/*
+  file:
+    path: /etc/udev/rules.d/70-persistent-net.rules
+    state: absent
+
+# Tasks to find the /tmp directories.
+- name: "Finding the /tmp directories."
+  find:
+    paths:
+      - /tmp
+      - /var/tmp
+    file_type: any
+  register: find_tmp_directories
+
+# Tasks to clean the /tmp directories.
+- name: "Cleaning the /tmp directories."
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  loop: "{{ find_tmp_directories.files }}"
+  loop_control:
+    label: "{{ item.path }}"
+
+# Tasks to find the SSH host keys.
+- name: "Finding the SSH host keys."
+  find:
+    paths: /etc/ssh
+    patterns: 'ssh_host_*'
+  register: find_ssh_host_keys
+
+# Tasks to clean the SSH host keys.
 - name: "Cleaning the SSH host keys."
-  shell: |
-    rm -f /etc/ssh/ssh_host_*
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  loop: "{{ find_ssh_host_keys.files }}"
+  loop_control:
+    label: "{{ item.path }}"
+
+# Tasks to clean the machine-id.
 - name: "Cleaning the machine-id."
-  shell: |
-    truncate -s 0 /etc/machine-id
-    rm /var/lib/dbus/machine-id
-    ln -s /etc/machine-id /var/lib/dbus/machine-id
+  block:
+    - name: "Resizing the /etc/machine-id."
+      file:
+        path: /etc/machine-id
+        state: touch
+        mode: '0000'
+    - name: "Removing /var/lib/dbus/machine-id."
+      file:
+        path: /var/lib/dbus/machine-id
+        state: absent
+    - name: "Creating a symbolic link to /etc/machine-id."
+      file:
+        src: /etc/machine-id
+        dest: /var/lib/dbus/machine-id
+        state: link
+
+# Tasks to clean the shell history.
 - name: "Cleaning the shell history."
-  shell: |
-    unset HISTFILE
-    history -cw
-    echo > ~/.bash_history
-    rm -fr /root/.bash_history
+  block:
+  - name: "Cleaning the shell history."
+    file:
+      path: "{{ ansible_env.HOME }}/.bash_history"
+      state: absent

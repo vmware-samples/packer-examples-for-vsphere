@@ -1,0 +1,77 @@
+---
+# VMware Photon OS
+
+- block:
+  - name: "Updating the operating system."
+    command: "tdnf -y update"
+
+  - name: "Installing additional packages."
+    command: "tdnf -y install {{ additional_packages[ansible_os_family] | join(' ') }}"
+  when: ansible_os_family == 'VMware Photon OS'
+
+# Debian or derivatives.
+
+- block:
+  - name: "Updating the operating system."
+    apt:
+      name: "*"
+      state: latest     # noqa package-latest
+      force_apt_get: true
+      update_cache: true
+
+  - name: "Installing additional packages."
+    apt:
+      name: "{{ additional_packages[ansible_os_family] }}"
+      state: latest     # noqa package-latest
+  when: ansible_os_family == 'Debian'
+
+# Red Hat Enterprise Linux or derivatives.
+
+- name: "Checking the Red Hat Subscription Manager status."
+  command:
+    cmd: subscription-manager status
+  register: result
+  failed_when: "'ERROR' in result.stderr"
+  when: ansible_distribution == 'RedHat'
+
+- block:
+  - name: "Updating the operating system."
+    yum:
+      name: "*"
+      state: latest     # noqa package-latest
+      update_cache: true
+
+  - name: "Installing additional packages."
+    yum:
+      name: "{{ additional_packages[ansible_os_family] }}"
+      state: latest     # noqa package-latest
+  when: ansible_os_family == 'RedHat' and ansible_distribution_major_version | int < 8
+
+- block:
+  - name: "Updating the operating system."
+    dnf:
+      name: "*"
+      state: latest     # noqa package-latest
+      update_cache: true
+
+  - name: "Installing additional packages."
+    dnf:
+      name: "{{ additional_packages[ansible_os_family] }}"
+      state: latest     # noqa package-latest
+  when: ansible_os_family == 'RedHat' and ansible_distribution_major_version | int >= 8
+
+# SUSE Linux Enterprise Server
+
+# SUSE Linux Enterprise Server
+- block:
+  - name: "Updating the operating system."
+    zypper:
+      name: "*"
+      state: latest
+      update_cache: true
+
+  - name: "Installing additional packages."
+    zypper:
+      name: "{{ additional_packages[ansible_os_family] }}"
+      state: latest
+  when: ansible_os_family == 'Suse'

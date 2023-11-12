@@ -1,67 +1,82 @@
 ---
-- name: "Cleaning all audit logs"
-  ansible.builtin.file:
+# Tasks to clean the audit logs.
+- name: "Cleaning the audit logs."
+  file:
     path: "{{ item }}"
     state: absent
-  with_items:
+  loop:
     - /var/log/audit/audit.log
+    - /var/log/auth.log
+    - /var/log/btmp
+    - /var/log/dpkg.log
+    - /var/log/faillog
+    - /var/log/kern.log
     - /var/log/lastlog
+    - /var/log/syslog
     - /var/log/wtmp
 
-- name: "Cleaning persistent udev rules"
-  ansible.builtin.file:
+# Tasks to clean the persistent udev rules.
+- name: "Cleaning persistent udev rules."
+  file:
     path: /etc/udev/rules.d/70-persistent-net.rules
     state: absent
 
-- name: "Find the /tmp directories"
-  ansible.builtin.find:
+# Tasks to find the /tmp directories.
+- name: "Finding the /tmp directories."
+  find:
     paths:
       - /tmp
       - /var/tmp
     file_type: any
   register: find_tmp_directories
 
-- name: "Cleaning the /tmp directories"
-  ansible.builtin.file:
+# Tasks to clean the /tmp directories.
+- name: "Cleaning the /tmp directories."
+  file:
     path: "{{ item.path }}"
     state: absent
   loop: "{{ find_tmp_directories.files }}"
   loop_control:
     label: "{{ item.path }}"
 
-- name: "Find the SSH host keys"
-  ansible.builtin.find:
+# Tasks to find the SSH host keys.
+- name: "Finding the SSH host keys."
+  find:
     paths: /etc/ssh
     patterns: 'ssh_host_*'
   register: find_ssh_host_keys
 
-- name: "Cleaning the SSH host keys"
-  ansible.builtin.file:
+# Tasks to clean the SSH host keys.
+- name: "Cleaning the SSH host keys."
+  file:
     path: "{{ item.path }}"
     state: absent
   loop: "{{ find_ssh_host_keys.files }}"
   loop_control:
     label: "{{ item.path }}"
 
-- name: "Cleaning the machine-id"
+# Tasks to clean the machine-id.
+- name: "Cleaning the machine-id."
   block:
-    - name: "Resize /etc/machine-id"
-      community.general.filesize:
+    - name: "Resizing the /etc/machine-id."
+      file:
         path: /etc/machine-id
-        size: 0B
-    - name: "Remove /var/lib/dbus/machine-id"
-      ansible.builtin.file:
+        state: touch
+        mode: '0000'
+    - name: "Removing /var/lib/dbus/machine-id."
+      file:
         path: /var/lib/dbus/machine-id
         state: absent
-    - name: "Create a sybmolic link"
-      ansible.builtin.file:
+    - name: "Creating a symbolic link to /etc/machine-id."
+      file:
         src: /etc/machine-id
         dest: /var/lib/dbus/machine-id
         state: link
 
+# Tasks to clean the shell history.
 - name: "Cleaning the shell history."
-  shell: |
-    unset HISTFILE
-    history -cw
-    echo > ~/.bash_history
-    rm -fr /root/.bash_history
+  block:
+  - name: "Cleaning the shell history."
+    file:
+      path: "{{ ansible_env.HOME }}/.bash_history"
+      state: absent

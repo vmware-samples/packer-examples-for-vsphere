@@ -1,10 +1,9 @@
 ---
-# Tasks to clean the Red Hat Subscription Manager logs.
-- name: "Cleaning the Red Hat Subscription Manager logs."
+# Tasks to clean the SUSE Customer Center file.
+- name: "Cleaning the SUSE Customer Center file."
   file:
-    path: /var/log/rhsm
+    path: /etc/SUSEConnect
     state: absent
-  when: ansible_distribution == 'RedHat'
 
 # Tasks to clean the audit logs.
 - name: "Cleaning the audit logs."
@@ -13,16 +12,14 @@
     state: absent
   loop:
     - /var/log/audit/audit.log
-    - /var/log/btmp
     - /var/log/boot.log
-    - /var/log/cron
-    - /var/log/dnf.log
     - /var/log/lastlog
-    - /var/log/maillog
+    - /var/log/mail
     - /var/log/messages
     - /var/log/secure
+    - /var/log/warn
     - /var/log/wtmp
-    - /var/log/yum.log
+    - /var/log/zypper.log
 
 # Tasks to clean the persistent udev rules.
 - name: "Cleaning persistent udev rules."
@@ -36,6 +33,7 @@
     paths:
       - /tmp
       - /var/tmp
+      - /var/cache/zypp
     file_type: any
   register: find_tmp_directories
 
@@ -66,24 +64,9 @@
 
 # Tasks to clean the machine-id.
 - name: "Resizing the /etc/machine-id."
-  file:
+  community.general.filesize:
     path: /etc/machine-id
-    state: touch
-    mode: '0000'
-
-- name: "Cleaning the machine-id."
-  block:
-    - name: "Removing /var/lib/dbus/machine-id."
-      file:
-        path: /var/lib/dbus/machine-id
-        state: absent
-
-    - name: "Creating a symbolic link to /etc/machine-id."
-      file:
-        src: /etc/machine-id
-        dest: /var/lib/dbus/machine-id
-        state: link
-  when: ansible_distribution_major_version | int <= 8
+    size: 0B
 
 # Tasks to clean the shell history.
 - name: "Cleaning the shell history."

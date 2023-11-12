@@ -1,8 +1,8 @@
 ---
-- become: "yes"
+- become: true
   become_method: sudo
   debugger: never
-  gather_facts: "yes"
+  gather_facts: true
   hosts: all
   roles:
     - base

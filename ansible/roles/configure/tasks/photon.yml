@@ -1,11 +1,25 @@
 ---
-- name: "Configure SSH for Public Key Authentication."
-  shell: |
-    sudo sed -i '/^PermitRootLogin/s/yes/no/' /etc/ssh/sshd_config
-    sudo sed -i 's/.*PubkeyAuthentication.*/PubkeyAuthentication yes/g' /etc/ssh/sshd_config
-- name: "Setting hostname to localhost."
-  shell: |
-    hostnamectl set-hostname localhost
-- name: "Disable IPv6."
-  shell: |
-    sudo echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
+# Tasks for configuring SSH for public key authentication.
+- name: "Configuring SSH for Public Key Authentication."
+  block:
+    - lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^PermitRootLogin'
+        line: 'PermitRootLogin no'
+    - lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^PubkeyAuthentication'
+        line: 'PubkeyAuthentication yes'
+
+# Tasks for setting the hostname.
+- name: "Setting the hostname."
+  hostname:
+    name: "localhost"
+
+# Tasks for restarting IPv6.
+- name: "Disabling IPv6."
+  sysctl:
+    name: net.ipv6.conf.all.disable_ipv6
+    value: '1'
+    state: present
+    reload: true

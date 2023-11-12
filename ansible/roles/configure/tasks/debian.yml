@@ -1,28 +1,56 @@
 ---
-- name: "Configure SSH for Public Key Authentication."
-  shell: |
-    sudo sed -i 's/.*PubkeyAuthentication.*/PubkeyAuthentication yes/' /etc/ssh/sshd_config
-- name: "Setting hostname to localhost."
-  shell: |
-    cat /dev/null > /etc/hostname
-    hostnamectl set-hostname localhost
+# Tasks for configuring SSH for public key authentication.
+- name: "Configuring SSH for Public Key Authentication."
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^PubkeyAuthentication'
+    line: 'PubkeyAuthentication yes'
+
+# Tasks for setting the hostname.
+- name: "Setting the hostname."
+  hostname:
+    name: "localhost"
+
+# Tasks for restarting the SSH daemon.
 - name: "Restarting the SSH daemon."
-  shell: |
-    sudo systemctl restart sshd
-- name: "Disabling and clean tmp."
-  shell: |
-    sudo sed -i 's/D/#&/' /usr/lib/tmpfiles.d/tmp.conf
-- name: "Setting SSH keys to regenerate on reboot, if necessary."
-  shell: |
-    sudo tee /etc/rc.local << EOF
-    #!/bin/bash
-    test -f /etc/ssh/ssh_host_dsa_key || dpkg-reconfigure openssh-server
-    exit 0
-    EOF
-    sudo chmod +x /etc/rc.local
-- name: "Setting guest operating system information."
-  shell: |
-    sudo tee -a /etc/vmware-tools/tools.conf << EOF
-    [guestosinfo]
-    short-name = other5xLinux64Guest
-    EOF
+  systemd:
+    name: ssh
+    state: restarted
+    daemon_reload: true
+
+# Tasks for disabling systemd-tmpfiles.
+- name: "Disabling systemd-tmpfiles."
+  replace:
+    path: /usr/lib/tmpfiles.d/tmp.conf
+    regexp: '^D'
+    replace: '#D'
+
+# Tasks for configuring cloud-init.
+- name: "Configuring cloud-init."
+  block:
+    - file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg
+        - /etc/cloud/cloud.cfg.d/99-installer.cfg
+        - /etc/netplan/00-installer-config.yaml
+    - lineinfile:
+        path: /etc/cloud/cloud.cfg
+        line: 'disable_vmware_customization: false'
+        create: true
+    - copy:
+        content: 'datasource_list: [ VMware, OVF, None ]'
+        dest: /etc/cloud/cloud.cfg.d/90_dpkg.cfg
+  when: ansible_distribution == 'Ubuntu'
+
+# Tasks for setting SSH keys to regenerate.
+- name: "Setting SSH keys to regenerate."
+  blockinfile:
+    path: /etc/rc.local
+    create: yes
+    block: |
+      #!/bin/bash
+      test -f /etc/ssh/ssh_host_dsa_key || dpkg-reconfigure openssh-server
+      exit 0
+    mode: '0755'

@@ -1,10 +1,12 @@
 ---
-# Tasks for unregistering from Red Hat Subscription Manager.
-- name: "Unregistering from Red Hat Subscription Manager."
-  redhat_subscription:
-    state: absent
-  when: ansible_distribution == 'RedHat'
-  
+# Tasks for unregistering from SUSE Customer Center.
+- name: "Unregistering from SUSE Customer Center."
+  command:
+    cmd: "{{ item }}"
+  loop:
+    - SUSEConnect -d
+    - SUSEConnect --cleanup
+
 # Tasks for configuring SSH for public key authentication.
 - name: "Configuring SSH for Public Key Authentication."
   block:
@@ -22,15 +24,10 @@
   hostname:
     name: "localhost"
 
-# Tasks for disabling SELinux.
-- name: "Disabling SELinux."
-  selinux:
-    state: disabled
-    policy: targeted
-
 # Tasks for restarting the SSH daemon.
 - name: "Restarting the SSH daemon."
   systemd:
     name: sshd
     state: restarted
     daemon_reload: true
+

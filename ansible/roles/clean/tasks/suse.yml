@@ -63,10 +63,10 @@
     label: "{{ item.path }}"
 
 # Tasks to clean the machine-id.
-- name: "Resizing the /etc/machine-id."
+- name: "Emptying the /etc/machine-id."
   community.general.filesize:
     path: /etc/machine-id
-    size: 0B
+    size: 0
 
 # Tasks to clean the shell history.
 - name: "Cleaning the shell history."

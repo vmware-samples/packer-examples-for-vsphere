@@ -52,11 +52,10 @@
 # Tasks to clean the machine-id.
 - name: "Cleaning the machine-id."
   block:
-    - name: "Resizing the /etc/machine-id."
-      file:
+    - name: "Emptying the /etc/machine-id."
+      community.general.filesize:
         path: /etc/machine-id
-        state: touch
-        mode: '0000'
+        size: 0
     - name: "Removing /var/lib/dbus/machine-id."
       file:
         path: /var/lib/dbus/machine-id

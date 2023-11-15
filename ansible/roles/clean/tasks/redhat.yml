@@ -65,11 +65,10 @@
     label: "{{ item.path }}"
 
 # Tasks to clean the machine-id.
-- name: "Resizing the /etc/machine-id."
-  file:
+- name: "Emptying the /etc/machine-id."
+  community.general.filesize:
     path: /etc/machine-id
-    state: touch
-    mode: '0000'
+    size: 0
 
 - name: "Cleaning the machine-id."
   block:
@@ -77,7 +76,6 @@
       file:
         path: /var/lib/dbus/machine-id
         state: absent
-
     - name: "Creating a symbolic link to /etc/machine-id."
       file:
         src: /etc/machine-id

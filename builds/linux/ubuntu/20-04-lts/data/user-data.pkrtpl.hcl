@@ -1,6 +1,7 @@
 #cloud-config
 
 # Copyright 2023 Broadcom. All rights reserved.
+# Copyright 2023 VMware, Inc. All rights reserved
 # SPDX-License-Identifier: BSD-2
 
 # Ubuntu Server 20.04 LTS

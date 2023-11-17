@@ -1,3 +1,6 @@
+# Copyright 2023 VMware, Inc. All rights reserved
+# SPDX-License-Identifier: BSD-2
+
 /*
     DESCRIPTION:
     Ubuntu Server 20.04 LTS network variables used by the Packer Plugin for VMware vSphere (vsphere-iso).

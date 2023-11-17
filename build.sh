@@ -94,7 +94,6 @@ menu_option_1() {
       -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/$BUILD_VARS" \
       "$INPUT_PATH"
 
@@ -166,8 +165,6 @@ menu_option_3() {
       -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/storage.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/$BUILD_VARS" \
       "$INPUT_PATH"
 
@@ -308,6 +305,8 @@ menu_option_7() {
       -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/linux-storage.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/$BUILD_VARS" \
       "$INPUT_PATH"
 
@@ -667,8 +666,6 @@ menu_option_17() {
       -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/linux-storage.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/$BUILD_VARS" \
       "$INPUT_PATH"
 

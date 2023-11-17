@@ -21,6 +21,21 @@
 
 :boom: **Enhancement**:
 
+- Adds Ubuntu Server 23.10 to the project. [GH-769](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/769)
+- Adds support for setting additional options. (`vsphere_resource_pool`, `set_host_for_datastore_uploads`, and `ip_settle_timeout`). [GH-771](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/771)
+
+:sweat_drops: **Chore**:
+
+- Updates `ansible/ansible.cfg` to use `scp_extra_args = "-O"` by default. See the Ansible [documentation](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/ssh_connection.html#parameter-scp_if_ssh). [GH-767](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/767)
+- Removes unused files from `ansible/`. [GH-768](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/768)
+- Removes redundant Ansible task for users. [GH-770](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/770)
+
+## v23.10
+
+> Release Date: 2023-10-23
+
+:boom: **Enhancement**:
+
 - Adds VMware Photon OS 5.0 to the project. [GH-582](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/582)
 - Adds Debian 12 to the project. [GH-584](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/584)
 - Adds Oracle Linux 9 to the project. [GH-670](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/670)

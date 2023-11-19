@@ -373,7 +373,7 @@ vsphere_set_host_for_datastore_uploads   = false
 
 ### Machine Images
 
-Edit the `config/<type>-<build>.pkrvars.hcl` file to configure the following virtual machine hardware settings, as required:
+Edit the `config/<type>-<build>-<version>.pkrvars.hcl` file to configure the following virtual machine hardware settings, as required:
 
 - CPUs `(int)`
 - CPU Cores `(int)`
@@ -382,7 +382,7 @@ Edit the `config/<type>-<build>.pkrvars.hcl` file to configure the following vir
 - .iso Path `(string)`
 - .iso File `(string)`
 
-```hcl title="config/linux-photon.pkrvars.hcl"
+```hcl title="config/linux-photon-5.pkrvars.hcl"
 // Guest Operating System Metadata
 vm_guest_os_family  = "linux"
 vm_guest_os_name    = "photon"

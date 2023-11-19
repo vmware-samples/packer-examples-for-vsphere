@@ -3,7 +3,7 @@
 
 /*
     DESCRIPTION:
-    Debian Linux 11 storage variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    Debian Linux 12 storage variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
 */
 
 // VM Storage Settings

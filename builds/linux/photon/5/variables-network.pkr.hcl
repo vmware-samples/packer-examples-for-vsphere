@@ -3,7 +3,7 @@
 
 /*
     DESCRIPTION:
-    VMware Photon OS 4 network variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    VMware Photon OS 5 network variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
 */
 
 // VM Network Settings

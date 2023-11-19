@@ -3,7 +3,7 @@
 
 /*
     DESCRIPTION:
-    Debian Linux 11 network variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    Debian Linux 12 network variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
 */
 
 // VM Network Settings

@@ -64,3 +64,7 @@ manifests/*.json
 .trunk/out
 .trunk/plugins/trunk
 .trunk/trunk.yaml
+
+# Python virtual environments
+## Ignore venv directory.
+venv/

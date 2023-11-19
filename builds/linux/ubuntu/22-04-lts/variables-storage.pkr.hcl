@@ -3,7 +3,8 @@
 
 /*
     DESCRIPTION:
-    Ubuntu Server 22.04 LTS storage variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    Ubuntu Server 22.04 LTS storage variables.
+    Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 
 // VM Storage Settings

@@ -3,7 +3,8 @@
 
 /*
     DESCRIPTION:
-    Ubuntu Server 20.04 LTS network variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    Ubuntu Server 20.04 LTS network variables.
+    Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 
 // VM Network Settings

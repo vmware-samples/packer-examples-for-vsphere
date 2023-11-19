@@ -3,7 +3,8 @@
 
 /*
     DESCRIPTION:
-    Debian Linux 12 storage variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    Debian 12 storage variables.
+    Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 
 // VM Storage Settings

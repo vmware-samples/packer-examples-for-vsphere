@@ -12,6 +12,8 @@ menu:
       - entry: "VMware Photon OS 5"
         build:
           path: "builds/linux/photon/5/"
+          var_files:
+            - "network.pkrvars.hcl"
       - entry: "VMware Photon OS 4"
         build:
           path: "builds/linux/photon/4/"
@@ -20,6 +22,9 @@ menu:
       - entry: "Debian 12"
         build:
           path: "builds/linux/debian/12/"
+          var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
       - entry: "Debian 11"
         build:
           path: "builds/linux/debian/11/"
@@ -32,6 +37,9 @@ menu:
       - entry: "Ubuntu Server 23.10 (cloud-init)"
         build:
           path: "builds/linux/ubuntu/23-10/"
+          var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
       - entry: "Ubuntu Server 22.04 LTS (cloud-init)"
         build:
           path: "builds/linux/ubuntu/22-04-lts/"
@@ -98,9 +106,15 @@ menu:
       - entry: "Oracle Linux 8"
         build:
           path: "builds/linux/oracle/8/"
+          var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
       - entry: "CentOS Stream 9"
         build:
           path: "builds/linux/centos/9-stream/"
+          var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
       - entry: "CentOS Stream 8"
         build:
           path: "builds/linux/centos/8-stream/"

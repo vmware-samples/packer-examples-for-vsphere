@@ -44,6 +44,7 @@ VMware-Photon-OS-5:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/linux/photon/5/"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl"
 
 ##############################################################################
 
@@ -51,6 +52,7 @@ VMware-Photon-OS-4:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/linux/photon/4/"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl"
 
 ##############################################################################
 
@@ -58,6 +60,7 @@ Debian-12:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/linux/debian/12/"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
 
 ##############################################################################
 
@@ -65,6 +68,7 @@ Debian-11:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/linux/debian/11/"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
 
 ##############################################################################
 
@@ -72,6 +76,7 @@ Ubuntu-Server-23.10:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/linux/ubuntu/23-10/"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
 
 ##############################################################################
 
@@ -79,6 +84,7 @@ Ubuntu-Server-22.04-LTS:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/linux/ubuntu/22-04-lts/"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
 
 ##############################################################################
 
@@ -86,6 +92,7 @@ Ubuntu-Server-20.04-LTS:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/linux/ubuntu/20-04-lts/"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
 
 ##############################################################################
 
@@ -93,7 +100,7 @@ Red-Hat-Enterprise-Linux-9:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/linux/rhel/9/"
-        EXTRA_VAR_FILES: " -var-file=$CONFIG_PATH/rhsm.pkrvars.hcl"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl -var-file=$CONFIG_PATH/rhsm.pkrvars.hcl"
 
 ##############################################################################
 
@@ -101,7 +108,7 @@ Red-Hat-Enterprise-Linux-8:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/linux/rhel/8/"
-        EXTRA_VAR_FILES: " -var-file=$CONFIG_PATH/rhsm.pkrvars.hcl"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl -var-file=$CONFIG_PATH/rhsm.pkrvars.hcl"
 
 ##############################################################################
 
@@ -109,7 +116,7 @@ Red-Hat-Enterprise-Linux-7:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/linux/rhel/7/"
-        EXTRA_VAR_FILES: " -var-file=$CONFIG_PATH/rhsm.pkrvars.hcl"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl -var-file=$CONFIG_PATH/rhsm.pkrvars.hcl"
 
 ##############################################################################
 
@@ -117,6 +124,7 @@ AlmaLinux-OS-9:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/linux/almalinux/9/"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
 
 ##############################################################################
 
@@ -124,6 +132,7 @@ AlmaLinux-OS-8:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/linux/almalinux/8/"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
 
 ##############################################################################
 
@@ -131,6 +140,7 @@ Rocky-Linux-9:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/linux/rocky/9/"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
 
 ##############################################################################
 
@@ -138,6 +148,7 @@ Rocky-Linux-8:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/linux/rocky/8/"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
 
 ##############################################################################
 
@@ -145,6 +156,7 @@ Oracle-Linux-9:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/linux/oracle/9/"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
 
 ##############################################################################
 
@@ -152,6 +164,7 @@ Oracle-Linux-8:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/linux/oracle/8/"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
 
 ##############################################################################
 
@@ -159,6 +172,7 @@ CentOS-Stream-9:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/linux/centos/9-stream/"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
 
 ##############################################################################
 
@@ -166,6 +180,7 @@ CentOS-Stream-8:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/linux/centos/8-stream/"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
 
 ##############################################################################
 
@@ -173,6 +188,7 @@ CentOS-Linux-7:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/linux/centos/7/"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
 
 ##############################################################################
 
@@ -180,7 +196,7 @@ SUSE-Linux-Enterprise-Server-15:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/linux/sles/15/"
-        EXTRA_VAR_FILES: " -var-file=$CONFIG_PATH/scc.pkrvars.hcl"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/scc.pkrvars.hcl"
 
 ##############################################################################
 

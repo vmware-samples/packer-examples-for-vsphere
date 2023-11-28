@@ -2,7 +2,7 @@
 site_name: Packer Examples for VMware vSphere
 site_description: Packer Examples for VMware vSphere
 site_url: https://vmware-samples.github.io/packer-examples-for-vsphere/
-site_author: VMware, Inc.
+site_author: Broadcom
 docs_dir: docs
 site_dir: .site
 use_directory_urls: true
@@ -12,7 +12,9 @@ repo_url: https://github.com/vmware-samples/packer-examples-for-vsphere
 edit_uri: blob/main/docs/
 
 # Copyright
-copyright: Copyright &copy; 2023 - VMware, Inc.
+copyright: |
+  Copyright &copy; 2023 Broadcom. All rights reserved.<br/>
+  The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.<br/><br/>
 
 # Configuration
 theme:

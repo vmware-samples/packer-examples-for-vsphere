@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Copyright 2023 VMware, Inc. All rights reserved
+# Copyright 2023 Broadcom. All rights reserved.
 # SPDX-License-Identifier: BSD-2
 
 # This script allows you to set the environment variables on the system for use by Packer instead of using cleartext.

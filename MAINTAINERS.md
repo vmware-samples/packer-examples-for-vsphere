@@ -1,5 +1,5 @@
 <!--
-Copyright 2023 VMware, Inc. All rights reserved
+Copyright 2023 Broadcom. All rights reserved.
 # SPDX-License-Identifier: BSD-2
 -->
 
@@ -10,7 +10,6 @@ Copyright 2023 VMware, Inc. All rights reserved
 The following are maintainers of this project.
 
 **Ryan Johnson**  
-Senior Staff Solutions Architect  
-Product Engineering at VMware, Inc.
+Product Engineering, VMware by Broadcom
 
 [![@tenthirtyam](https://img.shields.io/badge/GitHub-100000?style=flat-square&logo=github&logoColor=white)](https://github.com/tenthirtyam)

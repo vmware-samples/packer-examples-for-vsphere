@@ -9,7 +9,7 @@
         <meta name="description" content="Packer Examples for VMware vSphere">
       
       
-        <meta name="author" content="VMware, Inc.">
+        <meta name="author" content="Broadcom">
       
       
         <link rel="canonical" href="https://vmware-samples.github.io/packer-examples-for-vsphere/getting-started/requirements/">
@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.14">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.35e1ed30.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.fad675c6.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
@@ -343,6 +343,7 @@
   
   
   
+  
     
     
       
@@ -404,6 +405,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../../release-notes/" class="md-nav__link">
         
@@ -424,6 +426,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/milestones" class="md-nav__link">
         
@@ -441,6 +444,7 @@
             
               
                 
+  
   
   
   
@@ -471,6 +475,7 @@
   
   
     
+  
   
   
     
@@ -532,6 +537,7 @@
     
   
   
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -582,21 +588,27 @@
       
         <li class="md-nav__item">
   <a href="#platform" class="md-nav__link">
-     &nbsp; Platform
+    <span class="md-ellipsis">
+       &nbsp; Platform
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#operating-systems" class="md-nav__link">
-     &nbsp; Operating Systems
+    <span class="md-ellipsis">
+       &nbsp; Operating Systems
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#packer" class="md-nav__link">
-     &nbsp; Packer
+    <span class="md-ellipsis">
+       &nbsp; Packer
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="  Packer">
@@ -604,14 +616,18 @@
         
           <li class="md-nav__item">
   <a href="#packer-cli" class="md-nav__link">
-     &nbsp; Packer CLI
+    <span class="md-ellipsis">
+       &nbsp; Packer CLI
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#packer-plugins" class="md-nav__link">
-     &nbsp; Packer Plugins
+    <span class="md-ellipsis">
+       &nbsp; Packer Plugins
+    </span>
   </a>
   
 </li>
@@ -623,7 +639,9 @@
       
         <li class="md-nav__item">
   <a href="#additional-software-packages" class="md-nav__link">
-     &nbsp; Additional Software Packages
+    <span class="md-ellipsis">
+       &nbsp; Additional Software Packages
+    </span>
   </a>
   
 </li>
@@ -639,6 +657,7 @@
             
               
                 
+  
   
   
   
@@ -664,6 +683,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../iso/" class="md-nav__link">
         
@@ -683,6 +703,7 @@
             
               
                 
+  
   
   
   
@@ -708,6 +729,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../configuration/" class="md-nav__link">
         
@@ -727,6 +749,7 @@
             
               
                 
+  
   
   
   
@@ -752,6 +775,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../gitlab-ci-cd/" class="md-nav__link">
         
@@ -771,6 +795,7 @@
             
               
                 
+  
   
   
   
@@ -800,6 +825,7 @@
     
       
       
+  
   
   
   
@@ -856,6 +882,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../../community/contributing/" class="md-nav__link">
         
@@ -873,6 +900,7 @@
             
               
                 
+  
   
   
   
@@ -896,6 +924,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/issues" class="md-nav__link">
         
@@ -913,6 +942,7 @@
             
               
                 
+  
   
   
   
@@ -936,6 +966,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../../community/support/" class="md-nav__link">
         
@@ -953,6 +984,7 @@
             
               
                 
+  
   
   
   
@@ -1006,21 +1038,27 @@
       
         <li class="md-nav__item">
   <a href="#platform" class="md-nav__link">
-     &nbsp; Platform
+    <span class="md-ellipsis">
+       &nbsp; Platform
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#operating-systems" class="md-nav__link">
-     &nbsp; Operating Systems
+    <span class="md-ellipsis">
+       &nbsp; Operating Systems
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#packer" class="md-nav__link">
-     &nbsp; Packer
+    <span class="md-ellipsis">
+       &nbsp; Packer
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="  Packer">
@@ -1028,14 +1066,18 @@
         
           <li class="md-nav__item">
   <a href="#packer-cli" class="md-nav__link">
-     &nbsp; Packer CLI
+    <span class="md-ellipsis">
+       &nbsp; Packer CLI
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#packer-plugins" class="md-nav__link">
-     &nbsp; Packer Plugins
+    <span class="md-ellipsis">
+       &nbsp; Packer Plugins
+    </span>
   </a>
   
 </li>
@@ -1047,7 +1089,9 @@
       
         <li class="md-nav__item">
   <a href="#additional-software-packages" class="md-nav__link">
-     &nbsp; Additional Software Packages
+    <span class="md-ellipsis">
+       &nbsp; Additional Software Packages
+    </span>
   </a>
   
 </li>
@@ -1131,23 +1175,6 @@
 </tr>
 </table>
 </div>
-<details class="tip" open="open">
-<summary><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.5 2.27 20 10.14 6.5 18l-1-1.73 10.53-6.13L5.5 4l1-1.73M20 20v2H5v-2h15Z"/></svg></span> OpenSSH 9.0</summary>
-<p>If your <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m4.1 15c-.19 0-.34-.1-.55-.27l-5.16-4.17-1.73 4.34H7.17l4.37-10.51c.11-.28.35-.42.63-.42s.5.14.62.42l3.98 9.58c.04.11.07.22.07.29-.01.42-.34.74-.74.74m-3.93-8.89 2.59 6.39-3.91-3.08 1.32-3.31Z"/></svg></span> <a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/ssh_connection.html#parameter-scp_if_ssh">Ansible</a> control node uses OpenSSH 9.0 or higher, you must add an additional option to enable <code>scp</code>.</p>
-<ol>
-<li>
-<p>Check the OpenSSH version:</p>
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-V
-</code></pre></div>
-</li>
-<li>
-<p>If the version is 9.0 or higher, add the following to your the <code>ansible/ansible.cfg</code> file:</p>
-<div class="highlight"><pre><span></span><code>[ssh_connection]
-scp_extra_args = &quot;-O&quot;
-</code></pre></div>
-</li>
-</ol>
-</details>
 <h2 id="packer"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.844 0v3.38l5.75 3.32v10.148l2.705 1.552c1.676.967 3.045.388 3.045-1.285V9.668c-.014-1.687-1.382-3.832-3.059-4.799L7.844 0zM4.656 2.932v16.574L12.436 24V7.426l-7.78-4.494Z"/></svg></span> &nbsp; Packer<a class="headerlink" href="#packer" title="Permanent link">&para;</a></h2>
 <h3 id="packer-cli"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.25 12a.75.75 0 0 1-.22.53l-2.75 2.75a.75.75 0 0 1-1.06-1.06L7.44 12 5.22 9.78a.75.75 0 1 1 1.06-1.06l2.75 2.75c.141.14.22.331.22.53Zm2 2a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5h-5Z"/><path d="M0 4.75C0 3.784.784 3 1.75 3h20.5c.966 0 1.75.784 1.75 1.75v14.5A1.75 1.75 0 0 1 22.25 21H1.75A1.75 1.75 0 0 1 0 19.25Zm1.75-.25a.25.25 0 0 0-.25.25v14.5c0 .138.112.25.25.25h20.5a.25.25 0 0 0 .25-.25V4.75a.25.25 0 0 0-.25-.25Z"/></svg></span> &nbsp; Packer CLI<a class="headerlink" href="#packer-cli" title="Permanent link">&para;</a></h3>
 <p>HashiCorp <a href="https://developer.hashicorp.com/packer/tutorials/docker-get-started/get-started-install-cli">Packer</a> 1.9.4 or higher.</p>
@@ -1352,7 +1379,7 @@ brew<span class="w"> </span>install<span class="w"> </span>git<span class="w"> <
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-10-19T19:17:13+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-01T01:47:10+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-01</span>
       
     
   </small>
@@ -1426,7 +1453,9 @@ brew<span class="w"> </span>install<span class="w"> </span>git<span class="w"> <
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2023 - VMware, Inc.
+      Copyright &copy; 2023 Broadcom. All rights reserved.<br/>
+The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.<br/><br/>
+
     </div>
   
   
@@ -1450,7 +1479,7 @@ brew<span class="w"> </span>install<span class="w"> </span>git<span class="w"> <
     <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.header", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      <script src="../../assets/javascripts/bundle.cd18aaf1.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       

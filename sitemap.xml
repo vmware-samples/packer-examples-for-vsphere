@@ -2,77 +2,77 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://vmware-samples.github.io/packer-examples-for-vsphere/</loc>
-         <lastmod>2023-10-23</lastmod>
+         <lastmod>2023-11-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vmware-samples.github.io/packer-examples-for-vsphere/license/</loc>
-         <lastmod>2023-10-23</lastmod>
+         <lastmod>2023-11-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vmware-samples.github.io/packer-examples-for-vsphere/release-notes/</loc>
-         <lastmod>2023-10-23</lastmod>
+         <lastmod>2023-11-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vmware-samples.github.io/packer-examples-for-vsphere/community/</loc>
-         <lastmod>2023-10-23</lastmod>
+         <lastmod>2023-11-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vmware-samples.github.io/packer-examples-for-vsphere/community/code-of-conduct/</loc>
-         <lastmod>2023-10-23</lastmod>
+         <lastmod>2023-11-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vmware-samples.github.io/packer-examples-for-vsphere/community/contributing/</loc>
-         <lastmod>2023-10-23</lastmod>
+         <lastmod>2023-11-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vmware-samples.github.io/packer-examples-for-vsphere/community/support/</loc>
-         <lastmod>2023-10-23</lastmod>
+         <lastmod>2023-11-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vmware-samples.github.io/packer-examples-for-vsphere/getting-started/build/</loc>
-         <lastmod>2023-10-23</lastmod>
+         <lastmod>2023-11-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vmware-samples.github.io/packer-examples-for-vsphere/getting-started/configuration/</loc>
-         <lastmod>2023-10-23</lastmod>
+         <lastmod>2023-11-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vmware-samples.github.io/packer-examples-for-vsphere/getting-started/download/</loc>
-         <lastmod>2023-10-23</lastmod>
+         <lastmod>2023-11-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vmware-samples.github.io/packer-examples-for-vsphere/getting-started/faq/</loc>
-         <lastmod>2023-10-23</lastmod>
+         <lastmod>2023-11-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vmware-samples.github.io/packer-examples-for-vsphere/getting-started/gitlab-ci-cd/</loc>
-         <lastmod>2023-10-23</lastmod>
+         <lastmod>2023-11-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vmware-samples.github.io/packer-examples-for-vsphere/getting-started/iso/</loc>
-         <lastmod>2023-10-23</lastmod>
+         <lastmod>2023-11-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vmware-samples.github.io/packer-examples-for-vsphere/getting-started/privileges/</loc>
-         <lastmod>2023-10-23</lastmod>
+         <lastmod>2023-11-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://vmware-samples.github.io/packer-examples-for-vsphere/getting-started/requirements/</loc>
-         <lastmod>2023-10-23</lastmod>
+         <lastmod>2023-11-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

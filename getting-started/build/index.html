@@ -9,7 +9,7 @@
         <meta name="description" content="Packer Examples for VMware vSphere">
       
       
-        <meta name="author" content="VMware, Inc.">
+        <meta name="author" content="Broadcom">
       
       
         <link rel="canonical" href="https://vmware-samples.github.io/packer-examples-for-vsphere/getting-started/build/">
@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.14">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.35e1ed30.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.fad675c6.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
@@ -343,6 +343,7 @@
   
   
   
+  
     
     
       
@@ -404,6 +405,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../../release-notes/" class="md-nav__link">
         
@@ -424,6 +426,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/milestones" class="md-nav__link">
         
@@ -441,6 +444,7 @@
             
               
                 
+  
   
   
   
@@ -471,6 +475,7 @@
   
   
     
+  
   
   
     
@@ -530,6 +535,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../requirements/" class="md-nav__link">
         
@@ -549,6 +555,7 @@
             
               
                 
+  
   
   
   
@@ -574,6 +581,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../iso/" class="md-nav__link">
         
@@ -593,6 +601,7 @@
             
               
                 
+  
   
   
   
@@ -618,6 +627,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../configuration/" class="md-nav__link">
         
@@ -640,6 +650,7 @@
   
   
     
+  
   
   
     <li class="md-nav__item md-nav__item--active">
@@ -692,14 +703,18 @@
       
         <li class="md-nav__item">
   <a href="#build-script-options" class="md-nav__link">
-    Build Script Options
+    <span class="md-ellipsis">
+      Build Script Options
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#using-the-build-script" class="md-nav__link">
-    Using the Build Script
+    <span class="md-ellipsis">
+      Using the Build Script
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Using the Build Script">
@@ -707,14 +722,18 @@
         
           <li class="md-nav__item">
   <a href="#build-with-defaults" class="md-nav__link">
-    Build with Defaults
+    <span class="md-ellipsis">
+      Build with Defaults
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#build-a-specific-configuration" class="md-nav__link">
-    Build a Specific Configuration
+    <span class="md-ellipsis">
+      Build a Specific Configuration
+    </span>
   </a>
   
 </li>
@@ -726,21 +745,27 @@
       
         <li class="md-nav__item">
   <a href="#generate-a-custom-build-script" class="md-nav__link">
-    Generate a Custom Build Script
+    <span class="md-ellipsis">
+      Generate a Custom Build Script
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#build-directly-with-packer" class="md-nav__link">
-    Build Directly with Packer
+    <span class="md-ellipsis">
+      Build Directly with Packer
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#build-with-environmental-variables" class="md-nav__link">
-    Build with Environmental Variables
+    <span class="md-ellipsis">
+      Build with Environmental Variables
+    </span>
   </a>
   
 </li>
@@ -756,6 +781,7 @@
             
               
                 
+  
   
   
   
@@ -778,6 +804,7 @@
             
               
                 
+  
   
   
   
@@ -807,6 +834,7 @@
     
       
       
+  
   
   
   
@@ -863,6 +891,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../../community/contributing/" class="md-nav__link">
         
@@ -880,6 +909,7 @@
             
               
                 
+  
   
   
   
@@ -903,6 +933,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/issues" class="md-nav__link">
         
@@ -920,6 +951,7 @@
             
               
                 
+  
   
   
   
@@ -943,6 +975,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../../community/support/" class="md-nav__link">
         
@@ -960,6 +993,7 @@
             
               
                 
+  
   
   
   
@@ -1013,14 +1047,18 @@
       
         <li class="md-nav__item">
   <a href="#build-script-options" class="md-nav__link">
-    Build Script Options
+    <span class="md-ellipsis">
+      Build Script Options
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#using-the-build-script" class="md-nav__link">
-    Using the Build Script
+    <span class="md-ellipsis">
+      Using the Build Script
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Using the Build Script">
@@ -1028,14 +1066,18 @@
         
           <li class="md-nav__item">
   <a href="#build-with-defaults" class="md-nav__link">
-    Build with Defaults
+    <span class="md-ellipsis">
+      Build with Defaults
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#build-a-specific-configuration" class="md-nav__link">
-    Build a Specific Configuration
+    <span class="md-ellipsis">
+      Build a Specific Configuration
+    </span>
   </a>
   
 </li>
@@ -1047,21 +1089,27 @@
       
         <li class="md-nav__item">
   <a href="#generate-a-custom-build-script" class="md-nav__link">
-    Generate a Custom Build Script
+    <span class="md-ellipsis">
+      Generate a Custom Build Script
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#build-directly-with-packer" class="md-nav__link">
-    Build Directly with Packer
+    <span class="md-ellipsis">
+      Build Directly with Packer
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#build-with-environmental-variables" class="md-nav__link">
-    Build with Environmental Variables
+    <span class="md-ellipsis">
+      Build with Environmental Variables
+    </span>
   </a>
   
 </li>
@@ -1244,7 +1292,9 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2023 - VMware, Inc.
+      Copyright &copy; 2023 Broadcom. All rights reserved.<br/>
+The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.<br/><br/>
+
     </div>
   
   
@@ -1268,7 +1318,7 @@
     <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.header", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      <script src="../../assets/javascripts/bundle.cd18aaf1.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       

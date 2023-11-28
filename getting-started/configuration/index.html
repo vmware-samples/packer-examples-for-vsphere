@@ -9,7 +9,7 @@
         <meta name="description" content="Packer Examples for VMware vSphere">
       
       
-        <meta name="author" content="VMware, Inc.">
+        <meta name="author" content="Broadcom">
       
       
         <link rel="canonical" href="https://vmware-samples.github.io/packer-examples-for-vsphere/getting-started/configuration/">
@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.14">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.35e1ed30.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.fad675c6.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
@@ -343,6 +343,7 @@
   
   
   
+  
     
     
       
@@ -404,6 +405,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../../release-notes/" class="md-nav__link">
         
@@ -424,6 +426,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/milestones" class="md-nav__link">
         
@@ -441,6 +444,7 @@
             
               
                 
+  
   
   
   
@@ -471,6 +475,7 @@
   
   
     
+  
   
   
     
@@ -530,6 +535,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../requirements/" class="md-nav__link">
         
@@ -549,6 +555,7 @@
             
               
                 
+  
   
   
   
@@ -574,6 +581,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../iso/" class="md-nav__link">
         
@@ -593,6 +601,7 @@
             
               
                 
+  
   
   
   
@@ -618,6 +627,7 @@
   
   
     
+  
   
   
     <li class="md-nav__item md-nav__item--active">
@@ -670,14 +680,18 @@
       
         <li class="md-nav__item">
   <a href="#example-variables" class="md-nav__link">
-    Example Variables
+    <span class="md-ellipsis">
+      Example Variables
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#configuration-variables" class="md-nav__link">
-    Configuration Variables
+    <span class="md-ellipsis">
+      Configuration Variables
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Configuration Variables">
@@ -685,70 +699,90 @@
         
           <li class="md-nav__item">
   <a href="#build" class="md-nav__link">
-    Build
+    <span class="md-ellipsis">
+      Build
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#ansible" class="md-nav__link">
-    Ansible
+    <span class="md-ellipsis">
+      Ansible
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#common" class="md-nav__link">
-    Common
+    <span class="md-ellipsis">
+      Common
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#data-source" class="md-nav__link">
-    Data Source
+    <span class="md-ellipsis">
+      Data Source
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#http-binding" class="md-nav__link">
-    HTTP Binding
+    <span class="md-ellipsis">
+      HTTP Binding
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#proxy" class="md-nav__link">
-    Proxy
+    <span class="md-ellipsis">
+      Proxy
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#red-hat-subscription-manager" class="md-nav__link">
-    Red Hat Subscription Manager
+    <span class="md-ellipsis">
+      Red Hat Subscription Manager
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#suse-customer-connect" class="md-nav__link">
-    SUSE Customer Connect
+    <span class="md-ellipsis">
+      SUSE Customer Connect
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#vmware-vsphere" class="md-nav__link">
-    VMware vSphere
+    <span class="md-ellipsis">
+      VMware vSphere
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#machine-images" class="md-nav__link">
-    Machine Images
+    <span class="md-ellipsis">
+      Machine Images
+    </span>
   </a>
   
 </li>
@@ -769,6 +803,7 @@
             
               
                 
+  
   
   
   
@@ -794,6 +829,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../gitlab-ci-cd/" class="md-nav__link">
         
@@ -813,6 +849,7 @@
             
               
                 
+  
   
   
   
@@ -842,6 +879,7 @@
     
       
       
+  
   
   
   
@@ -898,6 +936,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../../community/contributing/" class="md-nav__link">
         
@@ -915,6 +954,7 @@
             
               
                 
+  
   
   
   
@@ -938,6 +978,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/issues" class="md-nav__link">
         
@@ -955,6 +996,7 @@
             
               
                 
+  
   
   
   
@@ -978,6 +1020,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../../community/support/" class="md-nav__link">
         
@@ -995,6 +1038,7 @@
             
               
                 
+  
   
   
   
@@ -1048,14 +1092,18 @@
       
         <li class="md-nav__item">
   <a href="#example-variables" class="md-nav__link">
-    Example Variables
+    <span class="md-ellipsis">
+      Example Variables
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#configuration-variables" class="md-nav__link">
-    Configuration Variables
+    <span class="md-ellipsis">
+      Configuration Variables
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Configuration Variables">
@@ -1063,70 +1111,90 @@
         
           <li class="md-nav__item">
   <a href="#build" class="md-nav__link">
-    Build
+    <span class="md-ellipsis">
+      Build
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#ansible" class="md-nav__link">
-    Ansible
+    <span class="md-ellipsis">
+      Ansible
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#common" class="md-nav__link">
-    Common
+    <span class="md-ellipsis">
+      Common
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#data-source" class="md-nav__link">
-    Data Source
+    <span class="md-ellipsis">
+      Data Source
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#http-binding" class="md-nav__link">
-    HTTP Binding
+    <span class="md-ellipsis">
+      HTTP Binding
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#proxy" class="md-nav__link">
-    Proxy
+    <span class="md-ellipsis">
+      Proxy
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#red-hat-subscription-manager" class="md-nav__link">
-    Red Hat Subscription Manager
+    <span class="md-ellipsis">
+      Red Hat Subscription Manager
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#suse-customer-connect" class="md-nav__link">
-    SUSE Customer Connect
+    <span class="md-ellipsis">
+      SUSE Customer Connect
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#vmware-vsphere" class="md-nav__link">
-    VMware vSphere
+    <span class="md-ellipsis">
+      VMware vSphere
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#machine-images" class="md-nav__link">
-    Machine Images
+    <span class="md-ellipsis">
+      Machine Images
+    </span>
   </a>
   
 </li>
@@ -1325,12 +1393,13 @@ Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </
 <span class="na">common_iso_datastore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-cl01-ds-nfs01&quot;</span>
 
 <span class="c1">// Boot and Provisioning Settings</span>
-<span class="na">common_data_source</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;http&quot;</span>
-<span class="na">common_http_ip</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="kt">null</span>
-<span class="na">common_http_port_min</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="m">8000</span>
-<span class="na">common_http_port_max</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="m">8099</span>
-<span class="na">common_ip_wait_timeout</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;20m&quot;</span>
-<span class="na">common_shutdown_timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;15m&quot;</span>
+<span class="na">common_data_source</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;http&quot;</span>
+<span class="na">common_http_ip</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="kt">null</span>
+<span class="na">common_http_port_min</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">8000</span>
+<span class="na">common_http_port_max</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">8099</span>
+<span class="na">common_ip_wait_timeout</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;20m&quot;</span>
+<span class="na">common_ip_settle_timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;5s&quot;</span>
+<span class="na">common_shutdown_timeout</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;15m&quot;</span>
 
 <span class="c1">// HCP Packer</span>
 <span class="na">common_hcp_packer_registry_enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
@@ -1385,16 +1454,18 @@ Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </
 <li>vSphere Endpoint and Credentials</li>
 <li>vSphere Settings</li>
 </ul>
-<div class="highlight"><span class="filename">config/vsphere.pkrvars.hcl</span><pre><span></span><code><span class="na">vsphere_endpoint</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-vc01.sfo.example.com&quot;</span>
-<span class="na">vsphere_username</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;svc-packer-vsphere@example.com&quot;</span>
-<span class="na">vsphere_password</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;plaintext_password&gt;&quot;</span>
-<span class="na">vsphere_insecure_connection</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="na">vsphere_datacenter</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-dc01&quot;</span>
-<span class="na">vsphere_cluster</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-cl01&quot;</span>
-<span class="c1">//vsphere_host               = &quot;sfo-w01-esx01&quot;</span>
-<span class="na">vsphere_datastore</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-cl01-ds-vsan01&quot;</span>
-<span class="na">vsphere_network</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-seg-dhcp&quot;</span>
-<span class="na">vsphere_folder</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-fd-templates&quot;</span>
+<div class="highlight"><span class="filename">config/vsphere.pkrvars.hcl</span><pre><span></span><code><span class="na">vsphere_endpoint</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-vc01.sfo.example.com&quot;</span>
+<span class="na">vsphere_username</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;svc-packer-vsphere@example.com&quot;</span>
+<span class="na">vsphere_password</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;plaintext_password&gt;&quot;</span>
+<span class="na">vsphere_insecure_connection</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="na">vsphere_datacenter</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-dc01&quot;</span>
+<span class="na">vsphere_cluster</span><span class="w">                          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-cl01&quot;</span>
+<span class="c1">//vsphere_host                           = &quot;sfo-w01-esx01&quot;</span>
+<span class="na">vsphere_datastore</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-cl01-ds-vsan01&quot;</span>
+<span class="na">vsphere_network</span><span class="w">                          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-seg-dhcp&quot;</span>
+<span class="na">vsphere_folder</span><span class="w">                           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-fd-templates&quot;</span>
+<span class="c1">//vsphere_resource_pool                  = &quot;sfo-w01-rp01&quot;</span>
+<span class="na">vsphere_set_host_for_datastore_uploads</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
 </code></pre></div>
 <details class="- note">
 <summary>vSphere DRs Disabled or Standalone ESXi Hosts</summary>
@@ -1484,7 +1555,7 @@ Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-10-13T02:03:59+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-13</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-10T15:44:42+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
       
     
   </small>
@@ -1558,7 +1629,9 @@ Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2023 - VMware, Inc.
+      Copyright &copy; 2023 Broadcom. All rights reserved.<br/>
+The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.<br/><br/>
+
     </div>
   
   
@@ -1582,7 +1655,7 @@ Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </
     <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.header", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      <script src="../../assets/javascripts/bundle.cd18aaf1.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       

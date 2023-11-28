@@ -1,4 +1,4 @@
-# Copyright 2023 VMware, Inc. All rights reserved.
+# Copyright 2023 Broadcom. All Rights Reserved.
 # SPDX-License-Identifier: BSD-2
 
 FROM mcr.microsoft.com/devcontainers/base:ubuntu-22.04

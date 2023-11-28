@@ -1,7 +1,5 @@
 # Support
 
-This project is **not supported** by VMware Support Services.
-
 We welcome you to use the GitHub [issues][issues] tracker to report bugs or suggest features and enhancements.
 
 When filing an issue, please check existing open, or recently closed, issues to make sure someone else hasn't already

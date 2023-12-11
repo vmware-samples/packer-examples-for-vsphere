@@ -49,5 +49,5 @@
   lineinfile:
     dest: /etc/rc.local
     create: true
-    line: "#!/bin/bash\ntest -f /etc/ssh/ssh_host_dsa_key || dpkg-reconfigure openssh-server\nexit 0\n"
+    line: "#!/bin/bash\nif test -z \"$(find /etc/ssh/ -iname 'ssh_host_*_key*')\"; then\n    dpkg-reconfigure openssh-server\nfi\nexit 0\n"
     mode: '0755'

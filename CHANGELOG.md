@@ -9,6 +9,8 @@
 - Adds Windows Server 2025 Insiders Preview (US English) release. [GH-834](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/834)
 - Adds templates with unit tests for managing custom network and storage configurations for Linux Distributions. [GH-473](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/473), [GH-805](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/805)
 - Adds additional configuration to install packages for Linux Distributions. [GH-800](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/800)
+- Add support for Ansible integration for Windows Server 2025, 2022, and 2019 images. [GH-801](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/801)
+- Add support for Ansible integration for Windows 11 and 10 images. [GH-801](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/801)
 
 :sweat_drops: **Chore**:
 

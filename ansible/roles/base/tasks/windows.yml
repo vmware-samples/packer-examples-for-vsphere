@@ -1,0 +1,22 @@
+---
+# Windows
+
+- name: "Updating the operating system."
+  ansible.windows.win_updates:
+    category_names:
+      - SecurityUpdates
+      - CriticalUpdates
+    reject_list:
+      - 5034439
+    reboot: true
+
+- name: "Installing additional packages using Chocolatey."
+  win_chocolatey:
+    name:
+      - googlechrome
+      - putty
+      - winscp
+      - 7zip
+    state: latest
+    ignore_checksums: true
+  when: ansible_os_installation_type != "Server Core"

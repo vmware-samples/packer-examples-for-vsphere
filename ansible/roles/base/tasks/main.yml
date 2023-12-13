@@ -2,3 +2,7 @@
 - name: "{{ task_name }}"
   include_tasks: linux.yml
   when: ansible_os_family in ['Debian', 'RedHat', 'Suse'] or ansible_distribution == 'VMware Photon OS'
+
+- name: "{{ task_name }}"
+  include_tasks: windows.yml
+  when: ansible_os_family == "Windows"

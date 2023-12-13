@@ -1,0 +1,7 @@
+---
+- debugger: never
+  gather_facts: true
+  hosts: all
+  roles:
+    - base
+    - configure

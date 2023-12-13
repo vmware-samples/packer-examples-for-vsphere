@@ -17,13 +17,13 @@ packer {
       source  = "github.com/hashicorp/vsphere"
       version = ">= 1.2.4"
     }
-    windows-update = {
-      source  = "github.com/rgl/windows-update"
-      version = ">= 0.15.0"
-    }
     git = {
       source  = "github.com/ethanmdavidson/git"
       version = ">= 0.6.1"
+    }
+    ansible = {
+      source  = "github.com/hashicorp/ansible"
+      version = ">= 1.1.0"
     }
   }
 }
@@ -279,31 +279,29 @@ build {
   ]
 
   provisioner "powershell" {
-    environment_vars = [
-      "BUILD_USERNAME=${var.build_username}"
-    ]
-    elevated_user     = var.build_username
-    elevated_password = var.build_password
-    scripts           = formatlist("${path.cwd}/%s", var.scripts)
-  }
-
-  provisioner "powershell" {
     elevated_user     = var.build_username
     elevated_password = var.build_password
     inline            = var.inline
   }
 
-  provisioner "windows-update" {
-    pause_before    = "30s"
-    search_criteria = "IsInstalled=0"
-    filters = [
-      "exclude:$_.Title -like '*VMware*'",
-      "exclude:$_.Title -like '*Preview*'",
-      "exclude:$_.Title -like '*Defender*'",
-      "exclude:$_.InstallationBehavior.CanRequestUserInput",
-      "include:$true"
+  provisioner "ansible" {
+    user                   = var.build_username
+    galaxy_file            = "${path.cwd}/ansible/windows-requirements.yml"
+    galaxy_force_with_deps = true
+    use_proxy              = false
+    playbook_file          = "${path.cwd}/ansible/windows-playbook.yml"
+    roles_path             = "${path.cwd}/ansible/roles"
+    ansible_env_vars = [
+      "ANSIBLE_CONFIG=${path.cwd}/ansible/ansible.cfg"
     ]
-    restart_timeout = "120m"
+    extra_arguments = [
+      "--extra-vars", "use_proxy=false",
+      "--extra-vars", "ansible_connection=winrm",
+      "--extra-vars", "ansible_user='${var.build_username}'",
+      "--extra-vars", "ansible_password='${var.build_password}'",
+      "--extra-vars", "ansible_port='${var.communicator_port}'",
+      "--extra-vars", "build_username='${var.build_username}'",
+    ]
   }
 
   post-processor "manifest" {

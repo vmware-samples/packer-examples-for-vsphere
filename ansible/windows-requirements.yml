@@ -1,0 +1,8 @@
+---
+collections:
+  - name: ansible.windows
+    version: 2.2.0
+  - name: chocolatey.chocolatey
+    version: 1.5.1
+  - name: community.general
+    version: 7.5.0

@@ -1,8 +1,6 @@
 # Copyright 2023 Broadcom. All rights reserved.
 # SPDX-License-Identifier: BSD-2
 
-
-
 ##############################################################################
 ##
 ## Auto-generated .gitlab-ci.yml for building Packer Example for vSphere
@@ -68,6 +66,13 @@ Debian-11:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/linux/debian/11/"
+
+##############################################################################
+
+Ubuntu-Server-23.10:
+    extends: .packer-build
+    variables:
+        INPUT_PATH: "$SCRIPT_PATH/builds/linux/ubuntu/23-10/"
         EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
 
 ##############################################################################

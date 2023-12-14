@@ -283,32 +283,6 @@ communicator_proxy_username = "example"
 communicator_proxy_password = "<plaintext_password>"
 ```
 
-### Red Hat Subscription Manager
-
-Edit the `config/redhat.pkrvars.hcl` file to configure the credentials for your Red Hat Subscription Manager account.
-
-```hcl title="config/redhat.pkrvars.hcl"
-rhsm_username = "example"
-rhsm_password = "<plaintext_password>"
-```
-
-These variables are **only** used if you are performing a Red Hat Enterprise Linux Server build and are used to register the image with Red Hat Subscription Manager during the build for system updates and package installation.
-
-Before the build completes, the machine image is unregistered from Red Hat Subscription Manager.
-
-### SUSE Customer Connect
-
-Edit the `config/scc.pkrvars.hcl` file to configure the following credentials for your SUSE Customer Connect account.
-
-```hcl title="config/scc.pkrvars.hcl"
-scc_email = "hello@example.com"
-scc_code  = "<plaintext_code>"
-```
-
-These variables are **only** used if you are performing a SUSE Linux Enterprise Server build and are used to register the image with SUSE Customer Connect during the build for system updates and package installation.
-
-Before the build completes, the machine image is unregistered from SUSE Customer Connect.
-
 ### VMware vSphere
 
 Edit the `builds/vsphere.pkrvars.hcl` file to configure the following:
@@ -424,7 +398,41 @@ communicator_timeout = "30m"
     - [VMXNET 3][vmware-vmxnet3] network card device
     - EFI Secure Boot firmware
 
-### Network
+### Linux Specific
+
+#### Red Hat Subscription Manager
+
+Edit the `config/redhat.pkrvars.hcl` file to configure the credentials for your Red Hat Subscription Manager account.
+
+```hcl title="config/redhat.pkrvars.hcl"
+rhsm_username = "example"
+rhsm_password = "<plaintext_password>"
+```
+
+These variables are **only** used if you are performing a Red Hat Enterprise Linux Server build and are used to register the image with Red Hat Subscription Manager during the build for system updates and package installation.
+
+Before the build completes, the machine image is unregistered from Red Hat Subscription Manager.
+
+#### SUSE Customer Connect
+
+Edit the `config/scc.pkrvars.hcl` file to configure the following credentials for your SUSE Customer Connect account.
+
+```hcl title="config/scc.pkrvars.hcl"
+scc_email = "hello@example.com"
+scc_code  = "<plaintext_code>"
+```
+
+These variables are **only** used if you are performing a SUSE Linux Enterprise Server build and are used to register the image with SUSE Customer Connect during the build for system updates and package installation.
+
+Before the build completes, the machine image is unregistered from SUSE Customer Connect.
+
+#### Network Customization
+
+!!! note
+
+    Static IP assignment is available for certain Linux machine images.
+
+    For details on which distributions are compatible, please refer to the [Linux Distributions] table.
 
 Edit the `config/network.pkrvars.hcl` file to configure a static IP address:
 
@@ -440,12 +448,13 @@ vm_ip_gateway = "172.16.100.1"
 vm_dns_list   = [ "172.16.11.4", "172.16.11.5" ]
 ```
 
+#### Storage Customization
+
 !!! note
 
-    Static IP assignment is available for certain Linux machine images.
-    For details on which distributions are compatible, please refer to the [Linux Distributions] table.
+    Storage settings are available for certain Linux machine images.
 
-### Linux Storage
+    For details on which distributions are compatible, please refer to the [Linux Distributions] table.
 
 Edit the `config/linux-storage.pkrvars.hcl` file to configure a partitioning scheme:
 
@@ -499,11 +508,6 @@ vm_disk_partitions = [
 ]
 vm_disk_lvm = []
 ```
-
-!!! note
-
-    Storage settings are available for certain Linux machine images.
-    For details on which distributions are compatible, please refer to the [Linux Distributions] table.
 
 [//]: Links
 [packer-variables]: https://developer.hashicorp.com/packer/docs/templates/hcl_templates/variables

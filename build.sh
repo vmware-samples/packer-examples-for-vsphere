@@ -203,8 +203,6 @@ menu_option_4() {
       -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
-      -var-file="$CONFIG_PATH/linux-storage.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/$BUILD_VARS" \
       "$INPUT_PATH"
 
@@ -214,6 +212,9 @@ menu_option_4() {
 
 menu_option_5() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/ubuntu/23-10/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a Ubuntu Server 23.10 (cloud-init) Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -237,6 +238,9 @@ menu_option_5() {
       -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/linux-storage.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/$BUILD_VARS" \
       "$INPUT_PATH"
 
   ### Build Complete. ###
@@ -244,6 +248,43 @@ menu_option_5() {
 }
 
 menu_option_6() {
+  INPUT_PATH="$SCRIPT_PATH"/builds/linux/ubuntu/23-10/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
+  echo -e "\nCONFIRM: Build a Ubuntu Server 23.10 (cloud-init) Template for VMware vSphere?"
+  echo -e "\nContinue? (y/n)"
+  read -r REPLY
+  if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    exit 1
+  fi
+
+  ### Build a Ubuntu Server 23.10 (cloud-init) Template for VMware vSphere. ###
+  echo "Building a Ubuntu Server 23.10 (cloud-init) Template for VMware vSphere..."
+
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
+  packer init "$INPUT_PATH"
+
+  ### Start the Build. ###
+  echo "Starting the build...."
+  echo "packer build -force -on-error=ask $debug_option"
+  packer build -force -on-error=ask $debug_option \
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/linux-storage.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/$BUILD_VARS" \
+      "$INPUT_PATH"
+
+  ### Build Complete. ###
+  echo "Build Complete."
+}
+
+menu_option_7() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/ubuntu/22-04-lts/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -280,7 +321,7 @@ menu_option_6() {
   echo "Build Complete."
 }
 
-menu_option_7() {
+menu_option_8() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/ubuntu/20-04-lts/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -317,7 +358,7 @@ menu_option_7() {
   echo "Build Complete."
 }
 
-menu_option_8() {
+menu_option_9() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/rhel/9/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -355,7 +396,7 @@ menu_option_8() {
   echo "Build Complete."
 }
 
-menu_option_9() {
+menu_option_10() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/rhel/8/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -393,7 +434,7 @@ menu_option_9() {
   echo "Build Complete."
 }
 
-menu_option_10() {
+menu_option_11() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/rhel/7/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -431,7 +472,7 @@ menu_option_10() {
   echo "Build Complete."
 }
 
-menu_option_11() {
+menu_option_12() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/almalinux/9/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -468,7 +509,7 @@ menu_option_11() {
   echo "Build Complete."
 }
 
-menu_option_12() {
+menu_option_13() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/almalinux/8/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -505,7 +546,7 @@ menu_option_12() {
   echo "Build Complete."
 }
 
-menu_option_13() {
+menu_option_14() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/rocky/9/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -542,7 +583,7 @@ menu_option_13() {
   echo "Build Complete."
 }
 
-menu_option_14() {
+menu_option_15() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/rocky/8/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -579,8 +620,11 @@ menu_option_14() {
   echo "Build Complete."
 }
 
-menu_option_15() {
+menu_option_16() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/oracle/9/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a Oracle Linux 9 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -604,14 +648,20 @@ menu_option_15() {
       -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/linux-storage.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/$BUILD_VARS" \
       "$INPUT_PATH"
 
   ### Build Complete. ###
   echo "Build Complete."
 }
 
-menu_option_16() {
+menu_option_17() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/oracle/8/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a Oracle Linux 8 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -635,13 +685,16 @@ menu_option_16() {
       -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/linux-storage.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/$BUILD_VARS" \
       "$INPUT_PATH"
 
   ### Build Complete. ###
   echo "Build Complete."
 }
 
-menu_option_17() {
+menu_option_18() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos/9-stream/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -678,7 +731,7 @@ menu_option_17() {
   echo "Build Complete."
 }
 
-menu_option_18() {
+menu_option_19() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos/8-stream/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -715,7 +768,7 @@ menu_option_18() {
   echo "Build Complete."
 }
 
-menu_option_19() {
+menu_option_20() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos/7/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -752,7 +805,7 @@ menu_option_19() {
   echo "Build Complete."
 }
 
-menu_option_20() {
+menu_option_21() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/sles/15/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -789,7 +842,7 @@ menu_option_20() {
 }
 
 
-menu_option_21() {
+menu_option_22() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2022/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -822,7 +875,7 @@ menu_option_21() {
   echo "Build Complete."
 }
 
-menu_option_22() {
+menu_option_23() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2022/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -856,7 +909,7 @@ menu_option_22() {
   echo "Build Complete."
 }
 
-menu_option_23() {
+menu_option_24() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2022/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -890,7 +943,7 @@ menu_option_23() {
   echo "Build Complete."
 }
 
-menu_option_24() {
+menu_option_25() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2019/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -923,7 +976,7 @@ menu_option_24() {
   echo "Build Complete."
 }
 
-menu_option_25() {
+menu_option_26() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2019/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -957,7 +1010,7 @@ menu_option_25() {
   echo "Build Complete."
 }
 
-menu_option_26() {
+menu_option_27() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2019/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -991,8 +1044,11 @@ menu_option_26() {
   echo "Build Complete."
 }
 
-menu_option_27() {
+menu_option_28() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/11/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build all Windows 11 Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -1021,8 +1077,11 @@ menu_option_27() {
   echo "Build Complete."
 }
 
-menu_option_28() {
+menu_option_29() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/11/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a Windows 11 - Enterprise Only Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -1052,8 +1111,11 @@ menu_option_28() {
   echo "Build Complete."
 }
 
-menu_option_29() {
+menu_option_30() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/11/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a Windows 11 - Professional Only Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -1076,14 +1138,18 @@ menu_option_29() {
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/$BUILD_VARS" \
       "$INPUT_PATH"
 
   ### Build Complete. ###
   echo "Build Complete."
 }
 
-menu_option_30() {
+menu_option_31() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/10/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build all Windows 10 Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -1105,14 +1171,18 @@ menu_option_30() {
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/$BUILD_VARS" \
       "$INPUT_PATH"
 
   ### Build Complete. ###
   echo "Build Complete."
 }
 
-menu_option_31() {
+menu_option_32() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/10/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a Windows 10 - Enterprise Only Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -1135,14 +1205,18 @@ menu_option_31() {
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/$BUILD_VARS" \
       "$INPUT_PATH"
 
   ### Build Complete. ###
   echo "Build Complete."
 }
 
-menu_option_32() {
+menu_option_33() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/10/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a Windows 10 - Professional Only Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -1165,6 +1239,7 @@ menu_option_32() {
       -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/$BUILD_VARS" \
       "$INPUT_PATH"
 
   ### Build Complete. ###
@@ -1204,36 +1279,37 @@ until [ "$selection" = "0" ]; do
   echo "    	 3  -  Debian 12"
   echo "    	 4  -  Debian 11"
   echo "    	 5  -  Ubuntu Server 23.10 (cloud-init)"
-  echo "    	 6  -  Ubuntu Server 22.04 LTS (cloud-init)"
-  echo "    	 7  -  Ubuntu Server 20.04 LTS (cloud-init)"
-  echo "    	 8  -  Red Hat Enterprise Linux 9"
-  echo "    	 9  -  Red Hat Enterprise Linux 8"
-  echo "    	10  -  Red Hat Enterprise Linux 7"
-  echo "    	11  -  AlmaLinux OS 9"
-  echo "    	12  -  AlmaLinux OS 8"
-  echo "    	13  -  Rocky Linux 9"
-  echo "    	14  -  Rocky Linux 8"
-  echo "    	15  -  Oracle Linux 9"
-  echo "    	16  -  Oracle Linux 8"
-  echo "    	17  -  CentOS Stream 9"
-  echo "    	18  -  CentOS Stream 8"
-  echo "    	19  -  CentOS Linux 7"
-  echo "    	20  -  SUSE Linux Enterprise Server 15"
+  echo "    	 6  -  Ubuntu Server 23.10 (cloud-init)"
+  echo "    	 7  -  Ubuntu Server 22.04 LTS (cloud-init)"
+  echo "    	 8  -  Ubuntu Server 20.04 LTS (cloud-init)"
+  echo "    	 9  -  Red Hat Enterprise Linux 9"
+  echo "    	10  -  Red Hat Enterprise Linux 8"
+  echo "    	11  -  Red Hat Enterprise Linux 7"
+  echo "    	12  -  AlmaLinux OS 9"
+  echo "    	13  -  AlmaLinux OS 8"
+  echo "    	14  -  Rocky Linux 9"
+  echo "    	15  -  Rocky Linux 8"
+  echo "    	16  -  Oracle Linux 9"
+  echo "    	17  -  Oracle Linux 8"
+  echo "    	18  -  CentOS Stream 9"
+  echo "    	19  -  CentOS Stream 8"
+  echo "    	20  -  CentOS Linux 7"
+  echo "    	21  -  SUSE Linux Enterprise Server 15"
   echo ""
   echo "      Microsoft Windows:"
   echo ""
-  echo "    	21  -  Windows Server 2022 - All"
-  echo "    	22  -  Windows Server 2022 - Standard Only"
-  echo "    	23  -  Windows Server 2022 - Datacenter Only"
-  echo "    	24  -  Windows Server 2019 - All"
-  echo "    	25  -  Windows Server 2019 - Standard Only"
-  echo "    	26  -  Windows Server 2019 - Datacenter Only"
-  echo "    	27  -  Windows 11 - All"
-  echo "    	28  -  Windows 11 - Enterprise Only"
-  echo "    	29  -  Windows 11 - Professional Only"
-  echo "    	30  -  Windows 10 - All"
-  echo "    	31  -  Windows 10 - Enterprise Only"
-  echo "    	32  -  Windows 10 - Professional Only"
+  echo "    	22  -  Windows Server 2022 - All"
+  echo "    	23  -  Windows Server 2022 - Standard Only"
+  echo "    	24  -  Windows Server 2022 - Datacenter Only"
+  echo "    	25  -  Windows Server 2019 - All"
+  echo "    	26  -  Windows Server 2019 - Standard Only"
+  echo "    	27  -  Windows Server 2019 - Datacenter Only"
+  echo "    	28  -  Windows 11 - All"
+  echo "    	29  -  Windows 11 - Enterprise Only"
+  echo "    	30  -  Windows 11 - Professional Only"
+  echo "    	31  -  Windows 10 - All"
+  echo "    	32  -  Windows 10 - Enterprise Only"
+  echo "    	33  -  Windows 10 - Professional Only"
   echo ""
   echo "      Other:"
   echo ""
@@ -1275,6 +1351,7 @@ until [ "$selection" = "0" ]; do
     30 ) clear ; menu_option_30 ; press_enter ;;
     31 ) clear ; menu_option_31 ; press_enter ;;
     32 ) clear ; menu_option_32 ; press_enter ;;
+    33 ) clear ; menu_option_33 ; press_enter ;;
     i|I ) clear ; info ; press_enter ;;
     q|Q ) clear ; exit ;;
     * ) clear ; incorrect_selection ; press_enter ;;

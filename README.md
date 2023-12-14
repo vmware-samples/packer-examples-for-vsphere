@@ -1,6 +1,6 @@
 <!--
-Copyright 2023 VMware, Inc. All rights reserved
-# SPDX-License-Identifier: BSD-2
+Copyright 2023 Broadcom. All rights reserved.
+SPDX-License-Identifier: BSD-2
 -->
 
 <!-- markdownlint-disable first-line-h1 no-inline-html -->

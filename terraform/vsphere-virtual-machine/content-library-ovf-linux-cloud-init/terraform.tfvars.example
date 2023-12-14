@@ -4,8 +4,8 @@
 
 # Credentials
 
-vsphere_server   = "sfo-w01-vc01.rainpole.io"
-vsphere_username = "svc-terraform-vsphere@rainpole.io"
+vsphere_server   = "sfo-w01-vc01.example.com"
+vsphere_username = "svc-terraform-vsphere@example.com"
 vsphere_password = "************"
 vsphere_insecure = false
 

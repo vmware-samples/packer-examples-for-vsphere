@@ -8,5 +8,5 @@
 */
 
 // Red Hat Subscription Manager Credentials
-rhsm_username = "rainpole"
+rhsm_username = "packer"
 rhsm_password = "R@in!$aG00dThing."

@@ -6,7 +6,7 @@
 
 variable "vsphere_server" {
   type        = string
-  description = "The fully qualified domain name or IP address of the vCenter Server instance. (e.g. sfo-m01-vc01.sfo.rainpole.io)"
+  description = "The fully qualified domain name or IP address of the vCenter Server instance. (e.g. sfo-m01-vc01.sfo.example.com)"
 }
 
 variable "vsphere_username" {

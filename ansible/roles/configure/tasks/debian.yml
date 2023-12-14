@@ -46,8 +46,12 @@
 
 # Tasks for setting SSH keys to regenerate.
 - name: "Setting SSH keys to regenerate."
-  lineinfile:
+  copy:
     dest: /etc/rc.local
-    create: true
-    line: "#!/bin/bash\ntest -f /etc/ssh/ssh_host_dsa_key || dpkg-reconfigure openssh-server\nexit 0\n"
-    mode: '0755'
+    content: |
+      #!/bin/bash
+      if test -z "$(find /etc/ssh/ -iname 'ssh_host_*_key*')"; then
+          dpkg-reconfigure openssh-server
+      fi
+      exit 0
+    mode: 0755

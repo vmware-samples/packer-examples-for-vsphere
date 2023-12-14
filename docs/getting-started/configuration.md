@@ -418,7 +418,7 @@ Before the build completes, the machine image is unregistered from Red Hat Subsc
 Edit the `config/scc.pkrvars.hcl` file to configure the following credentials for your SUSE Customer Connect account.
 
 ```hcl title="config/scc.pkrvars.hcl"
-scc_email = "hello@example.com"
+scc_email = "suse@example.com"
 scc_code  = "<plaintext_code>"
 ```
 

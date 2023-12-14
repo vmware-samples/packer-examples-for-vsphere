@@ -58,11 +58,11 @@ For example:
 
 1. Select **Menu** > **Administration**.
 
-1. Create service account in vSphere SSO if it does not exist: In the left pane, select **Single Sign On** > **Users and Groups** and click on **Users**, from the dropdown select the domain in which you want to create the user (_e.g.,_`rainpole.io`) and click **ADD**, fill all the username (_e.g.,_ `svc-packer-vsphere)` and all required details, then click **ADD** to create the user.
+1. Create service account in vSphere SSO if it does not exist: In the left pane, select **Single Sign On** > **Users and Groups** and click on **Users**, from the dropdown select the domain in which you want to create the user (_e.g.,_`example.com`) and click **ADD**, fill all the username (_e.g.,_ `svc-packer-vsphere)` and all required details, then click **ADD** to create the user.
 
 1. In the left pane, select **Access control** > **Global permissions** and click the **Add permissions** icon.
 
-1. In the **Add permissions** dialog box, enter the service account (_e.g.,_ `svc-packer-vsphere@rainpole.io`), select the custom role (_e.g.,_ Packer to vSphere Integration Role) and the **Propagate to children** checkbox, and click **OK**.
+1. In the **Add permissions** dialog box, enter the service account (_e.g.,_ `svc-packer-vsphere@example.com`), select the custom role (_e.g.,_ Packer to vSphere Integration Role) and the **Propagate to children** checkbox, and click **OK**.
 
 In an environment with many vCenter Server instances, such as management and workload domains, you may wish to further reduce the scope of access across the infrastructure in vSphere for the service account. For example, if you do not want Packer to have access to your management domain, but only allow access to workload domains:
 

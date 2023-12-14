@@ -8,5 +8,5 @@
 */
 
 // SUSE Customer Center Credentials
-scc_email = "hello@rainpole.io"
+scc_email = "packer@example.com"
 scc_code  = "R@in!$aG00dThing."

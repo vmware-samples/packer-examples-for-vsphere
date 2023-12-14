@@ -1,8 +1,6 @@
 # Copyright 2023 Broadcom. All rights reserved.
 # SPDX-License-Identifier: BSD-2
 
-
-
 ##############################################################################
 ##
 ## Auto-generated .gitlab-ci.yml for building Packer Example for vSphere
@@ -50,10 +48,9 @@ variables:
 {{- if (coll.Has $submenu.build "only") }}
         BUILD_ONLY: "--only {{ join $submenu.build.only "," }}"
 {{- end -}}
-{{- if (coll.Has $submenu.build "var_files") -}}
-{{ range $submenu.build.var_files }}
-        EXTRA_VAR_FILES: " -var-file=$CONFIG_PATH/{{ . }}"
-{{- end -}}{{- end }}
+{{- if (coll.Has $submenu.build "var_files") }}
+        EXTRA_VAR_FILES: "{{ range $index, $value := $submenu.build.var_files }}{{if $index}} {{end}}-var-file=$CONFIG_PATH/{{ $value }}{{ end }}"
+{{- end }}
 
 ##############################################################################
 

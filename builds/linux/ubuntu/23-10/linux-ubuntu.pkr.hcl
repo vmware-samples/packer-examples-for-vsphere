@@ -55,6 +55,19 @@ locals {
       vm_guest_os_language     = var.vm_guest_os_language
       vm_guest_os_keyboard     = var.vm_guest_os_keyboard
       vm_guest_os_timezone     = var.vm_guest_os_timezone
+      network                  = templatefile("${abspath(path.root)}/data/network.pkrtpl.hcl", {
+        device  = var.vm_network_device
+        ip      = var.vm_ip_address
+        netmask = var.vm_ip_netmask
+        gateway = var.vm_ip_gateway
+        dns     = var.vm_dns_list
+      })
+      storage                  = templatefile("${abspath(path.root)}/data/storage.pkrtpl.hcl", {
+        device     = var.vm_disk_device
+        swap       = var.vm_disk_use_swap
+        partitions = var.vm_disk_partitions
+        lvm        = var.vm_disk_lvm
+      })
     })
   }
   data_source_command = var.common_data_source == "http" ? "ds=\"nocloud-net;seedfrom=http://{{.HTTPIP}}:{{.HTTPPort}}/\"" : "ds=\"nocloud\""
@@ -122,6 +135,9 @@ source "vsphere-iso" "linux-ubuntu" {
   boot_command = [
     // This waits for 3 seconds, sends the "c" key, and then waits for another 3 seconds. In the GRUB boot loader, this is used to enter command line mode.
     "<wait3s>c<wait3s>",
+    // This types a command to load the Linux kernel from the specified path with the 'autoinstall' option and the value of the 'data_source_command' local variable. 
+    // The 'autoinstall' option is used to automate the installation process. 
+    // The 'data_source_command' local variable is used to specify the kickstart data source configured in the common variables. 
     "linux /casper/vmlinuz --- autoinstall ${local.data_source_command}",
     // This sends the "enter" key and then waits. This is typically used to execute the command and give the system time to process it.
     "<enter><wait>",

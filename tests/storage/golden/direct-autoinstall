@@ -1,0 +1,49 @@
+  storage:
+    config:
+      - id: disk
+        type: disk
+        path: /dev/sda
+        ptable: gpt
+      - id: partition-efi
+        type: partition
+        device: disk
+        size: 1024M
+        flag: boot
+        grub_device: true
+      - id: format-efi
+        type: format
+        volume: partition-efi
+        label: EFIFS
+        fstype: fat32
+      - id: mount-efi
+        type: mount
+        path: /boot/efi
+        device: format-efi
+      - id: partition-boot
+        type: partition
+        device: disk
+        size: 1024M
+        flag: bios_grub
+      - id: format-boot
+        type: format
+        volume: partition-boot
+        label: BOOTFS
+        fstype: xfs
+      - id: mount-boot
+        type: mount
+        path: /boot
+        device: format-boot
+      - id: partition-root
+        type: partition
+        device: disk
+        size: -1
+      - id: format-root
+        type: format
+        volume: partition-root
+        label: ROOTFS
+        fstype: xfs
+      - id: mount-root
+        type: mount
+        path: /
+        device: format-root
+

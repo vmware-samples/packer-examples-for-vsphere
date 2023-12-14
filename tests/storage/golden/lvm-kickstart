@@ -1,0 +1,31 @@
+### Sets how the boot loader should be installed.
+bootloader --location=mbr
+
+### Initialize any invalid partition tables found on disks.
+zerombr
+
+### Removes partitions from the system, prior to creation of new partitions.
+### By default, no partitions are removed.
+### --all	Erases all partitions from the system
+### --initlabel Initializes a disk (or disks) by creating a default disk label for all disks in their respective architecture.
+clearpart --all --initlabel
+
+### Modify partition sizes for the virtual machine hardware.
+### Create primary system partitions.
+part /boot/efi --label=EFIFS --fstype vfat --size=1024
+part /boot --label=BOOTFS --fstype xfs --size=1024
+part pv.sysvg --size=100 --grow
+
+### Create a logical volume management (LVM) group.
+volgroup sysvg pv.sysvg
+
+### Modify logical volume sizes for the virtual machine hardware.
+### Create logical volumes.
+logvol / --name=lv_root --vgname=sysvg --label=ROOTFS --fstype xfs --size=12288
+logvol /home --name=lv_home --vgname=sysvg --label=HOMEFS --fstype xfs --fsoptions="nodev,nosuid" --size=4096
+logvol /opt --name=lv_opt --vgname=sysvg --label=OPTFS --fstype xfs --fsoptions="nodev" --size=2048
+logvol /tmp --name=lv_tmp --vgname=sysvg --label=TMPFS --fstype xfs --fsoptions="nodev,noexec,nosuid" --size=4096
+logvol /var --name=lv_var --vgname=sysvg --label=VARFS --fstype xfs --fsoptions="nodev" --size=4096
+logvol /var/log --name=lv_log --vgname=sysvg --label=LOGFS --fstype xfs --fsoptions="nodev,noexec,nosuid" --size=4096
+logvol /var/log/audit --name=lv_audit --vgname=sysvg --label=AUDITFS --fstype xfs --fsoptions="nodev,noexec,nosuid" --size=4096
+

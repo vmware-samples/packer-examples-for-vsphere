@@ -51,6 +51,13 @@ locals {
       build_username           = var.build_username
       build_password           = var.build_password
       build_password_encrypted = var.build_password_encrypted
+      network                  = templatefile("${abspath(path.root)}/data/network.pkrtpl.hcl", {
+        device  = var.vm_network_device
+        ip      = var.vm_ip_address
+        netmask = var.vm_ip_netmask
+        gateway = var.vm_ip_gateway
+        dns     = var.vm_dns_list
+      })
     })
   }
   data_source_command = var.common_data_source == "http" ? "ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.json" : "ks=/dev/sr1:/ks.json"

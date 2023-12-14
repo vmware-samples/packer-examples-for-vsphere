@@ -12,66 +12,121 @@ menu:
       - entry: "VMware Photon OS 5"
         build:
           path: "builds/linux/photon/5/"
+          var_files:
+            - "network.pkrvars.hcl"
       - entry: "VMware Photon OS 4"
         build:
           path: "builds/linux/photon/4/"
+          var_files:
+            - "network.pkrvars.hcl"
       - entry: "Debian 12"
         build:
           path: "builds/linux/debian/12/"
+          var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
       - entry: "Debian 11"
         build:
           path: "builds/linux/debian/11/"
       - entry: "Ubuntu Server 23.10 (cloud-init)"
         build:
           path: "builds/linux/ubuntu/23-10/"
+          var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
+      - entry: "Ubuntu Server 23.10 (cloud-init)"
+        build:
+          path: "builds/linux/ubuntu/23-10/"
+          var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
       - entry: "Ubuntu Server 22.04 LTS (cloud-init)"
         build:
           path: "builds/linux/ubuntu/22-04-lts/"
+          var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
       - entry: "Ubuntu Server 20.04 LTS (cloud-init)"
         build:
           path: "builds/linux/ubuntu/20-04-lts/"
+          var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
       - entry: "Red Hat Enterprise Linux 9"
         build:
           path: "builds/linux/rhel/9/"
           var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
             - "rhsm.pkrvars.hcl"
       - entry: "Red Hat Enterprise Linux 8"
         build:
           path: "builds/linux/rhel/8/"
           var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
             - "rhsm.pkrvars.hcl"
       - entry: "Red Hat Enterprise Linux 7"
         build:
           path: "builds/linux/rhel/7/"
           var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
             - "rhsm.pkrvars.hcl"
       - entry: "AlmaLinux OS 9"
         build:
           path: "builds/linux/almalinux/9/"
+          var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
       - entry: "AlmaLinux OS 8"
         build:
           path: "builds/linux/almalinux/8/"
+          var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
       - entry: "Rocky Linux 9"
         build:
           path: "builds/linux/rocky/9/"
+          var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
       - entry: "Rocky Linux 8"
         build:
           path: "builds/linux/rocky/8/"
+          var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
       - entry: "Oracle Linux 9"
         build:
           path: "builds/linux/oracle/9/"
+          var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
       - entry: "Oracle Linux 8"
         build:
           path: "builds/linux/oracle/8/"
+          var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
       - entry: "CentOS Stream 9"
         build:
           path: "builds/linux/centos/9-stream/"
+          var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
       - entry: "CentOS Stream 8"
         build:
           path: "builds/linux/centos/8-stream/"
+          var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
       - entry: "CentOS Linux 7"
         build:
           path: "builds/linux/centos/7/"
+          var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
       - entry: "SUSE Linux Enterprise Server 15"
         build:
           path: "builds/linux/sles/15/"

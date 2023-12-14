@@ -283,32 +283,6 @@ communicator_proxy_username = "example"
 communicator_proxy_password = "<plaintext_password>"
 ```
 
-### Red Hat Subscription Manager
-
-Edit the `config/redhat.pkrvars.hcl` file to configure the credentials for your Red Hat Subscription Manager account.
-
-```hcl title="config/redhat.pkrvars.hcl"
-rhsm_username = "example"
-rhsm_password = "<plaintext_password>"
-```
-
-These variables are **only** used if you are performing a Red Hat Enterprise Linux Server build and are used to register the image with Red Hat Subscription Manager during the build for system updates and package installation.
-
-Before the build completes, the machine image is unregistered from Red Hat Subscription Manager.
-
-### SUSE Customer Connect
-
-Edit the `config/scc.pkrvars.hcl` file to configure the following credentials for your SUSE Customer Connect account.
-
-```hcl title="config/scc.pkrvars.hcl"
-scc_email = "hello@example.com"
-scc_code  = "<plaintext_code>"
-```
-
-These variables are **only** used if you are performing a SUSE Linux Enterprise Server build and are used to register the image with SUSE Customer Connect during the build for system updates and package installation.
-
-Before the build completes, the machine image is unregistered from SUSE Customer Connect.
-
 ### VMware vSphere
 
 Edit the `builds/vsphere.pkrvars.hcl` file to configure the following:
@@ -373,7 +347,7 @@ vsphere_set_host_for_datastore_uploads   = false
 
 ### Machine Images
 
-Edit the `*.auto.pkrvars.hcl` file in each `builds/<type>/<build>` folder to configure the following virtual machine hardware settings, as required:
+Edit the `config/<type>-<build>-<version>.pkrvars.hcl` file to configure the following virtual machine hardware settings, as required:
 
 - CPUs `(int)`
 - CPU Cores `(int)`
@@ -382,7 +356,7 @@ Edit the `*.auto.pkrvars.hcl` file in each `builds/<type>/<build>` folder to con
 - .iso Path `(string)`
 - .iso File `(string)`
 
-```hcl title="builds/linux/photon/5/linux-photon.auto.pkrvars.hcl"
+```hcl title="config/linux-photon-5.pkrvars.hcl"
 // Guest Operating System Metadata
 vm_guest_os_family  = "linux"
 vm_guest_os_name    = "photon"
@@ -424,7 +398,119 @@ communicator_timeout = "30m"
     - [VMXNET 3][vmware-vmxnet3] network card device
     - EFI Secure Boot firmware
 
+### Linux Specific
+
+#### Red Hat Subscription Manager
+
+Edit the `config/redhat.pkrvars.hcl` file to configure the credentials for your Red Hat Subscription Manager account.
+
+```hcl title="config/redhat.pkrvars.hcl"
+rhsm_username = "example"
+rhsm_password = "<plaintext_password>"
+```
+
+These variables are **only** used if you are performing a Red Hat Enterprise Linux Server build and are used to register the image with Red Hat Subscription Manager during the build for system updates and package installation.
+
+Before the build completes, the machine image is unregistered from Red Hat Subscription Manager.
+
+#### SUSE Customer Connect
+
+Edit the `config/scc.pkrvars.hcl` file to configure the following credentials for your SUSE Customer Connect account.
+
+```hcl title="config/scc.pkrvars.hcl"
+scc_email = "hello@example.com"
+scc_code  = "<plaintext_code>"
+```
+
+These variables are **only** used if you are performing a SUSE Linux Enterprise Server build and are used to register the image with SUSE Customer Connect during the build for system updates and package installation.
+
+Before the build completes, the machine image is unregistered from SUSE Customer Connect.
+
+#### Network Customization
+
+!!! note
+
+    Static IP assignment is available for certain Linux machine images.
+
+    For details on which distributions are compatible, please refer to the [Linux Distributions] table.
+
+Edit the `config/network.pkrvars.hcl` file to configure a static IP address:
+
+- IPv4 address, netmask, and gateway.
+- DNS list.
+
+By default, the network is set to use DHCP for its configuration.
+
+```hcl title="config/network.pkrvars.hcl"
+vm_ip_address = "172.16.100.192"
+vm_ip_netmask = 24
+vm_ip_gateway = "172.16.100.1"
+vm_dns_list   = [ "172.16.11.4", "172.16.11.5" ]
+```
+
+#### Storage Customization
+
+!!! note
+
+    Storage settings are available for certain Linux machine images.
+
+    For details on which distributions are compatible, please refer to the [Linux Distributions] table.
+
+Edit the `config/linux-storage.pkrvars.hcl` file to configure a partitioning scheme:
+
+- Disk device and whether to use a swap partition.
+- Disk partitions and related settings.
+- Logical volumes and related settings (optional).
+
+```hcl title="config/linux-storage.pkrvars.hcl"
+vm_disk_device = "sda"
+vm_disk_use_swap = false
+vm_disk_partitions = [
+  {
+    name = "efi"
+    size = 1024,
+    format = {
+      label  = "EFIFS",
+      fstype = "fat32",
+    },
+    mount = {
+      path    = "/boot/efi",
+      options = "",
+    },
+    volume_group = "",
+  },
+  {
+    name = "boot"
+    size = 1024,
+    format = {
+      label  = "BOOTFS",
+      fstype = "xfs",
+    },
+    mount = {
+      path    = "/boot",
+      options = "",
+    },
+    volume_group = "",
+  },
+  {
+    name = "root"
+    size = -1,
+    format = {
+      label  = "ROOTFS",
+      fstype = "xfs",
+    },
+    mount = {
+      path    = "/",
+      options = "",
+    },
+    volume_group = "",
+  },
+]
+vm_disk_lvm = []
+```
+
 [//]: Links
 [packer-variables]: https://developer.hashicorp.com/packer/docs/templates/hcl_templates/variables
 [vmware-pvscsi]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.hostclient.doc/GUID-7A595885-3EA5-4F18-A6E7-5952BFC341CC.html
 [vmware-vmxnet3]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-AF9E24A8-2CFA-447B-AC83-35D563119667.html
+[Linux Distributions]: /#linux-distributions

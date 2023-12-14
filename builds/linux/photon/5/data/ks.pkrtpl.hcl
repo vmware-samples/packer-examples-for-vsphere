@@ -35,6 +35,6 @@
     ],
     "linux_flavor": "linux",
     "network": {
-        "type": "dhcp"
+${network}
     }
 }

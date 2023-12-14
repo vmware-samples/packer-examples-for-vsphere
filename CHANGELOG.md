@@ -1,10 +1,18 @@
 # Release History
 
+## .Nest
+
+> Release Date: Unreleased
+
+:rocket: **Enhancement**:
+
+- Adds templates with unit tests for managing custom network and storage configurations for Linux Distributions. [GH-473](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/473)
+
 ## v23.11
 
 > Release Date: 2023-11-28
 
-:boom: **Enhancement**:
+:rocket: **Enhancement**:
 
 - Adds Ubuntu Server 23.10 to the project. [GH-769](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/769)
 - Adds support for setting additional options. (`vsphere_resource_pool`, `set_host_for_datastore_uploads`, and `ip_settle_timeout`). [GH-771](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/771)
@@ -19,7 +27,7 @@
 
 > Release Date: 2023-10-23
 
-:boom: **Enhancement**:
+:rocket: **Enhancement**:
 
 - Adds VMware Photon OS 5.0 to the project. [GH-582](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/582)
 - Adds Debian 12 to the project. [GH-584](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/584)
@@ -81,7 +89,7 @@
 
 > Release Date: 2023-01-17
 
-:boom: **Enhancement**:
+:rocket: **Enhancement**:
 
 - Adds support for disabling password expiration for the local administrator account on localized (non-English) Windows guest operating systems. [GH-334](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/334).
 - Adds support for enabling Remote Desktop on localized (non-English) Windows guest operating systems. [GH-335](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/335).
@@ -93,7 +101,7 @@
 - Updates the URI in `user-data.pkrtpl.hcl` for Ubuntu 20.04 and 22.04 to remove the country code. This will help to ensure that GeoIP lookup works for all users. [GH-421](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/421)
 - Updates the install commands for Red Hat Enterprise Linux 9 to use the correct EPEL repository version. [GH-440](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/440)
 
-:page_facing_up: **Documenation**:
+:page_facing_up: **Documentation**:
 
 - Updates options to download a release or clone the project. [GH-385](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/385)
 - Updates syntax to append RSA algorithm to `HostKeyAlgorithms +ssh-rsa` and`PubKeyAcceptedAlgorithms +ssh-rsa`. [GH-386](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/386)
@@ -134,7 +142,7 @@
 
 > Release Date: 2022-09-28
 
-:boom: **Enhancement**:
+:rocket: **Enhancement**:
 
 - Adds support for disk-based deployment mode for Debian 11. [GH-272](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/272).
 - Adds support for disk-based deployment mode for SLES 15. [GH-276](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/276)
@@ -158,7 +166,7 @@
 
 > Release Date: 2022-08-25
 
-:boom: **Enhancement**:
+:rocket: **Enhancement**:
 
 - Adds Debian 11. [GH-195](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/195)
 - Adds support for initial configuration and use of the HCP Packer Registry. [GH-236](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/236) and [GH-256](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/256)
@@ -185,7 +193,7 @@
 
 > Release Date: 2022-07-26
 
-:boom: **Enhancement**:
+:rocket: **Enhancement**:
 
 - Adds Red Hat Enterprise Linux 9.
 - Adds CentOS 9 Stream.
@@ -254,7 +262,7 @@
 
 > Release Date: 2022-04-28
 
-:boom: **Enhancement**:
+:rocket: **Enhancement**:
 
 - Adds Ubuntu Server 22.04 LTS (GH-185)
 - Adds an option to generate a custom build script. (GH-188)
@@ -284,7 +292,7 @@
 
 > Release Date: 2022-02-22
 
-:boom: **Enhancement**:
+:rocket: **Enhancement**:
 
 - Updates the configuration of Linux machine images to use the Ansible roles instead of shell scripts.
 
@@ -297,7 +305,7 @@
 
 > Release Date: 2022-01-21
 
-:boom: **Enhancement**:
+:rocket: **Enhancement**:
 
 - Updates the `notes` to automatically include the Packer version and a `build_version`.
 - Updates the naming for the machine image output and includes a `build_version` (_e.g._, `linux-photon-4-v22.01`).
@@ -319,7 +327,7 @@
 
 > Release Date: 2021-11-09
 
-:boom: **Enhancement**:
+:rocket: **Enhancement**:
 
 - Adds support for `cloud-init` and the `[VMware]` data source introduced in cloud-init v21.3 for Ubuntu Server 20.04 LTS
 

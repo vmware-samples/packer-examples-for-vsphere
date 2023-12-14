@@ -1,0 +1,2 @@
+network --device=ens192 --bootproto=static --ip=172.16.100.192 --netmask=255.255.255.0 --gateway=172.16.100.1 --nameserver=172.16.11.4,172.16.11.5
+

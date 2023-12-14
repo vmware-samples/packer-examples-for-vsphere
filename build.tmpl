@@ -72,6 +72,9 @@ fi
 {{ $func_index = math.Add $func_index 1 }}
 menu_option_{{ $func_index }}() {
   INPUT_PATH="$SCRIPT_PATH"/{{ $submenu.build.path }}
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   {{ $message := "" -}}
   {{- if (coll.Has $submenu "message") -}}
   {{- $message = $submenu.message -}}
@@ -109,6 +112,7 @@ menu_option_{{ $func_index }}() {
       -var-file="$CONFIG_PATH/{{ . }}" \
   {{- end -}}
   {{- end }}
+      -var-file="$CONFIG_PATH/$BUILD_VARS" \
       "$INPUT_PATH"
 
   ### Build Complete. ###

@@ -55,6 +55,19 @@ locals {
       vm_guest_os_keyboard     = var.vm_guest_os_keyboard
       vm_guest_os_timezone     = var.vm_guest_os_timezone
       common_data_source       = var.common_data_source
+      network                  = templatefile("${abspath(path.root)}/data/network.pkrtpl.hcl", {
+        device  = var.vm_network_device
+        ip      = var.vm_ip_address
+        netmask = var.vm_ip_netmask
+        gateway = var.vm_ip_gateway
+        dns     = var.vm_dns_list
+      })
+      storage                  = templatefile("${abspath(path.root)}/data/storage.pkrtpl.hcl", {
+        device     = var.vm_disk_device
+        swap       = var.vm_disk_use_swap
+        partitions = var.vm_disk_partitions
+        lvm        = var.vm_disk_lvm
+      })
     })
   }
   data_source_command = var.common_data_source == "http" ? "url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg" : "file=/media/ks.cfg"

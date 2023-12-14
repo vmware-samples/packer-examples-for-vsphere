@@ -1,6 +1,6 @@
 <!--
 Copyright 2023 Broadcom. All rights reserved.
-# SPDX-License-Identifier: BSD-2
+SPDX-License-Identifier: BSD-2
 -->
 
 <!-- markdownlint-disable first-line-h1 no-inline-html -->

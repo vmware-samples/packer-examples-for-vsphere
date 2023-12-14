@@ -1,0 +1,149 @@
+  storage:
+    config:
+      - id: disk
+        type: disk
+        path: /dev/sda
+        ptable: gpt
+      - id: partition-efi
+        type: partition
+        device: disk
+        size: 1024M
+        flag: boot
+        grub_device: true
+      - id: format-efi
+        type: format
+        volume: partition-efi
+        label: EFIFS
+        fstype: fat32
+      - id: mount-efi
+        type: mount
+        path: /boot/efi
+        device: format-efi
+      - id: partition-boot
+        type: partition
+        device: disk
+        size: 1024M
+        flag: bios_grub
+      - id: format-boot
+        type: format
+        volume: partition-boot
+        label: BOOTFS
+        fstype: xfs
+      - id: mount-boot
+        type: mount
+        path: /boot
+        device: format-boot
+      - id: partition-sysvg
+        type: partition
+        device: disk
+        size: -1
+      - id: volgroup-sysvg
+        type: lvm_volgroup
+        name: sysvg
+        devices:
+          - partition-sysvg
+      - id: partition-lv_root
+        type: lvm_partition
+        name: lv_root
+        size: 12288M
+        volgroup: volgroup-sysvg
+      - id: format-lv_root
+        type: format
+        volume: partition-lv_root
+        label: ROOTFS
+        fstype: xfs
+      - id: mount-lv_root
+        type: mount
+        path: /
+        device: format-lv_root
+      - id: partition-lv_home
+        type: lvm_partition
+        name: lv_home
+        size: 4096M
+        volgroup: volgroup-sysvg
+      - id: format-lv_home
+        type: format
+        volume: partition-lv_home
+        label: HOMEFS
+        fstype: xfs
+      - id: mount-lv_home
+        type: mount
+        path: /home
+        device: format-lv_home
+        options: nodev,nosuid
+      - id: partition-lv_opt
+        type: lvm_partition
+        name: lv_opt
+        size: 2048M
+        volgroup: volgroup-sysvg
+      - id: format-lv_opt
+        type: format
+        volume: partition-lv_opt
+        label: OPTFS
+        fstype: xfs
+      - id: mount-lv_opt
+        type: mount
+        path: /opt
+        device: format-lv_opt
+        options: nodev
+      - id: partition-lv_tmp
+        type: lvm_partition
+        name: lv_tmp
+        size: 4096M
+        volgroup: volgroup-sysvg
+      - id: format-lv_tmp
+        type: format
+        volume: partition-lv_tmp
+        label: TMPFS
+        fstype: xfs
+      - id: mount-lv_tmp
+        type: mount
+        path: /tmp
+        device: format-lv_tmp
+        options: nodev,noexec,nosuid
+      - id: partition-lv_var
+        type: lvm_partition
+        name: lv_var
+        size: 4096M
+        volgroup: volgroup-sysvg
+      - id: format-lv_var
+        type: format
+        volume: partition-lv_var
+        label: VARFS
+        fstype: xfs
+      - id: mount-lv_var
+        type: mount
+        path: /var
+        device: format-lv_var
+        options: nodev
+      - id: partition-lv_log
+        type: lvm_partition
+        name: lv_log
+        size: 4096M
+        volgroup: volgroup-sysvg
+      - id: format-lv_log
+        type: format
+        volume: partition-lv_log
+        label: LOGFS
+        fstype: xfs
+      - id: mount-lv_log
+        type: mount
+        path: /var/log
+        device: format-lv_log
+        options: nodev,noexec,nosuid
+      - id: partition-lv_audit
+        type: lvm_partition
+        name: lv_audit
+        size: 4096M
+        volgroup: volgroup-sysvg
+      - id: format-lv_audit
+        type: format
+        volume: partition-lv_audit
+        label: AUDITFS
+        fstype: xfs
+      - id: mount-lv_audit
+        type: mount
+        path: /var/log/audit
+        device: format-lv_audit
+        options: nodev,noexec,nosuid
+

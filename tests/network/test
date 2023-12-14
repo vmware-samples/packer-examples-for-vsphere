@@ -1,0 +1,67 @@
+#!/usr/bin/env bats
+
+setup() {
+  DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" >/dev/null 2>&1 && pwd )"
+  echo "$DIR"
+  packer init -upgrade "$DIR"
+}
+
+## Test DHCP
+###############################################################################
+@test "network with Autoinstall using DHCP" {
+  mkdir -p "$DIR/output/dhcp"
+  packer build -var-file="$DIR/test-dhcp.pkrvars.hcl" -var "output_folder=$DIR/output/dhcp" -only "autoinstall.*" "$DIR"
+  run diff -u "$DIR/output/dhcp/autoinstall" "$DIR/golden/dhcp-autoinstall"
+  [ "$status" -eq 0 ]
+}
+
+@test "network with Kickstart using DHCP" {
+  mkdir -p "$DIR/output/dhcp"
+  packer build -var-file="$DIR/test-dhcp.pkrvars.hcl" -var "output_folder=$DIR/output/dhcp" -only "kickstart.*" "$DIR"
+  run diff -u "$DIR/output/dhcp/kickstart" "$DIR/golden/dhcp-kickstart"
+  [ "$status" -eq 0 ]
+}
+
+@test "network with Preseed using DHCP" {
+  mkdir -p "$DIR/output/dhcp"
+  packer build -var-file="$DIR/test-dhcp.pkrvars.hcl" -var "output_folder=$DIR/output/dhcp" -only "preseed.*" "$DIR"
+  run diff -u "$DIR/output/dhcp/preseed" "$DIR/golden/dhcp-preseed"
+  [ "$status" -eq 0 ]
+}
+
+@test "network with Photon using DHCP" {
+  mkdir -p "$DIR/output/dhcp"
+  packer build -var-file="$DIR/test-dhcp.pkrvars.hcl" -var "output_folder=$DIR/output/dhcp" -only "photon.*" "$DIR"
+  run diff -u "$DIR/output/dhcp/photon" "$DIR/golden/dhcp-photon"
+  [ "$status" -eq 0 ]
+}
+
+## Test static IP
+###############################################################################
+@test "network with Autoinstall using static IP" {
+  mkdir -p "$DIR/output/static"
+  packer build -var-file="$DIR/test-static.pkrvars.hcl" -var "output_folder=$DIR/output/static" -only "autoinstall.*" "$DIR"
+  run diff -u "$DIR/output/static/autoinstall" "$DIR/golden/static-autoinstall"
+  [ "$status" -eq 0 ]
+}
+
+@test "network with Kickstart using static IP" {
+  mkdir -p "$DIR/output/static"
+  packer build -var-file="$DIR/test-static.pkrvars.hcl" -var "output_folder=$DIR/output/static" -only "kickstart.*" "$DIR"
+  run diff -u "$DIR/output/static/kickstart" "$DIR/golden/static-kickstart"
+  [ "$status" -eq 0 ]
+}
+
+@test "network with Preseed using static IP" {
+  mkdir -p "$DIR/output/static"
+  packer build -var-file="$DIR/test-static.pkrvars.hcl" -var "output_folder=$DIR/output/static" -only "preseed.*" "$DIR"
+  run diff -u "$DIR/output/static/preseed" "$DIR/golden/static-preseed"
+  [ "$status" -eq 0 ]
+}
+
+@test "network with Photon using static IP" {
+  mkdir -p "$DIR/output/static"
+  packer build -var-file="$DIR/test-static.pkrvars.hcl" -var "output_folder=$DIR/output/static" -only "photon.*" "$DIR"
+  run diff -u "$DIR/output/static/photon" "$DIR/golden/static-photon"
+  [ "$status" -eq 0 ]
+}

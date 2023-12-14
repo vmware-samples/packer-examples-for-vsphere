@@ -1,0 +1,8 @@
+d-i netcfg/choose_interface select ens192
+d-i netcfg/disable_autoconfig boolean true
+d-i netcfg/get_ipaddress string 172.16.100.192
+d-i netcfg/get_netmask string 255.255.255.0
+d-i netcfg/get_gateway string 172.16.100.1
+d-i netcfg/get_nameservers string 172.16.11.4 172.16.11.5
+d-i netcfg/confirm_static boolean true
+

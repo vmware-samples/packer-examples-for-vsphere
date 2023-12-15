@@ -71,7 +71,7 @@ HashiCorp [Packer][packer-install] 1.9.4 or higher.
           gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint
           ```
 
-          The fingerprint must match `E8A0 32E0 94D8 EB4E A189 D270 DA41 8C88 A321 9F7B`. You can also verify the key on [Security at HashiCorp][hcp-security] under Linux Package Checksum Verification.
+          The fingerprint must match `798A EC65 4E5C 1542 8C8E 42EE AA16 FCBC A621 E701`. You can also verify the key on [Security at HashiCorp][hcp-security] under Linux Package Checksum Verification.
 
     3. Add the official HashiCorp repository to your system:
 

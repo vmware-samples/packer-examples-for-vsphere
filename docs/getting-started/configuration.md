@@ -400,6 +400,15 @@ communicator_timeout = "30m"
 
 ### Linux Specific
 
+#### Additional Packages
+
+Edit the `config/linux-<build>-<version>.pkrvars.hcl` file to configure the additional packages to be installed on the Linux guest operating system during the build.
+
+```hcl title="config/linux-photon-5.pkrvars.hcl"
+// Additional Settings
+additional_packages = ["git", "make", "vim"]
+```
+
 #### Red Hat Subscription Manager
 
 Edit the `config/redhat.pkrvars.hcl` file to configure the credentials for your Red Hat Subscription Manager account.

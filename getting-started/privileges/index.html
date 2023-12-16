@@ -1218,13 +1218,13 @@
 <p>Select <strong>Menu</strong> &gt; <strong>Administration</strong>.</p>
 </li>
 <li>
-<p>Create service account in vSphere SSO if it does not exist: In the left pane, select <strong>Single Sign On</strong> &gt; <strong>Users and Groups</strong> and click on <strong>Users</strong>, from the dropdown select the domain in which you want to create the user (<em>e.g.,</em><code>rainpole.io</code>) and click <strong>ADD</strong>, fill all the username (<em>e.g.,</em> <code>svc-packer-vsphere)</code> and all required details, then click <strong>ADD</strong> to create the user.</p>
+<p>Create service account in vSphere SSO if it does not exist: In the left pane, select <strong>Single Sign On</strong> &gt; <strong>Users and Groups</strong> and click on <strong>Users</strong>, from the dropdown select the domain in which you want to create the user (<em>e.g.,</em><code>example.com</code>) and click <strong>ADD</strong>, fill all the username (<em>e.g.,</em> <code>svc-packer-vsphere)</code> and all required details, then click <strong>ADD</strong> to create the user.</p>
 </li>
 <li>
 <p>In the left pane, select <strong>Access control</strong> &gt; <strong>Global permissions</strong> and click the <strong>Add permissions</strong> icon.</p>
 </li>
 <li>
-<p>In the <strong>Add permissions</strong> dialog box, enter the service account (<em>e.g.,</em> <code>svc-packer-vsphere@rainpole.io</code>), select the custom role (<em>e.g.,</em> Packer to vSphere Integration Role) and the <strong>Propagate to children</strong> checkbox, and click <strong>OK</strong>.</p>
+<p>In the <strong>Add permissions</strong> dialog box, enter the service account (<em>e.g.,</em> <code>svc-packer-vsphere@example.com</code>), select the custom role (<em>e.g.,</em> Packer to vSphere Integration Role) and the <strong>Propagate to children</strong> checkbox, and click <strong>OK</strong>.</p>
 </li>
 </ol>
 <p>In an environment with many vCenter Server instances, such as management and workload domains, you may wish to further reduce the scope of access across the infrastructure in vSphere for the service account. For example, if you do not want Packer to have access to your management domain, but only allow access to workload domains:</p>
@@ -1291,7 +1291,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-10-13T02:03:59+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-12-14T21:09:01+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-14</span>
   </span>
 
     

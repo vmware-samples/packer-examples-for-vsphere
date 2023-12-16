@@ -739,6 +739,9 @@
       <package>autoyast2</package>
       <package>open-vm-tools</package>
       <package>perl</package>
+%{ for package in additional_packages ~}
+      <package>${package}</package>
+%{ endfor ~}
     </packages>
     <patterns t="list">
       <pattern>apparmor</pattern>

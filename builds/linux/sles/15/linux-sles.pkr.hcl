@@ -56,6 +56,7 @@ locals {
       vm_guest_os_language     = var.vm_guest_os_language
       vm_guest_os_keyboard     = var.vm_guest_os_keyboard
       vm_guest_os_timezone     = var.vm_guest_os_timezone
+      additional_packages      = var.additional_packages
     })
   }
   data_source_command = var.common_data_source == "http" ? " autoyast=http://{{ .HTTPIP }}:{{ .HTTPPort }}/autoinst.xml" : " netsetup=dhcp autoyast=device://sr1/autoinst.xml"

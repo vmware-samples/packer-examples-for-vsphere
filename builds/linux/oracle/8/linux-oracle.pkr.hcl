@@ -67,6 +67,7 @@ locals {
         partitions = var.vm_disk_partitions
         lvm        = var.vm_disk_lvm
       })
+      additional_packages      = join(" ", var.additional_packages)
     })
   }
   data_source_command = var.common_data_source == "http" ? "inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg" : "inst.ks=cdrom:/ks.cfg"

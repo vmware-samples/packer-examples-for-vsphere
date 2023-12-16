@@ -68,6 +68,7 @@ locals {
         partitions = var.vm_disk_partitions
         lvm        = var.vm_disk_lvm
       })
+      additional_packages      = var.additional_packages
     })
   }
   data_source_command = var.common_data_source == "http" ? "ds=\"nocloud-net;seedfrom=http://{{.HTTPIP}}:{{.HTTPPort}}/\"" : "ds=\"nocloud\""

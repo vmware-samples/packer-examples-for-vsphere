@@ -58,6 +58,7 @@ locals {
         gateway = var.vm_ip_gateway
         dns     = var.vm_dns_list
       })
+      additional_packages      = var.additional_packages
     })
   }
   data_source_command = var.common_data_source == "http" ? "ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.json" : "ks=/dev/sr1:/ks.json"

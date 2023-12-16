@@ -33,6 +33,9 @@ ${network}
     - openssh-server
     - open-vm-tools
     - cloud-init
+%{ for package in additional_packages ~}
+    - ${package}
+%{ endfor ~}
   user-data:
     disable_root: false
     timezone: ${vm_guest_os_timezone}

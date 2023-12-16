@@ -68,3 +68,7 @@ manifests/*.json
 # Python virtual environments
 ## Ignore venv directory.
 venv/
+
+# MkDocs documentation
+## Ignore site directory.
+.site/

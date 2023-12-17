@@ -7,6 +7,7 @@
 :rocket: **Enhancement**:
 
 - Adds templates with unit tests for managing custom network and storage configurations for Linux Distributions. [GH-473](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/473)
+- Adds additional configuration to install packages for Linux Distributions. [GH-800](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/800)
 
 ## v23.11
 

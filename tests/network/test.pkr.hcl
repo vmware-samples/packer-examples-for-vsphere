@@ -34,7 +34,7 @@ locals {
 }
 
 build {
-  name = "autoinstall"
+  name    = "autoinstall"
   sources = ["source.null.test"]
   provisioner "shell-local" {
     inline = [
@@ -44,7 +44,7 @@ build {
 }
 
 build {
-  name = "kickstart"
+  name    = "kickstart"
   sources = ["source.null.test"]
   provisioner "shell-local" {
     inline = [
@@ -54,7 +54,7 @@ build {
 }
 
 build {
-  name = "preseed"
+  name    = "preseed"
   sources = ["source.null.test"]
   provisioner "shell-local" {
     inline = [
@@ -64,7 +64,7 @@ build {
 }
 
 build {
-  name = "photon"
+  name    = "photon"
   sources = ["source.null.test"]
   provisioner "shell-local" {
     inline = [

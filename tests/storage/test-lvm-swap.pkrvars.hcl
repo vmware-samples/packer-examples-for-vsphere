@@ -1,4 +1,4 @@
-vm_disk_device = "sda"
+vm_disk_device   = "sda"
 vm_disk_use_swap = true
 vm_disk_partitions = [
   {
@@ -43,8 +43,8 @@ vm_disk_partitions = [
 ]
 vm_disk_lvm = [
   {
-    name: "sysvg",
-    partitions: [
+    name : "sysvg",
+    partitions : [
       {
         name = "lv_swap",
         size = 1024,

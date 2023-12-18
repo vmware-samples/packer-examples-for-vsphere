@@ -19,6 +19,9 @@
         "initramfs",
         "sudo",
         "vim",
+%{ for package in additional_packages ~}
+        "${package}",
+%{ endfor ~}
         "cloud-utils"
     ],
     "postinstall": [

@@ -1,4 +1,4 @@
-vm_disk_device = "sda"
+vm_disk_device   = "sda"
 vm_disk_use_swap = false
 vm_disk_partitions = [
   {

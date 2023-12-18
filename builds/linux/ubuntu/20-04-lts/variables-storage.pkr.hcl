@@ -38,7 +38,7 @@ variable "vm_disk_partitions" {
 
 variable "vm_disk_lvm" {
   type = list(object({
-    name    = string
+    name = string
     partitions = list(object({
       name = string
       size = number

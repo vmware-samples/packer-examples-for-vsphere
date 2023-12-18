@@ -72,6 +72,9 @@ skipx
 dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 dnf makecache
 dnf install -y sudo open-vm-tools perl
+%{ if additional_packages != "" ~}
+dnf install -y ${additional_packages}
+%{ endif ~}
 echo "${build_username} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/${build_username}
 sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
 %end

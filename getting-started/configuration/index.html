@@ -780,6 +780,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#additional-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Packages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#red-hat-subscription-manager" class="md-nav__link">
     <span class="md-ellipsis">
       Red Hat Subscription Manager
@@ -1225,6 +1234,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#additional-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Packages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#red-hat-subscription-manager" class="md-nav__link">
     <span class="md-ellipsis">
       Red Hat Subscription Manager
@@ -1602,6 +1620,11 @@ Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </
 </ul>
 </details>
 <h3 id="linux-specific">Linux Specific<a class="headerlink" href="#linux-specific" title="Permanent link">&para;</a></h3>
+<h4 id="additional-packages">Additional Packages<a class="headerlink" href="#additional-packages" title="Permanent link">&para;</a></h4>
+<p>Edit the <code>config/linux-&lt;build&gt;-&lt;version&gt;.pkrvars.hcl</code> file to configure the additional packages to be installed on the Linux guest operating system during the build.</p>
+<div class="highlight"><span class="filename">config/linux-photon-5.pkrvars.hcl</span><pre><span></span><code><span class="c1">// Additional Settings</span>
+<span class="na">additional_packages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;git&quot;, &quot;make&quot;, &quot;vim&quot;</span><span class="p">]</span>
+</code></pre></div>
 <h4 id="red-hat-subscription-manager">Red Hat Subscription Manager<a class="headerlink" href="#red-hat-subscription-manager" title="Permanent link">&para;</a></h4>
 <p>Edit the <code>config/redhat.pkrvars.hcl</code> file to configure the credentials for your Red Hat Subscription Manager account.</p>
 <div class="highlight"><span class="filename">config/redhat.pkrvars.hcl</span><pre><span></span><code><span class="na">rhsm_username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;example&quot;</span>
@@ -1710,7 +1733,7 @@ Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-12-16T19:12:25+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-12-18T17:51:40+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-18</span>
   </span>
 
     

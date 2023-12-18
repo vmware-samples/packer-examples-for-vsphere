@@ -1,6 +1,6 @@
 # Release History
 
-## .Nest
+## .Next
 
 > Release Date: Unreleased
 

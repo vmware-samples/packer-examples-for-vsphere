@@ -57,7 +57,11 @@
       - id: partition-${partition.name}
         type: lvm_partition
         name: ${partition.name}
+%{ if partition.size != -1 ~}
         size: ${partition.size}M
+%{ else ~}
+        size: ${partition.size}
+%{ endif ~}
         volgroup: volgroup-${volume_group.name}
       - id: format-${partition.name}
         type: format

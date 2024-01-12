@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Copyright 2023 Broadcom. All Rights Reserved.
+# Copyright 2023-2024 Broadcom. All Rights Reserved.
 # SPDX-License-Identifier: BSD-2
 
 set -e
@@ -1256,7 +1256,7 @@ press_enter() {
 }
 
 info() {
-  echo "Copyright 2023 Broadcom. All Rights Reserved."
+  echo "Copyright 2023-2024 Broadcom. All Rights Reserved."
   echo "License: BSD-2"
   echo ""
   echo "GitHub Repository: github.com/vmware-samples/packer-examples-for-vsphere/"

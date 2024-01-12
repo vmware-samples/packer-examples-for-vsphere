@@ -1,6 +1,6 @@
 #cloud-config
 
-# Copyright 2023 Broadcom. All rights reserved.
+# Copyright 2023-2024 Broadcom. All rights reserved.
 # SPDX-License-Identifier: BSD-2
 
 # Ubuntu Server 22.04 LTS

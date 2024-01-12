@@ -203,6 +203,8 @@ menu_option_4() {
       -var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/linux-storage.pkrvars.hcl" \
       -var-file="$CONFIG_PATH/$BUILD_VARS" \
       "$INPUT_PATH"
 

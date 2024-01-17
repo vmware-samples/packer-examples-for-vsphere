@@ -20,6 +20,7 @@ variables:
     SCRIPT_PATH: "${CI_PROJECT_DIR}"
     CONFIG_PATH: "${CI_PROJECT_DIR}/config"
     INPUT_PATH: ""
+    BUILD_VARS: ""
     EXTRA_VAR_FILES: ""
     BUILD_ONLY: ""
 
@@ -31,9 +32,9 @@ variables:
     #    - packer
     before_script:
         - "packer init \"$INPUT_PATH\""
-        - "packer validate -var-file=\"$CONFIG_PATH/vsphere.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/build.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/ansible.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/proxy.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/common.pkrvars.hcl\" ${EXTRA_VAR_FILES} \"$INPUT_PATH\""
+        - "packer validate -var-file=\"$CONFIG_PATH/vsphere.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/build.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/ansible.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/proxy.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/common.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/$BUILD_VARS\" ${EXTRA_VAR_FILES} \"$INPUT_PATH\""
     script:
-        - "packer build -force -on-error=ask -var-file=\"$CONFIG_PATH/vsphere.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/build.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/ansible.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/proxy.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/common.pkrvars.hcl\" ${EXTRA_VAR_FILES} ${BUILD_ONLY} \"$INPUT_PATH\""
+        - "packer build -force -on-error=ask -var-file=\"$CONFIG_PATH/vsphere.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/build.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/ansible.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/proxy.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/common.pkrvars.hcl\" -var-file=\"$CONFIG_PATH/$BUILD_VARS\" ${EXTRA_VAR_FILES} ${BUILD_ONLY} \"$INPUT_PATH\""
     when: manual
 
 ##############################################################################
@@ -45,6 +46,7 @@ variables:
     extends: .packer-build
     variables:
         INPUT_PATH: "$SCRIPT_PATH/{{ $submenu.build.path }}"
+        BUILD_VARS: "{{ $submenu.build.path | strings.ReplaceAll "builds" "" | strings.TrimPrefix "/" | strings.TrimSuffix "/" | strings.ReplaceAll "/" "-" }}.pkrvars.hcl"
 {{- if (coll.Has $submenu.build "only") }}
         BUILD_ONLY: "--only {{ join $submenu.build.only "," }}"
 {{- end -}}

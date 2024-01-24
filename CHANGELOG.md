@@ -11,6 +11,8 @@
 
 :sweat_drops: **Chore**:
 
+- Updates AlmaLinux 8 to 8.9 release. [GH-817](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/817)
+- Updates AlmaLinux 9 to 9.3 release. [GH-817](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/817)
 - Updates Debian 12 to 12.4 release. [GH-816](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/816)
 - Updates Windows 10 22H2 to January 2024 (US English) release. [GH-816](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/816)
 - Updates Windows 11 22H2 to January 2024 (US English) release. [GH-816](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/816)

@@ -9,6 +9,13 @@
 - Adds templates with unit tests for managing custom network and storage configurations for Linux Distributions. [GH-473](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/473), [GH-805](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/805)
 - Adds additional configuration to install packages for Linux Distributions. [GH-800](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/800)
 
+:sweat_drops: **Chore**:
+
+- Updates Debian 12 to 12.4 release. [GH-816](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/816)
+- Updates Windows 10 22H2 to January 2024 (US English) release. [GH-816](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/816)
+- Updates Windows 11 22H2 to January 2024 (US English) release. [GH-816](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/816)
+- Updates Windows Server 2022 to January 2024 (US English) release. [GH-816](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/816)
+
 ## v23.11
 
 > Release Date: 2023-11-28

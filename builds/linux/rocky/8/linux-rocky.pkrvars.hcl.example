@@ -13,7 +13,7 @@ vm_guest_os_keyboard = "us"
 vm_guest_os_timezone = "UTC"
 vm_guest_os_family   = "linux"
 vm_guest_os_name     = "rocky"
-vm_guest_os_version  = "8.8"
+vm_guest_os_version  = "8.9"
 
 // Virtual Machine Guest Operating System Setting
 vm_guest_os_type = "other4xLinux64Guest"
@@ -33,7 +33,7 @@ vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
 iso_path = "iso/linux/rocky"
-iso_file = "Rocky-8.8-x86_64-dvd1.iso"
+iso_file = "Rocky-8.9-x86_64-dvd1.iso"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

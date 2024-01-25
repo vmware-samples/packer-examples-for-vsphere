@@ -11,6 +11,7 @@
 
 :sweat_drops: **Chore**:
 
+- Updates Oracle Linux 9 to 9.3 release. [GH-821](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/821)
 - Updates Oracle Linux 8 to 8.9 release. [GH-820](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/820)
 - Updates Red Hat Enterprise Linux 9 to 9.3 release. [GH-819](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/819)
 - Updates Red Hat Enterprise Linux 8 to 8.9 release. [GH-818](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/818)

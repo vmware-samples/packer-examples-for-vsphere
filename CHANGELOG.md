@@ -11,16 +11,17 @@
 
 :sweat_drops: **Chore**:
 
-- Updates Rocky Linux 8 to 8.9 release. [GH-822](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/822)
-- Updates Oracle Linux 9 to 9.3 release. [GH-821](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/821)
-- Updates Oracle Linux 8 to 8.9 release. [GH-820](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/820)
 - Updates Red Hat Enterprise Linux 9 to 9.3 release. [GH-819](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/819)
 - Updates Red Hat Enterprise Linux 8 to 8.9 release. [GH-818](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/818)
 - Updates AlmaLinux 9 to 9.3 release. [GH-817](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/817)
 - Updates AlmaLinux 8 to 8.9 release. [GH-817](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/817)
+- Updates Rocky Linux 9 to 9.3 release. [GH-823](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/82)
+- Updates Rocky Linux 8 to 8.9 release. [GH-822](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/822)
+- Updates Oracle Linux 9 to 9.3 release. [GH-821](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/821)
+- Updates Oracle Linux 8 to 8.9 release. [GH-820](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/820)
 - Updates Debian 12 to 12.4 release. [GH-816](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/816)
-- Updates Windows 10 22H2 to January 2024 (US English) release. [GH-816](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/816)
 - Updates Windows 11 22H2 to January 2024 (US English) release. [GH-816](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/816)
+- Updates Windows 10 22H2 to January 2024 (US English) release. [GH-816](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/816)
 - Updates Windows Server 2022 to January 2024 (US English) release. [GH-816](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/816)
 
 ## v23.11

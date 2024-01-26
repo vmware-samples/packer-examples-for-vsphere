@@ -166,10 +166,10 @@ The following additional software packages must be installed on the operating sy
         sudo apt -y install git jq xorriso whois terraform
         ```
 
-    - [gomplate][gomplate-install] 3.11.5 or higher.
+    - [gomplate][gomplate-install] 3.11.7 or higher.
 
         ```shell
-        GOMPLATE_VERSION="3.11.5"
+        GOMPLATE_VERSION="3.11.7"
         LINUX_ARCH="amd64"
 
         sudo curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-${LINUX_ARCH}
@@ -183,7 +183,7 @@ The following additional software packages must be installed on the operating sy
     - [jq][jq] - A command-line JSON processor.
     - Coreutils
     - HashiCorp [Terraform][terraform-install] 1.6.0 or higher.
-    - [gomplate][gomplate-install] 3.11.5 or higher.
+    - [gomplate][gomplate-install] 3.11.7 or higher.
 
         ```shell
         pip3 install --user ansible-core==2.15

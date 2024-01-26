@@ -12,6 +12,7 @@
 :sweat_drops: **Chore**:
 
 - Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.2.4`. [GH-824](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/824)
+- Updates `required_plugins` for `ethanmdavidson/packer-plugin-git` to `>= 0.6.1`.  [GH-827](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/827)
 - Updates `required_plugins` for `rgl/packer-plugin-windows-update` to `>= 0.15.0`. [GH-826](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/826)
 - Updates Gomplate to `3.11.7`. [GH-825](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/825)
 - Updates Red Hat Enterprise Linux 9 to 9.3 release. [GH-819](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/819)
@@ -26,7 +27,6 @@
 - Updates Windows 11 22H2 to January 2024 (US English) release. [GH-816](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/816)
 - Updates Windows 10 22H2 to January 2024 (US English) release. [GH-816](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/816)
 - Updates Windows Server 2022 to January 2024 (US English) release. [GH-816](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/816)
-- Updates Gomplate to `3.11.7`. [GH-256](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/825)
 
 ## v23.11
 

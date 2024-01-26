@@ -23,7 +23,7 @@ packer {
     }
     git = {
       source  = "github.com/ethanmdavidson/git"
-      version = ">= 0.4.3"
+      version = ">= 0.6.1"
     }
   }
 }

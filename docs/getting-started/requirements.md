@@ -32,14 +32,14 @@ The project is tested on the following operating systems for the Packer host [^1
 
 ### :octicons-terminal-24: &nbsp; Packer CLI
 
-HashiCorp [Packer][packer-install] 1.9.4 or higher.
+HashiCorp [Packer][packer-install] 1.10.0 or higher.
 
 === ":fontawesome-brands-linux: &nbsp; VMware Photon OS"
 
     You can install Packer on VMware Photon OS using the following commands:
 
     ```shell
-    PACKER_VERSION="1.9.4"
+    PACKER_VERSION="1.10.0"
     OS_PACKAGES="wget unzip"
 
     if [[ $(uname -m) == "x86_64" ]]; then

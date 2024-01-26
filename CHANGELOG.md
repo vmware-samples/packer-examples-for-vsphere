@@ -24,6 +24,7 @@
 - Updates Windows 11 22H2 to January 2024 (US English) release. [GH-816](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/816)
 - Updates Windows 10 22H2 to January 2024 (US English) release. [GH-816](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/816)
 - Updates Windows Server 2022 to January 2024 (US English) release. [GH-816](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/816)
+- Updates Gomplate to `3.11.7`. [GH-256](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/825)
 
 ## v23.11
 

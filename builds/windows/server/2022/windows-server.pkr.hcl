@@ -19,7 +19,7 @@ packer {
     }
     windows-update = {
       source  = "github.com/rgl/windows-update"
-      version = ">= 0.14.3"
+      version = ">= 0.15.0"
     }
     git = {
       source  = "github.com/ethanmdavidson/git"

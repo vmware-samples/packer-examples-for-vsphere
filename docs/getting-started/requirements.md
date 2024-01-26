@@ -128,10 +128,10 @@ The following additional software packages must be installed on the operating sy
         tdnf -y install git jq xorriso
         ```
 
-    - HashiCorp [Terraform][terraform-install] 1.6.0 or higher.
+    - HashiCorp [Terraform][terraform-install] 1.7.1 or higher.
 
         ```shell
-        TERRAFORM_VERSION="1.6.0"
+        TERRAFORM_VERSION="1.7.1"
         OS_PACKAGES="wget unzip"
 
         if [[ $(uname -m) == "x86_64" ]]; then
@@ -159,7 +159,7 @@ The following additional software packages must be installed on the operating sy
 
     - mkpasswd - A password generating utility.
 
-    - HashiCorp [Terraform][terraform-install] 1.6.0 or higher.
+    - HashiCorp [Terraform][terraform-install] 1.7.1 or higher.
 
         ```shell
         pip3 install --user ansible-core==2.15
@@ -182,7 +182,7 @@ The following additional software packages must be installed on the operating sy
     - [ansible-core][ansible-docs] 2.15.
     - [jq][jq] - A command-line JSON processor.
     - Coreutils
-    - HashiCorp [Terraform][terraform-install] 1.6.0 or higher.
+    - HashiCorp [Terraform][terraform-install] 1.7.1 or higher.
     - [gomplate][gomplate-install] 3.11.7 or higher.
 
         ```shell

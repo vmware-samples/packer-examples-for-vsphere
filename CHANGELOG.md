@@ -16,6 +16,7 @@
 - Updates `required_plugins` for `ethanmdavidson/packer-plugin-git` to `>= 0.6.1`.  [GH-827](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/827)
 - Updates `required_plugins` for `rgl/packer-plugin-windows-update` to `>= 0.15.0`. [GH-826](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/826)
 - Updates `required_versions` for `terraform` to `>= 1.7.1`. [GH-8297](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/829)
+- Updates `required_versions` for `hashicorp/vsphere` to `>= 2.6.1`. [GH-830](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/830)
 - Updates Gomplate to `3.11.7`. [GH-825](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/825)
 - Updates Red Hat Enterprise Linux 9 to 9.3 release. [GH-819](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/819)
 - Updates Red Hat Enterprise Linux 8 to 8.9 release. [GH-818](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/818)

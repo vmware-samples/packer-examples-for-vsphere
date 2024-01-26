@@ -11,6 +11,7 @@
 
 :sweat_drops: **Chore**:
 
+- Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.2.4`. [GH-824](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/824)
 - Updates Red Hat Enterprise Linux 9 to 9.3 release. [GH-819](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/819)
 - Updates Red Hat Enterprise Linux 8 to 8.9 release. [GH-818](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/818)
 - Updates AlmaLinux 9 to 9.3 release. [GH-817](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/817)

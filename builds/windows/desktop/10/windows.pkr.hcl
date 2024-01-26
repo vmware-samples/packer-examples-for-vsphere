@@ -15,7 +15,7 @@ packer {
   required_plugins {
     vsphere = {
       source  = "github.com/hashicorp/vsphere"
-      version = ">= 1.2.1"
+      version = ">= 1.2.4"
     }
     windows-update = {
       source  = "github.com/rgl/windows-update"

@@ -104,7 +104,7 @@ For air-gapped or dark sites, you may download the plugins and place these same 
 
 | Plugin                                                                      | Version         | Description      | Resources                                                   |
 | :---                                                                        | :---            | :---             | :---                                                        |
-| :simple-hashicorp: &nbsp;&nbsp; Packer Plugin for VMware vSphere            | 1.2.1 or later  | By HashiCorp     | [:fontawesome-brands-github:][packer-plugin-vsphere] &nbsp;&nbsp;[:material-library:][packer-plugin-vsphere] |
+| :simple-hashicorp: &nbsp;&nbsp; Packer Plugin for VMware vSphere            | 1.2.4 or later  | By HashiCorp     | [:fontawesome-brands-github:][packer-plugin-vsphere] &nbsp;&nbsp;[:material-library:][packer-plugin-vsphere] |
 | :fontawesome-brands-git: &nbsp;&nbsp; Packer Plugin for Git                 | 0.4.3 or later  | Community Plugin | [:fontawesome-brands-github:][packer-plugin-git]            |
 | :fontawesome-brands-windows: &nbsp;&nbsp; Packer Plugin for Windows Updates | 0.14.3 or later | Community Plugin | [:fontawesome-brands-github:][packer-plugin-windows-update] |
 

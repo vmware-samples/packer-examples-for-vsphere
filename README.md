@@ -49,6 +49,7 @@ This project supports the following guest operating systems:
 
 | Operating System         | Version | Editions                    | Experience       |
 | :---                     | :---    | :---                        | :---             |
+| Microsoft Windows Server | 2025    | Standard and Datacenter     | Core and Desktop |
 | Microsoft Windows Server | 2022    | Standard and Datacenter     | Core and Desktop |
 | Microsoft Windows Server | 2019    | Standard and Datacenter     | Core and Desktop |
 | Microsoft Windows        | 11 22H2 | Professional and Enterprise | -                |

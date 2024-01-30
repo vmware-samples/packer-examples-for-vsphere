@@ -143,6 +143,24 @@ menu:
         - "build.pkrvars.hcl"
         - "common.pkrvars.hcl"
     submenu:
+      - entry: "Windows Server 2025 - All"
+        message: "all Windows Server 2025 Templates"
+        build:
+          path: "builds/windows/server/2025/"
+      - entry: "Windows Server 2025 - Standard Only"
+        message: "Microsoft Windows Server 2025 Standard Templates"
+        build:
+          path: "builds/windows/server/2025/"
+          only:
+            - vsphere-iso.windows-server-standard-dexp
+            - vsphere-iso.windows-server-standard-core
+      - entry: "Windows Server 2025 - Datacenter Only"
+        message: "Microsoft Windows Server 2025 Datacenter Templates"
+        build:
+          path: "builds/windows/server/2025/"
+          only:
+            - vsphere-iso.windows-server-datacenter-dexp
+            - vsphere-iso.windows-server-datacenter-core
       - entry: "Windows Server 2022 - All"
         message: "all Windows Server 2022 Templates"
         build:

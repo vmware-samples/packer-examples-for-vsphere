@@ -228,6 +228,32 @@ SUSE-Linux-Enterprise-Server-15:
 
 ##############################################################################
 
+Windows-Server-2025-All:
+    extends: .packer-build
+    variables:
+        INPUT_PATH: "$SCRIPT_PATH/builds/windows/server/2025/"
+        BUILD_VARS: "windows-server-2025.pkrvars.hcl"
+
+##############################################################################
+
+Windows-Server-2025-Standard-Only:
+    extends: .packer-build
+    variables:
+        INPUT_PATH: "$SCRIPT_PATH/builds/windows/server/2025/"
+        BUILD_VARS: "windows-server-2025.pkrvars.hcl"
+        BUILD_ONLY: "--only vsphere-iso.windows-server-standard-dexp,vsphere-iso.windows-server-standard-core"
+
+##############################################################################
+
+Windows-Server-2025-Datacenter-Only:
+    extends: .packer-build
+    variables:
+        INPUT_PATH: "$SCRIPT_PATH/builds/windows/server/2025/"
+        BUILD_VARS: "windows-server-2025.pkrvars.hcl"
+        BUILD_ONLY: "--only vsphere-iso.windows-server-datacenter-dexp,vsphere-iso.windows-server-datacenter-core"
+
+##############################################################################
+
 Windows-Server-2022-All:
     extends: .packer-build
     variables:

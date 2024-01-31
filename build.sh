@@ -845,6 +845,107 @@ menu_option_21() {
 
 
 menu_option_22() {
+  INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2025/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
+  echo -e "\nCONFIRM: Build all Windows Server 2025 Templates for VMware vSphere?"
+  echo -e "\nContinue? (y/n)"
+  read -r REPLY
+  if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    exit 1
+  fi
+
+  ### Build all Windows Server 2025 Templates for VMware vSphere. ###
+  echo "Building all Windows Server 2025 Templates for VMware vSphere..."
+
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
+  packer init "$INPUT_PATH"
+
+  ### Start the Build. ###
+  echo "Starting the build...."
+  echo "packer build -force -on-error=ask $debug_option"
+  packer build -force -on-error=ask $debug_option \
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/$BUILD_VARS" \
+      "$INPUT_PATH"
+
+  ### Build Complete. ###
+  echo "Build Complete."
+}
+
+menu_option_23() {
+  INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2025/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
+  echo -e "\nCONFIRM: Build Microsoft Windows Server 2025 Standard Templates for VMware vSphere?"
+  echo -e "\nContinue? (y/n)"
+  read -r REPLY
+  if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    exit 1
+  fi
+
+  ### Build Microsoft Windows Server 2025 Standard Templates for VMware vSphere. ###
+  echo "Building Microsoft Windows Server 2025 Standard Templates for VMware vSphere..."
+
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
+  packer init "$INPUT_PATH"
+
+  ### Start the Build. ###
+  echo "Starting the build...."
+  echo "packer build -force -on-error=ask $debug_option"
+  packer build -force -on-error=ask $debug_option \
+      --only vsphere-iso.windows-server-standard-dexp,vsphere-iso.windows-server-standard-core \
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/$BUILD_VARS" \
+      "$INPUT_PATH"
+
+  ### Build Complete. ###
+  echo "Build Complete."
+}
+
+menu_option_24() {
+  INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2025/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
+  echo -e "\nCONFIRM: Build Microsoft Windows Server 2025 Datacenter Templates for VMware vSphere?"
+  echo -e "\nContinue? (y/n)"
+  read -r REPLY
+  if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    exit 1
+  fi
+
+  ### Build Microsoft Windows Server 2025 Datacenter Templates for VMware vSphere. ###
+  echo "Building Microsoft Windows Server 2025 Datacenter Templates for VMware vSphere..."
+
+  ### Initialize HashiCorp Packer and required plugins. ###
+  echo "Initializing HashiCorp Packer and required plugins..."
+  packer init "$INPUT_PATH"
+
+  ### Start the Build. ###
+  echo "Starting the build...."
+  echo "packer build -force -on-error=ask $debug_option"
+  packer build -force -on-error=ask $debug_option \
+      --only vsphere-iso.windows-server-datacenter-dexp,vsphere-iso.windows-server-datacenter-core \
+      -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+      -var-file="$CONFIG_PATH/$BUILD_VARS" \
+      "$INPUT_PATH"
+
+  ### Build Complete. ###
+  echo "Build Complete."
+}
+
+menu_option_25() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2022/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -877,7 +978,7 @@ menu_option_22() {
   echo "Build Complete."
 }
 
-menu_option_23() {
+menu_option_26() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2022/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -911,7 +1012,7 @@ menu_option_23() {
   echo "Build Complete."
 }
 
-menu_option_24() {
+menu_option_27() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2022/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -945,7 +1046,7 @@ menu_option_24() {
   echo "Build Complete."
 }
 
-menu_option_25() {
+menu_option_28() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2019/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -978,7 +1079,7 @@ menu_option_25() {
   echo "Build Complete."
 }
 
-menu_option_26() {
+menu_option_29() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2019/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -1012,7 +1113,7 @@ menu_option_26() {
   echo "Build Complete."
 }
 
-menu_option_27() {
+menu_option_30() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2019/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -1046,7 +1147,7 @@ menu_option_27() {
   echo "Build Complete."
 }
 
-menu_option_28() {
+menu_option_31() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/11/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -1079,7 +1180,7 @@ menu_option_28() {
   echo "Build Complete."
 }
 
-menu_option_29() {
+menu_option_32() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/11/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -1113,7 +1214,7 @@ menu_option_29() {
   echo "Build Complete."
 }
 
-menu_option_30() {
+menu_option_33() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/11/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -1147,7 +1248,7 @@ menu_option_30() {
   echo "Build Complete."
 }
 
-menu_option_31() {
+menu_option_34() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/10/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -1180,7 +1281,7 @@ menu_option_31() {
   echo "Build Complete."
 }
 
-menu_option_32() {
+menu_option_35() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/10/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -1214,7 +1315,7 @@ menu_option_32() {
   echo "Build Complete."
 }
 
-menu_option_33() {
+menu_option_36() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/10/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
@@ -1300,18 +1401,21 @@ until [ "$selection" = "0" ]; do
   echo ""
   echo "      Microsoft Windows:"
   echo ""
-  echo "    	22  -  Windows Server 2022 - All"
-  echo "    	23  -  Windows Server 2022 - Standard Only"
-  echo "    	24  -  Windows Server 2022 - Datacenter Only"
-  echo "    	25  -  Windows Server 2019 - All"
-  echo "    	26  -  Windows Server 2019 - Standard Only"
-  echo "    	27  -  Windows Server 2019 - Datacenter Only"
-  echo "    	28  -  Windows 11 - All"
-  echo "    	29  -  Windows 11 - Enterprise Only"
-  echo "    	30  -  Windows 11 - Professional Only"
-  echo "    	31  -  Windows 10 - All"
-  echo "    	32  -  Windows 10 - Enterprise Only"
-  echo "    	33  -  Windows 10 - Professional Only"
+  echo "    	22  -  Windows Server 2025 - All"
+  echo "    	23  -  Windows Server 2025 - Standard Only"
+  echo "    	24  -  Windows Server 2025 - Datacenter Only"
+  echo "    	25  -  Windows Server 2022 - All"
+  echo "    	26  -  Windows Server 2022 - Standard Only"
+  echo "    	27  -  Windows Server 2022 - Datacenter Only"
+  echo "    	28  -  Windows Server 2019 - All"
+  echo "    	29  -  Windows Server 2019 - Standard Only"
+  echo "    	30  -  Windows Server 2019 - Datacenter Only"
+  echo "    	31  -  Windows 11 - All"
+  echo "    	32  -  Windows 11 - Enterprise Only"
+  echo "    	33  -  Windows 11 - Professional Only"
+  echo "    	34  -  Windows 10 - All"
+  echo "    	35  -  Windows 10 - Enterprise Only"
+  echo "    	36  -  Windows 10 - Professional Only"
   echo ""
   echo "      Other:"
   echo ""
@@ -1354,6 +1458,9 @@ until [ "$selection" = "0" ]; do
     31 ) clear ; menu_option_31 ; press_enter ;;
     32 ) clear ; menu_option_32 ; press_enter ;;
     33 ) clear ; menu_option_33 ; press_enter ;;
+    34 ) clear ; menu_option_34 ; press_enter ;;
+    35 ) clear ; menu_option_35 ; press_enter ;;
+    36 ) clear ; menu_option_36 ; press_enter ;;
     i|I ) clear ; info ; press_enter ;;
     q|Q ) clear ; exit ;;
     * ) clear ; incorrect_selection ; press_enter ;;

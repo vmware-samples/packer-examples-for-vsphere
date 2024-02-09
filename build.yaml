@@ -37,12 +37,6 @@ menu:
           var_files:
             - "network.pkrvars.hcl"
             - "linux-storage.pkrvars.hcl"
-      - entry: "Ubuntu Server 23.10 (cloud-init)"
-        build:
-          path: "builds/linux/ubuntu/23-10/"
-          var_files:
-            - "network.pkrvars.hcl"
-            - "linux-storage.pkrvars.hcl"
       - entry: "Ubuntu Server 22.04 LTS (cloud-init)"
         build:
           path: "builds/linux/ubuntu/22-04-lts/"

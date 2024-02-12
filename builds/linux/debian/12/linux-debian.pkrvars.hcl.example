@@ -35,7 +35,7 @@ iso_path = "iso/linux/debian"
 iso_file = "debian-12.4.0-amd64-netinst.iso"
 
 // Boot Settings
-vm_boot_order = "disk,cdrom"
+vm_boot_order = "-"
 vm_boot_wait  = "5s"
 
 // Communicator Settings

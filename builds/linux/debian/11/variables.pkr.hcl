@@ -290,7 +290,7 @@ variable "common_http_port_max" {
 variable "vm_boot_order" {
   type        = string
   description = "The boot order for virtual machines devices."
-  default     = "disk,cdrom"
+  default     = "-"
 }
 
 variable "vm_boot_wait" {

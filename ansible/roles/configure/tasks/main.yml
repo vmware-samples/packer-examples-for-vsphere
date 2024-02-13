@@ -6,3 +6,7 @@
 - name: "{{ task_name }}"
   include_tasks: "{{ ansible_lsb.codename | lower }}.yml"
   when: ansible_distribution == 'VMware Photon OS'
+
+- name: "{{ task_name }}"
+  include_tasks: windows.yml
+  when: ansible_os_family == "Windows"

@@ -1,0 +1,130 @@
+---
+# Set the Windows Explorer options.
+- name: Setting the Windows Explorer options...
+  block:
+    - name: Show hidden files.
+      ansible.windows.win_regedit:
+        path: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+        name: Hidden
+        data: 1
+        type: dword
+
+    - name: Show file extensions.
+      ansible.windows.win_regedit:
+        path: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+        name: HideFileExt
+        data: 0
+        type: dword
+
+    - name: Show drives with no media.
+      ansible.windows.win_regedit:
+        path: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+        name: HideDrivesWithNoMedia
+        data: 0
+        type: dword
+
+    - name: Disabling Sync Provider Notifications.
+      ansible.windows.win_regedit:
+        path: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+        name: ShowSyncProviderNotifications
+        data: 1
+        type: dword
+  when: ansible_os_installation_type != "Server Core"
+
+# Disable system hibernation.
+- name: Disabling System Hibernation...
+  block:
+    - name: Disabling Hibernation.
+      ansible.windows.win_regedit:
+        path: HKLM:\SYSTEM\CurrentControlSet\Control\Power
+        name: HibernateEnabled
+        data: 0
+        type: dword
+
+    - name: Setting HiberFileSizePercent to 0.
+      ansible.windows.win_regedit:
+        path: HKLM:\SYSTEM\CurrentControlSet\Control\Power
+        name: HiberFileSizePercent
+        data: 0
+        type: dword
+
+# Disable TLS 1.0.s
+- name: Disabling TLS 1.0 for Client...
+  block:
+    - name: Disabling TLS 1.0 for Client.
+      ansible.windows.win_regedit:
+        path: HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Client
+        name: Enabled
+        data: 0
+        type: dword
+
+    - name: Setting TLS 1.0 for Client to Disabled by Default.
+      ansible.windows.win_regedit:
+        path: HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Client
+        name: DisabledByDefault
+        data: 1
+        type: dword
+
+    - name: Disabling TLS 1.0 for Server.
+      ansible.windows.win_regedit:
+        path: HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server
+        name: Enabled
+        data: 0
+        type: dword
+
+    - name: Setting TLS 1.0 for Server to Disabled by Default.
+      ansible.windows.win_regedit:
+        path: HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server
+        name: DisabledByDefault
+        data: 1
+        type: dword
+
+# Disable TLS 1.1.
+- name: Disabling TLS 1.1 for Client...
+  block:
+    - name: Disabling TLS 1.1 for Client.
+      ansible.windows.win_regedit:
+        path: HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Client
+        name: Enabled
+        data: 0
+        type: dword
+
+    - name: Setting TLS 1.1 for Client to Disabled by Default.
+      ansible.windows.win_regedit:
+        path: HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Client
+        name: DisabledByDefault
+        data: 1
+        type: dword
+
+    - name: Disabling TLS 1.1 for Server.
+      ansible.windows.win_regedit:
+        path: HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server
+        name: Enabled
+        data: 0
+        type: dword
+
+    - name: Setting TLS 1.1 for Server to Disabled by Default.
+      ansible.windows.win_regedit:
+        path: HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server
+        name: DisabledByDefault
+        data: 1
+        type: dword
+
+# Disable Password Expiration for the Administrator Accounts - (Administrator and Build)
+- name: Disabling Local Administrator Password Expiration...
+  ansible.windows.win_user:
+    name: Administrator
+    password_never_expires: true
+
+- name: Disabling "{{ build_username }}" Password Expiration...
+  ansible.windows.win_user:
+    name: "{{ build_username }}"
+    password_never_expires: true
+
+# Enable Remote Desktop.
+- name: Enabling Remote Desktop...
+  ansible.windows.win_powershell:
+    script: |
+      Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0 | Out-Null
+      Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 0
+      Enable-NetFirewallRule -Group '@FirewallAPI.dll,-28752'

@@ -410,7 +410,6 @@ variable "common_hcp_packer_registry_enabled" {
   description = "Enable the HCP Packer registry."
   default     = false
 }
-
 // Additional Settings
 
 variable "additional_packages" {

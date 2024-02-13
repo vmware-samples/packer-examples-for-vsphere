@@ -148,6 +148,12 @@ variable "vm_cdrom_type" {
   default     = "sata"
 }
 
+variable "vm_cdrom_count" {
+  type        = string
+  description = "The number of virtual CD-ROMs remaining after the build."
+  default     = 1
+}
+
 variable "vm_cpu_count" {
   type        = number
   description = "The number of virtual CPUs."

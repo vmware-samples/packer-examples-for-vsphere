@@ -119,6 +119,7 @@ source "vsphere-iso" "linux-rhel" {
   }
   vm_version           = var.common_vm_version
   remove_cdrom         = var.common_remove_cdrom
+  reattach_cdroms      = var.vm_cdrom_count
   tools_upgrade_policy = var.common_tools_upgrade_policy
   notes                = local.build_description
 

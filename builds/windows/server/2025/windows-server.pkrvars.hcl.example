@@ -30,11 +30,15 @@ vm_guest_os_experience_core    = "core"
 vm_guest_os_experience_desktop = "dexp"
 
 // Virtual Machine Guest Operating System Setting
-vm_guest_os_type = "windows2022srvNext_64Guest"
+vm_guest_os_type = "windows2019srvNext_64Guest"
+
+// Note:
+// You can set `windows2022srvNext_64Guest` if `common_vm_version` for the virtual hardware is `20` or later. Requires vSphere 8.0.
 
 // Virtual Machine Hardware Settings
 vm_firmware              = "efi-secure"
 vm_cdrom_type            = "sata"
+vm_cdrom_count           = 1
 vm_cpu_count             = 2
 vm_cpu_cores             = 2
 vm_cpu_hot_add           = false

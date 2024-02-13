@@ -170,9 +170,9 @@ build {
   sources = ["source.vsphere-iso.linux-sles"]
 
   provisioner "ansible" {
-    galaxy_file            = "${path.cwd}/ansible/requirements.yml"
+    galaxy_file            = "${path.cwd}/ansible/linux-requirements.yml"
     galaxy_force_with_deps = true
-    playbook_file          = "${path.cwd}/ansible/main.yml"
+    playbook_file          = "${path.cwd}/ansible/limux-playbook.yml"
     roles_path             = "${path.cwd}/ansible/roles"
     ansible_env_vars = [
       "ANSIBLE_CONFIG=${path.cwd}/ansible/ansible.cfg",

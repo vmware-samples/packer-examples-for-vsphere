@@ -134,6 +134,8 @@ menu:
     build:
       var_files:
         - "vsphere.pkrvars.hcl"
+        - "ansible.pkrvars.hcl"
+        - "proxy.pkrvars.hcl"
         - "build.pkrvars.hcl"
         - "common.pkrvars.hcl"
     submenu:

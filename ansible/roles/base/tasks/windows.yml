@@ -1,6 +1,39 @@
 ---
 # Windows
 
+- name: Ensure .NET Framework 4.8 requirement is satisfied for Chocolatey CLI v2.0.0+
+  block:
+    - name: Install Chocolatey CLI v1.4.0
+      win_chocolatey:
+        name: 'chocolatey'
+        state: present
+        version: '1.4.0'
+
+    - name: Install Microsoft .NET Framework 4.8
+      win_chocolatey:
+        name: 'netfx-4.8'
+        state: present
+
+    - name: Reboot the host to complete .NET Framework 4.8 install
+      ansible.windows.win_reboot:
+
+    - name: Install Chocolatey CLI v2.0.0+ when .NET Framework 4.8 dependency is met
+      win_chocolatey:
+        name: 'chocolatey'
+        state: latest
+
+    - name: "Installing additional packages using Chocolatey."
+      win_chocolatey:
+        name:
+          - googlechrome
+          - putty
+          - winscp
+          - 7zip
+        state: latest
+        ignore_checksums: true
+
+  when: ansible_os_installation_type != "Server Core"
+
 - name: "Updating the operating system."
   ansible.windows.win_updates:
     category_names:
@@ -8,15 +41,5 @@
       - CriticalUpdates
     reject_list:
       - 5034439
+      - 5034441
     reboot: true
-
-- name: "Installing additional packages using Chocolatey."
-  win_chocolatey:
-    name:
-      - googlechrome
-      - putty
-      - winscp
-      - 7zip
-    state: latest
-    ignore_checksums: true
-  when: ansible_os_installation_type != "Server Core"

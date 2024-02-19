@@ -1,4 +1,16 @@
 ---
+# Tasks for setting custom facts.
+- name: "Setting custom facts."
+  set_fact:
+    enable_cloudinit: "{{ enable_cloudinit | default('false') }}"
+
+# Tasks for removing the cloud-init package.
+- name: "Removing the cloud-init package."
+  apt:
+    name: cloud-init
+    state: absent
+  when: ansible_distribution == 'Ubuntu' and enable_cloudinit == 'false'
+
 # Tasks to clean the audit logs.
 - name: "Cleaning the audit logs."
   file:

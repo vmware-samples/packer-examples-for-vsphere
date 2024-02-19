@@ -16,7 +16,8 @@ vm_guest_os_name     = "ubuntu"
 vm_guest_os_version  = "23-10"
 
 // Virtual Machine Guest Operating System Setting
-vm_guest_os_type = "ubuntu64Guest"
+vm_guest_os_type      = "ubuntu64Guest"
+vm_guest_os_cloudinit = false
 
 // Virtual Machine Hardware Settings
 vm_firmware              = "efi-secure"

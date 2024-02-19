@@ -205,10 +205,10 @@ build {
     ]
     extra_arguments = [
       "--extra-vars", "display_skipped_hosts=false",
-      "--extra-vars", "BUILD_USERNAME=${var.build_username}",
-      "--extra-vars", "BUILD_KEY='${var.build_key}'",
-      "--extra-vars", "ANSIBLE_USERNAME=${var.ansible_username}",
-      "--extra-vars", "ANSIBLE_KEY='${var.ansible_key}'",
+      "--extra-vars", "build_username=${var.build_username}",
+      "--extra-vars", "build_key='${var.build_key}'",
+      "--extra-vars", "ansible_username=${var.ansible_username}",
+      "--extra-vars", "ansible_key='${var.ansible_key}'",
     ]
   }
 

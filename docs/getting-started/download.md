@@ -20,7 +20,7 @@ You can choose between two options to get the source code:
       curl -sL $TARBALL_URL | tar xvfz - --strip-components 1
       git init -b main
       git add .
-      git commit -m "Initial commit"
+      git commit -m "chore: initial commit"
       git switch -c $TAG_NAME HEAD
       ```
 

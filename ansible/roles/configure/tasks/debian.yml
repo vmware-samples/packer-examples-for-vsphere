@@ -1,4 +1,9 @@
 ---
+# Tasks for setting custom facts.
+- name: "Setting custom facts."
+  set_fact:
+    enable_cloudinit: "{{ enable_cloudinit | default('false') }}"
+
 # Tasks for configuring SSH for public key authentication.
 - name: "Configuring SSH for Public Key Authentication."
   lineinfile:
@@ -28,6 +33,9 @@
 # Tasks for configuring cloud-init.
 - name: "Configuring cloud-init."
   block:
+    - name: "Message: Configuring cloud-init"
+      debug:
+        msg: "Configuring cloud-init"
     - file:
         path: "{{ item }}"
         state: absent
@@ -42,7 +50,7 @@
     - copy:
         content: 'datasource_list: [ VMware, OVF, None ]'
         dest: /etc/cloud/cloud.cfg.d/90_dpkg.cfg
-  when: ansible_distribution == 'Ubuntu'
+  when: ansible_distribution == 'Ubuntu' and enable_cloudinit == 'true'
 
 # Tasks for setting SSH keys to regenerate.
 - name: "Setting SSH keys to regenerate."

@@ -15,6 +15,10 @@
 - Adds Ansible integration for Windows Server 2025, 2022, and 2019 images. [GH-801](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/801)
 - Adds Ansible integration for Windows 11 and 10 images. [GH-801](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/801)
 
+:wrench: **Refactor**:
+
+- Refactors the Ubuntu image builds **not** to use cloud-init by default. Set `vm_guest_os_cloudinit` to `true` to enable cloud-init on the machine image. [GH-#](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/#)
+
 :sweat_drops: **Chore**:
 
 - Updates `required_versions` for `packer` to `>= 1.10.0`. [GH-828](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/828)

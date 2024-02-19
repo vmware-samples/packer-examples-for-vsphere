@@ -65,15 +65,14 @@ Generate a SHA-512 encrypted password for the `build_password_encrypted` using t
     ```shell
     sudo systemctl start docker
     sudo docker run -it --rm alpine:latest
-    mkpasswd -m sha512
+    echo -n "<your_password> | mkpasswd --stdin -m sha512
     ```
 
     The following output is displayed:
 
     ```shell
-    Password: ***************
-    [password hash]
-    sudo systemctl stop docker
+    Password:
+    [your_password_hash]
     ```
 
 === ":fontawesome-brands-ubuntu: &nbsp; Ubuntu"
@@ -259,7 +258,7 @@ You can change the `common_data_source` from `http` to `disk` to build supported
 common_data_source = "disk"
 ```
 
-The Packer pluigin's `cd_content` option is used when selecting `disk` unless the distribution does not support a secondary CD-ROM. For distributions that do not support a secondary CD-ROM the `floppy_content` option is used.
+The Packer plugin's `cd_content` option is used when selecting `disk` unless the distribution does not support a secondary CD-ROM. For distributions that do not support a secondary CD-ROM the `floppy_content` option is used.
 
 ### HTTP Binding
 

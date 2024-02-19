@@ -28,7 +28,7 @@ variables:
 
 .packer-build:
     stage: build
-    #tags: 
+    #tags:
     #    - packer
     before_script:
         - "packer init \"$INPUT_PATH\""

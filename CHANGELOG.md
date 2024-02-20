@@ -6,19 +6,20 @@
 
 :rocket: **Enhancement**:
 
-- Adds the ability to complete an image with a specified number of remaining CD-ROMs added in `packer-plugin-vsphere` v1.2.4.
-- Adds Windows Server 2025 Insiders Preview (US English) release. [GH-834](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/834)
-- Adds templates with unit tests for managing custom network and storage configurations for Linux Distributions. [GH-473](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/473), [GH-805](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/805)
-- Adds additional configuration to install packages for Linux Distributions. [GH-800](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/800)
-- Add support for Ansible integration for Windows Server 2025, 2022, and 2019 images. [GH-801](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/801)
-- Add support for Ansible integration for Windows 11 and 10 images. [GH-801](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/801)
+- Adds templates and unit tests for managing custom network and storage configurations for Linux distributions. [GH-473](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/473), [GH-805](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/805)
+- Adds additional configuration to install packages for Linux distributions. [GH-800](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/800)
+- Adds option to set a specified number of remaining CD-ROMs for a machine images added in `packer-plugin-vsphere` v1.2.4. [GH-836](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/836)
+- Adds use of evaluation versions for Windows Server 2025, 2022, and 2019 images, by default. Keys are still supported. [GH-844](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/844)
+- Adds use of evaluation versions for Windows 11 and 10 images, by default. Keys are still supported. [GH-844](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/844)
+- Adds Windows Server 2025 Insiders Preview. [GH-834](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/834)
+- Adds Ansible integration for Windows Server 2025, 2022, and 2019 images. [GH-801](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/801)
+- Adds Ansible integration for Windows 11 and 10 images. [GH-801](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/801)
 
 :sweat_drops: **Chore**:
 
 - Updates `required_versions` for `packer` to `>= 1.10.0`. [GH-828](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/828)
 - Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.2.4`. [GH-824](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/824)
 - Updates `required_plugins` for `ethanmdavidson/packer-plugin-git` to `>= 0.6.1`.  [GH-827](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/827)
-- Updates `required_plugins` for `rgl/packer-plugin-windows-update` to `>= 0.15.0`. [GH-826](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/826)
 - Updates `required_versions` for `terraform` to `>= 1.7.1`. [GH-8297](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/829)
 - Updates `required_versions` for `hashicorp/vsphere` to `>= 2.6.1`. [GH-830](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/830)
 - Updates `required_versions` for `hashicorp/hcp` to `>= 0.81.0`. [GH-831](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/831)
@@ -32,9 +33,6 @@
 - Updates Oracle Linux 9 to 9.3 release. [GH-821](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/821)
 - Updates Oracle Linux 8 to 8.9 release. [GH-820](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/820)
 - Updates Debian 12 to 12.4 release. [GH-816](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/816)
-- Updates Windows 11 22H2 to January 2024 (US English) release. [GH-816](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/816)
-- Updates Windows 10 22H2 to January 2024 (US English) release. [GH-816](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/816)
-- Updates Windows Server 2022 to January 2024 (US English) release. [GH-816](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/816)
 
 ## v23.11
 
@@ -92,7 +90,7 @@
 - Updates Ubuntu 22.04 to 22.04.3 release. [GH-720](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/720)
 - Updates Ubuntu 20.04 to 20.04.6 release. [GH-566](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/566)
 - Removes Ubuntu 18.04 from the project. [GH-578](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/578)
-  
+
     On 31 May 2023, Ubuntu 18.04 LTS reached the end of standard support. See [Ubuntu Lifecycle](https://ubuntu.com/about/release-cycle) for more information.
 
 - Updates Red Hat Enterprise Linux 9 to 9.2 release. [GH-576](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/576), [GH-587](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/587)

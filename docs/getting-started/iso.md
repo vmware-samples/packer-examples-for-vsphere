@@ -40,12 +40,13 @@ Download the Linux distribution ISO files from the publisher.
 Download the Microsoft Windows ISO files from the Microsoft.
 
 ::spantable::
-| Operating System                                                         | Version   |
-| :---                                                                     | :---      |
-| :fontawesome-brands-windows: &nbsp;&nbsp; Microsoft Windows Server @span | 2022      |
-|                                                                          | 2019      |
-| :fontawesome-brands-windows: &nbsp;&nbsp; Microsoft Windows @span        | 11 22H2   |
-|                                                                          | 10 22H2   |
+| Operating System                                                         | Version | Download                                                                                              |
+| :---                                                                     | :---    | :---                                                                                                  |
+| :fontawesome-brands-windows: &nbsp;&nbsp; Microsoft Windows Server @span | 2025    | [:fontawesome-solid-cloud-arrow-down:][download-windows-server-2025] &nbsp; Windows Insiders Preview  |
+|                                                                          | 2022    | [:fontawesome-solid-cloud-arrow-down:][download-windows-server-2022] &nbsp; Windows Evaluation Center |
+|                                                                          | 2019    | [:fontawesome-solid-cloud-arrow-down:][download-windows-server-2019] &nbsp; Windows Evaluation Center |
+| :fontawesome-brands-windows: &nbsp;&nbsp; Microsoft Windows @span        | 11      | [:fontawesome-solid-cloud-arrow-down:][download-windows-11] &nbsp; Windows Evaluation Center          |
+|                                                                          | 10      | [:fontawesome-solid-cloud-arrow-down:][download-windows-10] &nbsp; Windows Evaluation Center          |
 ::end-spantable::
 
 Upload the guest operating system ISO files to the datastore and update the path in the configuration variables.
@@ -82,4 +83,9 @@ iso_file           = "photon-5.0-xxxxxxxxx.iso"
 [download-linux-ubuntu-2004]: https://releases.ubuntu.com/20.04/
 [download-linux-ubuntu-2204]: https://releases.ubuntu.com/22.04/
 [download-linux-ubuntu-2310]: https://releases.ubuntu.com/23.10/
+[download-windows-server-2022]: https://www.microsoft.com/evalcenter/evaluate-windows-server-2022
+[download-windows-server-2019]: https://www.microsoft.com/evalcenter/evaluate-windows-server-2019
+[download-windows-server-2025]: https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewserver
+[download-windows-11]: https://www.microsoft.com/evalcenter/evaluate-windows-11-enterprise
+[download-windows-10]: https://www.microsoft.com/evalcenter/evaluate-windows-10-enterprise
 [iso]: https://en.wikipedia.org/wiki/ISO_imageGUID-58D77EA5-50D9-4A8E-A15A-D7B3ABA11B87.html

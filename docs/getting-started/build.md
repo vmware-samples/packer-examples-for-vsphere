@@ -77,13 +77,21 @@ packer init builds/windows/server/2022/.
 Build a specific machine image:
 
 ```shell
-packer build -force on-error=ask\
+packer build -force on-error=ask \
     --only vsphere-iso.windows-server-standard-core \
-    -var-file="config/vsphere.pkrvars.hcl" \
     -var-file="config/build.pkrvars.hcl" \
     -var-file="config/common.pkrvars.hcl" \
+    -var-file="config/vsphere.pkrvars.hcl" \
     builds/windows/server/2022
 ```
+
+➜ packer validate \
+-var-file="config/ansible.pkrvars.hcl" \
+-var-file="config/build.pkrvars.hcl" \
+-var-file="config/common.pkrvars.hcl" \
+-var-file="config/proxy.pkrvars.hcl" \
+-var-file="config/vsphere.pkrvars.hcl" \
+builds/linux/photon/5
 
 ## Build with Environmental Variables
 

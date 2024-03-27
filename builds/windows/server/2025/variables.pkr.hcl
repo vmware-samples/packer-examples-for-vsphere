@@ -96,6 +96,11 @@ variable "vm_inst_os_keyboard" {
   default     = "en-US"
 }
 
+variable "vm_inst_os_eval" {
+  type        = bool
+  description = "Build using the operating system evaluation"
+}
+
 variable "vm_inst_os_image_standard_core" {
   type        = string
   description = "The installation operating system image input for Microsoft Windows Standard Core."
@@ -106,9 +111,9 @@ variable "vm_inst_os_image_standard_desktop" {
   description = "The installation operating system image input for Microsoft Windows Standard."
 }
 
-variable "vm_inst_os_kms_key_standard" {
+variable "vm_inst_os_key_standard" {
   type        = string
-  description = "The installation operating system KMS key input for Microsoft Windows Standard edition."
+  description = "The installation operating system key input for Microsoft Windows Standard edition."
 }
 
 variable "vm_inst_os_image_datacenter_core" {
@@ -121,9 +126,9 @@ variable "vm_inst_os_image_datacenter_desktop" {
   description = "The installation operating system image input for Microsoft Windows Datacenter."
 }
 
-variable "vm_inst_os_kms_key_datacenter" {
+variable "vm_inst_os_key_datacenter" {
   type        = string
-  description = "The installation operating system KMS key input for Microsoft Windows Datacenter edition."
+  description = "The installation operating system key input for Microsoft Windows Datacenter edition."
 }
 
 // Virtual Machine Settings

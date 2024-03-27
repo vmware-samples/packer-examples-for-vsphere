@@ -100,13 +100,14 @@ HashiCorp [Packer][packer-install] 1.10.0 or higher.
 
 Required plugins are automatically downloaded and initialized when using `./build.sh`.
 
-For air-gapped or dark sites, you may download the plugins and place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
+For disconnected sites (_e.g._, air-gapped or dark sites), you may download the plugins and place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
 
-| Plugin                                                                      | Version         | Description      | Resources                                                   |
-| :---                                                                        | :---            | :---             | :---                                                        |
-| :simple-hashicorp: &nbsp;&nbsp; Packer Plugin for VMware vSphere            | 1.2.4 or later  | By HashiCorp     | [:fontawesome-brands-github:][packer-plugin-vsphere] &nbsp;&nbsp;[:material-library:][packer-plugin-vsphere] |
-| :fontawesome-brands-git: &nbsp;&nbsp; Packer Plugin for Git                 | 0.6.1 or later  | Community Plugin | [:fontawesome-brands-github:][packer-plugin-git]            |
-| :fontawesome-brands-windows: &nbsp;&nbsp; Packer Plugin for Windows Updates | 0.15.0 or later | Community Plugin | [:fontawesome-brands-github:][packer-plugin-windows-update] |
+| Plugin                                                           | Version  | Description      | Resources                                                                                                               |
+| :---                                                             | :---     | :---             | :---                                                                                                                    |
+| :simple-hashicorp: &nbsp;&nbsp; Packer Plugin for Ansible        | >= 1.1.0 | By HashiCorp     | [:fontawesome-brands-github:][packer-plugin-ansible-repo] &nbsp;&nbsp; [:material-library:][packer-plugin-ansible-docs] |
+| :simple-hashicorp: &nbsp;&nbsp; Packer Plugin for VMware vSphere | >= 1.2.4 | By HashiCorp     | [:fontawesome-brands-github:][packer-plugin-vsphere-repo] &nbsp;&nbsp; [:material-library:][packer-plugin-vsphere-docs] |
+| :fontawesome-brands-git: &nbsp;&nbsp; Packer Plugin for Git      | >= 0.6.1 | Community Plugin | [:fontawesome-brands-github:][packer-plugin-git-repo]     &nbsp;&nbsp; [:material-library:][packer-plugin-git-docs]     |
+
 
 ## :octicons-package-dependencies-24: &nbsp; Additional Software Packages
 
@@ -206,7 +207,10 @@ The following additional software packages must be installed on the operating sy
 [homebrew]: https://brew.sh/
 [jq]: https://stedolan.github.io/jq/
 [packer-install]: https://developer.hashicorp.com/packer/tutorials/docker-get-started/get-started-install-cli
-[packer-plugin-git]: https://github.com/ethanmdavidson/packer-plugin-git
-[packer-plugin-vsphere]: https://developer.hashicorp.com/packer/plugins/builders/vsphere/vsphere-iso
-[packer-plugin-windows-update]: https://github.com/rgl/packer-plugin-windows-update
+[packer-plugin-ansible-docs]: https://developer.hashicorp.com/packer/integrations/hashicorp/ansible
+[packer-plugin-ansible-repo]: https://github.com/hashicorp/packer-plugin-ansible
+[packer-plugin-git-docs]: https://developer.hashicorp.com/packer/integrations/ethanmdavidson/git
+[packer-plugin-git-repo]: https://github.com/ethanmdavidson/packer-plugin-git
+[packer-plugin-vsphere-docs]: https://developer.hashicorp.com/packer/plugins/builders/vsphere
+[packer-plugin-vsphere-repo]: https://github.com/hashicorp/packer-plugin-vsphere
 [terraform-install]: https://www.terraform.io/docs/cli/install/apt.html

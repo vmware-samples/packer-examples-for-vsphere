@@ -96,6 +96,11 @@ variable "vm_inst_os_keyboard" {
   default     = "en-US"
 }
 
+variable "vm_inst_os_eval" {
+  type        = bool
+  description = "Build using the operating system evaluation"
+}
+
 variable "vm_inst_os_image_pro" {
   type        = string
   description = "The installation operating system image input."
@@ -106,13 +111,13 @@ variable "vm_inst_os_image_ent" {
   description = "The installation operating system image input."
 }
 
-variable "vm_inst_os_kms_key_pro" {
+variable "vm_inst_os_key_pro" {
   type        = string
-  description = "The installation operating system KMS key input."
+  description = "The installation operating system key input."
 }
-variable "vm_inst_os_kms_key_ent" {
+variable "vm_inst_os_key_ent" {
   type        = string
-  description = "The installation operating system KMS key input."
+  description = "The installation operating system key input."
 }
 
 // Virtual Machine Settings

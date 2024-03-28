@@ -37,6 +37,7 @@
 - Updates Oracle Linux 9 to 9.3 release. [GH-821](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/821)
 - Updates Oracle Linux 8 to 8.9 release. [GH-820](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/820)
 - Updates Debian 12 to 12.4 release. [GH-816](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/816)
+- Updates AlmaLinux to upgrade the `almalinux-release` package during the build. [GH-](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/)
 
 ## v23.11
 

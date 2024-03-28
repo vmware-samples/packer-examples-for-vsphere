@@ -51,15 +51,6 @@ else
   CONFIG_PATH=$(realpath "${SCRIPT_PATH}/config")
 fi
 
-menu_banner=$(cat << "EOF"
-    ____             __                ____        _ __    __     
-   / __ \____ ______/ /_____  _____   / __ )__  __(_) /___/ /____ 
-  / /_/ / __  / ___/ //_/ _ \/ ___/  / __  / / / / / / __  / ___/ 
- / ____/ /_/ / /__/ ,< /  __/ /     / /_/ / /_/ / / / /_/ (__  )  
-/_/    \__,_/\___/_/|_|\___/_/     /_____/\__,_/_/_/\__,_/____/   
-EOF
-)
-
 menu_message="Select a HashiCorp Packer build for VMware vSphere."
 
 if [ "$debug_mode" = true ]; then
@@ -217,15 +208,15 @@ menu_option_5() {
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
 
-  echo -e "\nCONFIRM: Build a Ubuntu Server 23.10 (cloud-init) Template for VMware vSphere?"
+  echo -e "\nCONFIRM: Build a Ubuntu Server 23.10 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     exit 1
   fi
 
-  ### Build a Ubuntu Server 23.10 (cloud-init) Template for VMware vSphere. ###
-  echo "Building a Ubuntu Server 23.10 (cloud-init) Template for VMware vSphere..."
+  ### Build a Ubuntu Server 23.10 Template for VMware vSphere. ###
+  echo "Building a Ubuntu Server 23.10 Template for VMware vSphere..."
 
   ### Initialize HashiCorp Packer and required plugins. ###
   echo "Initializing HashiCorp Packer and required plugins..."
@@ -254,15 +245,15 @@ menu_option_6() {
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
 
-  echo -e "\nCONFIRM: Build a Ubuntu Server 22.04 LTS (cloud-init) Template for VMware vSphere?"
+  echo -e "\nCONFIRM: Build a Ubuntu Server 22.04 LTS Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     exit 1
   fi
 
-  ### Build a Ubuntu Server 22.04 LTS (cloud-init) Template for VMware vSphere. ###
-  echo "Building a Ubuntu Server 22.04 LTS (cloud-init) Template for VMware vSphere..."
+  ### Build a Ubuntu Server 22.04 LTS Template for VMware vSphere. ###
+  echo "Building a Ubuntu Server 22.04 LTS Template for VMware vSphere..."
 
   ### Initialize HashiCorp Packer and required plugins. ###
   echo "Initializing HashiCorp Packer and required plugins..."
@@ -291,15 +282,15 @@ menu_option_7() {
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
 
-  echo -e "\nCONFIRM: Build a Ubuntu Server 20.04 LTS (cloud-init) Template for VMware vSphere?"
+  echo -e "\nCONFIRM: Build a Ubuntu Server 20.04 LTS Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     exit 1
   fi
 
-  ### Build a Ubuntu Server 20.04 LTS (cloud-init) Template for VMware vSphere. ###
-  echo "Building a Ubuntu Server 20.04 LTS (cloud-init) Template for VMware vSphere..."
+  ### Build a Ubuntu Server 20.04 LTS Template for VMware vSphere. ###
+  echo "Building a Ubuntu Server 20.04 LTS Template for VMware vSphere..."
 
   ### Initialize HashiCorp Packer and required plugins. ###
   echo "Initializing HashiCorp Packer and required plugins..."
@@ -1364,8 +1355,6 @@ incorrect_selection() {
 until [ "$selection" = "0" ]; do
   clear
   echo ""
-  echo -e "$menu_banner"
-  echo ""
   echo -e "$menu_message"
   echo ""
   echo "      Linux Distribution:"
@@ -1374,9 +1363,9 @@ until [ "$selection" = "0" ]; do
   echo "    	 2  -  VMware Photon OS 4"
   echo "    	 3  -  Debian 12"
   echo "    	 4  -  Debian 11"
-  echo "    	 5  -  Ubuntu Server 23.10 (cloud-init)"
-  echo "    	 6  -  Ubuntu Server 22.04 LTS (cloud-init)"
-  echo "    	 7  -  Ubuntu Server 20.04 LTS (cloud-init)"
+  echo "    	 5  -  Ubuntu Server 23.10"
+  echo "    	 6  -  Ubuntu Server 22.04 LTS"
+  echo "    	 7  -  Ubuntu Server 20.04 LTS"
   echo "    	 8  -  Red Hat Enterprise Linux 9"
   echo "    	 9  -  Red Hat Enterprise Linux 8"
   echo "    	10  -  Red Hat Enterprise Linux 7"

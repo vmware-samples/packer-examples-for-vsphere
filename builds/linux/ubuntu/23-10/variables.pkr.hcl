@@ -122,6 +122,12 @@ variable "vm_guest_os_type" {
   description = "The guest operating system type, also know as guestid."
 }
 
+variable "vm_guest_os_cloudinit" {
+  type        = bool
+  description = "Enable cloud-init for the guest operating system."
+  default     = false
+}
+
 variable "vm_firmware" {
   type        = string
   description = "The virtual machine firmware."

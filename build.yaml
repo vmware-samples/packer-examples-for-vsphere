@@ -31,19 +31,19 @@ menu:
           var_files:
             - "network.pkrvars.hcl"
             - "linux-storage.pkrvars.hcl"
-      - entry: "Ubuntu Server 23.10 (cloud-init)"
+      - entry: "Ubuntu Server 23.10"
         build:
           path: "builds/linux/ubuntu/23-10/"
           var_files:
             - "network.pkrvars.hcl"
             - "linux-storage.pkrvars.hcl"
-      - entry: "Ubuntu Server 22.04 LTS (cloud-init)"
+      - entry: "Ubuntu Server 22.04 LTS"
         build:
           path: "builds/linux/ubuntu/22-04-lts/"
           var_files:
             - "network.pkrvars.hcl"
             - "linux-storage.pkrvars.hcl"
-      - entry: "Ubuntu Server 20.04 LTS (cloud-init)"
+      - entry: "Ubuntu Server 20.04 LTS"
         build:
           path: "builds/linux/ubuntu/20-04-lts/"
           var_files:

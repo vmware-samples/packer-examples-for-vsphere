@@ -23,7 +23,7 @@ packer {
     }
     git = {
       source  = "github.com/ethanmdavidson/git"
-      version = ">= 0.6.1"
+      version = ">= 0.6.2"
     }
   }
 }
@@ -128,7 +128,7 @@ source "vsphere-iso" "linux-sles" {
     "e",
     // This sends four "down arrow" keys and then the "end" key. This is used to navigate to a specific line in the boot menu option's configuration.
     "<down><down><down><down><end>",
-    // This types the value of the 'data_source_command' local variable. This is used to specify the kickstart data source configured in the common variables. 
+    // This types the value of the 'data_source_command' local variable. This is used to specify the kickstart data source configured in the common variables.
     "${local.data_source_command}",
     // This sends the "F10" key. In the GRUB boot loader, this is used to save the changes and exit the boot menu option's configuration, and then continue the boot process.
     "<f10>"

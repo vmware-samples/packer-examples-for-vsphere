@@ -23,7 +23,7 @@ packer {
     }
     git = {
       source  = "github.com/ethanmdavidson/git"
-      version = ">= 0.6.1"
+      version = ">= 0.6.2"
     }
   }
 }
@@ -144,7 +144,7 @@ source "vsphere-iso" "linux-debian" {
     " auto-install/enable=true",
     // This types a string that sets the debconf/priority option to critical. This is used to minimize the number of questions asked during the installation process.
     " debconf/priority=critical",
-    // This types the value of the 'data_source_command' local variable. This is used to specify the kickstart data source configured in the common variables. 
+    // This types the value of the 'data_source_command' local variable. This is used to specify the kickstart data source configured in the common variables.
     " ${local.data_source_command}",
     // This types a string that sets the noprompt option and then sends the "enter" key. This is used to prevent the installer from pausing for user input.
     " noprompt --<enter>",

@@ -6,18 +6,21 @@ icon: octicons/gear-24
 
 ## Example Variables
 
-The project includes example variables files that you can use as a starting point for your own configuration.
+The project includes example variables files that you can use as a starting point for your own
+configuration.
 
 The [variables][packer-variables] are defined in `.pkrvars.hcl` files.
 
-Run the config script `./config.sh` to copy the `.pkrvars.hcl.example` files to a `config` directory.
+Run the config script `./config.sh` to copy the `.pkrvars.hcl.example` files to a `config`
+directory.
 
 ```shell
 ./config.sh
 ./build.sh
 ```
 
-The `config` folder is the default folder. You can override the default by passing an alternate value as the first argument.
+The `config` folder is the default folder. You can override the default by passing an alternate
+value as the first argument.
 
 For example:
 
@@ -41,7 +44,8 @@ This is useful for the purposes of running machine image builds for different en
 
 ### Build
 
-Edit the `config/build.pkrvars.hcl` file to configure the credentials for the default account on machine images.
+Edit the `config/build.pkrvars.hcl` file to configure the credentials for the default account on
+machine images.
 
 ```hcl title="config/build.pkrvars.hcl"
 build_username           = "example"
@@ -60,7 +64,8 @@ Generate a SHA-512 encrypted password for the `build_password_encrypted` using t
 
 === ":fontawesome-brands-linux: &nbsp; VMware Photon OS"
 
-    Run the following command to generate a SHA-512 encrypted password for the `build_password_encrypted` using mkpasswd.
+    Run the following command to generate a SHA-512 encrypted password for the
+    `build_password_encrypted` using mkpasswd.
 
     ```shell
     sudo systemctl start docker
@@ -77,7 +82,8 @@ Generate a SHA-512 encrypted password for the `build_password_encrypted` using t
 
 === ":fontawesome-brands-ubuntu: &nbsp; Ubuntu"
 
-    Run the following command to generate a SHA-512 encrypted password for the `build_password_encrypted` using mkpasswd.
+    Run the following command to generate a SHA-512 encrypted password for the
+    `build_password_encrypted` using mkpasswd.
 
     ```shell
     mkpasswd -m sha512
@@ -92,7 +98,8 @@ Generate a SHA-512 encrypted password for the `build_password_encrypted` using t
 
 === ":fontawesome-brands-apple: &nbsp; macOS"
 
-    Run the following command to generate a SHA-512 encrypted password for the `build_password_encrypted` using mkpasswd.
+    Run the following command to generate a SHA-512 encrypted password for the
+    `build_password_encrypted` using mkpasswd.
 
     ```shell
     docker run -it --rm alpine:latest
@@ -110,7 +117,8 @@ Generate a public key for the `build_key` for public key authentication.
 
 === ":fontawesome-brands-linux: &nbsp; VMware Photon OS"
 
-    Run the following command to generate a public key for the `build_key` for public key authentication.
+    Run the following command to generate a public key for the `build_key` for public key
+    authentication.
 
     ```shell
     ssh-keygen -t ecdsa -b 521 -C "<name@example.com>"
@@ -129,7 +137,8 @@ Generate a public key for the `build_key` for public key authentication.
 
 === ":fontawesome-brands-ubuntu: &nbsp; Ubuntu"
 
-    Run the following command to generate a public key for the `build_key` for public key authentication.
+    Run the following command to generate a public key for the `build_key` for public key
+    authentication.
 
     ```shell
     ssh-keygen -t ecdsa -b 521 -C "<name@example.com>"
@@ -148,7 +157,8 @@ Generate a public key for the `build_key` for public key authentication.
 
 === ":fontawesome-brands-apple: &nbsp; macOS"
 
-    Run the following command to generate a public key for the `build_key` for public key authentication.
+    Run the following command to generate a public key for the `build_key` for public key
+    authentication.
 
     ```shell
     ssh-keygen -t ecdsa -b 521 -C "<name@example.com>"
@@ -165,18 +175,22 @@ Generate a public key for the `build_key` for public key authentication.
     Your public key has been saved in /Users/example/.ssh/id_ecdsa.pub.
     ```
 
-The content of the public key, `build_key`, is added the key to the `~/.ssh/authorized_keys` file of the `build_username` on the Linux guest operating systems.
+The content of the public key, `build_key`, is added the key to the `~/.ssh/authorized_keys` file of
+the `build_username` on the Linux guest operating systems.
 
 ???+ danger "Example Public Keys and Passwords."
     Replace the example public keys and passwords.
 
-    By default, both Public Key Authentication and Password Authentication are enabled for Linux distributions.
+    By default, both Public Key Authentication and Password Authentication are enabled for Linux
+    distributions.
 
-    If you wish to disable Password Authentication and only use Public Key Authentication, comment or remove the portion of the associated Ansible `configure` role.
+    If you wish to disable Password Authentication and only use Public Key Authentication, comment
+    or remove the portion of the associated Ansible `configure` role.
 
 ### Ansible
 
-Edit the `config/ansible.pkrvars.hcl` file to configure the credentials for the Ansible account on Linux machine images.
+Edit the `config/ansible.pkrvars.hcl` file to configure the credentials for the Ansible account on
+Linux machine images.
 
 ```hcl title="config/ansible.pkrvars.hcl"
 ansible_username = "ansible"
@@ -237,32 +251,43 @@ common_hcp_packer_registry_enabled = false
 
 ### Data Source
 
-The default provisioning data source for Linux machine image builds is `http`. This is used to serve the kickstart files to the Linux guest operating system during the build.
+The default provisioning data source for Linux machine image builds is `http`. This is used to serve
+the kickstart files to the Linux guest operating system during the build.
 
 ```hcl title="config/common.pkrvars.hcl"
 common_data_source = "http"
 ```
 
 ???+ tip "IPTables"
-    Packer includes a built-in HTTP server that is used to serve the kickstart files for Linux machine image builds.
 
-    If iptables is enabled on your Packer host, you will need to open `common_http_port_min` through `common_http_port_max` ports.
+    Packer includes a built-in HTTP server that is used to serve the kickstart files for Linux
+    machine image builds.
+
+    If iptables is enabled on your Packer host, you will need to open `common_http_port_min` through
+    `common_http_port_max` ports.
 
     ```shell
     iptables -A INPUT -p tcp --match multiport --dports 8000:8099 -j ACCEPT
     ```
 
-You can change the `common_data_source` from `http` to `disk` to build supported Linux machine images without the need to use Packer's HTTP server. This is useful for environments that may not be able to route back to the system from which Packer is running. For example, building a machine image in VMware Cloud on AWS.
+You can change the `common_data_source` from `http` to `disk` to build supported Linux machine
+images without the need to use Packer's HTTP server. This is useful for environments that may not be
+able to route back to the system from which Packer is running. For example, building a machine image
+in VMware Cloud on AWS.
 
 ```hcl title="config/common.pkrvars.hcl"
 common_data_source = "disk"
 ```
 
-The Packer plugin's `cd_content` option is used when selecting `disk` unless the distribution does not support a secondary CD-ROM. For distributions that do not support a secondary CD-ROM the `floppy_content` option is used.
+The Packer plugin's `cd_content` option is used when selecting `disk` unless the distribution does
+not support a secondary CD-ROM. For distributions that do not support a secondary CD-ROM the
+`floppy_content` option is used.
 
 ### HTTP Binding
 
-If you need to define a specific IPv4 address from your host for Packer's built-in HTTP server, modify the `common_http_ip` variable from `null` to a `string` value that matches an IP address on your Packer host.
+If you need to define a specific IPv4 address from your host for Packer's built-in HTTP server,
+modify the `common_http_ip` variable from `null` to a `string` value that matches an IP address on
+your Packer host.
 
 ```hcl title="config/common.pkrvars.hcl"
 common_http_ip = "172.16.11.254"
@@ -290,63 +315,66 @@ Edit the `builds/vsphere.pkrvars.hcl` file to configure the following:
 - vSphere Settings
 
 ```hcl title="config/vsphere.pkrvars.hcl"
-vsphere_endpoint                         = "sfo-w01-vc01.sfo.example.com"
-vsphere_username                         = "svc-packer-vsphere@example.com"
-vsphere_password                         = "<plaintext_password>"
-vsphere_insecure_connection              = true
-vsphere_datacenter                       = "sfo-w01-dc01"
-vsphere_cluster                          = "sfo-w01-cl01"
-//vsphere_host                           = "sfo-w01-esx01"
-vsphere_datastore                        = "sfo-w01-cl01-ds-vsan01"
-vsphere_network                          = "sfo-w01-seg-dhcp"
-vsphere_folder                           = "sfo-w01-fd-templates"
-//vsphere_resource_pool                  = "sfo-w01-rp01"
-vsphere_set_host_for_datastore_uploads   = false
+vsphere_endpoint                       = "sfo-w01-vc01.sfo.example.com"
+vsphere_username                       = "svc-packer-vsphere@example.com"
+vsphere_password                       = "<plaintext_password>"
+vsphere_insecure_connection            = true
+vsphere_datacenter                     = "sfo-w01-dc01"
+vsphere_cluster                        = "sfo-w01-cl01"
+//vsphere_host                         = "sfo-w01-esx01"
+vsphere_datastore                      = "sfo-w01-cl01-ds-vsan01"
+vsphere_network                        = "sfo-w01-seg-dhcp"
+vsphere_folder                         = "sfo-w01-fd-templates"
+//vsphere_resource_pool                = "sfo-w01-rp01"
+vsphere_set_host_for_datastore_uploads = false
 ```
 
-???- note "vSphere DRs Disabled or Standalone ESXi Hosts"
-    When targeting standalone ESXi hosts or vSphere clusters with vSphere DRS disabled, you must set the `vsphere_host` variable.
+???- note "vSphere Distributed Resource Scheduler Disabled or Standalone ESXi Hosts"
+    When targeting standalone ESXi hosts or vSphere clusters with vSphere DRS disabled, you must set
+    the `vsphere_host` variable.
 
     **Example** (vSphere Clusters with vSphere DRS Disabled):
 
     ```hcl title="config/vsphere.pkrvars.hcl"
     ...
-    vsphere_datacenter           = "sfo-w01-dc01"
-    vsphere_cluster              = "sfo-w01-cl01"
-    vsphere_host                 = "sfo-w01-esx01"
-    vsphere_folder               = "sfo-w01-fd-templates"
+    vsphere_datacenter = "sfo-w01-dc01"
+    vsphere_cluster    = "sfo-w01-cl01"
+    vsphere_host       = "sfo-w01-esx01"
+    vsphere_folder     = "sfo-w01-fd-templates"
     ...
     ```
 
     **Example** (Standalone ESXi Host Managed by vCenter Server):
 
-    For a standalone ESXi host managed by vCenter Server, comment or remove `vsphere_cluster`.
+    For a standalone ESXi host, managed by vCenter Server, comment or remove `vsphere_cluster`.
 
     ```hcl title="config/vsphere.pkrvars.hcl"
     ...
-    vsphere_datacenter           = "sfo-w01-dc01"
-    //vsphere_cluster            = "sfo-w01-cl01"
-    vsphere_host                 = "sfo-w01-esx01"
-    vsphere_folder               = "sfo-w01-fd-templates"
+    vsphere_datacenter  = "sfo-w01-dc01"
+    //vsphere_cluster   = "sfo-w01-cl01"
+    vsphere_host        = "sfo-w01-esx01"
+    vsphere_folder      = "sfo-w01-fd-templates"
     ...
     ```
 
     **Example** (Standalone ESXi Host):
 
-    For a standalone, unmanaged ESXi host, comment or remove `vsphere_datacenter`, `vsphere_cluster`, and `vsphere_folder`.
+    For a standalone ESXi host, not managed by vCenter Server, comment or remove
+    `vsphere_datacenter`, `vsphere_cluster`, and `vsphere_folder`.
 
     ```hcl title="config/vsphere.pkrvars.hcl"
     ...
-    //vsphere_datacenter         = "sfo-w01-dc01"
-    //vsphere_cluster            = "sfo-w01-cl01"
-    vsphere_host                 = "sfo-w01-esx01"
-    //vsphere_folder             = "sfo-w01-fd-templates"
+    //vsphere_datacenter = "sfo-w01-dc01"
+    //vsphere_cluster    = "sfo-w01-cl01"
+    vsphere_host         = "sfo-w01-esx01"
+    //vsphere_folder     = "sfo-w01-fd-templates"
     ...
     ```
 
 ### Machine Images
 
-Edit the `config/<type>-<build>-<version>.pkrvars.hcl` file to configure the following virtual machine hardware settings, as required:
+Edit the `config/<type>-<build>-<version>.pkrvars.hcl` files to configure the following virtual
+machine hardware settings, as required:
 
 - CPUs `(int)`
 - CPU Cores `(int)`
@@ -392,6 +420,7 @@ communicator_timeout = "30m"
 ```
 
 ???+ note
+
     All `variables.auto.pkrvars.hcl` default to using:
 
     - [VMware Paravirtual SCSI controller][vmware-pvscsi] storage device
@@ -402,7 +431,8 @@ communicator_timeout = "30m"
 
 #### Additional Packages
 
-Edit the `config/linux-<build>-<version>.pkrvars.hcl` file to configure the additional packages to be installed on the Linux guest operating system during the build.
+Edit the `config/linux-<build>-<version>.pkrvars.hcl` file to configure the additional packages to
+be installed on the Linux guest operating system during the build.
 
 ```hcl title="config/linux-photon-5.pkrvars.hcl"
 // Additional Settings
@@ -411,27 +441,33 @@ additional_packages = ["git", "make", "vim"]
 
 #### Red Hat Subscription Manager
 
-Edit the `config/redhat.pkrvars.hcl` file to configure the credentials for your Red Hat Subscription Manager account.
+Edit the `config/redhat.pkrvars.hcl` file to configure the credentials for your Red Hat Subscription
+Manager account.
 
 ```hcl title="config/redhat.pkrvars.hcl"
 rhsm_username = "example"
 rhsm_password = "<plaintext_password>"
 ```
 
-These variables are **only** used if you are performing a Red Hat Enterprise Linux Server build and are used to register the image with Red Hat Subscription Manager during the build for system updates and package installation.
+These variables are **only** used if you are performing a Red Hat Enterprise Linux Server build and
+are used to register the image with Red Hat Subscription Manager during the build for system updates
+and package installation.
 
 Before the build completes, the machine image is unregistered from Red Hat Subscription Manager.
 
 #### SUSE Customer Connect
 
-Edit the `config/scc.pkrvars.hcl` file to configure the following credentials for your SUSE Customer Connect account.
+Edit the `config/scc.pkrvars.hcl` file to configure the following credentials for your SUSE Customer
+Connect account.
 
 ```hcl title="config/scc.pkrvars.hcl"
 scc_email = "suse@example.com"
 scc_code  = "<plaintext_code>"
 ```
 
-These variables are **only** used if you are performing a SUSE Linux Enterprise Server build and are used to register the image with SUSE Customer Connect during the build for system updates and package installation.
+These variables are **only** used if you are performing a SUSE Linux Enterprise Server build and are
+used to register the image with SUSE Customer Connect during the build for system updates and
+package installation.
 
 Before the build completes, the machine image is unregistered from SUSE Customer Connect.
 
@@ -441,7 +477,8 @@ Before the build completes, the machine image is unregistered from SUSE Customer
 
     Static IP assignment is available for certain Linux machine images.
 
-    For details on which distributions are compatible, please refer to the [Linux Distributions] table.
+    For details on which distributions are compatible, please refer to the [Linux Distributions]
+    table.
 
 Edit the `config/network.pkrvars.hcl` file to configure a static IP address:
 
@@ -463,7 +500,8 @@ vm_dns_list   = [ "172.16.11.4", "172.16.11.5" ]
 
     Storage settings are available for certain Linux machine images.
 
-    For details on which distributions are compatible, please refer to the [Linux Distributions] table.
+    For details on which distributions are compatible, please refer to the [Linux Distributions]
+    table.
 
 Edit the `config/linux-storage.pkrvars.hcl` file to configure a partitioning scheme:
 
@@ -520,7 +558,8 @@ vm_disk_lvm = []
 
 ???+ note
 
-    Setting `size = -1` can also be used for the last partition (Logical Volume) of `vm_disk_lvm` so that it fills the remaining space of the Volume Group.
+    Setting `size = -1` can also be used for the last partition (Logical Volume) of `vm_disk_lvm` so
+    that it fills the remaining space of the Volume Group.
 
 [//]: Links
 [packer-variables]: https://developer.hashicorp.com/packer/docs/templates/hcl_templates/variables

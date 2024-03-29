@@ -6,7 +6,8 @@ icon: material/gitlab
 
 ## :material-gitlab: Generate a CI/CD YAML
 
-The GitLab CI/CD YAML (`.gitlab-ci.yml`) can be generated with Gomplate using a template (`./build-ci.tmpl`) and a configuration file in YAML (`./build.yaml`).
+The GitLab CI/CD YAML (`.gitlab-ci.yml`) can be generated with Gomplate using a template
+(`./build-ci.tmpl`) and a configuration file in YAML (`./build.yaml`).
 
 ```shell
 gomplate -c build.yaml -f build-ci.tmpl -o .gitlab-ci.yml

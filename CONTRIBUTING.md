@@ -1,19 +1,21 @@
 # Contributing Guidelines
 
-Thank you for your interest in contributing to our project. Whether it's a bug report, new feature, correction, or
-additional documentation, we greatly value feedback and contributions from our community.
+Thank you for your interest in contributing to our project. Whether it's a bug report, new feature,
+correction, or additional documentation, we greatly value feedback and contributions from our
+community.
 
-Please read through this document before submitting any issues or pull requests to ensure we have all the necessary
-information to effectively respond to your bug report or contribution.
+Please read through this document before submitting any issues or pull requests to ensure we have
+all the necessary information to effectively respond to your bug report or contribution.
 
-## Reporting Bugs, Features, and Enhancements
+## Reporting Bugs and Suggesting Enhancements
 
-We welcome you to use the GitHub issue tracker to report bugs or suggest features and enhancements.
+We welcome you to use the [GitHub issues][gh-issues] to report bugs or suggest enhancements.
 
-When filing an issue, please check existing open, or recently closed, issues to make sure someone else hasn't already
-reported the issue.
+When filing an issue, please check existing open, or recently closed, issues to make sure someone
+else hasn't already reported.
 
-Please try to include as much information as you can. Details like these are incredibly useful:
+Please try to include as much information as you can using the issue fo. Details like these are
+incredibly useful:
 
 - A reproducible test case or series of steps.
 - Any modifications you've made relevant to the bug.
@@ -21,37 +23,37 @@ Please try to include as much information as you can. Details like these are inc
 
 ## Contributing via Pull Requests
 
-Contributions via pull requests are appreciated. Before sending us a pull request, please ensure that:
+Contributions using pull requests are appreciated. Before sending us a pull request, please ensure
+that:
 
-1. You [open a discussion](https://github.com/vmware-samples/packer-examples-for-vsphere/discussions) to discuss any significant work with the maintainer(s).
-1. You open an issue and link your pull request to the issue for context.
-1. You are working against the latest source on the `develop` branch.
-1. You check existing open, and recently merged, pull requests to make sure someone else hasn't already addressed
-   the problem.
+1. You [open a discussion][gh-discussions] to discuss any significant work with the maintainer(s).
+2. You [open an issue][gh-issues] and link your pull request to the issue for context.
+3. You are working against the latest source on the `develop` branch.
+4. You check existing open, and recently merged, pull requests to make sure someone else hasn't
+   already addressed the problem.
 
-To send us a pull request, please:
+To open a pull request, please:
 
 1. Fork the repository.
-1. Modify the source; please focus on the **specific** change you are contributing.
-1. Ensure local tests pass.
-1. Updated the documentation, if required.
-1. Commit to your fork [using a clear commit messages](http://chris.beams.io/posts/git-commit/). We ask you to
-   lease use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
-1. Send us a pull request, answering any default questions in the pull request.
-1. Pay attention to any automated failures reported in the pull request, and stay involved in the conversation.
+2. Modify the source; please focus on the **specific** change you are contributing.
+3. Ensure local tests pass.
+4. Updated the documentation, if required.
+5. Commit to your fork [using a clear commit messages][git-commit]. Please use [Conventional Commits][conventional-commits].
+6. Open a pull request, answering any default questions in the pull request.
+7. Pay attention to any automated failures reported in the pull request, and stay involved in the
+   conversation.
 
-GitHub provides additional document on [forking a repository](https://help.github.com/articles/fork-a-repo/) and
-[creating a pull request](https://help.github.com/articles/creating-a-pull-request/).
+GitHub provides additional document on [forking a repository][gh-forks] and [creating a pull request][gh-pull-requests].
 
 ### Contributor Flow
 
-This is a rough outline of what a contributor's workflow looks like:
+This is a rough outline of the contributor workflow:
 
 - Create a topic branch from where you want to base your work.
 - Make commits of logical units.
-- Make sure your commit messages are [in the proper format](http://chris.beams.io/posts/git-commit/).
-- Push your changes to a topic branch in your fork of the repository.
-- Submit a pull request.
+- Make sure your commit messages are [in the proper format][conventional-commits]
+- Push your changes to the topic branch in your fork.
+- Submit a pull request. If the pull request is a work in progress, please open as draft.
 
 Example:
 
@@ -64,7 +66,8 @@ git push origin feat/foo
 
 ### Staying In Sync With Upstream
 
-When your branch gets out of sync with the `vmware-samples/develop`` branch, use the following to update:
+When your branch gets out of sync with the `vmware-samples/develop` branch, use the following to
+update:
 
 ```shell
 git checkout feat/foo
@@ -75,11 +78,11 @@ git push --force-with-lease origin feat/foo
 
 ### Updating Pull Requests
 
-If your pull request fails to pass or needs changes based on code review, you'll most likely want to squash these
-changes into existing commits.
+If your pull request fails to pass or needs changes based on code review, you'll most likely want to
+squash these changes into existing commits.
 
-If your pull request contains a single commit or your changes are related to the most recent commit, you can simply
-amend the commit.
+If your pull request contains a single commit or your changes are related to the most recent commit,
+you can simply amend the commit.
 
 ```shell
 git add .
@@ -96,30 +99,36 @@ git rebase -i --autosquash develop
 git push --force-with-lease origin feat/foo
 ```
 
-Be sure to add a comment to the pull request indicating your new changes are ready to review, as GitHub does not
-generate a notification when you `git push`.
+Be sure to add a comment to the pull request indicating your new changes are ready to review, as
+GitHub does not generate a notification when you `git push`.
 
 ### Formatting Commit Messages
 
-We follow the conventions on [How to Write a Git Commit Message](http://chris.beams.io/posts/git-commit/).
+We follow the conventions on [How to Write a Git Commit Message][git-commit].
 
 Be sure to include any related GitHub issue references in the commit message.
 
-See [GFM syntax](https://guides.github.com/features/mastering-markdown/#GitHub-flavored-markdown) for referencing
-issues and commits.
-
-## Reporting Bugs and Creating Issues
-
-When opening a new issue, try to roughly follow the commit message format conventions above.
+See the GitHub [documentation][gh-markdown] for referencing issues and commits.
 
 ## Finding Contributions to Work On
 
-Looking at the existing issues is a great way to find something to contribute on. If you have an idea you'd like to
-discuss, [open a discussion](https://github.com/vmware-samples/packer-examples-for-vsphere/discussions).
+Looking at the existing issues is a great way to find something to contribute on. If you have an
+idea you'd like to discuss, [open a discussion][gh-discussions].
 
 ## Licensing
 
-See the [LICENSE](LICENSE) file for our project's licensing. We will ask you to confirm the licensing of your contribution.
+See the [LICENSE][license] file for our project's licensing. We will ask you to confirm the
+licensing of your contribution.
 
-We may ask you to sign a [Contributor License Agreement (CLA)](http://en.wikipedia.org/wiki/Contributor_License_Agreement)
+We may ask you to sign a [Contributor License Agreement (CLA)][cla]
 for larger changes.
+
+[cla]: http://en.wikipedia.org/wiki/Contributor_License_Agreement
+[conventional-commits]: https://conventionalcommits.org
+[gh-discussions]: https://github.com/vmware-samples/packer-examples-for-vsphere/discussions
+[gh-forks]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
+[gh-issues]: https://github.com/vmware-samples/packer-examples-for-vsphere/issues
+[gh-markdown]: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github
+[gh-pull-requests]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
+[git-commit]: https://cbea.ms/git-commit
+[license]: LICENSE

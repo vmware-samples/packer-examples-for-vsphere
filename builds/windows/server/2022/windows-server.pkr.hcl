@@ -37,11 +37,15 @@ data "git-repository" "cwd" {}
 //  Defines the local variables.
 
 locals {
-  build_by                   = "Built by: HashiCorp Packer ${packer.version}"
-  build_date                 = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
-  build_version              = data.git-repository.cwd.head
-  build_description          = "Version: ${local.build_version}\nBuilt on: ${local.build_date}\n${local.build_by}"
-  iso_paths                  = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
+  build_by          = "Built by: HashiCorp Packer ${packer.version}"
+  build_date        = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
+  build_version     = data.git-repository.cwd.head
+  build_description = "Version: ${local.build_version}\nBuilt on: ${local.build_date}\n${local.build_by}"
+  iso_paths = {
+    content_library = "${var.common_iso_content_library}/${var.iso_content_library_item}/${var.iso_file}",
+    datastore       = "[${var.common_iso_datastore}] ${var.iso_datastore_path}/${var.iso_file}"
+    tools           = "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"
+  }
   manifest_date              = formatdate("YYYY-MM-DD hh:mm:ss", timestamp())
   manifest_path              = "${path.cwd}/manifests/"
   manifest_output            = "${local.manifest_path}${local.manifest_date}.json"
@@ -100,7 +104,7 @@ source "vsphere-iso" "windows-server-standard-core" {
   notes                = local.build_description
 
   // Removable Media Settings
-  iso_paths = local.iso_paths
+  iso_paths = var.common_iso_content_library_enabled ? [local.iso_paths.content_library, local.iso_paths.tools] : [local.iso_paths.datastore, local.iso_paths.tools]
   cd_files = [
     "${path.cwd}/scripts/${var.vm_guest_os_family}/"
   ]
@@ -140,9 +144,9 @@ source "vsphere-iso" "windows-server-standard-core" {
   // Template and Content Library Settings
   convert_to_template = var.common_template_conversion
   dynamic "content_library_destination" {
-    for_each = var.common_content_library_name != null ? [1] : []
+    for_each = var.common_content_library_enabled ? [1] : []
     content {
-      library     = var.common_content_library_name
+      library     = var.common_content_library
       description = local.build_description
       ovf         = var.common_content_library_ovf
       destroy     = var.common_content_library_destroy
@@ -152,7 +156,7 @@ source "vsphere-iso" "windows-server-standard-core" {
 
   // OVF Export Settings
   dynamic "export" {
-    for_each = var.common_ovf_export_enabled == true ? [1] : []
+    for_each = var.common_ovf_export_enabled ? [1] : []
     content {
       name  = local.vm_name_standard_core
       force = var.common_ovf_export_overwrite
@@ -208,7 +212,7 @@ source "vsphere-iso" "windows-server-standard-dexp" {
   notes                = local.build_description
 
   // Removable Media Settings
-  iso_paths = local.iso_paths
+  iso_paths = var.common_iso_content_library_enabled ? [local.iso_paths.content_library, local.iso_paths.tools] : [local.iso_paths.datastore, local.iso_paths.tools]
   cd_files = [
     "${path.cwd}/scripts/${var.vm_guest_os_family}/"
   ]
@@ -220,7 +224,7 @@ source "vsphere-iso" "windows-server-standard-dexp" {
       vm_inst_os_language  = var.vm_inst_os_language
       vm_inst_os_keyboard  = var.vm_inst_os_keyboard
       vm_inst_os_image     = var.vm_inst_os_image_standard_desktop
-      vm_inst_os_key        = var.vm_inst_os_key_standard
+      vm_inst_os_key       = var.vm_inst_os_key_standard
       vm_guest_os_language = var.vm_guest_os_language
       vm_guest_os_keyboard = var.vm_guest_os_keyboard
       vm_guest_os_timezone = var.vm_guest_os_timezone
@@ -248,9 +252,9 @@ source "vsphere-iso" "windows-server-standard-dexp" {
   // Template and Content Library Settings
   convert_to_template = var.common_template_conversion
   dynamic "content_library_destination" {
-    for_each = var.common_content_library_name != null ? [1] : []
+    for_each = var.common_content_library_enabled ? [1] : []
     content {
-      library     = var.common_content_library_name
+      library     = var.common_content_library
       description = local.build_description
       ovf         = var.common_content_library_ovf
       destroy     = var.common_content_library_destroy
@@ -260,7 +264,7 @@ source "vsphere-iso" "windows-server-standard-dexp" {
 
   // OVF Export Settings
   dynamic "export" {
-    for_each = var.common_ovf_export_enabled == true ? [1] : []
+    for_each = var.common_ovf_export_enabled ? [1] : []
     content {
       name  = local.vm_name_standard_desktop
       force = var.common_ovf_export_overwrite
@@ -316,7 +320,7 @@ source "vsphere-iso" "windows-server-datacenter-core" {
   notes                = local.build_description
 
   // Removable Media Settings
-  iso_paths = local.iso_paths
+  iso_paths = var.common_iso_content_library_enabled ? [local.iso_paths.content_library, local.iso_paths.tools] : [local.iso_paths.datastore, local.iso_paths.tools]
   cd_files = [
     "${path.cwd}/scripts/${var.vm_guest_os_family}/"
   ]
@@ -358,9 +362,9 @@ source "vsphere-iso" "windows-server-datacenter-core" {
   // Template and Content Library Settings
   convert_to_template = var.common_template_conversion
   dynamic "content_library_destination" {
-    for_each = var.common_content_library_name != null ? [1] : []
+    for_each = var.common_content_library_enabled ? [1] : []
     content {
-      library     = var.common_content_library_name
+      library     = var.common_content_library
       description = local.build_description
       ovf         = var.common_content_library_ovf
       destroy     = var.common_content_library_destroy
@@ -370,7 +374,7 @@ source "vsphere-iso" "windows-server-datacenter-core" {
 
   // OVF Export Settings
   dynamic "export" {
-    for_each = var.common_ovf_export_enabled == true ? [1] : []
+    for_each = var.common_ovf_export_enabled ? [1] : []
     content {
       name  = local.vm_name_datacenter_core
       force = var.common_ovf_export_overwrite
@@ -426,7 +430,7 @@ source "vsphere-iso" "windows-server-datacenter-dexp" {
   notes                = local.build_description
 
   // Removable Media Settings
-  iso_paths = local.iso_paths
+  iso_paths = var.common_iso_content_library_enabled ? [local.iso_paths.content_library, local.iso_paths.tools] : [local.iso_paths.datastore, local.iso_paths.tools]
   cd_files = [
     "${path.cwd}/scripts/${var.vm_guest_os_family}/"
   ]
@@ -466,9 +470,9 @@ source "vsphere-iso" "windows-server-datacenter-dexp" {
   // Template and Content Library Settings
   convert_to_template = var.common_template_conversion
   dynamic "content_library_destination" {
-    for_each = var.common_content_library_name != null ? [1] : []
+    for_each = var.common_content_library_enabled ? [1] : []
     content {
-      library     = var.common_content_library_name
+      library     = var.common_content_library
       description = local.build_description
       ovf         = var.common_content_library_ovf
       destroy     = var.common_content_library_destroy
@@ -478,7 +482,7 @@ source "vsphere-iso" "windows-server-datacenter-dexp" {
 
   // OVF Export Settings
   dynamic "export" {
-    for_each = var.common_ovf_export_enabled == true ? [1] : []
+    for_each = var.common_ovf_export_enabled ? [1] : []
     content {
       name  = local.vm_name_datacenter_desktop
       force = var.common_ovf_export_overwrite

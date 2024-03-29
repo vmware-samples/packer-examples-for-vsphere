@@ -16,9 +16,9 @@ vsphere_insecure_connection = false
 // vSphere Settings
 vsphere_datacenter                     = "sfo-w01-dc01"
 vsphere_cluster                        = "sfo-w01-cl01"
-//vsphere_host                           = "sfo-w01-esx01"
+//vsphere_host                         = "sfo-w01-esx01"
 vsphere_datastore                      = "sfo-w01-cl01-ds-vsan01"
 vsphere_network                        = "sfo-w01-seg-dhcp"
 vsphere_folder                         = "sfo-w01-fd-templates"
-//vsphere_resource_pool                  = "sfo-w01-rp01"
+//vsphere_resource_pool                = "sfo-w01-rp01"
 vsphere_set_host_for_datastore_uploads = false

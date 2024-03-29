@@ -179,7 +179,7 @@ The content of the public key, `build_key`, is added the key to the `~/.ssh/auth
 the `build_username` on the Linux guest operating systems.
 
 ???+ danger "Example Public Keys and Passwords."
-    Replace the example public keys and passwords.
+Replace the example public keys and passwords.
 
     By default, both Public Key Authentication and Password Authentication are enabled for Linux
     distributions.
@@ -198,7 +198,7 @@ ansible_key      = "<public_key>"
 ```
 
 ???+ info "Ansible User Password"
-    A random password is auto-generated for the Ansible user.
+A random password is auto-generated for the Ansible user.
 
 You can also override the `ansible_key` value with contents of a file, if required.
 
@@ -225,7 +225,8 @@ common_remove_cdrom         = true
 
 // Template and Content Library Settings
 common_template_conversion     = false
-common_content_library_name    = "sfo-w01-lib01"
+common_content_library         = "sfo-w01-lib01"
+common_content_library_enabled = true
 common_content_library_ovf     = true
 common_content_library_destroy = true
 
@@ -330,8 +331,8 @@ vsphere_set_host_for_datastore_uploads = false
 ```
 
 ???- note "vSphere Distributed Resource Scheduler Disabled or Standalone ESXi Hosts"
-    When targeting standalone ESXi hosts or vSphere clusters with vSphere DRS disabled, you must set
-    the `vsphere_host` variable.
+When targeting standalone ESXi hosts or vSphere clusters with vSphere DRS disabled, you must set
+the `vsphere_host` variable.
 
     **Example** (vSphere Clusters with vSphere DRS Disabled):
 
@@ -350,25 +351,14 @@ vsphere_set_host_for_datastore_uploads = false
 
     ```hcl title="config/vsphere.pkrvars.hcl"
     ...
-    vsphere_datacenter  = "sfo-w01-dc01"
-    //vsphere_cluster   = "sfo-w01-cl01"
-    vsphere_host        = "sfo-w01-esx01"
-    vsphere_folder      = "sfo-w01-fd-templates"
-    ...
-    ```
-
-    **Example** (Standalone ESXi Host):
-
-    For a standalone ESXi host, not managed by vCenter Server, comment or remove
-    `vsphere_datacenter`, `vsphere_cluster`, and `vsphere_folder`.
-
-    ```hcl title="config/vsphere.pkrvars.hcl"
-    ...
-    //vsphere_datacenter = "sfo-w01-dc01"
-    //vsphere_cluster    = "sfo-w01-cl01"
-    vsphere_host         = "sfo-w01-esx01"
-    //vsphere_folder     = "sfo-w01-fd-templates"
-    ...
+    vsphere_datacenter = "sfo-w01-dc01"
+    //vsphere_cluster = "sfo-w01-cl01"
+    vsphere_host = "sfo-w01-esx01"
+    vsphere_folder = "sfo-w01-fd-templates"
+    vsphere_datacenter = "sfo-w01-dc01"
+    //vsphere_cluster = "sfo-w01-cl01"
+    vsphere_host = "sfo-w01-esx01"
+    vsphere_folder = "sfo-w01-fd-templates"
     ```
 
 ### Machine Images
@@ -407,8 +397,9 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_path           = "iso/linux/photon"
-iso_file           = "photon-5.0-dde71ec57.x86_64.iso"
+iso_datastore_path       = "iso/linux/photon"
+iso_content_library_item = "photon-5.0-dde71ec57.x86_64"
+iso_file                 = "photon-5.0-dde71ec57.x86_64.iso"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

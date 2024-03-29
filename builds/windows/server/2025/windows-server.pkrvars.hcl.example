@@ -51,8 +51,9 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_path = "iso/windows/server"
-iso_file = "Windows_InsiderPreview_Server_vNext_en-us_26040.iso"
+iso_datastore_path       = "iso/windows/server"
+iso_content_library_item = "Windows_InsiderPreview_Server_vNext_en-us_26040"
+iso_file                 = "Windows_InsiderPreview_Server_vNext_en-us_26040.iso"
 
 // Boot Settings
 vm_boot_order       = "disk,cdrom"

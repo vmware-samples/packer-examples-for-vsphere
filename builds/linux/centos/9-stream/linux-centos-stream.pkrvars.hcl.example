@@ -32,8 +32,9 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_path = "iso/linux/centos"
-iso_file = "CentOS-Stream-9-latest-x86_64-dvd1.iso"
+iso_datastore_path       = "iso/linux/centos"
+iso_content_library_item = "CentOS-Stream-9-latest-x86_64-dvd1"
+iso_file                 = "CentOS-Stream-9-latest-x86_64-dvd1.iso"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

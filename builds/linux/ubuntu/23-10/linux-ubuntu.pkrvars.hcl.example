@@ -34,8 +34,9 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_path = "iso/linux/ubuntu"
-iso_file = "ubuntu-23.10-live-server-amd64.iso"
+iso_datastore_path       = "iso/linux/ubuntu"
+iso_content_library_item = "ubuntu-23.10-live-server-amd64"
+iso_file                 = "ubuntu-23.10-live-server-amd64.iso"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

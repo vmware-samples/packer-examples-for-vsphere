@@ -12,7 +12,7 @@ vm_guest_os_keyboard = "us"
 vm_guest_os_timezone = "UTC"
 vm_guest_os_family   = "linux"
 vm_guest_os_name     = "debian"
-vm_guest_os_version  = "12.4"
+vm_guest_os_version  = "12.5"
 
 // Virtual Machine Guest Operating System Setting
 vm_guest_os_type = "other5xLinux64Guest"
@@ -33,7 +33,7 @@ vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
 iso_path = "iso/linux/debian"
-iso_file = "debian-12.4.0-amd64-netinst.iso"
+iso_file = "debian-12.5.0-amd64-netinst.iso"
 
 // Boot Settings
 vm_boot_order = "-"

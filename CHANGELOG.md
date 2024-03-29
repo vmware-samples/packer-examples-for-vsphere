@@ -14,10 +14,15 @@
 - Adds Windows Server 2025 Insiders Preview. [GH-834](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/834)
 - Adds Ansible integration for Windows Server 2025, 2022, and 2019 images. [GH-801](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/801)
 - Adds Ansible integration for Windows 11 and 10 images. [GH-801](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/801)
+- Adds option to enable a content library to source all guest operating system ISOs or use a datastore path. Defaults to `false`, disabled.
+  Set `common_iso_content_library_enabled` to `true` to enable use of a content library for all guest operating system ISOs.
+- Adds option to enable a content library for the placement of virtual machine images builds. Defaults to `true`, enabled.
+  Set `common_content_library_enabled` to `false` to disable use of a content library for saving virtual machine image builds.
 
 :wrench: **Refactor**:
 
-- Refactors the Ubuntu image builds **not** to use cloud-init by default. Set `vm_guest_os_cloudinit` to `true` to enable cloud-init on the machine image. [GH-#](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/#)
+- Refactors the Ubuntu builds **not** to use cloud-init, by default. [GH-#](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/#)
+  Set `vm_guest_os_cloudinit` to `true` to enable cloud-init on the machine image.
 
 :sweat_drops: **Chore**:
 
@@ -25,7 +30,7 @@
 - Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.2.4`. [GH-824](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/824)
 - Updates `required_plugins` for `ethanmdavidson/packer-plugin-git` to `>= 0.6.1`.  [GH-827](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/827)
 - Updates `required_versions` for `terraform` to `>= 1.7.1`. [GH-8297](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/829)
-- Updates `required_versions` for `hashicorp/vsphere` to `>= 2.6.1`. [GH-830](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/830)
+- Updates `required_versions` for `hashicorp/vsphere` to `>= 2.7.0`. [GH-866](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/866)
 - Updates `required_versions` for `hashicorp/hcp` to `>= 0.81.0`. [GH-831](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/831)
 - Updates Gomplate to `3.11.7`. [GH-825](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/825)
 - Updates Red Hat Enterprise Linux 9 to 9.3 release. [GH-819](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/819)
@@ -401,7 +406,7 @@
 
   ```hcl
   common_template_conversion     = true
-  common_content_library_name    = null
+  common_content_library    = null
   common_content_library_ovf     = false
   common_content_library_destroy = false
   ```

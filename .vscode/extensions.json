@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "davidanson.vscode-markdownlint", // Markdown Lint
+    "eamodio.gitlens", // GitLens
+    "esbenp.prettier-vscode", // Prettier
+    "hashicorp.hcl", // HCL
+    "hashicorp.terraform", // Terraform
+    "marvhen.reflow-markdown", // Reflow Markdown
+    "ms-vscode.powershell", // PowerShell
+    "redhat.ansible", // Ansible
+    "trunk.io", // Trunk
+    "vscode.json-language-features" // JSON
+  ]
+}

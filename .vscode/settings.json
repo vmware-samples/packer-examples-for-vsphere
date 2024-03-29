@@ -1,0 +1,60 @@
+{
+  // Editor settings
+  "editor.bracketPairColorization.enabled": true,
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSaveMode": "modificationsIfAvailable",
+  "editor.guides.bracketPairs": true,
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+
+  // File watcher settings
+  "files.watcherExclude": {
+    "**/.DS_Store": true,
+    "**/.site/**": true,
+    "**/.trunk/**": true
+  },
+
+  // PowerShell settings
+  "powershell.analyzeOpenDocumentsOnly": true,
+  "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationAfterEveryPipeline",
+  "powershell.codeFormatting.preset": "OTBS",
+  "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
+  "powershell.codeFormatting.whitespaceBetweenParameters": true,
+  "powershell.integratedConsole.suppressStartupBanner": true,
+  "powershell.scriptAnalysis.enable": true,
+
+  // Extension settings
+  "extensions.ignoreRecommendations": false,
+
+  // Reflow Markdown settings
+  "reflowMarkdown.preferredLineLength": 100,
+  "reflowMarkdown.wrapLongLinks": "wrap",
+
+  // Language-specific settings
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.trimAutoWhitespace": true
+  },
+  "[md]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.trimAutoWhitespace": true,
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 100,
+    "editor.rulers": [100]
+  },
+  "[powershell]": {
+    "editor.defaultFormatter": "ms-vscode.powershell",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.trimAutoWhitespace": true,
+    "editor.wordWrap": "off"
+  }
+}

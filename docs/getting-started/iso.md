@@ -49,7 +49,8 @@ Download the Microsoft Windows ISO files from the Microsoft.
 |                                                                          | 10      | [:fontawesome-solid-cloud-arrow-down:][download-windows-10] &nbsp; Windows Evaluation Center          |
 ::end-spantable::
 
-Upload the guest operating system ISO files to the datastore and update the path in the configuration variables.
+Upload the guest operating system ISO files to the datastore and update the path in the
+configuration variables.
 
 ```hcl title="config/common.pkrvars.hcl"
 common_iso_datastore = "sfo-w01-cl01-ds-nfs01"

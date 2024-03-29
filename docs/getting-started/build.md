@@ -6,21 +6,25 @@ icon: octicons/play-24
 
 ## Build Script Options
 
-If you need help for script options, pass the `--help` or `-h` flag to the build script to display the help for the build script.
+If you need help for script options, pass the `--help` or `-h` flag to the build script to display
+the help for the build script.
 
 ```shell
 ./build.sh --help
 ```
 
-If you need to enable debugging, pass the `--debug` or `-d` flag to the build script to enable debug mode for Packer.
+If you need to enable debugging, pass the `--debug` or `-d` flag to the build script to enable debug
+mode for Packer.
 
-This example will look for the configuration files in the `config` directory and enable debug mode for Packer.
+This example will look for the configuration files in the `config` directory and enable debug mode
+for Packer.
 
 ```shell
 ./build.sh --debug
 ```
 
-This example will look for the configuration files in the `us-west-1` directory and enable debug mode for Packer.
+This example will look for the configuration files in the `us-west-1` directory and enable debug
+mode for Packer.
 
 ```shell
 ./build.sh --debug us-west-1
@@ -30,7 +34,8 @@ This example will look for the configuration files in the `us-west-1` directory 
 
 ### Build with Defaults
 
-Start a build by running the build script (`./build.sh`). The script presents a menu the which simply calls Packer and the respective build(s).
+Start a build by running the build script (`./build.sh`). The script presents a menu the which
+simply calls Packer and the respective build(s).
 
 This example will look for the configuration files in the `config` directory.
 
@@ -48,7 +53,8 @@ This example will look for the configuration files in the `us-west-1` directory.
 
 ## Generate a Custom Build Script
 
-The build script (`./build.sh`) can be generated with Gomplate using a template (`./build.tmpl`) and a configuration file in YAML (`./build.yaml`).
+The build script (`./build.sh`) can be generated with Gomplate using a template (`./build.tmpl`) and
+a configuration file in YAML (`./build.yaml`).
 
 Generate a custom build script:
 
@@ -66,7 +72,8 @@ make update-build-script
 
 You can also start a build based on a specific source for some of the virtual machine images.
 
-For example, if you simply want to build a Microsoft Windows Server 2022 Standard Core, run the following:
+For example, if you simply want to build a Microsoft Windows Server 2022 Standard Core, run the
+following:
 
 Initialize the plugins:
 
@@ -95,7 +102,8 @@ builds/linux/photon/5
 
 ## Build with Environmental Variables
 
-You can set your environment variables if you would prefer not to save sensitive information in clear-text files.
+You can set your environment variables if you would prefer not to save sensitive information in
+clear-text files.
 
 You can add these to environmental variables using the included `set-envvars.sh` script.
 
@@ -108,12 +116,17 @@ You can add these to environmental variables using the included `set-envvars.sh`
 
 ---
 
-???+ note "Content Library"
-    By default, the machine image artifacts are transferred to a [vSphere Content Library][vsphere-content-library] as an OVF template and the temporary machine image is destroyed. [^1]
+???+ note "Content Library" By default, the machine image artifacts are transferred to a [vSphere Content Library][vsphere-content-library]
+as an OVF template and the temporary machine image is destroyed. [^1]
 
-    If an item of the same name exists in the target content library, Packer will update the existing item with the new version of OVF template.
+    If an item of the same name exists in the target content library, Packer will update the
+    existing item with the new version of OVF template.
 
-[^1]: The Microsoft Windows 11 machine image uses a virtual trusted platform module (vTPM). Refer to the VMware vSphere [product documentation][vsphere-tpm] for requirements and pre-requisites. The Microsoft Windows 11 machine image is not transferred to the content library by default. It is **not supported** to clone an encrypted virtual machine to the content library as an OVF Template. You can adjust the common content library settings to use VM Templates.
+[^1]: The Microsoft Windows 11 machine image uses a virtual trusted platform module (vTPM). Refer to
+the VMware vSphere [product documentation][vsphere-tpm] for requirements and pre-requisites. The
+Microsoft Windows 11 machine image is not transferred to the content library by default. It is **not
+supported** to clone an encrypted virtual machine to the content library as an OVF Template. You can
+adjust the common content library settings to use VM Templates.
 
 [//]: Links
 [vsphere-content-library]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-254B2CE8-20A8-43F0-90E8-3F6776C2C896.html

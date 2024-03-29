@@ -19,7 +19,6 @@ docs-uninstall:
 	pip uninstall mkdocs-material mkdocs -y
 	pip uninstall -r .github/workflows/requirements.txt -y
 
-
 .PHONY: update-build-script update-gitlab-ci
 update-build-script:
 	gomplate -c build.yaml -f build.tmpl -o build.sh

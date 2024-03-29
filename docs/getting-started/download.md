@@ -37,10 +37,8 @@ You can choose between two options to get the source code:
 ???+ tip "Prerelease Updates"
       You may also clone the `develop` branch for the latest prerelease updates.
 
-???+ info "Prerelease Updates"
-    :octicons-git-branch-16: A branch is mandatory since it is used for the build version and in the virtual machine name.
-
-    It does not matter if it is based on the `HEAD` or a release tag.
+???+ note "Branches"
+      :octicons-git-branch-16: A branch is mandatory since it is used for the build version and in the virtual machine name. It does not matter if it is based on the `HEAD` or a release tag.
 
 ## :octicons-file-directory-24: &nbsp; Directory Structure
 
@@ -116,4 +114,5 @@ The following table describes the directory structure.
 | **`terraform`** | Contains example Terraform plans to create a custom role and test machine image builds.  |
 
 ???+ warning "Forking the Project"
-    When forking the project for upstream contribution, please be mindful not to make changes that may expose your sensitive information, such as passwords, keys, certificates, etc.
+      When forking the project for upstream contribution, please be mindful not to make changes that
+      may expose your sensitive information, such as passwords, keys, certificates, etc.

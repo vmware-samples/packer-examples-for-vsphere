@@ -20,12 +20,11 @@ The project is tested on the following platforms:
 The project is tested on the following operating systems for the Packer host [^1] :
 
 ::spantable::
-| Operating System                                         | Version   | Architecture |
-| :---                                                     | :---      | :---         |
-| :fontawesome-brands-linux: &nbsp;&nbsp; VMware Photon OS | 5.0       | `x86_64`     |
-| :fontawesome-brands-ubuntu: &nbsp;&nbsp; Ubuntu Server   | 22.04 LTS | `x86_64`     |
-| :fontawesome-brands-apple: &nbsp;&nbsp; macOS @span      | Ventura   | Intel        |
-|                                                          | Sonoma    | Intel        |
+| Operating System                                         | Version   | Architecture           |
+| :---                                                     | :---      | :---                   |
+| :fontawesome-brands-linux: &nbsp;&nbsp; VMware Photon OS | 5.0       | `x86_64`               |
+| :fontawesome-brands-ubuntu: &nbsp;&nbsp; Ubuntu Server   | 22.04 LTS | `x86_64`               |
+| :fontawesome-brands-apple: &nbsp;&nbsp; macOS @span      | Sonoma    | Intel or Apple Silicon |
 ::end-spantable::
 
 ## :simple-packer: &nbsp; Packer
@@ -100,7 +99,8 @@ HashiCorp [Packer][packer-install] 1.10.0 or higher.
 
 Required plugins are automatically downloaded and initialized when using `./build.sh`.
 
-For disconnected sites (_e.g._, air-gapped or dark sites), you may download the plugins and place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
+For disconnected sites (_e.g._, air-gapped or dark sites), you may download the plugins and place
+these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
 
 | Plugin                                                           | Version  | Description      | Resources                                                                                                               |
 | :---                                                             | :---     | :---             | :---                                                                                                                    |
@@ -196,7 +196,8 @@ The following additional software packages must be installed on the operating sy
         ```shell
         brew install --cask docker
         ```
-[^1]: The project may work on other operating systems and versions, but has not been tested by the maintainers.
+[^1]: The project may work on other operating systems and versions, but has not been tested by the
+maintainers.
 
 [//]: Links
 [ansible-docs]: https://docs.ansible.com

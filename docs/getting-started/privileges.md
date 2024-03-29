@@ -4,11 +4,14 @@ icon: octicons/shield-check-24
 
 # Service Account Privileges
 
-Create a custom vSphere role with the required privileges to integrate HashiCorp Packer with VMware vSphere. A service account can be added to the role to ensure that Packer has least privilege access to the infrastructure.
+Create a custom vSphere role with the required privileges to integrate HashiCorp Packer with VMware
+vSphere. A service account can be added to the role to ensure that Packer has least privilege access
+to the infrastructure.
 
 ## Required Privileges
 
-:fontawesome-regular-clone: &nbsp; Clone the default **Read-Only** vSphere role and add the following privileges:
+:fontawesome-regular-clone: &nbsp; Clone the default **Read-Only** vSphere role and add the
+following privileges:
 
 ::spantable::
 
@@ -50,27 +53,41 @@ Create a custom vSphere role with the required privileges to integrate HashiCorp
 :
 ::end-spantable::
 
-Once the custom vSphere role is created, assign **Global Permissions** in vSphere for the service account that will be used for the HashiCorp Packer to VMware vSphere integration in the next step. Global permissions are required for the content library.
+Once the custom vSphere role is created, assign **Global Permissions** in vSphere for the service
+account that will be used for the HashiCorp Packer to VMware vSphere integration in the next step.
+Global permissions are required for the content library.
 
 For example:
 
-1. Log in to the vCenter Server at _`https://<management_vcenter_server_fqdn>/ui`_ as `administrator@vsphere.local`.
+1. Log in to the vCenter Server at _`https://<management_vcenter_server_fqdn>/ui`_ as
+   `administrator@vsphere.local`.
 
 1. Select **Menu** > **Administration**.
 
-1. Create service account in vSphere SSO if it does not exist: In the left pane, select **Single Sign On** > **Users and Groups** and click on **Users**, from the dropdown select the domain in which you want to create the user (_e.g.,_`example.com`) and click **ADD**, fill all the username (_e.g.,_ `svc-packer-vsphere)` and all required details, then click **ADD** to create the user.
+1. Create service account in vSphere SSO if it does not exist: In the left pane, select **Single
+   Sign On** > **Users and Groups** and click on **Users**, from the dropdown select the domain in
+   which you want to create the user (_e.g.,_`example.com`) and click **ADD**, fill all the username
+   (_e.g.,_ `svc-packer-vsphere)` and all required details, then click **ADD** to create the user.
 
-1. In the left pane, select **Access control** > **Global permissions** and click the **Add permissions** icon.
+1. In the left pane, select **Access control** > **Global permissions** and click the **Add
+   permissions** icon.
 
-1. In the **Add permissions** dialog box, enter the service account (_e.g.,_ `svc-packer-vsphere@example.com`), select the custom role (_e.g.,_ Packer to vSphere Integration Role) and the **Propagate to children** checkbox, and click **OK**.
+1. In the **Add permissions** dialog box, enter the service account (_e.g.,_
+   `svc-packer-vsphere@example.com`), select the custom role (_e.g.,_ Packer to vSphere Integration
+   Role) and the **Propagate to children** checkbox, and click **OK**.
 
-In an environment with many vCenter Server instances, such as management and workload domains, you may wish to further reduce the scope of access across the infrastructure in vSphere for the service account. For example, if you do not want Packer to have access to your management domain, but only allow access to workload domains:
+In an environment with many vCenter Server instances, such as management and workload domains, you
+may wish to further reduce the scope of access across the infrastructure in vSphere for the service
+account. For example, if you do not want Packer to have access to your management domain, but only
+allow access to workload domains:
 
-1. From the **Hosts and clusters** inventory, select management domain vCenter Server to restrict scope, and click the **Permissions** tab.
+1. From the **Hosts and clusters** inventory, select management domain vCenter Server to restrict
+   scope, and click the **Permissions** tab.
 
 1. Select the service account with the custom role assigned and click the **Edit**.
 
-1. In the **Change role** dialog box, from the **Role** drop-down menu, select **No Access**, select the **Propagate to children** checkbox, and click **OK**.
+1. In the **Change role** dialog box, from the **Role** drop-down menu, select **No Access**, select
+   the **Propagate to children** checkbox, and click **OK**.
 
 ### :material-terraform: Terraform Example
 

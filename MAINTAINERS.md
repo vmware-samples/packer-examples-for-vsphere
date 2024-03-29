@@ -9,7 +9,7 @@ Copyright 2023-2024 Broadcom. All rights reserved.
 
 The following are maintainers of this project.
 
-**Ryan Johnson**  
+**Ryan Johnson**
 Product Engineering, VMware by Broadcom
 
 [![@tenthirtyam](https://img.shields.io/badge/GitHub-100000?style=flat-square&logo=github&logoColor=white)](https://github.com/tenthirtyam)

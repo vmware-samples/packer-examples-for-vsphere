@@ -22,7 +22,7 @@ packer {
     }
     git = {
       source  = "github.com/ethanmdavidson/git"
-      version = ">= 0.6.1"
+      version = ">= 0.6.2"
     }
   }
 }
@@ -134,14 +134,14 @@ source "vsphere-iso" "linux-centos" {
   boot_command = [
     // This sends the "up arrow" key, typically used to navigate through boot menu options.
     "<up>",
-    // This sends the "e" key. In the GRUB boot loader, this is used to edit the selected boot menu option.                                
+    // This sends the "e" key. In the GRUB boot loader, this is used to edit the selected boot menu option.
     "e",
-    // This sends two "down arrow" keys, followed by the "end" key, and then waits. This is used to navigate to a specific line in the boot menu option's configuration.            
+    // This sends two "down arrow" keys, followed by the "end" key, and then waits. This is used to navigate to a specific line in the boot menu option's configuration.
     "<down><down><end><wait>",
-    // This types the string "text" followed by the value of the 'data_source_command' local variable. 
-    // This is used to modify the boot menu option's configuration to boot in text mode and specify the kickstart data source configured in the common variables.               
+    // This types the string "text" followed by the value of the 'data_source_command' local variable.
+    // This is used to modify the boot menu option's configuration to boot in text mode and specify the kickstart data source configured in the common variables.
     "text ${local.data_source_command}",
-    // This sends the "enter" key, waits, turns on the left control key, sends the "x" key, and then turns off the left control key. This is used to save the changes and exit the boot menu option's configuration, and then continue the boot process.  
+    // This sends the "enter" key, waits, turns on the left control key, sends the "x" key, and then turns off the left control key. This is used to save the changes and exit the boot menu option's configuration, and then continue the boot process.
     "<enter><wait><leftCtrlOn>x<leftCtrlOff>"
   ]
   ip_wait_timeout   = var.common_ip_wait_timeout

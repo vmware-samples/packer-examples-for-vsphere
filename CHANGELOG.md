@@ -28,8 +28,8 @@
 
 - Updates `required_versions` for `packer` to `>= 1.10.0`. [GH-828](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/828)
 - Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.2.4`. [GH-824](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/824)
-- Updates `required_plugins` for `ethanmdavidson/packer-plugin-git` to `>= 0.6.1`.  [GH-827](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/827)
-- Updates `required_versions` for `terraform` to `>= 1.7.1`. [GH-8297](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/829)
+- Updates `required_plugins` for `ethanmdavidson/packer-plugin-git` to `>= 0.6.2`. [GH-868](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/868)
+- Updates `required_versions` for `terraform` to `>= 1.7.1`. [GH-829](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/829)
 - Updates `required_versions` for `hashicorp/vsphere` to `>= 2.7.0`. [GH-866](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/866)
 - Updates `required_versions` for `hashicorp/hcp` to `>= 0.84.1`. [GH-867](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/867)
 - Updates Gomplate to `3.11.7`. [GH-825](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/825)

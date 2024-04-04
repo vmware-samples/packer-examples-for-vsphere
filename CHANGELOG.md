@@ -43,8 +43,9 @@
 
 - Updates `required_versions` for `packer` to `>= 1.10.0`.
   [#828](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/828)
-- Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.2.4`.
+- Updates `required_plugins` for `packer-plugin-vsphere` to `1.2.4`.
   [#824](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/824)
+  [#871](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/871)
 - Updates `required_plugins` for `ethanmdavidson/packer-plugin-git` to `>= 0.6.2`.
   [#868](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/868)
 - Updates `required_versions` for `terraform` to `>= 1.7.1`.

@@ -8,12 +8,12 @@
 */
 
 // Guest Operating System Metadata
-vm_guest_os_language  = "en_US"
-vm_guest_os_keyboard  = "us"
-vm_guest_os_timezone  = "UTC"
-vm_guest_os_family    = "linux"
-vm_guest_os_name      = "ubuntu"
-vm_guest_os_version   = "22.04-lts"
+vm_guest_os_language = "en_US"
+vm_guest_os_keyboard = "us"
+vm_guest_os_timezone = "UTC"
+vm_guest_os_family   = "linux"
+vm_guest_os_name     = "ubuntu"
+vm_guest_os_version  = "22.04-lts"
 
 // Virtual Machine Guest Operating System Setting
 vm_guest_os_type      = "ubuntu64Guest"
@@ -34,8 +34,9 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_path = "iso/linux/ubuntu"
-iso_file = "ubuntu-22.04.4-live-server-amd64.iso"
+iso_datastore_path       = "iso/linux/ubuntu"
+iso_content_library_item = "ubuntu-22.04.4-live-server-amd64"
+iso_file                 = "ubuntu-22.04.4-live-server-amd64.iso"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

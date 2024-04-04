@@ -4,35 +4,35 @@ icon: octicons/stack-24
 
 # Guest Operating Systems
 
-The project uses a datastore to store your guest operating system [ISO][iso] files.
+The project allows the use of a datastore (default) or a content library to store your guest operating system [ISO][iso] files.
 
 ## :fontawesome-brands-linux: Linux Distributions
 
 Download the Linux distribution ISO files from the publisher.
 
 ::spantable::
-| Operating System                                                        | Version   | Download                                                                                                               |
-| :---                                                                    | :---      | :---                                                                                                                   |
-| :simple-vmware: &nbsp;&nbsp; VMware Photon OS @span                     | 5.0       | [:fontawesome-solid-cloud-arrow-down:][download-linux-photon-5] &nbsp; `photon-5.0-xxxxxxxxx.x86_64.iso`               |
-|                                                                         | 4.0       | [:fontawesome-solid-cloud-arrow-down:][download-linux-photon-4] &nbsp; `photon-4.0-xxxxxxxxx.iso`                      |
-| :fontawesome-brands-debian: &nbsp;&nbsp; Debian @span                   | 12        | [:fontawesome-solid-cloud-arrow-down:][download-linux-debian-12] &nbsp; `debian-12.x.x-amd64-netinst.iso`              |
-|                                                                         | 11        | [:fontawesome-solid-cloud-arrow-down:][download-linux-debian-11] &nbsp; `debian-11.x.x-amd64-netinst.iso`              |
-| :fontawesome-brands-ubuntu: &nbsp;&nbsp; Ubuntu Server @span            | 23.10     | [:fontawesome-solid-cloud-arrow-down:][download-linux-ubuntu-2310] &nbsp; `ubuntu-23.10-live-server-amd64.iso`         |
-|                                                                         | 22.04 LTS | [:fontawesome-solid-cloud-arrow-down:][download-linux-ubuntu-2204] &nbsp; `ubuntu-22.04.x-live-server-amd64.iso`       |
-|                                                                         | 20.04 LTS | [:fontawesome-solid-cloud-arrow-down:][download-linux-ubuntu-2004] &nbsp; `ubuntu-20.04.x-live-server-amd64.iso`       |
-| :fontawesome-brands-redhat: &nbsp;&nbsp; Red Hat Enterprise Linux @span | 9         | [:fontawesome-solid-cloud-arrow-down:][download-linux-rhel-9] &nbsp; `rhel-9.x-x86_64-dvd.iso`                         |
-|                                                                         | 8         | [:fontawesome-solid-cloud-arrow-down:][download-linux-rhel-8] &nbsp; `rhel-8.x-x86_64-dvd.iso`                         |
-|                                                                         | 7         | [:fontawesome-solid-cloud-arrow-down:][download-linux-rhel-7] &nbsp; `rhel-server-7.x-x86_64-dvd.iso`                  |
-| :fontawesome-brands-linux: &nbsp;&nbsp; AlmaLinux OS @span              | 9         | [:fontawesome-solid-cloud-arrow-down:][download-linux-alma-9] &nbsp; `AlmaLinux-9.x-x86_64-dvd.iso`                    |
-|                                                                         | 8         | [:fontawesome-solid-cloud-arrow-down:][download-linux-alma-8] &nbsp; `AlmaLinux-8.x-x86_64-dvd.iso`                    |
-| :simple-rockylinux: &nbsp;&nbsp; Rocky Linux @span                      | 9         | [:fontawesome-solid-cloud-arrow-down:][download-linux-rocky-9] &nbsp; `Rocky-9.x-x86_64-dvd.iso`                       |
-|                                                                         | 8         | [:fontawesome-solid-cloud-arrow-down:][download-linux-rocky-8] &nbsp; `Rocky-8.x-x86_64-dvd.iso`                       |
-| :simple-oracle: &nbsp;&nbsp; Oracle Linux @span                         | 9         | [:fontawesome-solid-cloud-arrow-down:][download-linux-oracle-9] &nbsp; `OracleLinux-R9-U2-x86_64-dvd.iso`              |
-|                                                                         | 8         | [:fontawesome-solid-cloud-arrow-down:][download-linux-oracle-8] &nbsp; `OracleLinux-R8-U8-x86_64-dvd.iso`              |
-| :fontawesome-brands-centos: &nbsp;&nbsp; CentOS @span                   | 9 Stream  | [:fontawesome-solid-cloud-arrow-down:][download-linux-centos-stream-9] &nbsp; `CentOS-Stream-9-latest-x86_64-dvd1.iso` |
-|                                                                         | 8 Stream  | [:fontawesome-solid-cloud-arrow-down:][download-linux-centos-stream-8] &nbsp; `CentOS-Stream-8-x86_64-latest-dvd1.iso` |
-|                                                                         | 7         | [:fontawesome-solid-cloud-arrow-down:][download-linux-centos-7] &nbsp; `CentOS-7-x86_64-DVD.iso`                       |
-| :fontawesome-brands-suse: &nbsp;&nbsp; SUSE Linux Enterprise @span      | 15        | [:fontawesome-solid-cloud-arrow-down:][download-linux-sles-15] &nbsp; `SLE-15-SPx-Full-x86_64-GM-Media1.iso`           |
+| Operating System | Version | Download |
+| :--- | :--- | :--- |
+| :simple-vmware: &nbsp;&nbsp; VMware Photon OS @span | 5.0 | [:fontawesome-solid-cloud-arrow-down:][download-linux-photon-5] &nbsp; `photon-5.0-xxxxxxxxx.x86_64.iso` |
+| | 4.0 | [:fontawesome-solid-cloud-arrow-down:][download-linux-photon-4] &nbsp; `photon-4.0-xxxxxxxxx.iso` |
+| :fontawesome-brands-debian: &nbsp;&nbsp; Debian @span | 12 | [:fontawesome-solid-cloud-arrow-down:][download-linux-debian-12] &nbsp; `debian-12.x.x-amd64-netinst.iso` |
+| | 11 | [:fontawesome-solid-cloud-arrow-down:][download-linux-debian-11] &nbsp; `debian-11.x.x-amd64-netinst.iso` |
+| :fontawesome-brands-ubuntu: &nbsp;&nbsp; Ubuntu Server @span | 23.10 | [:fontawesome-solid-cloud-arrow-down:][download-linux-ubuntu-2310] &nbsp; `ubuntu-23.10-live-server-amd64.iso` |
+| | 22.04 LTS | [:fontawesome-solid-cloud-arrow-down:][download-linux-ubuntu-2204] &nbsp; `ubuntu-22.04.x-live-server-amd64.iso` |
+| | 20.04 LTS | [:fontawesome-solid-cloud-arrow-down:][download-linux-ubuntu-2004] &nbsp; `ubuntu-20.04.x-live-server-amd64.iso` |
+| :fontawesome-brands-redhat: &nbsp;&nbsp; Red Hat Enterprise Linux @span | 9 | [:fontawesome-solid-cloud-arrow-down:][download-linux-rhel-9] &nbsp; `rhel-9.x-x86_64-dvd.iso` |
+| | 8 | [:fontawesome-solid-cloud-arrow-down:][download-linux-rhel-8] &nbsp; `rhel-8.x-x86_64-dvd.iso` |
+| | 7 | [:fontawesome-solid-cloud-arrow-down:][download-linux-rhel-7] &nbsp; `rhel-server-7.x-x86_64-dvd.iso` |
+| :fontawesome-brands-linux: &nbsp;&nbsp; AlmaLinux OS @span | 9 | [:fontawesome-solid-cloud-arrow-down:][download-linux-alma-9] &nbsp; `AlmaLinux-9.x-x86_64-dvd.iso` |
+| | 8 | [:fontawesome-solid-cloud-arrow-down:][download-linux-alma-8] &nbsp; `AlmaLinux-8.x-x86_64-dvd.iso` |
+| :simple-rockylinux: &nbsp;&nbsp; Rocky Linux @span | 9 | [:fontawesome-solid-cloud-arrow-down:][download-linux-rocky-9] &nbsp; `Rocky-9.x-x86_64-dvd.iso` |
+| | 8 | [:fontawesome-solid-cloud-arrow-down:][download-linux-rocky-8] &nbsp; `Rocky-8.x-x86_64-dvd.iso` |
+| :simple-oracle: &nbsp;&nbsp; Oracle Linux @span | 9 | [:fontawesome-solid-cloud-arrow-down:][download-linux-oracle-9] &nbsp; `OracleLinux-R9-U2-x86_64-dvd.iso` |
+| | 8 | [:fontawesome-solid-cloud-arrow-down:][download-linux-oracle-8] &nbsp; `OracleLinux-R8-U8-x86_64-dvd.iso` |
+| :fontawesome-brands-centos: &nbsp;&nbsp; CentOS @span | 9 Stream | [:fontawesome-solid-cloud-arrow-down:][download-linux-centos-stream-9] &nbsp; `CentOS-Stream-9-latest-x86_64-dvd1.iso` |
+| | 8 Stream | [:fontawesome-solid-cloud-arrow-down:][download-linux-centos-stream-8] &nbsp; `CentOS-Stream-8-x86_64-latest-dvd1.iso` |
+| | 7 | [:fontawesome-solid-cloud-arrow-down:][download-linux-centos-7] &nbsp; `CentOS-7-x86_64-DVD.iso` |
+| :fontawesome-brands-suse: &nbsp;&nbsp; SUSE Linux Enterprise @span | 15 | [:fontawesome-solid-cloud-arrow-down:][download-linux-sles-15] &nbsp; `SLE-15-SPx-Full-x86_64-GM-Media1.iso` |
 ::end-spantable::
 
 ## :fontawesome-brands-windows: Microsoft Windows
@@ -40,27 +40,40 @@ Download the Linux distribution ISO files from the publisher.
 Download the Microsoft Windows ISO files from the Microsoft.
 
 ::spantable::
-| Operating System                                                         | Version | Download                                                                                              |
-| :---                                                                     | :---    | :---                                                                                                  |
-| :fontawesome-brands-windows: &nbsp;&nbsp; Microsoft Windows Server @span | 2025    | [:fontawesome-solid-cloud-arrow-down:][download-windows-server-2025] &nbsp; Windows Insiders Preview  |
-|                                                                          | 2022    | [:fontawesome-solid-cloud-arrow-down:][download-windows-server-2022] &nbsp; Windows Evaluation Center |
-|                                                                          | 2019    | [:fontawesome-solid-cloud-arrow-down:][download-windows-server-2019] &nbsp; Windows Evaluation Center |
-| :fontawesome-brands-windows: &nbsp;&nbsp; Microsoft Windows @span        | 11      | [:fontawesome-solid-cloud-arrow-down:][download-windows-11] &nbsp; Windows Evaluation Center          |
-|                                                                          | 10      | [:fontawesome-solid-cloud-arrow-down:][download-windows-10] &nbsp; Windows Evaluation Center          |
+| Operating System | Version | Download |
+| :--- | :--- | :--- |
+| :fontawesome-brands-windows: &nbsp;&nbsp; Microsoft Windows Server @span | 2025 | [:fontawesome-solid-cloud-arrow-down:][download-windows-server-2025] &nbsp; Windows Insiders Preview |
+| | 2022 | [:fontawesome-solid-cloud-arrow-down:][download-windows-server-2022] &nbsp; Windows Evaluation Center |
+| | 2019 | [:fontawesome-solid-cloud-arrow-down:][download-windows-server-2019] &nbsp; Windows Evaluation Center |
+| :fontawesome-brands-windows: &nbsp;&nbsp; Microsoft Windows @span | 11 | [:fontawesome-solid-cloud-arrow-down:][download-windows-11] &nbsp; Windows Evaluation Center |
+| | 10 | [:fontawesome-solid-cloud-arrow-down:][download-windows-10] &nbsp; Windows Evaluation Center |
 ::end-spantable::
 
 Upload the guest operating system ISO files to the datastore and update the path in the
 configuration variables.
 
-```hcl title="config/common.pkrvars.hcl"
-common_iso_datastore = "sfo-w01-cl01-ds-nfs01"
-```
+=== ":material-database: &nbsp; Datastore (Default)"
+
+    ```hcl title="config/common.pkrvars.hcl"
+    common_iso_datastore               = "sfo-w01-cl01-ds-nfs01"
+    common_iso_content_library         = ""
+    common_iso_content_library_enabled = false
+    ```
+
+=== ":material-library-shelves: &nbsp; Content Library"
+
+    ```hcl title="config/common.pkrvars.hcl"
+    common_iso_datastore               = ""
+    common_iso_content_library         = "sfo-w01-lib01"
+    common_iso_content_library_enabled = true
+    ```
 
 Update the ISO path and file for each guest operating system in the configuration variables.
 
 ```hcl title="builds/linux/photon/5/packer.auto.pkrvars.hcl"
-iso_path           = "iso/linux/photon"
-iso_file           = "photon-5.0-xxxxxxxxx.iso"
+iso_datastore_path       = "iso/linux/photon"
+iso_content_library_item = "photon-5.0-xxxxxxxxx"
+iso_file                 = "photon-5.0-xxxxxxxxx.iso"
 ```
 
 [//]: Links

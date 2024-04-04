@@ -221,9 +221,15 @@ variable "common_template_conversion" {
   default     = false
 }
 
-variable "common_content_library_name" {
+variable "common_content_library_enabled" {
+  type        = bool
+  description = "Import the virtual machine into the vSphere content library."
+  default     = true
+}
+
+variable "common_content_library" {
   type        = string
-  description = "The name of the target vSphere content library, if used."
+  description = "The name of the target vSphere content library, if enabled."
   default     = null
 }
 
@@ -261,12 +267,23 @@ variable "common_ovf_export_overwrite" {
 
 // Removable Media Settings
 
-variable "common_iso_datastore" {
-  type        = string
-  description = "The name of the source vSphere datastore for the guest operating system ISO."
+variable "common_iso_content_library_enabled" {
+  type        = bool
+  description = "Import the guest operating system ISO into the vSphere content library."
+  default     = false
 }
 
-variable "iso_path" {
+variable "common_iso_content_library" {
+  type        = string
+  description = "The name of the target vSphere content library for the guest operating system ISO."
+}
+
+variable "common_iso_datastore" {
+  type        = string
+  description = "The name of the target vSphere datastore for the guest operating system ISO."
+}
+
+variable "iso_datastore_path" {
   type        = string
   description = "The path on the source vSphere datastore for the guest operating system ISO."
 }
@@ -274,6 +291,11 @@ variable "iso_path" {
 variable "iso_file" {
   type        = string
   description = "The file name of the guest operating system ISO."
+}
+
+variable "iso_content_library_item" {
+  type        = string
+  description = "The vSphere content library item name for the guest operating system ISO."
 }
 
 // Boot Settings

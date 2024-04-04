@@ -32,8 +32,9 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_path = "iso/linux/centos"
-iso_file = "CentOS-7-x86_64-DVD-2009.iso"
+iso_datastore_path       = "iso/linux/centos"
+iso_content_library_item = "CentOS-7-x86_64-DVD-2009"
+iso_file                 = "CentOS-7-x86_64-DVD-2009.iso"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

@@ -41,11 +41,14 @@ locals {
   build_date        = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
   build_version     = data.git-repository.cwd.head
   build_description = "Version: ${local.build_version}\nBuilt on: ${local.build_date}\n${local.build_by}"
-  iso_paths         = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}"]
-  manifest_date     = formatdate("YYYY-MM-DD hh:mm:ss", timestamp())
-  manifest_path     = "${path.cwd}/manifests/"
-  manifest_output   = "${local.manifest_path}${local.manifest_date}.json"
-  ovf_export_path   = "${path.cwd}/artifacts/${local.vm_name}"
+  iso_paths = {
+    content_library = "${var.common_iso_content_library}/${var.iso_content_library_item}/${var.iso_file}",
+    datastore       = "[${var.common_iso_datastore}] ${var.iso_datastore_path}/${var.iso_file}"
+  }
+  manifest_date   = formatdate("YYYY-MM-DD hh:mm:ss", timestamp())
+  manifest_path   = "${path.cwd}/manifests/"
+  manifest_output = "${local.manifest_path}${local.manifest_date}.json"
+  ovf_export_path = "${path.cwd}/artifacts/${local.vm_name}"
   data_source_content = {
     "/ks.cfg" = templatefile("${abspath(path.root)}/data/ks.pkrtpl.hcl", {
       build_username           = var.build_username
@@ -122,7 +125,7 @@ source "vsphere-iso" "linux-oracle" {
   notes                = local.build_description
 
   // Removable Media Settings
-  iso_paths    = local.iso_paths
+  iso_paths    = var.common_iso_content_library_enabled ? [local.iso_paths.content_library] : [local.iso_paths.datastore]
   http_content = var.common_data_source == "http" ? local.data_source_content : null
   cd_content   = var.common_data_source == "disk" ? local.data_source_content : null
 
@@ -164,9 +167,9 @@ source "vsphere-iso" "linux-oracle" {
   // Template and Content Library Settings
   convert_to_template = var.common_template_conversion
   dynamic "content_library_destination" {
-    for_each = var.common_content_library_name != null ? [1] : []
+    for_each = var.common_content_library_enabled ? [1] : []
     content {
-      library     = var.common_content_library_name
+      library     = var.common_content_library
       description = local.build_description
       ovf         = var.common_content_library_ovf
       destroy     = var.common_content_library_destroy
@@ -176,7 +179,7 @@ source "vsphere-iso" "linux-oracle" {
 
   // OVF Export Settings
   dynamic "export" {
-    for_each = var.common_ovf_export_enabled == true ? [1] : []
+    for_each = var.common_ovf_export_enabled ? [1] : []
     content {
       name  = local.vm_name
       force = var.common_ovf_export_overwrite

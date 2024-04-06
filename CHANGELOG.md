@@ -81,7 +81,7 @@
 - Updates AlmaLinux to upgrade the `almalinux-release` package during the build.
   [#](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/)
 
-## v23.11
+## v0.18.0
 
 > Release Date: 2023-11-28
 
@@ -103,7 +103,7 @@
 - Removes redundant Ansible task for users.
   [#770](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/770)
 
-## v23.10
+## v0.17.0
 
 > Release Date: 2023-10-23
 
@@ -210,7 +210,7 @@
 - Removes the installation of Chocolatey from the Microsoft Windows guest operating system builds.
   [#586](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/586)
 
-## v23.01
+## v0.16.0
 
 > Release Date: 2023-01-17
 
@@ -314,7 +314,7 @@
   due to [#343](https://github.com/vmware-samples/packer-examples-for-vsphere/issues/343).
   [#435](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/435)
 
-## v22.09
+## v0.15.0
 
 > Release Date: 2022-09-28
 
@@ -350,7 +350,7 @@
 - Updates `required_versions` for `terraform` to `>= 1.3.1`.
   [#292](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/292)
 
-## v22.08
+## v0.14.0
 
 > Release Date: 2022-08-25
 
@@ -382,7 +382,7 @@
 >
 > - HTTP-based deployment only.
 
-## v22.07
+## v0.13.0
 
 > Release Date: 2022-07-26
 
@@ -426,7 +426,7 @@
 > - Supports 15.3 / 15 Service Pack 3.
 > - HTTP-based deployment only. Disk-based deployment planned.
 
-## v22.06
+## v0.12.0
 
 > Release Date: 2022-06-27
 
@@ -441,7 +441,7 @@
 - Updates Windows 11 to June 2022 (US English) release.
 - Updates `vm_guest_os_type` for Windows Server 2022 guest ID to `windows2019srvNext_64Guest`.
 
-## v22.05
+## v0.11.0
 
 > Release Date: 2022-05-31
 
@@ -459,7 +459,7 @@
 - Updates requirements to include VMware Photon OS 4 as a tested operating system.
 - Updates requirements to include Ubuntu 22.04 as a tested operating system.
 
-## v22.04
+## v0.10.0
 
 > Release Date: 2022-04-28
 
@@ -481,7 +481,7 @@
 - Updates the Windows Server 2022 February 2022 (US English) release. (#192)
 - Updates the Ubuntu 20.04 LTS to 20.04.4 release. (#184)
 
-## v22.03
+## v0.9.0
 
 > Release Date: 2022-03-17
 
@@ -491,7 +491,7 @@
 - Updates `required_versions` for `terraform` to `>= 1.1.7`.
 - Updates `required_versions` for `hashicorp/vsphere` to `>= 2.1.1`.
 
-## v22.02
+## v0.8.0
 
 > Release Date: 2022-02-22
 
@@ -505,7 +505,7 @@
 - Updates `required_versions` for `packer` to `>= 1.7.10`.
 - Updates `required_versions` for `terraform` to `>= 1.1.5`.
 
-## v22.01
+## v0.7.0
 
 > Release Date: 2022-01-21
 
@@ -535,7 +535,7 @@
 - Adds a GitHub Action on pull requests to check code quality using linters.
 - Updates all of project code to address issues found by the linter(s).
 
-## v21.11
+## v0.6.0
 
 > Release Date: 2021-11-09
 
@@ -559,7 +559,7 @@
 - Adds example Terraform plans for deployment testing.
 - Adds an Ansible playbook example to create a custom role in vSphere for Packer.
 
-## v21.10.01
+## v0.5.1
 
 > Release Date: 2021-10-20
 
@@ -576,7 +576,7 @@
   virtual machine will not be imported into the content library. This is useful for
   testing/debugging. Defaults to false.
 
-## v21.10
+## v0.5.0
 
 > Release Date: 2021-10-11
 
@@ -635,7 +635,7 @@
 - Bumped Packer to `>= 1.7.6`.
 - Thanks to the new contributors: @sestegra, @metabsdm, and @gcblack!
 
-## v21.09.1
+## v0.4.1
 
 > Release Date: 2021-09-16
 
@@ -652,7 +652,7 @@
 - Adds disclaimers and Updates descriptions in script files.
 - Updates README.md.
 
-## v21.09
+## v0.4.0
 
 > Release Date: 2021-09-07
 
@@ -670,7 +670,7 @@
 - Updates CONTRIBUTING.md.
 - Updates README.md.
 
-## v21.08
+## v0.3.0
 
 > Release Date: 2021-08-18
 
@@ -709,7 +709,7 @@
 - Adds MAINTAINERS.md.
 - Updates README.md.
 
-## v21.07
+## v0.2.0
 
 > Release Date: 2021-07-21
 
@@ -725,7 +725,7 @@
 - Adds the Packer block for Windows builds with `required_plugins` and `version = "0.12.0"` for the
   [Windows-Update plugin](https://github.com/rgl/packer-plugin-windows-update).
 
-## v20.11
+## v0.1.0
 
 > Release Date: 2020-11-26
 

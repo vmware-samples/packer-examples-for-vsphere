@@ -21,8 +21,7 @@
   supported. [#844](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/844)
 - Adds Windows Server 2025 Insiders Preview.
   [#834](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/834)
-- Adds Ansible integration for Windows Server 20
-- 25, 2022, and 2019 images.
+- Adds Ansible integration for Windows Server 2025, 2022, and 2019 images.
   [#801](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/801)
 - Adds Ansible integration for Windows 11 and 10 images.
   [#801](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/801)

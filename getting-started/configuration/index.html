@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -359,14 +359,14 @@
       
     
     
-    
-    
       
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
@@ -385,7 +385,7 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -499,14 +499,17 @@
       
     
     
-    
-    
+      
+        
+        
       
       
+        
+      
+    
     
     <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
-        
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
@@ -942,20 +945,20 @@
       
     
     
-    
-    
       
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1321,13 +1324,16 @@
 
 <h1 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h1>
 <h2 id="example-variables">Example Variables<a class="headerlink" href="#example-variables" title="Permanent link">&para;</a></h2>
-<p>The project includes example variables files that you can use as a starting point for your own configuration.</p>
+<p>The project includes example variables files that you can use as a starting point for your own
+configuration.</p>
 <p>The <a href="https://developer.hashicorp.com/packer/docs/templates/hcl_templates/variables">variables</a> are defined in <code>.pkrvars.hcl</code> files.</p>
-<p>Run the config script <code>./config.sh</code> to copy the <code>.pkrvars.hcl.example</code> files to a <code>config</code> directory.</p>
+<p>Run the config script <code>./config.sh</code> to copy the <code>.pkrvars.hcl.example</code> files to a <code>config</code>
+directory.</p>
 <div class="highlight"><pre><span></span><code>./config.sh
 ./build.sh
 </code></pre></div>
-<p>The <code>config</code> folder is the default folder. You can override the default by passing an alternate value as the first argument.</p>
+<p>The <code>config</code> folder is the default folder. You can override the default by passing an alternate
+value as the first argument.</p>
 <p>For example:</p>
 <p>San Francisco: <code>us-west-1</code></p>
 <div class="highlight"><pre><span></span><code>./config.sh<span class="w"> </span>us-west-1
@@ -1340,7 +1346,8 @@
 <p>This is useful for the purposes of running machine image builds for different environment.</p>
 <h2 id="configuration-variables">Configuration Variables<a class="headerlink" href="#configuration-variables" title="Permanent link">&para;</a></h2>
 <h3 id="build">Build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h3>
-<p>Edit the <code>config/build.pkrvars.hcl</code> file to configure the credentials for the default account on machine images.</p>
+<p>Edit the <code>config/build.pkrvars.hcl</code> file to configure the credentials for the default account on
+machine images.</p>
 <div class="highlight"><span class="filename">config/build.pkrvars.hcl</span><pre><span></span><code><span class="na">build_username</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;example&quot;</span>
 <span class="na">build_password</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;plaintext_password&gt;&quot;</span>
 <span class="na">build_password_encrypted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;sha512_encrypted_password&gt;&quot;</span>
@@ -1353,19 +1360,20 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M220.8 123.3c1 .5 1.8 1.7 3 1.7 1.1 0 2.8-.4 2.9-1.5.2-1.4-1.9-2.3-3.2-2.9-1.7-.7-3.9-1-5.5-.1-.4.2-.8.7-.6 1.1.3 1.3 2.3 1.1 3.4 1.7zm-21.9 1.7c1.2 0 2-1.2 3-1.7 1.1-.6 3.1-.4 3.5-1.6.2-.4-.2-.9-.6-1.1-1.6-.9-3.8-.6-5.5.1-1.3.6-3.4 1.5-3.2 2.9.1 1 1.8 1.5 2.8 1.4zM420 403.8c-3.6-4-5.3-11.6-7.2-19.7-1.8-8.1-3.9-16.8-10.5-22.4-1.3-1.1-2.6-2.1-4-2.9-1.3-.8-2.7-1.5-4.1-2 9.2-27.3 5.6-54.5-3.7-79.1-11.4-30.1-31.3-56.4-46.5-74.4-17.1-21.5-33.7-41.9-33.4-72C311.1 85.4 315.7.1 234.8 0 132.4-.2 158 103.4 156.9 135.2c-1.7 23.4-6.4 41.8-22.5 64.7-18.9 22.5-45.5 58.8-58.1 96.7-6 17.9-8.8 36.1-6.2 53.3-6.5 5.8-11.4 14.7-16.6 20.2-4.2 4.3-10.3 5.9-17 8.3s-14 6-18.5 14.5c-2.1 3.9-2.8 8.1-2.8 12.4 0 3.9.6 7.9 1.2 11.8 1.2 8.1 2.5 15.7.8 20.8-5.2 14.4-5.9 24.4-2.2 31.7 3.8 7.3 11.4 10.5 20.1 12.3 17.3 3.6 40.8 2.7 59.3 12.5 19.8 10.4 39.9 14.1 55.9 10.4 11.6-2.6 21.1-9.6 25.9-20.2 12.5-.1 26.3-5.4 48.3-6.6 14.9-1.2 33.6 5.3 55.1 4.1.6 2.3 1.4 4.6 2.5 6.7v.1c8.3 16.7 23.8 24.3 40.3 23 16.6-1.3 34.1-11 48.3-27.9 13.6-16.4 36-23.2 50.9-32.2 7.4-4.5 13.4-10.1 13.9-18.3.4-8.2-4.4-17.3-15.5-29.7zM223.7 87.3c9.8-22.2 34.2-21.8 44-.4 6.5 14.2 3.6 30.9-4.3 40.4-1.6-.8-5.9-2.6-12.6-4.9 1.1-1.2 3.1-2.7 3.9-4.6 4.8-11.8-.2-27-9.1-27.3-7.3-.5-13.9 10.8-11.8 23-4.1-2-9.4-3.5-13-4.4-1-6.9-.3-14.6 2.9-21.8zM183 75.8c10.1 0 20.8 14.2 19.1 33.5-3.5 1-7.1 2.5-10.2 4.6 1.2-8.9-3.3-20.1-9.6-19.6-8.4.7-9.8 21.2-1.8 28.1 1 .8 1.9-.2-5.9 5.5-15.6-14.6-10.5-52.1 8.4-52.1zm-13.6 60.7c6.2-4.6 13.6-10 14.1-10.5 4.7-4.4 13.5-14.2 27.9-14.2 7.1 0 15.6 2.3 25.9 8.9 6.3 4.1 11.3 4.4 22.6 9.3 8.4 3.5 13.7 9.7 10.5 18.2-2.6 7.1-11 14.4-22.7 18.1-11.1 3.6-19.8 16-38.2 14.9-3.9-.2-7-1-9.6-2.1-8-3.5-12.2-10.4-20-15-8.6-4.8-13.2-10.4-14.7-15.3-1.4-4.9 0-9 4.2-12.3zm3.3 334c-2.7 35.1-43.9 34.4-75.3 18-29.9-15.8-68.6-6.5-76.5-21.9-2.4-4.7-2.4-12.7 2.6-26.4v-.2c2.4-7.6.6-16-.6-23.9-1.2-7.8-1.8-15 .9-20 3.5-6.7 8.5-9.1 14.8-11.3 10.3-3.7 11.8-3.4 19.6-9.9 5.5-5.7 9.5-12.9 14.3-18 5.1-5.5 10-8.1 17.7-6.9 8.1 1.2 15.1 6.8 21.9 16l19.6 35.6c9.5 19.9 43.1 48.4 41 68.9zm-1.4-25.9c-4.1-6.6-9.6-13.6-14.4-19.6 7.1 0 14.2-2.2 16.7-8.9 2.3-6.2 0-14.9-7.4-24.9-13.5-18.2-38.3-32.5-38.3-32.5-13.5-8.4-21.1-18.7-24.6-29.9s-3-23.3-.3-35.2c5.2-22.9 18.6-45.2 27.2-59.2 2.3-1.7.8 3.2-8.7 20.8-8.5 16.1-24.4 53.3-2.6 82.4.6-20.7 5.5-41.8 13.8-61.5 12-27.4 37.3-74.9 39.3-112.7 1.1.8 4.6 3.2 6.2 4.1 4.6 2.7 8.1 6.7 12.6 10.3 12.4 10 28.5 9.2 42.4 1.2 6.2-3.5 11.2-7.5 15.9-9 9.9-3.1 17.8-8.6 22.3-15 7.7 30.4 25.7 74.3 37.2 95.7 6.1 11.4 18.3 35.5 23.6 64.6 3.3-.1 7 .4 10.9 1.4 13.8-35.7-11.7-74.2-23.3-84.9-4.7-4.6-4.9-6.6-2.6-6.5 12.6 11.2 29.2 33.7 35.2 59 2.8 11.6 3.3 23.7.4 35.7 16.4 6.8 35.9 17.9 30.7 34.8-2.2-.1-3.2 0-4.2 0 3.2-10.1-3.9-17.6-22.8-26.1-19.6-8.6-36-8.6-38.3 12.5-12.1 4.2-18.3 14.7-21.4 27.3-2.8 11.2-3.6 24.7-4.4 39.9-.5 7.7-3.6 18-6.8 29-32.1 22.9-76.7 32.9-114.3 7.2zm257.4-11.5c-.9 16.8-41.2 19.9-63.2 46.5-13.2 15.7-29.4 24.4-43.6 25.5s-26.5-4.8-33.7-19.3c-4.7-11.1-2.4-23.1 1.1-36.3 3.7-14.2 9.2-28.8 9.9-40.6.8-15.2 1.7-28.5 4.2-38.7 2.6-10.3 6.6-17.2 13.7-21.1.3-.2.7-.3 1-.5.8 13.2 7.3 26.6 18.8 29.5 12.6 3.3 30.7-7.5 38.4-16.3 9-.3 15.7-.9 22.6 5.1 9.9 8.5 7.1 30.3 17.1 41.6 10.6 11.6 14 19.5 13.7 24.6zM173.3 148.7c2 1.9 4.7 4.5 8 7.1 6.6 5.2 15.8 10.6 27.3 10.6 11.6 0 22.5-5.9 31.8-10.8 4.9-2.6 10.9-7 14.8-10.4s5.9-6.3 3.1-6.6-2.6 2.6-6 5.1c-4.4 3.2-9.7 7.4-13.9 9.8-7.4 4.2-19.5 10.2-29.9 10.2s-18.7-4.8-24.9-9.7c-3.1-2.5-5.7-5-7.7-6.9-1.5-1.4-1.9-4.6-4.3-4.9-1.4-.1-1.8 3.7 1.7 6.5z"/></svg></span> &nbsp; VMware Photon OS</label><label for="__tabbed_1_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M469.2 75a75.6 75.6 0 1 0-151.3 0 75.6 75.6 0 1 0 151.2 0zm-315 165.7a75.6 75.6 0 1 0-151.2 0 75.6 75.6 0 1 0 151.2 0zM57 346c18.6 46.9 51 87 93 115.1s91.5 42.6 142 41.7c-14.7-18.6-22.9-41.5-23.2-65.2-6.8-.9-13.3-2.1-19.5-3.4-26.8-5.7-51.9-17.3-73.6-34s-39.3-38.1-51.7-62.5c-20.9 9.9-44.5 12.8-67.1 8.2zm395.1 89.8a75.6 75.6 0 1 0-151.2 0 75.6 75.6 0 1 0 151.2 0zm-8.1-84.2c18.5 14.8 31.6 35.2 37.2 58.2 33.3-41.3 52.6-92.2 54.8-145.2s-12.5-105.4-42.2-149.4c-8.6 21.5-24 39.6-43.8 51.6 15.4 28.6 22.9 60.8 21.9 93.2s-10.7 64-28 91.6zM101.1 135.4c12.4 2.7 24.3 7.5 35.1 14.3 16.6-24.2 38.9-44.1 64.8-58s54.8-21.3 84.2-21.7c.2-5.9.9-11.9 2-17.7C290.8 35.6 298.3 20 309 6.8c-47.7-3.8-95.4 6-137.6 28.5S94.3 91.7 70.8 133.4c2.7-.2 5.3-.3 8-.3 7.5 0 15 .8 22.4 2.3z"/></svg></span> &nbsp; Ubuntu</label><label for="__tabbed_1_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg></span> &nbsp; macOS</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Run the following command to generate a SHA-512 encrypted password for the <code>build_password_encrypted</code> using mkpasswd.</p>
+<p>Run the following command to generate a SHA-512 encrypted password for the
+<code>build_password_encrypted</code> using mkpasswd.</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>docker
 sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>alpine:latest
-mkpasswd<span class="w"> </span>-m<span class="w"> </span>sha512
+<span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;&lt;your_password&gt; | mkpasswd --stdin -m sha512</span>
 </code></pre></div>
 <p>The following output is displayed:</p>
-<div class="highlight"><pre><span></span><code>Password:<span class="w"> </span>***************
-<span class="o">[</span>password<span class="w"> </span>hash<span class="o">]</span>
-sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>docker
+<div class="highlight"><pre><span></span><code>Password:
+<span class="o">[</span>your_password_hash<span class="o">]</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<p>Run the following command to generate a SHA-512 encrypted password for the <code>build_password_encrypted</code> using mkpasswd.</p>
+<p>Run the following command to generate a SHA-512 encrypted password for the
+<code>build_password_encrypted</code> using mkpasswd.</p>
 <div class="highlight"><pre><span></span><code>mkpasswd<span class="w"> </span>-m<span class="w"> </span>sha512
 </code></pre></div>
 <p>The following output is displayed:</p>
@@ -1374,7 +1382,8 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<p>Run the following command to generate a SHA-512 encrypted password for the <code>build_password_encrypted</code> using mkpasswd.</p>
+<p>Run the following command to generate a SHA-512 encrypted password for the
+<code>build_password_encrypted</code> using mkpasswd.</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>alpine:latest
 mkpasswd<span class="w"> </span>-m<span class="w"> </span>sha512
 </code></pre></div>
@@ -1389,7 +1398,8 @@ mkpasswd<span class="w"> </span>-m<span class="w"> </span>sha512
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M220.8 123.3c1 .5 1.8 1.7 3 1.7 1.1 0 2.8-.4 2.9-1.5.2-1.4-1.9-2.3-3.2-2.9-1.7-.7-3.9-1-5.5-.1-.4.2-.8.7-.6 1.1.3 1.3 2.3 1.1 3.4 1.7zm-21.9 1.7c1.2 0 2-1.2 3-1.7 1.1-.6 3.1-.4 3.5-1.6.2-.4-.2-.9-.6-1.1-1.6-.9-3.8-.6-5.5.1-1.3.6-3.4 1.5-3.2 2.9.1 1 1.8 1.5 2.8 1.4zM420 403.8c-3.6-4-5.3-11.6-7.2-19.7-1.8-8.1-3.9-16.8-10.5-22.4-1.3-1.1-2.6-2.1-4-2.9-1.3-.8-2.7-1.5-4.1-2 9.2-27.3 5.6-54.5-3.7-79.1-11.4-30.1-31.3-56.4-46.5-74.4-17.1-21.5-33.7-41.9-33.4-72C311.1 85.4 315.7.1 234.8 0 132.4-.2 158 103.4 156.9 135.2c-1.7 23.4-6.4 41.8-22.5 64.7-18.9 22.5-45.5 58.8-58.1 96.7-6 17.9-8.8 36.1-6.2 53.3-6.5 5.8-11.4 14.7-16.6 20.2-4.2 4.3-10.3 5.9-17 8.3s-14 6-18.5 14.5c-2.1 3.9-2.8 8.1-2.8 12.4 0 3.9.6 7.9 1.2 11.8 1.2 8.1 2.5 15.7.8 20.8-5.2 14.4-5.9 24.4-2.2 31.7 3.8 7.3 11.4 10.5 20.1 12.3 17.3 3.6 40.8 2.7 59.3 12.5 19.8 10.4 39.9 14.1 55.9 10.4 11.6-2.6 21.1-9.6 25.9-20.2 12.5-.1 26.3-5.4 48.3-6.6 14.9-1.2 33.6 5.3 55.1 4.1.6 2.3 1.4 4.6 2.5 6.7v.1c8.3 16.7 23.8 24.3 40.3 23 16.6-1.3 34.1-11 48.3-27.9 13.6-16.4 36-23.2 50.9-32.2 7.4-4.5 13.4-10.1 13.9-18.3.4-8.2-4.4-17.3-15.5-29.7zM223.7 87.3c9.8-22.2 34.2-21.8 44-.4 6.5 14.2 3.6 30.9-4.3 40.4-1.6-.8-5.9-2.6-12.6-4.9 1.1-1.2 3.1-2.7 3.9-4.6 4.8-11.8-.2-27-9.1-27.3-7.3-.5-13.9 10.8-11.8 23-4.1-2-9.4-3.5-13-4.4-1-6.9-.3-14.6 2.9-21.8zM183 75.8c10.1 0 20.8 14.2 19.1 33.5-3.5 1-7.1 2.5-10.2 4.6 1.2-8.9-3.3-20.1-9.6-19.6-8.4.7-9.8 21.2-1.8 28.1 1 .8 1.9-.2-5.9 5.5-15.6-14.6-10.5-52.1 8.4-52.1zm-13.6 60.7c6.2-4.6 13.6-10 14.1-10.5 4.7-4.4 13.5-14.2 27.9-14.2 7.1 0 15.6 2.3 25.9 8.9 6.3 4.1 11.3 4.4 22.6 9.3 8.4 3.5 13.7 9.7 10.5 18.2-2.6 7.1-11 14.4-22.7 18.1-11.1 3.6-19.8 16-38.2 14.9-3.9-.2-7-1-9.6-2.1-8-3.5-12.2-10.4-20-15-8.6-4.8-13.2-10.4-14.7-15.3-1.4-4.9 0-9 4.2-12.3zm3.3 334c-2.7 35.1-43.9 34.4-75.3 18-29.9-15.8-68.6-6.5-76.5-21.9-2.4-4.7-2.4-12.7 2.6-26.4v-.2c2.4-7.6.6-16-.6-23.9-1.2-7.8-1.8-15 .9-20 3.5-6.7 8.5-9.1 14.8-11.3 10.3-3.7 11.8-3.4 19.6-9.9 5.5-5.7 9.5-12.9 14.3-18 5.1-5.5 10-8.1 17.7-6.9 8.1 1.2 15.1 6.8 21.9 16l19.6 35.6c9.5 19.9 43.1 48.4 41 68.9zm-1.4-25.9c-4.1-6.6-9.6-13.6-14.4-19.6 7.1 0 14.2-2.2 16.7-8.9 2.3-6.2 0-14.9-7.4-24.9-13.5-18.2-38.3-32.5-38.3-32.5-13.5-8.4-21.1-18.7-24.6-29.9s-3-23.3-.3-35.2c5.2-22.9 18.6-45.2 27.2-59.2 2.3-1.7.8 3.2-8.7 20.8-8.5 16.1-24.4 53.3-2.6 82.4.6-20.7 5.5-41.8 13.8-61.5 12-27.4 37.3-74.9 39.3-112.7 1.1.8 4.6 3.2 6.2 4.1 4.6 2.7 8.1 6.7 12.6 10.3 12.4 10 28.5 9.2 42.4 1.2 6.2-3.5 11.2-7.5 15.9-9 9.9-3.1 17.8-8.6 22.3-15 7.7 30.4 25.7 74.3 37.2 95.7 6.1 11.4 18.3 35.5 23.6 64.6 3.3-.1 7 .4 10.9 1.4 13.8-35.7-11.7-74.2-23.3-84.9-4.7-4.6-4.9-6.6-2.6-6.5 12.6 11.2 29.2 33.7 35.2 59 2.8 11.6 3.3 23.7.4 35.7 16.4 6.8 35.9 17.9 30.7 34.8-2.2-.1-3.2 0-4.2 0 3.2-10.1-3.9-17.6-22.8-26.1-19.6-8.6-36-8.6-38.3 12.5-12.1 4.2-18.3 14.7-21.4 27.3-2.8 11.2-3.6 24.7-4.4 39.9-.5 7.7-3.6 18-6.8 29-32.1 22.9-76.7 32.9-114.3 7.2zm257.4-11.5c-.9 16.8-41.2 19.9-63.2 46.5-13.2 15.7-29.4 24.4-43.6 25.5s-26.5-4.8-33.7-19.3c-4.7-11.1-2.4-23.1 1.1-36.3 3.7-14.2 9.2-28.8 9.9-40.6.8-15.2 1.7-28.5 4.2-38.7 2.6-10.3 6.6-17.2 13.7-21.1.3-.2.7-.3 1-.5.8 13.2 7.3 26.6 18.8 29.5 12.6 3.3 30.7-7.5 38.4-16.3 9-.3 15.7-.9 22.6 5.1 9.9 8.5 7.1 30.3 17.1 41.6 10.6 11.6 14 19.5 13.7 24.6zM173.3 148.7c2 1.9 4.7 4.5 8 7.1 6.6 5.2 15.8 10.6 27.3 10.6 11.6 0 22.5-5.9 31.8-10.8 4.9-2.6 10.9-7 14.8-10.4s5.9-6.3 3.1-6.6-2.6 2.6-6 5.1c-4.4 3.2-9.7 7.4-13.9 9.8-7.4 4.2-19.5 10.2-29.9 10.2s-18.7-4.8-24.9-9.7c-3.1-2.5-5.7-5-7.7-6.9-1.5-1.4-1.9-4.6-4.3-4.9-1.4-.1-1.8 3.7 1.7 6.5z"/></svg></span> &nbsp; VMware Photon OS</label><label for="__tabbed_2_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M469.2 75a75.6 75.6 0 1 0-151.3 0 75.6 75.6 0 1 0 151.2 0zm-315 165.7a75.6 75.6 0 1 0-151.2 0 75.6 75.6 0 1 0 151.2 0zM57 346c18.6 46.9 51 87 93 115.1s91.5 42.6 142 41.7c-14.7-18.6-22.9-41.5-23.2-65.2-6.8-.9-13.3-2.1-19.5-3.4-26.8-5.7-51.9-17.3-73.6-34s-39.3-38.1-51.7-62.5c-20.9 9.9-44.5 12.8-67.1 8.2zm395.1 89.8a75.6 75.6 0 1 0-151.2 0 75.6 75.6 0 1 0 151.2 0zm-8.1-84.2c18.5 14.8 31.6 35.2 37.2 58.2 33.3-41.3 52.6-92.2 54.8-145.2s-12.5-105.4-42.2-149.4c-8.6 21.5-24 39.6-43.8 51.6 15.4 28.6 22.9 60.8 21.9 93.2s-10.7 64-28 91.6zM101.1 135.4c12.4 2.7 24.3 7.5 35.1 14.3 16.6-24.2 38.9-44.1 64.8-58s54.8-21.3 84.2-21.7c.2-5.9.9-11.9 2-17.7C290.8 35.6 298.3 20 309 6.8c-47.7-3.8-95.4 6-137.6 28.5S94.3 91.7 70.8 133.4c2.7-.2 5.3-.3 8-.3 7.5 0 15 .8 22.4 2.3z"/></svg></span> &nbsp; Ubuntu</label><label for="__tabbed_2_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg></span> &nbsp; macOS</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Run the following command to generate a public key for the <code>build_key</code> for public key authentication.</p>
+<p>Run the following command to generate a public key for the <code>build_key</code> for public key
+authentication.</p>
 <div class="highlight"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ecdsa<span class="w"> </span>-b<span class="w"> </span><span class="m">521</span><span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;&lt;name@example.com&gt;&quot;</span>
 </code></pre></div>
 <p>The following output is displayed:</p>
@@ -1402,7 +1412,8 @@ Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<p>Run the following command to generate a public key for the <code>build_key</code> for public key authentication.</p>
+<p>Run the following command to generate a public key for the <code>build_key</code> for public key
+authentication.</p>
 <div class="highlight"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ecdsa<span class="w"> </span>-b<span class="w"> </span><span class="m">521</span><span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;&lt;name@example.com&gt;&quot;</span>
 </code></pre></div>
 <p>The following output is displayed:</p>
@@ -1415,7 +1426,8 @@ Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<p>Run the following command to generate a public key for the <code>build_key</code> for public key authentication.</p>
+<p>Run the following command to generate a public key for the <code>build_key</code> for public key
+authentication.</p>
 <div class="highlight"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ecdsa<span class="w"> </span>-b<span class="w"> </span><span class="m">521</span><span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;&lt;name@example.com&gt;&quot;</span>
 </code></pre></div>
 <p>The following output is displayed:</p>
@@ -1429,22 +1441,28 @@ Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </
 </div>
 </div>
 </div>
-<p>The content of the public key, <code>build_key</code>, is added the key to the <code>~/.ssh/authorized_keys</code> file of the <code>build_username</code> on the Linux guest operating systems.</p>
+<p>The content of the public key, <code>build_key</code>, is added the key to the <code>~/.ssh/authorized_keys</code> file of
+the <code>build_username</code> on the Linux guest operating systems.</p>
 <details class="danger" open="open">
 <summary>Example Public Keys and Passwords.</summary>
-<p>Replace the example public keys and passwords.</p>
-<p>By default, both Public Key Authentication and Password Authentication are enabled for Linux distributions.</p>
-<p>If you wish to disable Password Authentication and only use Public Key Authentication, comment or remove the portion of the associated Ansible <code>configure</code> role.</p>
 </details>
+<p>Replace the example public keys and passwords.</p>
+<div class="highlight"><pre><span></span><code>By default, both Public Key Authentication and Password Authentication are enabled for Linux
+distributions.
+
+If you wish to disable Password Authentication and only use Public Key Authentication, comment
+or remove the portion of the associated Ansible `configure` role.
+</code></pre></div>
 <h3 id="ansible">Ansible<a class="headerlink" href="#ansible" title="Permanent link">&para;</a></h3>
-<p>Edit the <code>config/ansible.pkrvars.hcl</code> file to configure the credentials for the Ansible account on Linux machine images.</p>
+<p>Edit the <code>config/ansible.pkrvars.hcl</code> file to configure the credentials for the Ansible account on
+Linux machine images.</p>
 <div class="highlight"><span class="filename">config/ansible.pkrvars.hcl</span><pre><span></span><code><span class="na">ansible_username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ansible&quot;</span>
 <span class="na">ansible_key</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;public_key&gt;&quot;</span>
 </code></pre></div>
 <details class="info" open="open">
 <summary>Ansible User Password</summary>
-<p>A random password is auto-generated for the Ansible user.</p>
 </details>
+<p>A random password is auto-generated for the Ansible user.</p>
 <p>You can also override the <code>ansible_key</code> value with contents of a file, if required.</p>
 <div class="highlight"><span class="filename">config/ansible.pkrvars.hcl</span><pre><span></span><code><span class="na">ansible_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">file</span><span class="p">(</span><span class="s2">&quot;${path.root}/config/ssh/ansible_id_ecdsa.pub&quot;</span><span class="p">)</span>
 </code></pre></div>
@@ -1465,7 +1483,8 @@ Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </
 
 <span class="c1">// Template and Content Library Settings</span>
 <span class="na">common_template_conversion</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
-<span class="na">common_content_library_name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-lib01&quot;</span>
+<span class="na">common_content_library</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-lib01&quot;</span>
+<span class="na">common_content_library_enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="na">common_content_library_ovf</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="na">common_content_library_destroy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 
@@ -1489,22 +1508,32 @@ Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </
 <span class="na">common_hcp_packer_registry_enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
 </code></pre></div>
 <h3 id="data-source">Data Source<a class="headerlink" href="#data-source" title="Permanent link">&para;</a></h3>
-<p>The default provisioning data source for Linux machine image builds is <code>http</code>. This is used to serve the kickstart files to the Linux guest operating system during the build.</p>
+<p>The default provisioning data source for Linux machine image builds is <code>http</code>. This is used to serve
+the kickstart files to the Linux guest operating system during the build.</p>
 <div class="highlight"><span class="filename">config/common.pkrvars.hcl</span><pre><span></span><code><span class="na">common_data_source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;http&quot;</span>
 </code></pre></div>
 <details class="tip" open="open">
 <summary>IPTables</summary>
-<p>Packer includes a built-in HTTP server that is used to serve the kickstart files for Linux machine image builds.</p>
-<p>If iptables is enabled on your Packer host, you will need to open <code>common_http_port_min</code> through <code>common_http_port_max</code> ports.</p>
+<p>Packer includes a built-in HTTP server that is used to serve the kickstart files for Linux
+machine image builds.</p>
+<p>If iptables is enabled on your Packer host, you will need to open <code>common_http_port_min</code> through
+<code>common_http_port_max</code> ports.</p>
 <div class="highlight"><pre><span></span><code>iptables<span class="w"> </span>-A<span class="w"> </span>INPUT<span class="w"> </span>-p<span class="w"> </span>tcp<span class="w"> </span>--match<span class="w"> </span>multiport<span class="w"> </span>--dports<span class="w"> </span><span class="m">8000</span>:8099<span class="w"> </span>-j<span class="w"> </span>ACCEPT
 </code></pre></div>
 </details>
-<p>You can change the <code>common_data_source</code> from <code>http</code> to <code>disk</code> to build supported Linux machine images without the need to use Packer's HTTP server. This is useful for environments that may not be able to route back to the system from which Packer is running. For example, building a machine image in VMware Cloud on AWS.</p>
+<p>You can change the <code>common_data_source</code> from <code>http</code> to <code>disk</code> to build supported Linux machine
+images without the need to use Packer's HTTP server. This is useful for environments that may not be
+able to route back to the system from which Packer is running. For example, building a machine image
+in VMware Cloud on AWS.</p>
 <div class="highlight"><span class="filename">config/common.pkrvars.hcl</span><pre><span></span><code><span class="na">common_data_source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;disk&quot;</span>
 </code></pre></div>
-<p>The Packer pluigin's <code>cd_content</code> option is used when selecting <code>disk</code> unless the distribution does not support a secondary CD-ROM. For distributions that do not support a secondary CD-ROM the <code>floppy_content</code> option is used.</p>
+<p>The Packer plugin's <code>cd_content</code> option is used when selecting <code>disk</code> unless the distribution does
+not support a secondary CD-ROM. For distributions that do not support a secondary CD-ROM the
+<code>floppy_content</code> option is used.</p>
 <h3 id="http-binding">HTTP Binding<a class="headerlink" href="#http-binding" title="Permanent link">&para;</a></h3>
-<p>If you need to define a specific IPv4 address from your host for Packer's built-in HTTP server, modify the <code>common_http_ip</code> variable from <code>null</code> to a <code>string</code> value that matches an IP address on your Packer host.</p>
+<p>If you need to define a specific IPv4 address from your host for Packer's built-in HTTP server,
+modify the <code>common_http_ip</code> variable from <code>null</code> to a <code>string</code> value that matches an IP address on
+your Packer host.</p>
 <div class="highlight"><span class="filename">config/common.pkrvars.hcl</span><pre><span></span><code><span class="na">common_http_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;172.16.11.254&quot;</span>
 </code></pre></div>
 <h3 id="proxy">Proxy<a class="headerlink" href="#proxy" title="Permanent link">&para;</a></h3>
@@ -1524,51 +1553,54 @@ Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </
 <li>vSphere Endpoint and Credentials</li>
 <li>vSphere Settings</li>
 </ul>
-<div class="highlight"><span class="filename">config/vsphere.pkrvars.hcl</span><pre><span></span><code><span class="na">vsphere_endpoint</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-vc01.sfo.example.com&quot;</span>
-<span class="na">vsphere_username</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;svc-packer-vsphere@example.com&quot;</span>
-<span class="na">vsphere_password</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;plaintext_password&gt;&quot;</span>
-<span class="na">vsphere_insecure_connection</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="na">vsphere_datacenter</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-dc01&quot;</span>
-<span class="na">vsphere_cluster</span><span class="w">                          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-cl01&quot;</span>
-<span class="c1">//vsphere_host                           = &quot;sfo-w01-esx01&quot;</span>
-<span class="na">vsphere_datastore</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-cl01-ds-vsan01&quot;</span>
-<span class="na">vsphere_network</span><span class="w">                          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-seg-dhcp&quot;</span>
-<span class="na">vsphere_folder</span><span class="w">                           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-fd-templates&quot;</span>
-<span class="c1">//vsphere_resource_pool                  = &quot;sfo-w01-rp01&quot;</span>
-<span class="na">vsphere_set_host_for_datastore_uploads</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
+<div class="highlight"><span class="filename">config/vsphere.pkrvars.hcl</span><pre><span></span><code><span class="na">vsphere_endpoint</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-vc01.sfo.example.com&quot;</span>
+<span class="na">vsphere_username</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;svc-packer-vsphere@example.com&quot;</span>
+<span class="na">vsphere_password</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;plaintext_password&gt;&quot;</span>
+<span class="na">vsphere_insecure_connection</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="na">vsphere_datacenter</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-dc01&quot;</span>
+<span class="na">vsphere_cluster</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-cl01&quot;</span>
+<span class="c1">//vsphere_host                         = &quot;sfo-w01-esx01&quot;</span>
+<span class="na">vsphere_datastore</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-cl01-ds-vsan01&quot;</span>
+<span class="na">vsphere_network</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-seg-dhcp&quot;</span>
+<span class="na">vsphere_folder</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-fd-templates&quot;</span>
+<span class="c1">//vsphere_resource_pool                = &quot;sfo-w01-rp01&quot;</span>
+<span class="na">vsphere_set_host_for_datastore_uploads</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
 </code></pre></div>
 <details class="- note">
-<summary>vSphere DRs Disabled or Standalone ESXi Hosts</summary>
-<p>When targeting standalone ESXi hosts or vSphere clusters with vSphere DRS disabled, you must set the <code>vsphere_host</code> variable.</p>
-<p><strong>Example</strong> (vSphere Clusters with vSphere DRS Disabled):</p>
-<div class="highlight"><span class="filename">config/vsphere.pkrvars.hcl</span><pre><span></span><code><span class="p">...</span>
-<span class="na">vsphere_datacenter</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-dc01&quot;</span>
-<span class="na">vsphere_cluster</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-cl01&quot;</span>
-<span class="na">vsphere_host</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-esx01&quot;</span>
-<span class="na">vsphere_folder</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-fd-templates&quot;</span>
-<span class="p">...</span>
-</code></pre></div>
-<p><strong>Example</strong> (Standalone ESXi Host Managed by vCenter Server):</p>
-<p>For a standalone ESXi host managed by vCenter Server, comment or remove <code>vsphere_cluster</code>.</p>
-<div class="highlight"><span class="filename">config/vsphere.pkrvars.hcl</span><pre><span></span><code><span class="p">...</span>
-<span class="na">vsphere_datacenter</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-dc01&quot;</span>
-<span class="c1">//vsphere_cluster            = &quot;sfo-w01-cl01&quot;</span>
-<span class="na">vsphere_host</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-esx01&quot;</span>
-<span class="na">vsphere_folder</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-fd-templates&quot;</span>
-<span class="p">...</span>
-</code></pre></div>
-<p><strong>Example</strong> (Standalone ESXi Host):</p>
-<p>For a standalone, unmanaged ESXi host, comment or remove <code>vsphere_datacenter</code>, <code>vsphere_cluster</code>, and <code>vsphere_folder</code>.</p>
-<div class="highlight"><span class="filename">config/vsphere.pkrvars.hcl</span><pre><span></span><code><span class="p">...</span>
-<span class="c1">//vsphere_datacenter         = &quot;sfo-w01-dc01&quot;</span>
-<span class="c1">//vsphere_cluster            = &quot;sfo-w01-cl01&quot;</span>
-<span class="na">vsphere_host</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-esx01&quot;</span>
-<span class="c1">//vsphere_folder             = &quot;sfo-w01-fd-templates&quot;</span>
-<span class="p">...</span>
-</code></pre></div>
+<summary>vSphere Distributed Resource Scheduler Disabled or Standalone ESXi Hosts</summary>
 </details>
+<p>When targeting standalone ESXi hosts or vSphere clusters with vSphere DRS disabled, you must set
+the <code>vsphere_host</code> variable.</p>
+<div class="highlight"><pre><span></span><code>**Example** (vSphere Clusters with vSphere DRS Disabled):
+
+```hcl title=&quot;config/vsphere.pkrvars.hcl&quot;
+...
+vsphere_datacenter = &quot;sfo-w01-dc01&quot;
+vsphere_cluster    = &quot;sfo-w01-cl01&quot;
+vsphere_host       = &quot;sfo-w01-esx01&quot;
+vsphere_folder     = &quot;sfo-w01-fd-templates&quot;
+...
+```
+
+**Example** (Standalone ESXi Host Managed by vCenter Server):
+
+For a standalone ESXi host, managed by vCenter Server, comment or remove `vsphere_cluster`.
+
+```hcl title=&quot;config/vsphere.pkrvars.hcl&quot;
+...
+vsphere_datacenter = &quot;sfo-w01-dc01&quot;
+//vsphere_cluster = &quot;sfo-w01-cl01&quot;
+vsphere_host = &quot;sfo-w01-esx01&quot;
+vsphere_folder = &quot;sfo-w01-fd-templates&quot;
+vsphere_datacenter = &quot;sfo-w01-dc01&quot;
+//vsphere_cluster = &quot;sfo-w01-cl01&quot;
+vsphere_host = &quot;sfo-w01-esx01&quot;
+vsphere_folder = &quot;sfo-w01-fd-templates&quot;
+```
+</code></pre></div>
 <h3 id="machine-images">Machine Images<a class="headerlink" href="#machine-images" title="Permanent link">&para;</a></h3>
-<p>Edit the <code>config/&lt;type&gt;-&lt;build&gt;-&lt;version&gt;.pkrvars.hcl</code> file to configure the following virtual machine hardware settings, as required:</p>
+<p>Edit the <code>config/&lt;type&gt;-&lt;build&gt;-&lt;version&gt;.pkrvars.hcl</code> files to configure the following virtual
+machine hardware settings, as required:</p>
 <ul>
 <li>CPUs <code>(int)</code></li>
 <li>CPU Cores <code>(int)</code></li>
@@ -1588,6 +1620,7 @@ Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </
 <span class="c1">// Virtual Machine Hardware Settings</span>
 <span class="na">vm_firmware</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;efi-secure&quot;</span>
 <span class="na">vm_cdrom_type</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sata&quot;</span>
+<span class="na">vm_cdrom_count</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
 <span class="na">vm_cpu_count</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>
 <span class="na">vm_cpu_cores</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
 <span class="na">vm_cpu_hot_add</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
@@ -1599,8 +1632,9 @@ Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </
 <span class="na">vm_network_card</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;vmxnet3&quot;</span>
 
 <span class="c1">// Removable Media Settings</span>
-<span class="na">iso_path</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;iso/linux/photon&quot;</span>
-<span class="na">iso_file</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;photon-5.0-dde71ec57.x86_64.iso&quot;</span>
+<span class="na">iso_datastore_path</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;iso/linux/photon&quot;</span>
+<span class="na">iso_content_library_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;photon-5.0-dde71ec57.x86_64&quot;</span>
+<span class="na">iso_file</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;photon-5.0-dde71ec57.x86_64.iso&quot;</span>
 
 <span class="c1">// Boot Settings</span>
 <span class="na">vm_boot_order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;disk,cdrom&quot;</span>
@@ -1621,29 +1655,37 @@ Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </
 </details>
 <h3 id="linux-specific">Linux Specific<a class="headerlink" href="#linux-specific" title="Permanent link">&para;</a></h3>
 <h4 id="additional-packages">Additional Packages<a class="headerlink" href="#additional-packages" title="Permanent link">&para;</a></h4>
-<p>Edit the <code>config/linux-&lt;build&gt;-&lt;version&gt;.pkrvars.hcl</code> file to configure the additional packages to be installed on the Linux guest operating system during the build.</p>
+<p>Edit the <code>config/linux-&lt;build&gt;-&lt;version&gt;.pkrvars.hcl</code> file to configure the additional packages to
+be installed on the Linux guest operating system during the build.</p>
 <div class="highlight"><span class="filename">config/linux-photon-5.pkrvars.hcl</span><pre><span></span><code><span class="c1">// Additional Settings</span>
 <span class="na">additional_packages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;git&quot;, &quot;make&quot;, &quot;vim&quot;</span><span class="p">]</span>
 </code></pre></div>
 <h4 id="red-hat-subscription-manager">Red Hat Subscription Manager<a class="headerlink" href="#red-hat-subscription-manager" title="Permanent link">&para;</a></h4>
-<p>Edit the <code>config/redhat.pkrvars.hcl</code> file to configure the credentials for your Red Hat Subscription Manager account.</p>
+<p>Edit the <code>config/redhat.pkrvars.hcl</code> file to configure the credentials for your Red Hat Subscription
+Manager account.</p>
 <div class="highlight"><span class="filename">config/redhat.pkrvars.hcl</span><pre><span></span><code><span class="na">rhsm_username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;example&quot;</span>
 <span class="na">rhsm_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;plaintext_password&gt;&quot;</span>
 </code></pre></div>
-<p>These variables are <strong>only</strong> used if you are performing a Red Hat Enterprise Linux Server build and are used to register the image with Red Hat Subscription Manager during the build for system updates and package installation.</p>
+<p>These variables are <strong>only</strong> used if you are performing a Red Hat Enterprise Linux Server build and
+are used to register the image with Red Hat Subscription Manager during the build for system updates
+and package installation.</p>
 <p>Before the build completes, the machine image is unregistered from Red Hat Subscription Manager.</p>
 <h4 id="suse-customer-connect">SUSE Customer Connect<a class="headerlink" href="#suse-customer-connect" title="Permanent link">&para;</a></h4>
-<p>Edit the <code>config/scc.pkrvars.hcl</code> file to configure the following credentials for your SUSE Customer Connect account.</p>
+<p>Edit the <code>config/scc.pkrvars.hcl</code> file to configure the following credentials for your SUSE Customer
+Connect account.</p>
 <div class="highlight"><span class="filename">config/scc.pkrvars.hcl</span><pre><span></span><code><span class="na">scc_email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;suse@example.com&quot;</span>
 <span class="na">scc_code</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;plaintext_code&gt;&quot;</span>
 </code></pre></div>
-<p>These variables are <strong>only</strong> used if you are performing a SUSE Linux Enterprise Server build and are used to register the image with SUSE Customer Connect during the build for system updates and package installation.</p>
+<p>These variables are <strong>only</strong> used if you are performing a SUSE Linux Enterprise Server build and are
+used to register the image with SUSE Customer Connect during the build for system updates and
+package installation.</p>
 <p>Before the build completes, the machine image is unregistered from SUSE Customer Connect.</p>
 <h4 id="network-customization">Network Customization<a class="headerlink" href="#network-customization" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Static IP assignment is available for certain Linux machine images.</p>
-<p>For details on which distributions are compatible, please refer to the <a href="../../#linux-distributions">Linux Distributions</a> table.</p>
+<p>For details on which distributions are compatible, please refer to the <a href="../../#linux-distributions">Linux Distributions</a>
+table.</p>
 </div>
 <p>Edit the <code>config/network.pkrvars.hcl</code> file to configure a static IP address:</p>
 <ul>
@@ -1660,7 +1702,8 @@ Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Storage settings are available for certain Linux machine images.</p>
-<p>For details on which distributions are compatible, please refer to the <a href="../../#linux-distributions">Linux Distributions</a> table.</p>
+<p>For details on which distributions are compatible, please refer to the <a href="../../#linux-distributions">Linux Distributions</a>
+table.</p>
 </div>
 <p>Edit the <code>config/linux-storage.pkrvars.hcl</code> file to configure a partitioning scheme:</p>
 <ul>
@@ -1713,6 +1756,11 @@ Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </
 <span class="p">]</span>
 <span class="na">vm_disk_lvm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
 </code></pre></div>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>Setting <code>size = -1</code> can also be used for the last partition (Logical Volume) of <code>vm_disk_lvm</code> so
+that it fills the remaining space of the Volume Group.</p>
+</details>
 
 
 
@@ -1733,7 +1781,7 @@ Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-12-18T17:51:40+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-18</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-04T19:15:05+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-04</span>
   </span>
 
     
@@ -1811,7 +1859,7 @@ Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2005-2023 Broadcom. All rights reserved.<br/>
+      Copyright &copy; 2005-2024 Broadcom. All rights reserved.<br/>
 The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.<br/><br/>
 
     </div>
@@ -1834,10 +1882,10 @@ The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.<br/><br
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.header", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.header", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       

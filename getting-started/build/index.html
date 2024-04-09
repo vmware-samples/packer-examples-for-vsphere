@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -359,14 +359,14 @@
       
     
     
-    
-    
       
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
@@ -385,7 +385,7 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -499,14 +499,17 @@
       
     
     
-    
-    
+      
+        
+        
       
       
+        
+      
+    
     
     <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
-        
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
@@ -855,20 +858,20 @@
       
     
     
-    
-    
       
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1147,19 +1150,24 @@
 
 <h1 id="build">Build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h1>
 <h2 id="build-script-options">Build Script Options<a class="headerlink" href="#build-script-options" title="Permanent link">&para;</a></h2>
-<p>If you need help for script options, pass the <code>--help</code> or <code>-h</code> flag to the build script to display the help for the build script.</p>
+<p>If you need help for script options, pass the <code>--help</code> or <code>-h</code> flag to the build script to display
+the help for the build script.</p>
 <div class="highlight"><pre><span></span><code>./build.sh<span class="w"> </span>--help
 </code></pre></div>
-<p>If you need to enable debugging, pass the <code>--debug</code> or <code>-d</code> flag to the build script to enable debug mode for Packer.</p>
-<p>This example will look for the configuration files in the <code>config</code> directory and enable debug mode for Packer.</p>
+<p>If you need to enable debugging, pass the <code>--debug</code> or <code>-d</code> flag to the build script to enable debug
+mode for Packer.</p>
+<p>This example will look for the configuration files in the <code>config</code> directory and enable debug mode
+for Packer.</p>
 <div class="highlight"><pre><span></span><code>./build.sh<span class="w"> </span>--debug
 </code></pre></div>
-<p>This example will look for the configuration files in the <code>us-west-1</code> directory and enable debug mode for Packer.</p>
+<p>This example will look for the configuration files in the <code>us-west-1</code> directory and enable debug
+mode for Packer.</p>
 <div class="highlight"><pre><span></span><code>./build.sh<span class="w"> </span>--debug<span class="w"> </span>us-west-1
 </code></pre></div>
 <h2 id="using-the-build-script">Using the Build Script<a class="headerlink" href="#using-the-build-script" title="Permanent link">&para;</a></h2>
 <h3 id="build-with-defaults">Build with Defaults<a class="headerlink" href="#build-with-defaults" title="Permanent link">&para;</a></h3>
-<p>Start a build by running the build script (<code>./build.sh</code>). The script presents a menu the which simply calls Packer and the respective build(s).</p>
+<p>Start a build by running the build script (<code>./build.sh</code>). The script presents a menu the which
+simply calls Packer and the respective build(s).</p>
 <p>This example will look for the configuration files in the <code>config</code> directory.</p>
 <div class="highlight"><pre><span></span><code>./build.sh
 </code></pre></div>
@@ -1168,7 +1176,8 @@
 <div class="highlight"><pre><span></span><code>./build.sh<span class="w"> </span>us-west-1
 </code></pre></div>
 <h2 id="generate-a-custom-build-script">Generate a Custom Build Script<a class="headerlink" href="#generate-a-custom-build-script" title="Permanent link">&para;</a></h2>
-<p>The build script (<code>./build.sh</code>) can be generated with Gomplate using a template (<code>./build.tmpl</code>) and a configuration file in YAML (<code>./build.yaml</code>).</p>
+<p>The build script (<code>./build.sh</code>) can be generated with Gomplate using a template (<code>./build.tmpl</code>) and
+a configuration file in YAML (<code>./build.yaml</code>).</p>
 <p>Generate a custom build script:</p>
 <div class="highlight"><pre><span></span><code>gomplate<span class="w"> </span>-c<span class="w"> </span>build.yaml<span class="w"> </span>-f<span class="w"> </span>build.tmpl<span class="w"> </span>-o<span class="w"> </span>build.sh
 </code></pre></div>
@@ -1177,20 +1186,29 @@
 </code></pre></div>
 <h2 id="build-directly-with-packer">Build Directly with Packer<a class="headerlink" href="#build-directly-with-packer" title="Permanent link">&para;</a></h2>
 <p>You can also start a build based on a specific source for some of the virtual machine images.</p>
-<p>For example, if you simply want to build a Microsoft Windows Server 2022 Standard Core, run the following:</p>
+<p>For example, if you simply want to build a Microsoft Windows Server 2022 Standard Core, run the
+following:</p>
 <p>Initialize the plugins:</p>
 <div class="highlight"><pre><span></span><code>packer<span class="w"> </span>init<span class="w"> </span>builds/windows/server/2022/.
 </code></pre></div>
 <p>Build a specific machine image:</p>
-<div class="highlight"><pre><span></span><code>packer<span class="w"> </span>build<span class="w"> </span>-force<span class="w"> </span>on-error<span class="o">=</span>ask<span class="se">\</span>
+<div class="highlight"><pre><span></span><code>packer<span class="w"> </span>build<span class="w"> </span>-force<span class="w"> </span>on-error<span class="o">=</span>ask<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--only<span class="w"> </span>vsphere-iso.windows-server-standard-core<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-var-file<span class="o">=</span><span class="s2">&quot;config/vsphere.pkrvars.hcl&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span><span class="s2">&quot;config/build.pkrvars.hcl&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span><span class="s2">&quot;config/common.pkrvars.hcl&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span><span class="s2">&quot;config/vsphere.pkrvars.hcl&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>builds/windows/server/2022
 </code></pre></div>
+<p>➜ packer validate \
+-var-file="config/ansible.pkrvars.hcl" \
+-var-file="config/build.pkrvars.hcl" \
+-var-file="config/common.pkrvars.hcl" \
+-var-file="config/proxy.pkrvars.hcl" \
+-var-file="config/vsphere.pkrvars.hcl" \
+builds/linux/photon/5</p>
 <h2 id="build-with-environmental-variables">Build with Environmental Variables<a class="headerlink" href="#build-with-environmental-variables" title="Permanent link">&para;</a></h2>
-<p>You can set your environment variables if you would prefer not to save sensitive information in clear-text files.</p>
+<p>You can set your environment variables if you would prefer not to save sensitive information in
+clear-text files.</p>
 <p>You can add these to environmental variables using the included <code>set-envvars.sh</code> script.</p>
 <div class="highlight"><pre><span></span><code>.<span class="w"> </span>./set-envvars.sh
 </code></pre></div>
@@ -1199,16 +1217,20 @@
 <p>You must run the script as source or the shorthand "<code>.</code>".</p>
 </details>
 <hr />
-<details class="note" open="open">
-<summary>Content Library</summary>
-<p>By default, the machine image artifacts are transferred to a <a href="https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-254B2CE8-20A8-43F0-90E8-3F6776C2C896.html">vSphere Content Library</a> as an OVF template and the temporary machine image is destroyed. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
-<p>If an item of the same name exists in the target content library, Packer will update the existing item with the new version of OVF template.</p>
-</details>
+<p>???+ note "Content Library" By default, the machine image artifacts are transferred to a <a href="https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-254B2CE8-20A8-43F0-90E8-3F6776C2C896.html">vSphere Content Library</a>
+as an OVF template and the temporary machine image is destroyed. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
+<div class="highlight"><pre><span></span><code>If an item of the same name exists in the target content library, Packer will update the
+existing item with the new version of OVF template.
+</code></pre></div>
 <div class="footnote">
 <hr />
 <ol>
 <li id="fn:1">
-<p>The Microsoft Windows 11 machine image uses a virtual trusted platform module (vTPM). Refer to the VMware vSphere <a href="https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4DBF65A4-4BA0-4667-9725-AE9F047DE00A.html">product documentation</a> for requirements and pre-requisites. The Microsoft Windows 11 machine image is not transferred to the content library by default. It is <strong>not supported</strong> to clone an encrypted virtual machine to the content library as an OVF Template. You can adjust the common content library settings to use VM Templates.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>The Microsoft Windows 11 machine image uses a virtual trusted platform module (vTPM). Refer to
+the VMware vSphere <a href="https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4DBF65A4-4BA0-4667-9725-AE9F047DE00A.html">product documentation</a> for requirements and pre-requisites. The
+Microsoft Windows 11 machine image is not transferred to the content library by default. It is <strong>not
+supported</strong> to clone an encrypted virtual machine to the content library as an OVF Template. You can
+adjust the common content library settings to use VM Templates.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
@@ -1232,7 +1254,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-10-17T23:08:36+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-29T03:00:41+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-29</span>
   </span>
 
     
@@ -1310,7 +1332,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2005-2023 Broadcom. All rights reserved.<br/>
+      Copyright &copy; 2005-2024 Broadcom. All rights reserved.<br/>
 The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.<br/><br/>
 
     </div>
@@ -1333,10 +1355,10 @@ The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.<br/><br
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.header", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.header", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       

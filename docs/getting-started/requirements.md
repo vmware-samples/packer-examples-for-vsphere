@@ -105,7 +105,7 @@ these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packe
 | Plugin                                                           | Version  | Description      | Resources                                                                                                               |
 | :---                                                             | :---     | :---             | :---                                                                                                                    |
 | :simple-hashicorp: &nbsp;&nbsp; Packer Plugin for Ansible        | >= 1.1.0 | By HashiCorp     | [:fontawesome-brands-github:][packer-plugin-ansible-repo] &nbsp;&nbsp; [:material-library:][packer-plugin-ansible-docs] |
-| :simple-hashicorp: &nbsp;&nbsp; Packer Plugin for VMware vSphere | >= 1.2.4 | By HashiCorp     | [:fontawesome-brands-github:][packer-plugin-vsphere-repo] &nbsp;&nbsp; [:material-library:][packer-plugin-vsphere-docs] |
+| :simple-hashicorp: &nbsp;&nbsp; Packer Plugin for VMware vSphere | >= 1.2.7 | By HashiCorp     | [:fontawesome-brands-github:][packer-plugin-vsphere-repo] &nbsp;&nbsp; [:material-library:][packer-plugin-vsphere-docs] |
 | :fontawesome-brands-git: &nbsp;&nbsp; Packer Plugin for Git      | >= 0.6.2 | Community Plugin | [:fontawesome-brands-github:][packer-plugin-git-repo]     &nbsp;&nbsp; [:material-library:][packer-plugin-git-docs]     |
 
 

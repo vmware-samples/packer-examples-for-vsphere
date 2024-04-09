@@ -2,7 +2,7 @@
 
 ## v0.19.0
 
-> Release Date: Unreleased
+> Release Date: 2024-04-09
 
 **Enhancement**:
 

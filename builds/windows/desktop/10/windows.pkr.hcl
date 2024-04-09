@@ -15,7 +15,7 @@ packer {
   required_plugins {
     vsphere = {
       source  = "github.com/hashicorp/vsphere"
-      version = "1.2.4"
+      version = ">= 1.2.7"
     }
     git = {
       source  = "github.com/ethanmdavidson/git"

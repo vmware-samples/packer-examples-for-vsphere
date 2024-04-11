@@ -1,5 +1,15 @@
 # Release History
 
+## v0.20.0
+
+> Release Date: Not Released
+
+**Enhancement**:
+
+- Adds a script (`./download.sh`) and a configuration (`project.json`) to assist in the download of
+  the guest operating systems.
+  [#874](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/874)
+
 ## v0.19.0
 
 > Release Date: 2024-04-09

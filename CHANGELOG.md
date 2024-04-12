@@ -1,7 +1,5 @@
 # Release History
 
-=======
-
 ## v0.20.0
 
 > Release Date: Not Released

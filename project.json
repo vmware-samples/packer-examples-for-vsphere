@@ -1,0 +1,582 @@
+{
+    "project": {
+        "name": "Packer Examples for vSphere",
+        "version": "v0.20.0-dev",
+        "description": "This project provides a collection of opinionated examples that demonstrate how you can use both\nHashiCorp Packer and the Packer Plugin for VMware vSphere (vsphere-iso builder) to automate the\ncreation of virtual machine images for VMware vSphere environments.\n\nWhether you're a developer, systems administrator, or site reliability engineer, this project is\ndesigned to both help and inspire you in streamlining your infrastructure provisioning process and\nmaintain consistency in your virtualization workflow.",
+        "urls": {
+            "github": "https://github.com/vmware-samples/packer-examples-for-vsphere",
+            "documentation": "https://vmware-samples.github.io/packer-examples-for-vsphere"
+        },
+        "publisher": {
+            "name": "VMware by Broadcom",
+            "url": "https://vmware.com"
+        },
+        "license": [
+            {
+                "name": "BSD 2-Clause License",
+                "url": "https://opensource.org/licenses/BSD-2-Clause"
+            }
+        ],
+        "maintainers": [
+            {
+                "name": "Ryan Johnson",
+                "title": "Distinguished Engineer",
+                "organization": "VMware by Broadcom",
+                "email": "ryan.johnson@broadcom.com",
+                "github": "tenthirtyam"
+            }
+        ]
+    },
+    "os": [
+        {
+            "name": "Linux",
+            "description": "Linux",
+            "distributions": [
+                {
+                    "name": "debian",
+                    "description": "Debian",
+                    "publisher": {
+                        "name": "Debian",
+                        "url": "https://debian.org"
+                    },
+                    "versions": {
+                        "12": [
+                            {
+                                "version": "12.5",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://gemmei.ftp.acc.umu.se/mirror/cdimage/release/12.5.0/amd64/iso-cd/debian-12.5.0-amd64-netinst.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://gemmei.ftp.acc.umu.se/mirror/cdimage/release/12.5.0/amd64/iso-cd/SHA256SUMS"
+                                    }
+                                ]
+                            }
+                        ],
+                        "11": [
+                            {
+                                "version": "11.9",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://saimei.ftp.acc.umu.se/mirror/cdimage/archive/11.9.0/amd64/iso-cd/debian-11.9.0-amd64-netinst.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://saimei.ftp.acc.umu.se/mirror/cdimage/archive/11.9.0/amd64/iso-cd/SHA256SUMS"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "ubuntu-server",
+                    "description": "Ubuntu Server",
+                    "publisher": {
+                        "name": "Canonical",
+                        "url": "https://ubuntu.com"
+                    },
+                    "versions": {
+                        "23.10": [
+                            {
+                                "version": "23.10.0",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://releases.ubuntu.com/releases/23.10/ubuntu-23.10-live-server-amd64.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://releases.ubuntu.com/releases/23.10/SHA256SUMS"
+                                    }
+                                ]
+                            }
+                        ],
+                        "22.04": [
+                            {
+                                "version": "22.04.4",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://releases.ubuntu.com/releases/22.04/ubuntu-22.04.4-live-server-amd64.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://releases.ubuntu.com/releases/22.04/SHA256SUMS"
+                                    }
+                                ]
+                            }
+                        ],
+                        "20.04": [
+                            {
+                                "version": "20.04.6",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://releases.ubuntu.com/releases/20.04.6/ubuntu-20.04.6-live-server-amd64.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://releases.ubuntu.com/releases/20.04.6/SHA256SUMS"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "rhel",
+                    "description": "Red Hat Enterprise Linux",
+                    "publisher": {
+                        "name": "Red Hat",
+                        "url": "https://redhat.com"
+                    },
+                    "versions": {
+                        "9": [
+                            {
+                                "version": "9.3",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "5c802147aa58429b21e223ee60e347e850d6b0d8680930c4ffb27340ffb687a8"
+                                    }
+                                ]
+                            },
+                            {
+                                "version": "9.2",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "a18bf014e2cb5b6b9cee3ea09ccfd7bc2a84e68e09487bb119a98aa0e3563ac2"
+                                    }
+                                ]
+                            }
+                        ],
+                        "8": [
+                            {
+                                "version": "8.9",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "c4fd0632ce15a7d56e1d174176456943bd48306f9d35bcecbcb0a1dc49088e23"
+                                    }
+                                ]
+                            },
+                            {
+                                "version": "8.8",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "517abcc67ee3b7212f57e180f5d30be3e8269e7a99e127a3399b7935c7e00a09"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "rocky-linux",
+                    "description": "Rocky Linux",
+                    "publisher": {
+                        "name": "Rocky Linux",
+                        "url": "https://rockylinux.org"
+                    },
+                    "versions": {
+                        "9": [
+                            {
+                                "version": "9.3",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.3-x86_64-dvd.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://download.rockylinux.org/pub/rocky/9/isos/x86_64/CHECKSUM"
+                                    }
+                                ]
+                            }
+                        ],
+                        "8": [
+                            {
+                                "version": "8.9",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://download.rockylinux.org/pub/rocky/8.9/isos/x86_64/Rocky-8.9-x86_64-dvd1.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://download.rockylinux.org/pub/rocky/8.9/isos/x86_64/CHECKSUM"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "almalinux",
+                    "description": "AlmaLinux OS",
+                    "publisher": {
+                        "name": "AlmaLinux",
+                        "url": "https://almalinux.org"
+                    },
+                    "versions": {
+                        "9": [
+                            {
+                                "version": "9.3",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://repo.almalinux.org/almalinux/9.3/isos/x86_64/AlmaLinux-9.3-x86_64-dvd.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://repo.almalinux.org/almalinux/9.3/isos/x86_64/CHECKSUM"
+                                    }
+                                ]
+                            },
+                            {
+                                "version": "9.2",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://repo.almalinux.org/almalinux/9.2/isos/x86_64/AlmaLinux-9.2-x86_64-dvd.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://repo.almalinux.org/almalinux/9.2/isos/x86_64/CHECKSUM"
+                                    }
+                                ]
+                            }
+                        ],
+                        "8": [
+                            {
+                                "version": "8.9",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://repo.almalinux.org/almalinux/8.9/isos/x86_64/AlmaLinux-8.9-x86_64-dvd.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://repo.almalinux.org/almalinux/8.9/isos/x86_64/CHECKSUM"
+                                    }
+                                ]
+                            },
+                            {
+                                "version": "8.8",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://repo.almalinux.org/almalinux/8.8/isos/x86_64/AlmaLinux-8.8-x86_64-dvd.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://repo.almalinux.org/almalinux/8.8/isos/x86_64/CHECKSUM"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "oracle-linux",
+                    "description": "Oracle Linux",
+                    "publisher": {
+                        "name": "Oracle",
+                        "url": "https://oracle.com/linux/"
+                    },
+                    "versions": {
+                        "9": [
+                            {
+                                "version": "9.3",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u3/x86_64/OracleLinux-R9-U3-x86_64-dvd.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U3-Server-x86_64.checksum"
+                                    }
+                                ]
+                            },
+                            {
+                                "version": "9.2",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u2/x86_64/OracleLinux-R9-U2-x86_64-dvd.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U2-Server-x86_64.checksum"
+                                    }
+                                ]
+                            }
+                        ],
+                        "8": [
+                            {
+                                "version": "8.9",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://yum.oracle.com/ISOS/OracleLinux/OL8/u9/x86_64/OracleLinux-R8-U9-x86_64-dvd.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R8-U9-Server-x86_64.checksum"
+                                    }
+                                ]
+                            },
+                            {
+                                "version": "8.8",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://yum.oracle.com/ISOS/OracleLinux/OL8/u8/x86_64/OracleLinux-R8-U8-x86_64-dvd.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R8-U8-Server-x86_64.checksum"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "centos",
+                    "description": "CentOS",
+                    "publisher": {
+                        "name": "CentOS",
+                        "url": "https://centos.org/"
+                    },
+                    "versions": {
+                        "9": [
+                            {
+                                "version": "Stream 9",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/iso/CentOS-Stream-9-20240408.0-x86_64-dvd1.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/iso/SHA256SUM"
+                                    }
+                                ]
+                            }
+                        ],
+                        "8": [
+                            {
+                                "version": "Stream 8",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://mirror.rackspace.com/CentOS/8-stream/isos/x86_64/CentOS-Stream-8-20240408.0-x86_64-dvd1.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://mirror.rackspace.com/CentOS/8-stream/isos/x86_64/CHECKSUM"
+                                    }
+                                ]
+                            }
+                        ],
+                        "7": [
+                            {
+                                "version": "7",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://mirror.rackspace.com/CentOS/7.9.2009/isos/x86_64/CentOS-7-x86_64-DVD-2009.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://mirror.rackspace.com/CentOS/7.9.2009/isos/x86_64/sha256sum.txt"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "sles",
+                    "description": "SUSE Linux Enterprise Server",
+                    "publisher": {
+                        "name": "SUSE",
+                        "url": "https://suse.com"
+                    },
+                    "versions": {
+                        "15": [
+                            {
+                                "version": "15SP5",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://suse.com/download/sles/",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": ""
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "photon",
+                    "description": "VMware Photon OS",
+                    "publisher": {
+                        "name": "VMware",
+                        "url": "https://vmware.com"
+                    },
+                    "versions": {
+                        "5": [
+                            {
+                                "version": "5.0",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://packages.vmware.com/photon/5.0/GA/iso/photon-5.0-dde71ec57.x86_64.iso",
+                                        "checksum_algorithm": "SHA512",
+                                        "checksum": "6a7a258399a258da742032987c043ab25503698d35edafaf1ae000f12127da1a161d8b84caa17fd8f23d129e81e1faa7ab087c20ab9229772a643f8f9475305f"
+                                    }
+                                ]
+                            }
+                        ],
+                        "4": [
+                            {
+                                "version": "4.0",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://packages.vmware.com/photon/4.0/GA/iso/photon-4.0-1526e30ba.iso",
+                                        "checksum_algorithm": "SHA1",
+                                        "checksum": "2221ab214b517a15c60bd5e2aacdb9388581bcd9"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Windows",
+            "description": "Microsoft Windows",
+            "types": [
+                {
+                    "type": "server",
+                    "description": "Windows Server",
+                    "publisher": {
+                        "name": "Microsoft",
+                        "url": "https://microsoft.com"
+                    },
+                    "versions": {
+                        "2022": [
+                            {
+                                "version": "2022",
+                                "description": "Windows Server 2022",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://software-static.download.prss.microsoft.com/sg/download/888969d5-f34g-4e03-ac9d-1f9786c66749/SERVER_EVAL_x64FRE_en-us.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "",
+                                        "comments": "Evaluation"
+                                    }
+                                ]
+                            }
+                        ],
+                        "2019": [
+                            {
+                                "version": "2019",
+                                "description": "Windows Server 2019",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://software-static.download.prss.microsoft.com/dbazure/988969d5-f34g-4e03-ac9d-1f9786c66749/17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "",
+                                        "comments": "Evaluation"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "desktop",
+                    "description": "Windows Desktop",
+                    "publisher": {
+                        "name": "Microsoft",
+                        "url": "https://microsoft.com"
+                    },
+                    "versions": {
+                        "11": [
+                            {
+                                "version": "11",
+                                "description": "Windows 11",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://software-static.download.prss.microsoft.com/dbazure/888969d5-f34g-4e03-ac9d-1f9786c66749/22631.2428.231001-0608.23H2_NI_RELEASE_SVC_REFRESH_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "",
+                                        "comments": "Evaluation"
+                                    }
+                                ]
+                            }
+                        ],
+                        "10": [
+                            {
+                                "version": "10",
+                                "description": "Windows 10",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://software-static.download.prss.microsoft.com/dbazure/988969d5-f34g-4e03-ac9d-1f9786c66750/19045.2006.220908-0225.22h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "",
+                                        "comments": "Evaluation"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "settings": {
+        "iso_base_path": "iso",
+        "rename_iso": false,
+        "cleanup_failed_iso_verification": true,
+        "check_for_existing_iso": false
+    },
+    "dependencies": [
+        {
+            "name": "packer",
+            "description": "An infrastructure as code tool that enables you create identical machine images for multiple platforms from a single source template. Packer can create golden images to use in image pipelines.",
+            "publisher": {
+                "name": "HashiCorp",
+                "urls": {
+                    "publisher": "https://hashicorp.com",
+                    "project": "https://packer.io",
+                    "github": "https://github.com/hashicorp/packer",
+                    "documentation": "https://developer.hashicorp.com/packer/docs"
+                }
+            },
+            "version_requirement": ">= 1.10.2"
+        },
+        {
+            "name": "terraform",
+            "description": "An infrastructure as code tool that enables you build, change, and version infrastructure safely and efficiently.",
+            "publisher": {
+                "name": "HashiCorp",
+                "urls": {
+                    "publisher": "https://hashicorp.com",
+                    "project": "https://terraform.io",
+                    "github": "https://github.com/hashicorp/terraform",
+                    "documentation": "https://developer.hashicorp.com/terraform/docs"
+                }
+            },
+            "version_requirement": ">= 1.7.1"
+        },
+        {
+            "name": "gomplate",
+            "description": "A template renderer which supports a growing list of data sources.",
+            "publisher": {
+                "name": "Dave Henderson",
+                "urls": {
+                    "publisher": "https://hairyhenderson.ca",
+                    "project": "https://gomplate.ca",
+                    "github": "https://github.com/Hairyhenderson/gomplate",
+                    "documentation": "https://docs.gomplate.ca"
+                }
+            },
+            "version_requirement": ">= 3.11.7"
+        },
+        {
+            "name": "ansible-core",
+            "description": "Ansible Core includes the Ansible language and runtime, a set of built-in modules and command-line tools, and a framework for extending automation with collections.",
+            "publisher": {
+                "name": "Red Hat",
+                "url": "https://redhat.com"
+            },
+            "version_requirement": ">= 2.15.0"
+        }
+    ]
+}

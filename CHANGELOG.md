@@ -8,7 +8,8 @@
 
 - Adds a script (`./download.sh`) and a configuration (`project.json`) to assist in the download of
   the guest operating systems.
-  [#874](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/874)
+  [#874](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/874),
+  [#876](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/876)
 
 ## v0.19.1
 

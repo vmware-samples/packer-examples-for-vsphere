@@ -413,7 +413,7 @@ select_download() {
                 printf "\n\n"
                 print_message error "Invalid token format. Please try again.\n"
                 invalid_attempts=$((invalid_attempts + 1))
-		rhsm_offline_token=""
+                rhsm_offline_token=""
             else
                 break
             fi
@@ -423,8 +423,7 @@ select_download() {
                 print_message error "Too many invalid attempts. Returning to version selection.\n"
                 sleep 2
                 select_version
-	        return
-
+                return
             fi
         done
 
@@ -601,37 +600,37 @@ extract_checksum() {
     fi
 
     # Extract the checksum based on the guest operating system.
-   case "${dist}" in
+    case "${dist}" in
     "Ubuntu Server")
         # Checksum extraction for Ubuntu Server
         expected_checksum=$(grep "$file_name" "$checksum_file" | awk '{print $1}')
-    ;;
+        ;;
     "Oracle Linux")
         # Checksum extraction for Oracle Linux
         expected_checksum=$(grep "$file_name" "$checksum_file" | awk '{print $1}')
-    ;;
+        ;;
     "Debian")
         # Checksum extraction for Debian
         expected_checksum=$(grep "$file_name" "$checksum_file" | awk '{print $1}')
-    ;;
-*)
-  case "${dist}${version}" in
-  "CentOS7")
-        expected_checksum=$(grep "$file_name" "$checksum_file" | awk '{print $1}')
-    ;;
-*)
-    if [ ! -f "$checksum_file" ]; then
-            print_message skipped "The checksum file is empty."
-            checksum_value_empty=true
-        elif [ "$checksum_value_manual" = true ]; then
-            expected_checksum=$(cat "$checksum_file")
-        else
-            expected_checksum=$(grep "$file_name" "$checksum_file" | awk -F'=' '{print $2}' | tr -d ' \n')
-        fi
+        ;;
+    *)
+        case "${dist}${version}" in
+        "CentOS7")
+            expected_checksum=$(grep "$file_name" "$checksum_file" | awk '{print $1}')
+            ;;
+        *)
+            if [ ! -f "$checksum_file" ]; then
+                print_message skipped "The checksum file is empty."
+                checksum_value_empty=true
+            elif [ "$checksum_value_manual" = true ]; then
+                expected_checksum=$(cat "$checksum_file")
+            else
+                expected_checksum=$(grep "$file_name" "$checksum_file" | awk -F'=' '{print $2}' | tr -d ' \n')
+            fi
+            ;;
+        esac
         ;;
     esac
-    ;;
-  esac
 }
 
 # This function calculates the checksum of the downloaded file.
@@ -792,7 +791,7 @@ select_os
 # Prompt the user to continue or quit.
 while true; do
     if [[ "$downloaded" == true ]]; then
-    print_message success "Download completed successfully for $dist $version $arch.\n"
+        print_message success "Download completed successfully for $dist $version $arch.\n"
     fi
 
     read -p $'Would you like to (\e[32mc\e[0m)ontinue or (\e[31mq\e[0m)uit? ' action
@@ -805,11 +804,11 @@ while true; do
         exec $0
         ;;
     [qQ]*) exit ;;
+    *) print_message invalid "Enter \033[32mc\033[0m to continue or \033[31mq\033[0m to quit." ;;
     esac
 done
 
 # TODO:
 # - Add support for headless logging with timestamps.
-# - Add support to check if the ISO file exists and if the checksum file is valid before downloading the file.
 # - Add support for SUSE Enterprise Linux Server download. Headless Chrome?
 # - Add support for checking the download links for availability, but do not download the files.

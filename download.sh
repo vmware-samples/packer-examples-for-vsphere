@@ -347,10 +347,10 @@ select_download() {
         download_link=$(jq -r --arg os "$os" --arg dist "$dist" --arg version "$version" --arg arch "$arch" '.os[] | select(.name == $os) | .types[] | select(.description == $dist) | .versions[$version][] | .architectures[] | select(.architecture == $arch) | .download_link' $json_path)
         # Validate the download link
         if curl --output /dev/null --silent --head --fail "$download_link"; then
-           download_dir="$(echo "${iso_base_path}/${os}/${dist}/${version}/${arch}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')"
+            download_dir="$(echo "${iso_base_path}/${os}/${dist}/${version}/${arch}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')"
         else
-           echo "Download link $download_link  not valid. Skip download."
-          return
+            print_message invalid "Invalid download link provided in JSON configuration: $download_link"
+            return
         fi
         mkdir -p "$download_dir"
 
@@ -360,9 +360,8 @@ select_download() {
         # Check if iso file exists in the download directory.
         iso_check=$(find "$download_dir" -type f -name "*.iso")
         if [ -n "$iso_check" ]; then
-           echo "ISO files found:"
-           echo "$iso_check"
-           return
+            print_message skipped "Existing ISO file found: $iso_check"
+            return
         fi
 
         printf "\n"
@@ -447,9 +446,8 @@ select_download() {
         # Check if iso file exists in the download directory.
         iso_check=$(find "$download_dir" -type f -name "*.iso")
         if [ -n "$iso_check" ]; then
-           echo "ISO files found:"
-           echo "$iso_check"
-           return
+            print_message skipped "Existing ISO file found: $iso_check"
+            return
         fi
 
         printf "\n"
@@ -478,10 +476,10 @@ select_download() {
         download_link=$(jq -r --arg os "$os" --arg dist "$dist" --arg version "$version" --arg arch "$arch" '.os[] | select(.name == $os) | .distributions[] | select(.description == $dist) | .versions | to_entries[] | .value[] | select(.version == $version) | .architectures[] | select(.architecture == $arch) | .download_link' $json_path)
         # Validate the download link
         if curl --output /dev/null --silent --head --fail "$download_link"; then
-           download_dir="$(echo "${iso_base_path}/${os}/${dist}/${version}/${arch}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')"
+            download_dir="$(echo "${iso_base_path}/${os}/${dist}/${version}/${arch}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')"
         else
-           echo "Download link $download_link  not valid. Skip download."
-          return
+            print_message invalid "Invalid download link provided in JSON configuration: $download_link"
+            return
         fi
         mkdir -p "$download_dir"
 
@@ -492,9 +490,8 @@ select_download() {
         # Check if iso file exists in the download directory.
         iso_check=$(find "$download_dir" -type f -name "*.iso")
         if [ -n "$iso_check" ]; then
-           echo "ISO files found:"
-           echo "$iso_check"
-           return
+            print_message skipped "Existing ISO file found: $iso_check"
+            return
         fi
 
         printf "\n"
@@ -811,4 +808,3 @@ done
 # TODO:
 # - Add support for headless logging with timestamps.
 # - Add support for SUSE Enterprise Linux Server download. Headless Chrome?
-# - Add support for checking the download links for availability, but do not download the files.

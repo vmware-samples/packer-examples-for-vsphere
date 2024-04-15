@@ -1,5 +1,24 @@
 # Release History
 
+## v0.20.0
+
+> Release Date: Not Released
+
+**Enhancement**:
+
+- Adds a script (`./download.sh`) and a configuration (`project.json`) to assist in the download of
+  the guest operating systems.
+  [#874](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/874)
+
+## v0.19.1
+
+> Release Date: 2024-04-15
+
+**Bug Fix**:
+
+- Removes the PowerShell provisioner for Windows 11 and 10 as it's not required after the transition
+  to Ansible. [#878](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/878)
+
 ## v0.19.0
 
 > Release Date: 2024-04-09
@@ -172,8 +191,8 @@
 - Removes Ubuntu 18.04 from the project.
   [#578](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/578)
 
-    On 31 May 2023, Ubuntu 18.04 LTS reached the end of standard support. See
-    [Ubuntu Lifecycle](https://ubuntu.com/about/release-cycle) for more information.
+  On 31 May 2023, Ubuntu 18.04 LTS reached the end of standard support. See
+  [Ubuntu Lifecycle](https://ubuntu.com/about/release-cycle) for more information.
 
 - Updates Red Hat Enterprise Linux 9 to 9.2 release.
   [#576](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/576),

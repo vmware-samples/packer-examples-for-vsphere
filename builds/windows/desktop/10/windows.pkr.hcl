@@ -286,12 +286,6 @@ build {
     "source.vsphere-iso.windows-desktop-ent",
   ]
 
-  provisioner "powershell" {
-    elevated_user     = var.build_username
-    elevated_password = var.build_password
-    inline            = var.inline
-  }
-
   provisioner "ansible" {
     user                   = var.build_username
     galaxy_file            = "${path.cwd}/ansible/windows-requirements.yml"

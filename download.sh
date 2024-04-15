@@ -345,18 +345,24 @@ select_download() {
     # Check if the selected guest operating system is Windows.
     if [[ "$dist" == *"Windows"* ]]; then
         download_link=$(jq -r --arg os "$os" --arg dist "$dist" --arg version "$version" --arg arch "$arch" '.os[] | select(.name == $os) | .types[] | select(.description == $dist) | .versions[$version][] | .architectures[] | select(.architecture == $arch) | .download_link' $json_path)
-        download_dir="$(echo "${iso_base_path}/${os}/${dist}/${version}/${arch}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')"
+        # Validate the download link
+        if curl --output /dev/null --silent --head --fail "$download_link"; then
+           download_dir="$(echo "${iso_base_path}/${os}/${dist}/${version}/${arch}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')"
+        else
+           echo "Download link $download_link  not valid. Skip download."
+          return
+        fi
         mkdir -p "$download_dir"
 
         file_name=$(basename "$download_link")
         full_path="$download_dir/$file_name"
 
-        # Check if ISO file exists in the download directory.
+        # Check if iso file exists in the download directory.
         iso_check=$(find "$download_dir" -type f -name "*.iso")
         if [ -n "$iso_check" ]; then
-            echo "ISO files found:"
-            echo "$iso_check"
-            return
+           echo "ISO files found:"
+           echo "$iso_check"
+           return
         fi
 
         printf "\n"
@@ -438,12 +444,12 @@ select_download() {
         # Set the full path of the downloaded file.
         full_path="$download_dir/$file_name"
 
-        # Check if ISO file exists in the download directory.
+        # Check if iso file exists in the download directory.
         iso_check=$(find "$download_dir" -type f -name "*.iso")
         if [ -n "$iso_check" ]; then
-            echo "ISO files found:"
-            echo "$iso_check"
-            return
+           echo "ISO files found:"
+           echo "$iso_check"
+           return
         fi
 
         printf "\n"
@@ -470,19 +476,25 @@ select_download() {
     elif [[ "$os" == *"Linux"* ]]; then
         dist_name=$(jq -r --arg os "$os" --arg desc "$description" '.os[] | select(.name == $os) | .distributions[] | select(.description == $desc) | .name' $json_path)
         download_link=$(jq -r --arg os "$os" --arg dist "$dist" --arg version "$version" --arg arch "$arch" '.os[] | select(.name == $os) | .distributions[] | select(.description == $dist) | .versions | to_entries[] | .value[] | select(.version == $version) | .architectures[] | select(.architecture == $arch) | .download_link' $json_path)
-        download_dir="$(echo "${iso_base_path}/${os}/${dist}/${version}/${arch}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')"
+        # Validate the download link
+        if curl --output /dev/null --silent --head --fail "$download_link"; then
+           download_dir="$(echo "${iso_base_path}/${os}/${dist}/${version}/${arch}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')"
+        else
+           echo "Download link $download_link  not valid. Skip download."
+          return
+        fi
         mkdir -p "$download_dir"
 
         # Set the full path of the downloaded file.
         file_name=$(basename "$download_link")
         full_path="$download_dir/$file_name"
 
-        # Check if ISO file exists in the download directory.
+        # Check if iso file exists in the download directory.
         iso_check=$(find "$download_dir" -type f -name "*.iso")
         if [ -n "$iso_check" ]; then
-            echo "ISO files found:"
-            echo "$iso_check"
-            return
+           echo "ISO files found:"
+           echo "$iso_check"
+           return
         fi
 
         printf "\n"

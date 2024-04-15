@@ -1,5 +1,14 @@
 # Release History
 
+## v0.19.1
+
+> Release Date: 2024-04-15
+
+**Bug Fix**:
+
+- Removes the PowerShell provisioner for Windows 11 and 10 as it's not required after the transition
+  to Ansible. [#878](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/878)
+
 ## v0.19.0
 
 > Release Date: 2024-04-09

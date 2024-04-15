@@ -418,7 +418,6 @@ select_download() {
                 sleep 2
                 select_version
                 return
-
             fi
         done
 

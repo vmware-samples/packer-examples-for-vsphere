@@ -351,6 +351,14 @@ select_download() {
         file_name=$(basename "$download_link")
         full_path="$download_dir/$file_name"
 
+        # Check if iso file exists in the download directory.
+        iso_check=$(find "$download_dir" -type f -name "*.iso")
+        if [ -n "$iso_check" ]; then
+           echo "ISO files found:"
+           echo "$iso_check"
+           return
+        fi
+
         printf "\n"
         print_message download "\033[34m$file_name\033[0m => \033[34m$download_dir\033[0m.\n"
 
@@ -410,7 +418,7 @@ select_download() {
                 sleep 2
                 select_version
 	        return
-	
+
             fi
         done
 
@@ -430,6 +438,14 @@ select_download() {
 
         # Set the full path of the downloaded file.
         full_path="$download_dir/$file_name"
+
+        # Check if iso file exists in the download directory.
+        iso_check=$(find "$download_dir" -type f -name "*.iso")
+        if [ -n "$iso_check" ]; then
+           echo "ISO files found:"
+           echo "$iso_check"
+           return
+        fi
 
         printf "\n"
         print_message download "\033[34m$file_name\033[0m => \033[34m$download_dir\033[0m.\n"
@@ -461,6 +477,14 @@ select_download() {
         # Set the full path of the downloaded file.
         file_name=$(basename "$download_link")
         full_path="$download_dir/$file_name"
+
+        # Check if iso file exists in the download directory.
+        iso_check=$(find "$download_dir" -type f -name "*.iso")
+        if [ -n "$iso_check" ]; then
+           echo "ISO files found:"
+           echo "$iso_check"
+           return
+        fi
 
         printf "\n"
         print_message download "\033[34m$file_name\033[0m => \033[34m$download_dir\033[0m.\n"
@@ -578,7 +602,7 @@ extract_checksum() {
         # Checksum extraction for Debian
         expected_checksum=$(grep "$file_name" "$checksum_file" | awk '{print $1}')
     ;;
-*)  
+*)
   case "${dist}${version}" in
   "CentOS7")
         expected_checksum=$(grep "$file_name" "$checksum_file" | awk '{print $1}')
@@ -755,7 +779,10 @@ select_os
 
 # Prompt the user to continue or quit.
 while true; do
+    if [[ "$downloaded" == true ]]; then
     print_message success "Download completed successfully for $dist $version $arch.\n"
+    fi
+
     read -p $'Would you like to (\e[32mc\e[0m)ontinue or (\e[31mq\e[0m)uit? ' action
     case $action in
     [cC]*)

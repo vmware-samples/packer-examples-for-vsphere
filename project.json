@@ -135,16 +135,6 @@
                                         "checksum": "5c802147aa58429b21e223ee60e347e850d6b0d8680930c4ffb27340ffb687a8"
                                     }
                                 ]
-                            },
-                            {
-                                "version": "9.2",
-                                "architectures": [
-                                    {
-                                        "architecture": "amd64",
-                                        "checksum_algorithm": "sha256",
-                                        "checksum": "a18bf014e2cb5b6b9cee3ea09ccfd7bc2a84e68e09487bb119a98aa0e3563ac2"
-                                    }
-                                ]
                             }
                         ],
                         "8": [
@@ -155,16 +145,6 @@
                                         "architecture": "amd64",
                                         "checksum_algorithm": "sha256",
                                         "checksum": "c4fd0632ce15a7d56e1d174176456943bd48306f9d35bcecbcb0a1dc49088e23"
-                                    }
-                                ]
-                            },
-                            {
-                                "version": "8.8",
-                                "architectures": [
-                                    {
-                                        "architecture": "amd64",
-                                        "checksum_algorithm": "sha256",
-                                        "checksum": "517abcc67ee3b7212f57e180f5d30be3e8269e7a99e127a3399b7935c7e00a09"
                                     }
                                 ]
                             }
@@ -226,17 +206,6 @@
                                         "checksum": "https://repo.almalinux.org/almalinux/9.3/isos/x86_64/CHECKSUM"
                                     }
                                 ]
-                            },
-                            {
-                                "version": "9.2",
-                                "architectures": [
-                                    {
-                                        "architecture": "amd64",
-                                        "download_link": "https://repo.almalinux.org/almalinux/9.2/isos/x86_64/AlmaLinux-9.2-x86_64-dvd.iso",
-                                        "checksum_algorithm": "sha256",
-                                        "checksum": "https://repo.almalinux.org/almalinux/9.2/isos/x86_64/CHECKSUM"
-                                    }
-                                ]
                             }
                         ],
                         "8": [
@@ -248,17 +217,6 @@
                                         "download_link": "https://repo.almalinux.org/almalinux/8.9/isos/x86_64/AlmaLinux-8.9-x86_64-dvd.iso",
                                         "checksum_algorithm": "sha256",
                                         "checksum": "https://repo.almalinux.org/almalinux/8.9/isos/x86_64/CHECKSUM"
-                                    }
-                                ]
-                            },
-                            {
-                                "version": "8.8",
-                                "architectures": [
-                                    {
-                                        "architecture": "amd64",
-                                        "download_link": "https://repo.almalinux.org/almalinux/8.8/isos/x86_64/AlmaLinux-8.8-x86_64-dvd.iso",
-                                        "checksum_algorithm": "sha256",
-                                        "checksum": "https://repo.almalinux.org/almalinux/8.8/isos/x86_64/CHECKSUM"
                                     }
                                 ]
                             }
@@ -284,17 +242,6 @@
                                         "checksum": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U3-Server-x86_64.checksum"
                                     }
                                 ]
-                            },
-                            {
-                                "version": "9.2",
-                                "architectures": [
-                                    {
-                                        "architecture": "amd64",
-                                        "download_link": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u2/x86_64/OracleLinux-R9-U2-x86_64-dvd.iso",
-                                        "checksum_algorithm": "sha256",
-                                        "checksum": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U2-Server-x86_64.checksum"
-                                    }
-                                ]
                             }
                         ],
                         "8": [
@@ -306,17 +253,6 @@
                                         "download_link": "https://yum.oracle.com/ISOS/OracleLinux/OL8/u9/x86_64/OracleLinux-R8-U9-x86_64-dvd.iso",
                                         "checksum_algorithm": "sha256",
                                         "checksum": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R8-U9-Server-x86_64.checksum"
-                                    }
-                                ]
-                            },
-                            {
-                                "version": "8.8",
-                                "architectures": [
-                                    {
-                                        "architecture": "amd64",
-                                        "download_link": "https://yum.oracle.com/ISOS/OracleLinux/OL8/u8/x86_64/OracleLinux-R8-U8-x86_64-dvd.iso",
-                                        "checksum_algorithm": "sha256",
-                                        "checksum": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R8-U8-Server-x86_64.checksum"
                                     }
                                 ]
                             }
@@ -524,7 +460,10 @@
         "iso_base_path": "iso",
         "rename_iso": false,
         "cleanup_failed_iso_verification": true,
-        "check_for_existing_iso": false
+        "check_for_existing_iso": false,
+        "download_logging_enabled": true,
+        "download_logging_path": "",
+        "download_logging_filename": "download.log"
     },
     "dependencies": [
         {

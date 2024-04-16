@@ -34,6 +34,9 @@ get_settings() {
 iso_base_path=$(get_settings "iso_base_path")
 rename_iso=$(get_settings "rename_iso")
 cleanup_failed_iso_verification=$(get_settings "cleanup_failed_iso_verification")
+logging_enabled=$(get_settings download_logging_enabled)
+logging_path=$(get_settings download_logging_path)
+logfile_filename=$(get_settings download_logging_filename)
 
 # This function prompts the user to press Enter to continue.
 press_enter() {
@@ -67,7 +70,7 @@ check_command() {
     local cmd=$1
     if command -v $cmd >/dev/null 2>&1; then
         local version=$($cmd --version | head -n 1)
-        print_message success "$cmd is installed."
+        print_message info "$cmd is installed."
     else
         print_message error "$cmd is not installed."
         exit 1
@@ -82,7 +85,7 @@ check_dependencies() {
     printf "\nPress \033[32mEnter\033[0m to continue."
     read -r input
     if [[ -z "$input" ]]; then
-        break
+        return
     else
         printf "\nPress \033[32mEnter\033[0m to continue."
     fi
@@ -119,39 +122,35 @@ print_message() {
 
     case $type in
     error)
-        printf "\033[31mError:\033[0m %b \n" "$message"
-        ;;
-    success)
-        printf "\033[32mSuccess:\033[0m %b \n" "$message"
-        ;;
-    skipped)
-        printf "\033[33mSkipping:\033[0m %b \n" "$message"
-        ;;
-    download)
-        printf "\033[32mDownloading:\033[0m %b \n" "$message"
-        ;;
-    rename)
-        printf "\033[32mRenaming:\033[0m %b \n" "$message"
-        ;;
-    remove)
-        printf "\033[32mRemoving:\033[0m %b \n" "$message"
-        ;;
-    verify)
-        printf "\033[32mVerifying:\033[0m %b \n" "$message"
-        ;;
-    invalid)
-        printf "\033[33mInvalid Selection:\033[0m %b \n" "$message"
-        ;;
-    failed)
-        printf "\033[31mFailed:\033[0m %b \n" "$message"
+        printf "\033[31m%s\033[0m$message"
         ;;
     info)
-        printf "$message"
+        printf "\033[37m%s\033[0m$message"
+        ;;
+    warn)
+        printf "\033[33m%s\033[0m$message"
+        ;;
+    debug)
+        printf "\033[34m%s\033[0m$message"
         ;;
     *)
-        printf "$message"
+        printf "%s" "$message"
         ;;
     esac
+
+    if [[ "$logging_enabled" == "true" ]]; then
+        # Remove color formatting from the log message
+        local no_color_message=$(echo -e $message | sed -r "s/\x1b\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g")]
+        log_message "$type" "$no_color_message"
+    fi
+}
+
+log_message() {
+    local type=$1
+    local message=$2
+    if [ "$logging_enabled" = true ]; then
+        printf "$(date '+%Y-%m-%d %H:%M:%S') [%s]: %s\n" "$(echo $type | tr '[:lower:]' '[:upper:]')" "$message" >>"$log_file"
+    fi
 }
 
 # This function selects the guest operating system family.
@@ -176,8 +175,8 @@ select_os() {
             break
         else
             printf "\n"
-            print_message invalid "Enter a number between 1 and ${#os_array[@]}."
-            printf "\n"
+            print_message warn "\033[33mInvalid Selection:\033[0m Enter a number between 1 and ${#os_array[@]}."
+            printf "\n\n"
         fi
     done
 }
@@ -232,8 +231,8 @@ select_distribution() {
             break
         else
             printf "\n"
-            print_message invalid "Enter a number between 1 and ${#dist_array[@]}.\n"
-            prompt_user
+            print_message warn "\033[33mInvalid Selection:\033[0m Enter a number between 1 and ${#dist_array[@]}."
+            printf "\n\n"
         fi
     done
 }
@@ -275,26 +274,21 @@ select_version() {
         elif [[ $version_input == [bB] ]]; then
             select_distribution
             break
-        elif ((version_input >= 1 && version_input <= ${#version_array[@]})); then
+        elif [[ $version_input =~ ^[0-9]+$ ]] && ((version_input >= 1 && version_input <= ${#version_array[@]})); then
             version=${version_array[$((version_input - 1))]}
-            select_arch_names
-            break
-        elif ((version_input == ${#version_array[@]} + 1)); then
-            for version in "${version_array[@]}"; do
-                select_arch_names
-            done
+            select_architecture
             break
         else
             printf "\n"
-            print_message invalid "Enter a number between 1 and ${#version_array[@]}.\n"
-            prompt_user
+            print_message warn "\033[33mInvalid Selection:\033[0m Enter a number between 1 and ${#version_array[@]}.\n"
+            printf "\n"
         fi
     done
 }
 
 # This function selects the architecture based on the guest operating system's distribution or type.
 # Only `amd64` and `arm64` architectures are supported presently in the JSON file.
-select_arch_names() {
+select_architecture() {
     # Check if the selected guest operating system is Linux or Windows..
     if [[ "$os" == *"Linux"* ]]; then
         arch_names=$(jq -r --arg os "$os" --arg dist "$dist" --arg version "$version" '.os[] | select(.name == $os) | .distributions[] | select(.description == $dist) | .versions | to_entries[] | .value[] | select(.version == $version) | .architectures[].architecture' $json_path)
@@ -332,8 +326,8 @@ select_arch_names() {
                 break
             else
                 printf "\n"
-                print_message invalid "Enter a number between 1 and ${#arch_array[@]}.\n"
-                prompt_user
+                print_message warn "\033[33mInvalid Selection:\033[0m Enter a number between 1 and ${#arch_array[@]}.\n"
+                printf "\n"
             fi
         done
     fi
@@ -349,7 +343,9 @@ select_download() {
         if curl --output /dev/null --silent --head --fail "$download_link"; then
             download_dir="$(echo "${iso_base_path}/${os}/${dist}/${version}/${arch}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')"
         else
-            print_message invalid "Invalid download link provided in JSON configuration: $download_link"
+            printf "\n\n"
+            print_message warn "\033[33mInvalid Data:\033[0m Inaccessbile URL in JSON configuration: \033[34m$download_link\033[0m"
+            printf "\n\n"
             return
         fi
         mkdir -p "$download_dir"
@@ -360,12 +356,32 @@ select_download() {
         # Check if iso file exists in the download directory.
         iso_check=$(find "$download_dir" -type f -name "*.iso")
         if [ -n "$iso_check" ]; then
-            print_message skipped "Existing ISO file found: $iso_check"
-            return
+            printf "\n"
+            print_message warn "\033[33mExisting ISO file found: \033[34m$iso_check\033[0m"
+            printf "\n"
+            while true; do
+                read -p $'\nWould you like to (\e[32mc\e[0m)ontinue, go (\e[33mb\e[0m)ack, or (\e[31mq\e[0m)uit? ' action
+                log_message "info" "User selected: $action"
+                case $action in
+                [c]*)
+                    # Continue the download.
+                    break
+                    ;;
+                [q]*)
+                    # Quit the script.
+                    exit 0
+                    ;;
+                [b]*)
+                    # Go back to the menu.
+                    select_distribution
+                    break
+                    ;;
+                esac
+            done
         fi
-
         printf "\n"
-        print_message download "\033[34m$file_name\033[0m => \033[34m$download_dir\033[0m.\n"
+        print_message info "\033[32mDownloading:\033[0m \033[34m$file_name\033[0m => \033[34m$download_dir\033[0m."
+        printf "\n\n"
 
         # Set the download command based on the availability of curl or wget.
         if command -v curl >/dev/null 2>&1; then
@@ -410,7 +426,7 @@ select_download() {
                 invalid_attempts=$((invalid_attempts + 1))
             elif [[ ! $rhsm_offline_token =~ ^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$ ]]; then
                 printf "\n\n"
-                print_message error "Invalid token format. Please try again.\n"
+                print_message error "Incorrect token format. Please try again.\n"
                 invalid_attempts=$((invalid_attempts + 1))
                 rhsm_offline_token=""
             else
@@ -446,12 +462,36 @@ select_download() {
         # Check if iso file exists in the download directory.
         iso_check=$(find "$download_dir" -type f -name "*.iso")
         if [ -n "$iso_check" ]; then
-            print_message skipped "Existing ISO file found: $iso_check"
-            return
+            printf "\n"
+            print_message warn "\033[33mExisting ISO file found: \033[34m$iso_check\033[0m"
+            printf "\n"
+
+            # Calculate the checksum of the existing file
+            existing_checksum=$(sha256sum "$iso_check" | cut -d ' ' -f1)
+
+            # Compare it with the expected checksum
+            if [ "$existing_checksum" != "$expected_checksum" ]; then
+                print_message warn "\033[33mChecksum does not match. The file may be corrupted.\033[0m"
+                while true; do
+                    read -p $'\nWould you like to (\e[32md\e[0m)ownload a new file or (\e[31mq\e[0m)uit? ' action
+                    log_message "info" "User selected: $action"
+                    case $action in
+                    [dD]*)
+                        # Download the file again
+                        break
+                        ;;
+                    [qQ]*)
+                        # Quit the script
+                        exit 0
+                        ;;
+                    esac
+                done
+            fi
         fi
 
         printf "\n"
-        print_message download "\033[34m$file_name\033[0m => \033[34m$download_dir\033[0m.\n"
+        print_message info "\033[32mDownloading:\033[0m \033[34m$file_name\033[0m => \033[34m$download_dir\033[0m."
+        printf "\n\n"
 
         # Set the download command based on the availability of curl or wget.
         if command -v curl >/dev/null 2>&1; then
@@ -478,7 +518,9 @@ select_download() {
         if curl --output /dev/null --silent --head --fail "$download_link"; then
             download_dir="$(echo "${iso_base_path}/${os}/${dist}/${version}/${arch}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')"
         else
-            print_message invalid "Invalid download link provided in JSON configuration: $download_link"
+            printf "\n"
+            print_message warn "\033[33mInvalid Data:\033[0m Inaccessbile URL in JSON configuration: \033[34m$download_link\033[0m"
+            printf "\n"
             return
         fi
         mkdir -p "$download_dir"
@@ -490,12 +532,32 @@ select_download() {
         # Check if iso file exists in the download directory.
         iso_check=$(find "$download_dir" -type f -name "*.iso")
         if [ -n "$iso_check" ]; then
-            print_message skipped "Existing ISO file found: $iso_check"
-            return
+            printf "\n"
+            print_message warn "\033[33mExisting ISO file found: \033[34m$iso_check\033[0m"
+            printf "\n"
+            while true; do
+                read -p $'\nWould you like to (\e[32mc\e[0m)ontinue, go (\e[33mb\e[0m)ack, or (\e[31mq\e[0m)uit? ' action
+                log_message "info" "User selected: $action"
+                case $action in
+                [c]*)
+                    # Continue the download.
+                    break
+                    ;;
+                [q]*)
+                    # Quit the script.
+                    exit 0
+                    ;;
+                [b]*)
+                    # Go back to the menu.
+                    select_distribution
+                    break
+                    ;;
+                esac
+            done
         fi
-
         printf "\n"
-        print_message download "\033[34m$file_name\033[0m => \033[34m$download_dir\033[0m.\n"
+        print_message info "\033[32mDownloading:\033[0m \033[34m$file_name\033[0m => \033[34m$download_dir\033[0m."
+        printf "\n\n"
 
         # Set the download command based on the availability of curl or wget.
         if command -v curl >/dev/null 2>&1; then
@@ -561,7 +623,7 @@ download_checksum_file() {
 
     # Check if the checksum value is empty.
     if [ -z "$checksum_value" ]; then
-        print_message skipped "The checksum value is empty."
+        print_message warn "The checksum value is empty."
         return
     fi
 
@@ -617,7 +679,7 @@ extract_checksum() {
             ;;
         *)
             if [ ! -f "$checksum_file" ]; then
-                print_message skipped "The checksum file is empty."
+                print_message warn "The checksum file is empty."
                 checksum_value_empty=true
             elif [ "$checksum_value_manual" = true ]; then
                 expected_checksum=$(cat "$checksum_file")
@@ -687,19 +749,19 @@ compare_checksums() {
     printf "\n"
     # Check if the checksum value is empty.
     if [ "$checksum_value_empty" != true ]; then
-        print_message verify "\033[34m$checksum_algorithm\033[0m checksum for \033[34m$file_name\033[0m.\n"
+        print_message info "\033[32mVerifying:\033[0m \033[34m$checksum_algorithm\033[0m checksum for \033[34m$file_name\033[0m.\n"
         # Compare the actual checksum with the expected checksum.
         if [ "$actual_checksum" = "$expected_checksum" ]; then
-            print_message success "Verification of checksum \033[32msuccessful\033[0m for \033[34m$file_name\033[0m.\n"
+            print_message info "Verification of checksum \033[32msuccessful\033[0m for \033[34m$file_name\033[0m.\n"
             print_message info "        - \033[32mExpected:\033[0m \033[34m$expected_checksum\033[0m\n"
             print_message info "        - \033[32mActual:\033[0m   \033[34m$actual_checksum\033[0m\n\n"
         else
-            print_message failed "Verification of checksum \033[31mfailed\033[0m for \033[34m$file_name\033[0m.\n"
+            print_message error "Verification of checksum \033[31mfailed\033[0m for \033[34m$file_name\033[0m.\n"
             print_message info "        - \033[32mExpected:\033[0m \033[34m$expected_checksum\033[0m\n"
             print_message info "        - \033[31mActual:\033[0m   \033[34m$actual_checksum\033[0m\n\n"
             print_message error "Download \033[1m\033[31mfailed\033[0m\n for \033[34m$dist $version $arch\033[0m.\n"
 
-            if $get_setting_cleanup_failed_iso; then
+            if $cleanup_failed_iso_verification; then
                 # Attempt to remove the downloaded ISO file.
                 rm -f "$full_path"
                 # Check if the file still exists.
@@ -754,7 +816,7 @@ rename_file() {
 
         # Rename the file.
         mv "$file_name" "$iso_name"
-        print_message rename "\033[34m$file_name\033[0m => \033[34m$iso_name\033[0m.\n"
+        print_message info "Renaming: \033[34m$file_name\033[0m => \033[34m$iso_name\033[0m.\n"
     else
         print_message error "Unsupported guest operating system: \033[34m$os\033[0m"
     fi
@@ -782,29 +844,45 @@ while (("$#")); do
     esac
 done
 
+# Check if logging is enabled.
+if [[ "$logging_enabled" == "true" ]]; then
+    # If logging_path is empty, use the current directory
+    if [[ -z "$logging_path" ]]; then
+        logging_path=$(pwd)
+    fi
+
+    log_file="$logging_path/$logfile_filename"
+
+    # Check if the log file exists. If not, create it.
+    if [[ ! -f "$log_file" ]]; then
+        touch "$log_file"
+        log_message "info" "Log file created: $log_file."
+    fi
+fi
+
 # Start the script with the selecting the guest operating system.
 select_os
 
 # Prompt the user to continue or quit.
 while true; do
     if [[ "$downloaded" == true ]]; then
-        print_message success "Download completed successfully for $dist $version $arch.\n"
+        print_message info "Download completed successfully for $dist $version $arch.\n"
     fi
 
-    read -p $'Would you like to (\e[32mc\e[0m)ontinue or (\e[31mq\e[0m)uit? ' action
+    read -p $'\nWould you like to (\e[32mc\e[0m)ontinue or (\e[31mq\e[0m)uit? ' action
+    log_message "info" "User selected: $action"
     case $action in
     [cC]*)
         cd "$script_path" || {
+            printf "\n"
             print_message error "Failed to change to directory: \033[34m$script_path\033[0m"
             exit 1
         }
-        exec $0
+        exec "$0"
         ;;
     [qQ]*) exit ;;
-    *) print_message invalid "Enter \033[32mc\033[0m to continue or \033[31mq\033[0m to quit." ;;
     esac
 done
 
 # TODO:
-# - Add support for headless logging with timestamps.
 # - Add support for SUSE Enterprise Linux Server download. Headless Chrome?

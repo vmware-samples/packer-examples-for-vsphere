@@ -273,9 +273,9 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/iso/CentOS-Stream-9-20240408.0-x86_64-dvd1.iso",
+                                        "download_link": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/iso/CentOS-Stream-9-latest-x86_64-dvd1.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/iso/SHA256SUM"
+                                        "checksum": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/iso/CentOS-Stream-9-latest-x86_64-dvd1.iso.SHA256SUM"
                                     }
                                 ]
                             }

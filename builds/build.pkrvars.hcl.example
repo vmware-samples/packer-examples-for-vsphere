@@ -10,6 +10,6 @@
 
 // Default Account Credentials
 build_username           = "packer"
-build_password           = "_P@cker_Ex#mple$_"
-build_password_encrypted = "$6$rak.KyfWvfvqCy88$UmDg3XUsVCo.51sTKm3sFClrs3MCUssSOUHYBl/d9kfzLNwRR3lEaFFjgCr2eGI3rvOwycXFsGGDLynrmPsOK1"
+build_password           = "VMw@re123!"
+build_password_encrypted = "$6$KspR8KgZFVxDOiiF$n4hhyeSGgamrz25mqvOfnK5xm6blwDJftlQZy0H60pwRdPKXsf996/lLzFrfW0H/ZHoE.jEPgVmFZpmgce6jX0"
 build_key                = "ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBADwXV3rbRCWwhSr6aMkHukV5O7OGAEyUtAerj2anJHm3mwbOxlBU/uO4f0ELqo2GJcTALMC0aFrbvu9qonIH5VF7wBBfCP1cS5B92sUagVV9ldI/uo89e/7dVYC9maPsFaZq2G0/PLU0hZKOohq99Oxc2RMSiJaaenX/hNqx5xYSaK+CA== packer@example.com"

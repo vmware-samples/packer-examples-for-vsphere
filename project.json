@@ -148,6 +148,18 @@
                                     }
                                 ]
                             }
+                        ],
+                        "7": [
+                            {
+                                "version": "7.9",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "2cb36122a74be084c551bc7173d2d38a1cfb75c8ffbc1489c630c916d1b31b25"
+                                    }
+                                ]
+                            }
                         ]
                     }
                 },

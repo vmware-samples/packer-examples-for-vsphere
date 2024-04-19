@@ -7,12 +7,12 @@
     Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 
-// Guest Operating Systtem Metadata
+// Guest Operating System Metadata
 vm_guest_os_family  = "linux"
 vm_guest_os_name    = "photon"
 vm_guest_os_version = "4.0"
 
-// Virtual Machine Guest Operating Systtem Setting
+// Virtual Machine Guest Operating System Setting
 vm_guest_os_type = "vmwarePhoton64Guest"
 
 // Virtual Machine Hardware Settings

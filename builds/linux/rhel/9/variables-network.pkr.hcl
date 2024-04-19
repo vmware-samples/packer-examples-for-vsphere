@@ -3,7 +3,8 @@
 
 /*
     DESCRIPTION:
-    Red Hat Enterprise Linux 9 network variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    Red Hat Enterprise Linux 9 network variables.
+    Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 
 // VM Network Settings

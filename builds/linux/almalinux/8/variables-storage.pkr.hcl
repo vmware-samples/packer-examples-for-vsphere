@@ -3,7 +3,8 @@
 
 /*
     DESCRIPTION:
-    AlmaLinux OS 8 storage variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    AlmaLinux OS 8 storage variables.
+    Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 
 // VM Storage Settings

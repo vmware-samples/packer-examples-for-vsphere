@@ -3,7 +3,8 @@
 
 /*
     DESCRIPTION:
-    AlmaLinux OS 9 network variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    AlmaLinux OS 9 network variables.
+    Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 
 // VM Network Settings

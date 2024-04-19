@@ -3,7 +3,8 @@
 
 /*
     DESCRIPTION:
-    CentOS Linux 7 network variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    CentOS Linux 7 network variables.
+    Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 
 // VM Network Settings

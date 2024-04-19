@@ -3,7 +3,8 @@
 
 /*
     DESCRIPTION:
-    CentOS Stream 9 storage variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    CentOS Stream 9 storage variables.
+    Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 
 // VM Storage Settings

@@ -3,7 +3,8 @@
 
 /*
     DESCRIPTION:
-    Ubuntu Server 23.10 storage variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+    Ubuntu Server 23.10 storage variables.
+    Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 
 // VM Storage Settings

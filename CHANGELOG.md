@@ -10,6 +10,8 @@
   the guest operating systems.
   [#874](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/874),
   [#877](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/877)
+- Adds option to enable cloud-init on Debian 12.5.
+  [#883](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/883)
 
 ## v0.19.1
 

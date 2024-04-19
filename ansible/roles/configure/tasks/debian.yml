@@ -43,14 +43,21 @@
         - /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg
         - /etc/cloud/cloud.cfg.d/99-installer.cfg
         - /etc/netplan/00-installer-config.yaml
-    - lineinfile:
+      when: ansible_distribution == 'Ubuntu'
+    - blockinfile:
         path: /etc/cloud/cloud.cfg
-        line: 'disable_vmware_customization: false'
-        create: true
+        block: |
+          disable_vmware_customization: false
     - copy:
         content: 'datasource_list: [ VMware, OVF, None ]'
         dest: /etc/cloud/cloud.cfg.d/90_dpkg.cfg
-  when: ansible_distribution == 'Ubuntu' and enable_cloudinit == 'true'
+  when: enable_cloudinit == 'true'
+- name: "Replace dhcp with static for Debian"
+  lineinfile:
+    path: /etc/network/interfaces
+    regexp: '^iface ens192 inet dhcp'
+    state: absent
+  when: enable_cloudinit == 'true' and ansible_distribution == 'Debian'
 
 # Tasks for setting SSH keys to regenerate.
 - name: "Setting SSH keys to regenerate."

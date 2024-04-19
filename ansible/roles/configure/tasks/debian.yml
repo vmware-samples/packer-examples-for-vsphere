@@ -49,7 +49,7 @@
         block: |
           disable_vmware_customization: false
     - copy:
-        content: "datasource_list: [ VMware, OVF, None ]"
+        content: 'datasource_list: [ VMware, OVF, None ]'
         dest: /etc/cloud/cloud.cfg.d/90_dpkg.cfg
   when: enable_cloudinit == 'true'
 - name: "Replace dhcp with static for Debian"

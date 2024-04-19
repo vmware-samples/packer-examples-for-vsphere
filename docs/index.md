@@ -17,8 +17,8 @@ This project supports the following guest operating systems:
 ::spantable::
 | Operating System                                                        | Version   | VMTools Customization                | Cloud-Init Customization             | Network Variables                    | Storage Variables                    |
 | :---                                                                    | :---      | :---                                 | :---                                 | :---                                 | :---                                 |
-| :simple-broadcom: &nbsp;&nbsp; VMware Photon OS @span                     | 5.0       | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:{ .green }     | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               |
-|                                                                         | 4.0       | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:{ .green }     | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               |
+| :simple-broadcom: &nbsp;&nbsp; VMware Photon OS @span                   | 5.0       | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               |
+|                                                                         | 4.0       | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               |
 | :fontawesome-brands-debian: &nbsp;&nbsp; Debian @span                   | 12        | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
 |                                                                         | 11        | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
 | :fontawesome-brands-ubuntu: &nbsp;&nbsp; Ubuntu Server @span            | 24.04 LTS | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
@@ -36,6 +36,7 @@ This project supports the following guest operating systems:
 | :fontawesome-brands-centos: &nbsp;&nbsp; CentOS @span                   | 9 Stream  | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
 |                                                                         | 8 Stream  | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
 |                                                                         | 7         | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
+| :fontawesome-brands-centos: &nbsp;&nbsp; Fedora @span                   | 40        | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
 | :fontawesome-brands-suse: &nbsp;&nbsp; SUSE Linux Enterprise @span      | 15        | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               | :octicons-x-circle-24:               | :octicons-x-circle-24:               |
 ::end-spantable::
 

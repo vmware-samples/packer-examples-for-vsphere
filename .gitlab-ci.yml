@@ -210,6 +210,15 @@ CentOS-Linux-7:
 
 ##############################################################################
 
+Fedora-Server-40:
+    extends: .packer-build
+    variables:
+        INPUT_PATH: "$SCRIPT_PATH/builds/linux/fedora/40/"
+        BUILD_VARS: "linux-fedora-40.pkrvars.hcl"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
+
+##############################################################################
+
 SUSE-Linux-Enterprise-Server-15:
     extends: .packer-build
     variables:

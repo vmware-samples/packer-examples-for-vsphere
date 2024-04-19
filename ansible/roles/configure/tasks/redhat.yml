@@ -6,7 +6,7 @@
   when: ansible_distribution == 'RedHat'
 
 # Tasks for configuring SSH for public key authentication.
-- name: "Configuring SSH for Public Key Authentication."
+- name: "Configuring SSH for Public Key Authentication without cloud-init."
   block:
     - lineinfile:
         path: /etc/ssh/sshd_config
@@ -17,6 +17,8 @@
         regexp: '^PubkeyAuthentication'
         line: 'PubkeyAuthentication yes'
   when: enable_cloudinit == 'false'
+
+- name: "Configuring SSH for Public Key Authentication without cloud-init."
   block:
     - lineinfile:
         path: /etc/ssh/sshd_config

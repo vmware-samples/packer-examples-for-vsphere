@@ -276,7 +276,7 @@
                     "description": "CentOS",
                     "publisher": {
                         "name": "CentOS",
-                        "url": "https://centos.org/"
+                        "url": "https://centos.org"
                     },
                     "versions": {
                         "9": [
@@ -314,6 +314,29 @@
                                         "download_link": "https://mirror.rackspace.com/CentOS/7.9.2009/isos/x86_64/CentOS-7-x86_64-DVD-2009.iso",
                                         "checksum_algorithm": "sha256",
                                         "checksum": "https://mirror.rackspace.com/CentOS/7.9.2009/isos/x86_64/sha256sum.txt"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "fedora-server",
+                    "description": "Fedora Server",
+                    "publisher": {
+                        "name": "Fedora Project",
+                        "url": "https://fedoraproject.org"
+                    },
+                    "versions": {
+                        "40": [
+                            {
+                                "version": "40",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://na.edge.kernel.org/fedora/releases/40/Server/x86_64/iso/Fedora-Server-dvd-x86_64-40-1.14.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://na.edge.kernel.org/fedora/releases/40/Server/x86_64/iso/Fedora-Server-40-1.14-x86_64-CHECKSUM"
                                     }
                                 ]
                             }
@@ -471,7 +494,7 @@
     "settings": {
         "iso_base_path": "iso",
         "rename_iso": false,
-        "cleanup_failed_iso_verification": true,
+        "cleanup_failed_iso_verification": false,
         "check_for_existing_iso": false,
         "download_logging_enabled": true,
         "download_logging_path": "",

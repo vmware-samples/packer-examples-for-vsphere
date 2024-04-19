@@ -204,19 +204,19 @@ menu_option_4() {
 }
 
 menu_option_5() {
-  INPUT_PATH="$SCRIPT_PATH"/builds/linux/ubuntu/23-10/
+  INPUT_PATH="$SCRIPT_PATH"/builds/linux/ubuntu/24-04-lts/
   BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
   BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
 
-  echo -e "\nCONFIRM: Build a Ubuntu Server 23.10 Template for VMware vSphere?"
+  echo -e "\nCONFIRM: Build a Ubuntu Server 24.04 LTS Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
   if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     exit 1
   fi
 
-  ### Build a Ubuntu Server 23.10 Template for VMware vSphere. ###
-  echo "Building a Ubuntu Server 23.10 Template for VMware vSphere..."
+  ### Build a Ubuntu Server 24.04 LTS Template for VMware vSphere. ###
+  echo "Building a Ubuntu Server 24.04 LTS Template for VMware vSphere..."
 
   ### Initialize HashiCorp Packer and required plugins. ###
   echo "Initializing HashiCorp Packer and required plugins..."
@@ -1363,7 +1363,7 @@ until [ "$selection" = "0" ]; do
   echo "    	 2  -  VMware Photon OS 4"
   echo "    	 3  -  Debian 12"
   echo "    	 4  -  Debian 11"
-  echo "    	 5  -  Ubuntu Server 23.10"
+  echo "    	 5  -  Ubuntu Server 24.04 LTS"
   echo "    	 6  -  Ubuntu Server 22.04 LTS"
   echo "    	 7  -  Ubuntu Server 20.04 LTS"
   echo "    	 8  -  Red Hat Enterprise Linux 9"

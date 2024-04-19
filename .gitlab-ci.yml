@@ -75,11 +75,11 @@ Debian-11:
 
 ##############################################################################
 
-Ubuntu-Server-23.10:
+Ubuntu-Server-24.04-LTS:
     extends: .packer-build
     variables:
-        INPUT_PATH: "$SCRIPT_PATH/builds/linux/ubuntu/23-10/"
-        BUILD_VARS: "linux-ubuntu-23-10.pkrvars.hcl"
+        INPUT_PATH: "$SCRIPT_PATH/builds/linux/ubuntu/24-04-lts/"
+        BUILD_VARS: "linux-ubuntu-24-04-lts.pkrvars.hcl"
         EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
 
 ##############################################################################

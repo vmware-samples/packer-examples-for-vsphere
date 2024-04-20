@@ -59,7 +59,11 @@
       name: "*"
       state: latest     # noqa package-latest
       update_cache: true
-
+  - name: "Installing Cloud-init."
+    dnf:
+      name: cloud-init
+      state: latest
+    when: enable_cloudinit == 'true'
   - name: "Installing additional packages."
     dnf:
       name: "{{ additional_packages[ansible_os_family] }}"

@@ -17,6 +17,7 @@ vm_guest_os_version  = "8.9"
 
 // Virtual Machine Guest Operating System Setting
 vm_guest_os_type = "rhel8_64Guest"
+vm_guest_os_cloudinit = false
 
 // Virtual Machine Hardware Settings
 vm_firmware              = "efi-secure"
@@ -34,8 +35,8 @@ vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
 iso_datastore_path       = "iso/linux/rhel"
-iso_content_library_item = "rhel-9.3-x86_64-dvd"
-iso_file                 = "rhel-9.3-x86_64-dvd.iso"
+iso_content_library_item = "rhel-8.9-x86_64-dvd"
+iso_file                 = "rhel-8.9-x86_64-dvd.iso"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

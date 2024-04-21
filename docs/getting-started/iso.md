@@ -17,7 +17,8 @@ Download the Linux distribution ISO files from the publisher.
 | | 4.0 | [:fontawesome-solid-cloud-arrow-down:][download-linux-photon-4] &nbsp; `photon-4.0-xxxxxxxxx.iso` |
 | :fontawesome-brands-debian: &nbsp;&nbsp; Debian @span | 12 | [:fontawesome-solid-cloud-arrow-down:][download-linux-debian-12] &nbsp; `debian-12.x.x-amd64-netinst.iso` |
 | | 11 | [:fontawesome-solid-cloud-arrow-down:][download-linux-debian-11] &nbsp; `debian-11.x.x-amd64-netinst.iso` |
-| :fontawesome-brands-ubuntu: &nbsp;&nbsp; Ubuntu Server @span | 23.10 | [:fontawesome-solid-cloud-arrow-down:][download-linux-ubuntu-2310] &nbsp; `ubuntu-23.10-live-server-amd64.iso` |
+| :fontawesome-brands-ubuntu: &nbsp;&nbsp; Ubuntu Server @span | 24.04 LTS | [:fontawesome-solid-cloud-arrow-down:][download-linux-ubuntu-2404] &nbsp; `ubuntu-24.04.x-live-server-amd64.iso` |
+| | 23.10 | [:fontawesome-solid-cloud-arrow-down:][download-linux-ubuntu-2310] &nbsp; `ubuntu-23.10-live-server-amd64.iso` |
 | | 22.04 LTS | [:fontawesome-solid-cloud-arrow-down:][download-linux-ubuntu-2204] &nbsp; `ubuntu-22.04.x-live-server-amd64.iso` |
 | | 20.04 LTS | [:fontawesome-solid-cloud-arrow-down:][download-linux-ubuntu-2004] &nbsp; `ubuntu-20.04.x-live-server-amd64.iso` |
 | :fontawesome-brands-redhat: &nbsp;&nbsp; Red Hat Enterprise Linux @span | 9 | [:fontawesome-solid-cloud-arrow-down:][download-linux-rhel-9] &nbsp; `rhel-9.x-x86_64-dvd.iso` |
@@ -97,6 +98,7 @@ iso_file                 = "photon-5.0-xxxxxxxxx.iso"
 [download-linux-ubuntu-2004]: https://releases.ubuntu.com/20.04/
 [download-linux-ubuntu-2204]: https://releases.ubuntu.com/22.04/
 [download-linux-ubuntu-2310]: https://releases.ubuntu.com/23.10/
+[download-linux-ubuntu-2404]: https://releases.ubuntu.com/24.04/
 [download-windows-server-2022]: https://www.microsoft.com/evalcenter/evaluate-windows-server-2022
 [download-windows-server-2019]: https://www.microsoft.com/evalcenter/evaluate-windows-server-2019
 [download-windows-server-2025]: https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewserver

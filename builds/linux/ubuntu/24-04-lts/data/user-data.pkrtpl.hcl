@@ -3,7 +3,7 @@
 # Copyright 2023-2024 Broadcom. All rights reserved.
 # SPDX-License-Identifier: BSD-2
 
-# Ubuntu Server 34.04 LTS
+# Ubuntu Server 24.04 LTS
 
 autoinstall:
   version: 1

@@ -59,6 +59,7 @@ locals {
       vm_guest_os_language     = var.vm_guest_os_language
       vm_guest_os_keyboard     = var.vm_guest_os_keyboard
       vm_guest_os_timezone     = var.vm_guest_os_timezone
+      vm_guest_os_cloudinit    = var.vm_guest_os_cloudinit
       network = templatefile("${abspath(path.root)}/data/network.pkrtpl.hcl", {
         device  = var.vm_network_device
         ip      = var.vm_ip_address
@@ -176,6 +177,7 @@ source "vsphere-iso" "linux-rhel" {
       ovf         = var.common_content_library_ovf
       destroy     = var.common_content_library_destroy
       skip_import = var.common_content_library_skip_export
+
     }
   }
 
@@ -214,6 +216,7 @@ build {
       "--extra-vars", "build_key='${var.build_key}'",
       "--extra-vars", "ansible_username=${var.ansible_username}",
       "--extra-vars", "ansible_key='${var.ansible_key}'",
+      "--extra-vars", "enable_cloudinit=${var.vm_guest_os_cloudinit}",
     ]
   }
 

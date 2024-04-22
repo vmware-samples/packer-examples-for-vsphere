@@ -12,28 +12,28 @@ operating system [ISO][iso] files.
 Download the Linux distribution ISO files from the publisher.
 
 ::spantable::
-| Operating System                                                        | Version   | Download                                                                                                               |
-| :---                                                                    | :---      | :---                                                                                                                   |
-| :simple-vmware: &nbsp;&nbsp; VMware Photon OS @span                     | 5.0       | [:fontawesome-solid-cloud-arrow-down:][download-linux-photon-5] &nbsp; `photon-5.0-xxxxxxxxx.x86_64.iso`               |
-|                                                                         | 4.0       | [:fontawesome-solid-cloud-arrow-down:][download-linux-photon-4] &nbsp; `photon-4.0-xxxxxxxxx.iso`                      |
-| :fontawesome-brands-debian: &nbsp;&nbsp; Debian @span                   | 12        | [:fontawesome-solid-cloud-arrow-down:][download-linux-debian-12] &nbsp; `debian-12.x.x-amd64-netinst.iso`              |
-|                                                                         | 11        | [:fontawesome-solid-cloud-arrow-down:][download-linux-debian-11] &nbsp; `debian-11.x.x-amd64-netinst.iso`              |
-| :fontawesome-brands-ubuntu: &nbsp;&nbsp; Ubuntu Server @span            | 23.10     | [:fontawesome-solid-cloud-arrow-down:][download-linux-ubuntu-2310] &nbsp; `ubuntu-23.10-live-server-amd64.iso`         |
-|                                                                         | 22.04 LTS | [:fontawesome-solid-cloud-arrow-down:][download-linux-ubuntu-2204] &nbsp; `ubuntu-22.04.x-live-server-amd64.iso`       |
-|                                                                         | 20.04 LTS | [:fontawesome-solid-cloud-arrow-down:][download-linux-ubuntu-2004] &nbsp; `ubuntu-20.04.x-live-server-amd64.iso`       |
-| :fontawesome-brands-redhat: &nbsp;&nbsp; Red Hat Enterprise Linux @span | 9         | [:fontawesome-solid-cloud-arrow-down:][download-linux-rhel-9] &nbsp; `rhel-9.x-x86_64-dvd.iso`                         |
-|                                                                         | 8         | [:fontawesome-solid-cloud-arrow-down:][download-linux-rhel-8] &nbsp; `rhel-8.x-x86_64-dvd.iso`                         |
-|                                                                         | 7         | [:fontawesome-solid-cloud-arrow-down:][download-linux-rhel-7] &nbsp; `rhel-server-7.x-x86_64-dvd.iso`                  |
-| :fontawesome-brands-linux: &nbsp;&nbsp; AlmaLinux OS @span              | 9         | [:fontawesome-solid-cloud-arrow-down:][download-linux-alma-9] &nbsp; `AlmaLinux-9.x-x86_64-dvd.iso`                    |
-|                                                                         | 8         | [:fontawesome-solid-cloud-arrow-down:][download-linux-alma-8] &nbsp; `AlmaLinux-8.x-x86_64-dvd.iso`                    |
-| :simple-rockylinux: &nbsp;&nbsp; Rocky Linux @span                      | 9         | [:fontawesome-solid-cloud-arrow-down:][download-linux-rocky-9] &nbsp; `Rocky-9.x-x86_64-dvd.iso`                       |
-|                                                                         | 8         | [:fontawesome-solid-cloud-arrow-down:][download-linux-rocky-8] &nbsp; `Rocky-8.x-x86_64-dvd.iso`                       |
-| :simple-oracle: &nbsp;&nbsp; Oracle Linux @span                         | 9         | [:fontawesome-solid-cloud-arrow-down:][download-linux-oracle-9] &nbsp; `OracleLinux-R9-U2-x86_64-dvd.iso`              |
-|                                                                         | 8         | [:fontawesome-solid-cloud-arrow-down:][download-linux-oracle-8] &nbsp; `OracleLinux-R8-U8-x86_64-dvd.iso`              |
-| :fontawesome-brands-centos: &nbsp;&nbsp; CentOS @span                   | 9 Stream  | [:fontawesome-solid-cloud-arrow-down:][download-linux-centos-stream-9] &nbsp; `CentOS-Stream-9-latest-x86_64-dvd1.iso` |
-|                                                                         | 8 Stream  | [:fontawesome-solid-cloud-arrow-down:][download-linux-centos-stream-8] &nbsp; `CentOS-Stream-8-x86_64-latest-dvd1.iso` |
-|                                                                         | 7         | [:fontawesome-solid-cloud-arrow-down:][download-linux-centos-7] &nbsp; `CentOS-7-x86_64-DVD.iso`                       |
-| :fontawesome-brands-suse: &nbsp;&nbsp; SUSE Linux Enterprise @span      | 15        | [:fontawesome-solid-cloud-arrow-down:][download-linux-sles-15] &nbsp; `SLE-15-SPx-Full-x86_64-GM-Media1.iso`           |
+| Operating System | Version | Download |
+| :--- | :--- | :--- |
+| :simple-vmware: &nbsp;&nbsp; VMware Photon OS @span | 5.0 | [:fontawesome-solid-cloud-arrow-down:][download-linux-photon-5] &nbsp; `photon-5.0-xxxxxxxxx.x86_64.iso` |
+| | 4.0 | [:fontawesome-solid-cloud-arrow-down:][download-linux-photon-4] &nbsp; `photon-4.0-xxxxxxxxx.iso` |
+| :fontawesome-brands-debian: &nbsp;&nbsp; Debian @span | 12 | [:fontawesome-solid-cloud-arrow-down:][download-linux-debian-12] &nbsp; `debian-12.x.x-amd64-netinst.iso` |
+| | 11 | [:fontawesome-solid-cloud-arrow-down:][download-linux-debian-11] &nbsp; `debian-11.x.x-amd64-netinst.iso` |
+| :fontawesome-brands-ubuntu: &nbsp;&nbsp; Ubuntu Server @span | 24.04 LTS | [:fontawesome-solid-cloud-arrow-down:][download-linux-ubuntu-2310] &nbsp; `ubuntu-23.10-live-server-amd64.iso` |
+| | 22.04 LTS | [:fontawesome-solid-cloud-arrow-down:][download-linux-ubuntu-2204] &nbsp; `ubuntu-22.04.x-live-server-amd64.iso` |
+| | 20.04 LTS | [:fontawesome-solid-cloud-arrow-down:][download-linux-ubuntu-2004] &nbsp; `ubuntu-20.04.x-live-server-amd64.iso` |
+| :fontawesome-brands-redhat: &nbsp;&nbsp; Red Hat Enterprise Linux @span | 9 | [:fontawesome-solid-cloud-arrow-down:][download-linux-rhel-9] &nbsp; `rhel-9.x-x86_64-dvd.iso` |
+| | 8 | [:fontawesome-solid-cloud-arrow-down:][download-linux-rhel-8] &nbsp; `rhel-8.x-x86_64-dvd.iso` |
+| | 7 | [:fontawesome-solid-cloud-arrow-down:][download-linux-rhel-7] &nbsp; `rhel-server-7.x-x86_64-dvd.iso` |
+| :fontawesome-brands-linux: &nbsp;&nbsp; AlmaLinux OS @span | 9 | [:fontawesome-solid-cloud-arrow-down:][download-linux-alma-9] &nbsp; `AlmaLinux-9.x-x86_64-dvd.iso` |
+| | 8 | [:fontawesome-solid-cloud-arrow-down:][download-linux-alma-8] &nbsp; `AlmaLinux-8.x-x86_64-dvd.iso` |
+| :simple-rockylinux: &nbsp;&nbsp; Rocky Linux @span | 9 | [:fontawesome-solid-cloud-arrow-down:][download-linux-rocky-9] &nbsp; `Rocky-9.x-x86_64-dvd.iso` |
+| | 8 | [:fontawesome-solid-cloud-arrow-down:][download-linux-rocky-8] &nbsp; `Rocky-8.x-x86_64-dvd.iso` |
+| :simple-oracle: &nbsp;&nbsp; Oracle Linux @span | 9 | [:fontawesome-solid-cloud-arrow-down:][download-linux-oracle-9] &nbsp; `OracleLinux-R9-U2-x86_64-dvd.iso` |
+| | 8 | [:fontawesome-solid-cloud-arrow-down:][download-linux-oracle-8] &nbsp; `OracleLinux-R8-U8-x86_64-dvd.iso` |
+| :fontawesome-brands-centos: &nbsp;&nbsp; CentOS @span | 9 Stream | [:fontawesome-solid-cloud-arrow-down:][download-linux-centos-stream-9] &nbsp; `CentOS-Stream-9-latest-x86_64-dvd1.iso` |
+| | 8 Stream | [:fontawesome-solid-cloud-arrow-down:][download-linux-centos-stream-8] &nbsp; `CentOS-Stream-8-x86_64-latest-dvd1.iso` |
+| | 7 | [:fontawesome-solid-cloud-arrow-down:][download-linux-centos-7] &nbsp; `CentOS-7-x86_64-DVD.iso` |
+| :fontawesome-brands-suse: &nbsp;&nbsp; SUSE Linux Enterprise @span | 15 | [:fontawesome-solid-cloud-arrow-down:][download-linux-sles-15] &nbsp; `SLE-15-SPx-Full-x86_64-GM-Media1.iso` |
 ::end-spantable::
 
 ## :fontawesome-brands-windows: Microsoft Windows
@@ -71,7 +71,7 @@ configuration variables.
 
 Update the ISO path and file for each guest operating system in the configuration variables.
 
-```hcl title="builds/linux/photon/5/packer.auto.pkrvars.hcl"
+````hcl title="builds/linux/photon/5/packer.auto.pkrvars.hcl"
 iso_datastore_path       = "iso/linux/photon"
 iso_content_library_item = "photon-5.0-xxxxxxxxx"
 iso_file                 = "photon-5.0-xxxxxxxxx.iso"
@@ -97,10 +97,11 @@ iso_file                 = "photon-5.0-xxxxxxxxx.iso"
 [download-linux-sles-15]: https://www.suse.com/download/sles/
 [download-linux-ubuntu-2004]: https://releases.ubuntu.com/20.04/
 [download-linux-ubuntu-2204]: https://releases.ubuntu.com/22.04/
-[download-linux-ubuntu-2310]: https://releases.ubuntu.com/23.10/
+[download-linux-ubuntu-2404]: https://releases.ubuntu.com/24.04/
 [download-windows-server-2022]: https://www.microsoft.com/evalcenter/evaluate-windows-server-2022
 [download-windows-server-2019]: https://www.microsoft.com/evalcenter/evaluate-windows-server-2019
 [download-windows-server-2025]: https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewserver
 [download-windows-11]: https://www.microsoft.com/evalcenter/evaluate-windows-11-enterprise
 [download-windows-10]: https://www.microsoft.com/evalcenter/evaluate-windows-10-enterprise
 [iso]: https://en.wikipedia.org/wiki/ISO_imageGUID-58D77EA5-50D9-4A8E-A15A-D7B3ABA11B87.html
+````

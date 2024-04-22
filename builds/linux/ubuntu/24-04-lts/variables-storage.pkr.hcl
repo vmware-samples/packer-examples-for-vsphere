@@ -3,7 +3,7 @@
 
 /*
     DESCRIPTION:
-    Ubuntu Server 23.10 storage variables.
+    Ubuntu Server 24.04 LTS storage variables.
     Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 

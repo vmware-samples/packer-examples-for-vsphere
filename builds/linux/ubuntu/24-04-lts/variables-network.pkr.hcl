@@ -3,7 +3,7 @@
 
 /*
     DESCRIPTION:
-    Ubuntu Server 23.10 network variables.
+    Ubuntu Server 24.04 LTS network variables.
     Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 

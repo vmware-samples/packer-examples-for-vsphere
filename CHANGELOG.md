@@ -6,6 +6,8 @@
 
 **Enhancement**:
 
+- Adds Ubuntu Server 24.04 LTS to the project.
+  [#891](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/891)
 - Adds a script (`./download.sh`) and a configuration (`project.json`) to assist in the download of
   the guest operating systems.
   [#874](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/874),
@@ -20,6 +22,11 @@
   [#895](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/895)
 - Adds option to enable cloud-init on Rocky Linux 8.
   [#895](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/895)
+
+**Chore**:
+
+- Removes Ubuntu Server 23.10 from the project; superseded by 24.04 LTS.
+  [#891](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/891)
 
 ## v0.19.1
 

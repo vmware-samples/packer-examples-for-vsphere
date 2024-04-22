@@ -298,7 +298,7 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://mirror.rackspace.com/CentOS/8-stream/isos/x86_64/CentOS-Stream-8-20240408.0-x86_64-dvd1.iso",
+                                        "download_link": "https://mirror.rackspace.com/CentOS/8-stream/isos/x86_64/CentOS-Stream-8-x86_64-latest-dvd1.iso",
                                         "checksum_algorithm": "sha256",
                                         "checksum": "https://mirror.rackspace.com/CentOS/8-stream/isos/x86_64/CHECKSUM"
                                     }

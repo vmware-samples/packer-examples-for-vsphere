@@ -22,6 +22,10 @@
   [#895](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/895)
 - Adds option to enable cloud-init on Rocky Linux 8.
   [#895](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/895)
+- Adds option to enable cloud-init on CentOS Stream 8.
+  [#897](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/897)
+- Adds option to enable cloud-init on CentOS Stream 9.
+  [#897](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/897)
 
 **Chore**:
 

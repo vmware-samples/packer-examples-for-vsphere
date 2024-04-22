@@ -6,20 +6,22 @@ icon: material/gitlab
 
 ## :material-gitlab: Generate a CI/CD YAML
 
-The GitLab CI/CD YAML (`.gitlab-ci.yml`) can be generated with Gomplate using a template
-(`./build-ci.tmpl`) and a configuration file in YAML (`./build.yaml`).
+1. Use the `make` command that defines the `update-gitlab-ci` target. This is the simpler option if
+   your environment is already set up for it.
 
-```shell
-gomplate -c build.yaml -f build-ci.tmpl -o .gitlab-ci.yml
-```
+      ```shell
+      make update-gitlab-ci
+      ```
 
-or
+2. Or use `gomplate` directly. This requires you to specify the configuration file (`build.yaml`),
+   the template file (`build-ci.tmpl`), and the output file (`.gitlab-ci.yml`).
 
-```shell
-make update-gitlab-ci
-```
+      ```shell
+      gomplate -c build.yaml -f build-ci.tmpl -o .gitlab-ci.yml
+      ```
 
-???- example "Example `.gitlab-ci.yml`"
+???+ example "Example `.gitlab-ci.yml`"
+
     ```yaml title=".gitlab-ci.yml" linenums="1"
     --8<-- "./.gitlab-ci.yml"
     ```

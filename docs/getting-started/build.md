@@ -56,17 +56,21 @@ This example will look for the configuration files in the `us-west-1` directory.
 The build script (`./build.sh`) can be generated with Gomplate using a template (`./build.tmpl`) and
 a configuration file in YAML (`./build.yaml`).
 
-Generate a custom build script:
+You have two options to generate a custom build script using Gomplate:
 
-```shell
-gomplate -c build.yaml -f build.tmpl -o build.sh
-```
+1. Use the `make` command that defines the `update-build-script` target. This is the simpler option
+   if your environment is already set up for it.
 
-or
+      ```shell
+      make update-build-script
+      ```
 
-```shell
-make update-build-script
-```
+2. Or use `gomplate` directly. This requires you to specify the configuration file (`build.yaml`),
+   the template file (`build.tmpl`), and the output file (`build.sh`).
+
+      ```shell
+      gomplate -c build.yaml -f build.tmpl -o build.sh
+      ```
 
 ## Build Directly with Packer
 
@@ -92,14 +96,6 @@ packer build -force on-error=ask \
     builds/windows/server/2022
 ```
 
-➜ packer validate \
--var-file="config/ansible.pkrvars.hcl" \
--var-file="config/build.pkrvars.hcl" \
--var-file="config/common.pkrvars.hcl" \
--var-file="config/proxy.pkrvars.hcl" \
--var-file="config/vsphere.pkrvars.hcl" \
-builds/linux/photon/5
-
 ## Build with Environmental Variables
 
 You can set your environment variables if you would prefer not to save sensitive information in
@@ -112,12 +108,14 @@ You can add these to environmental variables using the included `set-envvars.sh`
 ```
 
 ???+ tip "Tip"
-    You must run the script as source or the shorthand "`.`".
 
+    You must run the script as source or the shorthand "`.`".
 ---
 
-???+ note "Content Library" By default, the machine image artifacts are transferred to a [vSphere Content Library][vsphere-content-library]
-as an OVF template and the temporary machine image is destroyed. [^1]
+???+ note "Content Library"
+
+    By default, the machine image artifacts are transferred to a [vSphere Content Library][vsphere-content-library]
+    as an OVF template and the temporary machine image is destroyed. [^1]
 
     If an item of the same name exists in the target content library, Packer will update the
     existing item with the new version of OVF template.

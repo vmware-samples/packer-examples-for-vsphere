@@ -22,23 +22,22 @@ directory.
 The `config` folder is the default folder. You can override the default by passing an alternate
 value as the first argument.
 
-For example:
+You can set the region for your configuration and build scripts by passing the region code as an
+argument to the scripts. Here are examples for two regions:
 
-San Francisco: `us-west-1`
+1. For San Francisco, CA (`us-west-1`), run:
 
-```shell
-./config.sh us-west-1
-./build.sh us-west-1
-```
+      ```shell
+      ./config.sh us-west-1
+      ./build.sh us-west-1
+      ```
 
-Los Angeles: `us-west-2`
+2. For Los Angeles, CA (`us-west-2`), run:
 
-```shell
-./config.sh us-west-2
-./build.sh us-west-2
-```
-
-This is useful for the purposes of running machine image builds for different environment.
+      ```shell
+      ./config.sh us-west-2
+      ./build.sh us-west-2
+      ```
 
 ## Configuration Variables
 
@@ -179,7 +178,8 @@ The content of the public key, `build_key`, is added the key to the `~/.ssh/auth
 the `build_username` on the Linux guest operating systems.
 
 ???+ danger "Example Public Keys and Passwords."
-Replace the example public keys and passwords.
+
+    Replace the example public keys and passwords.
 
     By default, both Public Key Authentication and Password Authentication are enabled for Linux
     distributions.
@@ -198,13 +198,14 @@ ansible_key      = "<public_key>"
 ```
 
 ???+ info "Ansible User Password"
-A random password is auto-generated for the Ansible user.
 
-You can also override the `ansible_key` value with contents of a file, if required.
+    A random password is auto-generated for the Ansible user.
 
-```hcl title="config/ansible.pkrvars.hcl"
-ansible_key = file("${path.root}/config/ssh/ansible_id_ecdsa.pub")
-```
+    You can also override the `ansible_key` value with contents of a file, if required.
+
+    ```hcl title="config/ansible.pkrvars.hcl"
+    ansible_key = file("${path.root}/config/ssh/ansible_id_ecdsa.pub")
+    ```
 
 ### Common
 
@@ -219,32 +220,35 @@ Edit the `config/common.pkrvars.hcl` file to configure the following common vari
 
 ```hcl title="config/common.pkrvars.hcl"
 // Virtual Machine Settings
-common_vm_version           = 19
-common_tools_upgrade_policy = true
-common_remove_cdrom         = true
+common_vm_version                  = 19
+common_tools_upgrade_policy        = true
+common_remove_cdrom                = true
 
 // Template and Content Library Settings
-common_template_conversion     = false
-common_content_library         = "sfo-w01-lib01"
-common_content_library_enabled = true
-common_content_library_ovf     = true
-common_content_library_destroy = true
+common_template_conversion         = false
+common_content_library             = "sfo-w01-lib01"
+common_content_library_enabled     = true
+common_content_library_ovf         = true
+common_content_library_destroy     = true
+common_content_library_skip_export = false
 
 // OVF Export Settings
-common_ovf_export_enabled   = false
-common_ovf_export_overwrite = true
+common_ovf_export_enabled          = false
+common_ovf_export_overwrite        = true
 
 // Removable Media Settings
-common_iso_datastore = "sfo-w01-cl01-ds-nfs01"
+common_iso_datastore               = "sfo-w01-cl01-ds-nfs01"
+common_iso_content_library         = "sfo-w01-lib01"
+common_iso_content_library_enabled = false
 
 // Boot and Provisioning Settings
-common_data_source       = "http"
-common_http_ip           = null
-common_http_port_min     = 8000
-common_http_port_max     = 8099
-common_ip_wait_timeout   = "20m"
-common_ip_settle_timeout = "5s"
-common_shutdown_timeout  = "15m"
+common_data_source                 = "http"
+common_http_ip                     = null
+common_http_port_min               = 8000
+common_http_port_max               = 8099
+common_ip_wait_timeout             = "20m"
+common_ip_settle_timeout           = "5s"
+common_shutdown_timeout            = "15m"
 
 // HCP Packer
 common_hcp_packer_registry_enabled = false
@@ -331,8 +335,9 @@ vsphere_set_host_for_datastore_uploads = false
 ```
 
 ???- note "vSphere Distributed Resource Scheduler Disabled or Standalone ESXi Hosts"
-When targeting standalone ESXi hosts or vSphere clusters with vSphere DRS disabled, you must set
-the `vsphere_host` variable.
+
+    When targeting standalone ESXi hosts or vSphere clusters with vSphere DRS disabled, you must
+    set the `vsphere_host` variable.
 
     **Example** (vSphere Clusters with vSphere DRS Disabled):
 
@@ -352,13 +357,13 @@ the `vsphere_host` variable.
     ```hcl title="config/vsphere.pkrvars.hcl"
     ...
     vsphere_datacenter = "sfo-w01-dc01"
-    //vsphere_cluster = "sfo-w01-cl01"
-    vsphere_host = "sfo-w01-esx01"
-    vsphere_folder = "sfo-w01-fd-templates"
+    //vsphere_cluster  = "sfo-w01-cl01"
+    vsphere_host       = "sfo-w01-esx01"
+    vsphere_folder     = "sfo-w01-fd-templates"
     vsphere_datacenter = "sfo-w01-dc01"
-    //vsphere_cluster = "sfo-w01-cl01"
-    vsphere_host = "sfo-w01-esx01"
-    vsphere_folder = "sfo-w01-fd-templates"
+    //vsphere_cluster  = "sfo-w01-cl01"
+    vsphere_host       = "sfo-w01-esx01"
+    vsphere_folder     = "sfo-w01-fd-templates"
     ```
 
 ### Machine Images
@@ -375,12 +380,12 @@ machine hardware settings, as required:
 
 ```hcl title="config/linux-photon-5.pkrvars.hcl"
 // Guest Operating System Metadata
-vm_guest_os_family  = "linux"
-vm_guest_os_name    = "photon"
-vm_guest_os_version = "5.0"
+vm_guest_os_family       = "linux"
+vm_guest_os_name         = "photon"
+vm_guest_os_version      = "5.0"
 
 // Virtual Machine Guest Operating System Setting
-vm_guest_os_type = "vmwarePhoton64Guest"
+vm_guest_os_type         = "vmwarePhoton64Guest"
 
 // Virtual Machine Hardware Settings
 vm_firmware              = "efi-secure"
@@ -402,12 +407,12 @@ iso_content_library_item = "photon-5.0-dde71ec57.x86_64"
 iso_file                 = "photon-5.0-dde71ec57.x86_64.iso"
 
 // Boot Settings
-vm_boot_order = "disk,cdrom"
-vm_boot_wait  = "2s"
+vm_boot_order            = "disk,cdrom"
+vm_boot_wait             = "2s"
 
 // Communicator Settings
-communicator_port    = 22
-communicator_timeout = "30m"
+communicator_port        = 22
+communicator_timeout     = "30m"
 ```
 
 ???+ note
@@ -501,8 +506,8 @@ Edit the `config/linux-storage.pkrvars.hcl` file to configure a partitioning sch
 - Logical volumes and related settings (optional).
 
 ```hcl title="config/linux-storage.pkrvars.hcl"
-vm_disk_device = "sda"
-vm_disk_use_swap = false
+vm_disk_device     = "sda"
+vm_disk_use_swap   = false
 vm_disk_partitions = [
   {
     name = "efi"

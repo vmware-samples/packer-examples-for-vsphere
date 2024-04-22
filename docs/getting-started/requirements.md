@@ -70,7 +70,8 @@ HashiCorp [Packer][packer-install] 1.10.0 or higher.
           gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint
           ```
 
-          You can verify that the fingerprint matches the HashiCorp public key published on [Security at HashiCorp][hcp-security].
+          You can verify that the fingerprint matches the HashiCorp public key published on
+          [Security at HashiCorp][hcp-security].
 
     3. Add the official HashiCorp repository to your system:
 

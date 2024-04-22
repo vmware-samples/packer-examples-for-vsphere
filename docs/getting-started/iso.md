@@ -4,7 +4,8 @@ icon: octicons/stack-24
 
 # Guest Operating Systems
 
-The project allows the use of a datastore (default) or a content library to store your guest operating system [ISO][iso] files.
+The project allows the use of a datastore (default) or a content library to store your guest
+operating system [ISO][iso] files.
 
 ## :fontawesome-brands-linux: Linux Distributions
 

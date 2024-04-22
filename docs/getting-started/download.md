@@ -38,7 +38,8 @@ You can choose between two options to get the source code:
       You may also clone the `develop` branch for the latest prerelease updates.
 
 ???+ note "Branches"
-      :octicons-git-branch-16: A branch is mandatory since it is used for the build version and in the virtual machine name. It does not matter if it is based on the `HEAD` or a release tag.
+      :octicons-git-branch-16: A branch is mandatory since it is used for the build version and in
+      the virtual machine name. It does not matter if it is based on the `HEAD` or a release tag.
 
 ## :octicons-file-directory-24: &nbsp; Directory Structure
 

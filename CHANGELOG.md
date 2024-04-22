@@ -12,10 +12,14 @@
   [#877](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/877)
 - Adds option to enable cloud-init on Debian 12.
   [#883](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/883)
-- Adds option to enabled cloud-init on Red Hat Enterprise Linux 9.
+- Adds option to enable cloud-init on Red Hat Enterprise Linux 9.
   [#888](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/888)
-- Adds option to enabled cloud-init on Red Hat Enterprise Linux 8.
-- [#888](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/888))
+- Adds option to enable cloud-init on Red Hat Enterprise Linux 8.
+  [#888](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/888)
+- Adds option to enable cloud-init on Rocky Linux 9.
+  [#895](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/895)
+- Adds option to enable cloud-init on Rocky Linux 8.
+  [#895](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/895)
 
 ## v0.19.1
 

@@ -113,11 +113,11 @@ source "vsphere-iso" "windows-desktop-pro" {
     "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", {
       build_username       = var.build_username
       build_password       = var.build_password
-      vm_inst_os_eval      = var.vm_inst_os_eval
+      vm_inst_os_eval      = var.vm_inst_os_eval        // Does not support evaluation.
       vm_inst_os_language  = var.vm_inst_os_language
       vm_inst_os_keyboard  = var.vm_inst_os_keyboard
       vm_inst_os_image     = var.vm_inst_os_image_pro
-      vm_inst_os_key       = var.vm_inst_os_key_pro
+      vm_inst_os_key       = var.vm_inst_os_key_pro     // Does not support evaluation.
       vm_guest_os_language = var.vm_guest_os_language
       vm_guest_os_keyboard = var.vm_guest_os_keyboard
       vm_guest_os_timezone = var.vm_guest_os_timezone
@@ -144,17 +144,6 @@ source "vsphere-iso" "windows-desktop-pro" {
 
   // Template and Content Library Settings
   convert_to_template = true
-  # convert_to_template = var.common_template_conversion
-  # dynamic "content_library_destination" {
-  #   for_each = var.common_content_library_enabled ? [1] : []
-  #   content {
-  #     library     = var.common_content_library
-  #     description = local.build_description
-  #     ovf         = var.common_content_library_ovf
-  #     destroy     = var.common_content_library_destroy
-  #     skip_import = var.common_content_library_skip_export
-  #   }
-  # }
 
   // OVF Export Settings
   dynamic "export" {
@@ -227,7 +216,7 @@ source "vsphere-iso" "windows-desktop-ent" {
       vm_inst_os_eval      = var.vm_inst_os_eval
       vm_inst_os_language  = var.vm_inst_os_language
       vm_inst_os_keyboard  = var.vm_inst_os_keyboard
-      vm_inst_os_image     = var.vm_inst_os_image_ent
+      vm_inst_os_image     = var.vm_inst_os_eval ? "${var.vm_inst_os_image_ent} Evaluation" : var.vm_inst_os_image_ent
       vm_inst_os_key       = var.vm_inst_os_key_ent
       vm_guest_os_language = var.vm_guest_os_language
       vm_guest_os_keyboard = var.vm_guest_os_keyboard
@@ -255,17 +244,6 @@ source "vsphere-iso" "windows-desktop-ent" {
 
   // Template and Content Library Settings
   convert_to_template = true
-  # convert_to_template = var.common_template_conversion
-  # dynamic "content_library_destination" {
-  #   for_each = var.common_content_library_enabled ? [1] : []
-  #   content {
-  #     library     = var.common_content_library
-  #     description = local.build_description
-  #     ovf         = var.common_content_library_ovf
-  #     destroy     = var.common_content_library_destroy
-  #     skip_import = var.common_content_library_skip_export
-  #   }
-  # }
 
   // OVF Export Settings
   dynamic "export" {

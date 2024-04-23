@@ -37,7 +37,7 @@ d-i passwd/user-password-crypted password ${build_password_encrypted}
 
 # Package Configuration
 d-i pkgsel/run_tasksel boolean false
-d-i pkgsel/include string openssh-server open-vm-tools python3-apt perl ${additional_packages} %{if vm_guest_os_cloudinit == true} cloud-init %{endif ~}
+d-i pkgsel/include string openssh-server open-vm-tools python3-apt perl ${additional_packages}
 
 # Add User to Sudoers
 d-i preseed/late_command string \

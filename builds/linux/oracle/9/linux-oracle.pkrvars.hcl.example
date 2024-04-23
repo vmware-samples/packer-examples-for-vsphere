@@ -17,6 +17,7 @@ vm_guest_os_version  = "9.3"
 
 // Virtual Machine Guest Operating System Setting
 vm_guest_os_type = "other5xLinux64Guest"
+vm_guest_os_cloudinit = false
 
 // Virtual Machine Hardware Settings
 vm_firmware              = "efi-secure"

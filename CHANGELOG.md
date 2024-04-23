@@ -34,6 +34,10 @@
   [#899](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/899)
 - Adds option to enable cloud-init on Oracle Linux 9.
   [#899](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/899)
+- Adds option to enable cloud-init on VMware Photon OS 4.
+  [#900](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/900)
+- Adds option to enable cloud-init on VMware Photon OS 5.
+  [#900](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/900)
 
 **Chore**:
 

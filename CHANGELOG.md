@@ -30,6 +30,10 @@
   [#898](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/898)
 - Adds option to enable cloud-init on AlmaLinux OS 9.
   [#898](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/898)
+- Adds option to enable cloud-init on Oracle Linux 8.
+  [#899](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/899)
+- Adds option to enable cloud-init on Oracle Linux 9.
+  [#899](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/899)
 
 **Chore**:
 

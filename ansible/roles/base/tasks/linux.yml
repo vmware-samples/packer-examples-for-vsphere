@@ -4,7 +4,28 @@
 - block:
   - name: "Updating the operating system."
     command: "tdnf -y update"
+  when: ansible_os_family == 'VMware Photon OS' and ansible_distribution_version | int >= 5
 
+- block:
+  - name: "Updating repository URL"
+    shell: |
+      cd /etc/yum.repos.d/
+      sed -i 's/dl.bintray.com\/vmware/packages.vmware.com\/photon\/$releasever/g' photon.repo photon-updates.repo photon-extras.repo photon-debuginfo.repo
+
+  - name: "Updating the photon-repo."
+    command: tdnf -y update photon-repos
+
+  - name: "Cleaning the cache."
+    command: tdnf clean all
+
+  - name: "Making cache."
+    command: tdnf makecache
+
+  - name: "Updating the operating system."
+    command: tdnf -y update
+  when: ansible_os_family == 'VMware Photon OS' and ansible_distribution_version | int <= 4
+
+- block:
   - name: "Installing additional packages."
     command: "tdnf -y install {{ additional_packages[ansible_os_family] | join(' ') }}"
   when: ansible_os_family == 'VMware Photon OS'

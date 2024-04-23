@@ -370,9 +370,9 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://packages.vmware.com/photon/4.0/GA/iso/photon-4.0-1526e30ba.iso",
+                                        "download_link": "https://packages.vmware.com/photon/4.0/Rev2/iso/photon-4.0-c001795b8.iso",
                                         "checksum_algorithm": "SHA1",
-                                        "checksum": "2221ab214b517a15c60bd5e2aacdb9388581bcd9"
+                                        "checksum": "eeb08738209bf77306268d63b834fd91f6cecdfb"
                                     }
                                 ]
                             }

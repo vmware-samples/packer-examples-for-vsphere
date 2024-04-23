@@ -668,6 +668,11 @@ extract_checksum() {
         # Checksum extraction for Oracle Linux
         expected_checksum=$(grep "$file_name" "$checksum_file" | awk '{print $1}')
         ;;
+    "Fedora Server")
+        # Checksum extraction for Fedora Server
+        checksum_algorithm_upper=$(echo "$checksum_algorithm" | tr '[:lower:]' '[:upper:]')
+        expected_checksum=$(grep "$checksum_algorithm_upper ($file_name)" "$checksum_file" | awk -F'=' '{print $2}' | tr -d ' ')
+        ;;
     "Debian")
         # Checksum extraction for Debian
         expected_checksum=$(grep "$file_name" "$checksum_file" | awk '{print $1}')
@@ -759,7 +764,7 @@ compare_checksums() {
             print_message error "Verification of checksum \033[31mfailed\033[0m for \033[34m$file_name\033[0m.\n"
             print_message info "        - \033[32mExpected:\033[0m \033[34m$expected_checksum\033[0m\n"
             print_message info "        - \033[31mActual:\033[0m   \033[34m$actual_checksum\033[0m\n\n"
-            print_message error "Download \033[1m\033[31mfailed\033[0m\n for \033[34m$dist $version $arch\033[0m.\n"
+            print_message error "Download \033[1m\033[31mfailed\033[0m for \033[34m$dist $version $arch\033[0m.\n"
 
             if $cleanup_failed_iso_verification; then
                 # Attempt to remove the downloaded ISO file.

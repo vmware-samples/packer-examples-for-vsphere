@@ -6,12 +6,14 @@
 
 **Enhancement**:
 
-- Adds Ubuntu Server 24.04 LTS to the project.
-  [#891](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/891)
 - Adds a script (`./download.sh`) and a configuration (`project.json`) to assist in the download of
   the guest operating systems.
   [#874](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/874),
   [#877](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/877)
+- Adds Ubuntu Server 24.04 LTS to the project.
+  [#891](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/891)
+- Adds Fedora Server 40 Linux distribution to the project.
+  [#xxx](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/xxx)
 - Adds option to enable cloud-init on Debian 12.
   [#883](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/883)
 - Adds option to enable cloud-init on Red Hat Enterprise Linux 9.

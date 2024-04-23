@@ -76,19 +76,6 @@
 
 - block:
   - name: "Updating the operating system."
-    yum:
-      name: "*"
-      state: latest     # noqa package-latest
-      update_cache: true
-
-  - name: "Installing additional packages."
-    yum:
-      name: "{{ additional_packages[ansible_os_family] }}"
-      state: latest     # noqa package-latest
-  when: ansible_os_family == 'RedHat' and ansible_distribution_major_version | int < 8
-
-- block:
-  - name: "Updating the operating system."
     dnf:
       name: "*"
       state: latest     # noqa package-latest
@@ -104,7 +91,23 @@
     dnf:
       name: "{{ additional_packages[ansible_os_family] }}"
       state: latest     # noqa package-latest
-  when: ansible_os_family == 'RedHat' and ansible_distribution_major_version | int >= 8
+  when:
+    - ansible_distribution == 'Fedora' and ansible_distribution_major_version | int >= 40
+    - ansible_os_family == 'RedHat' and ansible_distribution_major_version | int >= 8
+
+- block:
+  - name: "Updating the operating system."
+    yum:
+      name: "*"
+      state: latest     # noqa package-latest
+      update_cache: true
+
+  - name: "Installing additional packages."
+    yum:
+      name: "{{ additional_packages[ansible_os_family] }}"
+      state: latest     # noqa package-latest
+  when: ansible_os_family == 'RedHat' and ansible_distribution_major_version | int < 8
+
 
 # SUSE Linux Enterprise Server
 

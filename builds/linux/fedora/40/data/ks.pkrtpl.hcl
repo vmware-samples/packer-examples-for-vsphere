@@ -1,7 +1,7 @@
 # Copyright 2023-2024 Broadcom. All rights reserved.
 # SPDX-License-Identifier: BSD-2
 
-# Red Hat Enterprise Linux 8
+# Fedora Server 40
 
 ### Installs from the first attached CD-ROM/DVD on the system.
 cdrom
@@ -67,11 +67,8 @@ skipx
 
 ### Post-installation commands.
 %post
-/usr/sbin/subscription-manager register --username ${rhsm_username} --password ${rhsm_password} --autosubscribe --force
-/usr/sbin/subscription-manager repos --enable "codeready-builder-for-rhel-8-x86_64-rpms"
-dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 dnf makecache
-dnf install -y sudo open-vm-tools perl
+dnf install -y sudo open-vm-tools perl python3-libselinux
 %{ if additional_packages != "" ~}
 dnf install -y ${additional_packages}
 %{ endif ~}

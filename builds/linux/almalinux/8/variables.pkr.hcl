@@ -121,6 +121,12 @@ variable "vm_guest_os_type" {
   description = "The guest operating system type, also know as guestid."
 }
 
+variable "vm_guest_os_cloudinit" {
+  type        = bool
+  description = "Enable cloud-init for the guest operating system."
+  default     = false
+}
+
 variable "vm_firmware" {
   type        = string
   description = "The virtual machine firmware."
@@ -274,6 +280,11 @@ variable "common_iso_content_library" {
 variable "common_iso_datastore" {
   type        = string
   description = "The name of the target vSphere datastore for the guest operating system ISO."
+}
+
+variable "iso_datastore_path" {
+  type        = string
+  description = "The path on the source vSphere datastore for the guest operating system ISO."
 }
 
 variable "iso_file" {

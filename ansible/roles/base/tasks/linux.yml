@@ -35,10 +35,17 @@
   when: ansible_distribution == 'RedHat'
 
 - name: "Upgrade almalinux-release package."
-  ansible.builtin.command:
-    cmd: dnf upgrade -y almalinux-release
+  dnf:
+    name: almalinux-release
+    state: latest
   become: true
   when: ansible_distribution == 'AlmaLinux'
+
+- name: "Installing Cloud-init."
+  dnf:
+    name: cloud-init
+    state: latest
+  when: ansible_distribution == 'AlmaLinux' and ansible_distribution_version | int >= 8 and enable_cloudinit == 'true'
 
 - block:
   - name: "Updating the operating system."
@@ -59,11 +66,13 @@
       name: "*"
       state: latest     # noqa package-latest
       update_cache: true
+
   - name: "Installing Cloud-init."
     dnf:
       name: cloud-init
       state: latest
     when: enable_cloudinit == 'true'
+
   - name: "Installing additional packages."
     dnf:
       name: "{{ additional_packages[ansible_os_family] }}"

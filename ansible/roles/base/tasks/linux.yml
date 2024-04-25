@@ -50,7 +50,7 @@
     apt:
       name: "{{ additional_packages[ansible_os_family] }}"
       state: latest     # noqa package-latest
-    when: ansible_os_family == 'Debian'
+  when: ansible_os_family == 'Debian'
 
 # Red Hat Enterprise Linux or derivatives.
 

@@ -108,13 +108,13 @@ menu:
             - "linux-storage.pkrvars.hcl"
       - entry: "CentOS Stream 9"
         build:
-          path: "builds/linux/centos/9-stream/"
+          path: "builds/linux/centos/9/"
           var_files:
             - "network.pkrvars.hcl"
             - "linux-storage.pkrvars.hcl"
       - entry: "CentOS Stream 8"
         build:
-          path: "builds/linux/centos/8-stream/"
+          path: "builds/linux/centos/8/"
           var_files:
             - "network.pkrvars.hcl"
             - "linux-storage.pkrvars.hcl"

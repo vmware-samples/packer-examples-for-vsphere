@@ -35,6 +35,7 @@
                 {
                     "name": "debian",
                     "description": "Debian",
+                    "enabled": "true",
                     "publisher": {
                         "name": "Debian",
                         "url": "https://debian.org"
@@ -42,7 +43,8 @@
                     "versions": {
                         "12": [
                             {
-                                "version": "12.5",
+                                "version": "12",
+                                "enabled": "true",
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
@@ -50,18 +52,41 @@
                                         "checksum_algorithm": "sha256",
                                         "checksum": "https://gemmei.ftp.acc.umu.se/mirror/cdimage/release/12.5.0/amd64/iso-cd/SHA256SUMS"
                                     }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl"
+                                    }
                                 ]
                             }
                         ],
                         "11": [
                             {
-                                "version": "11.9",
+                                "version": "11",
+                                "enabled": "true",
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
                                         "download_link": "https://saimei.ftp.acc.umu.se/mirror/cdimage/archive/11.9.0/amd64/iso-cd/debian-11.9.0-amd64-netinst.iso",
                                         "checksum_algorithm": "sha256",
                                         "checksum": "https://saimei.ftp.acc.umu.se/mirror/cdimage/archive/11.9.0/amd64/iso-cd/SHA256SUMS"
+                                    }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl"
                                     }
                                 ]
                             }
@@ -71,6 +96,7 @@
                 {
                     "name": "ubuntu-server",
                     "description": "Ubuntu Server",
+                    "enabled": "true",
                     "publisher": {
                         "name": "Canonical",
                         "url": "https://ubuntu.com"
@@ -78,7 +104,8 @@
                     "versions": {
                         "24.04": [
                             {
-                                "version": "24.04 LTS",
+                                "version": "24-04-LTS",
+                                "enabled": "true",
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
@@ -86,12 +113,24 @@
                                         "checksum_algorithm": "sha256",
                                         "checksum": "https://releases.ubuntu.com/releases/24.04/SHA256SUMS"
                                     }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl"
+                                    }
                                 ]
                             }
                         ],
                         "22.04": [
                             {
-                                "version": "22.04 LTS",
+                                "version": "22-04-LTS",
+                                "enabled": "true",
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
@@ -99,18 +138,41 @@
                                         "checksum_algorithm": "sha256",
                                         "checksum": "https://releases.ubuntu.com/releases/22.04/SHA256SUMS"
                                     }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl"
+                                    }
                                 ]
                             }
                         ],
                         "20.04": [
                             {
-                                "version": "20.04 LTS",
+                                "version": "20-04-LTS",
+                                "enabled": "true",
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
                                         "download_link": "https://releases.ubuntu.com/releases/20.04.6/ubuntu-20.04.6-live-server-amd64.iso",
                                         "checksum_algorithm": "sha256",
                                         "checksum": "https://releases.ubuntu.com/releases/20.04.6/SHA256SUMS"
+                                    }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl"
                                     }
                                 ]
                             }
@@ -120,6 +182,7 @@
                 {
                     "name": "rhel",
                     "description": "Red Hat Enterprise Linux",
+                    "enabled": "true",
                     "publisher": {
                         "name": "Red Hat",
                         "url": "https://redhat.com"
@@ -127,36 +190,75 @@
                     "versions": {
                         "9": [
                             {
-                                "version": "9.3",
+                                "version": "9",
+                                "enabled": "true",
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
                                         "checksum_algorithm": "sha256",
                                         "checksum": "5c802147aa58429b21e223ee60e347e850d6b0d8680930c4ffb27340ffb687a8"
                                     }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl",
+                                        "rshm": "rhsm.pkrvars.hcl"
+                                    }
                                 ]
                             }
                         ],
                         "8": [
                             {
-                                "version": "8.9",
+                                "version": "8",
+                                "enabled": "true",
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
                                         "checksum_algorithm": "sha256",
                                         "checksum": "c4fd0632ce15a7d56e1d174176456943bd48306f9d35bcecbcb0a1dc49088e23"
                                     }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl",
+                                        "rshm": "rhsm.pkrvars.hcl"
+                                    }
                                 ]
                             }
                         ],
                         "7": [
                             {
-                                "version": "7.9",
+                                "version": "7",
+                                "enabled": "true",
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
                                         "checksum_algorithm": "sha256",
                                         "checksum": "2cb36122a74be084c551bc7173d2d38a1cfb75c8ffbc1489c630c916d1b31b25"
+                                    }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl",
+                                        "rshm": "rhsm.pkrvars.hcl"
                                     }
                                 ]
                             }
@@ -166,6 +268,7 @@
                 {
                     "name": "rocky-linux",
                     "description": "Rocky Linux",
+                    "enabled": "true",
                     "publisher": {
                         "name": "Rocky Linux",
                         "url": "https://rockylinux.org"
@@ -173,7 +276,8 @@
                     "versions": {
                         "9": [
                             {
-                                "version": "9.3",
+                                "version": "9",
+                                "enabled": "true",
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
@@ -181,18 +285,41 @@
                                         "checksum_algorithm": "sha256",
                                         "checksum": "https://download.rockylinux.org/pub/rocky/9/isos/x86_64/CHECKSUM"
                                     }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl"
+                                    }
                                 ]
                             }
                         ],
                         "8": [
                             {
-                                "version": "8.9",
+                                "version": "8",
+                                "enabled": "true",
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
                                         "download_link": "https://download.rockylinux.org/pub/rocky/8.9/isos/x86_64/Rocky-8.9-x86_64-dvd1.iso",
                                         "checksum_algorithm": "sha256",
                                         "checksum": "https://download.rockylinux.org/pub/rocky/8.9/isos/x86_64/CHECKSUM"
+                                    }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl"
                                     }
                                 ]
                             }
@@ -202,6 +329,7 @@
                 {
                     "name": "almalinux",
                     "description": "AlmaLinux OS",
+                    "enabled": "true",
                     "publisher": {
                         "name": "AlmaLinux",
                         "url": "https://almalinux.org"
@@ -209,7 +337,8 @@
                     "versions": {
                         "9": [
                             {
-                                "version": "9.3",
+                                "version": "9",
+                                "enabled": "true",
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
@@ -217,18 +346,41 @@
                                         "checksum_algorithm": "sha256",
                                         "checksum": "https://repo.almalinux.org/almalinux/9.3/isos/x86_64/CHECKSUM"
                                     }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl"
+                                    }
                                 ]
                             }
                         ],
                         "8": [
                             {
-                                "version": "8.9",
+                                "version": "8",
+                                "enabled": "true",
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
                                         "download_link": "https://repo.almalinux.org/almalinux/8.9/isos/x86_64/AlmaLinux-8.9-x86_64-dvd.iso",
                                         "checksum_algorithm": "sha256",
                                         "checksum": "https://repo.almalinux.org/almalinux/8.9/isos/x86_64/CHECKSUM"
+                                    }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl"
                                     }
                                 ]
                             }
@@ -238,6 +390,7 @@
                 {
                     "name": "oracle-linux",
                     "description": "Oracle Linux",
+                    "enabled": "true",
                     "publisher": {
                         "name": "Oracle",
                         "url": "https://oracle.com/linux/"
@@ -245,7 +398,8 @@
                     "versions": {
                         "9": [
                             {
-                                "version": "9.3",
+                                "version": "9",
+                                "enabled": "true",
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
@@ -253,18 +407,41 @@
                                         "checksum_algorithm": "sha256",
                                         "checksum": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U3-Server-x86_64.checksum"
                                     }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl"
+                                    }
                                 ]
                             }
                         ],
                         "8": [
                             {
-                                "version": "8.9",
+                                "version": "8",
+                                "enabled": "true",
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
                                         "download_link": "https://yum.oracle.com/ISOS/OracleLinux/OL8/u9/x86_64/OracleLinux-R8-U9-x86_64-dvd.iso",
                                         "checksum_algorithm": "sha256",
                                         "checksum": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R8-U9-Server-x86_64.checksum"
+                                    }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl"
                                     }
                                 ]
                             }
@@ -274,6 +451,7 @@
                 {
                     "name": "centos",
                     "description": "CentOS",
+                    "enabled": "true",
                     "publisher": {
                         "name": "CentOS",
                         "url": "https://centos.org"
@@ -281,7 +459,8 @@
                     "versions": {
                         "9": [
                             {
-                                "version": "Stream 9",
+                                "version": "9",
+                                "enabled": "true",
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
@@ -289,12 +468,24 @@
                                         "checksum_algorithm": "sha256",
                                         "checksum": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/iso/CentOS-Stream-9-latest-x86_64-dvd1.iso.SHA256SUM"
                                     }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl"
+                                    }
                                 ]
                             }
                         ],
                         "8": [
                             {
-                                "version": "Stream 8",
+                                "version": "8",
+                                "enabled": "true",
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
@@ -302,18 +493,41 @@
                                         "checksum_algorithm": "sha256",
                                         "checksum": "https://mirror.rackspace.com/CentOS/8-stream/isos/x86_64/CHECKSUM"
                                     }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl"
+                                    }
                                 ]
                             }
                         ],
                         "7": [
                             {
                                 "version": "7",
+                                "enabled": "true",
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
                                         "download_link": "https://mirror.rackspace.com/CentOS/7.9.2009/isos/x86_64/CentOS-7-x86_64-DVD-2009.iso",
                                         "checksum_algorithm": "sha256",
                                         "checksum": "https://mirror.rackspace.com/CentOS/7.9.2009/isos/x86_64/sha256sum.txt"
+                                    }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl"
                                     }
                                 ]
                             }
@@ -323,6 +537,7 @@
                 {
                     "name": "fedora-server",
                     "description": "Fedora Server",
+                    "enabled": "true",
                     "publisher": {
                         "name": "Fedora Project",
                         "url": "https://fedoraproject.org"
@@ -331,12 +546,24 @@
                         "40": [
                             {
                                 "version": "40",
+                                "enabled": "true",
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
                                         "download_link": "https://na.edge.kernel.org/fedora/releases/40/Server/x86_64/iso/Fedora-Server-dvd-x86_64-40-1.14.iso",
                                         "checksum_algorithm": "sha256",
                                         "checksum": "https://na.edge.kernel.org/fedora/releases/40/Server/x86_64/iso/Fedora-Server-40-1.14-x86_64-CHECKSUM"
+                                    }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl"
                                     }
                                 ]
                             }
@@ -346,6 +573,7 @@
                 {
                     "name": "sles",
                     "description": "SUSE Linux Enterprise Server",
+                    "enabled": "true",
                     "publisher": {
                         "name": "SUSE",
                         "url": "https://suse.com"
@@ -353,13 +581,25 @@
                     "versions": {
                         "15": [
                             {
-                                "version": "15SP5",
+                                "version": "15",
+                                "enabled": "true",
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
                                         "download_link": "https://suse.com/download/sles/",
                                         "checksum_algorithm": "sha256",
                                         "checksum": ""
+                                    }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "scc": "scc.pkrvars.hcl"
                                     }
                                 ]
                             }
@@ -369,6 +609,7 @@
                 {
                     "name": "photon",
                     "description": "VMware Photon OS",
+                    "enabled": "true",
                     "publisher": {
                         "name": "VMware",
                         "url": "https://vmware.com"
@@ -376,7 +617,8 @@
                     "versions": {
                         "5": [
                             {
-                                "version": "5.0",
+                                "version": "5",
+                                "enabled": "true",
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
@@ -384,18 +626,39 @@
                                         "checksum_algorithm": "SHA512",
                                         "checksum": "6a7a258399a258da742032987c043ab25503698d35edafaf1ae000f12127da1a161d8b84caa17fd8f23d129e81e1faa7ab087c20ab9229772a643f8f9475305f"
                                     }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl"
+                                    }
                                 ]
                             }
                         ],
                         "4": [
                             {
-                                "version": "4.0",
+                                "version": "4",
+                                "enabled": "true",
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
                                         "download_link": "https://packages.vmware.com/photon/4.0/Rev2/iso/photon-4.0-c001795b8.iso",
                                         "checksum_algorithm": "SHA1",
                                         "checksum": "eeb08738209bf77306268d63b834fd91f6cecdfb"
+                                    }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl"
                                     }
                                 ]
                             }
@@ -410,15 +673,61 @@
             "types": [
                 {
                     "type": "server",
+                    "enabled": "true",
                     "description": "Windows Server",
                     "publisher": {
                         "name": "Microsoft",
                         "url": "https://microsoft.com"
                     },
                     "versions": {
+                        "2025": [
+                            {
+                                "version": "2025",
+                                "enabled": "true",
+                                "description": "Windows Server 2025",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "",
+                                        "comments": "Evaluation"
+                                    }
+                                ],
+                                "editions": [
+                                    {
+                                        "edition": "Standard",
+                                        "enabled": "true",
+                                        "build_files": [
+                                            {
+                                                "vsphere": "vsphere.pkrvars.hcl",
+                                                "build": "build.pkrvars.hcl",
+                                                "ansible": "ansible.pkrvars.hcl",
+                                                "proxy": "proxy.pkrvars.hcl",
+                                                "common": "common.pkrvars.hcl"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "edition": "Datacenter",
+                                        "enabled": "true",
+                                        "build_files": [
+                                            {
+                                                "vsphere": "vsphere.pkrvars.hcl",
+                                                "build": "build.pkrvars.hcl",
+                                                "ansible": "ansible.pkrvars.hcl",
+                                                "proxy": "proxy.pkrvars.hcl",
+                                                "common": "common.pkrvars.hcl"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
                         "2022": [
                             {
                                 "version": "2022",
+                                "enabled": "true",
                                 "description": "Windows Server 2022",
                                 "architectures": [
                                     {
@@ -428,12 +737,41 @@
                                         "checksum": "",
                                         "comments": "Evaluation"
                                     }
+                                ],
+                                "editions": [
+                                    {
+                                        "edition": "Standard",
+                                        "enabled": "true",
+                                        "build_files": [
+                                            {
+                                                "vsphere": "vsphere.pkrvars.hcl",
+                                                "build": "build.pkrvars.hcl",
+                                                "ansible": "ansible.pkrvars.hcl",
+                                                "proxy": "proxy.pkrvars.hcl",
+                                                "common": "common.pkrvars.hcl"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "edition": "Datacenter",
+                                        "enabled": "true",
+                                        "build_files": [
+                                            {
+                                                "vsphere": "vsphere.pkrvars.hcl",
+                                                "build": "build.pkrvars.hcl",
+                                                "ansible": "ansible.pkrvars.hcl",
+                                                "proxy": "proxy.pkrvars.hcl",
+                                                "common": "common.pkrvars.hcl"
+                                            }
+                                        ]
+                                    }
                                 ]
                             }
                         ],
                         "2019": [
                             {
                                 "version": "2019",
+                                "enabled": "true",
                                 "description": "Windows Server 2019",
                                 "architectures": [
                                     {
@@ -443,6 +781,34 @@
                                         "checksum": "",
                                         "comments": "Evaluation"
                                     }
+                                ],
+                                "editions": [
+                                    {
+                                        "edition": "Standard",
+                                        "enabled": "true",
+                                        "build_files": [
+                                            {
+                                                "vsphere": "vsphere.pkrvars.hcl",
+                                                "build": "build.pkrvars.hcl",
+                                                "ansible": "ansible.pkrvars.hcl",
+                                                "proxy": "proxy.pkrvars.hcl",
+                                                "common": "common.pkrvars.hcl"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "edition": "Datacenter",
+                                        "enabled": "true",
+                                        "build_files": [
+                                            {
+                                                "vsphere": "vsphere.pkrvars.hcl",
+                                                "build": "build.pkrvars.hcl",
+                                                "ansible": "ansible.pkrvars.hcl",
+                                                "proxy": "proxy.pkrvars.hcl",
+                                                "common": "common.pkrvars.hcl"
+                                            }
+                                        ]
+                                    }
                                 ]
                             }
                         ]
@@ -451,6 +817,7 @@
                 {
                     "type": "desktop",
                     "description": "Windows Desktop",
+                    "enabled": "true",
                     "publisher": {
                         "name": "Microsoft",
                         "url": "https://microsoft.com"
@@ -459,6 +826,7 @@
                         "11": [
                             {
                                 "version": "11",
+                                "enabled": "true",
                                 "description": "Windows 11",
                                 "architectures": [
                                     {
@@ -468,12 +836,41 @@
                                         "checksum": "",
                                         "comments": "Evaluation"
                                     }
+                                ],
+                                "editions": [
+                                    {
+                                        "edition": "Enterprise",
+                                        "enabled": "true",
+                                        "build_files": [
+                                            {
+                                                "vsphere": "vsphere.pkrvars.hcl",
+                                                "build": "build.pkrvars.hcl",
+                                                "ansible": "ansible.pkrvars.hcl",
+                                                "proxy": "proxy.pkrvars.hcl",
+                                                "common": "common.pkrvars.hcl"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "edition": "Professional",
+                                        "enabled": "true",
+                                        "build_files": [
+                                            {
+                                                "vsphere": "vsphere.pkrvars.hcl",
+                                                "build": "build.pkrvars.hcl",
+                                                "ansible": "ansible.pkrvars.hcl",
+                                                "proxy": "proxy.pkrvars.hcl",
+                                                "common": "common.pkrvars.hcl"
+                                            }
+                                        ]
+                                    }
                                 ]
                             }
                         ],
                         "10": [
                             {
                                 "version": "10",
+                                "enabled": "true",
                                 "description": "Windows 10",
                                 "architectures": [
                                     {
@@ -482,6 +879,34 @@
                                         "checksum_algorithm": "sha256",
                                         "checksum": "",
                                         "comments": "Evaluation"
+                                    }
+                                ],
+                                "editions": [
+                                    {
+                                        "edition": "Enterprise",
+                                        "enabled": "true",
+                                        "build_files": [
+                                            {
+                                                "vsphere": "vsphere.pkrvars.hcl",
+                                                "build": "build.pkrvars.hcl",
+                                                "ansible": "ansible.pkrvars.hcl",
+                                                "proxy": "proxy.pkrvars.hcl",
+                                                "common": "common.pkrvars.hcl"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "edition": "Professional",
+                                        "enabled": "true",
+                                        "build_files": [
+                                            {
+                                                "vsphere": "vsphere.pkrvars.hcl",
+                                                "build": "build.pkrvars.hcl",
+                                                "ansible": "ansible.pkrvars.hcl",
+                                                "proxy": "proxy.pkrvars.hcl",
+                                                "common": "common.pkrvars.hcl"
+                                            }
+                                        ]
                                     }
                                 ]
                             }
@@ -496,9 +921,12 @@
         "rename_iso": false,
         "cleanup_failed_iso_verification": false,
         "check_for_existing_iso": false,
-        "download_logging_enabled": true,
+        "download_logging_enabled": false,
         "download_logging_path": "",
-        "download_logging_filename": "download.log"
+        "download_logging_filename": "download.log",
+        "build_logging_enabled": false,
+        "build_logging_path": "",
+        "build_logging_filename": "build.log"
     },
     "dependencies": [
         {

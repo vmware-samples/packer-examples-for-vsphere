@@ -12,44 +12,44 @@ All examples are provided in the HashiCorp Configuration Language ("HCL").
 
 This project supports the following guest operating systems:
 
-## :fontawesome-brands-linux: &nbsp; Linux Distributions
+## :material-linux: Linux Distributions
 
 ::spantable::
-| Operating System                                                        | Version   | VMTools Customization                | Cloud-Init Customization             | Network Variables                    | Storage Variables                    |
-| :---                                                                    | :---      | :---                                 | :---                                 | :---                                 | :---                                 |
-| :simple-broadcom: &nbsp;&nbsp; VMware Photon OS @span                   | 5.0       | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               |
-|                                                                         | 4.0       | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               |
-| :fontawesome-brands-debian: &nbsp;&nbsp; Debian @span                   | 12        | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
-|                                                                         | 11        | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
-| :fontawesome-brands-ubuntu: &nbsp;&nbsp; Ubuntu Server @span            | 24.04 LTS | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
-|                                                                         | 22.04 LTS | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
-|                                                                         | 20.04 LTS | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
-| :fontawesome-brands-redhat: &nbsp;&nbsp; Red Hat Enterprise Linux @span | 9         | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
-|                                                                         | 8         | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
-|                                                                         | 7         | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
-| :fontawesome-brands-linux: &nbsp;&nbsp; AlmaLinux OS @span              | 9         | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:{ .green }     | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
-|                                                                         | 8         | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:{ .green }     | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
-| :simple-rockylinux: &nbsp;&nbsp; Rocky Linux @span                      | 9         | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:{ .green }     | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
-|                                                                         | 8         | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:{ .green }     | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
-| :simple-oracle: &nbsp;&nbsp; Oracle Linux @span                         | 9         | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:{ .green }     | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
-|                                                                         | 8         | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:{ .green }     | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
-| :fontawesome-brands-centos: &nbsp;&nbsp; CentOS @span                   | 9 Stream  | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
-|                                                                         | 8 Stream  | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
-|                                                                         | 7         | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
-| :fontawesome-brands-centos: &nbsp;&nbsp; Fedora @span                   | 40        | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
-| :fontawesome-brands-suse: &nbsp;&nbsp; SUSE Linux Enterprise @span      | 15        | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               | :octicons-x-circle-24:               |
+| Operating System                                           | Version   | Customization: VMTools             | Customization: cloud-init          | Network: DHCP or Static            | Storage: Customize                 |
+| :---:                                                      |           | :---:                              | :---:                              | :---:                              | :---:                              |
+| :simple-broadcom: VMware Photon OS @span                   | 5.0       | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-x-circle-16:{.red}       |
+|                                                            | 4.0       | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-x-circle-16:{.red}       |
+| :fontawesome-brands-debian: Debian @span                   | 12        | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} |
+|                                                            | 11        | :octicons-check-circle-16:{.green} | :octicons-x-circle-16:{.red}       | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} |
+| :fontawesome-brands-ubuntu: Ubuntu Server @span            | 24.04     | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} |
+|                                                            | 22.04     | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} |
+|                                                            | 20.04     | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} |
+| :fontawesome-brands-redhat: Red Hat Enterprise Linux @span | 9         | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} |
+|                                                            | 8         | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} |
+|                                                            | 7         | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.red}   | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} |
+| :simple-almalinux: AlmaLinux OS @span                      | 9         | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} |
+|                                                            | 8         | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} |
+| :simple-rockylinux: Rocky Linux @span                      | 9         | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} |
+|                                                            | 8         | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} |
+| :simple-oracle: Oracle Linux @span                         | 9         | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} |
+|                                                            | 8         | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} |
+| :fontawesome-brands-centos: CentOS @span                   | 9 Stream  | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} |
+|                                                            | 8 Stream  | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} |
+|                                                            | 7         | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} |
+| :fontawesome-brands-fedora: Fedora @span                   | 40        | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} |
+| :fontawesome-brands-suse: SUSE Linux Enterprise @span      | 15        | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-x-circle-16:{.red}       | :octicons-x-circle-16:{.red}       |
 ::end-spantable::
 
-## :fontawesome-brands-windows: &nbsp; Microsoft Windows
+## :fontawesome-brands-windows: Microsoft Windows
 
 ::spantable::
-| Operating System                                                         | Version | Editions                    | Experience       |
-| :---                                                                     | :---    | :---                        | :---             |
-| :fontawesome-brands-windows: &nbsp;&nbsp; Microsoft Windows Server @span | 2025    | Standard and Enterprise     | Core and Desktop |
-|                                                                          | 2022    | Standard and Enterprise     | Core and Desktop |
-|                                                                          | 2019    | Standard and Enterprise     | Core and Desktop |
-| :fontawesome-brands-windows: &nbsp;&nbsp; Microsoft Windows @span        | 11      | Professional and Enterprise | -                |
-|                                                                          | 10      | Professional and Enterprise | -                |
+| Operating System                                            | Version       | Editions                 | Experience    |
+| :---                                                        | :---          | :---                     | :---          |
+| :fontawesome-brands-windows: Microsoft Windows Server @span | 2025 @span    | Standard, Enterprise     | Core, Desktop |
+|                                                             | 2022 @span    | Standard, Enterprise     | Core, Desktop |
+|                                                             | 2019 @span    | Standard, Enterprise     | Core, Desktop |
+| :fontawesome-brands-windows: Microsoft Windows @span        | 11 @span      | Professional, Enterprise | -             |
+|                                                             | 10 @span      | Professional, Enterprise | -             |
 ::end-spantable::
 
 [//]: Links

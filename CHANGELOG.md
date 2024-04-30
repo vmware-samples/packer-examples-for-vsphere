@@ -9,23 +9,25 @@
 - Updates Windows Desktop Enterprise Edition to support the default use of evaluation mode.
   [#908](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/908)
 
-    **Note**: Professional Edition does not support evaluation mode. Microsoft Evaluation Center only
-    provides support for Enterprise Edition. Please see the
-    [FAQ](https://vmware-samples.github.io/packer-examples-for-vsphere/getting-started/faq/) for
-    additional details.
+  **Note**: Professional Edition does not support evaluation mode. Microsoft Evaluation Center only
+  provides support for Enterprise Edition. Please see the
+  [FAQ](https://vmware-samples.github.io/packer-examples-for-vsphere/getting-started/faq/) for
+  additional details.
 
 - Updates Windows Server 2025 Insiders Preview default values to allow for deployment.
   [#907](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/907)
-    - `vm_inst_os_eval = true` >> `false` (Requires key)
-    - `vm_inst_os_kms_key_standard` >> `vm_inst_os_key_standard`
-    - `vm_inst_os_kms_key_datacenter` >> `vm_inst_os_key_datacenter`
+  - `vm_inst_os_eval = true` >> `false` (Requires key)
+  - `vm_inst_os_kms_key_standard` >> `vm_inst_os_key_standard`
+  - `vm_inst_os_kms_key_datacenter` >> `vm_inst_os_key_datacenter`
 
 **Enhancement**:
 
-- Adds a script (`./download.sh`) and a configuration (`project.json`) to assist in the download of
-  the guest operating systems.
+- Adds a download script (`./download.sh`) and a JSON configuration file (`project.json`) to assist
+  in the download of the guest operating systems.
   [#874](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/874),
   [#877](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/877)
+- Refactored the build script (`./build.sh`) to provide the same experience as the download script.
+  [#910](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/910)
 - Adds Ubuntu Server 24.04 LTS to the project.
   [#891](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/891)
 - Adds Fedora Server 40 Linux distribution to the project.
@@ -63,8 +65,8 @@
 
 - Removes Ubuntu Server 23.10 from the project; superseded by 24.04 LTS.
   [#891](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/891)
-- Update ansible core version from 2.15 to 2.16
-- [#921](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/921)
+- Update ansible-core version from 2.15 to 2.16.
+  [#921](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/921)
 
 ## v0.19.1
 

@@ -2,7 +2,7 @@
 icon: octicons/shield-check-24
 ---
 
-# Service Account Privileges
+# Least Privilege
 
 Create a custom vSphere role with the required privileges to integrate HashiCorp Packer with VMware
 vSphere. A service account can be added to the role to ensure that Packer has least privilege access

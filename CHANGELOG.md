@@ -766,7 +766,7 @@
 - Updates Microsoft Windows `autounattend.xml` files to use the attached VMware Tools `.iso` for
   PVSCSI driver.
 - Simplified and reduced the script files used by provisioners.
-- Patches the script for VNware Photon OS 4 due to an issue performing updates with `tdnf`.
+- Patches the script for VMware Photon OS 4 due to an issue performing updates with `tdnf`.
 - Patches the script for Ubuntu Server 20.04 LTS to remove cloud-init and remove all netplan
   configurations before GuestOS customization.
 - Removes support for VMware Photon OS 3 machine image builds.

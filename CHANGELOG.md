@@ -56,6 +56,8 @@
   [#900](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/900)
 - Adds option to enable cloud-init on VMware Photon OS 5.
   [#900](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/900)
+- Adds option to enable cloud-init on SUSE Enterprise Linux 15.
+  [#910](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/919)
 
 **Chore**:
 

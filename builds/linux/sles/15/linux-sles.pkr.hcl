@@ -59,6 +59,7 @@ locals {
       vm_guest_os_language     = var.vm_guest_os_language
       vm_guest_os_keyboard     = var.vm_guest_os_keyboard
       vm_guest_os_timezone     = var.vm_guest_os_timezone
+      vm_guest_os_cloudinit    = var.vm_guest_os_cloudinit
       additional_packages      = var.additional_packages
     })
   }
@@ -187,6 +188,7 @@ build {
       "--extra-vars", "build_key='${var.build_key}'",
       "--extra-vars", "ansible_username=${var.ansible_username}",
       "--extra-vars", "ansible_key='${var.ansible_key}'",
+      "--extra-vars", "enable_cloudinit=${var.vm_guest_os_cloudinit}",
     ]
   }
 

@@ -31,3 +31,25 @@
     state: restarted
     daemon_reload: true
 
+# Tasks for configuring cloud-init.
+- name: "Configuring cloud-init."
+  block:
+    - name: "Message: Configuring cloud-init"
+      debug:
+        msg: "Configuring cloud-init"
+    - blockinfile:
+        path: /etc/cloud/cloud.cfg
+        block: |
+          disable_vmware_customization: false
+    - copy:
+        content: "datasource_list: [ VMware, OVF, None ]"
+        dest: /etc/cloud/cloud.cfg.d/90_dpkg.cfg
+  when: enable_cloudinit == 'true'
+
+- name: "Enable the cloud-init daemon."
+  systemd:
+    name: cloud-init
+    state: started
+    enabled: yes
+    daemon_reload: yes
+  when: enable_cloudinit == 'true'

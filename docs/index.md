@@ -37,7 +37,7 @@ This project supports the following guest operating systems:
 |                                                                         | 8 Stream  | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
 |                                                                         | 7         | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
 | :fontawesome-brands-centos: &nbsp;&nbsp; Fedora @span                   | 40        | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } |
-| :fontawesome-brands-suse: &nbsp;&nbsp; SUSE Linux Enterprise @span      | 15        | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               | :octicons-x-circle-24:               | :octicons-x-circle-24:               |
+| :fontawesome-brands-suse: &nbsp;&nbsp; SUSE Linux Enterprise @span      | 15        | :octicons-check-circle-24:{ .green } | :octicons-check-circle-24:{ .green } | :octicons-x-circle-24:               | :octicons-x-circle-24:               |
 ::end-spantable::
 
 ## :fontawesome-brands-windows: &nbsp; Microsoft Windows

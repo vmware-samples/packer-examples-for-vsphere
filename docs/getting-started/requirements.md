@@ -9,10 +9,10 @@ icon: octicons/verified-24
 The project is tested on the following platforms:
 
 ::spantable::
-| Platform              | Version                |
-| --------------------- | ---------------------- |
-| VMware vSphere @span  | 8.0 or later           |
-|                       | 7.0 Update 3D or later |
+| Platform        | Version               |
+| --------------- | --------------------- |
+| VMware vSphere  | 8.0 or later          |
+| VMware vSphere  | 7.0 Update 3D or later|
 ::end-spantable::
 
 ## :octicons-stack-24: &nbsp; Operating Systems
@@ -20,43 +20,40 @@ The project is tested on the following platforms:
 The project is tested on the following operating systems for the Packer host [^1] :
 
 ::spantable::
-| Operating System                                         | Version   | Architecture           |
-| :---                                                     | :---      | :---                   |
-| :fontawesome-brands-linux: &nbsp;&nbsp; VMware Photon OS | 5.0       | `x86_64`               |
-| :fontawesome-brands-ubuntu: &nbsp;&nbsp; Ubuntu Server   | 22.04 LTS | `x86_64`               |
-| :fontawesome-brands-apple: &nbsp;&nbsp; macOS @span      | Sonoma    | Intel or Apple Silicon |
+| Operating System   | Version   | Architecture           |
+| :----------------- | :-------- | :--------------------- |
+| VMware Photon OS   | 5.0       | `x86_64`               |
+| Ubuntu Server      | 22.04 LTS | `x86_64`               |
+| macOS              | Sonoma    | Intel or Apple Silicon |
 ::end-spantable::
 
 ## :simple-packer: &nbsp; Packer
 
-### :octicons-terminal-24: &nbsp; Packer CLI
+| Component                                                        | Version   | Description      | Resources                                                                                                               |
+| :--------------------------------------------------------------- | :-------- | :--------------- | :---------------------------------------------------------------------------------------------------------------------- |
+| :simple-packer: &nbsp;&nbsp; Packer                              | >= 1.10.0 |  By HashiCorp    | [:fontawesome-brands-github:][packer-repo] &nbsp;&nbsp; [:material-library:][packer]                                    |
+| :simple-hashicorp: &nbsp;&nbsp; Packer Plugin for Ansible        | >= 1.1.0  | By HashiCorp     | [:fontawesome-brands-github:][packer-plugin-ansible-repo] &nbsp;&nbsp; [:material-library:][packer-plugin-ansible]      |
+| :simple-hashicorp: &nbsp;&nbsp; Packer Plugin for VMware vSphere | >= 1.2.7  | By HashiCorp     | [:fontawesome-brands-github:][packer-plugin-vsphere-repo] &nbsp;&nbsp; [:material-library:][packer-plugin-vsphere-docs] |
+| :fontawesome-brands-git: &nbsp;&nbsp; Packer Plugin for Git      | >= 0.6.2  | Community Plugin | [:fontawesome-brands-github:][packer-plugin-git-repo] &nbsp;&nbsp; [:material-library:][packer-plugin-git-docs]         |
 
-HashiCorp [Packer][packer-install] 1.10.0 or higher.
+### Installation
 
 === ":fontawesome-brands-linux: &nbsp; VMware Photon OS"
 
     You can install Packer on VMware Photon OS using the following commands:
 
     ```shell
-    PACKER_VERSION="1.10.0"
-    OS_PACKAGES="wget unzip"
-
-    if [[ $(uname -m) == "x86_64" ]]; then
-      LINUX_ARCH="amd64"
-    elif [[ $(uname -m) == "aarch64" ]]; then
-      LINUX_ARCH="arm64"
-    fi
+    export PACKER_VERSION="1.10.0"
+    export OS_PACKAGES="wget unzip"
 
     tdnf install ${OS_PACKAGES} -y
-
-    wget -q https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_${LINUX_ARCH}.zip
-
-    unzip -o -d /usr/local/bin/ packer_${PACKER_VERSION}_linux_${LINUX_ARCH}.zip
+    wget -q https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip
+    unzip -o -d /usr/local/bin/ packer_${PACKER_VERSION}_linux_amd64.zip
     ```
 
 === ":fontawesome-brands-ubuntu: &nbsp; Ubuntu"
 
-    You must configure your system to trust that HashiCorp key for package authentication.
+    You can install Packer on Ubuntu using the following commands:.
 
     1. Configure the repository:
 
@@ -92,127 +89,111 @@ HashiCorp [Packer][packer-install] 1.10.0 or higher.
 
     ```shell
     brew tap hashicorp/tap
-
     brew install hashicorp/tap/packer
     ```
 
-### :octicons-plug-24: &nbsp; Packer Plugins
-
 Required plugins are automatically downloaded and initialized when using `./build.sh`.
 
-For disconnected sites (_e.g._, air-gapped or dark sites), you may download the plugins and place
-these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
+For disconnected sites you may download the plugins and place these same directory as your Packer
+executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
 
-| Plugin                                                           | Version  | Description      | Resources                                                                                                               |
-| :---                                                             | :---     | :---             | :---                                                                                                                    |
-| :simple-hashicorp: &nbsp;&nbsp; Packer Plugin for Ansible        | >= 1.1.0 | By HashiCorp     | [:fontawesome-brands-github:][packer-plugin-ansible-repo] &nbsp;&nbsp; [:material-library:][packer-plugin-ansible-docs] |
-| :simple-hashicorp: &nbsp;&nbsp; Packer Plugin for VMware vSphere | >= 1.2.7 | By HashiCorp     | [:fontawesome-brands-github:][packer-plugin-vsphere-repo] &nbsp;&nbsp; [:material-library:][packer-plugin-vsphere-docs] |
-| :fontawesome-brands-git: &nbsp;&nbsp; Packer Plugin for Git      | >= 0.6.2 | Community Plugin | [:fontawesome-brands-github:][packer-plugin-git-repo]     &nbsp;&nbsp; [:material-library:][packer-plugin-git-docs]     |
-
-
-## :octicons-package-dependencies-24: &nbsp; Additional Software Packages
+## :octicons-package-dependencies-24: &nbsp; Additional Packages
 
 The following additional software packages must be installed on the operating system running Packer.
 
+| Package                                                | Version     | Description                                        | Resources                       |
+| :----------------------------------------------------- | :---------- | :------------------------------------------------- | :------------------------------ |
+| :simple-ansible: &nbsp;&nbsp; ansible-core             | >= 2.16     | Automation engine for IT infrastructure            | [:material-library:][ansible]   |
+| :fontawesome-brands-git: &nbsp;&nbsp; git              | >= 2.45.0   | Version control system for tracking changes        | [:material-library:][git]       |
+| :material-code-braces: &nbsp;&nbsp; gomplate           | >= 3.11.7   | Template renderer                                  | [:material-library:][gomplate]  |
+| :simple-json: &nbsp;&nbsp; jq                          | >= 1.7.1    | Command-line JSON parser                           | [:material-library:][jq]        |
+| :simple-terraform: &nbsp;&nbsp; terraform              | >= 1.7.1    | Infrastructure as Code (IaC) tool by HashiCorp     | [:material-library:][terraform] |
+| :fontawesome-solid-compact-disc: &nbsp;&nbsp; xorriso  | >= 1.5.6    | ISO filesystem images creator for Linux            | [:material-library:][xorriso]   |
+
+### Installation
+
 === ":fontawesome-brands-linux: &nbsp; VMware Photon OS"
 
-    - [git][download-git] command-line tools.
+    Packages:
 
-    - [ansible-core][ansible-docs] 2.15.
+    ```shell
+    pip3 install --user ansible-core==2.16
+    export PATH="$HOME/.local/bin:$PATH"
+    tdnf -y install ansible git jq xorriso wget unzip
+    echo "ansible-core $(ansible --version | grep 'ansible.*core' | awk '{print $3}' | tr -d ']')"
+    echo "terraform $(terraform version | awk -Fv '{print $2}' | head -n 1)"
+    export PATH="$HOME/.local/bin:$PATH"
+    ```
 
-    - [jq][jq] - A command-line JSON processor.
+    Terraform:
 
-    - xorriso - A command-line ISO creator.
+    ```shell
+    export TERRAFORM_VERSION="1.7.1"
+    wget -q https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+    unzip -o -d /usr/local/bin/ terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
+    ```
 
-        ```shell
-        pip3 install --user ansible-core==2.15
-        export PATH="$HOME/.local/bin:$PATH"
-        tdnf -y install git jq xorriso
-        ```
+    Gomplate
 
-    - HashiCorp [Terraform][terraform-install] 1.7.1 or higher.
-
-        ```shell
-        TERRAFORM_VERSION="1.7.1"
-        OS_PACKAGES="wget unzip"
-
-        if [[ $(uname -m) == "x86_64" ]]; then
-          LINUX_ARCH="amd64"
-        elif [[ $(uname -m) == "aarch64" ]]; then
-          LINUX_ARCH="arm64"
-        fi
-
-        tdnf install ${OS_PACKAGES} -y
-
-        wget -q https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
-
-        unzip -o -d /usr/local/bin/ terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
-        ```
+    ```shell
+    export GOMPLATE_VERSION="3.11.7"
+    wget -q https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-amd64
+    chmod +x gomplate_linux-amd64
+    sudo mv gomplate_linux-amd64 /usr/local/bin/gomplate
+    ```
 
 === ":fontawesome-brands-ubuntu: &nbsp; Ubuntu"
 
-    - [git][download-git] command-line tools.
+    Packages:
 
-    - [ansible-core][ansible-docs] 2.15.
+    ```shell
+    sudo apt update
+    sudo apt install software-properties-common
+    sudo add-apt-repository --yes --update ppa:ansible/ansible
+    sudo apt install -y python3 python3-pip ansible git jq xorriso whois unzip
+    echo "ansible-core $(ansible --version | grep 'ansible.*core' | awk '{print $3}' | tr -d ']')"
+    echo "terraform $(terraform version | awk -Fv '{print $2}' | head -n 1)"
+    export PATH="$HOME/.local/bin:$PATH"
+    ```
 
-    - [jq][jq] - A command-line JSON processor.
+    Gomplate:
 
-    - xorriso - A command-line ISO creator.
-
-    - mkpasswd - A password generating utility.
-
-    - HashiCorp [Terraform][terraform-install] 1.7.1 or higher.
-
-        ```shell
-        pip3 install --user ansible-core==2.15
-        sudo apt -y install git jq xorriso whois terraform
-        ```
-
-    - [gomplate][gomplate-install] 3.11.7 or higher.
-
-        ```shell
-        GOMPLATE_VERSION="3.11.7"
-        LINUX_ARCH="amd64"
-
-        sudo curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-${LINUX_ARCH}
-        sudo chmod 755 /usr/local/bin/gomplate
-        ```
+    ```shell
+    export GOMPLATE_VERSION="3.11.7"
+    wget -q https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-amd64
+    chmod +x gomplate_linux-amd64
+    sudo mv gomplate_linux-amd64 /usr/local/bin/gomplate
+    ```
 
 === ":fontawesome-brands-apple: &nbsp; macOS"
 
-    - [git][download-git] command-line tools.
-    - [ansible-core][ansible-docs] 2.15.
-    - [jq][jq] - A command-line JSON processor.
-    - Coreutils
-    - HashiCorp [Terraform][terraform-install] 1.7.1 or higher.
-    - [gomplate][gomplate-install] 3.11.7 or higher.
+    Packages
 
-        ```shell
-        pip3 install --user ansible-core==2.15
-        brew install git jq coreutils hashicorp/tap/terraform gomplate
-        ```
+    ```shell
+    brew install ansible git jq coreutils hashicorp/tap/terraform gomplate
+    echo "ansible-core $(ansible --version | grep 'ansible.*core' | awk '{print $3}' | tr -d ']')"
+    echo "terraform $(terraform version | awk -Fv '{print $2}' | head -n 1)"
+    export PATH="$HOME/.local/bin:$PATH"
+    ```
 
-    - mkpasswd - A password generating utility.
-
-        ```shell
-        brew install --cask docker
-        ```
-[^1]: The project may work on other operating systems and versions, but has not been tested by the
-maintainers.
+[^1]:
+    The project may work on other operating systems and versions, but has not been tested by the
+    maintainers.
 
 [//]: Links
-[ansible-docs]: https://docs.ansible.com
-[ansible-ssh-connection]: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/ssh_connection.html#parameter-scp_if_ssh
-[download-git]: https://git-scm.com/downloads
-[gomplate-install]: https://gomplate.ca/
+[ansible]: https://docs.ansible.com
+[git]: https://git-scm.com/downloads
+[gomplate]: https://gomplate.ca/
 [hcp-security]: https://www.hashicorp.com/security
 [homebrew]: https://brew.sh/
 [jq]: https://stedolan.github.io/jq/
-[packer-install]: https://developer.hashicorp.com/packer/tutorials/docker-get-started/get-started-install-cli
-[packer-plugin-ansible-docs]: https://developer.hashicorp.com/packer/integrations/hashicorp/ansible
+[packer]: https://developer.hashicorp.com/packer
+[packer-repo]: https://github.com/hashicorp/packer
+[packer-plugin-ansible]: https://developer.hashicorp.com/packer/integrations/hashicorp/ansible
 [packer-plugin-ansible-repo]: https://github.com/hashicorp/packer-plugin-ansible
 [packer-plugin-git-docs]: https://developer.hashicorp.com/packer/integrations/ethanmdavidson/git
 [packer-plugin-git-repo]: https://github.com/ethanmdavidson/packer-plugin-git
 [packer-plugin-vsphere-docs]: https://developer.hashicorp.com/packer/plugins/builders/vsphere
 [packer-plugin-vsphere-repo]: https://github.com/hashicorp/packer-plugin-vsphere
-[terraform-install]: https://www.terraform.io/docs/cli/install/apt.html
+[terraform]: https://developer.hashicorp.com/terraform
+[xorriso]: https://www.gnu.org/software/xorriso/

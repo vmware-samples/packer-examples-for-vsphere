@@ -63,6 +63,8 @@
 
 - Removes Ubuntu Server 23.10 from the project; superseded by 24.04 LTS.
   [#891](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/891)
+- Update ansible core version from 2.15 to 2.16
+- [#921](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/921)
 
 ## v0.19.1
 

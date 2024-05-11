@@ -124,15 +124,14 @@
       state: latest
   when: ansible_os_family == 'Suse'
 
+- block:
+  - name: "Adding location of python3-jsonpatch."
+    command: sudo SUSEConnect -p sle-module-public-cloud/15.5/x86_64
+
+  - name: "install python3-jsonpatch"
+    command: sudo zypper install -y python3-jsonpatch
+
   - name: "Installing cloud-init."
-    block:
-      - name: "Adding location of python3-jsonpatch."
-        command: sudo SUSEConnect -p sle-module-public-cloud/15.5/x86_64
-
-      - name: "install python3-jsonpatch"
-        command: sudo zypper install -y python3-jsonpatch
-
-      - name: "Installing cloud-init."
-        command: sudo zypper install -y cloud-init
+    command: sudo zypper install -y cloud-init
     when: enable_cloudinit == 'true'
   when: ansible_os_family == 'Suse'

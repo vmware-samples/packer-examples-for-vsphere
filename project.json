@@ -955,7 +955,7 @@
                     "documentation": "https://developer.hashicorp.com/terraform/docs"
                 }
             },
-            "version_requirement": ">= 1.7.1"
+            "version_requirement": ">= 1.8.3"
         },
         {
             "name": "gomplate",

@@ -65,6 +65,10 @@
 
 - Removes Ubuntu Server 23.10 from the project; superseded by 24.04 LTS.
   [#891](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/891)
+- Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.3.0`.
+- Updates `required_versions` for `terraform` to `>= 1.8.3`.
+- Updates `required_versions` for `hashicorp/vsphere` to `>= 2.8.1`.
+- Updates `required_versions` for `hashicorp/hcp` to `>= 0.89.0`.
 - Update ansible-core version from 2.15 to 2.16.
   [#921](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/921)
 

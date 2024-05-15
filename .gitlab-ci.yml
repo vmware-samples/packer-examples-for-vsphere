@@ -186,8 +186,8 @@ Oracle-Linux-8:
 CentOS-Stream-9:
     extends: .packer-build
     variables:
-        INPUT_PATH: "$SCRIPT_PATH/builds/linux/centos/9-stream/"
-        BUILD_VARS: "linux-centos-9-stream.pkrvars.hcl"
+        INPUT_PATH: "$SCRIPT_PATH/builds/linux/centos/9/"
+        BUILD_VARS: "linux-centos-9.pkrvars.hcl"
         EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
 
 ##############################################################################
@@ -195,8 +195,8 @@ CentOS-Stream-9:
 CentOS-Stream-8:
     extends: .packer-build
     variables:
-        INPUT_PATH: "$SCRIPT_PATH/builds/linux/centos/8-stream/"
-        BUILD_VARS: "linux-centos-8-stream.pkrvars.hcl"
+        INPUT_PATH: "$SCRIPT_PATH/builds/linux/centos/8/"
+        BUILD_VARS: "linux-centos-8.pkrvars.hcl"
         EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
 
 ##############################################################################

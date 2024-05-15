@@ -78,6 +78,19 @@ plugins:
         - index.md
       fallback_to_build_date: true
       type: timeago
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      slide_effect: slide
+      width: 100%
+      height: auto
+      zoomable: true
+      draggable: true
+      skip_classes:
+        - skip-lightbox
+      auto_caption: false
+      caption_position: bottom
 
 # Customization
 extra:
@@ -131,10 +144,10 @@ nav:
       - License: license.md
   - Getting Started:
       - Requirements: getting-started/requirements.md
-      - Download: getting-started/download.md
-      - Guest Operating Systems: getting-started/iso.md
+      - Get the Project: getting-started/get-project.md
+      - Download ISOs: getting-started/downloads.md
       - Privileges: getting-started/privileges.md
-      - Configuration: getting-started/configuration.md
+      - Configure: getting-started/configure.md
       - Build: getting-started/build.md
       - GitLab CI/CD: getting-started/gitlab-ci-cd.md
       - FAQ: getting-started/faq.md

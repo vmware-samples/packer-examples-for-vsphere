@@ -2,7 +2,7 @@
 icon: octicons/verified-24
 ---
 
-# Requirements
+# Environment Requirements
 
 ## :octicons-cloud-24: &nbsp; Platform
 
@@ -117,8 +117,6 @@ The following additional software packages must be installed on the operating sy
     Packages:
 
     ```shell
-    pip3 install --user ansible-core==2.16
-    export PATH="$HOME/.local/bin:$PATH"
     tdnf -y install ansible git jq xorriso wget unzip
     echo "ansible-core $(ansible --version | grep 'ansible.*core' | awk '{print $3}' | tr -d ']')"
     echo "terraform $(terraform version | awk -Fv '{print $2}' | head -n 1)"

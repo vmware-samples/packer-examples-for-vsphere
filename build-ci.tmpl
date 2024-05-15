@@ -39,7 +39,7 @@ variables:
 
 ##############################################################################
 
-{{ range $menu := (ds "build").menu -}}
+{{ range $menu := (ds "build-ci").menu -}}
 {{ range $submenu := $menu.submenu -}}
 
 {{ $submenu.entry | strings.ReplaceAll " (cloud-init)" "" | strings.ReplaceAll " " "-" | strings.ReplaceAll "---" "-" }}:

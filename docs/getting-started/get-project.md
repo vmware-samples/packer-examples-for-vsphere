@@ -1,8 +1,8 @@
 ---
-icon: octicons/download-24
+icon: octicons/gift-24
 ---
 
-# Download
+# Get the Project
 
 You can choose between two options to get the source code:
 
@@ -35,75 +35,17 @@ You can choose between two options to get the source code:
       ```
 
 ???+ tip "Prerelease Updates"
-      You may also clone the `develop` branch for the latest prerelease updates.
+      :octicons-beaker-16: &nbsp; You may also clone the `develop` branch for the latest prerelease updates.
+
+      :octicons-bug-16: &nbsp; There could be bugs or breaking changes in flight.
 
 ???+ note "Branches"
-      :octicons-git-branch-16: A branch is mandatory since it is used for the build version and in
-      the virtual machine name. It does not matter if it is based on the `HEAD` or a release tag.
+      :octicons-git-branch-16: &nbsp; A branch is mandatory since it is used for the build version and in
+      the virtual machine name. It can be based on the `HEAD` or a release tag.
 
-## :octicons-file-directory-24: &nbsp; Directory Structure
+## Project Structure
 
 The directory structure of the project.
-
-```shell
-├── build.sh
-├── build.tmpl
-├── build-ci.tmpl
-├── build.yaml
-├── CHANGELOG.md
-├── CODE_OF_CONDUCT.md
-├── config.sh
-├── CONTRIBUTING.md
-├── LICENSE
-├── MAINTAINERS.md
-├── NOTICE
-├── README.md
-├── set-envvars.sh
-├── ansible
-│   ├── ansible.cfg
-│   ├── main.yml
-│   └── roles
-│       └── <role>
-│           └── *.yml
-├── artifacts
-├── builds
-│   ├── ansible.pkrvars.hcl.example
-│   ├── build.pkrvars.hcl.example
-│   ├── common.pkrvars.hcl.example
-│   ├── proxy.pkrvars.hcl.example
-│   ├── rhsm.pkrvars.hcl.example
-│   ├── scc.pkrvars.hcl.example
-│   ├── vsphere.pkrvars.hcl.example
-│   ├── linux
-│   │   └── <distribution>
-│   │       └── <version>
-│   │           ├── *.pkr.hcl
-│   │           ├── *.auto.pkrvars.hcl
-│   │           └── data
-│   │               └── ks.pkrtpl.hcl
-│   └── windows
-│       └── <distribution>
-│           └── <version>
-│               ├── *.pkr.hcl
-│               ├── *.auto.pkrvars.hcl
-│               └── data
-│                   └── autounattend.pkrtpl.hcl
-├── manifests
-├── scripts
-│   ├── linux
-│   └── windows
-│       └── *.ps1
-└── terraform
-    ├── vsphere-role
-    │   └── *.tf
-    └── vsphere-virtual-machine
-        ├── example
-        │   └── *.tf
-        └── ...
-            └── *.tf
-```
-
-The following table describes the directory structure.
 
 | Directory       | Description                                                                              |
 | :---            | :---                                                                                     |

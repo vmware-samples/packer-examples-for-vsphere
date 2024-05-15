@@ -44,7 +44,6 @@
 
 .span-table [colspan],
 .span-table [rowspan] {
-    font-weight: bold;
     border: 0.05rem solid var(--md-typeset-table-color);
 }
 

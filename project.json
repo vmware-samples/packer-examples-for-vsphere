@@ -972,13 +972,22 @@
             "version_requirement": ">= 3.11.7"
         },
         {
-            "name": "ansible-core",
+            "name": "ansible",
             "description": "Ansible Core includes the Ansible language and runtime, a set of built-in modules and command-line tools, and a framework for extending automation with collections.",
             "publisher": {
                 "name": "Red Hat",
                 "url": "https://redhat.com"
             },
-            "version_requirement": ">= 2.15.0"
+            "version_requirement": ">= 2.16.0"
+        },
+        {
+            "name": "git",
+            "description": "Version control system for tracking changes.",
+            "publisher": {
+                "name": "git",
+                "url": "https://git-scm.com/"
+            },
+            "version_requirement": ">= 2.45.0"
         }
     ]
 }

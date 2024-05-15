@@ -28,6 +28,62 @@ json_path="project.json"
 os_names=$(jq -r '.os[] | .name' $json_path)
 os_array=($os_names)
 
+check_command() {
+    cmd=$1
+    capitalized_cmd=$(echo $cmd | awk '{print toupper(substr($0,1,1))substr($0,2)}')
+    version_requirement=$(jq -r --arg cmd "$cmd" '.dependencies[] | select(.name == $cmd) | .version_requirement' $json_path)
+    operator=$(echo $version_requirement | cut -d " " -f 1)
+    required_version=$(echo $version_requirement | cut -d " " -f 2)
+
+    RED='\033[0;31m'
+    GREEN='\033[0;32m'
+    NC='\033[0m' # No Color
+
+    CHECKMARK="${GREEN}[✔]${NC}"
+    CROSSMARK="${RED}[✘]${NC}"
+
+    if command -v $cmd &>/dev/null; then
+        installed_version=$($cmd --version | head -n 1 | awk '{print $NF}' | sed 's/[^0-9.]*//g')
+        case $operator in
+        ">=")
+            if echo -e "$required_version\n$installed_version" | sort -V -C; then
+                echo -e "$CHECKMARK $capitalized_cmd: $installed_version is installed. $required_version or later is required."
+            else
+                echo -e "$CROSSMARK $capitalized_cmd: $installed_version is installed. $required_version or later is required"
+            fi
+            ;;
+        "==")
+            if [ "$installed_version" == "$required_version" ]; then
+                echo -e "$CHECKMARK $capitalized_cmd: $installed_version is installed. $required_version or later is required"
+            else
+                echo -e "$CROSSMARK $capitalized_cmd: $installed_version is installed. $required_version or later is required"
+            fi
+            ;;
+        *)
+            echo -e "$CROSSMARK Unknown operator: $operator"
+            ;;
+        esac
+    else
+        echo -e "$CROSSMARK $capitalized_cmd is not installed. $required_version or later required"
+    fi
+}
+
+# This function checks if the required dependencies are installed.
+check_dependencies() {
+    check_command packer
+    check_command ansible
+    check_command terraform
+    check_command git
+    check_command gomplate
+    printf "\nPress \033[32mEnter\033[0m to continue."
+    read -r input
+    if [[ -z "$input" ]]; then
+        return
+    else
+        printf "\nPress \033[32mEnter\033[0m to continue."
+    fi
+}
+
 # Get the project information from the JSON file.
 get_project_info() {
     local field=$1
@@ -114,6 +170,7 @@ show_help() {
     script_name=$(basename $0)
     printf "Usage: $script_name [options]\n\n"
     printf "Options:\n"
+    printf "  --deps, -d, -D       Check the dependencies.\n"
     printf "  --json, -j, -J       Specify the JSON file path.\n"
     printf "  --show, -s, -S       Display the build command used to build the image.\n"
     printf "  --help, -h, -H       Display this help message.\n\n"
@@ -181,7 +238,7 @@ print_title() {
 }
 
 # This function selects the guest operating system family.
-# Only `Linux`` and `Windows`` are supported presently in the JSON file.
+# Only `Linux` and `Windows` are supported presently in the JSON file.
 select_os() {
     clear
     print_title
@@ -663,6 +720,10 @@ while (("$#")); do
     --json | -j | -J)
         json_path="$2"
         shift 2
+        ;;
+    --deps | -d | -D)
+        check_dependencies
+        shift
         ;;
     --show | -s | -S)
         show_command=1

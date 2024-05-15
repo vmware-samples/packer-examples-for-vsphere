@@ -167,10 +167,24 @@ log_message() {
     fi
 }
 
+print_title() {
+    project_name=$(jq -r '.project.name' $json_path)
+    project_version=$(jq -r '.project.version' $json_path)
+    line_width=80
+    title="${project_name} ${project_version}"
+    subtitle="B U I L D"
+    padding_title=$((($line_width - ${#title}) / 2))
+    padding_subtitle=$((($line_width - ${#subtitle}) / 2))
+
+    printf "\033[34m%*s%s\033[0m\n" $padding_title '' "$title"
+    printf "\033[32m%*s%s\033[0m\n" $padding_subtitle '' "$subtitle"
+}
+
 # This function selects the guest operating system family.
 # Only `Linux`` and `Windows`` are supported presently in the JSON file.
 select_os() {
     clear
+    print_title
     printf "\nSelect a guest operating system:\n\n"
     for i in "${!os_array[@]}"; do
         printf "$((i + 1)): ${os_array[$i]}\n"
@@ -197,6 +211,7 @@ select_os() {
 
 select_distribution() {
     # Check if the selected guest operating system is Linux or Windows.
+    print_title
     case "$os" in
     "Linux")
         dist_descriptions=$(jq -r --arg os "$os" '.os[] | select(.name == $os) | .distributions[] | .description' $json_path)
@@ -225,6 +240,7 @@ select_distribution() {
 
     # Print the submenu.
     clear
+    print_title
     printf "\nSelect a $([[ "$os" == "Windows" ]] && echo "$os type" || echo "$os distribution"):\n\n"
     for i in "${!dist_array[@]}"; do
         printf "$((i + 1)): ${dist_array[$i]}\n"
@@ -266,6 +282,7 @@ select_version() {
 
     # Print the submenu.
     clear
+    print_title
     printf "\nSelect a version:\n\n"
     for i in "${!version_array[@]}"; do
         printf "$((i + 1)): $dist ${version_array[$i]}\n"

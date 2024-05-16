@@ -13,7 +13,7 @@ vm_guest_os_keyboard = "us"
 vm_guest_os_timezone = "UTC"
 vm_guest_os_family   = "linux"
 vm_guest_os_name     = "rhel"
-vm_guest_os_version  = "9.3"
+vm_guest_os_version  = "9.4"
 
 // Virtual Machine Guest Operating System Setting
 vm_guest_os_type = "rhel9_64Guest"
@@ -35,8 +35,8 @@ vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
 iso_datastore_path       = "iso/linux/rhel"
-iso_content_library_item = "rhel-9.3-x86_64-dvd"
-iso_file                 = "rhel-9.3-x86_64-dvd.iso"
+iso_content_library_item = "rhel-9.4-x86_64-dvd"
+iso_file                 = "rhel-9.4-x86_64-dvd.iso"
 
 // Boot Settings
 vm_boot_order = "disk,cdrom"

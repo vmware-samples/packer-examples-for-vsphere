@@ -81,6 +81,7 @@ You can use the following options with the script.
 | Option   | Short Form | Description                                                     |
 | -------- | ---------- | --------------------------------------------------------------- |
 | `--help` | `-h`, `-H` | Display the help.                                               |
+| `--deps` | `-d`, `-D` | Run a dependency check before running a build.                  |
 | `--json` | `-j`, `-J` | Override the default JSON configuration file.                   |
 | `--show` | `-s`, `-S` | Display the command that the script uses to initialize a build. |
 

@@ -19,17 +19,16 @@ Download the guest operating system ISOs using the download script (`./download.
 | :fontawesome-brands-redhat: Red Hat Enterprise Linux @span  | 9         | :octicons-check-circle-16:{ .green } |
 |                                                             | 8         | :octicons-check-circle-16:{ .green } |
 |                                                             | 7         | :octicons-check-circle-16:{ .green } |
-| :simple-almalinux: AlmaLinux OS @span               | 9         | :octicons-check-circle-16:{ .green } |
+| :simple-almalinux: AlmaLinux OS @span                       | 9         | :octicons-check-circle-16:{ .green } |
 |                                                             | 8         | :octicons-check-circle-16:{ .green } |
 | :simple-rockylinux: Rocky Linux @span                       | 9         | :octicons-check-circle-16:{ .green } |
 |                                                             | 8         | :octicons-check-circle-16:{ .green } |
 | :simple-oracle: Oracle Linux @span                          | 9         | :octicons-check-circle-16:{ .green } |
 |                                                             | 8         | :octicons-check-circle-16:{ .green } |
 | :fontawesome-brands-centos: CentOS @span                    | 9 Stream  | :octicons-check-circle-16:{ .green } |
-|                                                             | 8 Stream  | :octicons-check-circle-16:{ .green } |
 |                                                             | 7         | :octicons-check-circle-16:{ .green } |
 | :fontawesome-brands-fedora: Fedora Serve* @span             | 40        | :octicons-check-circle-16:{ .green } |
-| :fontawesome-brands-suse: SUSE Linux Enterpris* @span       | 15        | :octicons-x-circle-16:{ .red }       |
+| :fontawesome-brands-suse: SUSE Linux Enterprise @span       | 15        | :octicons-x-circle-16:{ .red }       |
 | :fontawesome-brands-windows: Microsoft Windows Server @span | 2025      | :octicons-x-circle-16:{ .red } &nbsp; Windows Insiders Preview &nbsp; [:fontawesome-solid-cloud-arrow-down:][download-windows-server-2025] |
 |                                                             | 2022      | :octicons-check-circle-16:{ .green } &nbsp; Windows Evaluation Center                                                                      |
 |                                                             | 2019      | :octicons-check-circle-16:{ .green } &nbsp; Windows Evaluation Center                                                                      |

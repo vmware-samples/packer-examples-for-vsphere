@@ -482,31 +482,6 @@
                                 ]
                             }
                         ],
-                        "8": [
-                            {
-                                "version": "8",
-                                "enabled": "true",
-                                "architectures": [
-                                    {
-                                        "architecture": "amd64",
-                                        "download_link": "https://mirror.rackspace.com/CentOS/8-stream/isos/x86_64/CentOS-Stream-8-x86_64-latest-dvd1.iso",
-                                        "checksum_algorithm": "sha256",
-                                        "checksum": "https://mirror.rackspace.com/CentOS/8-stream/isos/x86_64/CHECKSUM"
-                                    }
-                                ],
-                                "build_files": [
-                                    {
-                                        "vsphere": "vsphere.pkrvars.hcl",
-                                        "build": "build.pkrvars.hcl",
-                                        "ansible": "ansible.pkrvars.hcl",
-                                        "proxy": "proxy.pkrvars.hcl",
-                                        "common": "common.pkrvars.hcl",
-                                        "network": "network.pkrvars.hcl",
-                                        "storage": "linux-storage.pkrvars.hcl"
-                                    }
-                                ]
-                            }
-                        ],
                         "7": [
                             {
                                 "version": "7",

@@ -192,15 +192,6 @@ CentOS-Stream-9:
 
 ##############################################################################
 
-CentOS-Stream-8:
-    extends: .packer-build
-    variables:
-        INPUT_PATH: "$SCRIPT_PATH/builds/linux/centos/8/"
-        BUILD_VARS: "linux-centos-8.pkrvars.hcl"
-        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
-
-##############################################################################
-
 CentOS-Linux-7:
     extends: .packer-build
     variables:

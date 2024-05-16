@@ -65,6 +65,10 @@
 
 - Updates Red Hat Enterprise Linux 9 to 9.4 release.
   [#925](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/925)
+- Removes CentOS Stream 8 from the project.
+
+  On 31 May 2024, CentOS Stream 8 reached the end of life.
+
 - Removes Ubuntu Server 23.10 from the project; superseded by 24.04 LTS.
   [#891](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/891)
 - Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.3.0`.

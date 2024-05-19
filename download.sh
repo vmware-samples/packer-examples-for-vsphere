@@ -13,6 +13,125 @@ follow_link() {
 # Get the script path.
 script_path=$(realpath "$(dirname "$(follow_link "$0")")")
 
+run_check_dependencies=false
+run_check_jq=false
+run_show_help=false
+
+# This function prompts the user to press Enter to continue.
+press_enter_continue() {
+    printf "Press \033[32mEnter\033[0m to continue.\n"
+    read -r
+    exec "$0"
+}
+
+# This function prompts the user to press Enter to exit.
+press_enter_exit() {
+    printf "Press \033[31mEnter\033[0m to exit.\n"
+    read -r
+    exit 0
+}
+
+if [ $# -eq 0 ]; then
+    run_check_jq=true
+fi
+
+while (("$#")); do
+    case "$1" in
+    --json | -j | -J)
+        json_path="$2"
+        run_check_jq=true
+        shift 2
+        ;;
+    --deps | -d | -D)
+        run_check_dependencies=true
+        shift
+        ;;
+    --help | -h | -H)
+        run_show_help=true
+        shift
+        ;;
+    *)
+        printf "\033[33mInvalid Option:\033[0m $1\n\n"
+        press_enter_exit
+        ;;
+    esac
+done
+
+# This function checks if the required dependencies are installed.
+check_dependencies() {
+    local cmd
+    local RED='\033[0;31m'
+    local GREEN='\033[0;32m'
+    local NC='\033[0m' # No Color
+    local CHECKMARK="${GREEN}[✔]${NC}"
+    local CROSSMARK="${RED}[✘]${NC}"
+    local missing_deps=false
+    local http_client_installed=false
+
+    for cmd in jq wget curl; do
+        if command -v $cmd &>/dev/null; then
+            if [ "$cmd" = "wget" ] || [ "$cmd" = "curl" ]; then
+                http_client_installed=true
+            fi
+            echo -e "$CHECKMARK $cmd is installed."
+        else
+            if [ "$cmd" = "jq" ]; then
+                missing_deps=true
+                echo -e "$CROSSMARK $cmd is not installed."
+            fi
+        fi
+    done
+
+    if ! $http_client_installed; then
+        printf "\033[0;31m[✘]\033[0m Neither \033[0;31mwget\033[0m nor \033[0;31mcurl\033[0m is installed.\n"
+        missing_deps=true
+    fi
+
+    if $missing_deps; then
+        printf "\n"
+        press_enter_exit
+    else
+        printf "\n"
+        press_enter_continue
+    fi
+}
+
+# After the loop, check if check_dependencies needs to be run
+if $run_check_dependencies; then
+    check_dependencies
+fi
+
+# Check for jq
+check_jq() {
+    if ! command -v jq &>/dev/null; then
+        echo -e "\033[0;31m[✘]\033[0m jq is not installed."
+        exit 1
+    fi
+}
+
+# After the loop, check if check_jq needs to be run
+if $run_check_jq; then
+    check_jq
+fi
+
+# This function displays the help message.
+show_help() {
+    script_name=$(basename $0)
+    printf "\nOptions:\n"
+    printf "  --deps, -d, -D       Check the dependencies.\n"
+    printf "  --json, -j, -J       Specify the JSON file path.\n"
+    printf "  --help, -h, -H       Display this help message.\n\n"
+    printf "Note: You can set an environment variable for the Red Hat Subscription Manager offline\n"
+    printf "      token to simplify downloading Red Hat Enterprise Linux.\n\n"
+    printf '      \033[32mexport rhsm_offline_token="your_rhsm_offline_token_value"\033[0m\n\n'
+    press_enter_continue
+}
+
+# After the loop, check if show_help needs to be run
+if $run_show_help; then
+    show_help
+fi
+
 # Set the default values for the variables.
 json_path="project.json"
 os_names=$(jq -r '.os[] | .name' $json_path)
@@ -38,14 +157,6 @@ logging_enabled=$(get_settings download_logging_enabled)
 logging_path=$(get_settings download_logging_path)
 logfile_filename=$(get_settings download_logging_filename)
 
-# This function prompts the user to press Enter to continue.
-press_enter() {
-    cd "$script_path"
-    printf "Press \033[32mEnter\033[0m to continue.\n"
-    read -r
-    exec $0
-}
-
 # This function displays the information about the script and project.
 info() {
     project_name=$(get_project_info "name")
@@ -62,52 +173,7 @@ info() {
     printf "GitHub Repository: $project_github_url\n"
     printf "Documentation: $project_docs_url\n\n"
     show_help "continue"
-    press_enter
-}
-
-# This function checks if a command is installed.
-check_command() {
-    local cmd=$1
-    if command -v $cmd >/dev/null 2>&1; then
-        local version=$($cmd --version | head -n 1)
-        print_message info "$cmd is installed."
-    else
-        print_message error "$cmd is not installed."
-        exit 1
-    fi
-}
-
-# This function checks if the required dependencies are installed.
-check_dependencies() {
-    check_command curl
-    check_command wget
-    check_command jq
-    printf "\nPress \033[32mEnter\033[0m to continue."
-    read -r input
-    if [[ -z "$input" ]]; then
-        return
-    else
-        printf "\nPress \033[32mEnter\033[0m to continue."
-    fi
-}
-
-# This function displays the help message.
-show_help() {
-    local exit_after=${1:-"exit"}
-    script_name=$(basename $0)
-    printf "Usage: $script_name [options]\n\n"
-    printf "Options:\n"
-    printf "  --deps, -d, -D       Check the dependencies.\n"
-    printf "  --json, -j, -J       Specify the JSON file path.\n"
-    printf "  --help, -h, -H       Display this help message.\n\n"
-    printf "Note: You can set an environment variable for the Red Hat Subscription Manager offline\n"
-    printf "      token to simplify downloading Red Hat Enterprise Linux.\n\n"
-    printf '      \033[32mexport rhsm_offline_token="your_rhsm_offline_token_value"\033[0m\n\n'
-    if [[ -z "$input" ]]; then
-        [ "$exit_after" = "exit" ] && exit 0
-    else
-        printf "Press \033[32mEnter\033[0m to continue."
-    fi
+    press_enter_continue
 }
 
 # This function prompts the user to go back or quit.
@@ -258,7 +324,7 @@ select_version() {
     # SUSE Linux Enterprise Server is not available for download using this script.
     if [ "$dist" == "SUSE Linux Enterprise Server" ]; then
         printf "\nSUSE Linux Enterprise Server \033[31mis not\033[0m available for download using this script.\n\n"
-        press_enter
+        press_enter_continue
     fi
 
     # Check if the selected guest operating system is Windows.
@@ -812,7 +878,7 @@ compare_checksums() {
                 fi
             fi
             printf "\n\n"
-            press_enter
+            press_enter_continue
         fi
     fi
 }
@@ -843,28 +909,6 @@ rename_file() {
         print_message error "Unsupported guest operating system: \033[34m$os\033[0m"
     fi
 }
-
-# Check if the script is run with the --deps option.
-while (("$#")); do
-    case "$1" in
-    --json | -j | -J)
-        json_path="$2"
-        shift 2
-        ;;
-    --deps | -d | -D)
-        check_dependencies
-        shift
-        ;;
-    --help | -h | -H)
-        show_help
-        shift
-        ;;
-    *)
-        print_message error "Unknown option: \033[34m$1\033[0m"
-        exit 1
-        ;;
-    esac
-done
 
 # Check if logging is enabled.
 if [[ "$logging_enabled" == "true" ]]; then

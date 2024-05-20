@@ -7,12 +7,12 @@
 ##
 ## Do not modify this file directly, either:
 ##
-##     - modify the source build.yaml
-##     - modify the template build-ci.tmpl
+##     - Modify the source build-ci.yaml.
+##     - Modify the template build-ci.tmpl.
 ##
 ## then run the following command to re-create the .gitlab-ci.yml file:
 ##
-##     gomplate -c build.yaml -f build-ci.tmpl -o .gitlab-ci.yml
+##     gomplate -c build-ci.yaml -f build-ci.tmpl -o .gitlab-ci.yml
 ##
 ##############################################################################
 

@@ -65,6 +65,12 @@
 
 - Updates Red Hat Enterprise Linux 9 to 9.4 release.
   [#925](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/925)
+- Updates Oracle Linux 9 to 9.4 release.
+  [#927](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/927)
+- Updates Almalinux 9 to 9.4 release.
+  [#927](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/927)
+- Updates Rocky Linux 9 to 9.4 release.
+  [#927](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/927)
 - Removes CentOS Stream 8 from the project.
 
   On 31 May 2024, CentOS Stream 8 reached the end of life.

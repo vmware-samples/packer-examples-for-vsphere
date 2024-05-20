@@ -281,9 +281,9 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.3-x86_64-dvd.iso",
+                                        "download_link": "https://dl.rockylinux.org/vault/rocky/9.4/isos/x86_64/Rocky-9.4-x86_64-dvd.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://download.rockylinux.org/pub/rocky/9/isos/x86_64/CHECKSUM"
+                                        "checksum": "https://dl.rockylinux.org/vault/rocky/9.4/isos/x86_64/CHECKSUM"
                                     }
                                 ],
                                 "build_files": [
@@ -342,9 +342,9 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://repo.almalinux.org/almalinux/9.3/isos/x86_64/AlmaLinux-9.3-x86_64-dvd.iso",
+                                        "download_link": "https://repo.almalinux.org/almalinux/9.4/isos/x86_64/AlmaLinux-9.4-x86_64-dvd.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://repo.almalinux.org/almalinux/9.3/isos/x86_64/CHECKSUM"
+                                        "checksum": "https://repo.almalinux.org/almalinux/9.4/isos/x86_64/CHECKSUM"
                                     }
                                 ],
                                 "build_files": [
@@ -403,9 +403,9 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u3/x86_64/OracleLinux-R9-U3-x86_64-dvd.iso",
+                                        "download_link": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u4/x86_64/OracleLinux-R9-U4-x86_64-dvd.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U3-Server-x86_64.checksum"
+                                        "checksum": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U4-Server-x86_64.checksum"
                                     }
                                 ],
                                 "build_files": [
@@ -916,7 +916,7 @@
                     "documentation": "https://developer.hashicorp.com/packer/docs"
                 }
             },
-            "version_requirement": ">= 1.10.2"
+            "version_requirement": ">= 1.10.0"
         },
         {
             "name": "terraform",
@@ -962,7 +962,7 @@
                 "name": "git",
                 "url": "https://git-scm.com/"
             },
-            "version_requirement": ">= 2.45.0"
+            "version_requirement": ">= 2.43.0"
         }
     ]
 }

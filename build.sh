@@ -16,6 +16,27 @@ script_path=$(
     cd "$(dirname "$(follow_link "$0")")"
     pwd
 )
+
+run_check_dependencies=false
+run_check_jq=false
+run_check_packer=false
+run_check_anisble=false
+run_show_help=false
+
+# This function prompts the user to press Enter to continue.
+press_enter_continue() {
+    printf "Press \033[32mEnter\033[0m to continue.\n"
+    read -r
+    exec "$0"
+}
+
+# This function prompts the user to press Enter to exit.
+press_enter_exit() {
+    printf "Press \033[31mEnter\033[0m to exit.\n"
+    read -r
+    exit 0
+}
+
 # Set config_path if it's not already set
 if [ -z "$config_path" ]; then
     config_path=$(
@@ -23,10 +44,92 @@ if [ -z "$config_path" ]; then
         pwd
     )
 fi
-# Set the default values for the variables.
+
+# This function displays the information about the script and project.
+info() {
+    project_name=$(get_project_info "name")
+    project_description=$(get_project_info "description")
+    project_version=$(get_project_info "version")
+    project_license=$(get_project_info "license[0].name")
+    project_github_url=$(get_project_info "urls.github")
+    project_docs_url=$(get_project_info "urls.documentation")
+    clear
+    printf "\033[32m$project_name\033[0m: \033[34m$project_version\033[0m\n\n"
+    printf "Copyright 2023-$(date +%Y) Broadcom. All Rights Reserved.\n\n"
+    printf "License: $project_license\n\n"
+    printf "$project_description\n\n"
+    printf "GitHub Repository: $project_github_url\n"
+    printf "Documentation: $project_docs_url\n\n"
+    show_help "continue"
+    press_enter
+}
+
+# This function displays the help message.
+show_help() {
+    local exit_after=${1:-"exit"}
+    script_name=$(basename $0)
+    printf "Usage: $script_name [options]\n\n"
+    printf "Options:\n"
+    printf "  --deps, -d, -D       Check the dependencies.\n"
+    printf "  --json, -j, -J       Specify the JSON file path.\n"
+    printf "  --show, -s, -S       Display the build command used to build the image.\n"
+    printf "  --help, -h, -H       Display this help message.\n\n"
+    if [[ -z "$input" ]]; then
+        [ "$exit_after" = "exit" ] && exit 0
+    else
+        printf "Press \033[32mEnter\033[0m to continue."
+    fi
+}
+
 json_path="project.json"
-os_names=$(jq -r '.os[] | .name' $json_path)
-os_array=($os_names)
+# Check for jq
+check_jq() {
+    if ! command -v jq &>/dev/null; then
+        echo -e "\033[0;31m[✘]\033[0m jq is not installed."
+        exit 1
+    fi
+}
+
+check_ansible() {
+    cmd="ansible"
+    local deps_version=$(jq -r --arg cmd $cmd '.dependencies[] | select(.name == $cmd ) | .version_requirement' $json_path)
+    required_version=$(echo $deps_version | tr -d '>=' | xargs)
+    if ! command -v ansible &>/dev/null; then
+        echo -e "\033[0;31m[✘]\033[0mAnsible is not installed. $required_version or later is required."
+        exit 1
+    else
+        installed_ansible_version=$(ansible --version | head -n 1 | awk '{print $3}' | tr -d '[]')
+        if [ "$(printf '%s\n' "$required_version" "$installed_ansible_version" | sort -V | head -n1)" != "$required_version" ]; then
+            echo -e "\033[0;31m[✘]\033[0mansible-core $installed_ansible_version installed. $required_version or later is required."
+            exit 1
+        fi
+    fi
+}
+
+check_packer() {
+    cmd="packer"
+    local deps_version=$(jq -r --arg cmd $cmd '.dependencies[] | select(.name == $cmd ) | .version_requirement' $json_path)
+    required_version=$(echo $deps_version | tr -d '>=' | xargs)
+    if ! command -v $cmd &>/dev/null; then
+        echo -e "\033[0;31m[✘]\033[0mPacker is not installed. $required_version or later is required."
+        exit 1
+    else
+        installed_packer_version=$(packer version | head -n 1 | awk '{print $2}' | tr -d 'v')
+        if [ "$(printf '%s\n' "$required_version" "$installed_packer_version" | sort -V | head -n1)" != "$required_version" ]; then
+            echo -e "\033[0;31m[✘]\033[0mPacker $installed_packer_version installed. $required_version or later is required."
+            exit 1
+        fi
+    fi
+}
+
+# Check if check_jq needs to be run
+check_jq
+
+# Check if check_ansible needs to be run
+check_ansible
+
+# Check if check_packer needs to be run
+check_packer
 
 check_command() {
     cmd=$1
@@ -49,14 +152,14 @@ check_command() {
             if echo -e "$required_version\n$installed_version" | sort -V -C; then
                 echo -e "$CHECKMARK $capitalized_cmd: $installed_version is installed. $required_version or later is required."
             else
-                echo -e "$CROSSMARK $capitalized_cmd: $installed_version is installed. $required_version or later is required"
+                echo -e "$CROSSMARK $capitalized_cmd: $installed_version is installed. $required_version or later is required."
             fi
             ;;
         "==")
             if [ "$installed_version" == "$required_version" ]; then
-                echo -e "$CHECKMARK $capitalized_cmd: $installed_version is installed. $required_version or later is required"
+                echo -e "$CHECKMARK $capitalized_cmd: $installed_version is installed. $required_version or later is required."
             else
-                echo -e "$CROSSMARK $capitalized_cmd: $installed_version is installed. $required_version or later is required"
+                echo -e "$CROSSMARK $capitalized_cmd: $installed_version is installed. $required_version or later is required."
             fi
             ;;
         *)
@@ -64,7 +167,7 @@ check_command() {
             ;;
         esac
     else
-        echo -e "$CROSSMARK $capitalized_cmd is not installed. $required_version or later required"
+        echo -e "$CROSSMARK $capitalized_cmd is not installed. $required_version or later required."
     fi
 }
 
@@ -83,6 +186,53 @@ check_dependencies() {
         printf "\nPress \033[32mEnter\033[0m to continue."
     fi
 }
+
+show_command=0
+# Script options.
+while (("$#")); do
+    case "$1" in
+    --json | -j | -J)
+        json_path="$2"
+        run_check_jq=true
+        shift 2
+        ;;
+    --deps | -d | -D)
+        check_dependencies
+        shift
+        ;;
+    --show | -s | -S)
+        show_command=1
+        shift
+        ;;
+    --debug | -d | -D)
+        debug=1
+        debug_option="-debug"
+        shift
+        ;;
+    --help | -h | -H)
+        run_show_help=true
+        show_help
+        shift
+        ;;
+    *)
+        config_path=$(realpath "$1")
+        shift
+        ;;
+    esac
+done
+
+# After the loop, check if show_help needs to be run
+if $run_show_help; then
+    show_help
+fi
+
+if $run_check_dependencies; then
+    check_dependencies
+fi
+
+# Set the default values for the variables.
+os_names=$(jq -r '.os[] | .name' $json_path)
+os_array=($os_names)
 
 # Get the project information from the JSON file.
 get_project_info() {
@@ -143,42 +293,6 @@ press_enter() {
     printf "Press \033[32mEnter\033[0m to continue.\n"
     read -r
     exec $0
-}
-
-# This function displays the information about the script and project.
-info() {
-    project_name=$(get_project_info "name")
-    project_description=$(get_project_info "description")
-    project_version=$(get_project_info "version")
-    project_license=$(get_project_info "license[0].name")
-    project_github_url=$(get_project_info "urls.github")
-    project_docs_url=$(get_project_info "urls.documentation")
-    clear
-    printf "\033[32m$project_name\033[0m: \033[34m$project_version\033[0m\n\n"
-    printf "Copyright 2023-$(date +%Y) Broadcom. All Rights Reserved.\n\n"
-    printf "License: $project_license\n\n"
-    printf "$project_description\n\n"
-    printf "GitHub Repository: $project_github_url\n"
-    printf "Documentation: $project_docs_url\n\n"
-    show_help "continue"
-    press_enter
-}
-
-# This function displays the help message.
-show_help() {
-    local exit_after=${1:-"exit"}
-    script_name=$(basename $0)
-    printf "Usage: $script_name [options]\n\n"
-    printf "Options:\n"
-    printf "  --deps, -d, -D       Check the dependencies.\n"
-    printf "  --json, -j, -J       Specify the JSON file path.\n"
-    printf "  --show, -s, -S       Display the build command used to build the image.\n"
-    printf "  --help, -h, -H       Display this help message.\n\n"
-    if [[ -z "$input" ]]; then
-        [ "$exit_after" = "exit" ] && exit 0
-    else
-        printf "Press \033[32mEnter\033[0m to continue."
-    fi
 }
 
 # This function prompts the user to go back or quit.
@@ -713,37 +827,6 @@ select_build() {
         ;;
     esac
 }
-show_command=0
-# Script options.
-while (("$#")); do
-    case "$1" in
-    --json | -j | -J)
-        json_path="$2"
-        shift 2
-        ;;
-    --deps | -d | -D)
-        check_dependencies
-        shift
-        ;;
-    --show | -s | -S)
-        show_command=1
-        shift
-        ;;
-    --debug | -d | -D)
-        debug=1
-        debug_option="-debug"
-        shift
-        ;;
-    --help | -h | -H)
-        show_help
-        shift
-        ;;
-    *)
-        config_path=$(realpath "$1")
-        shift
-        ;;
-    esac
-done
 
 # Check if logging is enabled.
 if [[ "$logging_enabled" == "true" ]]; then

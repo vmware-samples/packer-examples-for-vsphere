@@ -74,6 +74,18 @@
     state: latest
   when: ansible_distribution == 'AlmaLinux' and ansible_distribution_version | int >= 8 and enable_cloudinit == 'true'
 
+- name: "Installing cloud-init."
+  command:
+    cmd: dnf install -y cloud-init
+  become: yes
+  when: enable_cloudinit == 'true' and ansible_distribution == 'Rocky'
+
+- name: "Installing cloud-init."
+  command:
+    cmd: dnf install -y cloud-init
+  become: yes
+  when: enable_cloudinit == 'true' and ansible_distribution == 'OracleLinux'
+
 - block:
   - name: "Updating the operating system."
     dnf:

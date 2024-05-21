@@ -5,4 +5,4 @@ collections:
   - name: chocolatey.chocolatey
     version: 1.5.1
   - name: community.general
-    version: 8.5.0
+    version: 8.6.0

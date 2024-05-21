@@ -1,4 +1,6 @@
 ---
+# SUSE Linux Enterprise Server specific tasks.
+
 # Tasks to clean the SUSE Customer Center file.
 - name: "Cleaning the SUSE Customer Center file."
   file:

@@ -1,6 +1,8 @@
 ---
-# Tasks for unregistering from SUSE Customer Center.
-- name: "Unregistering from SUSE Customer Center."
+# SUSE Linux Enterprise Server specific tasks.
+
+# Tasks for disconnecting from SUSE Customer Center.
+- name: "Disconnecting from SUSE Customer Center."
   command:
     cmd: "{{ item }}"
   loop:

@@ -1,8 +1,5 @@
 ---
-# Tasks for setting custom facts.
-- name: "Setting custom facts."
-  set_fact:
-    enable_cloudinit: "{{ enable_cloudinit | default('false') }}"
+# Linux distribution specific tasks.
 
 # Tasks for creating the local group for Ansible.
 - name: "Creating the local group for Ansible."

@@ -1,4 +1,6 @@
 ---
+# VMware Photon OS specific tasks.
+
 # Tasks to clean the audit logs.
 - name: "Cleaning the audit logs."
   file:

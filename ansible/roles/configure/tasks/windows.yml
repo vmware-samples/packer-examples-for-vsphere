@@ -1,4 +1,6 @@
 ---
+# Microsoft Windows specific tasks.
+
 # Set the Windows Explorer options.
 - name: Setting the Windows Explorer options...
   block:

@@ -1,6 +1,8 @@
 ---
-# Tasks for unregistering from Red Hat Subscription Manager.
-- name: "Unregistering from Red Hat Subscription Manager."
+# Red Hat Enterprise Linux or derivative specific tasks.
+
+# Tasks for disconnecting from Red Hat Subscription Manager.
+- name: "Disconnecting from Red Hat Subscription Manager."
   redhat_subscription:
     state: absent
   when: ansible_distribution == 'RedHat'

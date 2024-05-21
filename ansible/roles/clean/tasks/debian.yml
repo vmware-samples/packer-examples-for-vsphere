@@ -1,8 +1,5 @@
 ---
-# Tasks for setting custom facts.
-- name: "Setting custom facts."
-  set_fact:
-    enable_cloudinit: "{{ enable_cloudinit | default('false') }}"
+# Debian or derivative specific tasks.
 
 # Tasks for removing the cloud-init package.
 - name: "Removing the cloud-init package."

@@ -14,12 +14,6 @@
   [FAQ](https://vmware-samples.github.io/packer-examples-for-vsphere/getting-started/faq/) for
   additional details.
 
-- Updates Windows Server 2025 Insiders Preview default values to allow for deployment.
-  [#907](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/907)
-  - `vm_inst_os_eval = true` >> `false` (Requires key)
-  - `vm_inst_os_kms_key_standard` >> `vm_inst_os_key_standard`
-  - `vm_inst_os_kms_key_datacenter` >> `vm_inst_os_key_datacenter`
-
 **Enhancement**:
 
 - Adds a download script (`./download.sh`) and a JSON configuration file (`project.json`) to assist

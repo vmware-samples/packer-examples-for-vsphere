@@ -421,11 +421,6 @@ select_architecture() {
 select_download() {
     # Check if the selected guest operating system is Windows.
     if [[ "$dist" == *"Windows"* ]]; then
-        # Check if the selected version is "2025" and the selected operating system is "Windows Server"
-        if [[ "$version" == "2025" && "$dist" == "Windows Server" ]]; then
-            printf "\nWindows Server 2025 Insiders Preview \033[31mis not\033[0m available for download using this script.\n\n"
-            press_enter_continue
-        fi
         download_link=$(jq -r --arg os "$os" --arg dist "$dist" --arg version "$version" --arg arch "$arch" '.os[] | select(.name == $os) | .types[] | select(.description == $dist) | .versions[$version][] | .architectures[] | select(.architecture == $arch) | .download_link' $json_path)
         # Validate the download link
         if curl --output /dev/null --silent --head --fail "$download_link"; then

@@ -7,33 +7,33 @@ icon: octicons/download-16
 Download the guest operating system ISOs using the download script (`./download.sh`) or directly from the publisher.
 
 ::spantable::
-| Operating System                                            | Version   | Automated Download                   |
-| :---                                                        | :---      | :---                                 |
-| :simple-broadcom: VMware Photon OS @span                    | 5.0       | :octicons-check-circle-16:{ .green } |
-|                                                             | 4.0       | :octicons-check-circle-16:{ .green } |
-| :fontawesome-brands-debian: Debian @span                    | 12        | :octicons-check-circle-16:{ .green } |
-|                                                             | 11        | :octicons-check-circle-16:{ .green } |
-| :fontawesome-brands-ubuntu: Ubuntu Server @span             | 24.04     | :octicons-check-circle-16:{ .green } |
-|                                                             | 22.04     | :octicons-check-circle-16:{ .green } |
-|                                                             | 20.04     | :octicons-check-circle-16:{ .green } |
-| :fontawesome-brands-redhat: Red Hat Enterprise Linux @span  | 9         | :octicons-check-circle-16:{ .green } |
-|                                                             | 8         | :octicons-check-circle-16:{ .green } |
-|                                                             | 7         | :octicons-check-circle-16:{ .green } |
-| :simple-almalinux: AlmaLinux OS @span                       | 9         | :octicons-check-circle-16:{ .green } |
-|                                                             | 8         | :octicons-check-circle-16:{ .green } |
-| :simple-rockylinux: Rocky Linux @span                       | 9         | :octicons-check-circle-16:{ .green } |
-|                                                             | 8         | :octicons-check-circle-16:{ .green } |
-| :simple-oracle: Oracle Linux @span                          | 9         | :octicons-check-circle-16:{ .green } |
-|                                                             | 8         | :octicons-check-circle-16:{ .green } |
-| :fontawesome-brands-centos: CentOS @span                    | 9 Stream  | :octicons-check-circle-16:{ .green } |
-|                                                             | 7         | :octicons-check-circle-16:{ .green } |
-| :fontawesome-brands-fedora: Fedora Serve* @span             | 40        | :octicons-check-circle-16:{ .green } |
-| :fontawesome-brands-suse: SUSE Linux Enterprise @span       | 15        | :octicons-x-circle-16:{ .red }       |
-| :fontawesome-brands-windows: Microsoft Windows Server @span | 2025      | :octicons-x-circle-16:{ .red } &nbsp; Windows Insiders Preview &nbsp; [:fontawesome-solid-cloud-arrow-down:][download-windows-server-2025] |
-|                                                             | 2022      | :octicons-check-circle-16:{ .green } &nbsp; Windows Evaluation Center                                                                      |
-|                                                             | 2019      | :octicons-check-circle-16:{ .green } &nbsp; Windows Evaluation Center                                                                      |
-| :fontawesome-brands-windows: Microsoft Windows @span        | 11        | :octicons-check-circle-16:{ .green } &nbsp; Windows Evaluation Center                                                                      |
-|                                                             | 10        | :octicons-check-circle-16:{ .green } &nbsp; Windows Evaluation Center                                                                      |
+| Operating System                                            | Version   | Automated Download                                                    |
+| :---                                                        | :---      | :---                                                                  |
+| :simple-broadcom: VMware Photon OS @span                    | 5.0       | :octicons-check-circle-16:{ .green }                                  |
+|                                                             | 4.0       | :octicons-check-circle-16:{ .green }                                  |
+| :fontawesome-brands-debian: Debian @span                    | 12        | :octicons-check-circle-16:{ .green }                                  |
+|                                                             | 11        | :octicons-check-circle-16:{ .green }                                  |
+| :fontawesome-brands-ubuntu: Ubuntu Server @span             | 24.04     | :octicons-check-circle-16:{ .green }                                  |
+|                                                             | 22.04     | :octicons-check-circle-16:{ .green }                                  |
+|                                                             | 20.04     | :octicons-check-circle-16:{ .green }                                  |
+| :fontawesome-brands-redhat: Red Hat Enterprise Linux @span  | 9         | :octicons-check-circle-16:{ .green }                                  |
+|                                                             | 8         | :octicons-check-circle-16:{ .green }                                  |
+|                                                             | 7         | :octicons-check-circle-16:{ .green }                                  |
+| :simple-almalinux: AlmaLinux OS @span                       | 9         | :octicons-check-circle-16:{ .green }                                  |
+|                                                             | 8         | :octicons-check-circle-16:{ .green }                                  |
+| :simple-rockylinux: Rocky Linux @span                       | 9         | :octicons-check-circle-16:{ .green }                                  |
+|                                                             | 8         | :octicons-check-circle-16:{ .green }                                  |
+| :simple-oracle: Oracle Linux @span                          | 9         | :octicons-check-circle-16:{ .green }                                  |
+|                                                             | 8         | :octicons-check-circle-16:{ .green }                                  |
+| :fontawesome-brands-centos: CentOS @span                    | 9 Stream  | :octicons-check-circle-16:{ .green }                                  |
+|                                                             | 7         | :octicons-check-circle-16:{ .green }                                  |
+| :fontawesome-brands-fedora: Fedora Serve* @span             | 40        | :octicons-check-circle-16:{ .green }                                  |
+| :fontawesome-brands-suse: SUSE Linux Enterprise @span       | 15        | :octicons-x-circle-16:{ .red }                                        |
+| :fontawesome-brands-windows: Microsoft Windows Server @span | 2025      | :octicons-check-circle-16:{ .green } &nbsp; Windows Evaluation Center |
+|                                                             | 2022      | :octicons-check-circle-16:{ .green } &nbsp; Windows Evaluation Center |
+|                                                             | 2019      | :octicons-check-circle-16:{ .green } &nbsp; Windows Evaluation Center |
+| :fontawesome-brands-windows: Microsoft Windows @span        | 11        | :octicons-check-circle-16:{ .green } &nbsp; Windows Evaluation Center |
+|                                                             | 10        | :octicons-check-circle-16:{ .green } &nbsp; Windows Evaluation Center |
 ::end-spantable::
 
 ## Using the Download Script
@@ -94,7 +94,7 @@ Download the guest operating system ISOs using the download script (`./download.
 5. The download will start.
 
       ```shell
-      Downloading: ubuntu-16.04-live-server-amd64.iso => iso/linux/ubuntu-server/24.04-lts/amd64.
+      Downloading: ubuntu-24.04-live-server-amd64.iso => iso/linux/ubuntu-server/24.04-lts/amd64.
 
         % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                        Dload  Upload   Total   Spent    Left  Speed
@@ -103,8 +103,8 @@ Download the guest operating system ISOs using the download script (`./download.
                                        Dload  Upload   Total   Spent    Left  Speed
       100   299  100   299    0     0    535      0 --:--:-- --:--:-- --:--:--   535
 
-      Verifying: sha256 checksum for ubuntu-16.04-live-server-amd64.iso.
-      Verification of checksum successful for ubuntu-16.04-live-server-amd64.iso.
+      Verifying: sha256 checksum for ubuntu-24.04-live-server-amd64.iso.
+      Verification of checksum successful for ubuntu-24.04-live-server-amd64.iso.
               - Expected: 8762f7e74e4d64d72fceb5f70682e6b069932deedb4949c6975d0f0fe0a91be3
               - Actual:   8762f7e74e4d64d72fceb5f70682e6b069932deedb4949c6975d0f0fe0a91be3
 
@@ -157,5 +157,4 @@ Update the ISO path and file for each guest operating system in the configuratio
    ```
 
 [//]: Links
-[download-windows-server-2025]: https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewserver
 [iso]: https://en.wikipedia.org/wiki/ISO_imageGUID-58D77EA5-50D9-4A8E-A15A-D7B3ABA11B87.html

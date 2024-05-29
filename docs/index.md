@@ -1,6 +1,6 @@
 <!-- markdownlint-disable first-line-h1 no-inline-html -->
 
-<img src="assets/images/icon-color.svg" alt="VMware vSphere" width="100">
+<img src="assets/images/icon-color.svg" alt="VMware vSphere" width="150">
 
 # Packer Examples for VMware vSphere
 

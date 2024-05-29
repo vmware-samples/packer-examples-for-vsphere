@@ -1,0 +1,34 @@
+---
+# SUSE Linux Enterprise Server specific tasks.
+
+# Tasks for updating the operating system and installing additional packages.
+- block:
+  - name: "Getting guest operating system information."
+    debug:
+      msg: "OS: {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+  - name: "Updating the operating system."
+    zypper:
+      name: "*"
+      state: latest
+      update_cache: true
+
+  - name: "Installing additional packages."
+    zypper:
+      name: "{{ additional_packages[ansible_os_family] }}"
+      state: latest
+
+  - name: "Adding location of python3-jsonpatch."
+    command: SUSEConnect -p sle-module-public-cloud/15.5/x86_64
+
+  - name: "Installing python3-jsonpatch"
+    zypper:
+      name: python3-jsonpatch
+      state: present
+
+  - name: "Installing cloud-init."
+    zypper:
+      name: cloud-init
+      state: present
+    when: enable_cloudinit == 'true'
+  become: true

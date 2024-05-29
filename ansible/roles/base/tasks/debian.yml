@@ -1,0 +1,26 @@
+---
+# Debian or derivative specific tasks.
+
+# Tasks for updating the operating system and installing additional packages.
+- block:
+  - name: "Getting guest operating system information."
+    debug:
+      msg: "OS: {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+  - name: "Updating the operating system."
+    apt:
+      name: "*"
+      state: latest     # noqa package-latest
+      update_cache: true
+
+  - name: "Installing additional packages."
+    apt:
+      name: "{{ additional_packages[ansible_os_family] }}"
+      state: latest     # noqa package-latest
+
+  - name: "Installing cloud-init."
+    apt:
+      name: cloud-init
+      state: latest
+    when: enable_cloudinit == 'true' and ansible_distribution_version | int >= 12
+

@@ -1,5 +1,10 @@
 ---
-# Windows
+# Microsoft Windows specific tasks.
+
+# Tasks for updating the operating system and installing additional packages.
+- name: "Getting guest operating system information."
+  debug:
+    msg: "OS: {{ ansible_os_name }}"
 
 - name: Ensure .NET Framework 4.8 requirement is satisfied for Chocolatey CLI v2.0.0+
   block:
@@ -31,7 +36,6 @@
           - 7zip
         state: latest
         ignore_checksums: true
-
   when: ansible_os_installation_type != "Server Core"
 
 - name: "Updating the operating system."

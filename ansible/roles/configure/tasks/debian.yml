@@ -1,8 +1,5 @@
 ---
-# Tasks for setting custom facts.
-- name: "Setting custom facts."
-  set_fact:
-    enable_cloudinit: "{{ enable_cloudinit | default('false') }}"
+# Debian or derivative specific tasks.
 
 # Tasks for configuring SSH for public key authentication.
 - name: "Configuring SSH for Public Key Authentication."
@@ -52,7 +49,8 @@
         content: 'datasource_list: [ VMware, OVF, None ]'
         dest: /etc/cloud/cloud.cfg.d/90_dpkg.cfg
   when: enable_cloudinit == 'true'
-- name: "Replace dhcp with static for Debian"
+
+- name: "Replacing dhcp with static for Debian"
   lineinfile:
     path: /etc/network/interfaces
     regexp: '^iface ens192 inet dhcp'

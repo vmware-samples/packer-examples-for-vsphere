@@ -13,7 +13,8 @@ vm_guest_os_name    = "photon"
 vm_guest_os_version = "5.0"
 
 // Virtual Machine Guest Operating System Setting
-vm_guest_os_type = "vmwarePhoton64Guest"
+vm_guest_os_type      = "vmwarePhoton64Guest"
+vm_guest_os_cloudinit = false
 
 // Virtual Machine Hardware Settings
 vm_firmware              = "efi-secure"

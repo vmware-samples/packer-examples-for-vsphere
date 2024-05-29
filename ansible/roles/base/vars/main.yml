@@ -1,6 +1,7 @@
 ---
 task_name: "Update the operating system and install additional packages."
 additional_packages:
+  # OS family: VMware Photon OS
   VMware Photon OS:
     - git
     - jq
@@ -11,6 +12,7 @@ additional_packages:
     - tar
     - unzip
     - wget
+  # OS family: Debian
   Debian:
     - bash-completion
     - ca-certificates
@@ -19,6 +21,7 @@ additional_packages:
     - net-tools
     - unzip
     - wget
+  # OS family: RedHat
   RedHat:
     - ca-certificates
     - curl
@@ -27,6 +30,7 @@ additional_packages:
     - unzip
     - vim
     - wget
+  # OS family: Suse
   Suse:
     - bash-completion
     - ca-certificates

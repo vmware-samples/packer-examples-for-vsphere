@@ -15,14 +15,14 @@
         <link rel="canonical" href="https://vmware-samples.github.io/packer-examples-for-vsphere/getting-started/build/">
       
       
-        <link rel="prev" href="../configuration/">
+        <link rel="prev" href="../configure/">
       
       
         <link rel="next" href="../gitlab-ci-cd/">
       
       
       <link rel="icon" href="../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.66ac8b77.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -65,7 +65,16 @@
     
     
     
-  </head>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -84,7 +93,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#build" class="md-skip">
+        <a href="#build-the-images" class="md-skip">
           Skip to content
         </a>
       
@@ -563,13 +572,13 @@
   
   
     <li class="md-nav__item">
-      <a href="../download/" class="md-nav__link">
+      <a href="../get-project/" class="md-nav__link">
         
   
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4.75 17.25a.75.75 0 0 1 .75.75v2.25c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V18a.75.75 0 0 1 1.5 0v2.25A1.75 1.75 0 0 1 18.25 22H5.75A1.75 1.75 0 0 1 4 20.25V18a.75.75 0 0 1 .75-.75Z"/><path d="M5.22 9.97a.749.749 0 0 1 1.06 0l4.97 4.969V2.75a.75.75 0 0 1 1.5 0v12.189l4.97-4.969a.749.749 0 1 1 1.06 1.06l-6.25 6.25a.749.749 0 0 1-1.06 0l-6.25-6.25a.749.749 0 0 1 0-1.06Z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3.75 3.75A3.75 3.75 0 0 1 7.5 0c1.455 0 3.436.901 4.5 3.11C13.064.901 15.044 0 16.5 0a3.75 3.75 0 0 1 3 6h1.75c.966 0 1.75.784 1.75 1.75v2.5c0 .698-.409 1.301-1 1.582v8.418A1.75 1.75 0 0 1 20.25 22H3.75A1.75 1.75 0 0 1 2 20.25v-8.418c-.591-.282-1-.884-1-1.582v-2.5C1 6.784 1.784 6 2.75 6H4.5a3.733 3.733 0 0 1-.75-2.25ZM20.5 12h-7.75v8.5h7.5a.25.25 0 0 0 .25-.25Zm-9.25 8.5V12H3.5v8.25c0 .138.112.25.25.25Zm10-10a.25.25 0 0 0 .25-.25v-2.5a.25.25 0 0 0-.25-.25h-8.5v3Zm-18.5 0h8.5v-3h-8.5a.25.25 0 0 0-.25.25v2.5c0 .138.112.25.25.25Zm16-6.75A2.25 2.25 0 0 0 16.5 1.5c-1.15 0-3.433 1.007-3.72 4.5h3.72a2.25 2.25 0 0 0 2.25-2.25ZM11.22 6c-.287-3.493-2.57-4.5-3.72-4.5a2.25 2.25 0 1 0 0 4.5Z"/></svg>
   
   <span class="md-ellipsis">
-    Download
+    Get the Project
   </span>
   
 
@@ -586,13 +595,13 @@
   
   
     <li class="md-nav__item">
-      <a href="../iso/" class="md-nav__link">
+      <a href="../downloads/" class="md-nav__link">
         
   
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.063 1.456a1.749 1.749 0 0 1 1.874 0l8.383 5.316a1.751 1.751 0 0 1 0 2.956l-8.383 5.316a1.749 1.749 0 0 1-1.874 0L2.68 9.728a1.751 1.751 0 0 1 0-2.956Zm1.071 1.267a.25.25 0 0 0-.268 0L3.483 8.039a.25.25 0 0 0 0 .422l8.383 5.316a.25.25 0 0 0 .268 0l8.383-5.316a.25.25 0 0 0 0-.422Z"/><path d="M1.867 12.324a.75.75 0 0 1 1.035-.232l8.964 5.685a.25.25 0 0 0 .268 0l8.964-5.685a.75.75 0 0 1 .804 1.267l-8.965 5.685a1.749 1.749 0 0 1-1.874 0l-8.965-5.685a.75.75 0 0 1-.231-1.035Z"/><path d="M1.867 16.324a.75.75 0 0 1 1.035-.232l8.964 5.685a.25.25 0 0 0 .268 0l8.964-5.685a.75.75 0 0 1 .804 1.267l-8.965 5.685a1.749 1.749 0 0 1-1.874 0l-8.965-5.685a.75.75 0 0 1-.231-1.035Z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Z"/><path d="M7.25 7.689V2a.75.75 0 0 1 1.5 0v5.689l1.97-1.969a.749.749 0 1 1 1.06 1.06l-3.25 3.25a.749.749 0 0 1-1.06 0L4.22 6.78a.749.749 0 1 1 1.06-1.06l1.97 1.969Z"/></svg>
   
   <span class="md-ellipsis">
-    Guest Operating Systems
+    Download ISOs
   </span>
   
 
@@ -632,13 +641,13 @@
   
   
     <li class="md-nav__item">
-      <a href="../configuration/" class="md-nav__link">
+      <a href="../configure/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Zm-1.5 0a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"/><path d="M12 1c.266 0 .532.009.797.028.763.055 1.345.617 1.512 1.304l.352 1.45c.019.078.09.171.225.221.247.089.49.19.728.302.13.061.246.044.315.002l1.275-.776c.603-.368 1.411-.353 1.99.147.402.349.78.726 1.128 1.129.501.578.515 1.386.147 1.99l-.776 1.274c-.042.069-.058.185.002.315.112.238.213.481.303.728.048.135.142.205.22.225l1.45.352c.687.167 1.249.749 1.303 1.512.038.531.038 1.063 0 1.594-.054.763-.616 1.345-1.303 1.512l-1.45.352c-.078.019-.171.09-.221.225-.089.248-.19.491-.302.728-.061.13-.044.246-.002.315l.776 1.275c.368.603.353 1.411-.147 1.99-.349.402-.726.78-1.129 1.128-.578.501-1.386.515-1.99.147l-1.274-.776c-.069-.042-.185-.058-.314.002a8.606 8.606 0 0 1-.729.303c-.135.048-.205.142-.225.22l-.352 1.45c-.167.687-.749 1.249-1.512 1.303-.531.038-1.063.038-1.594 0-.763-.054-1.345-.616-1.512-1.303l-.352-1.45c-.019-.078-.09-.171-.225-.221a8.138 8.138 0 0 1-.728-.302c-.13-.061-.246-.044-.315-.002l-1.275.776c-.603.368-1.411.353-1.99-.147-.402-.349-.78-.726-1.128-1.129-.501-.578-.515-1.386-.147-1.99l.776-1.274c.042-.069.058-.185-.002-.314a8.606 8.606 0 0 1-.303-.729c-.048-.135-.142-.205-.22-.225l-1.45-.352c-.687-.167-1.249-.749-1.304-1.512a11.158 11.158 0 0 1 0-1.594c.055-.763.617-1.345 1.304-1.512l1.45-.352c.078-.019.171-.09.221-.225.089-.248.19-.491.302-.728.061-.13.044-.246.002-.315l-.776-1.275c-.368-.603-.353-1.411.147-1.99.349-.402.726-.78 1.129-1.128.578-.501 1.386-.515 1.99-.147l1.274.776c.069.042.185.058.315-.002.238-.112.481-.213.728-.303.135-.048.205-.142.225-.22l.352-1.45c.167-.687.749-1.249 1.512-1.304C11.466 1.01 11.732 1 12 1Zm-.69 1.525c-.055.004-.135.05-.161.161l-.353 1.45a1.832 1.832 0 0 1-1.172 1.277 7.147 7.147 0 0 0-.6.249 1.833 1.833 0 0 1-1.734-.074l-1.274-.776c-.098-.06-.186-.036-.228 0a9.774 9.774 0 0 0-.976.976c-.036.042-.06.131 0 .228l.776 1.274c.314.529.342 1.18.074 1.734a7.147 7.147 0 0 0-.249.6 1.831 1.831 0 0 1-1.278 1.173l-1.45.351c-.11.027-.156.107-.16.162a9.63 9.63 0 0 0 0 1.38c.004.055.05.135.161.161l1.45.353a1.832 1.832 0 0 1 1.277 1.172c.074.204.157.404.249.6.268.553.24 1.204-.074 1.733l-.776 1.275c-.06.098-.036.186 0 .228.301.348.628.675.976.976.042.036.131.06.228 0l1.274-.776a1.83 1.83 0 0 1 1.734-.075c.196.093.396.176.6.25a1.831 1.831 0 0 1 1.173 1.278l.351 1.45c.027.11.107.156.162.16a9.63 9.63 0 0 0 1.38 0c.055-.004.135-.05.161-.161l.353-1.45a1.834 1.834 0 0 1 1.172-1.278 6.82 6.82 0 0 0 .6-.248 1.831 1.831 0 0 1 1.733.074l1.275.776c.098.06.186.036.228 0 .348-.301.675-.628.976-.976.036-.042.06-.131 0-.228l-.776-1.275a1.834 1.834 0 0 1-.075-1.733c.093-.196.176-.396.25-.6a1.831 1.831 0 0 1 1.278-1.173l1.45-.351c.11-.027.156-.107.16-.162a9.63 9.63 0 0 0 0-1.38c-.004-.055-.05-.135-.161-.161l-1.45-.353c-.626-.152-1.08-.625-1.278-1.172a6.576 6.576 0 0 0-.248-.6 1.833 1.833 0 0 1 .074-1.734l.776-1.274c.06-.098.036-.186 0-.228a9.774 9.774 0 0 0-.976-.976c-.042-.036-.131-.06-.228 0l-1.275.776a1.831 1.831 0 0 1-1.733.074 6.88 6.88 0 0 0-.6-.249 1.835 1.835 0 0 1-1.173-1.278l-.351-1.45c-.027-.11-.107-.156-.162-.16a9.63 9.63 0 0 0-1.38 0Z"/></svg>
   
   <span class="md-ellipsis">
-    Configuration
+    Configure
   </span>
   
 
@@ -705,15 +714,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#build-script-options" class="md-nav__link">
-    <span class="md-ellipsis">
-      Build Script Options
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#using-the-build-script" class="md-nav__link">
     <span class="md-ellipsis">
       Using the Build Script
@@ -724,18 +724,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#build-with-defaults" class="md-nav__link">
+  <a href="#demo" class="md-nav__link">
     <span class="md-ellipsis">
-      Build with Defaults
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build-a-specific-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Build a Specific Configuration
+      Demo
     </span>
   </a>
   
@@ -747,9 +738,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#generate-a-custom-build-script" class="md-nav__link">
+  <a href="#build-script-options" class="md-nav__link">
     <span class="md-ellipsis">
-      Generate a Custom Build Script
+      Build Script Options
     </span>
   </a>
   
@@ -1049,15 +1040,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#build-script-options" class="md-nav__link">
-    <span class="md-ellipsis">
-      Build Script Options
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#using-the-build-script" class="md-nav__link">
     <span class="md-ellipsis">
       Using the Build Script
@@ -1068,18 +1050,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#build-with-defaults" class="md-nav__link">
+  <a href="#demo" class="md-nav__link">
     <span class="md-ellipsis">
-      Build with Defaults
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build-a-specific-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Build a Specific Configuration
+      Demo
     </span>
   </a>
   
@@ -1091,9 +1064,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#generate-a-custom-build-script" class="md-nav__link">
+  <a href="#build-script-options" class="md-nav__link">
     <span class="md-ellipsis">
-      Generate a Custom Build Script
+      Build Script Options
     </span>
   </a>
   
@@ -1148,50 +1121,109 @@
   
 
 
-<h1 id="build">Build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h1>
-<h2 id="build-script-options">Build Script Options<a class="headerlink" href="#build-script-options" title="Permanent link">&para;</a></h2>
-<p>If you need help for script options, pass the <code>--help</code> or <code>-h</code> flag to the build script to display
-the help for the build script.</p>
-<div class="highlight"><pre><span></span><code>./build.sh<span class="w"> </span>--help
-</code></pre></div>
-<p>If you need to enable debugging, pass the <code>--debug</code> or <code>-d</code> flag to the build script to enable debug
-mode for Packer.</p>
-<p>This example will look for the configuration files in the <code>config</code> directory and enable debug mode
-for Packer.</p>
-<div class="highlight"><pre><span></span><code>./build.sh<span class="w"> </span>--debug
-</code></pre></div>
-<p>This example will look for the configuration files in the <code>us-west-1</code> directory and enable debug
-mode for Packer.</p>
-<div class="highlight"><pre><span></span><code>./build.sh<span class="w"> </span>--debug<span class="w"> </span>us-west-1
-</code></pre></div>
+<h1 id="build-the-images">Build the Images<a class="headerlink" href="#build-the-images" title="Permanent link">&para;</a></h1>
 <h2 id="using-the-build-script">Using the Build Script<a class="headerlink" href="#using-the-build-script" title="Permanent link">&para;</a></h2>
-<h3 id="build-with-defaults">Build with Defaults<a class="headerlink" href="#build-with-defaults" title="Permanent link">&para;</a></h3>
-<p>Start a build by running the build script (<code>./build.sh</code>). The script presents a menu the which
-simply calls Packer and the respective build(s).</p>
+<ol>
+<li>
+<p>Start a build by running the build script (<code>./build.sh</code>).</p>
 <p>This example will look for the configuration files in the <code>config</code> directory.</p>
 <div class="highlight"><pre><span></span><code>./build.sh
 </code></pre></div>
-<h3 id="build-a-specific-configuration">Build a Specific Configuration<a class="headerlink" href="#build-a-specific-configuration" title="Permanent link">&para;</a></h3>
-<p>This example will look for the configuration files in the <code>us-west-1</code> directory.</p>
-<div class="highlight"><pre><span></span><code>./build.sh<span class="w"> </span>us-west-1
+<p>The script displays a menu to initialize a virtual machine image build(s).</p>
+<p>The builds are supported by a JSON configuration file (<code>project.json</code>) that includes the details for each guest operating system.</p>
+</li>
+<li>
+<p>Select a guest operating system.</p>
+<div class="highlight"><pre><span></span><code>Select<span class="w"> </span>a<span class="w"> </span>guest<span class="w"> </span>operating<span class="w"> </span>system:
+
+<span class="m">1</span>:<span class="w"> </span>Linux
+<span class="m">2</span>:<span class="w"> </span>Windows
+
+Enter<span class="w"> </span>q<span class="w"> </span>to<span class="w"> </span>quit<span class="w"> </span>or<span class="w"> </span>i<span class="w"> </span><span class="k">for</span><span class="w"> </span>info.
 </code></pre></div>
-<h2 id="generate-a-custom-build-script">Generate a Custom Build Script<a class="headerlink" href="#generate-a-custom-build-script" title="Permanent link">&para;</a></h2>
-<p>The build script (<code>./build.sh</code>) can be generated with Gomplate using a template (<code>./build.tmpl</code>) and
-a configuration file in YAML (<code>./build.yaml</code>).</p>
-<p>Generate a custom build script:</p>
-<div class="highlight"><pre><span></span><code>gomplate<span class="w"> </span>-c<span class="w"> </span>build.yaml<span class="w"> </span>-f<span class="w"> </span>build.tmpl<span class="w"> </span>-o<span class="w"> </span>build.sh
+</li>
+<li>
+<p>Select a distribution (or edition).</p>
+<div class="highlight"><pre><span></span><code>Select<span class="w"> </span>a<span class="w"> </span>Linux<span class="w"> </span>distribution:
+
+<span class="m">1</span>:<span class="w"> </span>AlmaLinux<span class="w"> </span>OS
+<span class="m">2</span>:<span class="w"> </span>CentOS
+<span class="m">3</span>:<span class="w"> </span>Debian
+<span class="m">4</span>:<span class="w"> </span>Fedora<span class="w"> </span>Server
+<span class="m">5</span>:<span class="w"> </span>Oracle<span class="w"> </span>Linux
+<span class="m">6</span>:<span class="w"> </span>Red<span class="w"> </span>Hat<span class="w"> </span>Enterprise<span class="w"> </span>Linux
+<span class="m">7</span>:<span class="w"> </span>Rocky<span class="w"> </span>Linux
+<span class="m">8</span>:<span class="w"> </span>SUSE<span class="w"> </span>Linux<span class="w"> </span>Enterprise<span class="w"> </span>Server
+<span class="m">9</span>:<span class="w"> </span>Ubuntu<span class="w"> </span>Server
+<span class="m">10</span>:<span class="w"> </span>VMware<span class="w"> </span>Photon<span class="w"> </span>OS
+
+Enter<span class="w"> </span>b<span class="w"> </span>to<span class="w"> </span>go<span class="w"> </span>back,<span class="w"> </span>or<span class="w"> </span>q<span class="w"> </span>to<span class="w"> </span>quit.
 </code></pre></div>
-<p>or</p>
-<div class="highlight"><pre><span></span><code>make<span class="w"> </span>update-build-script
+</li>
+<li>
+<p>Select a version.</p>
+<div class="highlight"><pre><span></span><code>Select<span class="w"> </span>a<span class="w"> </span>version:
+
+<span class="m">1</span>:<span class="w"> </span>Ubuntu<span class="w"> </span>Server<span class="w"> </span><span class="m">24</span>.04<span class="w"> </span>LTS
+<span class="m">2</span>:<span class="w"> </span>Ubuntu<span class="w"> </span>Server<span class="w"> </span><span class="m">22</span>.04<span class="w"> </span>LTS
+<span class="m">3</span>:<span class="w"> </span>Ubuntu<span class="w"> </span>Server<span class="w"> </span><span class="m">20</span>.04<span class="w"> </span>LTS
+
+Enter<span class="w"> </span>b<span class="w"> </span>to<span class="w"> </span>go<span class="w"> </span>back,<span class="w"> </span>or<span class="w"> </span>q<span class="w"> </span>to<span class="w"> </span>quit.
 </code></pre></div>
+</li>
+<li>
+<p>The build will start.</p>
+<div class="highlight"><pre><span></span><code>Building<span class="w"> </span>a<span class="w"> </span>Ubuntu<span class="w"> </span>Server<span class="w"> </span><span class="m">24</span>.04<span class="w"> </span>LTS<span class="w"> </span>virtual<span class="w"> </span>machine<span class="w"> </span>image<span class="w"> </span><span class="k">for</span><span class="w"> </span>VMware<span class="w"> </span>vSphere...
+
+Initializing<span class="w"> </span>HashiCorp<span class="w"> </span>Packer<span class="w"> </span>and<span class="w"> </span>required<span class="w"> </span>plugins...
+Starting<span class="w"> </span>the<span class="w"> </span>build<span class="w"> </span>of<span class="w"> </span>Ubuntu<span class="w"> </span>Server<span class="w"> </span><span class="m">24</span>.04<span class="w"> </span>LTS...
+vsphere-iso.linux-ubuntu:<span class="w"> </span>output<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span><span class="k">in</span><span class="w"> </span>this<span class="w"> </span>color.
+</code></pre></div>
+</li>
+</ol>
+<h3 id="demo">Demo<a class="headerlink" href="#demo" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../../assets/images/build.gif" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../assets/images/build.gif" /></a></p>
+<h2 id="build-script-options">Build Script Options<a class="headerlink" href="#build-script-options" title="Permanent link">&para;</a></h2>
+<p>You can use the following options with the script.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Short Form</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--help</code></td>
+<td><code>-h</code>, <code>-H</code></td>
+<td>Display the help.</td>
+</tr>
+<tr>
+<td><code>--deps</code></td>
+<td><code>-d</code>, <code>-D</code></td>
+<td>Run a dependency check before running a build.</td>
+</tr>
+<tr>
+<td><code>--json</code></td>
+<td><code>-j</code>, <code>-J</code></td>
+<td>Override the default JSON configuration file.</td>
+</tr>
+<tr>
+<td><code>--show</code></td>
+<td><code>-s</code>, <code>-S</code></td>
+<td>Display the command that the script uses to initialize a build.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="build-directly-with-packer">Build Directly with Packer<a class="headerlink" href="#build-directly-with-packer" title="Permanent link">&para;</a></h2>
 <p>You can also start a build based on a specific source for some of the virtual machine images.</p>
-<p>For example, if you simply want to build a Microsoft Windows Server 2022 Standard Core, run the
+<p>For example, if you simply want to build only Microsoft Windows Server 2022 Standard Core, run the
 following:</p>
 <p>Initialize the plugins:</p>
 <div class="highlight"><pre><span></span><code>packer<span class="w"> </span>init<span class="w"> </span>builds/windows/server/2022/.
 </code></pre></div>
-<p>Build a specific machine image:</p>
+<p>Build the specific machine image:</p>
 <div class="highlight"><pre><span></span><code>packer<span class="w"> </span>build<span class="w"> </span>-force<span class="w"> </span>on-error<span class="o">=</span>ask<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--only<span class="w"> </span>vsphere-iso.windows-server-standard-core<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span><span class="s2">&quot;config/build.pkrvars.hcl&quot;</span><span class="w"> </span><span class="se">\</span>
@@ -1199,17 +1231,10 @@ following:</p>
 <span class="w">    </span>-var-file<span class="o">=</span><span class="s2">&quot;config/vsphere.pkrvars.hcl&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>builds/windows/server/2022
 </code></pre></div>
-<p>➜ packer validate \
--var-file="config/ansible.pkrvars.hcl" \
--var-file="config/build.pkrvars.hcl" \
--var-file="config/common.pkrvars.hcl" \
--var-file="config/proxy.pkrvars.hcl" \
--var-file="config/vsphere.pkrvars.hcl" \
-builds/linux/photon/5</p>
 <h2 id="build-with-environmental-variables">Build with Environmental Variables<a class="headerlink" href="#build-with-environmental-variables" title="Permanent link">&para;</a></h2>
-<p>You can set your environment variables if you would prefer not to save sensitive information in
-clear-text files.</p>
-<p>You can add these to environmental variables using the included <code>set-envvars.sh</code> script.</p>
+<p>Use environment variables instead of providing sensitive credentials in clear-text files.</p>
+<p>An environment variable will always take precedence over a configuration file value.</p>
+<p>You can add the environmental variables using the <code>set-envvars.sh</code> script.</p>
 <div class="highlight"><pre><span></span><code>.<span class="w"> </span>./set-envvars.sh
 </code></pre></div>
 <details class="tip" open="open">
@@ -1217,23 +1242,17 @@ clear-text files.</p>
 <p>You must run the script as source or the shorthand "<code>.</code>".</p>
 </details>
 <hr />
-<p>???+ note "Content Library" By default, the machine image artifacts are transferred to a <a href="https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-254B2CE8-20A8-43F0-90E8-3F6776C2C896.html">vSphere Content Library</a>
-as an OVF template and the temporary machine image is destroyed. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
-<div class="highlight"><pre><span></span><code>If an item of the same name exists in the target content library, Packer will update the
-existing item with the new version of OVF template.
-</code></pre></div>
-<div class="footnote">
-<hr />
-<ol>
-<li id="fn:1">
-<p>The Microsoft Windows 11 machine image uses a virtual trusted platform module (vTPM). Refer to
-the VMware vSphere <a href="https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4DBF65A4-4BA0-4667-9725-AE9F047DE00A.html">product documentation</a> for requirements and pre-requisites. The
+<details class="note" open="open">
+<summary>Content Library</summary>
+<p>By default, the machine image artifacts are transferred to a [vSphere Content Library][vsphere-content-library]
+as an OVF template and the temporary machine image is destroyed. [^1]</p>
+<p>If an item of the same name exists in the target content library, Packer will update the
+existing item with the new version of OVF template.</p>
+</details>
+<p>the VMware vSphere <a href="https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4DBF65A4-4BA0-4667-9725-AE9F047DE00A.html">product documentation</a> for requirements and pre-requisites. The
 Microsoft Windows 11 machine image is not transferred to the content library by default. It is <strong>not
 supported</strong> to clone an encrypted virtual machine to the content library as an OVF Template. You can
-adjust the common content library settings to use VM Templates.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-</ol>
-</div>
+adjust the common content library settings to use VM Templates.</p>
 
 
 
@@ -1254,7 +1273,7 @@ adjust the common content library settings to use VM Templates.&#160;<a class="f
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-29T03:00:41+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-16T17:31:05+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-16</span>
   </span>
 
     
@@ -1292,7 +1311,7 @@ adjust the common content library settings to use VM Templates.&#160;<a class="f
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../configuration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Configuration">
+          <a href="../configure/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Configure">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -1302,7 +1321,7 @@ adjust the common content library settings to use VM Templates.&#160;<a class="f
                 Previous
               </span>
               <div class="md-ellipsis">
-                Configuration
+                Configure
               </div>
             </div>
           </a>
@@ -1358,7 +1377,7 @@ The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.<br/><br
     <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.header", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.081f42fc.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       
@@ -1367,5 +1386,7 @@ The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.<br/><br
         <script src="../../js/open_in_new_tab.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

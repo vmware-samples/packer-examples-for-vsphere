@@ -12,7 +12,7 @@
         <meta name="author" content="Broadcom">
       
       
-        <link rel="canonical" href="https://vmware-samples.github.io/packer-examples-for-vsphere/getting-started/configuration/">
+        <link rel="canonical" href="https://vmware-samples.github.io/packer-examples-for-vsphere/getting-started/configure/">
       
       
         <link rel="prev" href="../privileges/">
@@ -22,15 +22,15 @@
       
       
       <link rel="icon" href="../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
     
     
       
-        <title>Configuration - Packer Examples for VMware vSphere</title>
+        <title>Configure - Packer Examples for VMware vSphere</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.66ac8b77.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -65,7 +65,16 @@
     
     
     
-  </head>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -84,7 +93,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configuration" class="md-skip">
+        <a href="#configure-your-environment" class="md-skip">
           Skip to content
         </a>
       
@@ -123,7 +132,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Configuration
+              Configure
             
           </span>
         </div>
@@ -563,13 +572,13 @@
   
   
     <li class="md-nav__item">
-      <a href="../download/" class="md-nav__link">
+      <a href="../get-project/" class="md-nav__link">
         
   
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4.75 17.25a.75.75 0 0 1 .75.75v2.25c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V18a.75.75 0 0 1 1.5 0v2.25A1.75 1.75 0 0 1 18.25 22H5.75A1.75 1.75 0 0 1 4 20.25V18a.75.75 0 0 1 .75-.75Z"/><path d="M5.22 9.97a.749.749 0 0 1 1.06 0l4.97 4.969V2.75a.75.75 0 0 1 1.5 0v12.189l4.97-4.969a.749.749 0 1 1 1.06 1.06l-6.25 6.25a.749.749 0 0 1-1.06 0l-6.25-6.25a.749.749 0 0 1 0-1.06Z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3.75 3.75A3.75 3.75 0 0 1 7.5 0c1.455 0 3.436.901 4.5 3.11C13.064.901 15.044 0 16.5 0a3.75 3.75 0 0 1 3 6h1.75c.966 0 1.75.784 1.75 1.75v2.5c0 .698-.409 1.301-1 1.582v8.418A1.75 1.75 0 0 1 20.25 22H3.75A1.75 1.75 0 0 1 2 20.25v-8.418c-.591-.282-1-.884-1-1.582v-2.5C1 6.784 1.784 6 2.75 6H4.5a3.733 3.733 0 0 1-.75-2.25ZM20.5 12h-7.75v8.5h7.5a.25.25 0 0 0 .25-.25Zm-9.25 8.5V12H3.5v8.25c0 .138.112.25.25.25Zm10-10a.25.25 0 0 0 .25-.25v-2.5a.25.25 0 0 0-.25-.25h-8.5v3Zm-18.5 0h8.5v-3h-8.5a.25.25 0 0 0-.25.25v2.5c0 .138.112.25.25.25Zm16-6.75A2.25 2.25 0 0 0 16.5 1.5c-1.15 0-3.433 1.007-3.72 4.5h3.72a2.25 2.25 0 0 0 2.25-2.25ZM11.22 6c-.287-3.493-2.57-4.5-3.72-4.5a2.25 2.25 0 1 0 0 4.5Z"/></svg>
   
   <span class="md-ellipsis">
-    Download
+    Get the Project
   </span>
   
 
@@ -586,13 +595,13 @@
   
   
     <li class="md-nav__item">
-      <a href="../iso/" class="md-nav__link">
+      <a href="../downloads/" class="md-nav__link">
         
   
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.063 1.456a1.749 1.749 0 0 1 1.874 0l8.383 5.316a1.751 1.751 0 0 1 0 2.956l-8.383 5.316a1.749 1.749 0 0 1-1.874 0L2.68 9.728a1.751 1.751 0 0 1 0-2.956Zm1.071 1.267a.25.25 0 0 0-.268 0L3.483 8.039a.25.25 0 0 0 0 .422l8.383 5.316a.25.25 0 0 0 .268 0l8.383-5.316a.25.25 0 0 0 0-.422Z"/><path d="M1.867 12.324a.75.75 0 0 1 1.035-.232l8.964 5.685a.25.25 0 0 0 .268 0l8.964-5.685a.75.75 0 0 1 .804 1.267l-8.965 5.685a1.749 1.749 0 0 1-1.874 0l-8.965-5.685a.75.75 0 0 1-.231-1.035Z"/><path d="M1.867 16.324a.75.75 0 0 1 1.035-.232l8.964 5.685a.25.25 0 0 0 .268 0l8.964-5.685a.75.75 0 0 1 .804 1.267l-8.965 5.685a1.749 1.749 0 0 1-1.874 0l-8.965-5.685a.75.75 0 0 1-.231-1.035Z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Z"/><path d="M7.25 7.689V2a.75.75 0 0 1 1.5 0v5.689l1.97-1.969a.749.749 0 1 1 1.06 1.06l-3.25 3.25a.749.749 0 0 1-1.06 0L4.22 6.78a.749.749 0 1 1 1.06-1.06l1.97 1.969Z"/></svg>
   
   <span class="md-ellipsis">
-    Guest Operating Systems
+    Download ISOs
   </span>
   
 
@@ -647,7 +656,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Zm-1.5 0a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"/><path d="M12 1c.266 0 .532.009.797.028.763.055 1.345.617 1.512 1.304l.352 1.45c.019.078.09.171.225.221.247.089.49.19.728.302.13.061.246.044.315.002l1.275-.776c.603-.368 1.411-.353 1.99.147.402.349.78.726 1.128 1.129.501.578.515 1.386.147 1.99l-.776 1.274c-.042.069-.058.185.002.315.112.238.213.481.303.728.048.135.142.205.22.225l1.45.352c.687.167 1.249.749 1.303 1.512.038.531.038 1.063 0 1.594-.054.763-.616 1.345-1.303 1.512l-1.45.352c-.078.019-.171.09-.221.225-.089.248-.19.491-.302.728-.061.13-.044.246-.002.315l.776 1.275c.368.603.353 1.411-.147 1.99-.349.402-.726.78-1.129 1.128-.578.501-1.386.515-1.99.147l-1.274-.776c-.069-.042-.185-.058-.314.002a8.606 8.606 0 0 1-.729.303c-.135.048-.205.142-.225.22l-.352 1.45c-.167.687-.749 1.249-1.512 1.303-.531.038-1.063.038-1.594 0-.763-.054-1.345-.616-1.512-1.303l-.352-1.45c-.019-.078-.09-.171-.225-.221a8.138 8.138 0 0 1-.728-.302c-.13-.061-.246-.044-.315-.002l-1.275.776c-.603.368-1.411.353-1.99-.147-.402-.349-.78-.726-1.128-1.129-.501-.578-.515-1.386-.147-1.99l.776-1.274c.042-.069.058-.185-.002-.314a8.606 8.606 0 0 1-.303-.729c-.048-.135-.142-.205-.22-.225l-1.45-.352c-.687-.167-1.249-.749-1.304-1.512a11.158 11.158 0 0 1 0-1.594c.055-.763.617-1.345 1.304-1.512l1.45-.352c.078-.019.171-.09.221-.225.089-.248.19-.491.302-.728.061-.13.044-.246.002-.315l-.776-1.275c-.368-.603-.353-1.411.147-1.99.349-.402.726-.78 1.129-1.128.578-.501 1.386-.515 1.99-.147l1.274.776c.069.042.185.058.315-.002.238-.112.481-.213.728-.303.135-.048.205-.142.225-.22l.352-1.45c.167-.687.749-1.249 1.512-1.304C11.466 1.01 11.732 1 12 1Zm-.69 1.525c-.055.004-.135.05-.161.161l-.353 1.45a1.832 1.832 0 0 1-1.172 1.277 7.147 7.147 0 0 0-.6.249 1.833 1.833 0 0 1-1.734-.074l-1.274-.776c-.098-.06-.186-.036-.228 0a9.774 9.774 0 0 0-.976.976c-.036.042-.06.131 0 .228l.776 1.274c.314.529.342 1.18.074 1.734a7.147 7.147 0 0 0-.249.6 1.831 1.831 0 0 1-1.278 1.173l-1.45.351c-.11.027-.156.107-.16.162a9.63 9.63 0 0 0 0 1.38c.004.055.05.135.161.161l1.45.353a1.832 1.832 0 0 1 1.277 1.172c.074.204.157.404.249.6.268.553.24 1.204-.074 1.733l-.776 1.275c-.06.098-.036.186 0 .228.301.348.628.675.976.976.042.036.131.06.228 0l1.274-.776a1.83 1.83 0 0 1 1.734-.075c.196.093.396.176.6.25a1.831 1.831 0 0 1 1.173 1.278l.351 1.45c.027.11.107.156.162.16a9.63 9.63 0 0 0 1.38 0c.055-.004.135-.05.161-.161l.353-1.45a1.834 1.834 0 0 1 1.172-1.278 6.82 6.82 0 0 0 .6-.248 1.831 1.831 0 0 1 1.733.074l1.275.776c.098.06.186.036.228 0 .348-.301.675-.628.976-.976.036-.042.06-.131 0-.228l-.776-1.275a1.834 1.834 0 0 1-.075-1.733c.093-.196.176-.396.25-.6a1.831 1.831 0 0 1 1.278-1.173l1.45-.351c.11-.027.156-.107.16-.162a9.63 9.63 0 0 0 0-1.38c-.004-.055-.05-.135-.161-.161l-1.45-.353c-.626-.152-1.08-.625-1.278-1.172a6.576 6.576 0 0 0-.248-.6 1.833 1.833 0 0 1 .074-1.734l.776-1.274c.06-.098.036-.186 0-.228a9.774 9.774 0 0 0-.976-.976c-.042-.036-.131-.06-.228 0l-1.275.776a1.831 1.831 0 0 1-1.733.074 6.88 6.88 0 0 0-.6-.249 1.835 1.835 0 0 1-1.173-1.278l-.351-1.45c-.027-.11-.107-.156-.162-.16a9.63 9.63 0 0 0-1.38 0Z"/></svg>
   
   <span class="md-ellipsis">
-    Configuration
+    Configure
   </span>
   
 
@@ -660,7 +669,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Zm-1.5 0a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"/><path d="M12 1c.266 0 .532.009.797.028.763.055 1.345.617 1.512 1.304l.352 1.45c.019.078.09.171.225.221.247.089.49.19.728.302.13.061.246.044.315.002l1.275-.776c.603-.368 1.411-.353 1.99.147.402.349.78.726 1.128 1.129.501.578.515 1.386.147 1.99l-.776 1.274c-.042.069-.058.185.002.315.112.238.213.481.303.728.048.135.142.205.22.225l1.45.352c.687.167 1.249.749 1.303 1.512.038.531.038 1.063 0 1.594-.054.763-.616 1.345-1.303 1.512l-1.45.352c-.078.019-.171.09-.221.225-.089.248-.19.491-.302.728-.061.13-.044.246-.002.315l.776 1.275c.368.603.353 1.411-.147 1.99-.349.402-.726.78-1.129 1.128-.578.501-1.386.515-1.99.147l-1.274-.776c-.069-.042-.185-.058-.314.002a8.606 8.606 0 0 1-.729.303c-.135.048-.205.142-.225.22l-.352 1.45c-.167.687-.749 1.249-1.512 1.303-.531.038-1.063.038-1.594 0-.763-.054-1.345-.616-1.512-1.303l-.352-1.45c-.019-.078-.09-.171-.225-.221a8.138 8.138 0 0 1-.728-.302c-.13-.061-.246-.044-.315-.002l-1.275.776c-.603.368-1.411.353-1.99-.147-.402-.349-.78-.726-1.128-1.129-.501-.578-.515-1.386-.147-1.99l.776-1.274c.042-.069.058-.185-.002-.314a8.606 8.606 0 0 1-.303-.729c-.048-.135-.142-.205-.22-.225l-1.45-.352c-.687-.167-1.249-.749-1.304-1.512a11.158 11.158 0 0 1 0-1.594c.055-.763.617-1.345 1.304-1.512l1.45-.352c.078-.019.171-.09.221-.225.089-.248.19-.491.302-.728.061-.13.044-.246.002-.315l-.776-1.275c-.368-.603-.353-1.411.147-1.99.349-.402.726-.78 1.129-1.128.578-.501 1.386-.515 1.99-.147l1.274.776c.069.042.185.058.315-.002.238-.112.481-.213.728-.303.135-.048.205-.142.225-.22l.352-1.45c.167-.687.749-1.249 1.512-1.304C11.466 1.01 11.732 1 12 1Zm-.69 1.525c-.055.004-.135.05-.161.161l-.353 1.45a1.832 1.832 0 0 1-1.172 1.277 7.147 7.147 0 0 0-.6.249 1.833 1.833 0 0 1-1.734-.074l-1.274-.776c-.098-.06-.186-.036-.228 0a9.774 9.774 0 0 0-.976.976c-.036.042-.06.131 0 .228l.776 1.274c.314.529.342 1.18.074 1.734a7.147 7.147 0 0 0-.249.6 1.831 1.831 0 0 1-1.278 1.173l-1.45.351c-.11.027-.156.107-.16.162a9.63 9.63 0 0 0 0 1.38c.004.055.05.135.161.161l1.45.353a1.832 1.832 0 0 1 1.277 1.172c.074.204.157.404.249.6.268.553.24 1.204-.074 1.733l-.776 1.275c-.06.098-.036.186 0 .228.301.348.628.675.976.976.042.036.131.06.228 0l1.274-.776a1.83 1.83 0 0 1 1.734-.075c.196.093.396.176.6.25a1.831 1.831 0 0 1 1.173 1.278l.351 1.45c.027.11.107.156.162.16a9.63 9.63 0 0 0 1.38 0c.055-.004.135-.05.161-.161l.353-1.45a1.834 1.834 0 0 1 1.172-1.278 6.82 6.82 0 0 0 .6-.248 1.831 1.831 0 0 1 1.733.074l1.275.776c.098.06.186.036.228 0 .348-.301.675-.628.976-.976.036-.042.06-.131 0-.228l-.776-1.275a1.834 1.834 0 0 1-.075-1.733c.093-.196.176-.396.25-.6a1.831 1.831 0 0 1 1.278-1.173l1.45-.351c.11-.027.156-.107.16-.162a9.63 9.63 0 0 0 0-1.38c-.004-.055-.05-.135-.161-.161l-1.45-.353c-.626-.152-1.08-.625-1.278-1.172a6.576 6.576 0 0 0-.248-.6 1.833 1.833 0 0 1 .074-1.734l.776-1.274c.06-.098.036-.186 0-.228a9.774 9.774 0 0 0-.976-.976c-.042-.036-.131-.06-.228 0l-1.275.776a1.831 1.831 0 0 1-1.733.074 6.88 6.88 0 0 0-.6-.249 1.835 1.835 0 0 1-1.173-1.278l-.351-1.45c-.027-.11-.107-.156-.162-.16a9.63 9.63 0 0 0-1.38 0Z"/></svg>
   
   <span class="md-ellipsis">
-    Configuration
+    Configure
   </span>
   
 
@@ -746,9 +755,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#proxy" class="md-nav__link">
+  <a href="#proxy-optional" class="md-nav__link">
     <span class="md-ellipsis">
-      Proxy
+      Proxy (Optional)
     </span>
   </a>
   
@@ -1200,9 +1209,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#proxy" class="md-nav__link">
+  <a href="#proxy-optional" class="md-nav__link">
     <span class="md-ellipsis">
-      Proxy
+      Proxy (Optional)
     </span>
   </a>
   
@@ -1306,7 +1315,7 @@
                   
 
   
-    <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/blob/main/docs/getting-started/configuration.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/blob/main/docs/getting-started/configure.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -1315,14 +1324,14 @@
     
       
     
-    <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/raw/main/docs/getting-started/configuration.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/raw/main/docs/getting-started/configure.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
   
 
 
-<h1 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h1>
+<h1 id="configure-your-environment">Configure Your Environment<a class="headerlink" href="#configure-your-environment" title="Permanent link">&para;</a></h1>
 <h2 id="example-variables">Example Variables<a class="headerlink" href="#example-variables" title="Permanent link">&para;</a></h2>
 <p>The project includes example variables files that you can use as a starting point for your own
 configuration.</p>
@@ -1330,76 +1339,57 @@ configuration.</p>
 <p>Run the config script <code>./config.sh</code> to copy the <code>.pkrvars.hcl.example</code> files to a <code>config</code>
 directory.</p>
 <div class="highlight"><pre><span></span><code>./config.sh
-./build.sh
 </code></pre></div>
-<p>The <code>config</code> folder is the default folder. You can override the default by passing an alternate
+<p>The <code>config/</code> folder is the default folder. You can override the default by passing an alternate
 value as the first argument.</p>
-<p>For example:</p>
-<p>San Francisco: <code>us-west-1</code></p>
+<p>You can set the region for your configuration and build scripts by passing the region code as an
+argument to the scripts. Here are examples for two regions:</p>
+<ol>
+<li>
+<p>For San Francisco, CA (<code>us-west-1</code>), run:</p>
 <div class="highlight"><pre><span></span><code>./config.sh<span class="w"> </span>us-west-1
 ./build.sh<span class="w"> </span>us-west-1
 </code></pre></div>
-<p>Los Angeles: <code>us-west-2</code></p>
+</li>
+<li>
+<p>For Los Angeles, CA (<code>us-west-2</code>), run:</p>
 <div class="highlight"><pre><span></span><code>./config.sh<span class="w"> </span>us-west-2
 ./build.sh<span class="w"> </span>us-west-2
 </code></pre></div>
-<p>This is useful for the purposes of running machine image builds for different environment.</p>
+</li>
+</ol>
 <h2 id="configuration-variables">Configuration Variables<a class="headerlink" href="#configuration-variables" title="Permanent link">&para;</a></h2>
 <h3 id="build">Build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h3>
 <p>Edit the <code>config/build.pkrvars.hcl</code> file to configure the credentials for the default account on
 machine images.</p>
-<div class="highlight"><span class="filename">config/build.pkrvars.hcl</span><pre><span></span><code><span class="na">build_username</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;example&quot;</span>
-<span class="na">build_password</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;plaintext_password&gt;&quot;</span>
-<span class="na">build_password_encrypted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;sha512_encrypted_password&gt;&quot;</span>
-<span class="na">build_key</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;public_key&gt;&quot;</span>
-</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Example Passwords and Keys.</p>
+<p>Replace the example passwords and keys.</p>
+</div>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">config/build.pkrvars.hcl</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="c1">// Default Account Credentials</span>
+</span><span class="na">build_username</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;packer&quot;</span>
+<span class="na">build_password</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;VMw@re123!&quot;</span>
+<span class="na">build_password_encrypted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;$6$KspR8KgZFVxDOiiF$n4hhyeSGgamrz25mqvOfnK5xm6blwDJftlQZy0H60pwRdPKXsf996/lLzFrfW0H/ZHoE.jEPgVmFZpmgce6jX0&quot;</span>
+<span class="na">build_key</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBADwXV3rbRCWwhSr6aMkHukV5O7OGAEyUtAerj2anJHm3mwbOxlBU/uO4f0ELqo2GJcTALMC0aFrbvu9qonIH5VF7wBBfCP1cS5B92sUagVV9ldI/uo89e/7dVYC9maPsFaZq2G0/PLU0hZKOohq99Oxc2RMSiJaaenX/hNqx5xYSaK+CA== packer@example.com&quot;</span>
+</code></pre></div></td></tr></table></div>
 <p>You can also override the <code>build_key</code> value with contents of a file.</p>
 <div class="highlight"><span class="filename">config/build.pkrvars.hcl</span><pre><span></span><code><span class="na">build_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">file</span><span class="p">(</span><span class="s2">&quot;${path.root}/config/ssh/build_id_ecdsa.pub&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>Generate a SHA-512 encrypted password for the <code>build_password_encrypted</code> using tools like mkpasswd.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M220.8 123.3c1 .5 1.8 1.7 3 1.7 1.1 0 2.8-.4 2.9-1.5.2-1.4-1.9-2.3-3.2-2.9-1.7-.7-3.9-1-5.5-.1-.4.2-.8.7-.6 1.1.3 1.3 2.3 1.1 3.4 1.7zm-21.9 1.7c1.2 0 2-1.2 3-1.7 1.1-.6 3.1-.4 3.5-1.6.2-.4-.2-.9-.6-1.1-1.6-.9-3.8-.6-5.5.1-1.3.6-3.4 1.5-3.2 2.9.1 1 1.8 1.5 2.8 1.4zM420 403.8c-3.6-4-5.3-11.6-7.2-19.7-1.8-8.1-3.9-16.8-10.5-22.4-1.3-1.1-2.6-2.1-4-2.9-1.3-.8-2.7-1.5-4.1-2 9.2-27.3 5.6-54.5-3.7-79.1-11.4-30.1-31.3-56.4-46.5-74.4-17.1-21.5-33.7-41.9-33.4-72C311.1 85.4 315.7.1 234.8 0 132.4-.2 158 103.4 156.9 135.2c-1.7 23.4-6.4 41.8-22.5 64.7-18.9 22.5-45.5 58.8-58.1 96.7-6 17.9-8.8 36.1-6.2 53.3-6.5 5.8-11.4 14.7-16.6 20.2-4.2 4.3-10.3 5.9-17 8.3s-14 6-18.5 14.5c-2.1 3.9-2.8 8.1-2.8 12.4 0 3.9.6 7.9 1.2 11.8 1.2 8.1 2.5 15.7.8 20.8-5.2 14.4-5.9 24.4-2.2 31.7 3.8 7.3 11.4 10.5 20.1 12.3 17.3 3.6 40.8 2.7 59.3 12.5 19.8 10.4 39.9 14.1 55.9 10.4 11.6-2.6 21.1-9.6 25.9-20.2 12.5-.1 26.3-5.4 48.3-6.6 14.9-1.2 33.6 5.3 55.1 4.1.6 2.3 1.4 4.6 2.5 6.7v.1c8.3 16.7 23.8 24.3 40.3 23 16.6-1.3 34.1-11 48.3-27.9 13.6-16.4 36-23.2 50.9-32.2 7.4-4.5 13.4-10.1 13.9-18.3.4-8.2-4.4-17.3-15.5-29.7zM223.7 87.3c9.8-22.2 34.2-21.8 44-.4 6.5 14.2 3.6 30.9-4.3 40.4-1.6-.8-5.9-2.6-12.6-4.9 1.1-1.2 3.1-2.7 3.9-4.6 4.8-11.8-.2-27-9.1-27.3-7.3-.5-13.9 10.8-11.8 23-4.1-2-9.4-3.5-13-4.4-1-6.9-.3-14.6 2.9-21.8zM183 75.8c10.1 0 20.8 14.2 19.1 33.5-3.5 1-7.1 2.5-10.2 4.6 1.2-8.9-3.3-20.1-9.6-19.6-8.4.7-9.8 21.2-1.8 28.1 1 .8 1.9-.2-5.9 5.5-15.6-14.6-10.5-52.1 8.4-52.1zm-13.6 60.7c6.2-4.6 13.6-10 14.1-10.5 4.7-4.4 13.5-14.2 27.9-14.2 7.1 0 15.6 2.3 25.9 8.9 6.3 4.1 11.3 4.4 22.6 9.3 8.4 3.5 13.7 9.7 10.5 18.2-2.6 7.1-11 14.4-22.7 18.1-11.1 3.6-19.8 16-38.2 14.9-3.9-.2-7-1-9.6-2.1-8-3.5-12.2-10.4-20-15-8.6-4.8-13.2-10.4-14.7-15.3-1.4-4.9 0-9 4.2-12.3zm3.3 334c-2.7 35.1-43.9 34.4-75.3 18-29.9-15.8-68.6-6.5-76.5-21.9-2.4-4.7-2.4-12.7 2.6-26.4v-.2c2.4-7.6.6-16-.6-23.9-1.2-7.8-1.8-15 .9-20 3.5-6.7 8.5-9.1 14.8-11.3 10.3-3.7 11.8-3.4 19.6-9.9 5.5-5.7 9.5-12.9 14.3-18 5.1-5.5 10-8.1 17.7-6.9 8.1 1.2 15.1 6.8 21.9 16l19.6 35.6c9.5 19.9 43.1 48.4 41 68.9zm-1.4-25.9c-4.1-6.6-9.6-13.6-14.4-19.6 7.1 0 14.2-2.2 16.7-8.9 2.3-6.2 0-14.9-7.4-24.9-13.5-18.2-38.3-32.5-38.3-32.5-13.5-8.4-21.1-18.7-24.6-29.9s-3-23.3-.3-35.2c5.2-22.9 18.6-45.2 27.2-59.2 2.3-1.7.8 3.2-8.7 20.8-8.5 16.1-24.4 53.3-2.6 82.4.6-20.7 5.5-41.8 13.8-61.5 12-27.4 37.3-74.9 39.3-112.7 1.1.8 4.6 3.2 6.2 4.1 4.6 2.7 8.1 6.7 12.6 10.3 12.4 10 28.5 9.2 42.4 1.2 6.2-3.5 11.2-7.5 15.9-9 9.9-3.1 17.8-8.6 22.3-15 7.7 30.4 25.7 74.3 37.2 95.7 6.1 11.4 18.3 35.5 23.6 64.6 3.3-.1 7 .4 10.9 1.4 13.8-35.7-11.7-74.2-23.3-84.9-4.7-4.6-4.9-6.6-2.6-6.5 12.6 11.2 29.2 33.7 35.2 59 2.8 11.6 3.3 23.7.4 35.7 16.4 6.8 35.9 17.9 30.7 34.8-2.2-.1-3.2 0-4.2 0 3.2-10.1-3.9-17.6-22.8-26.1-19.6-8.6-36-8.6-38.3 12.5-12.1 4.2-18.3 14.7-21.4 27.3-2.8 11.2-3.6 24.7-4.4 39.9-.5 7.7-3.6 18-6.8 29-32.1 22.9-76.7 32.9-114.3 7.2zm257.4-11.5c-.9 16.8-41.2 19.9-63.2 46.5-13.2 15.7-29.4 24.4-43.6 25.5s-26.5-4.8-33.7-19.3c-4.7-11.1-2.4-23.1 1.1-36.3 3.7-14.2 9.2-28.8 9.9-40.6.8-15.2 1.7-28.5 4.2-38.7 2.6-10.3 6.6-17.2 13.7-21.1.3-.2.7-.3 1-.5.8 13.2 7.3 26.6 18.8 29.5 12.6 3.3 30.7-7.5 38.4-16.3 9-.3 15.7-.9 22.6 5.1 9.9 8.5 7.1 30.3 17.1 41.6 10.6 11.6 14 19.5 13.7 24.6zM173.3 148.7c2 1.9 4.7 4.5 8 7.1 6.6 5.2 15.8 10.6 27.3 10.6 11.6 0 22.5-5.9 31.8-10.8 4.9-2.6 10.9-7 14.8-10.4s5.9-6.3 3.1-6.6-2.6 2.6-6 5.1c-4.4 3.2-9.7 7.4-13.9 9.8-7.4 4.2-19.5 10.2-29.9 10.2s-18.7-4.8-24.9-9.7c-3.1-2.5-5.7-5-7.7-6.9-1.5-1.4-1.9-4.6-4.3-4.9-1.4-.1-1.8 3.7 1.7 6.5z"/></svg></span> &nbsp; VMware Photon OS</label><label for="__tabbed_1_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M469.2 75a75.6 75.6 0 1 0-151.3 0 75.6 75.6 0 1 0 151.2 0zm-315 165.7a75.6 75.6 0 1 0-151.2 0 75.6 75.6 0 1 0 151.2 0zM57 346c18.6 46.9 51 87 93 115.1s91.5 42.6 142 41.7c-14.7-18.6-22.9-41.5-23.2-65.2-6.8-.9-13.3-2.1-19.5-3.4-26.8-5.7-51.9-17.3-73.6-34s-39.3-38.1-51.7-62.5c-20.9 9.9-44.5 12.8-67.1 8.2zm395.1 89.8a75.6 75.6 0 1 0-151.2 0 75.6 75.6 0 1 0 151.2 0zm-8.1-84.2c18.5 14.8 31.6 35.2 37.2 58.2 33.3-41.3 52.6-92.2 54.8-145.2s-12.5-105.4-42.2-149.4c-8.6 21.5-24 39.6-43.8 51.6 15.4 28.6 22.9 60.8 21.9 93.2s-10.7 64-28 91.6zM101.1 135.4c12.4 2.7 24.3 7.5 35.1 14.3 16.6-24.2 38.9-44.1 64.8-58s54.8-21.3 84.2-21.7c.2-5.9.9-11.9 2-17.7C290.8 35.6 298.3 20 309 6.8c-47.7-3.8-95.4 6-137.6 28.5S94.3 91.7 70.8 133.4c2.7-.2 5.3-.3 8-.3 7.5 0 15 .8 22.4 2.3z"/></svg></span> &nbsp; Ubuntu</label><label for="__tabbed_1_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg></span> &nbsp; macOS</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>Run the following command to generate a SHA-512 encrypted password for the
-<code>build_password_encrypted</code> using mkpasswd.</p>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>docker
-sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>alpine:latest
-<span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;&lt;your_password&gt; | mkpasswd --stdin -m sha512</span>
+<p>Generate a SHA-512 encrypted password for the <code>build_password_encrypted</code> using OpenSSL.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">SALT</span><span class="o">=</span><span class="k">$(</span>openssl<span class="w"> </span>rand<span class="w"> </span>-base64<span class="w"> </span><span class="m">6</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="nv">ENCRYPTED_PASSWORD</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;&lt;your_password&gt;&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>openssl<span class="w"> </span>passwd<span class="w"> </span>-6<span class="w"> </span>-stdin<span class="w"> </span>-salt<span class="w"> </span><span class="nv">$SALT</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Generated Salt: </span><span class="nv">$SALT</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Encrypted Password: </span><span class="nv">$ENCRYPTED_PASSWORD</span><span class="s2">&quot;</span>
 </code></pre></div>
 <p>The following output is displayed:</p>
-<div class="highlight"><pre><span></span><code>Password:
-<span class="o">[</span>your_password_hash<span class="o">]</span>
+<div class="highlight"><pre><span></span><code>Generated<span class="w"> </span>Salt:<span class="w"> </span>&lt;generated_salt&gt;
+Encrypted<span class="w"> </span>Password:<span class="w"> </span>&lt;encrypted_password&gt;
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<p>Run the following command to generate a SHA-512 encrypted password for the
-<code>build_password_encrypted</code> using mkpasswd.</p>
-<div class="highlight"><pre><span></span><code>mkpasswd<span class="w"> </span>-m<span class="w"> </span>sha512
-</code></pre></div>
-<p>The following output is displayed:</p>
-<div class="highlight"><pre><span></span><code>Password:<span class="w"> </span>***************
-<span class="o">[</span>password<span class="w"> </span>hash<span class="o">]</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<p>Run the following command to generate a SHA-512 encrypted password for the
-<code>build_password_encrypted</code> using mkpasswd.</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>alpine:latest
-mkpasswd<span class="w"> </span>-m<span class="w"> </span>sha512
-</code></pre></div>
-<p>The following output is displayed:</p>
-<div class="highlight"><pre><span></span><code>Password:<span class="w"> </span>***************
-<span class="o">[</span>password<span class="w"> </span>hash<span class="o">]</span>
-</code></pre></div>
-</div>
-</div>
-</div>
 <p>Generate a public key for the <code>build_key</code> for public key authentication.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M220.8 123.3c1 .5 1.8 1.7 3 1.7 1.1 0 2.8-.4 2.9-1.5.2-1.4-1.9-2.3-3.2-2.9-1.7-.7-3.9-1-5.5-.1-.4.2-.8.7-.6 1.1.3 1.3 2.3 1.1 3.4 1.7zm-21.9 1.7c1.2 0 2-1.2 3-1.7 1.1-.6 3.1-.4 3.5-1.6.2-.4-.2-.9-.6-1.1-1.6-.9-3.8-.6-5.5.1-1.3.6-3.4 1.5-3.2 2.9.1 1 1.8 1.5 2.8 1.4zM420 403.8c-3.6-4-5.3-11.6-7.2-19.7-1.8-8.1-3.9-16.8-10.5-22.4-1.3-1.1-2.6-2.1-4-2.9-1.3-.8-2.7-1.5-4.1-2 9.2-27.3 5.6-54.5-3.7-79.1-11.4-30.1-31.3-56.4-46.5-74.4-17.1-21.5-33.7-41.9-33.4-72C311.1 85.4 315.7.1 234.8 0 132.4-.2 158 103.4 156.9 135.2c-1.7 23.4-6.4 41.8-22.5 64.7-18.9 22.5-45.5 58.8-58.1 96.7-6 17.9-8.8 36.1-6.2 53.3-6.5 5.8-11.4 14.7-16.6 20.2-4.2 4.3-10.3 5.9-17 8.3s-14 6-18.5 14.5c-2.1 3.9-2.8 8.1-2.8 12.4 0 3.9.6 7.9 1.2 11.8 1.2 8.1 2.5 15.7.8 20.8-5.2 14.4-5.9 24.4-2.2 31.7 3.8 7.3 11.4 10.5 20.1 12.3 17.3 3.6 40.8 2.7 59.3 12.5 19.8 10.4 39.9 14.1 55.9 10.4 11.6-2.6 21.1-9.6 25.9-20.2 12.5-.1 26.3-5.4 48.3-6.6 14.9-1.2 33.6 5.3 55.1 4.1.6 2.3 1.4 4.6 2.5 6.7v.1c8.3 16.7 23.8 24.3 40.3 23 16.6-1.3 34.1-11 48.3-27.9 13.6-16.4 36-23.2 50.9-32.2 7.4-4.5 13.4-10.1 13.9-18.3.4-8.2-4.4-17.3-15.5-29.7zM223.7 87.3c9.8-22.2 34.2-21.8 44-.4 6.5 14.2 3.6 30.9-4.3 40.4-1.6-.8-5.9-2.6-12.6-4.9 1.1-1.2 3.1-2.7 3.9-4.6 4.8-11.8-.2-27-9.1-27.3-7.3-.5-13.9 10.8-11.8 23-4.1-2-9.4-3.5-13-4.4-1-6.9-.3-14.6 2.9-21.8zM183 75.8c10.1 0 20.8 14.2 19.1 33.5-3.5 1-7.1 2.5-10.2 4.6 1.2-8.9-3.3-20.1-9.6-19.6-8.4.7-9.8 21.2-1.8 28.1 1 .8 1.9-.2-5.9 5.5-15.6-14.6-10.5-52.1 8.4-52.1zm-13.6 60.7c6.2-4.6 13.6-10 14.1-10.5 4.7-4.4 13.5-14.2 27.9-14.2 7.1 0 15.6 2.3 25.9 8.9 6.3 4.1 11.3 4.4 22.6 9.3 8.4 3.5 13.7 9.7 10.5 18.2-2.6 7.1-11 14.4-22.7 18.1-11.1 3.6-19.8 16-38.2 14.9-3.9-.2-7-1-9.6-2.1-8-3.5-12.2-10.4-20-15-8.6-4.8-13.2-10.4-14.7-15.3-1.4-4.9 0-9 4.2-12.3zm3.3 334c-2.7 35.1-43.9 34.4-75.3 18-29.9-15.8-68.6-6.5-76.5-21.9-2.4-4.7-2.4-12.7 2.6-26.4v-.2c2.4-7.6.6-16-.6-23.9-1.2-7.8-1.8-15 .9-20 3.5-6.7 8.5-9.1 14.8-11.3 10.3-3.7 11.8-3.4 19.6-9.9 5.5-5.7 9.5-12.9 14.3-18 5.1-5.5 10-8.1 17.7-6.9 8.1 1.2 15.1 6.8 21.9 16l19.6 35.6c9.5 19.9 43.1 48.4 41 68.9zm-1.4-25.9c-4.1-6.6-9.6-13.6-14.4-19.6 7.1 0 14.2-2.2 16.7-8.9 2.3-6.2 0-14.9-7.4-24.9-13.5-18.2-38.3-32.5-38.3-32.5-13.5-8.4-21.1-18.7-24.6-29.9s-3-23.3-.3-35.2c5.2-22.9 18.6-45.2 27.2-59.2 2.3-1.7.8 3.2-8.7 20.8-8.5 16.1-24.4 53.3-2.6 82.4.6-20.7 5.5-41.8 13.8-61.5 12-27.4 37.3-74.9 39.3-112.7 1.1.8 4.6 3.2 6.2 4.1 4.6 2.7 8.1 6.7 12.6 10.3 12.4 10 28.5 9.2 42.4 1.2 6.2-3.5 11.2-7.5 15.9-9 9.9-3.1 17.8-8.6 22.3-15 7.7 30.4 25.7 74.3 37.2 95.7 6.1 11.4 18.3 35.5 23.6 64.6 3.3-.1 7 .4 10.9 1.4 13.8-35.7-11.7-74.2-23.3-84.9-4.7-4.6-4.9-6.6-2.6-6.5 12.6 11.2 29.2 33.7 35.2 59 2.8 11.6 3.3 23.7.4 35.7 16.4 6.8 35.9 17.9 30.7 34.8-2.2-.1-3.2 0-4.2 0 3.2-10.1-3.9-17.6-22.8-26.1-19.6-8.6-36-8.6-38.3 12.5-12.1 4.2-18.3 14.7-21.4 27.3-2.8 11.2-3.6 24.7-4.4 39.9-.5 7.7-3.6 18-6.8 29-32.1 22.9-76.7 32.9-114.3 7.2zm257.4-11.5c-.9 16.8-41.2 19.9-63.2 46.5-13.2 15.7-29.4 24.4-43.6 25.5s-26.5-4.8-33.7-19.3c-4.7-11.1-2.4-23.1 1.1-36.3 3.7-14.2 9.2-28.8 9.9-40.6.8-15.2 1.7-28.5 4.2-38.7 2.6-10.3 6.6-17.2 13.7-21.1.3-.2.7-.3 1-.5.8 13.2 7.3 26.6 18.8 29.5 12.6 3.3 30.7-7.5 38.4-16.3 9-.3 15.7-.9 22.6 5.1 9.9 8.5 7.1 30.3 17.1 41.6 10.6 11.6 14 19.5 13.7 24.6zM173.3 148.7c2 1.9 4.7 4.5 8 7.1 6.6 5.2 15.8 10.6 27.3 10.6 11.6 0 22.5-5.9 31.8-10.8 4.9-2.6 10.9-7 14.8-10.4s5.9-6.3 3.1-6.6-2.6 2.6-6 5.1c-4.4 3.2-9.7 7.4-13.9 9.8-7.4 4.2-19.5 10.2-29.9 10.2s-18.7-4.8-24.9-9.7c-3.1-2.5-5.7-5-7.7-6.9-1.5-1.4-1.9-4.6-4.3-4.9-1.4-.1-1.8 3.7 1.7 6.5z"/></svg></span> &nbsp; VMware Photon OS</label><label for="__tabbed_2_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M469.2 75a75.6 75.6 0 1 0-151.3 0 75.6 75.6 0 1 0 151.2 0zm-315 165.7a75.6 75.6 0 1 0-151.2 0 75.6 75.6 0 1 0 151.2 0zM57 346c18.6 46.9 51 87 93 115.1s91.5 42.6 142 41.7c-14.7-18.6-22.9-41.5-23.2-65.2-6.8-.9-13.3-2.1-19.5-3.4-26.8-5.7-51.9-17.3-73.6-34s-39.3-38.1-51.7-62.5c-20.9 9.9-44.5 12.8-67.1 8.2zm395.1 89.8a75.6 75.6 0 1 0-151.2 0 75.6 75.6 0 1 0 151.2 0zm-8.1-84.2c18.5 14.8 31.6 35.2 37.2 58.2 33.3-41.3 52.6-92.2 54.8-145.2s-12.5-105.4-42.2-149.4c-8.6 21.5-24 39.6-43.8 51.6 15.4 28.6 22.9 60.8 21.9 93.2s-10.7 64-28 91.6zM101.1 135.4c12.4 2.7 24.3 7.5 35.1 14.3 16.6-24.2 38.9-44.1 64.8-58s54.8-21.3 84.2-21.7c.2-5.9.9-11.9 2-17.7C290.8 35.6 298.3 20 309 6.8c-47.7-3.8-95.4 6-137.6 28.5S94.3 91.7 70.8 133.4c2.7-.2 5.3-.3 8-.3 7.5 0 15 .8 22.4 2.3z"/></svg></span> &nbsp; Ubuntu</label><label for="__tabbed_2_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg></span> &nbsp; macOS</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>Run the following command to generate a public key for the <code>build_key</code> for public key
-authentication.</p>
 <div class="highlight"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ecdsa<span class="w"> </span>-b<span class="w"> </span><span class="m">521</span><span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;&lt;name@example.com&gt;&quot;</span>
 </code></pre></div>
 <p>The following output is displayed:</p>
@@ -1410,49 +1400,8 @@ Enter<span class="w"> </span>same<span class="w"> </span>passphrase<span class="
 Your<span class="w"> </span>identification<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>saved<span class="w"> </span><span class="k">in</span><span class="w"> </span>/Users/example/.ssh/id_ecdsa.
 Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>saved<span class="w"> </span><span class="k">in</span><span class="w"> </span>/Users/example/.ssh/id_ecdsa.pub.
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<p>Run the following command to generate a public key for the <code>build_key</code> for public key
-authentication.</p>
-<div class="highlight"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ecdsa<span class="w"> </span>-b<span class="w"> </span><span class="m">521</span><span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;&lt;name@example.com&gt;&quot;</span>
-</code></pre></div>
-<p>The following output is displayed:</p>
-<div class="highlight"><pre><span></span><code>Generating<span class="w"> </span>public/private<span class="w"> </span>ecdsa<span class="w"> </span>key<span class="w"> </span>pair.
-Enter<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>which<span class="w"> </span>to<span class="w"> </span>save<span class="w"> </span>the<span class="w"> </span>key<span class="w"> </span><span class="o">(</span>/Users/example/.ssh/id_ecdsa<span class="o">)</span>:
-Enter<span class="w"> </span>passphrase<span class="w"> </span><span class="o">(</span>empty<span class="w"> </span><span class="k">for</span><span class="w"> </span>no<span class="w"> </span>passphrase<span class="o">)</span>:<span class="w"> </span>**************
-Enter<span class="w"> </span>same<span class="w"> </span>passphrase<span class="w"> </span>again:<span class="w"> </span>**************
-Your<span class="w"> </span>identification<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>saved<span class="w"> </span><span class="k">in</span><span class="w"> </span>/Users/example/.ssh/id_ecdsa.
-Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>saved<span class="w"> </span><span class="k">in</span><span class="w"> </span>/Users/example/.ssh/id_ecdsa.pub.
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<p>Run the following command to generate a public key for the <code>build_key</code> for public key
-authentication.</p>
-<div class="highlight"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ecdsa<span class="w"> </span>-b<span class="w"> </span><span class="m">521</span><span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;&lt;name@example.com&gt;&quot;</span>
-</code></pre></div>
-<p>The following output is displayed:</p>
-<div class="highlight"><pre><span></span><code>Generating<span class="w"> </span>public/private<span class="w"> </span>ecdsa<span class="w"> </span>key<span class="w"> </span>pair.
-Enter<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>which<span class="w"> </span>to<span class="w"> </span>save<span class="w"> </span>the<span class="w"> </span>key<span class="w"> </span><span class="o">(</span>/Users/example/.ssh/id_ecdsa<span class="o">)</span>:
-Enter<span class="w"> </span>passphrase<span class="w"> </span><span class="o">(</span>empty<span class="w"> </span><span class="k">for</span><span class="w"> </span>no<span class="w"> </span>passphrase<span class="o">)</span>:<span class="w"> </span>**************
-Enter<span class="w"> </span>same<span class="w"> </span>passphrase<span class="w"> </span>again:<span class="w"> </span>**************
-Your<span class="w"> </span>identification<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>saved<span class="w"> </span><span class="k">in</span><span class="w"> </span>/Users/example/.ssh/id_ecdsa.
-Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>saved<span class="w"> </span><span class="k">in</span><span class="w"> </span>/Users/example/.ssh/id_ecdsa.pub.
-</code></pre></div>
-</div>
-</div>
-</div>
 <p>The content of the public key, <code>build_key</code>, is added the key to the <code>~/.ssh/authorized_keys</code> file of
 the <code>build_username</code> on the Linux guest operating systems.</p>
-<details class="danger" open="open">
-<summary>Example Public Keys and Passwords.</summary>
-</details>
-<p>Replace the example public keys and passwords.</p>
-<div class="highlight"><pre><span></span><code>By default, both Public Key Authentication and Password Authentication are enabled for Linux
-distributions.
-
-If you wish to disable Password Authentication and only use Public Key Authentication, comment
-or remove the portion of the associated Ansible `configure` role.
-</code></pre></div>
 <h3 id="ansible">Ansible<a class="headerlink" href="#ansible" title="Permanent link">&para;</a></h3>
 <p>Edit the <code>config/ansible.pkrvars.hcl</code> file to configure the credentials for the Ansible account on
 Linux machine images.</p>
@@ -1461,42 +1410,69 @@ Linux machine images.</p>
 </code></pre></div>
 <details class="info" open="open">
 <summary>Ansible User Password</summary>
-</details>
 <p>A random password is auto-generated for the Ansible user.</p>
 <p>You can also override the <code>ansible_key</code> value with contents of a file, if required.</p>
 <div class="highlight"><span class="filename">config/ansible.pkrvars.hcl</span><pre><span></span><code><span class="na">ansible_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">file</span><span class="p">(</span><span class="s2">&quot;${path.root}/config/ssh/ansible_id_ecdsa.pub&quot;</span><span class="p">)</span>
 </code></pre></div>
+</details>
 <h3 id="common">Common<a class="headerlink" href="#common" title="Permanent link">&para;</a></h3>
 <p>Edit the <code>config/common.pkrvars.hcl</code> file to configure the following common variables:</p>
-<ul>
-<li>Virtual Machine Settings</li>
-<li>Template and Content Library Settings</li>
-<li>OVF Export Settings</li>
-<li>Removable Media Settings</li>
-<li>Boot and Provisioning Settings</li>
-<li>HCP Packer Registry</li>
-</ul>
-<div class="highlight"><span class="filename">config/common.pkrvars.hcl</span><pre><span></span><code><span class="c1">// Virtual Machine Settings</span>
-<span class="na">common_vm_version</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="m">19</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">config/common.pkrvars.hcl</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="c1">// Virtual Machine Settings</span>
+</span><span class="na">common_vm_version</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="m">19</span>
 <span class="na">common_tools_upgrade_policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="na">common_remove_cdrom</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 
-<span class="c1">// Template and Content Library Settings</span>
-<span class="na">common_template_conversion</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
-<span class="na">common_content_library</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-lib01&quot;</span>
-<span class="na">common_content_library_enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="na">common_content_library_ovf</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="na">common_content_library_destroy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="hll"><span class="c1">// Template and Content Library Settings</span>
+</span><span class="na">common_template_conversion</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
+<span class="na">common_content_library</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-lib01&quot;</span>
+<span class="na">common_content_library_enabled</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="na">common_content_library_ovf</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="na">common_content_library_destroy</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="na">common_content_library_skip_export</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
 
-<span class="c1">// OVF Export Settings</span>
-<span class="na">common_ovf_export_enabled</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
+<span class="hll"><span class="c1">// OVF Export Settings</span>
+</span><span class="na">common_ovf_export_enabled</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
 <span class="na">common_ovf_export_overwrite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 
-<span class="c1">// Removable Media Settings</span>
-<span class="na">common_iso_datastore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-cl01-ds-nfs01&quot;</span>
+<span class="hll"><span class="c1">// Removable Media Settings</span>
+</span><span class="na">common_iso_datastore</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-cl01-ds-nfs01&quot;</span>
+<span class="na">common_iso_content_library</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-lib01&quot;</span>
+<span class="na">common_iso_content_library_enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
 
-<span class="c1">// Boot and Provisioning Settings</span>
-<span class="na">common_data_source</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;http&quot;</span>
+<span class="hll"><span class="c1">// Boot and Provisioning Settings</span>
+</span><span class="na">common_data_source</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;http&quot;</span>
 <span class="na">common_http_ip</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="kt">null</span>
 <span class="na">common_http_port_min</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">8000</span>
 <span class="na">common_http_port_max</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">8099</span>
@@ -1504,9 +1480,9 @@ Linux machine images.</p>
 <span class="na">common_ip_settle_timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;5s&quot;</span>
 <span class="na">common_shutdown_timeout</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;15m&quot;</span>
 
-<span class="c1">// HCP Packer</span>
-<span class="na">common_hcp_packer_registry_enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
-</code></pre></div>
+<span class="hll"><span class="c1">// HCP Packer</span>
+</span><span class="na">common_hcp_packer_registry_enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
+</code></pre></div></td></tr></table></div>
 <h3 id="data-source">Data Source<a class="headerlink" href="#data-source" title="Permanent link">&para;</a></h3>
 <p>The default provisioning data source for Linux machine image builds is <code>http</code>. This is used to serve
 the kickstart files to the Linux guest operating system during the build.</p>
@@ -1536,89 +1512,129 @@ modify the <code>common_http_ip</code> variable from <code>null</code> to a <cod
 your Packer host.</p>
 <div class="highlight"><span class="filename">config/common.pkrvars.hcl</span><pre><span></span><code><span class="na">common_http_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;172.16.11.254&quot;</span>
 </code></pre></div>
-<h3 id="proxy">Proxy<a class="headerlink" href="#proxy" title="Permanent link">&para;</a></h3>
+<h3 id="proxy-optional">Proxy (Optional)<a class="headerlink" href="#proxy-optional" title="Permanent link">&para;</a></h3>
 <p>Edit the <code>config/proxy.pkrvars.hcl</code> file to configure the following:</p>
-<ul>
-<li>SOCKS proxy settings used for connecting to Linux machine images.</li>
-<li>Credentials for the proxy server.</li>
-</ul>
-<div class="highlight"><span class="filename">config/proxy.pkrvars.hcl</span><pre><span></span><code><span class="na">communicator_proxy_host</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;proxy.example.com&quot;</span>
-<span class="na">communicator_proxy_port</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">8080</span>
-<span class="na">communicator_proxy_username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;example&quot;</span>
-<span class="na">communicator_proxy_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;plaintext_password&gt;&quot;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">config/proxy.pkrvars.hcl</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="c1">// Proxy Credentials</span>
+</span><span class="c1">// communicator_proxy_host     = &quot;proxy.example.com&quot;</span>
+<span class="c1">// communicator_proxy_port     = 8080</span>
+<span class="c1">// communicator_proxy_username = &quot;packer&quot;</span>
+<span class="c1">// communicator_proxy_password = &quot;_P@cker_Ex#mple$_&quot;</span>
+</code></pre></div></td></tr></table></div>
 <h3 id="vmware-vsphere">VMware vSphere<a class="headerlink" href="#vmware-vsphere" title="Permanent link">&para;</a></h3>
 <p>Edit the <code>builds/vsphere.pkrvars.hcl</code> file to configure the following:</p>
-<ul>
-<li>vSphere Endpoint and Credentials</li>
-<li>vSphere Settings</li>
-</ul>
-<div class="highlight"><span class="filename">config/vsphere.pkrvars.hcl</span><pre><span></span><code><span class="na">vsphere_endpoint</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-vc01.sfo.example.com&quot;</span>
-<span class="na">vsphere_username</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;svc-packer-vsphere@example.com&quot;</span>
-<span class="na">vsphere_password</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;plaintext_password&gt;&quot;</span>
-<span class="na">vsphere_insecure_connection</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="na">vsphere_datacenter</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-dc01&quot;</span>
-<span class="na">vsphere_cluster</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-cl01&quot;</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">config/vsphere.pkrvars.hcl</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="c1">// vSphere Credentials</span>
+</span><span class="na">vsphere_endpoint</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-vc01.example.com&quot;</span>
+<span class="na">vsphere_username</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;svc-packer-vsphere@example.com&quot;</span>
+<span class="na">vsphere_password</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;VMw@re123!&quot;</span>
+<span class="na">vsphere_insecure_connection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
+
+<span class="hll"><span class="c1">// vSphere Settings</span>
+</span><span class="na">vsphere_datacenter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-dc01&quot;</span>
+<span class="na">vsphere_cluster</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-cl01&quot;</span>
 <span class="c1">//vsphere_host                         = &quot;sfo-w01-esx01&quot;</span>
-<span class="na">vsphere_datastore</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-cl01-ds-vsan01&quot;</span>
-<span class="na">vsphere_network</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-seg-dhcp&quot;</span>
-<span class="na">vsphere_folder</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-fd-templates&quot;</span>
+<span class="na">vsphere_datastore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-cl01-ds-vsan01&quot;</span>
+<span class="na">vsphere_network</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-seg-dhcp&quot;</span>
+<span class="na">vsphere_folder</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-fd-templates&quot;</span>
 <span class="c1">//vsphere_resource_pool                = &quot;sfo-w01-rp01&quot;</span>
 <span class="na">vsphere_set_host_for_datastore_uploads</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 <details class="- note">
 <summary>vSphere Distributed Resource Scheduler Disabled or Standalone ESXi Hosts</summary>
-</details>
-<p>When targeting standalone ESXi hosts or vSphere clusters with vSphere DRS disabled, you must set
-the <code>vsphere_host</code> variable.</p>
-<div class="highlight"><pre><span></span><code>**Example** (vSphere Clusters with vSphere DRS Disabled):
-
-```hcl title=&quot;config/vsphere.pkrvars.hcl&quot;
-...
-vsphere_datacenter = &quot;sfo-w01-dc01&quot;
-vsphere_cluster    = &quot;sfo-w01-cl01&quot;
-vsphere_host       = &quot;sfo-w01-esx01&quot;
-vsphere_folder     = &quot;sfo-w01-fd-templates&quot;
-...
-```
-
-**Example** (Standalone ESXi Host Managed by vCenter Server):
-
-For a standalone ESXi host, managed by vCenter Server, comment or remove `vsphere_cluster`.
-
-```hcl title=&quot;config/vsphere.pkrvars.hcl&quot;
-...
-vsphere_datacenter = &quot;sfo-w01-dc01&quot;
-//vsphere_cluster = &quot;sfo-w01-cl01&quot;
-vsphere_host = &quot;sfo-w01-esx01&quot;
-vsphere_folder = &quot;sfo-w01-fd-templates&quot;
-vsphere_datacenter = &quot;sfo-w01-dc01&quot;
-//vsphere_cluster = &quot;sfo-w01-cl01&quot;
-vsphere_host = &quot;sfo-w01-esx01&quot;
-vsphere_folder = &quot;sfo-w01-fd-templates&quot;
-```
+<p>When targeting standalone ESXi hosts or vSphere clusters with vSphere DRS disabled, you must
+set the <code>vsphere_host</code> variable.</p>
+<p><strong>Example</strong> (vSphere Clusters with vSphere DRS Disabled):</p>
+<div class="highlight"><span class="filename">config/vsphere.pkrvars.hcl</span><pre><span></span><code><span class="p">...</span>
+<span class="na">vsphere_datacenter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-dc01&quot;</span>
+<span class="na">vsphere_cluster</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-cl01&quot;</span>
+<span class="na">vsphere_host</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-esx01&quot;</span>
+<span class="na">vsphere_folder</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-fd-templates&quot;</span>
+<span class="p">...</span>
 </code></pre></div>
+<p><strong>Example</strong> (Standalone ESXi Host Managed by vCenter Server):</p>
+<p>For a standalone ESXi host, managed by vCenter Server, comment or remove <code>vsphere_cluster</code>.</p>
+<div class="highlight"><span class="filename">config/vsphere.pkrvars.hcl</span><pre><span></span><code><span class="p">...</span>
+<span class="na">vsphere_datacenter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-dc01&quot;</span>
+<span class="c1">//vsphere_cluster  = &quot;sfo-w01-cl01&quot;</span>
+<span class="na">vsphere_host</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-esx01&quot;</span>
+<span class="na">vsphere_folder</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-fd-templates&quot;</span>
+<span class="na">vsphere_datacenter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-dc01&quot;</span>
+<span class="c1">//vsphere_cluster  = &quot;sfo-w01-cl01&quot;</span>
+<span class="na">vsphere_host</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-esx01&quot;</span>
+<span class="na">vsphere_folder</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sfo-w01-fd-templates&quot;</span>
+</code></pre></div>
+</details>
 <h3 id="machine-images">Machine Images<a class="headerlink" href="#machine-images" title="Permanent link">&para;</a></h3>
-<p>Edit the <code>config/&lt;type&gt;-&lt;build&gt;-&lt;version&gt;.pkrvars.hcl</code> files to configure the following virtual
+<p>Edit each <code>config/&lt;type&gt;-&lt;build&gt;-&lt;version&gt;.pkrvars.hcl</code> files to configure the following virtual
 machine hardware settings, as required:</p>
-<ul>
-<li>CPUs <code>(int)</code></li>
-<li>CPU Cores <code>(int)</code></li>
-<li>Memory in MB <code>(int)</code></li>
-<li>Primary Disk in MB <code>(int)</code></li>
-<li>.iso Path <code>(string)</code></li>
-<li>.iso File <code>(string)</code></li>
-</ul>
-<div class="highlight"><span class="filename">config/linux-photon-5.pkrvars.hcl</span><pre><span></span><code><span class="c1">// Guest Operating System Metadata</span>
-<span class="na">vm_guest_os_family</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;linux&quot;</span>
-<span class="na">vm_guest_os_name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;photon&quot;</span>
-<span class="na">vm_guest_os_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;5.0&quot;</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">config/linux-photon-5.pkrvars.hcl</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="c1">// Guest Operating System Metadata</span>
+</span><span class="na">vm_guest_os_language</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;en_US&quot;</span>
+<span class="na">vm_guest_os_keyboard</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us&quot;</span>
+<span class="na">vm_guest_os_timezone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;UTC&quot;</span>
+<span class="na">vm_guest_os_family</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;linux&quot;</span>
+<span class="hll"><span class="na">vm_guest_os_name</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ubuntu&quot;</span>
+</span><span class="na">vm_guest_os_version</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;24.04-lts&quot;</span>
 
-<span class="c1">// Virtual Machine Guest Operating System Setting</span>
-<span class="na">vm_guest_os_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;vmwarePhoton64Guest&quot;</span>
+<span class="hll"><span class="c1">// Virtual Machine Guest Operating System Setting</span>
+</span><span class="na">vm_guest_os_type</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ubuntu64Guest&quot;</span>
+<span class="na">vm_guest_os_cloudinit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
 
-<span class="c1">// Virtual Machine Hardware Settings</span>
-<span class="na">vm_firmware</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;efi-secure&quot;</span>
+<span class="hll"><span class="c1">// Virtual Machine Hardware Settings</span>
+</span><span class="na">vm_firmware</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;efi-secure&quot;</span>
 <span class="na">vm_cdrom_type</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sata&quot;</span>
 <span class="na">vm_cdrom_count</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
 <span class="na">vm_cpu_count</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>
@@ -1631,19 +1647,19 @@ machine hardware settings, as required:</p>
 <span class="na">vm_disk_thin_provisioned</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="na">vm_network_card</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;vmxnet3&quot;</span>
 
-<span class="c1">// Removable Media Settings</span>
-<span class="na">iso_datastore_path</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;iso/linux/photon&quot;</span>
-<span class="na">iso_content_library_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;photon-5.0-dde71ec57.x86_64&quot;</span>
-<span class="na">iso_file</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;photon-5.0-dde71ec57.x86_64.iso&quot;</span>
+<span class="hll"><span class="c1">// Removable Media Settings</span>
+</span><span class="na">iso_datastore_path</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;iso/linux/ubuntu&quot;</span>
+<span class="na">iso_content_library_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ubuntu-24.04-live-server-amd64&quot;</span>
+<span class="na">iso_file</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ubuntu-24.04-live-server-amd64.iso&quot;</span>
 
-<span class="c1">// Boot Settings</span>
-<span class="na">vm_boot_order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;disk,cdrom&quot;</span>
-<span class="na">vm_boot_wait</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2s&quot;</span>
+<span class="hll"><span class="c1">// Boot Settings</span>
+</span><span class="na">vm_boot_order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;disk,cdrom&quot;</span>
+<span class="na">vm_boot_wait</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;5s&quot;</span>
 
-<span class="c1">// Communicator Settings</span>
-<span class="na">communicator_port</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="m">22</span>
+<span class="hll"><span class="c1">// Communicator Settings</span>
+</span><span class="na">communicator_port</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="m">22</span>
 <span class="na">communicator_timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;30m&quot;</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 <details class="note" open="open">
 <summary>Note</summary>
 <p>All <code>variables.auto.pkrvars.hcl</code> default to using:</p>
@@ -1663,9 +1679,12 @@ be installed on the Linux guest operating system during the build.</p>
 <h4 id="red-hat-subscription-manager">Red Hat Subscription Manager<a class="headerlink" href="#red-hat-subscription-manager" title="Permanent link">&para;</a></h4>
 <p>Edit the <code>config/redhat.pkrvars.hcl</code> file to configure the credentials for your Red Hat Subscription
 Manager account.</p>
-<div class="highlight"><span class="filename">config/redhat.pkrvars.hcl</span><pre><span></span><code><span class="na">rhsm_username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;example&quot;</span>
-<span class="na">rhsm_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;plaintext_password&gt;&quot;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">config/rhsm.pkrvars.hcl</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="c1">// Red Hat Subscription Manager Credentials</span>
+</span><span class="na">rhsm_username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;packer&quot;</span>
+<span class="na">rhsm_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;VMw@re123!&quot;</span>
+</code></pre></div></td></tr></table></div>
 <p>These variables are <strong>only</strong> used if you are performing a Red Hat Enterprise Linux Server build and
 are used to register the image with Red Hat Subscription Manager during the build for system updates
 and package installation.</p>
@@ -1673,9 +1692,12 @@ and package installation.</p>
 <h4 id="suse-customer-connect">SUSE Customer Connect<a class="headerlink" href="#suse-customer-connect" title="Permanent link">&para;</a></h4>
 <p>Edit the <code>config/scc.pkrvars.hcl</code> file to configure the following credentials for your SUSE Customer
 Connect account.</p>
-<div class="highlight"><span class="filename">config/scc.pkrvars.hcl</span><pre><span></span><code><span class="na">scc_email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;suse@example.com&quot;</span>
-<span class="na">scc_code</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;plaintext_code&gt;&quot;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">config/scc.pkrvars.hcl</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="c1">// SUSE Customer Center Credentials</span>
+</span><span class="na">scc_email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;packer@example.com&quot;</span>
+<span class="na">scc_code</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;VMw@re123!&quot;</span>
+</code></pre></div></td></tr></table></div>
 <p>These variables are <strong>only</strong> used if you are performing a SUSE Linux Enterprise Server build and are
 used to register the image with SUSE Customer Connect during the build for system updates and
 package installation.</p>
@@ -1711,8 +1733,99 @@ table.</p>
 <li>Disk partitions and related settings.</li>
 <li>Logical volumes and related settings (optional).</li>
 </ul>
-<div class="highlight"><span class="filename">config/linux-storage.pkrvars.hcl</span><pre><span></span><code><span class="na">vm_disk_device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sda&quot;</span>
-<span class="na">vm_disk_use_swap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">config/linux-storage.pkrvars.hcl</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="c1">// VM Storage Settings</span>
+</span><span class="na">vm_disk_device</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sda&quot;</span>
+<span class="na">vm_disk_use_swap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="na">vm_disk_partitions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">  </span><span class="p">{</span>
 <span class="w">    </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;efi&quot;</span>
@@ -1741,21 +1854,67 @@ table.</p>
 <span class="w">    </span><span class="na">volume_group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;root&quot;</span>
+<span class="w">    </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sysvg&quot;</span>
 <span class="w">    </span><span class="na">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">-</span><span class="m">1</span><span class="p">,</span>
 <span class="w">    </span><span class="nb">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">label</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ROOTFS&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="na">fstype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;xfs&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="na">label</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="na">fstype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nb">mount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">path</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="na">path</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="na">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="na">volume_group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="na">volume_group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sysvg&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="p">]</span>
-<span class="na">vm_disk_lvm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
-</code></pre></div>
+<span class="na">vm_disk_lvm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="err">name</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sysvg&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="err">partitions</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lv_swap&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="na">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1024</span><span class="p">,</span>
+<span class="w">        </span><span class="nb">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="na">label</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;SWAPFS&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="na">fstype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;swap&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nb">mount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="na">path</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="na">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lv_root&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="na">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">15360</span><span class="p">,</span>
+<span class="w">        </span><span class="nb">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="na">label</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ROOTFS&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="na">fstype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;xfs&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nb">mount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="na">path</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="na">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lv_home&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="na">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4096</span><span class="p">,</span>
+<span class="w">        </span><span class="nb">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="na">label</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;HOMEFS&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="na">fstype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;xfs&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nb">mount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="na">path</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/home&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="na">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;nodev,nosuid&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lv_opt&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="na">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2048</span><span class="p">,</span>
+<span class="w">        </span><span class="nb">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="na">label</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OPTFS&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="na">fstype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;xfs&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+</code></pre></div></td></tr></table></div>
 <details class="note" open="open">
 <summary>Note</summary>
 <p>Setting <code>size = -1</code> can also be used for the last partition (Logical Volume) of <code>vm_disk_lvm</code> so
@@ -1781,7 +1940,7 @@ that it fills the remaining space of the Volume Group.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-04T19:15:05+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-15T15:29:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-15</span>
   </span>
 
     
@@ -1885,7 +2044,7 @@ The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.<br/><br
     <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.header", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.081f42fc.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       
@@ -1894,5 +2053,7 @@ The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.<br/><br
         <script src="../../js/open_in_new_tab.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

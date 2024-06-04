@@ -34,7 +34,7 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_datastore_path       = "iso/linux/rocky"
+iso_datastore_path       = "iso/linux/rocky-linux"
 iso_content_library_item = "Rocky-8.9-x86_64-dvd1"
 iso_file                 = "Rocky-8.9-x86_64-dvd1.iso"
 

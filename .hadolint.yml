@@ -1,5 +1,5 @@
 ---
-
+# Sets the rules to ignore.
 ignored:
   - DL3008
   - DL3015

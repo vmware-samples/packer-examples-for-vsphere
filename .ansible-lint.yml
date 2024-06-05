@@ -1,0 +1,8 @@
+---
+# Sets the kind of files to lint.
+kinds:
+  - playbook
+
+# Skips the line-length rule.
+skip_list:
+  - line-length

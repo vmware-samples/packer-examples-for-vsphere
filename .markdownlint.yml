@@ -1,11 +1,31 @@
 ---
-
-# MD013: Line length
+# Disables rule MD013. Checks for line length.
 MD013: false
 
-# MD026: Trailing Punctuation in Header
+# Customizes rule MD026. Checks for trailing punctuation in headers.
 MD026:
   punctuation: ".,;:"
 
-# MD033" Inline HTML
+# Disables rule MD024. Checks for multiple headers with the same content.
+MD024: false
+
+# Disables rule MD033. Checks for inline HTML.
 MD033: false
+
+# Disables rule MD041. Checks if the first line in file is a top level header.
+MD041: false
+
+# Disables rule MD045. Checks if images have alternate text.
+MD045: false
+
+# Disables rule MD046. Checks for code block style.
+MD046: false
+
+# Disables rule MD053. Checks if link image reference definitions are needed.
+MD053: false
+
+# Disables rule MD055. Checks for consistent list style.
+MD055: false
+
+# Disables rule MD056. Checks for table column count.
+MD056: false

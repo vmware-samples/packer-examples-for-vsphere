@@ -49,7 +49,6 @@ machine images.
 
     Replace the example passwords and keys.
 
-
 ```hcl linenums="1" title="config/build.pkrvars.hcl" hl_lines="1"
 --8<-- "./builds/build.pkrvars.hcl.example:10:100"
 ```

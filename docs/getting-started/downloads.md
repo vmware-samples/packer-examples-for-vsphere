@@ -46,7 +46,6 @@ Download the guest operating system ISOs using the download script (`./download.
 
        The downloads are supported by a JSON configuration file (`project.json`) that includes the details for each guest operating system.
 
-
 2. Select a guest operating system.
 
       ```shell

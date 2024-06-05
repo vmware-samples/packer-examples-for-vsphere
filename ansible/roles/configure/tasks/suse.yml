@@ -2,56 +2,62 @@
 # SUSE Linux Enterprise Server specific tasks.
 
 # Tasks for disconnecting from SUSE Customer Center.
-- name: "Disconnecting from SUSE Customer Center."
-  command:
+- name: Disconnecting from SUSE Customer Center.
+  changed_when: false
+  ansible.builtin.command:
     cmd: "{{ item }}"
   loop:
     - SUSEConnect -d
     - SUSEConnect --cleanup
 
 # Tasks for configuring SSH for public key authentication.
-- name: "Configuring SSH for Public Key Authentication."
+- name: Configuring SSH for Public Key Authentication.
   block:
-    - lineinfile:
+    - name: Disable root login
+      ansible.builtin.lineinfile:
         path: /etc/ssh/sshd_config
-        regexp: '^PermitRootLogin'
-        line: 'PermitRootLogin no'
-    - lineinfile:
+        regexp: ^PermitRootLogin
+        line: PermitRootLogin no
+    - name: Enable public key authentication
+      ansible.builtin.lineinfile:
         path: /etc/ssh/sshd_config
-        regexp: '^PubkeyAuthentication'
-        line: 'PubkeyAuthentication yes'
+        regexp: ^PubkeyAuthentication
+        line: PubkeyAuthentication yes
 
 # Tasks for setting the hostname.
-- name: "Setting the hostname."
-  hostname:
-    name: "localhost"
+- name: Setting the hostname.
+  ansible.builtin.hostname:
+    name: localhost
 
 # Tasks for restarting the SSH daemon.
-- name: "Restarting the SSH daemon."
-  systemd:
+- name: Restarting the SSH daemon.
+  ansible.builtin.systemd:
     name: sshd
     state: restarted
     daemon_reload: true
 
 # Tasks for configuring cloud-init.
-- name: "Configuring cloud-init."
+- name: Configuring cloud-init.
+  when: enable_cloudinit == 'true'
   block:
     - name: "Message: Configuring cloud-init"
-      debug:
-        msg: "Configuring cloud-init"
-    - blockinfile:
+      ansible.builtin.debug:
+        msg: Configuring cloud-init
+    - name: Ensure disable_vmware_customization is set to false in cloud.cfg
+      ansible.builtin.blockinfile:
         path: /etc/cloud/cloud.cfg
         block: |
           disable_vmware_customization: false
-    - copy:
+    - name: Set datasource_list in 90_dpkg.cfg
+      ansible.builtin.copy:
         content: "datasource_list: [ VMware, OVF, None ]"
         dest: /etc/cloud/cloud.cfg.d/90_dpkg.cfg
-  when: enable_cloudinit == 'true'
+        mode: "0644"
 
-- name: "Enable the cloud-init daemon."
-  systemd:
+- name: Enable the cloud-init daemon.
+  when: enable_cloudinit == 'true'
+  ansible.builtin.systemd:
     name: cloud-init
     state: started
-    enabled: yes
-    daemon_reload: yes
-  when: enable_cloudinit == 'true'
+    enabled: true
+    daemon_reload: true

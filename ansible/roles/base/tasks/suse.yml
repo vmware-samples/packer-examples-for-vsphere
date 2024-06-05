@@ -2,33 +2,46 @@
 # SUSE Linux Enterprise Server specific tasks.
 
 # Tasks for updating the operating system and installing additional packages.
-- block:
-  - name: "Getting guest operating system information."
-    debug:
-      msg: "OS: {{ ansible_distribution }} {{ ansible_distribution_version }}"
-
-  - name: "Updating the operating system."
-    zypper:
-      name: "*"
-      state: latest
-      update_cache: true
-
-  - name: "Installing additional packages."
-    zypper:
-      name: "{{ additional_packages[ansible_os_family] }}"
-      state: latest
-
-  - name: "Adding location of python3-jsonpatch."
-    command: SUSEConnect -p sle-module-public-cloud/15.5/x86_64
-
-  - name: "Installing python3-jsonpatch"
-    zypper:
-      name: python3-jsonpatch
-      state: present
-
-  - name: "Installing cloud-init."
-    zypper:
-      name: cloud-init
-      state: present
-    when: enable_cloudinit == 'true'
+- name: Updating operating system and installing additional packages.
   become: true
+  block:
+    - name: Getting guest operating system information.
+      ansible.builtin.debug:
+        msg: "OS: {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+    - name: Updating the operating system.
+      community.general.zypper:
+        name: "*"
+        state: latest
+        update_cache: true
+
+    - name: Installing additional packages.
+      community.general.zypper:
+        name: "{{ base_base_additional_packages[ansible_os_family] }}"
+        state: latest
+
+    - name: Set full module path.
+      ansible.builtin.set_fact:
+        full_module_path: "{{ base_sle_module_name }}/{{ base_sle_module_version }}/{{ base_sle_architecture }}"
+
+    - name: "Check if already registered for: {{ full_module_path }}."
+      ansible.builtin.command: SUSEConnect --status-text
+      register: suseconnect_status
+      changed_when: false
+
+    - name: Adding location of python3-jsonpatch for {{ full_module_path }}.
+      when: full_module_path not in suseconnect_status.stdout
+      ansible.builtin.command: SUSEConnect -p {{ full_module_path }}
+      register: suseconnect_register
+      changed_when: "'Registering' in suseconnect_register.stdout"
+
+    - name: Installing python3-jsonpatch.
+      community.general.zypper:
+        name: python3-jsonpatch
+        state: present
+
+    - name: Installing cloud-init.
+      when: enable_cloudinit == 'true'
+      community.general.zypper:
+        name: cloud-init
+        state: present

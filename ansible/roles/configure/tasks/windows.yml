@@ -2,7 +2,9 @@
 # Microsoft Windows specific tasks.
 
 # Set the Windows Explorer options.
+# ansible-lint: disable=line-length
 - name: Setting the Windows Explorer options...
+  when: ansible_os_installation_type != "Server Core"
   block:
     - name: Show hidden files.
       ansible.windows.win_regedit:
@@ -31,7 +33,6 @@
         name: ShowSyncProviderNotifications
         data: 1
         type: dword
-  when: ansible_os_installation_type != "Server Core"
 
 # Disable system hibernation.
 - name: Disabling System Hibernation...
@@ -112,13 +113,13 @@
         data: 1
         type: dword
 
-# Disable Password Expiration for the Administrator Accounts - (Administrator and Build)
+# Disable Password Expiration for Administrator and Build Accounts
 - name: Disabling Local Administrator Password Expiration...
   ansible.windows.win_user:
     name: Administrator
     password_never_expires: true
 
-- name: Disabling "{{ build_username }}" Password Expiration...
+- name: Disabling Password Expiration for "{{ build_username }}"
   ansible.windows.win_user:
     name: "{{ build_username }}"
     password_never_expires: true

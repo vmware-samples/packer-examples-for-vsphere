@@ -1,6 +1,12 @@
 ---
-task_name: "Update the operating system and install additional packages."
-additional_packages:
+# Used to update SUSE Linux Enterprise Server.
+base_sle_module_name: sle-module-public-cloud
+base_sle_module_version: 15.5
+base_sle_architecture: x86_64
+
+base_task_name: Update the operating system and install additional packages.
+base_additional_packages:
+
   # OS family: VMware Photon OS
   VMware Photon OS:
     - git
@@ -12,6 +18,7 @@ additional_packages:
     - tar
     - unzip
     - wget
+
   # OS family: Debian
   Debian:
     - bash-completion
@@ -21,6 +28,7 @@ additional_packages:
     - net-tools
     - unzip
     - wget
+
   # OS family: RedHat
   RedHat:
     - ca-certificates
@@ -30,6 +38,7 @@ additional_packages:
     - unzip
     - vim
     - wget
+
   # OS family: Suse
   Suse:
     - bash-completion

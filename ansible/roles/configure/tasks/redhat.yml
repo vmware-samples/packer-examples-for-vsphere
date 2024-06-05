@@ -2,77 +2,86 @@
 # Red Hat Enterprise Linux or derivative specific tasks.
 
 # Tasks for disconnecting from Red Hat Subscription Manager.
-- name: "Disconnecting from Red Hat Subscription Manager."
-  redhat_subscription:
+- name: Disconnecting from Red Hat Subscription Manager.
+  community.general.redhat_subscription:
     state: absent
   when: ansible_distribution == 'RedHat'
 
 # Tasks for configuring SSH for public key authentication.
-- name: "Configuring SSH for Public Key Authentication without cloud-init."
-  block:
-    - lineinfile:
-        path: /etc/ssh/sshd_config
-        regexp: '^PermitRootLogin'
-        line: 'PermitRootLogin no'
-    - lineinfile:
-        path: /etc/ssh/sshd_config
-        regexp: '^PubkeyAuthentication'
-        line: 'PubkeyAuthentication yes'
+- name: Configuring SSH for Public Key Authentication without cloud-init.
   when: enable_cloudinit == 'false'
-
-- name: "Configuring SSH for Public Key Authentication without cloud-init."
   block:
-    - lineinfile:
+    - name: Disable root login
+      ansible.builtin.lineinfile:
         path: /etc/ssh/sshd_config
-        regexp: '^PermitRootLogin'
-        line: 'PermitRootLogin no'
-    - lineinfile:
+        regexp: ^PermitRootLogin
+        line: PermitRootLogin no
+    - name: Enable public key authentication
+      ansible.builtin.lineinfile:
         path: /etc/ssh/sshd_config
-        regexp: '^PubkeyAuthentication'
-        line: 'PubkeyAuthentication yes'
-    - lineinfile:
-        path: /etc/ssh/sshd_config
-        regexp: '^PasswordAuthentication'
-        line: 'PasswordAuthentication yes'
+        regexp: ^PubkeyAuthentication
+        line: PubkeyAuthentication yes
+
+# Tasks for configuring SSH for public key authentication.
+- name: Configuring SSH for Public Key Authentication without cloud-init.
   when: enable_cloudinit == 'true'
+  block:
+    - name: Disable root login
+      ansible.builtin.lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: ^PermitRootLogin
+        line: PermitRootLogin no
+    - name: Enable public key authentication
+      ansible.builtin.lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: ^PubkeyAuthentication
+        line: PubkeyAuthentication yes
+    - name: Enable password authentication
+      ansible.builtin.lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: ^PasswordAuthentication
+        line: PasswordAuthentication yes
 
 # Tasks for disabling cloud-init ssh module.
-- name: "Disable cloud-init ssh module"
-  lineinfile:
-    path: /etc/cloud/cloud.cfg
-    regexp: '^ssh_pwauth: false'
-    line: 'ssh_pwauth: true'
+- name: Disable cloud-init ssh module
   when: enable_cloudinit == 'true'
+  ansible.builtin.lineinfile:
+    path: /etc/cloud/cloud.cfg
+    regexp: "^ssh_pwauth: false"
+    line: "ssh_pwauth: true"
 
-# Tasks for setting the hostname.
-- name: "Setting the hostname."
-  hostname:
-    name: "localhost"
+# Task for setting the hostname.
+- name: Setting the hostname.
+  ansible.builtin.hostname:
+    name: localhost
 
-# Tasks for disabling SELinux.
-- name: "Disabling SELinux."
-  selinux:
+# Task for disabling SELinux.
+- name: Disabling SELinux.
+  ansible.posix.selinux:
     state: disabled
     policy: targeted
 
-# Tasks for restarting the SSH daemon.
-- name: "Restarting the SSH daemon."
-  systemd:
+# Task for restarting the SSH daemon.
+- name: Restarting the SSH daemon.
+  ansible.builtin.systemd:
     name: sshd
     state: restarted
     daemon_reload: true
 
 # Tasks for configuring cloud-init.
-- name: "Configuring cloud-init."
+- name: Configuring cloud-init.
+  when: enable_cloudinit == 'true'
   block:
     - name: "Message: Configuring cloud-init"
-      debug:
-        msg: "Configuring cloud-init"
-    - blockinfile:
+      ansible.builtin.debug:
+        msg: Configuring cloud-init
+    - name: Ensure disable_vmware_customization is set to false in cloud.cfg
+      ansible.builtin.blockinfile:
         path: /etc/cloud/cloud.cfg
         block: |
           disable_vmware_customization: false
-    - copy:
+    - name: Set datasource_list in 90_dpkg.cfg
+      ansible.builtin.copy:
         content: "datasource_list: [ VMware, OVF, None ]"
         dest: /etc/cloud/cloud.cfg.d/90_dpkg.cfg
-  when: enable_cloudinit == 'true'
+        mode: "0644"

@@ -43,7 +43,7 @@ part
 %{ endfor ~}
 ### Create a logical volume management (LVM) group.
 %{ for index, volume_group in lvm ~}
-volgroup sysvg pv.${volume_group.name}
+volgroup ${volume_group.name} pv.${volume_group.name}
 
 ### Modify logical volume sizes for the virtual machine hardware.
 ### Create logical volumes.

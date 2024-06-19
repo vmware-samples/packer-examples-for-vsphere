@@ -48,6 +48,12 @@
     - copy:
         content: 'datasource_list: [ VMware, OVF, None ]'
         dest: /etc/cloud/cloud.cfg.d/90_dpkg.cfg
+    - name: "Running cloud-init clean command"
+      command: sudo cloud-init clean --machine-id
+      become: yes
+      become_method: sudo
+      become_user: root
+      when: ansible_distribution == 'Ubuntu' and ansible_distribution_major_version | int >= 24
   when: enable_cloudinit == 'true'
 
 - name: "Replacing dhcp with static for Debian"

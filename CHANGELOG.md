@@ -1,5 +1,15 @@
 # Release History
 
+## v0.21.0
+
+> Not Released
+
+**Bug Fix**:
+
+- Updates to debian.yml file to remove the disable flag on cloud-init for ubuntu 24.04 LTS version
+  [#940](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/940)
+
+
 ## v0.20.0
 
 > Release Date: 2024-05-29

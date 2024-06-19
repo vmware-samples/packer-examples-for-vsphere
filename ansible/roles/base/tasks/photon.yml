@@ -2,37 +2,48 @@
 # VMware Photon OS specific tasks.
 
 # Tasks to update the operating system and install additional packages.
-- block:
-  - name: "Getting guest operating system information."
-    debug:
-      msg: "OS: {{ ansible_distribution }} {{ ansible_distribution_version }}"
+- name: Update the operating system and install additional packages.
+  block:
+    - name: Getting guest operating system information.
+      ansible.builtin.debug:
+        msg: "OS: {{ ansible_distribution }} {{ ansible_distribution_version }}"
 
-  - name: "Updating the operating system."
-    command: "tdnf -y update"
-    when: ansible_distribution_version | int >= 5
+    - name: Updating the operating system.
+      ansible.builtin.command: tdnf -y update
+      when: ansible_distribution_version | int >= 5
+      changed_when: false
 
-  - block:
-    - name: "Updating the repository URL."
-      shell: |
-        cd /etc/yum.repos.d/
-        sed -i 's/dl.bintray.com\/vmware/packages.vmware.com\/photon\/$releasever/g' photon.repo photon-updates.repo photon-extras.repo photon-debuginfo.repo
+- name: Update Photon OS Repositories and System
+  when: ansible_distribution_version | int <= 4
+  block:
+    - name: Updating the repository URL.
+      ansible.builtin.shell: |
+        cd /etc/yum.repos.d/ && \
+        sed -i 's/dl.bintray.com\/vmware/packages.vmware.com\/photon\/$releasever/g' \
+        photon.repo photon-updates.repo photon-extras.repo photon-debuginfo.repo
+      changed_when: false
 
-    - name: "Updating the photon-repos."
-      command: tdnf -y update photon-repos
+    - name: Updating the photon-repos.
+      ansible.builtin.command: tdnf -y update photon-repos
+      changed_when: false
 
-    - name: "Cleaning the cache."
-      command: tdnf clean all
+    - name: Cleaning the cache.
+      ansible.builtin.command: tdnf clean all
+      changed_when: false
 
-    - name: "Making cache."
-      command: tdnf makecache
+    - name: Making cache.
+      ansible.builtin.command: tdnf makecache
+      changed_when: false
 
-    - name: "Updating the operating system."
-      command: tdnf -y update
-    when: ansible_distribution_version | int <= 4
+    - name: Updating the operating system.
+      ansible.builtin.command: tdnf -y update
+      changed_when: false
 
-  - name: "Installing additional packages."
-    command: "tdnf -y install {{ additional_packages[ansible_os_family] | join(' ') }}"
+- name: Installing additional packages.
+  ansible.builtin.command: tdnf -y install {{ base_additional_packages[ansible_os_family] | join(' ') }}
+  changed_when: false
 
-  - name: "Installing cloud-init."
-    command: tdnf -y install cloud-init
-    when: enable_cloudinit == 'true'
+- name: Installing cloud-init.
+  ansible.builtin.command: tdnf -y install cloud-init
+  when: enable_cloudinit == 'true'
+  changed_when: false

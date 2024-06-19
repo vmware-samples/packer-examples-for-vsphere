@@ -1,59 +1,114 @@
----
 # Red Hat Enterprise Linux or derivative specific tasks.
 
 # Tasks for disconnecting from Red Hat Subscription Manager.
-- name: "Getting guest operating system information."
-  debug:
+- name: Getting guest operating system information.
+  ansible.builtin.debug:
     msg: "OS: {{ ansible_distribution }} {{ ansible_distribution_version }}"
 
-- name: "Checking the Red Hat Subscription Manager status."
-  command:
+- name: Checking the Red Hat Subscription Manager status.
+  when: ansible_distribution == 'RedHat'
+  ansible.builtin.command:
     cmd: subscription-manager status
   register: result
   failed_when: "'ERROR' in result.stderr"
-  when: ansible_distribution == 'RedHat'
+  changed_when: false
 
 # Tasks for upgrading the almalinux-release package.
-- name: "Upgrade almalinux-release package."
-  dnf:
-    name: almalinux-release
-    state: latest
-  become: true
+- name: Tasks for AlmaLinux
   when: ansible_distribution == 'AlmaLinux'
+  become: true
+  block:
+    - name: Upgrade almalinux-release package.
+      ansible.builtin.dnf:
+        name: almalinux-release
+        state: latest # noqa package-latest
+
+    - name: Installing cloud-init.
+      when: enable_cloudinit == 'true' and ansible_distribution_version | int >= 8
+      ansible.builtin.dnf:
+        name: cloud-init
+        state: latest # noqa package-latest
 
 # Tasks for updating the operating system and installing additional packages.
-- block:
-  - name: "Updating the operating system."
-    dnf:
-      name: "*"
-      state: latest     # noqa package-latest
-      update_cache: true
-
-  - name: "Installing additional packages."
-    dnf:
-      name: "{{ additional_packages[ansible_os_family] }}"
-      state: latest     # noqa package-latest
-
-  - name: "Installing cloud-init."
-    become: true
-    dnf:
-      name: cloud-init
-      state: latest
-    when: enable_cloudinit == 'true' and ansible_distribution_version | int >= 8
+- name: Updating the operating system and installing additional packages.
   when:
     - ansible_distribution == 'Fedora'
     - ansible_os_family == 'RedHat' and ansible_distribution_major_version | int >= 8
+  block:
+    - name: Updating the operating system.
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest # noqa package-latest
+        update_cache: true
+
+    - name: Installing additional packages.
+      ansible.builtin.dnf:
+        name: "{{ base_additional_packages[ansible_os_family] }}"
+        state: latest # noqa package-latest
+
+    - name: Installing cloud-init.
+      when: enable_cloudinit == 'true' and ansible_distribution_version | int >= 8
+      become: true
+      ansible.builtin.dnf:
+        name: cloud-init
+        state: latest # noqa package-latest
+
+# Tasks for Rocky Cloud Install.
+- name: Tasks for Rocky Linux Cloud-init
+  when: ansible_distribution == 'Rocky'
+  become: true
+  block:
+    - name: Installing cloud-init.
+      when: enable_cloudinit == 'true' and ansible_distribution_version | int >= 8
+      ansible.builtin.dnf:
+        name: cloud-init
+        state: latest # noqa package-latest
+
+# Tasks for Oracle Cloud Install.
+- name: Tasks for Oracle Linux Cloud-init
+  when: ansible_distribution == 'OracleLinux'
+  become: true
+  block:
+    - name: Installing cloud-init.
+      when: enable_cloudinit == 'true' and ansible_distribution_version | int >= 8
+      ansible.builtin.dnf:
+        name: cloud-init
+        state: latest # noqa package-latest
+
+# Tasks for CentOS Cloud Install.
+- name: Tasks for Centos Linux Cloud-init
+  when: ansible_distribution == 'CentOS'
+  become: true
+  block:
+    - name: Installing cloud-init.
+      when: enable_cloudinit == 'true' and ansible_distribution_version | int >= 8
+      ansible.builtin.dnf:
+        name: cloud-init
+        state: latest # noqa package-latest
 
 # Tasks for updating the operating system and installing additional packages.
-- block:
-  - name: "Updating the operating system."
-    yum:
-      name: "*"
-      state: latest     # noqa package-latest
-      update_cache: true
-
-  - name: "Installing additional packages."
-    yum:
-      name: "{{ additional_packages[ansible_os_family] }}"
-      state: latest     # noqa package-latest
+- name: Updating the operating system and installing additional packages.
   when: ansible_os_family == 'RedHat' and ansible_distribution_major_version | int < 8
+  block:
+    - name: Updating the operating system.
+      ansible.builtin.yum: # noqa fqcn[action-core]
+        name: "*"
+        state: latest # noqa package-latest
+        update_cache: true
+
+    - name: Installing additional packages.
+      ansible.builtin.yum: # noqa fqcn[action-core]
+        name: "{{ base_additional_packages[ansible_os_family] }}"
+        state: latest # noqa package-latest
+
+# Tasks for CentOS Cloud Install.
+- name: Tasks for Centos Linux Cloud-init
+  when: ansible_distribution == 'CentOS'
+  become: true
+  block:
+    - name: Installing cloud-init.
+      when: enable_cloudinit == 'true' and ansible_distribution_version | int < 8
+      ansible.builtin.yum:
+        name: cloud-init
+        state: latest # noqa package-latest
+```

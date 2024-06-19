@@ -1,39 +1,41 @@
 ---
 # Debian or derivative specific tasks.
 
-# Tasks for configuring SSH for public key authentication.
-- name: "Configuring SSH for Public Key Authentication."
-  lineinfile:
+# Task for configuring SSH for public key authentication.
+- name: Configuring SSH for Public Key Authentication.
+  ansible.builtin.lineinfile:
     path: /etc/ssh/sshd_config
-    regexp: '^PubkeyAuthentication'
-    line: 'PubkeyAuthentication yes'
+    regexp: ^PubkeyAuthentication
+    line: PubkeyAuthentication yes
 
-# Tasks for setting the hostname.
-- name: "Setting the hostname."
-  hostname:
-    name: "localhost"
+# Task for setting the hostname.
+- name: Setting the hostname.
+  ansible.builtin.hostname:
+    name: localhost
 
-# Tasks for restarting the SSH daemon.
-- name: "Restarting the SSH daemon."
-  systemd:
+# Task for restarting the SSH daemon.
+- name: Restarting the SSH daemon.
+  ansible.builtin.systemd:
     name: ssh
     state: restarted
     daemon_reload: true
 
-# Tasks for disabling systemd-tmpfiles.
-- name: "Disabling systemd-tmpfiles."
-  replace:
+# Task for disabling systemd-tmpfiles.
+- name: Disabling systemd-tmpfiles.
+  ansible.builtin.replace:
     path: /usr/lib/tmpfiles.d/tmp.conf
-    regexp: '^D'
-    replace: '#D'
+    regexp: ^D
+    replace: "#D"
 
 # Tasks for configuring cloud-init.
-- name: "Configuring cloud-init."
+- name: Configuring cloud-init.
+  when: enable_cloudinit == 'true'
   block:
     - name: "Message: Configuring cloud-init"
-      debug:
-        msg: "Configuring cloud-init"
-    - file:
+      ansible.builtin.debug:
+        msg: Configuring cloud-init
+    - name: Remove unnecessary configuration files
+      ansible.builtin.file:
         path: "{{ item }}"
         state: absent
       loop:
@@ -41,12 +43,14 @@
         - /etc/cloud/cloud.cfg.d/99-installer.cfg
         - /etc/netplan/00-installer-config.yaml
       when: ansible_distribution == 'Ubuntu'
-    - blockinfile:
+    - name: Ensure disable_vmware_customization is set to false in cloud.cfg
+      ansible.builtin.blockinfile:
         path: /etc/cloud/cloud.cfg
         block: |
           disable_vmware_customization: false
-    - copy:
-        content: 'datasource_list: [ VMware, OVF, None ]'
+    - name: Set datasource_list in 90_dpkg.cfg
+      ansible.builtin.copy:
+        content: "datasource_list: [ VMware, OVF, None ]"
         dest: /etc/cloud/cloud.cfg.d/90_dpkg.cfg
     - name: "Running cloud-init clean command"
       command: sudo cloud-init clean --machine-id
@@ -56,16 +60,16 @@
       when: ansible_distribution == 'Ubuntu' and ansible_distribution_major_version | int >= 24
   when: enable_cloudinit == 'true'
 
-- name: "Replacing dhcp with static for Debian"
-  lineinfile:
+- name: Replacing dhcp with static for Debian
+  ansible.builtin.lineinfile:
     path: /etc/network/interfaces
-    regexp: '^iface ens192 inet dhcp'
+    regexp: ^iface ens192 inet dhcp
     state: absent
   when: enable_cloudinit == 'true' and ansible_distribution == 'Debian'
 
-# Tasks for setting SSH keys to regenerate.
-- name: "Setting SSH keys to regenerate."
-  copy:
+# Task for setting SSH keys to regenerate.
+- name: Setting SSH keys to regenerate.
+  ansible.builtin.copy:
     dest: /etc/rc.local
     content: |
       #!/bin/bash
@@ -73,14 +77,15 @@
           dpkg-reconfigure openssh-server
       fi
       exit 0
-    mode: 0755
+    mode: "0755"
 
-# Tasks for force setting the guest operating system information for VMware Tools.
-- name: "Setting guest operating system information for VMware Tools."
-  blockinfile:
+# Task to force setting guest operating system information for VMware Tools.
+- name: Setting guest operating system information for VMware Tools.
+  ansible.builtin.blockinfile:
     path: /etc/vmware-tools/tools.conf
     block: |
       [guestosinfo]
       short-name = other5xLinux64Guest
     create: true
+    mode: "0644"
   when: ansible_distribution == 'Debian'

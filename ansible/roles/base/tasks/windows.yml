@@ -2,33 +2,34 @@
 # Microsoft Windows specific tasks.
 
 # Tasks for updating the operating system and installing additional packages.
-- name: "Getting guest operating system information."
-  debug:
+- name: Getting guest operating system information.
+  ansible.builtin.debug:
     msg: "OS: {{ ansible_os_name }}"
 
-- name: Ensure .NET Framework 4.8 requirement is satisfied for Chocolatey CLI v2.0.0+
+- name: Ensure .NET Framework 4.8 requirement is satisfied for Chocolatey v2.0.0 and later.
+  when: ansible_os_installation_type != "Server Core"
   block:
-    - name: Install Chocolatey CLI v1.4.0
-      win_chocolatey:
-        name: 'chocolatey'
+    - name: Install Chocolatey CLI
+      chocolatey.chocolatey.win_chocolatey:
+        name: chocolatey
         state: present
-        version: '1.4.0'
+        version: 1.4.0
 
-    - name: Install Microsoft .NET Framework 4.8
-      win_chocolatey:
-        name: 'netfx-4.8'
+    - name: Install Microsoft .NET Framework 4.8.
+      chocolatey.chocolatey.win_chocolatey:
+        name: netfx-4.8
         state: present
 
-    - name: Reboot the host to complete .NET Framework 4.8 install
+    - name: Reboot the host to complete .NET Framework 4.8 install.
       ansible.windows.win_reboot:
 
-    - name: Install Chocolatey CLI v2.0.0+ when .NET Framework 4.8 dependency is met
-      win_chocolatey:
-        name: 'chocolatey'
+    - name: Install latest version of Chocolatey.
+      chocolatey.chocolatey.win_chocolatey:
+        name: chocolatey
         state: latest
 
-    - name: "Installing additional packages using Chocolatey."
-      win_chocolatey:
+    - name: Installing additional packages using Chocolatey.
+      chocolatey.chocolatey.win_chocolatey:
         name:
           - googlechrome
           - putty
@@ -36,9 +37,8 @@
           - 7zip
         state: latest
         ignore_checksums: true
-  when: ansible_os_installation_type != "Server Core"
 
-- name: "Updating the operating system."
+- name: Updating the operating system.
   ansible.windows.win_updates:
     category_names:
       - SecurityUpdates

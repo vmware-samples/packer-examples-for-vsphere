@@ -2,14 +2,14 @@
 # SUSE Linux Enterprise Server specific tasks.
 
 # Tasks to clean the SUSE Customer Center file.
-- name: "Cleaning the SUSE Customer Center file."
-  file:
+- name: Cleaning the SUSE Customer Center file.
+  ansible.builtin.file:
     path: /etc/SUSEConnect
     state: absent
 
 # Tasks to clean the audit logs.
-- name: "Cleaning the audit logs."
-  file:
+- name: Cleaning the audit logs.
+  ansible.builtin.file:
     path: "{{ item }}"
     state: absent
   loop:
@@ -24,14 +24,14 @@
     - /var/log/zypper.log
 
 # Tasks to clean the persistent udev rules.
-- name: "Cleaning persistent udev rules."
-  file:
+- name: Cleaning persistent udev rules.
+  ansible.builtin.file:
     path: /etc/udev/rules.d/70-persistent-net.rules
     state: absent
 
 # Tasks to find the /tmp directories.
-- name: "Finding the /tmp directories."
-  find:
+- name: Finding the /tmp directories.
+  ansible.builtin.find:
     paths:
       - /tmp
       - /var/tmp
@@ -40,8 +40,8 @@
   register: find_tmp_directories
 
 # Tasks to clean the /tmp directories.
-- name: "Cleaning the /tmp directories."
-  file:
+- name: Cleaning the /tmp directories.
+  ansible.builtin.file:
     path: "{{ item.path }}"
     state: absent
   loop: "{{ find_tmp_directories.files }}"
@@ -49,15 +49,15 @@
     label: "{{ item.path }}"
 
 # Tasks to find the SSH host keys.
-- name: "Finding the SSH host keys."
-  find:
+- name: Finding the SSH host keys.
+  ansible.builtin.find:
     paths: /etc/ssh
-    patterns: 'ssh_host_*'
+    patterns: ssh_host_*
   register: find_ssh_host_keys
 
 # Tasks to clean the SSH host keys.
-- name: "Cleaning the SSH host keys."
-  file:
+- name: Cleaning the SSH host keys.
+  ansible.builtin.file:
     path: "{{ item.path }}"
     state: absent
   loop: "{{ find_ssh_host_keys.files }}"
@@ -65,15 +65,13 @@
     label: "{{ item.path }}"
 
 # Tasks to clean the machine-id.
-- name: "Emptying the /etc/machine-id."
+- name: Emptying the /etc/machine-id.
   community.general.filesize:
     path: /etc/machine-id
     size: 0
 
 # Tasks to clean the shell history.
-- name: "Cleaning the shell history."
-  block:
-  - name: "Cleaning the shell history."
-    file:
-      path: "{{ ansible_env.HOME }}/.bash_history"
-      state: absent
+- name: Cleaning the shell history.
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.bash_history"
+    state: absent

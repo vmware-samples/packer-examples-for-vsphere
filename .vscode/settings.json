@@ -1,4 +1,7 @@
 {
+  // Ansible settings
+  "ansible.python.interpreterPath": "/usr/local/bin/python3",
+
   // Editor settings
   "editor.bracketPairColorization.enabled": true,
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,

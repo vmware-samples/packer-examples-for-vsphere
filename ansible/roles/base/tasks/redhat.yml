@@ -1,3 +1,4 @@
+---
 # Red Hat Enterprise Linux or derivative specific tasks.
 
 # Tasks for disconnecting from Red Hat Subscription Manager.
@@ -111,4 +112,4 @@
       ansible.builtin.yum:
         name: cloud-init
         state: latest # noqa package-latest
-```
+

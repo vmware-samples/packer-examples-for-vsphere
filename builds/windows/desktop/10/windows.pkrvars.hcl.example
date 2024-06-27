@@ -46,7 +46,7 @@ vm_video_ram             = 32768
 vm_video_displays        = 1
 
 // Removable Media Settings
-iso_datastore_path       = "iso/windows/desktop"
+iso_datastore_path       = "iso/windows/windows-desktop"
 iso_content_library_item = "19045.2006.220908-0225.22h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us"
 iso_file                 = "19045.2006.220908-0225.22h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso"
 

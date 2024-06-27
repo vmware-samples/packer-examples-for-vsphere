@@ -31,7 +31,7 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_datastore_path       = "iso/linux/photon"
+iso_datastore_path       = "iso/linux/vmware-photon-os"
 iso_content_library_item = "photon-4.0-c001795b8"
 iso_file                 = "photon-4.0-c001795b8.iso"
 

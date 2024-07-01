@@ -33,6 +33,12 @@
   [#944](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/944)
 - Updates Ubuntu Linux removed duplicate variables from example pkr.hcl file and updated variables.pkr.hcl file with defaults.
   [#944](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/944)
+- Updates Windows 2019 remove duplicate variables for exampl pkr.hcl and updated variables.pkr.hcl file with defaults.
+  [#945](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/945)
+- Updates Windows 2022 remove duplicate variables for exampl pkr.hcl and updated variables.pkr.hcl file with defaults.
+  [#945](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/945)
+- Updates Windows 2025 remove duplicate variables for exampl pkr.hcl and updated variables.pkr.hcl file with defaults.
+  [#945](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/945)
 
 **Chore**:
 

@@ -99,16 +99,19 @@ variable "vm_inst_os_keyboard" {
 variable "vm_inst_os_eval" {
   type        = bool
   description = "Build using the operating system evaluation"
+  default     = true
 }
 
 variable "vm_inst_os_image_standard_core" {
   type        = string
   description = "The installation operating system image input for Microsoft Windows Standard Core."
+  default     = "Windows Server 2019 SERVERSTANDARDCORE"
 }
 
 variable "vm_inst_os_image_standard_desktop" {
   type        = string
   description = "The installation operating system image input for Microsoft Windows Standard."
+  default     = "Windows Server 2019 SERVERSTANDARD"
 }
 
 variable "vm_inst_os_key_standard" {
@@ -119,11 +122,13 @@ variable "vm_inst_os_key_standard" {
 variable "vm_inst_os_image_datacenter_core" {
   type        = string
   description = "The installation operating system image input for Microsoft Windows Datacenter Core."
+  default     = "Windows Server 2019 SERVERDATACENTERCORE"
 }
 
 variable "vm_inst_os_image_datacenter_desktop" {
   type        = string
   description = "The installation operating system image input for Microsoft Windows Datacenter."
+  default     = "Windows Server 2019 SERVERDATACENTER"
 }
 
 variable "vm_inst_os_key_datacenter" {
@@ -154,16 +159,19 @@ variable "vm_guest_os_timezone" {
 variable "vm_guest_os_family" {
   type        = string
   description = "The guest operating system family. Used for naming and VMware Tools."
+  default     = "windows"
 }
 
 variable "vm_guest_os_name" {
   type        = string
   description = "The guest operating system name. Used for naming."
+  default     = "server"
 }
 
 variable "vm_guest_os_version" {
   type        = string
   description = "The guest operating system version. Used for naming."
+  default     = "2019"
 }
 
 variable "vm_guest_os_edition_standard" {
@@ -216,31 +224,37 @@ variable "vm_cdrom_count" {
 variable "vm_cpu_count" {
   type        = number
   description = "The number of virtual CPUs."
+  default     = 2
 }
 
 variable "vm_cpu_cores" {
   type        = number
   description = "The number of virtual CPUs cores per socket."
+  default     = 1
 }
 
 variable "vm_cpu_hot_add" {
   type        = bool
   description = "Enable hot add CPU."
+  default     = false
 }
 
 variable "vm_mem_size" {
   type        = number
   description = "The size for the virtual memory in MB."
+  default     = 4096
 }
 
 variable "vm_mem_hot_add" {
   type        = bool
   description = "Enable hot add memory."
+  default     = false
 }
 
 variable "vm_disk_size" {
   type        = number
   description = "The size for the virtual disk in MB."
+  default     = 102400
 }
 
 variable "vm_disk_controller_type" {
@@ -395,17 +409,19 @@ variable "vm_boot_order" {
 variable "vm_boot_wait" {
   type        = string
   description = "The time to wait before boot."
+  default     = "2s"
 }
 
 variable "vm_boot_command" {
   type        = list(string)
   description = "The virtual machine boot command."
-  default     = []
+  default     = ["<spacebar>"]
 }
 
 variable "vm_shutdown_command" {
   type        = string
   description = "Command(s) for guest operating system shutdown."
+  default     = "shutdown /s /t 10 /f /d p:4:1 /c \"Shutdown by Packer\""
 }
 
 variable "common_ip_wait_timeout" {
@@ -455,13 +471,15 @@ variable "build_key" {
 // Communicator Credentials
 
 variable "communicator_port" {
-  type        = string
+  type        = number
   description = "The port for the communicator protocol."
+  default     = 5985
 }
 
 variable "communicator_timeout" {
   type        = string
   description = "The timeout for the communicator protocol."
+  default     = "12h"
 }
 
 // Ansible Credentials

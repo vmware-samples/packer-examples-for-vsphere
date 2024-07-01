@@ -99,16 +99,19 @@ variable "vm_inst_os_keyboard" {
 variable "vm_inst_os_eval" {
   type        = bool
   description = "Build using the operating system evaluation"
+  default     = true
 }
 
 variable "vm_inst_os_image_pro" {
   type        = string
-  description = "The installation operating system image input."
+  description = "The installation operating system image input.\nDoes not support evaluation."
+  default     = "Windows 11 Pro"
 }
 
 variable "vm_inst_os_image_ent" {
   type        = string
-  description = "The installation operating system image input."
+  description = "The installation operating system image input. Does support evaluation."
+  default     = "Windows 11 Enterprise"
 }
 
 variable "vm_inst_os_key_pro" {
@@ -143,26 +146,31 @@ variable "vm_guest_os_timezone" {
 variable "vm_guest_os_family" {
   type        = string
   description = "The guest operating system family. Used for naming and VMware Tools."
+  default     = "windows"
 }
 
 variable "vm_guest_os_name" {
   type        = string
   description = "The guest operating system name. Used for naming."
+  default     = "desktop"
 }
 
 variable "vm_guest_os_version" {
   type        = string
   description = "The guest operating system version. Used for naming."
+  default     = "11"
 }
 
 variable "vm_guest_os_edition_pro" {
   type        = string
   description = "The guest operating system edition. Used for naming."
+  default     = "pro"
 }
 
 variable "vm_guest_os_edition_ent" {
   type        = string
   description = "The guest operating system edition. Used for naming."
+  default     = "ent"
 }
 
 variable "vm_guest_os_type" {
@@ -191,26 +199,31 @@ variable "vm_cdrom_count" {
 variable "vm_cpu_count" {
   type        = number
   description = "The number of virtual CPUs."
+  default     = 2
 }
 
 variable "vm_cpu_cores" {
   type        = number
   description = "The number of virtual CPUs cores per socket."
+  default     = 2
 }
 
 variable "vm_cpu_hot_add" {
   type        = bool
   description = "Enable hot add CPU."
+  default     = false
 }
 
 variable "vm_mem_size" {
   type        = number
   description = "The size for the virtual memory in MB."
+  default     = 4096
 }
 
 variable "vm_mem_hot_add" {
   type        = bool
   description = "Enable hot add memory."
+  default     = false
 }
 
 variable "vm_vtpm" {
@@ -222,6 +235,7 @@ variable "vm_vtpm" {
 variable "vm_disk_size" {
   type        = number
   description = "The size for the virtual disk in MB."
+  default     = 102400
 }
 
 variable "vm_disk_controller_type" {
@@ -388,17 +402,19 @@ variable "vm_boot_order" {
 variable "vm_boot_wait" {
   type        = string
   description = "The time to wait before boot."
+  default     = "3s"
 }
 
 variable "vm_boot_command" {
   type        = list(string)
   description = "The virtual machine boot command."
-  default     = []
+  default     = ["<spacebar><spacebar>"]
 }
 
 variable "vm_shutdown_command" {
   type        = string
   description = "Command(s) for guest operating system shutdown."
+  default     = "shutdown /s /t 10 /f /d p:4:1 /c \"Shutdown by Packer\""
 }
 
 variable "common_ip_wait_timeout" {
@@ -448,13 +464,15 @@ variable "build_key" {
 // Communicator Credentials
 
 variable "communicator_port" {
-  type        = string
+  type        = number
   description = "The port for the communicator protocol."
+  default     = 5985
 }
 
 variable "communicator_timeout" {
   type        = string
   description = "The timeout for the communicator protocol."
+  default     = "12h"
 }
 
 // Ansible Credentials

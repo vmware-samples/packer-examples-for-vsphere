@@ -3,7 +3,6 @@
 
 # Tasks for updating the operating system and installing additional packages.
 - name: Updating the operating system and installing additional packages.
-  when: enable_cloudinit == 'true' and ansible_distribution_version | int >= 12
   block:
     - name: Getting guest operating system information.
       ansible.builtin.debug:
@@ -17,10 +16,11 @@
 
     - name: Installing additional packages.
       ansible.builtin.apt:
-        name: "{{ base_base_base_additional_packages[ansible_os_family] }}"
+        name: "{{ base_additional_packages[ansible_os_family] }}"
         state: latest # noqa package-latest
 
     - name: Installing cloud-init.
       ansible.builtin.apt:
         name: cloud-init
         state: latest # noqa package-latest
+      when: enable_cloudinit == 'true' and ansible_distribution_version | int >= 12

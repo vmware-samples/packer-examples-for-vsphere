@@ -235,31 +235,6 @@
                                     }
                                 ]
                             }
-                        ],
-                        "7": [
-                            {
-                                "version": "7",
-                                "enabled": "true",
-                                "architectures": [
-                                    {
-                                        "architecture": "amd64",
-                                        "checksum_algorithm": "sha256",
-                                        "checksum": "2cb36122a74be084c551bc7173d2d38a1cfb75c8ffbc1489c630c916d1b31b25"
-                                    }
-                                ],
-                                "build_files": [
-                                    {
-                                        "vsphere": "vsphere.pkrvars.hcl",
-                                        "build": "build.pkrvars.hcl",
-                                        "ansible": "ansible.pkrvars.hcl",
-                                        "proxy": "proxy.pkrvars.hcl",
-                                        "common": "common.pkrvars.hcl",
-                                        "network": "network.pkrvars.hcl",
-                                        "storage": "linux-storage.pkrvars.hcl",
-                                        "rshm": "rhsm.pkrvars.hcl"
-                                    }
-                                ]
-                            }
                         ]
                     }
                 },
@@ -304,9 +279,9 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://download.rockylinux.org/pub/rocky/8.9/isos/x86_64/Rocky-8.9-x86_64-dvd1.iso",
+                                        "download_link": "https://download.rockylinux.org/pub/rocky/8.10/isos/x86_64/Rocky-8.10-x86_64-dvd1.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://download.rockylinux.org/pub/rocky/8.9/isos/x86_64/CHECKSUM"
+                                        "checksum": "https://download.rockylinux.org/pub/rocky/8.10/isos/x86_64/CHECKSUM"
                                     }
                                 ],
                                 "build_files": [

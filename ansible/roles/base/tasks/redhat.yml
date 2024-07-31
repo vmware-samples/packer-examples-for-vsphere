@@ -32,9 +32,7 @@
 
 # Tasks for updating the operating system and installing additional packages.
 - name: Updating the operating system and installing additional packages.
-  when:
-    - (ansible_distribution == 'Fedora') or \
-      (ansible_os_family == 'RedHat' and ansible_distribution_major_version | int >= 8)
+  when: (ansible_distribution == 'Fedora') or (ansible_os_family == 'RedHat' and ansible_distribution_major_version | int >= 8)
   block:
     - name: Updating the operating system.
       ansible.builtin.dnf:

@@ -59,5 +59,8 @@
     "editor.formatOnType": true,
     "editor.trimAutoWhitespace": true,
     "editor.wordWrap": "off"
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   }
 }

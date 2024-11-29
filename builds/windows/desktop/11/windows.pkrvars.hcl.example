@@ -18,6 +18,6 @@ vm_guest_os_type = "windows9_64Guest"
 vm_firmware              = "efi-secure"
 
 // Removable Media Settings
-iso_datastore_path       = "iso/windows/desktop"
+iso_datastore_path       = "iso/windows/windows-desktop/11/amd64"
 iso_content_library_item = "22631.2428.231001-0608.23H2_NI_RELEASE_SVC_REFRESH_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us"
 iso_file                 = "22631.2428.231001-0608.23H2_NI_RELEASE_SVC_REFRESH_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso"

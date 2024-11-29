@@ -27,7 +27,7 @@ Download the guest operating system ISOs using the download script (`./download.
 |                                                             | 8         | :octicons-check-circle-16:{ .green }                                  |
 | :fontawesome-brands-centos: CentOS @span                    | 9 Stream  | :octicons-check-circle-16:{ .green }                                  |
 |                                                             | 7         | :octicons-check-circle-16:{ .green }                                  |
-| :fontawesome-brands-fedora: Fedora Serve* @span             | 40        | :octicons-check-circle-16:{ .green }                                  |
+| :fontawesome-brands-fedora: Fedora Server* @span            | 41        | :octicons-check-circle-16:{ .green }                                  |
 | :fontawesome-brands-suse: SUSE Linux Enterprise @span       | 15        | :octicons-x-circle-16:{ .red }                                        |
 | :fontawesome-brands-windows: Microsoft Windows Server @span | 2025      | :octicons-check-circle-16:{ .green } &nbsp; Windows Evaluation Center |
 |                                                             | 2022      | :octicons-check-circle-16:{ .green } &nbsp; Windows Evaluation Center |

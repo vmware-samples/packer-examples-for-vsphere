@@ -1,7 +1,7 @@
 # Copyright 2023-2024 Broadcom. All rights reserved.
 # SPDX-License-Identifier: BSD-2
 
-# Fedora Server 40
+# Fedora Server 41
 
 ### Installs from the first attached CD-ROM/DVD on the system.
 cdrom

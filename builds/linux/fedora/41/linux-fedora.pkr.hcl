@@ -3,7 +3,7 @@
 
 /*
     DESCRIPTION:
-    Fedora Server 40 build definition.
+    Fedora Server 41 build definition.
     Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 

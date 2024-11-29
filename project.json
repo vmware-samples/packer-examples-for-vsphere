@@ -1,7 +1,7 @@
 {
     "project": {
         "name": "Packer Examples for vSphere",
-        "version": "v0.21.0",
+        "version": "v0.22.0-dev",
         "description": "This project provides a collection of opinionated examples that demonstrate how you can use both\nHashiCorp Packer and the Packer Plugin for VMware vSphere (vsphere-iso builder) to automate the\ncreation of virtual machine images for VMware vSphere environments.\n\nWhether you're a developer, systems administrator, or site reliability engineer, this project is\ndesigned to both help and inspire you in streamlining your infrastructure provisioning process and\nmaintain consistency in your virtualization workflow.",
         "urls": {
             "github": "https://github.com/vmware-samples/packer-examples-for-vsphere",
@@ -51,9 +51,9 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://mirror.cogentco.com/debian-cd/12.7.0/amd64/iso-cd/debian-12.7.0-amd64-netinst.iso",
+                                        "download_link": "https://mirror.cogentco.com/debian-cd/12.8.0/amd64/iso-cd/debian-12.8.0-amd64-netinst.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://mirror.cogentco.com/debian-cd/12.7.0/amd64/iso-cd/SHA256SUMS"
+                                        "checksum": "https://mirror.cogentco.com/debian-cd/12.8.0/amd64/iso-cd/SHA256SUMS"
                                     }
                                 ],
                                 "build_files": [
@@ -137,7 +137,7 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://releases.ubuntu.com/releases/22.04/ubuntu-22.04.4-live-server-amd64.iso",
+                                        "download_link": "https://releases.ubuntu.com/releases/22.04/ubuntu-22.04.5-live-server-amd64.iso",
                                         "checksum_algorithm": "sha256",
                                         "checksum": "https://releases.ubuntu.com/releases/22.04/SHA256SUMS"
                                     }
@@ -199,7 +199,7 @@
                                     {
                                         "architecture": "amd64",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "398561d7b66f1a4bf23664f4aa8f2cfbb3641aa2f01a320068e86bd1fc0e9076"
+                                        "checksum": "802b70dc854114ec46aec37ea358a46e57fa41a643b9edfce34fb532d66e881e"
                                     }
                                 ],
                                 "build_files": [
@@ -259,9 +259,9 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://dl.rockylinux.org/vault/rocky/9.4/isos/x86_64/Rocky-9.4-x86_64-dvd.iso",
+                                        "download_link": "https://dl.rockylinux.org/vault/rocky/9.5/isos/x86_64/Rocky-9.5-x86_64-dvd.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://dl.rockylinux.org/vault/rocky/9.4/isos/x86_64/CHECKSUM"
+                                        "checksum": "https://dl.rockylinux.org/vault/rocky/9.5/isos/x86_64/CHECKSUM"
                                     }
                                 ],
                                 "build_files": [
@@ -320,9 +320,9 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://repo.almalinux.org/almalinux/9.4/isos/x86_64/AlmaLinux-9.4-x86_64-dvd.iso",
+                                        "download_link": "https://repo.almalinux.org/almalinux/9.5/isos/x86_64/AlmaLinux-9.5-x86_64-dvd.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://repo.almalinux.org/almalinux/9.4/isos/x86_64/CHECKSUM"
+                                        "checksum": "https://repo.almalinux.org/almalinux/9.5/isos/x86_64/CHECKSUM"
                                     }
                                 ],
                                 "build_files": [
@@ -381,9 +381,9 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u4/x86_64/OracleLinux-R9-U4-x86_64-dvd.iso",
+                                        "download_link": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u5/x86_64/OracleLinux-R9-U5-x86_64-dvd.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U4-Server-x86_64.checksum"
+                                        "checksum": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U5-Server-x86_64.checksum"
                                     }
                                 ],
                                 "build_files": [
@@ -471,16 +471,16 @@
                         "url": "https://fedoraproject.org"
                     },
                     "versions": {
-                        "40": [
+                        "41": [
                             {
-                                "version": "40",
+                                "version": "41",
                                 "enabled": "true",
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://na.edge.kernel.org/fedora/releases/40/Server/x86_64/iso/Fedora-Server-dvd-x86_64-40-1.14.iso",
+                                        "download_link": "https://na.edge.kernel.org/fedora/releases/41/Server/x86_64/iso/Fedora-Server-dvd-x86_64-41-1.4.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://na.edge.kernel.org/fedora/releases/40/Server/x86_64/iso/Fedora-Server-40-1.14-x86_64-CHECKSUM"
+                                        "checksum": "https://na.edge.kernel.org/fedora/releases/41/Server/x86_64/iso/Fedora-Server-41-1.4-x86_64-CHECKSUM"
                                     }
                                 ],
                                 "build_files": [

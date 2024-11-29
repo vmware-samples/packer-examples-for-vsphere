@@ -1,5 +1,26 @@
 # Release History
 
+## v0.22.0
+
+> Release Date: Not Released
+
+**Chore**:
+
+- Updates Debian Linux 12 to 12.8 release.
+  [#984](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/984)
+- Updates Ubuntu 22.04 LTS to 22.04.5 release.
+  [#984](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/984)
+- Updates Red Hat Enterprise Linux 9 to 9.5 release.
+  [#984](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/984)
+- Updates AlmaLinux 9 to 9.5 release.
+  [#984](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/984)
+- Updates Rocky Linux 9 to 9.5 release.
+  [#984](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/984)
+- Updates Oracle Linux 9 to 9.5 release.
+  [#984](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/984)
+- Updates Fedora Server to release 41.
+  [#984](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/984)
+
 ## v0.21.0
 
 > Release Date: 2024-09-26

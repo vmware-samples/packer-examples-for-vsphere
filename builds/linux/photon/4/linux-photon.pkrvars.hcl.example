@@ -18,6 +18,6 @@ vm_guest_os_type      = "vmwarePhoton64Guest"
 vm_firmware              = "efi-secure"
 
 // Removable Media Settings
-iso_datastore_path       = "iso/linux/photon"
+iso_datastore_path       = "iso/linux/vmware-photon-os/4/amd64"
 iso_content_library_item = "photon-4.0-c001795b8"
 iso_file                 = "photon-4.0-c001795b8.iso"

@@ -118,7 +118,7 @@ menu:
           var_files:
             - "network.pkrvars.hcl"
             - "linux-storage.pkrvars.hcl"
-      - entry: "Fedora Server 40"
+      - entry: "Fedora Server 41"
         build:
           path: "builds/linux/fedora/40/"
           var_files:

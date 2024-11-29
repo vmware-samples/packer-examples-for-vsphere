@@ -7,16 +7,16 @@
 */
 
 // Guest Operating System Metadata
-vm_guest_os_name     = "centos-stream"
-vm_guest_os_version  = "9"
+vm_guest_os_name    = "centos-stream"
+vm_guest_os_version = "9"
 
 // Virtual Machine Guest Operating System Setting
-vm_guest_os_type      = "other5xLinux64Guest"
+vm_guest_os_type = "other5xLinux64Guest"
 
 // Virtual Machine Hardware Settings
-vm_firmware              = "efi-secure"
+vm_firmware = "efi-secure"
 
 // Removable Media Settings
-iso_datastore_path       = "iso/linux/centos"
+iso_datastore_path       = "iso/linux/centos/9/amd64"
 iso_content_library_item = "CentOS-Stream-9-latest-x86_64-dvd1"
 iso_file                 = "CentOS-Stream-9-latest-x86_64-dvd1.iso"

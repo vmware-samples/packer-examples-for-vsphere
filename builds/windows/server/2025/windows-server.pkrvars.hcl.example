@@ -21,6 +21,6 @@ vm_guest_os_type = "windows2019srvNext_64Guest"
 vm_firmware              = "efi-secure"
 
 // Removable Media Settings
-iso_datastore_path       = "iso/windows/server"
+iso_datastore_path       = "iso/windows/windows-server/2025/amd64"
 iso_content_library_item = "26100.1.240331-1435.ge_release_SERVER_EVAL_x64FRE_en-us"
 iso_file                 = "26100.1.240331-1435.ge_release_SERVER_EVAL_x64FRE_en-us.iso"

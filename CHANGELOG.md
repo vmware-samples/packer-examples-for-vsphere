@@ -11,6 +11,8 @@
 
 **Chore**:
 
+- Updates Debian 11 to 11.11 release.
+  [#985](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/985)
 - Updates Debian Linux 12 to 12.8 release.
   [#984](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/984)
 - Updates Ubuntu 22.04 LTS to 22.04.5 release.

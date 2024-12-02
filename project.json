@@ -76,9 +76,9 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://saimei.ftp.acc.umu.se/mirror/cdimage/archive/11.9.0/amd64/iso-cd/debian-11.9.0-amd64-netinst.iso",
+                                        "download_link": "https://saimei.ftp.acc.umu.se/mirror/cdimage/archive/11.11.0/amd64/iso-cd/debian-11.11.0-amd64-netinst.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://saimei.ftp.acc.umu.se/mirror/cdimage/archive/11.9.0/amd64/iso-cd/SHA256SUMS"
+                                        "checksum": "https://saimei.ftp.acc.umu.se/mirror/cdimage/archive/11.11.0/amd64/iso-cd/SHA256SUMS"
                                     }
                                 ],
                                 "build_files": [

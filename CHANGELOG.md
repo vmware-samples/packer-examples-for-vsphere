@@ -9,6 +9,11 @@
 - Reestablished an empty `GRUB_CMDLINE_LINUX_DEFAULT` as `late_command` for Ubuntu.
   [#982](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/982)
 
+**Enhancement**:
+
+- Adds confirmation before overwriting existing configuration files.
+  [#987](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/987)
+
 **Chore**:
 
 - Updates Debian 11 to 11.11 release.

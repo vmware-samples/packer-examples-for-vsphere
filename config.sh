@@ -36,7 +36,7 @@ done
 echo
 echo "> Renaming the example input variables..."
 for file in "${CONFIG_PATH}"/*.pkrvars.hcl.example; do
-    mv -- "${file}" "${file%.example}"
+    mv -i -- "${file}" "${file%.example}"
 done
 
 echo

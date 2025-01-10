@@ -36,7 +36,12 @@ Set-Location E:
 # Installation Attempt
 
 Write-Output "Installing VMware Tools..."
+if (Test-Path "setup.exe") {
 Start-Process "setup.exe" -ArgumentList '/S /v "/qn REBOOT=R"' -Wait
+}
+else {
+Start-Process "setup64.exe" -ArgumentList '/s /v "/qb REBOOT=R"' -Wait
+}
 
 # Check to see if the 'VMTools' service is in a 'Running' state.
 
@@ -78,7 +83,13 @@ if (-not $Running) {
   # Installation Attempt
 
   Write-Output "Reintalling VMware Tools..."
-  Start-Process "setup.exe" -ArgumentList '/S /v "/qn REBOOT=R"' -Wait
+  if (Test-Path "setup.exe") {
+   Start-Process "setup.exe" -ArgumentList '/S /v "/qn REBOOT=R"' -Wait
+  }
+  else {
+  Start-Process "setup64.exe" -ArgumentList '/s /v "/qb REBOOT=R"' -Wait
+  }
+
 
   # Check to see if the 'VMTools' service is in a 'Running' state.
 }

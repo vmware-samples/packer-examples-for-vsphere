@@ -8,102 +8,109 @@
 
     .SYNOPSIS
     - Packer requires that the VMware Tools service is running.
-    - If the "VMware Tools Service" fails to start, the script initiates a reinstallation.
-
-    .NOTES
-    The below code is mostly based on the script within the following blog post by Owen Reynolds from scriptech.io.
-    https://scriptech.io/automatically-reinstalling-vmware-tools-on-server2016-after-the-first-attempt-fails-to-install-the-vmtools-service/
+    - If the VMware Tools service fails to start, the script initiates a reinstallation.
 #>
 
+param (
+  [string]$SetupPath = "E:",
+  [int]$MaxRetries = 5,
+  [int]$RetryInterval = 2
+)
+
 $ErrorActionPreference = "Stop"
+$VMToolsName = "VMware Tools"
+$VMToolsServiceName = "VMTools"
 
-# Install VMWare Tools
+Function Get-VMToolsInstall {
+  $registryPaths = @(
+    "HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall",
+    "HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall"
+  )
+  foreach ($path in $registryPaths) {
+    try {
+      if (Get-ChildItem $path -ErrorAction Stop | Where-Object { $_.GetValue("DisplayName") -like "*$VMToolsName*" }) {
+        return $true
+      }
+    } catch {
+      Write-Error ("Failed to access registry path: {0}. {1}" -f $path, $_)
+    }
+  }
 
-Function Get-VMToolsInstalled {
-    if (((Get-ChildItem "HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall") | Where-Object { $_.GetValue( "DisplayName" ) -like "*VMware Tools*" } ).Length -gt 0) {
-        [int]$Version = "32"
-    }
-    if (((Get-ChildItem "HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall") | Where-Object { $_.GetValue( "DisplayName" ) -like "*VMware Tools*" } ).Length -gt 0) {
-       [int]$Version = "64"
-    }
-    return $Version
+  return $false
 }
 
-# Set the current working directory to the CD-ROM that corresponds to the VMWare Tools .iso.
+Function Get-VMToolsService {
+  param (
+    [int]$MaxRetries,
+    [int]$RetryInterval
+  )
 
-Set-Location E:
-
-# Installation Attempt
-
-Write-Output "Installing VMware Tools..."
-Start-Process "setup64.exe" -ArgumentList '/s /v "/qb REBOOT=R"' -Wait
-
-# Check to see if the 'VMTools' service is in a 'Running' state.
-
-$Running = $false
-$iRepeat = 0
-
-while (-not $Running -and $iRepeat -lt 5) {
-
-  Start-Sleep -s 2
-  Write-Output 'Checking VMware Tools service status...'
-  $Service = Get-Service "VMTools" -ErrorAction SilentlyContinue
-  $Servicestatus = $Service.Status
-
-  if ($ServiceStatus -ne "Running") {
-    $iRepeat++
+  Write-Output "Checking $VMToolsName service status..."
+  for ($i = 0; $i -lt $MaxRetries; $i++) {
+    Start-Sleep -Seconds $RetryInterval
+    try {
+      $Service = Get-Service $VMToolsServiceName -ErrorAction Stop
+      if ($Service.Status -eq "Running") {
+        Write-Output "$VMToolsName service is in a running state."
+        return $true
+      }
+    } catch {
+      Write-Error ("Failed to get service status: {0}" -f $_)
+    }
   }
-  else {
-    $Running = $true
-    Write-Output "VMware Tools service is in a running state."
+  return $false
+}
+
+Function Install-VMTools {
+  param (
+    [string]$SetupPath,
+    [string]$Arguments
+  )
+
+  Write-Output "Installing $VMToolsName..."
+  try {
+    Start-Process -FilePath "$SetupPath\setup.exe" -ArgumentList $Arguments -Wait
+    return $true
+  } catch {
+    Write-Error ("Failed to install {0}: {1}" -f $VMToolsName, $_)
+    return $false
   }
 }
 
-# If the service never enters the 'Running' state, reinstall VMware Tools.
+# Check if VMware Tools is installed.
+$vmToolsInstalled = Get-VMToolsInstall
 
-if (-not $Running) {
-  #Uninstall VMWare Tools
-  Write-Output "Uninstalling VMware Tools..."
-  if (Get-VMToolsInstalled -eq "32") {
-    $GUID = (Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | Where-Object { $_.DisplayName -Like '*VMWARE Tools*' }).PSChildName
-  }
-  else {
-    $GUID = (Get-ItemProperty HKLM:\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Where-Object { $_.DisplayName -Like '*VMWARE Tools*' }).PSChildName
-  }
+if ($vmToolsInstalled) {
+  # Check if VMware Tools service is running.
+  $vmToolsServiceRunning = Get-VMToolsService -MaxRetries $MaxRetries -RetryInterval $RetryInterval
 
-  # Uninstall VMware Tools based on 32-bit/64-bit install GUIDs captured via Get-VMToolsIsInstalled
-
-  Start-Process -FilePath msiexec.exe -ArgumentList "/X $GUID /quiet /norestart" -Wait
-
-  # Installation Attempt
-
-  Write-Output "Reintalling VMware Tools..."
-  Start-Process "setup64.exe" -ArgumentList '/s /v "/qb REBOOT=R"' -Wait
-
-  # Check to see if the 'VMTools' service is in a 'Running' state.
-
-Write-Output "Checking VMware Tools service status..."
-
-$iRepeat = 0
-while (-not $Running -and $iRepeat -lt 5) {
-    Start-Sleep -s 2
-    $Service = Get-Service "VMTools" -ErrorAction SilentlyContinue
-    $ServiceStatus = $Service.Status
-
-    if ($ServiceStatus -ne "Running") {
-      $iRepeat++
-    }
-    else {
-      $Running = $true
-      Write-Output "VMware Tools service is in a running state."
+  if ($vmToolsServiceRunning) {
+    Write-Output "$VMToolsName is already installed and running."
+    exit 0
+  } else {
+    Write-Output "$VMToolsName service is not running. Uninstalling and reinstalling..."
+    try {
+      $GUID = (Get-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*", "HKLM:\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*" -ErrorAction Stop | Where-Object { $_.DisplayName -Like "*$VMToolsName*" }).PSChildName
+      Start-Process -FilePath msiexec.exe -ArgumentList "/X $GUID /quiet /norestart" -Wait
+    } catch {
+      Write-Error ("Failed to uninstall {0}: {1}" -f $VMToolsName, $_)
+      exit 1
     }
   }
+} else {
+  Write-Output "$VMToolsName is not installed. Proceeding with installation..."
+}
 
-  # If after the reinstall, the service is still not running, the installation is unsuccessful.
+# Install VMware Tools.
+if (-not (Install-VMTools -SetupPath $SetupPath -Arguments '/s /v "/qb REBOOT=R"')) {
+  Write-Error "Failed to install $VMToolsName"
+} else {
+  Write-Output "$VMToolsName installed successfully."
+}
 
-  if (-not $Running) {
-    Write-Error "VMware Tools installation was unsuccessful."
-    Pause
-  }
-
+# Check if VMware Tools service is running after installation.
+if (-not (Get-VMToolsService -MaxRetries $MaxRetries -RetryInterval $RetryInterval)) {
+  Write-Error "$VMToolsName service is not running"
+} else {
+  Write-Output "$VMToolsName service is running."
 }

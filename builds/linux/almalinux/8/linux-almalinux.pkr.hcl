@@ -11,7 +11,7 @@
 //  The Packer configuration.
 
 packer {
-  required_version = ">= 1.11.2"
+  required_version = ">= 1.12.0"
   required_plugins {
     vsphere = {
       source  = "github.com/hashicorp/vsphere"

@@ -450,29 +450,29 @@
                         ],
                         "9": [
                             {
-                                                        "version": "9",
-                                                        "enabled": "true",
-                                                        "architectures": [
-                                                            {
-                                                                "architecture": "amd64",
-                                                                "download_link": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/iso/CentOS-Stream-9-latest-x86_64-dvd1.iso",
-                                                                "checksum_algorithm": "sha256",
-                                                                "checksum": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/iso/CentOS-Stream-9-latest-x86_64-dvd1.iso.SHA256SUM"
-                                                            }
-                                                        ],
-                                                        "build_files": [
-                                                            {
-                                                                "vsphere": "vsphere.pkrvars.hcl",
-                                                                "build": "build.pkrvars.hcl",
-                                                                "ansible": "ansible.pkrvars.hcl",
-                                                                "proxy": "proxy.pkrvars.hcl",
-                                                                "common": "common.pkrvars.hcl",
-                                                                "network": "network.pkrvars.hcl",
-                                                                "storage": "linux-storage.pkrvars.hcl"
-                                                            }
-                                                        ]
-                                                    }
-                                                ]
+                                "version": "9",
+                                "enabled": "true",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/iso/CentOS-Stream-9-latest-x86_64-dvd1.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/iso/CentOS-Stream-9-latest-x86_64-dvd1.iso.SHA256SUM"
+                                    }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl"
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 },
                 {
@@ -882,7 +882,7 @@
                     "documentation": "https://developer.hashicorp.com/packer/docs"
                 }
             },
-            "version_requirement": ">= 1.11.2"
+            "version_requirement": ">= 1.12.0"
         },
         {
             "name": "terraform",
@@ -910,7 +910,7 @@
                     "documentation": "https://docs.gomplate.ca"
                 }
             },
-            "version_requirement": ">= 4.2.0"
+            "version_requirement": ">= 4.3.0"
         },
         {
             "name": "ansible",

@@ -47,3 +47,7 @@
       - 5034439
       - 5034441
     reboot: true
+  register: win_updates
+  until: not win_updates.failed
+  retries: 5
+  delay: 300

@@ -1426,10 +1426,8 @@
 <span class="normal">347</span>
 <span class="normal">348</span>
 <span class="normal">349</span>
-<span class="normal">350</span>
-<span class="normal">351</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># © Broadcom. All Rights Reserved.</span>
-<span class="c1"># The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.</span>
-<span class="c1"># SPDX-License-Identifier: BSD-2-Clause</span>
+<span class="normal">350</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Copyright 2023-2024 Broadcom. All rights reserved.</span>
+<span class="c1"># SPDX-License-Identifier: BSD-2</span>
 
 <span class="c1">##############################################################################</span>
 <span class="c1">##</span>
@@ -1613,15 +1611,6 @@
 
 <span class="c1">##############################################################################</span>
 
-<span class="nt">CentOS-Stream-10</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">extends</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.packer-build</span>
-<span class="w">    </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">INPUT_PATH</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;$SCRIPT_PATH/builds/linux/centos/10/&quot;</span>
-<span class="w">        </span><span class="nt">BUILD_VARS</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;linux-centos-10.pkrvars.hcl&quot;</span>
-<span class="w">        </span><span class="nt">EXTRA_VAR_FILES</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;-var-file=$CONFIG_PATH/network.pkrvars.hcl</span><span class="nv"> </span><span class="s">-var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl&quot;</span>
-
-<span class="c1">##############################################################################</span>
-
 <span class="nt">CentOS-Stream-9</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">extends</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.packer-build</span>
 <span class="w">    </span><span class="nt">variables</span><span class="p">:</span>
@@ -1631,11 +1620,20 @@
 
 <span class="c1">##############################################################################</span>
 
-<span class="nt">Fedora-Server-41</span><span class="p">:</span>
+<span class="nt">CentOS-Linux-7</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">extends</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.packer-build</span>
 <span class="w">    </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">INPUT_PATH</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;$SCRIPT_PATH/builds/linux/fedora/41/&quot;</span>
-<span class="w">        </span><span class="nt">BUILD_VARS</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;linux-fedora-41.pkrvars.hcl&quot;</span>
+<span class="w">        </span><span class="nt">INPUT_PATH</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;$SCRIPT_PATH/builds/linux/centos/7/&quot;</span>
+<span class="w">        </span><span class="nt">BUILD_VARS</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;linux-centos-7.pkrvars.hcl&quot;</span>
+<span class="w">        </span><span class="nt">EXTRA_VAR_FILES</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;-var-file=$CONFIG_PATH/network.pkrvars.hcl</span><span class="nv"> </span><span class="s">-var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl&quot;</span>
+
+<span class="c1">##############################################################################</span>
+
+<span class="nt">Fedora-Server-40</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">extends</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.packer-build</span>
+<span class="w">    </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">INPUT_PATH</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;$SCRIPT_PATH/builds/linux/fedora/40/&quot;</span>
+<span class="w">        </span><span class="nt">BUILD_VARS</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;linux-fedora-40.pkrvars.hcl&quot;</span>
 <span class="w">        </span><span class="nt">EXTRA_VAR_FILES</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;-var-file=$CONFIG_PATH/network.pkrvars.hcl</span><span class="nv"> </span><span class="s">-var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl&quot;</span>
 
 <span class="c1">##############################################################################</span>

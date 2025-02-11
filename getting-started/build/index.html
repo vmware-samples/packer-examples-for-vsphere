@@ -736,50 +736,11 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#interactive-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      Interactive Mode
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Interactive Mode">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#demo" class="md-nav__link">
     <span class="md-ellipsis">
       Demo
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#command-line-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      Command-Line Mode
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Command-Line Mode">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1110,50 +1071,11 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#interactive-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      Interactive Mode
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Interactive Mode">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#demo" class="md-nav__link">
     <span class="md-ellipsis">
       Demo
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#command-line-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      Command-Line Mode
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Command-Line Mode">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1223,7 +1145,6 @@
 
 <h1 id="build-the-images">Build the Images<a class="headerlink" href="#build-the-images" title="Permanent link">&para;</a></h1>
 <h2 id="using-the-build-script">Using the Build Script<a class="headerlink" href="#using-the-build-script" title="Permanent link">&para;</a></h2>
-<h3 id="interactive-mode">Interactive Mode<a class="headerlink" href="#interactive-mode" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Start a build by running the build script (<code>./build.sh</code>).</p>
@@ -1282,25 +1203,8 @@ vsphere-iso.linux-ubuntu:<span class="w"> </span>output<span class="w"> </span>w
 </code></pre></div>
 </li>
 </ol>
-<h4 id="demo">Demo<a class="headerlink" href="#demo" title="Permanent link">&para;</a></h4>
+<h3 id="demo">Demo<a class="headerlink" href="#demo" title="Permanent link">&para;</a></h3>
 <p><a class="glightbox" href="../../assets/images/build.gif" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../assets/images/build.gif" /></a></p>
-<h3 id="command-line-mode">Command-Line Mode<a class="headerlink" href="#command-line-mode" title="Permanent link">&para;</a></h3>
-<p>You can also run the build script using command-line options to specify the operating system, distribution, version, and edition, allowing for non-interactive builds. This is useful for automation or scripting purposes.</p>
-<h4 id="examples">Examples:<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h4>
-<ul>
-<li>Build an Ubuntu Server 24.04 LTS image:</li>
-</ul>
-<div class="highlight"><pre><span></span><code>./build.sh<span class="w"> </span>--os<span class="w"> </span><span class="s2">&quot;Linux&quot;</span><span class="w"> </span>--dist<span class="w"> </span><span class="s2">&quot;Ubuntu Server&quot;</span><span class="w"> </span>--version<span class="w"> </span><span class="s2">&quot;24.04 LTS&quot;</span><span class="w"> </span>--auto-continue
-</code></pre></div>
-<details class="note" open="open">
-<summary>Info</summary>
-<p>This will start the build process for Ubuntu Server 24.04 LTS without any user prompts.</p>
-</details>
-<ul>
-<li>Build a Windows Server 2022 Standard edition image:</li>
-</ul>
-<div class="highlight"><pre><span></span><code>./build.sh --os &quot;Windows&quot; --dist &quot;Windows Server&quot; --version &quot;2022&quot; --edition &quot;Standard&quot; --auto-continue
-</code></pre></div>
 <h2 id="build-script-options">Build Script Options<a class="headerlink" href="#build-script-options" title="Permanent link">&para;</a></h2>
 <p>You can use the following options with the script.</p>
 <table>
@@ -1331,31 +1235,6 @@ vsphere-iso.linux-ubuntu:<span class="w"> </span>output<span class="w"> </span>w
 <td><code>--show</code></td>
 <td><code>-s</code>, <code>-S</code></td>
 <td>Display the command that the script uses to initialize a build.</td>
-</tr>
-<tr>
-<td><code>--os</code></td>
-<td></td>
-<td>Specify the operating system (<code>Linux</code> or <code>Windows</code>).</td>
-</tr>
-<tr>
-<td><code>--dist</code></td>
-<td></td>
-<td>Specify the distribution (e.g., <code>Ubuntu Server</code>).</td>
-</tr>
-<tr>
-<td><code>--version</code></td>
-<td></td>
-<td>Specify the version of the distribution.</td>
-</tr>
-<tr>
-<td><code>--edition</code></td>
-<td></td>
-<td>Specify the edition if applicable (e.g., <code>Standard</code>).</td>
-</tr>
-<tr>
-<td><code>--auto-continue</code></td>
-<td></td>
-<td>Automatically continue without user prompts.</td>
 </tr>
 </tbody>
 </table>
@@ -1416,7 +1295,7 @@ adjust the common content library settings to use VM Templates.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-10-31T17:46:04+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-16T17:31:05+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-16</span>
   </span>
 
     

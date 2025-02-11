@@ -470,15 +470,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#v0220" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.22.0
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#v0210" class="md-nav__link">
     <span class="md-ellipsis">
       v0.21.0
@@ -1233,15 +1224,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#v0220" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.22.0
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#v0210" class="md-nav__link">
     <span class="md-ellipsis">
       v0.21.0
@@ -1490,62 +1472,6 @@
 
 
 <h1 id="release-history">Release History<a class="headerlink" href="#release-history" title="Permanent link">&para;</a></h1>
-<h2 id="v0220">v0.22.0<a class="headerlink" href="#v0220" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Release Date: 2025-02-11</p>
-</blockquote>
-<p><strong>Bug Fix</strong>:</p>
-<ul>
-<li>Reestablishes an empty <code>GRUB_CMDLINE_LINUX_DEFAULT</code> as <code>late_command</code> for Ubuntu.
-  <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/982">#982</a></li>
-<li>Resolves configuration and setup for Python and cloud-init in SUSE Enterprise Linux environments.
-  Added a fallback mechanism for the Python interpreter, removing redundant tasks, and updating package installation and
-  registration. <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/991">#991</a></li>
-</ul>
-<p><strong>Enhancement</strong>:</p>
-<ul>
-<li>Adds confirmation before overwriting existing configuration files.
-  <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/987">#987</a></li>
-<li>Add CentOS Stream 10 to project.
-  <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/989">#989</a></li>
-<li>Refactors PowerShell script for installation of VMware Tools on Windows.
-  <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/1011">#1011</a></li>
-</ul>
-<p><strong>Chore</strong>:</p>
-<ul>
-<li>Updates Debian 11 to 11.11 release.
-  <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/1012">#10102</a></li>
-<li>Updates Debian Linux 12 to 12.9 release.
-  <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/1012">#1012</a></li>
-<li>Updates Ubuntu 22.04 LTS to 22.04.5 release.
-  <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/984">#984</a></li>
-<li>Updates Red Hat Enterprise Linux 9 to 9.5 release.
-  <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/984">#984</a></li>
-<li>Updates AlmaLinux 9 to 9.5 release.
-  <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/984">#984</a></li>
-<li>Updates Rocky Linux 9 to 9.5 release.
-  <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/984">#984</a></li>
-<li>Updates Oracle Linux 9 to 9.5 release.
-  <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/984">#984</a></li>
-<li>Updates Fedora Server to release 41.
-  <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/984">#984</a></li>
-<li>Updates <code>required_versions</code> for <code>packer</code> to <code>&gt;= 1.12.0</code>.
-  <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/1013">#1013</a></li>
-<li>Updates <code>required_plugins</code> for <code>packer-plugin-vsphere</code> to <code>&gt;= 1.4.2</code>.
-  <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/986">#986</a></li>
-<li>Updates <code>required_versions</code> for <code>packer-plugin-ansible</code> to &gt;= <code>1.1.2</code>.
-  <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/986">#986</a></li>
-<li>Updates <code>required_plugins</code> for <code>ethanmdavidson/packer-plugin-git</code> to <code>&gt;= 0.6.3</code>.
-  <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/986">#986</a></li>
-<li>Updates <code>required_versions</code> for <code>terraform</code> to <code>&gt;= 1.10.0</code>.
-  <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/986">#986</a></li>
-<li>Updates <code>required_versions</code> for <code>hashicorp/vsphere</code> to <code>&gt;= 2.11.0</code>.
-  <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/1013">#1013</a></li>
-<li>Updates <code>required_versions</code> for <code>hashicorp/hcp</code> to <code>&gt;= 0.102.0</code>.
-  <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/1013">#1013</a></li>
-<li>Updates Gomplate to <code>&gt;= 4.3.0</code>.
-  <a href="https://github.com/vmware-samples/packer-examples-for-vsphere/pull/1013">#1013</a></li>
-</ul>
 <h2 id="v0210">v0.21.0<a class="headerlink" href="#v0210" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>Release Date: 2024-09-26</p>

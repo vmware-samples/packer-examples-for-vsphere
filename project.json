@@ -17,18 +17,6 @@
                 "url": "https://opensource.org/licenses/BSD-2-Clause"
             }
         ],
-        "maintainers": [
-            {
-                "name": "Ryan Johnson",
-                "organization": "VMware by Broadcom",
-                "github": "tenthirtyam"
-            },
-            {
-                "name": "Jared Burns",
-                "organization": "VMware by Broadcom",
-                "github": "burnsjared0415"
-            }
-        ]
     },
     "os": [
         {
@@ -51,9 +39,9 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://mirror.cogentco.com/debian-cd/12.8.0/amd64/iso-cd/debian-12.8.0-amd64-netinst.iso",
+                                        "download_link": "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.9.0-amd64-netinst.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://mirror.cogentco.com/debian-cd/12.8.0/amd64/iso-cd/SHA256SUMS"
+                                        "checksum": "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA256SUMS"
                                     }
                                 ],
                                 "build_files": [
@@ -76,9 +64,9 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://saimei.ftp.acc.umu.se/mirror/cdimage/archive/11.11.0/amd64/iso-cd/debian-11.11.0-amd64-netinst.iso",
+                                        "download_link": "https://cdimage.debian.org/cdimage/archive/11.11.0/arm64/iso-cd/debian-11.11.0-arm64-netinst.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://saimei.ftp.acc.umu.se/mirror/cdimage/archive/11.11.0/amd64/iso-cd/SHA256SUMS"
+                                        "checksum": "https://cdimage.debian.org/cdimage/archive/11.11.0/arm64/iso-cd/SHA256SUMS"
                                     }
                                 ],
                                 "build_files": [
@@ -259,9 +247,9 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://dl.rockylinux.org/vault/rocky/9.5/isos/x86_64/Rocky-9.5-x86_64-dvd.iso",
+                                        "download_link": "https://download.rockylinux.org/pub/rocky/9.5/isos/x86_64/Rocky-9.5-x86_64-dvd.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://dl.rockylinux.org/vault/rocky/9.5/isos/x86_64/CHECKSUM"
+                                        "checksum": "https://download.rockylinux.org/pub/rocky/9.5/isos/x86_64/CHECKSUM"
                                     }
                                 ],
                                 "build_files": [
@@ -503,9 +491,9 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://na.edge.kernel.org/fedora/releases/41/Server/x86_64/iso/Fedora-Server-dvd-x86_64-41-1.4.iso",
+                                        "download_link": "https://download.fedoraproject.org/pub/fedora/linux/releases/41/Server/x86_64/iso/Fedora-Server-dvd-x86_64-41-1.4.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://na.edge.kernel.org/fedora/releases/41/Server/x86_64/iso/Fedora-Server-41-1.4-x86_64-CHECKSUM"
+                                        "checksum": "https://download.fedoraproject.org/pub/fedora/linux/releases/41/Server/x86_64/iso/Fedora-Server-41-1.4-x86_64-CHECKSUM"
                                     }
                                 ],
                                 "build_files": [

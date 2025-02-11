@@ -31,7 +31,7 @@ The project is tested on the following operating systems for the Packer host [^1
 
 | Component                                                        | Version   | Description      | Resources                                                                                                               |
 | :--------------------------------------------------------------- | :-------- | :--------------- | :---------------------------------------------------------------------------------------------------------------------- |
-| :simple-packer: &nbsp;&nbsp; Packer                              | >= 1.11.2 |  By HashiCorp    | [:fontawesome-brands-github:][packer-repo] &nbsp;&nbsp; [:material-library:][packer]                                    |
+| :simple-packer: &nbsp;&nbsp; Packer                              | >= 1.12.0 | By HashiCorp     | [:fontawesome-brands-github:][packer-repo] &nbsp;&nbsp; [:material-library:][packer]                                    |
 | :simple-hashicorp: &nbsp;&nbsp; Packer Plugin for Ansible        | >= 1.1.2  | By HashiCorp     | [:fontawesome-brands-github:][packer-plugin-ansible-repo] &nbsp;&nbsp; [:material-library:][packer-plugin-ansible]      |
 | :simple-hashicorp: &nbsp;&nbsp; Packer Plugin for VMware vSphere | >= 1.4.2  | By HashiCorp     | [:fontawesome-brands-github:][packer-plugin-vsphere-repo] &nbsp;&nbsp; [:material-library:][packer-plugin-vsphere-docs] |
 | :fontawesome-brands-git: &nbsp;&nbsp; Packer Plugin for Git      | >= 0.6.3  | Community Plugin | [:fontawesome-brands-github:][packer-plugin-git-repo] &nbsp;&nbsp; [:material-library:][packer-plugin-git-docs]         |
@@ -43,7 +43,7 @@ The project is tested on the following operating systems for the Packer host [^1
     You can install Packer on VMware Photon OS using the following commands:
 
     ```shell
-    export PACKER_VERSION="1.11.2"
+    export PACKER_VERSION="1.12.0"
     export OS_PACKAGES="wget unzip"
 
     tdnf install ${OS_PACKAGES} -y
@@ -105,10 +105,10 @@ The following additional software packages must be installed on the operating sy
 | :----------------------------------------------------- |:----------| :------------------------------------------------- | :------------------------------ |
 | :simple-ansible: &nbsp;&nbsp; ansible-core             | >= 2.16   | Automation engine for IT infrastructure            | [:material-library:][ansible]   |
 | :fontawesome-brands-git: &nbsp;&nbsp; git              | >= 2.43.0 | Version control system for tracking changes        | [:material-library:][git]       |
-| :material-code-braces: &nbsp;&nbsp; gomplate           | >= 4.2.0  | Template renderer                                  | [:material-library:][gomplate]  |
+| :material-code-braces: &nbsp;&nbsp; gomplate           | >= 4.3.0  | Template renderer                                  | [:material-library:][gomplate]  |
 | :simple-json: &nbsp;&nbsp; jq                          | >= 1.8.3  | Command-line JSON parser                           | [:material-library:][jq]        |
 | :simple-terraform: &nbsp;&nbsp; terraform              | >= 1.10.0 | Infrastructure as Code (IaC) tool by HashiCorp     | [:material-library:][terraform] |
-| :fontawesome-solid-compact-disc: &nbsp;&nbsp; xorriso  | >= 1.5.6  | ISO filesystem images creator for Linux            | [:material-library:][xorriso]   |
+| :fontawesome-solid-compact-disc: &nbsp;&nbsp; xorriso  | >= 1.5.6  | ISO filesystem images creator for Linux             | [:material-library:][xorriso]   |
 
 ### Installation
 
@@ -134,7 +134,7 @@ The following additional software packages must be installed on the operating sy
     Gomplate
 
     ```shell
-    export GOMPLATE_VERSION="4.2.0"
+    export GOMPLATE_VERSION="4.3.0"
     wget -q https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-amd64
     chmod +x gomplate_linux-amd64
     sudo mv gomplate_linux-amd64 /usr/local/bin/gomplate
@@ -157,7 +157,7 @@ The following additional software packages must be installed on the operating sy
     Gomplate:
 
     ```shell
-    export GOMPLATE_VERSION="4.2.0"
+    export GOMPLATE_VERSION="4.3.0"
     wget -q https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-amd64
     chmod +x gomplate_linux-amd64
     sudo mv gomplate_linux-amd64 /usr/local/bin/gomplate

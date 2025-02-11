@@ -6,25 +6,27 @@
 
 **Bug Fix**:
 
-- Reestablished an empty `GRUB_CMDLINE_LINUX_DEFAULT` as `late_command` for Ubuntu.
+- Reestablishes an empty `GRUB_CMDLINE_LINUX_DEFAULT` as `late_command` for Ubuntu.
   [#982](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/982)
-- Resolved configuration and setup for Python and cloud-init in SUSE Enterprise Linux environments. 
-  Added a fallback mechanism for the Python interpreter, removing redundant tasks, and updating package installation and 
+- Resolves configuration and setup for Python and cloud-init in SUSE Enterprise Linux environments.
+  Added a fallback mechanism for the Python interpreter, removing redundant tasks, and updating package installation and
   registration. [#991](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/991)
 
 **Enhancement**:
 
 - Adds confirmation before overwriting existing configuration files.
   [#987](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/987)
-- Adds CentOS Stream 10 to project.
+- Add CentOS Stream 10 to project.
   [#989](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/989)
+- Refactors PowerShell script for installation of VMware Tools on Windows.
+  [#1011](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/1011)
 
 **Chore**:
 
 - Updates Debian 11 to 11.11 release.
-  [#985](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/985)
-- Updates Debian Linux 12 to 12.8 release.
-  [#984](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/984)
+  [#10102](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/1012)
+- Updates Debian Linux 12 to 12.9 release.
+  [#1012](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/1012)
 - Updates Ubuntu 22.04 LTS to 22.04.5 release.
   [#984](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/984)
 - Updates Red Hat Enterprise Linux 9 to 9.5 release.
@@ -37,22 +39,22 @@
   [#984](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/984)
 - Updates Fedora Server to release 41.
   [#984](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/984)
-- Updates `required_versions` for `packer` to `>= 1.11.2`.
-  [#986](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/986)
+- Updates `required_versions` for `packer` to `>= 1.12.0`.
+  [#1013](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/1013)
 - Updates `required_plugins` for `packer-plugin-vsphere` to `>= 1.4.2`.
   [#986](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/986)
 - Updates `required_versions` for `packer-plugin-ansible` to >= `1.1.2`.
   [#986](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/986)
-- Updates `required_plugins` for `ethanmdavidson/packer-plugin-git` to `>= 0.6.2`.
-  [#717](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/717)
+- Updates `required_plugins` for `ethanmdavidson/packer-plugin-git` to `>= 0.6.3`.
+  [#986](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/986)
 - Updates `required_versions` for `terraform` to `>= 1.10.0`.
   [#986](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/986)
-- Updates `required_versions` for `hashicorp/vsphere` to `>= 2.10.0`.
-  [#986](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/986)
-- Updates `required_versions` for `hashicorp/hcp` to `>= 0.100.0`.
-  [#986](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/986)
-- Updates Gomplate to `>= 4.2.0`.
-  [#986](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/986)
+- Updates `required_versions` for `hashicorp/vsphere` to `>= 2.11.0`.
+  [#1013](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/1013)
+- Updates `required_versions` for `hashicorp/hcp` to `>= 0.102.0`.
+  [#1013](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/1013)
+- Updates Gomplate to `>= 4.3.0`.
+  [#1013](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/1013)
 
 ## v0.21.0
 

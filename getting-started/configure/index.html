@@ -1392,8 +1392,12 @@ machine images.</p>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="c1">// Default Account Credentials</span>
-</span><span class="na">build_username</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;packer&quot;</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="err">*/</span>
+</span>
+<span class="c1">// Default Account Credentials</span>
+<span class="na">build_username</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;packer&quot;</span>
 <span class="na">build_password</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;VMw@re123!&quot;</span>
 <span class="na">build_password_encrypted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;$6$KspR8KgZFVxDOiiF$n4hhyeSGgamrz25mqvOfnK5xm6blwDJftlQZy0H60pwRdPKXsf996/lLzFrfW0H/ZHoE.jEPgVmFZpmgce6jX0&quot;</span>
 <span class="na">build_key</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBADwXV3rbRCWwhSr6aMkHukV5O7OGAEyUtAerj2anJHm3mwbOxlBU/uO4f0ELqo2GJcTALMC0aFrbvu9qonIH5VF7wBBfCP1cS5B92sUagVV9ldI/uo89e/7dVYC9maPsFaZq2G0/PLU0hZKOohq99Oxc2RMSiJaaenX/hNqx5xYSaK+CA== packer@example.com&quot;</span>
@@ -1470,8 +1474,7 @@ Linux machine images.</p>
 <span class="normal">29</span>
 <span class="normal">30</span>
 <span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="c1">// Virtual Machine Settings</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="c1">// Virtual Machine Settings</span>
 </span><span class="na">common_vm_version</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="m">19</span>
 <span class="na">common_tools_upgrade_policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="na">common_remove_cdrom</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
@@ -1503,8 +1506,7 @@ Linux machine images.</p>
 <span class="na">common_shutdown_timeout</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;15m&quot;</span>
 
 <span class="hll"><span class="c1">// HCP Packer</span>
-</span><span class="na">common_hcp_packer_registry_enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
-</code></pre></div></td></tr></table></div>
+</span></code></pre></div></td></tr></table></div>
 <h3 id="data-source">Data Source<a class="headerlink" href="#data-source" title="Permanent link">&para;</a></h3>
 <p>The default provisioning data source for Linux machine image builds is <code>http</code>. This is used to serve
 the kickstart files to the Linux guest operating system during the build.</p>
@@ -1630,7 +1632,7 @@ machine hardware settings, as required:</p>
 </span><span class="na">vm_firmware</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;efi-secure&quot;</span>
 
 <span class="hll"><span class="c1">// Removable Media Settings</span>
-</span><span class="na">iso_datastore_path</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;iso/linux/photon&quot;</span>
+</span><span class="na">iso_datastore_path</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;iso/linux/vmware-photon-os/5/amd64&quot;</span>
 <span class="na">iso_content_library_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;photon-5.0-dde71ec57.x86_64&quot;</span>
 <span class="na">iso_file</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;photon-5.0-dde71ec57.x86_64.iso&quot;</span>
 </code></pre></div></td></tr></table></div>
@@ -1803,8 +1805,7 @@ table.</p>
 <span class="normal">87</span>
 <span class="normal">88</span>
 <span class="normal">89</span>
-<span class="normal">90</span>
-<span class="normal">91</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="c1">// VM Storage Settings</span>
+<span class="normal">90</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="c1">// VM Storage Settings</span>
 </span><span class="na">vm_disk_device</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sda&quot;</span>
 <span class="na">vm_disk_use_swap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="na">vm_disk_partitions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
@@ -1894,7 +1895,6 @@ table.</p>
 <span class="w">        </span><span class="nb">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">          </span><span class="na">label</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OPTFS&quot;</span><span class="p">,</span>
 <span class="w">          </span><span class="na">fstype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;xfs&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="p">},</span>
 </code></pre></div></td></tr></table></div>
 <details class="note" open="open">
 <summary>Note</summary>

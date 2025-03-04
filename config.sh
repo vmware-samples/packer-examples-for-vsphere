@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 # © Broadcom. All Rights Reserved.
 # The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.
 # SPDX-License-Identifier: BSD-2-Clause
@@ -6,80 +6,75 @@
 set -e
 
 follow_link() {
-    FILE="${1}"
-    while [ -h "${FILE}" ]; do
-        # On macOS, readlink -f doesn't work.
-        FILE="$(readlink "${FILE}")"
+    file="$1"
+    while [ -h "${file}" ]; do
+        file="$(readlink "${file}")"
     done
-    echo "${FILE}"
+    printf '%s\n' "${file}"
 }
 
-# This function displays the help message.
 show_help() {
-    local exit_after=${1:-"exit"}
-    script_name=$(basename "$0")
+    exit_after="${1:-exit}"
+    script_name="$(basename "$0")"
 
-    printf "\033[0;32m Usage\033[0m: %s [options] [config_path]\n\n" "$script_name"
-    printf "\033[0;34m Options:\033[0m\n"
-    printf "  \033[0;34m --help, -h, -H\033[0m       Display this help message.\n\n"
-    printf "\033[0;34m config_path:\033[0m\n"
-    printf "  \033[0m Path to save the generated configuration files. (Optional).\n\n"
+    printf '\033[0;32m Usage\033[0m: %s [Options] [Path]\n\n' "${script_name}"
+    printf '\033[0;34m Options:\033[0m\n'
+    printf '\033[0;34m --help, -h, -H\033[0m    Display this help message.\n\n'
+    printf '\033[0;34m Path:\033[0m             Path to save the generated configuration files. \033[0;34m(Optional)\033[0m\n'
+    printf '                   Default: \033[0;34m./config\033[0m.\n\n'
 
-    # Handle user input or exit.
-    if [[ -z "$input" ]]; then
-        [ "$exit_after" = "exit" ] && exit 0
-    else
-        press_enter_continue
+    if [ -z "${input}" ]; then
+        if [ "${exit_after}" = "exit" ]; then
+        exit 0
+        fi
     fi
+    read -p "Press Enter to continue..."
 }
 
-# Define the script and default config paths
-follow_link_result=$(follow_link "$0")
-if ! SCRIPT_PATH=$(realpath "$(dirname "${follow_link_result}")"); then
-    echo "Error: follow_link or realpath failed"
-    exit 1
+# Determine script directory
+script_path="$(dirname "$(follow_link "$0")")"
+
+# Determine config path
+config_path="${1:-${script_path}/config}"
+
+# Handle help options
+if [ "$1" = "--help" ] || [ "$1" = "-h" ] || [ "$1" = "-H" ]; then
+  show_help
+  exit 0
 fi
 
-# Set config_path if it's not already set
-if [ -z "$CONFIG_PATH" ]; then
-    CONFIG_PATH=$(
-        cd "${SCRIPT_PATH}/config" || exit
-        pwd
-    )
-fi
+# Ensure config path exists
+mkdir -p "${config_path}"
 
-# Script options.
-while (("$#")); do
-    case "$1" in
-    --help | -h | -H)
-        run_show_help=true
-        show_help
-        shift
-        ;;
-    *)
-        CONFIG_PATH=$(realpath "$1")
-        shift
-        ;;
-    esac
+# Copy and rename example files
+echo "> Copying and renaming example input variables..."
+
+# Check if files exist before copying
+for file in "${script_path}/builds/"*.pkrvars.hcl.example; do
+    dst_file="${config_path}/$(basename "${file}")"
+    if [ -f "${dst_file}" ]; then
+        read -p "File '${dst_file}' already exists. Overwrite? (y/n): " confirm
+        if [ "${confirm}" != "y" ]; then
+        echo "Skipping '${dst_file}'"
+        continue
+        fi
+    fi
+    cp -av "${file}" "${config_path}/"
 done
 
-mkdir -p "${CONFIG_PATH}"
-### Copy the example input variables.
-echo
-echo "> Copying the example input variables..."
-cp -av "${SCRIPT_PATH}"/builds/*.pkrvars.hcl.example "${CONFIG_PATH}"
-find "${SCRIPT_PATH}"/builds/*/ -type f -name "*.pkrvars.hcl.example" | while IFS= read -r srcfile; do
-    srcdir=$(dirname "${srcfile}" | tr -s /)
-    dstfile=$(echo "${srcdir#"${SCRIPT_PATH}"/builds/}" | tr '/' '-')
-    cp -av "${srcfile}" "${CONFIG_PATH}/${dstfile}.pkrvars.hcl.example"
-done
+find "${script_path}/builds/" -type f -name "*.pkrvars.hcl.example" -print0 |
+    while IFS= read -r -d $'\0' srcfile; do
+        srcdir="$(dirname "${srcfile}")"
+        dstfile="$(basename "${srcdir}")-$(basename "${srcfile}" .example)"
+        dst_file="${config_path}/${dstfile}"
+        if [ -f "${dst_file}" ]; then
+        read -p "File '${dst_file}' already exists. Overwrite? (y/n): " confirm
+            if [ "${confirm}" != "y" ]; then
+                echo "Skipping '${dst_file}'"
+                continue
+            fi
+        fi
+        cp -av "${srcfile}" "${config_path}/${dstfile}"
+    done
 
-### Rename the example input variables.
-echo
-echo "> Renaming the example input variables..."
-for file in "${CONFIG_PATH}"/*.pkrvars.hcl.example; do
-    mv -i -- "${file}" "${file%.example}"
-done
-
-echo
 echo "> Done."

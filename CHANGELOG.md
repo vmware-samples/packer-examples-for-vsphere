@@ -1,5 +1,14 @@
 # Release History
 
+## v0.22.1
+
+> Release Date: 2025-03-04
+
+**Bug Fix**:
+
+- Fixes issue with `config.sh` not creating the default or specified configuration path.
+  [#982](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/982)
+
 ## v0.22.0
 
 > Release Date: 2025-02-11

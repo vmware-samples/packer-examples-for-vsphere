@@ -1,5 +1,14 @@
 # Release History
 
+## v0.23.0
+
+> Release Date: Not Released
+
+**Chore**:
+
+- Updates SLES 15 to 15.6 release.
+  [#1030](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/1030)
+
 ## v0.22.1
 
 > Release Date: 2025-03-05

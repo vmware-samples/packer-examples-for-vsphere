@@ -6,6 +6,8 @@
 
 **Chore**:
 
+- Updates Debian Linux 12 to 12.10 release.
+  [#1031](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/1031)
 - Updates SLES 15 to 15.6 release.
   [#1030](https://github.com/vmware-samples/packer-examples-for-vsphere/pull/1030)
 

@@ -1,8 +1,10 @@
 ---
-name: Manage Stale Items
+name: Stale
 on:
   schedule:
     - cron: 00 00 * * *
+permissions:
+  contents: read
 jobs:
   stale:
     runs-on: ubuntu-latest

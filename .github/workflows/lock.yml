@@ -1,11 +1,16 @@
 ---
-name: Lock Threads
+name: Lock
 on:
   schedule:
     - cron: 30 00 * * *
+permissions:
+  contents: read
 jobs:
   lock:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
     steps:
       - uses: dessant/lock-threads@d42e5f49803f3c4e14ffee0378e31481265dda22 # v5.0.0
         with:
@@ -13,7 +18,7 @@ jobs:
           issue-comment: >-
             I'm going to lock this issue because it has been closed for 30
             days. This helps our maintainers find and focus on the active
-            issues. 
+            issues.
 
 
             If you have found a problem that seems similar to this,
@@ -23,7 +28,7 @@ jobs:
           pr-comment: >-
             I'm going to lock this pull request because it has been closed for
             30 days. This helps our maintainers find and focus on the active
-            issues. 
+            issues.
 
 
             If you have found a problem that seems related to this

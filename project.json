@@ -100,9 +100,9 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://releases.ubuntu.com/releases/24.04.1/ubuntu-24.04.1-live-server-amd64.iso",
+                                        "download_link": "https://releases.ubuntu.com/releases/24.04.2/ubuntu-24.04.2-live-server-amd64.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://releases.ubuntu.com/releases/24.04.1/SHA256SUMS"
+                                        "checksum": "https://releases.ubuntu.com/releases/24.04/SHA256SUMS"
                                     }
                                 ],
                                 "build_files": [
@@ -152,7 +152,7 @@
                                         "architecture": "amd64",
                                         "download_link": "https://releases.ubuntu.com/releases/20.04.6/ubuntu-20.04.6-live-server-amd64.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://releases.ubuntu.com/releases/20.04.6/SHA256SUMS"
+                                        "checksum": "https://releases.ubuntu.com/releases/20.04/SHA256SUMS"
                                     }
                                 ],
                                 "build_files": [

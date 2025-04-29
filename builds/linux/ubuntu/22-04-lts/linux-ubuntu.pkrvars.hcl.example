@@ -20,5 +20,5 @@ vm_firmware = "efi-secure"
 
 // Removable Media Settings
 iso_datastore_path       = "iso/linux/ubuntu-server/22-04-lts/amd64"
-iso_content_library_item = "ubuntu-22.04.4-live-server-amd64"
-iso_file                 = "ubuntu-22.04.4-live-server-amd64.iso"
+iso_content_library_item = "ubuntu-22.04.5-live-server-amd64"
+iso_file                 = "ubuntu-22.04.5-live-server-amd64.iso"

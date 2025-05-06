@@ -2,7 +2,7 @@
 blank_issues_enabled: false
 contact_links:
   - name: GitHub Discussions
-    url: "https://github.com/vmware-samples/packer-examples-for-vsphere/discussions"
+    url: "https://github.com/vmware/packer-examples-for-vsphere/discussions"
     about: >-
       Having trouble working with the examples? Join the discussions to ask and
       answer questions in the community.

@@ -13,5 +13,5 @@ Please try to include as much information as you can. Details like these are inc
 
 You can also start a discussion on the [discussions][discussions] area to ask questions or share ideas.
 
-[issues]: https://github.com/vmware-samples/packer-examples-for-vsphere/issues
-[discussions]: https://github.com/vmware-samples/packer-examples-for-vsphere/discussions
+[issues]: https://github.com/vmware/packer-examples-for-vsphere/issues
+[discussions]: https://github.com/vmware/packer-examples-for-vsphere/discussions

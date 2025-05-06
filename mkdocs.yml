@@ -2,14 +2,14 @@
 # Project Information
 site_name: Packer Examples for VMware vSphere
 site_description: Packer Examples for VMware vSphere
-site_url: https://vmware-samples.github.io/packer-examples-for-vsphere/
+site_url: https://vmware.github.io/packer-examples-for-vsphere/
 site_author: Broadcom
 docs_dir: docs
 site_dir: .site
 use_directory_urls: true
 
 # Repository
-repo_url: https://github.com/vmware-samples/packer-examples-for-vsphere
+repo_url: https://github.com/vmware/packer-examples-for-vsphere
 edit_uri: blob/main/docs/
 
 # Copyright
@@ -95,8 +95,8 @@ plugins:
 # Customization
 extra:
   config:
-    repo_url: https://github.com/vmware-samples/packer-examples-for-vsphere
-    repo_url_raw: https://raw.githubusercontent.com/vmware-samples/packer-examples-for-vsphere/develop
+    repo_url: https://github.com/vmware/packer-examples-for-vsphere
+    repo_url_raw: https://raw.githubusercontent.com/vmware/packer-examples-for-vsphere/develop
   version:
     default: latest
     provider: mike
@@ -140,7 +140,7 @@ nav:
   - Home:
       - index.md
       - Release Notes: release-notes.md
-      - Release Milestones: https://github.com/vmware-samples/packer-examples-for-vsphere/milestones
+      - Release Milestones: https://github.com/vmware/packer-examples-for-vsphere/milestones
       - License: license.md
   - Getting Started:
       - Requirements: getting-started/requirements.md
@@ -153,8 +153,8 @@ nav:
       - FAQ: getting-started/faq.md
   - Community:
       - Contributing: community/contributing.md
-      - Discussions: https://github.com/vmware-samples/packer-examples-for-vsphere/discussions
-      - Search Issues: https://github.com/vmware-samples/packer-examples-for-vsphere/issues
-      - Open an Issue: https://github.com/vmware-samples/packer-examples-for-vsphere/issues/new/choose
+      - Discussions: https://github.com/vmware/packer-examples-for-vsphere/discussions
+      - Search Issues: https://github.com/vmware/packer-examples-for-vsphere/issues
+      - Open an Issue: https://github.com/vmware/packer-examples-for-vsphere/issues/new/choose
       - Support: community/support.md
       - Code of Conduct: community/code-of-conduct.md

@@ -94,7 +94,7 @@ Ref: #123
 
 ### Staying In Sync With Upstream
 
-When your branch gets out of sync with the `vmware-samples/develop` branch, use the following to
+When your branch gets out of sync with the `vmware/develop` branch, use the following to
 update:
 
 ```shell
@@ -146,9 +146,9 @@ for larger changes.
 [cla]: http://en.wikipedia.org/wiki/Contributor_License_Agreement
 [dco]: https://probot.github.io/apps/dco/
 [conventional-commits]: https://conventionalcommits.org
-[gh-discussions]: https://github.com/vmware-samples/packer-examples-for-vsphere/discussions
+[gh-discussions]: https://github.com/vmware/packer-examples-for-vsphere/discussions
 [gh-forks]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
-[gh-issues]: https://github.com/vmware-samples/packer-examples-for-vsphere/issues
+[gh-issues]: https://github.com/vmware/packer-examples-for-vsphere/issues
 [gh-markdown]: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github
 [gh-pull-requests]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
 [git-commit]: https://cbea.ms/git-commit

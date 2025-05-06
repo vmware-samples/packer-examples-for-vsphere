@@ -4,8 +4,8 @@
         "version": "v0.23.0-dev",
         "description": "This project provides a collection of opinionated examples that demonstrate how you can use both\nHashiCorp Packer and the Packer Plugin for VMware vSphere (vsphere-iso builder) to automate the\ncreation of virtual machine images for VMware vSphere environments.\n\nWhether you're a developer, systems administrator, or site reliability engineer, this project is\ndesigned to both help and inspire you in streamlining your infrastructure provisioning process and\nmaintain consistency in your virtualization workflow.",
         "urls": {
-            "github": "https://github.com/vmware-samples/packer-examples-for-vsphere",
-            "documentation": "https://vmware-samples.github.io/packer-examples-for-vsphere"
+            "github": "https://github.com/vmware/packer-examples-for-vsphere",
+            "documentation": "https://vmware.github.io/packer-examples-for-vsphere"
         },
         "publisher": {
             "name": "VMware by Broadcom",

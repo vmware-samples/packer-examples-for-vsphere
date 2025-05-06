@@ -10,8 +10,8 @@ SPDX-License-Identifier: BSD-2-Clause
 
 # Packer Examples for VMware vSphere
 
-![Last Commit](https://img.shields.io/github/last-commit/vmware-samples/packer-examples-for-vsphere?style=for-the-badge&logo=github)&nbsp;&nbsp;
-[![Documentation](https://img.shields.io/badge/Documentation-Read-blue?style=for-the-badge&logo=readthedocs&logoColor=white)](https://vmware-samples.github.io/packer-examples-for-vsphere)
+![Last Commit](https://img.shields.io/github/last-commit/vmware/packer-examples-for-vsphere?style=for-the-badge&logo=github)&nbsp;&nbsp;
+[![Documentation](https://img.shields.io/badge/Documentation-Read-blue?style=for-the-badge&logo=readthedocs&logoColor=white)](https://vmware.github.io/packer-examples-for-vsphere)
 
 This repository provides a collection of opinionated examples that demonstrate how you can use both [HashiCorp Packer][packer] and the [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso` builder) to automate the creation of virtual machine images for VMware vSphere environments.
 
@@ -98,9 +98,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 [//]: Links
 [contributing]: CONTRIBUTING.md
-[documentation]: https://vmware-samples.github.io/packer-examples-for-vsphere
-[gh-issues]: https://github.com/vmware-samples/packer-examples-for-vsphere/issues
-[gh-discussions]: https://github.com/vmware-samples/packer-examples-for-vsphere/discussions
+[documentation]: https://vmware.github.io/packer-examples-for-vsphere
+[gh-issues]: https://github.com/vmware/packer-examples-for-vsphere/issues
+[gh-discussions]: https://github.com/vmware/packer-examples-for-vsphere/discussions
 [packer]: https://www.packer.io
 [packer-plugin-vsphere]: https://developer.hashicorp.com/packer/plugins/builders/vsphere/vsphere-iso
 [vmware-cla-dco]: https://cla.vmware.com/dco

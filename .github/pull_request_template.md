@@ -1,6 +1,6 @@
 <!--
 
-In order to have a good experience with our community, we recommend that you read the [contributing guidelines](https://github.com/vmware-samples/packer-examples-for-vsphere/blob/main/CONTRIBUTING.md) for making a pull request.
+In order to have a good experience with our community, we recommend that you read the [contributing guidelines](https://github.com/vmware/packer-examples-for-vsphere/blob/main/CONTRIBUTING.md) for making a pull request.
 
 -->
 

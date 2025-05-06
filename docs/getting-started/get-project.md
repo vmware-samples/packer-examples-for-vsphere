@@ -12,8 +12,8 @@ You can choose between two options to get the source code:
 === ":octicons-download-24: &nbsp; Download the Latest Release"
 
       ```shell
-      TAG_NAME=$(curl -s https://api.github.com/repos/vmware-samples/packer-examples-for-vsphere/releases | jq  -r '.[0].tag_name')
-      TARBALL_URL=$(curl -s https://api.github.com/repos/vmware-samples/packer-examples-for-vsphere/releases | jq  -r '.[0].tarball_url')
+      TAG_NAME=$(curl -s https://api.github.com/repos/vmware/packer-examples-for-vsphere/releases | jq  -r '.[0].tag_name')
+      TARBALL_URL=$(curl -s https://api.github.com/repos/vmware/packer-examples-for-vsphere/releases | jq  -r '.[0].tarball_url')
 
       mkdir packer-examples-for-vsphere
       cd packer-examples-for-vsphere
@@ -27,13 +27,13 @@ You can choose between two options to get the source code:
 === ":octicons-repo-clone-24: &nbsp; Clone the Repository"
 
       ```shell
-      TAG_NAME=$(curl -s https://api.github.com/repos/vmware-samples/packer-examples-for-vsphere/releases | jq -r '.[0].tag_name')
+      TAG_NAME=$(curl -s https://api.github.com/repos/vmware/packer-examples-for-vsphere/releases | jq -r '.[0].tag_name')
 
       BRANCH_NAME="${TAG_NAME//\//-}"
-      
-      git clone https://github.com/vmware-samples/packer-examples-for-vsphere.git
+
+      git clone https://github.com/vmware/packer-examples-for-vsphere.git
       cd packer-examples-for-vsphere
-      
+
       if git switch -c "$BRANCH_NAME" "$TAG_NAME"; then
             echo "Switched to new branch: $BRANCH_NAME"
       else

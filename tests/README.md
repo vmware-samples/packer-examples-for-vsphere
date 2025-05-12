@@ -42,7 +42,7 @@ The tests are written in [Bats](https://bats-core.readthedocs.io/en/stable/).
 - [DebianInstaller - Partman Source Code](https://salsa.debian.org/installer-team?filter=Partman)
 - [DebianInstaller - Partman Auto Documentation](https://salsa.debian.org/installer-team/debian-installer/-/blob/master/doc/devel/partman-auto-recipe.txt)
 
-### Autoinstall for Ubuntu Server >= 20.04
+### Autoinstall for Ubuntu Server
 
 - [Automated Server installer config file reference](https://ubuntu.com/server/docs/install/autoinstall-reference)
 - [Netplan Network](https://netplan.readthedocs.io/en/latest/netplan-yaml/)

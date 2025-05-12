@@ -15,7 +15,6 @@ Download the guest operating system ISOs using the download script (`./download.
 |                                                             | 11        | :octicons-check-circle-16:{ .green }                                  |
 | :fontawesome-brands-ubuntu: Ubuntu Server @span             | 24.04     | :octicons-check-circle-16:{ .green }                                  |
 |                                                             | 22.04     | :octicons-check-circle-16:{ .green }                                  |
-|                                                             | 20.04     | :octicons-check-circle-16:{ .green }                                  |
 | :fontawesome-brands-redhat: Red Hat Enterprise Linux @span  | 9         | :octicons-check-circle-16:{ .green }                                  |
 |                                                             | 8         | :octicons-check-circle-16:{ .green }                                  |
 |                                                             | 7         | :octicons-check-circle-16:{ .green }                                  |

@@ -94,15 +94,6 @@ Ubuntu-Server-22.04-LTS:
 
 ##############################################################################
 
-Ubuntu-Server-20.04-LTS:
-    extends: .packer-build
-    variables:
-        INPUT_PATH: "$SCRIPT_PATH/builds/linux/ubuntu/20-04-lts/"
-        BUILD_VARS: "linux-ubuntu-20-04-lts.pkrvars.hcl"
-        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
-
-##############################################################################
-
 Red-Hat-Enterprise-Linux-9:
     extends: .packer-build
     variables:

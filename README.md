@@ -31,7 +31,6 @@ This project supports the following guest operating systems:
 |                              | 11        |
 | Ubuntu Server                | 24.04 LTS |
 |                              | 22.04 LTS |
-|                              | 20.04 LTS |
 | Red Hat Enterprise Linux     | 9         |
 |                              | 8         |
 | AlmaLinux OS                 | 9         |

@@ -28,7 +28,7 @@
                   <CreatePartition wcm:action="add">
                      <Order>1</Order>
                      <Type>Primary</Type>
-                     <Size>550</Size>
+                     <Size>800</Size>
                   </CreatePartition>
                   <!-- System partition (ESP) -->
                   <CreatePartition wcm:action="add">

@@ -271,7 +271,7 @@ variable "common_ovf_export_overwrite" {
   default     = true
 }
 
-variable "common_ovf_export_image_files" {
+validate "common_ovf_export_image_files" {
   type        = bool
   description = "Export image files in the OVF artifact."
   default     = true

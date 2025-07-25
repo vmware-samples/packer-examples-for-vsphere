@@ -4,7 +4,7 @@
 
 /*
     DESCRIPTION:
-    Fedora Server 41 network variables.
+    Fedora Server 42 network variables.
     Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 

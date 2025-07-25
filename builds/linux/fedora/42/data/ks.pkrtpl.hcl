@@ -2,7 +2,7 @@
 # The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.
 # SPDX-License-Identifier: BSD-2-Clause
 
-# Fedora Server 41
+# Fedora Server 42
 
 ### Installs from the first attached CD-ROM/DVD on the system.
 cdrom

@@ -345,6 +345,12 @@ variable "common_ovf_export_overwrite" {
   default     = true
 }
 
+validate "common_ovf_export_image_files" {
+  type        = bool
+  description = "Export image files in the OVF artifact."
+  default     = true
+}
+
 // Removable Media Settings
 
 variable "common_iso_content_library_enabled" {

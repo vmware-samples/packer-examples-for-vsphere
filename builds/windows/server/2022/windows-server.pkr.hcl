@@ -159,8 +159,9 @@ source "vsphere-iso" "windows-server-standard-core" {
   dynamic "export" {
     for_each = var.common_ovf_export_enabled ? [1] : []
     content {
-      name  = local.vm_name_standard_core
-      force = var.common_ovf_export_overwrite
+      name        = local.vm_name_standard_core
+      force       = var.common_ovf_export_overwrite
+      image_files = var.common_ovf_export_image_files
       options = [
         "extraconfig"
       ]
@@ -267,8 +268,9 @@ source "vsphere-iso" "windows-server-standard-dexp" {
   dynamic "export" {
     for_each = var.common_ovf_export_enabled ? [1] : []
     content {
-      name  = local.vm_name_standard_desktop
-      force = var.common_ovf_export_overwrite
+      name        = local.vm_name_standard_desktop
+      force       = var.common_ovf_export_overwrite
+      image_files = var.common_ovf_export_image_files
       options = [
         "extraconfig"
       ]
@@ -377,8 +379,9 @@ source "vsphere-iso" "windows-server-datacenter-core" {
   dynamic "export" {
     for_each = var.common_ovf_export_enabled ? [1] : []
     content {
-      name  = local.vm_name_datacenter_core
-      force = var.common_ovf_export_overwrite
+      name        = local.vm_name_datacenter_core
+      force       = var.common_ovf_export_overwrite
+      image_files = var.common_ovf_export_image_files
       options = [
         "extraconfig"
       ]
@@ -485,8 +488,9 @@ source "vsphere-iso" "windows-server-datacenter-dexp" {
   dynamic "export" {
     for_each = var.common_ovf_export_enabled ? [1] : []
     content {
-      name  = local.vm_name_datacenter_desktop
-      force = var.common_ovf_export_overwrite
+      name        = local.vm_name_datacenter_desktop
+      force       = var.common_ovf_export_overwrite
+      image_files = var.common_ovf_export_image_files
       options = [
         "extraconfig"
       ]

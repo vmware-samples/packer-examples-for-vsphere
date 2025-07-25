@@ -119,8 +119,8 @@ ansible_key      = "<public_key>"
 
 Edit the `config/common.pkrvars.hcl` file to configure the following common variables:
 
-```hcl linenums="1" title="config/common.pkrvars.hcl" hl_lines="1 6 14 18 23 32"
---8<-- "./builds/common.pkrvars.hcl.example:10:42"
+```hcl linenums="1" title="config/common.pkrvars.hcl" hl_lines="1 6 14 19 24 33"
+--8<-- "./builds/common.pkrvars.hcl.example:10:45"
 ```
 
 ### Data Source

@@ -18,6 +18,7 @@ common_content_library_destroy="true"
 common_content_library_skip_export="false"
 common_ovf_export_enabled="false"
 common_ovf_export_overwrite="true"
+common_ovf_export_image_files="true"
 common_data_source="http"
 common_http_ip=""
 common_http_port_min="8000"
@@ -129,6 +130,7 @@ echo -e '\n> Set the common OVF export settings.'
 # OVF Export Settings
 read -r -p "Export as an OVF artifact (recommended: ""${common_ovf_export_enabled}""): " common_ovf_export_enabled
 read -r -p "Overwrite an existing OVF artifact (recommended: ""${common_ovf_export_overwrite}""): " common_ovf_export_overwrite
+read -r -p "Export OVF image files (recommended: ""${common_ovf_export_image_files}""): " common_ovf_export_image_files
 echo -e '\n> Set the common boot and provisioning settings.'
 # Boot and Provisioning Settings
 read -r -p "Set the provisioning datasource (recommended: ""${common_data_source}""): " common_data_source
@@ -246,6 +248,7 @@ echo '> Setting the OVF export settings...'
 # OVF Export Settings
 export PKR_VAR_common_ovf_export_enabled="${common_ovf_export_enabled}"
 export PKR_VAR_common_ovf_export_overwrite="${common_ovf_export_overwrite}"
+export PKR_VAR_common_ovf_export_image_files="${common_ovf_export_image_files}"
 
 echo '> Setting the common boot and provisioning settings...'
 # Boot and Provisioning Settings
@@ -347,6 +350,7 @@ case $display_environmental_variables in
 	echo -e '\nOVF Export Settings'
 	echo - PKR_VAR_common_ovf_export_enabled: "$PKR_VAR_common_ovf_export_enabled"
 	echo - PKR_VAR_common_ovf_export_overwrite: "$PKR_VAR_common_ovf_export_overwrite"
+	echo - PKR_VAR_common_ovf_export_image_files: "$PKR_VAR_common_ovf_export_image_files"
 
 	# Boot and Provisioning Settings
 	echo -e '\nBoot and Provisioning Settings'

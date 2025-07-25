@@ -66,7 +66,7 @@ For more detailed information, refer to the [contribution guidelines][contributi
 
 ## Support
 
-This project is **not supported** by VMware Support Services.
+This project is **not supported** by Broadcom Support.
 
 We welcome you to use the GitHub [issues][gh-issues] tracker to report bugs or suggest features and enhancements.
 

@@ -1,7 +1,7 @@
 ---
 # Used to update SUSE Linux Enterprise Server.
 base_sle_module_name: sle-module-public-cloud
-base_sle_module_version: 15.6
+base_sle_module_version: 15.7
 base_sle_architecture: x86_64
 
 base_task_name: Update the operating system and install additional packages.

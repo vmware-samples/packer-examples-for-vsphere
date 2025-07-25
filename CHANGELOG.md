@@ -21,10 +21,18 @@
 
   On 31 May 2025, Ubuntu Server 20.04 reached the end of life.
 
-- Updates Debian Linux 12 to 12.11 release.
+- Updates Debian 12 to 12.11 release.
   [#1049](https://github.com/vmware/packer-examples-for-vsphere/pull/1049)
 - Updates SLES 15 to 15.7 release.
   [#1050](https://github.com/vmware/packer-examples-for-vsphere/pull/1050)
+- Updates Red Hat Enterprise Linux 9 to 9.6 release.
+  [#1051](https://github.com/vmware/packer-examples-for-vsphere/pull/1051)
+- Updates AlmaLinux 9 to 9.6 release.
+  [#1051](https://github.com/vmware/packer-examples-for-vsphere/pull/1051)
+- Updates Rocky Linux 9 to 9.6 release.
+  [#1051](https://github.com/vmware/packer-examples-for-vsphere/pull/1051)
+- Updates Oracle Linux 9 to 9.6 release.
+  [#1051](https://github.com/vmware/packer-examples-for-vsphere/pull/1051)
 - Updates Fedora Server to release 42.
   [#1048](https://github.com/vmware/packer-examples-for-vsphere/pull/1048)
 
@@ -62,7 +70,7 @@
 
 - Updates Debian 11 to 11.11 release.
   [#10102](https://github.com/vmware/packer-examples-for-vsphere/pull/1012)
-- Updates Debian Linux 12 to 12.9 release.
+- Updates Debian 12 to 12.9 release.
   [#1012](https://github.com/vmware/packer-examples-for-vsphere/pull/1012)
 - Updates Ubuntu 22.04 LTS to 22.04.5 release.
   [#984](https://github.com/vmware/packer-examples-for-vsphere/pull/984)

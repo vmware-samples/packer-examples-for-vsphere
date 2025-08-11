@@ -87,7 +87,7 @@ variable "vsphere_set_host_for_datastore_uploads" {
 
 variable "vm_guest_os_language" {
   type        = string
-  description = "The guest operating system lanugage."
+  description = "The guest operating system language."
   default     = "en_US"
 }
 

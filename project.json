@@ -32,6 +32,31 @@
                         "url": "https://debian.org"
                     },
                     "versions": {
+                        "13": [
+                            {
+                                "version": "13",
+                                "enabled": "true",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://cdimage.debian.org/cdimage/release/13.2.0/amd64/iso-cd/debian-13.2.0-amd64-netinst.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://cdimage.debian.org/cdimage/release/13.2.0/amd64/iso-cd/SHA256SUMS"
+                                    }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl"
+                                    }
+                                ]
+                            }
+                        ],
                         "12": [
                             {
                                 "version": "12",

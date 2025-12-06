@@ -58,6 +58,15 @@ VMware-Photon-OS-4:
 
 ##############################################################################
 
+Debian-13:
+    extends: .packer-build
+    variables:
+        INPUT_PATH: "$SCRIPT_PATH/builds/linux/debian/13/"
+        BUILD_VARS: "linux-debian-13.pkrvars.hcl"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
+
+##############################################################################
+
 Debian-12:
     extends: .packer-build
     variables:

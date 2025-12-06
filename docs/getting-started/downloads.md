@@ -11,7 +11,8 @@ Download the guest operating system ISOs using the download script (`./download.
 | :---                                                        | :---      | :---                                                                  |
 | :simple-broadcom: VMware Photon OS @span                    | 5.0       | :octicons-check-circle-16:{ .green }                                  |
 |                                                             | 4.0       | :octicons-check-circle-16:{ .green }                                  |
-| :fontawesome-brands-debian: Debian @span                    | 12        | :octicons-check-circle-16:{ .green }                                  |
+| :fontawesome-brands-debian: Debian @span                    | 13        | :octicons-check-circle-16:{ .green }                                  |
+|                                                             | 12        | :octicons-check-circle-16:{ .green }                                  |
 |                                                             | 11        | :octicons-check-circle-16:{ .green }                                  |
 | :fontawesome-brands-ubuntu: Ubuntu Server @span             | 24.04     | :octicons-check-circle-16:{ .green }                                  |
 |                                                             | 22.04     | :octicons-check-circle-16:{ .green }                                  |

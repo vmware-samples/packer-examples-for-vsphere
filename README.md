@@ -27,7 +27,8 @@ This project supports the following guest operating systems:
 |:-----------------------------|:----------|
 | VMware Photon OS             | 5         |
 |                              | 4         |
-| Debian                       | 12        |
+| Debian                       | 13        |
+|                              | 12        |
 |                              | 11        |
 | Ubuntu Server                | 24.04 LTS |
 |                              | 22.04 LTS |

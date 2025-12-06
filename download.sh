@@ -424,7 +424,7 @@ select_download() {
     if [[ "$dist" == *"Windows"* ]]; then
         download_link=$(jq -r --arg os "$os" --arg dist "$dist" --arg version "$version" --arg arch "$arch" '.os[] | select(.name == $os) | .types[] | select(.description == $dist) | .versions[$version][] | .architectures[] | select(.architecture == $arch) | .download_link' $json_path)
         # Validate the download link
-        if curl --output /dev/null --silent --head --fail "$download_link"; then
+        if curl -L --output /dev/null --silent --head --fail "$download_link"; then
             download_dir="$(echo "${iso_base_path}/${os}/${dist}/${version}/${arch}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')"
         else
             printf "\n\n"
@@ -469,7 +469,7 @@ select_download() {
 
         # Set the download command based on the availability of curl or wget.
         if command -v curl >/dev/null 2>&1; then
-            download_command="curl -o"
+            download_command="curl -L -o"
         elif command -v wget >/dev/null 2>&1; then
             download_command="wget -q -O "
         fi
@@ -579,7 +579,7 @@ select_download() {
 
         # Set the download command based on the availability of curl or wget.
         if command -v curl >/dev/null 2>&1; then
-            download_command="curl -o"
+            download_command="curl -L -o"
         elif command -v wget >/dev/null 2>&1; then
             download_command="wget -q -O"
         fi
@@ -599,7 +599,7 @@ select_download() {
         dist_name=$(jq -r --arg os "$os" --arg desc "$description" '.os[] | select(.name == $os) | .distributions[] | select(.description == $desc) | .name' $json_path)
         download_link=$(jq -r --arg os "$os" --arg dist "$dist" --arg version "$version" --arg arch "$arch" '.os[] | select(.name == $os) | .distributions[] | select(.description == $dist) | .versions | to_entries[] | .value[] | select(.version == $version) | .architectures[] | select(.architecture == $arch) | .download_link' $json_path)
         # Validate the download link
-        if curl --output /dev/null --silent --head --fail "$download_link"; then
+        if curl -L --output /dev/null --silent --head --fail "$download_link"; then
             download_dir="$(echo "${iso_base_path}/${os}/${dist}/${version}/${arch}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')"
         else
             printf "\n"
@@ -645,7 +645,7 @@ select_download() {
 
         # Set the download command based on the availability of curl or wget.
         if command -v curl >/dev/null 2>&1; then
-            download_command="curl -o"
+            download_command="curl -L -o"
         elif command -v wget >/dev/null 2>&1; then
             download_command="wget -q -O"
         fi
@@ -716,7 +716,7 @@ download_checksum_file() {
         # Set the download command based on the availability of curl or wget.
         download_command=""
         if command -v curl >/dev/null 2>&1; then
-            download_command="curl -o"
+            download_command="curl -L -o"
         elif command -v wget >/dev/null 2>&1; then
             download_command="wget -q -O "
         fi

@@ -8,7 +8,6 @@
     "marvhen.reflow-markdown", // Reflow Markdown
     "ms-vscode.powershell", // PowerShell
     "redhat.ansible", // Ansible
-    "trunk.io", // Trunk
     "vscode.json-language-features" // JSON
   ]
 }

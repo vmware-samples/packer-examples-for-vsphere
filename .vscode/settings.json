@@ -11,12 +11,6 @@
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
 
-  // File watcher settings
-  "files.watcherExclude": {
-    "**/.DS_Store": true,
-    "**/.site/**": true,
-    "**/.trunk/**": true
-  },
 
   // PowerShell settings
   "powershell.analyzeOpenDocumentsOnly": true,

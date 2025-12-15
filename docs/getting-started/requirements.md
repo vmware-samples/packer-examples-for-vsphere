@@ -33,7 +33,7 @@ The project is tested on the following operating systems for the Packer host [^1
 | :--------------------------------------------------------------- | :-------- | :--------------- | :---------------------------------------------------------------------------------------------------------------------- |
 | :simple-packer: &nbsp;&nbsp; Packer                              | >= 1.12.0 | By HashiCorp     | [:fontawesome-brands-github:][packer-repo] &nbsp;&nbsp; [:material-library:][packer]                                    |
 | :simple-hashicorp: &nbsp;&nbsp; Packer Plugin for Ansible        | >= 1.1.2  | By HashiCorp     | [:fontawesome-brands-github:][packer-plugin-ansible-repo] &nbsp;&nbsp; [:material-library:][packer-plugin-ansible]      |
-| :simple-hashicorp: &nbsp;&nbsp; Packer Plugin for VMware vSphere | >= 1.4.2  | By HashiCorp     | [:fontawesome-brands-github:][packer-plugin-vsphere-repo] &nbsp;&nbsp; [:material-library:][packer-plugin-vsphere-docs] |
+| :simple-hashicorp: &nbsp;&nbsp; Packer Plugin for VMware vSphere | >= 2.0.0  | By HashiCorp     | [:fontawesome-brands-github:][packer-plugin-vsphere-repo] &nbsp;&nbsp; [:material-library:][packer-plugin-vsphere-docs] |
 | :fontawesome-brands-git: &nbsp;&nbsp; Packer Plugin for Git      | >= 0.6.3  | Community Plugin | [:fontawesome-brands-github:][packer-plugin-git-repo] &nbsp;&nbsp; [:material-library:][packer-plugin-git-docs]         |
 
 ### Installation

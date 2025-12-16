@@ -187,7 +187,7 @@
                                     {
                                         "architecture": "amd64",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "febcc1359fd68faceff82d7eed8d21016e022a17e9c74e0e3f9dc3a78816b2bb"
+                                        "checksum": "aac774e5aba1c0275d50e0cc4e0e08eca660a116773280596e0bcb894d2da16d"
                                     }
                                 ],
                                 "build_files": [
@@ -247,9 +247,9 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://download.rockylinux.org/pub/rocky/9.6/isos/x86_64/Rocky-9.6-x86_64-dvd.iso",
+                                        "download_link": "https://download.rockylinux.org/pub/rocky/9.7/isos/x86_64/Rocky-9.7-x86_64-dvd.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://download.rockylinux.org/pub/rocky/9.6/isos/x86_64/CHECKSUM"
+                                        "checksum": "https://download.rockylinux.org/pub/rocky/9.7/isos/x86_64/CHECKSUM"
                                     }
                                 ],
                                 "build_files": [
@@ -308,9 +308,9 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://repo.almalinux.org/almalinux/9.6/isos/x86_64/AlmaLinux-9.6-x86_64-dvd.iso",
+                                        "download_link": "https://repo.almalinux.org/almalinux/9.7/isos/x86_64/AlmaLinux-9.7-x86_64-dvd.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://repo.almalinux.org/almalinux/9.6/isos/x86_64/CHECKSUM"
+                                        "checksum": "https://repo.almalinux.org/almalinux/9.7/isos/x86_64/CHECKSUM"
                                     }
                                 ],
                                 "build_files": [
@@ -369,9 +369,9 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u6/x86_64/OracleLinux-R9-U6-x86_64-dvd.iso",
+                                        "download_link": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u7/x86_64/OracleLinux-R9-U7-x86_64-dvd.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U6-Server-x86_64.checksum"
+                                        "checksum": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R9-U7-Server-x86_64.checksum"
                                     }
                                 ],
                                 "build_files": [

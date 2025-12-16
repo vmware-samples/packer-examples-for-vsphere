@@ -484,16 +484,16 @@
                         "url": "https://fedoraproject.org"
                     },
                     "versions": {
-                        "42": [
+                        "43": [
                             {
-                                "version": "42",
+                                "version": "43",
                                 "enabled": "true",
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://mirror.cpsc.ucalgary.ca/mirror/fedora/linux/releases/42/Server/x86_64/iso/Fedora-Server-dvd-x86_64-42-1.1.iso",
+                                        "download_link": "https://mirror.cpsc.ucalgary.ca/mirror/fedora/linux/releases/43/Server/x86_64/iso/Fedora-Server-dvd-x86_64-43-1.6.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://mirror.cpsc.ucalgary.ca/mirror/fedora/linux/releases/42/Server/x86_64/iso/Fedora-Server-42-1.1-x86_64-CHECKSUM"
+                                        "checksum": "https://mirror.cpsc.ucalgary.ca/mirror/fedora/linux/releases/43/Server/x86_64/iso/Fedora-Server-43-1.6-x86_64-CHECKSUM"
                                     }
                                 ],
                                 "build_files": [

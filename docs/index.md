@@ -35,7 +35,7 @@ This project supports the following guest operating systems:
 |                                                            | 8       | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} |
 | :fontawesome-brands-centos: CentOS Stream @span            | 10      | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} |
 |                                                            | 9       | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} |
-| :fontawesome-brands-fedora: Fedora Server @span            | 42      | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} |
+| :fontawesome-brands-fedora: Fedora Server @span            | 43      | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} |
 | :fontawesome-brands-suse: SUSE Linux Enterprise @span      | 15      | :octicons-check-circle-16:{.green} | :octicons-check-circle-16:{.green} | :octicons-x-circle-16:{.red}       | :octicons-x-circle-16:{.red}       |
 ::end-spantable::
 

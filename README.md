@@ -42,7 +42,7 @@ This project supports the following guest operating systems:
 |                              | 8         |
 | CentOS Stream                | 10        |
 |                              | 9         |
-| Fedora Server                | 42        |
+| Fedora Server                | 43        |
 | SUSE Linux Enterprise Server | 15        |
 
 ## Microsoft Windows

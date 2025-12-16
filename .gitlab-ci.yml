@@ -202,11 +202,11 @@ CentOS-Stream-9:
 
 ##############################################################################
 
-Fedora-Server-42:
+Fedora-Server-43:
     extends: .packer-build
     variables:
-        INPUT_PATH: "$SCRIPT_PATH/builds/linux/fedora/42/"
-        BUILD_VARS: "linux-fedora-42.pkrvars.hcl"
+        INPUT_PATH: "$SCRIPT_PATH/builds/linux/fedora/43/"
+        BUILD_VARS: "linux-fedora-43.pkrvars.hcl"
         EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
 
 ##############################################################################

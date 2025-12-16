@@ -4,7 +4,7 @@
 
 /*
     DESCRIPTION:
-    Fedora Server 42 build definition.
+    Fedora Server 43 build definition.
     Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 

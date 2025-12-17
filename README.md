@@ -53,7 +53,6 @@ This project supports the following guest operating systems:
 |                          | 2022    | Standard and Datacenter     | Core and Desktop |
 |                          | 2019    | Standard and Datacenter     | Core and Desktop |
 | Microsoft Windows        | 11      | Professional and Enterprise | -                |
-|                          | 10      | Professional and Enterprise | -                |
 
 ## Documentation
 

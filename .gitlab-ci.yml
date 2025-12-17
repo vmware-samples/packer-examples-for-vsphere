@@ -324,29 +324,3 @@ Windows-11-Professional-Only:
 
 ##############################################################################
 
-Windows-10-All:
-    extends: .packer-build
-    variables:
-        INPUT_PATH: "$SCRIPT_PATH/builds/windows/desktop/10/"
-        BUILD_VARS: "windows-desktop-10.pkrvars.hcl"
-
-##############################################################################
-
-Windows-10-Enterprise-Only:
-    extends: .packer-build
-    variables:
-        INPUT_PATH: "$SCRIPT_PATH/builds/windows/desktop/10/"
-        BUILD_VARS: "windows-desktop-10.pkrvars.hcl"
-        BUILD_ONLY: "--only vsphere-iso.windows-desktop-ent"
-
-##############################################################################
-
-Windows-10-Professional-Only:
-    extends: .packer-build
-    variables:
-        INPUT_PATH: "$SCRIPT_PATH/builds/windows/desktop/10/"
-        BUILD_VARS: "windows-desktop-10.pkrvars.hcl"
-        BUILD_ONLY: "--only vsphere-iso.windows-desktop-pro"
-
-##############################################################################
-

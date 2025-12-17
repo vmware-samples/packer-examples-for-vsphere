@@ -207,17 +207,3 @@ menu:
           path: "builds/windows/desktop/11/"
           only:
             - vsphere-iso.windows-desktop-pro
-      - entry: "Windows 10 - All"
-        message: "all Windows 10 Templates"
-        build:
-          path: "builds/windows/desktop/10/"
-      - entry: "Windows 10 - Enterprise Only"
-        build:
-          path: "builds/windows/desktop/10/"
-          only:
-            - vsphere-iso.windows-desktop-ent
-      - entry: "Windows 10 - Professional Only"
-        build:
-          path: "builds/windows/desktop/10/"
-          only:
-            - vsphere-iso.windows-desktop-pro

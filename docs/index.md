@@ -48,7 +48,6 @@ This project supports the following guest operating systems:
 |                                                             | 2022 @span    | Standard, Enterprise     | Core, Desktop |
 |                                                             | 2019 @span    | Standard, Enterprise     | Core, Desktop |
 | :fontawesome-brands-windows: Microsoft Windows @span        | 11 @span      | Professional, Enterprise | -             |
-|                                                             | 10 @span      | Professional, Enterprise | -             |
 ::end-spantable::
 
 [//]: Links

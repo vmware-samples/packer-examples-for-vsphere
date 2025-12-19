@@ -178,8 +178,8 @@ echo # Needed for line break.
 
 # Red Hat Subscription Manager Credentials
 echo -e '\n> Set the RedHat Subscription Manager credentials.'
-read -r -p "Enter the username for the account: " rhsm_username
-read -r -s -p "Enter the password for the account: " rhsm_password
+read -r -p "Enter the activation key: " rhsm_activation_key
+read -r -p "Enter the organization ID: " rhsm_organization
 echo # Needed for line break.
 
 # SUSE Customer Center Credentials
@@ -289,8 +289,8 @@ export PKR_VAR_ansible_key="${ansible_key}"
 
 echo '> Setting the RedHat Subscription Manager credentials...'
 # Red Hat Subscription Manager Credentials
-export PKR_VAR_rhsm_username="${rhsm_username}"
-export PKR_VAR_rhsm_password="${rhsm_password}"
+export PKR_VAR_rhsm_activation_key="${rhsm_activation_key}"
+export PKR_VAR_rhsm_organization="${rhsm_organization}"
 echo
 
 echo '> Setting the SUSE Customer Center credentials...'
@@ -363,7 +363,6 @@ case $display_environmental_variables in
 	echo - PKR_VAR_common_shutdown_timeout: "$PKR_VAR_common_shutdown_timeout"
 
 	# Proxy Credentials
-
 	case $use_socks_proxy in
 	[yY][eE][sS] | [yY])
 		echo -e '\nProxy Credentials'
@@ -392,8 +391,8 @@ case $display_environmental_variables in
 
 	# RedHat Subscription Manager Credentials
 	echo -e '\nRedHat Subscription Manager Credentials'
-	echo - PKR_VAR_rhsm_username: "$PKR_VAR_rhsm_username"
-	echo - PKR_VAR_rhsm_password: "$PKR_VAR_rhsm_password"
+	echo - PKR_VAR_rhsm_activation_key: "$PKR_VAR_rhsm_activation_key"
+	echo - PKR_VAR_rhsm_organization: "$PKR_VAR_rhsm_organization"
 
 	# SUSE Customer Center Credentials
 	echo -e '\nSUSE Customer Center Credentials'

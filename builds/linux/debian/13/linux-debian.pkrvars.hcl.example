@@ -22,3 +22,4 @@ iso_datastore_path       = "iso/linux/debian/13/amd64"
 iso_content_library_item = "debian-13.3.0-amd64-netinst"
 iso_file                 = "debian-13.3.0-amd64-netinst.iso"
 
+

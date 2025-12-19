@@ -13,15 +13,15 @@
 
 // Red Hat Subscription Manager Credentials
 
-variable "rhsm_username" {
+variable "rhsm_activation_key" {
   type        = string
-  description = "The username to Red Hat Subscription Manager."
+  description = "The activation key for Red Hat Subscription Manager."
   sensitive   = true
 }
 
-variable "rhsm_password" {
+variable "rhsm_organization" {
   type        = string
-  description = "The password to login to Red Hat Subscription Manager."
+  description = "The organization ID for Red Hat Subscription Manager. Numeric value (e.g., 1234567)."
   sensitive   = true
 }
 

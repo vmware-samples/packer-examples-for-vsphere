@@ -179,6 +179,31 @@
                         "url": "https://redhat.com"
                     },
                     "versions": {
+                        "10": [
+                            {
+                                "version": "10",
+                                "enabled": "true",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "5925e05c32d8324a72e146a29293d60707571817769de73df63eab8dbd6d3196"
+                                    }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl",
+                                        "rshm": "rhsm.pkrvars.hcl"
+                                    }
+                                ]
+                            }
+                        ],
                         "9": [
                             {
                                 "version": "9",
@@ -212,7 +237,7 @@
                                     {
                                         "architecture": "amd64",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "c4fd0632ce15a7d56e1d174176456943bd48306f9d35bcecbcb0a1dc49088e23"
+                                        "checksum": "9b3c8e31bc2cdd2de9cf96abb3726347f5840ff3b176270647b3e66639af291b"
                                     }
                                 ],
                                 "build_files": [
@@ -240,6 +265,31 @@
                         "url": "https://rockylinux.org"
                     },
                     "versions": {
+                        "10": [
+                            {
+                                "version": "10",
+                                "enabled": "true",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://download.rockylinux.org/pub/rocky/10.1/isos/x86_64/Rocky-10.1-x86_64-dvd1.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://download.rockylinux.org/pub/rocky/10.1/isos/x86_64/CHECKSUM"
+                                    }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl"
+                                    }
+                                ]
+                            }
+                        ],
                         "9": [
                             {
                                 "version": "9",
@@ -301,6 +351,31 @@
                         "url": "https://almalinux.org"
                     },
                     "versions": {
+                        "10": [
+                            {
+                                "version": "10",
+                                "enabled": "true",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://repo.almalinux.org/almalinux/10.1/isos/x86_64/AlmaLinux-10.1-x86_64-dvd.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://repo.almalinux.org/almalinux/10.1/isos/x86_64/CHECKSUM"
+                                    }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl"
+                                    }
+                                ]
+                            }
+                        ],
                         "9": [
                             {
                                 "version": "9",
@@ -362,6 +437,31 @@
                         "url": "https://oracle.com/linux/"
                     },
                     "versions": {
+                        "10": [
+                            {
+                                "version": "10",
+                                "enabled": "true",
+                                "architectures": [
+                                    {
+                                        "architecture": "amd64",
+                                        "download_link": "https://yum.oracle.com/ISOS/OracleLinux/OL10/u1/x86_64/OracleLinux-R10-U1-x86_64-dvd.iso",
+                                        "checksum_algorithm": "sha256",
+                                        "checksum": "https://linux.oracle.com/security/gpg/checksum/OracleLinux-R10-U1-Server-x86_64.checksum"
+                                    }
+                                ],
+                                "build_files": [
+                                    {
+                                        "vsphere": "vsphere.pkrvars.hcl",
+                                        "build": "build.pkrvars.hcl",
+                                        "ansible": "ansible.pkrvars.hcl",
+                                        "proxy": "proxy.pkrvars.hcl",
+                                        "common": "common.pkrvars.hcl",
+                                        "network": "network.pkrvars.hcl",
+                                        "storage": "linux-storage.pkrvars.hcl"
+                                    }
+                                ]
+                            }
+                        ],
                         "9": [
                             {
                                 "version": "9",
@@ -491,9 +591,9 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://mirror.cpsc.ucalgary.ca/mirror/fedora/linux/releases/43/Server/x86_64/iso/Fedora-Server-dvd-x86_64-43-1.6.iso",
+                                        "download_link": "https://download.fedoraproject.org/pub/fedora/linux/releases/43/Server/x86_64/iso/Fedora-Server-dvd-x86_64-43-1.6.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://mirror.cpsc.ucalgary.ca/mirror/fedora/linux/releases/43/Server/x86_64/iso/Fedora-Server-43-1.6-x86_64-CHECKSUM"
+                                        "checksum": "https://download.fedoraproject.org/pub/fedora/linux/releases/43/Server/x86_64/iso/Fedora-Server-43-1.6-x86_64-CHECKSUM"
                                     }
                                 ],
                                 "build_files": [
@@ -629,7 +729,8 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://software-static.download.prss.microsoft.com/dbazure/888969d5-f34g-4e03-ac9d-1f9786c66749/26100.1.240331-1435.ge_release_SERVER_EVAL_x64FRE_en-us.iso",
+                                        "download_link": "https://go.microsoft.com/fwlink/?linkid=2345730&clcid=0x409&culture=en-us&country=us",
+                                        "filename": "windows-server-2025-evaluation.iso",
                                         "checksum_algorithm": "sha256",
                                         "checksum": "",
                                         "comments": "Evaluation"
@@ -673,7 +774,8 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://software-static.download.prss.microsoft.com/sg/download/888969d5-f34g-4e03-ac9d-1f9786c66749/SERVER_EVAL_x64FRE_en-us.iso",
+                                        "download_link": "https://go.microsoft.com/fwlink/p/?LinkID=2195280&clcid=0x409&culture=en-us&country=US",
+                                        "filename": "windows-server-2022-evaluation.iso",
                                         "checksum_algorithm": "sha256",
                                         "checksum": "",
                                         "comments": "Evaluation"
@@ -717,7 +819,8 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://software-static.download.prss.microsoft.com/dbazure/988969d5-f34g-4e03-ac9d-1f9786c66749/17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso",
+                                        "download_link": "https://go.microsoft.com/fwlink/p/?LinkID=2195167&clcid=0x409&culture=en-us&country=US",
+                                        "filename": "windows-server-2019-evaluation.iso",
                                         "checksum_algorithm": "sha256",
                                         "checksum": "",
                                         "comments": "Evaluation"
@@ -772,51 +875,8 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://software-static.download.prss.microsoft.com/dbazure/888969d5-f34g-4e03-ac9d-1f9786c66749/22631.2428.231001-0608.23H2_NI_RELEASE_SVC_REFRESH_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso",
-                                        "checksum_algorithm": "sha256",
-                                        "checksum": "",
-                                        "comments": "Evaluation"
-                                    }
-                                ],
-                                "editions": [
-                                    {
-                                        "edition": "Enterprise",
-                                        "enabled": "true",
-                                        "build_files": [
-                                            {
-                                                "vsphere": "vsphere.pkrvars.hcl",
-                                                "build": "build.pkrvars.hcl",
-                                                "ansible": "ansible.pkrvars.hcl",
-                                                "proxy": "proxy.pkrvars.hcl",
-                                                "common": "common.pkrvars.hcl"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "edition": "Professional",
-                                        "enabled": "true",
-                                        "build_files": [
-                                            {
-                                                "vsphere": "vsphere.pkrvars.hcl",
-                                                "build": "build.pkrvars.hcl",
-                                                "ansible": "ansible.pkrvars.hcl",
-                                                "proxy": "proxy.pkrvars.hcl",
-                                                "common": "common.pkrvars.hcl"
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ],
-                        "10": [
-                            {
-                                "version": "10",
-                                "enabled": "true",
-                                "description": "Windows 10",
-                                "architectures": [
-                                    {
-                                        "architecture": "amd64",
-                                        "download_link": "https://software-static.download.prss.microsoft.com/dbazure/988969d5-f34g-4e03-ac9d-1f9786c66750/19045.2006.220908-0225.22h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso",
+                                        "download_link": "https://go.microsoft.com/fwlink/?linkid=2334167&clcid=0x409&culture=en-us&country=us",
+                                        "filename": "windows-11-evaluation.iso",
                                         "checksum_algorithm": "sha256",
                                         "checksum": "",
                                         "comments": "Evaluation"

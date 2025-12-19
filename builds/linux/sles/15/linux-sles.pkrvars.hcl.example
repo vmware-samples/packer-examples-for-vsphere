@@ -21,4 +21,4 @@ vm_firmware = "efi-secure"
 // Removable Media Settings
 iso_datastore_path       = "iso/linux/sles/15/amd64"
 iso_content_library_item = "SLE-15-SP6-Full-x86_64-GM-Media1"
-iso_file                 = "SLE-15-SP6-Full-x86_64-GM-Media1.iso"
+iso_file                  = "SLE-15-SP6-Full-x86_64-GM-Media1.iso"

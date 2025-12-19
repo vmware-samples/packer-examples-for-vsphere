@@ -103,6 +103,15 @@ Ubuntu-Server-22.04-LTS:
 
 ##############################################################################
 
+Red-Hat-Enterprise-Linux-10:
+    extends: .packer-build
+    variables:
+        INPUT_PATH: "$SCRIPT_PATH/builds/linux/rhel/10/"
+        BUILD_VARS: "linux-rhel-10.pkrvars.hcl"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl -var-file=$CONFIG_PATH/rhsm.pkrvars.hcl"
+
+##############################################################################
+
 Red-Hat-Enterprise-Linux-9:
     extends: .packer-build
     variables:
@@ -130,6 +139,15 @@ Red-Hat-Enterprise-Linux-7:
 
 ##############################################################################
 
+AlmaLinux-OS-10:
+    extends: .packer-build
+    variables:
+        INPUT_PATH: "$SCRIPT_PATH/builds/linux/almalinux/10/"
+        BUILD_VARS: "linux-almalinux-10.pkrvars.hcl"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
+
+##############################################################################
+
 AlmaLinux-OS-9:
     extends: .packer-build
     variables:
@@ -148,6 +166,15 @@ AlmaLinux-OS-8:
 
 ##############################################################################
 
+Rocky-Linux-10:
+    extends: .packer-build
+    variables:
+        INPUT_PATH: "$SCRIPT_PATH/builds/linux/rocky/10/"
+        BUILD_VARS: "linux-rocky-10.pkrvars.hcl"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
+
+##############################################################################
+
 Rocky-Linux-9:
     extends: .packer-build
     variables:
@@ -162,6 +189,15 @@ Rocky-Linux-8:
     variables:
         INPUT_PATH: "$SCRIPT_PATH/builds/linux/rocky/8/"
         BUILD_VARS: "linux-rocky-8.pkrvars.hcl"
+        EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
+
+##############################################################################
+
+Oracle-Linux-10:
+    extends: .packer-build
+    variables:
+        INPUT_PATH: "$SCRIPT_PATH/builds/linux/oracle/10/"
+        BUILD_VARS: "linux-oracle-10.pkrvars.hcl"
         EXTRA_VAR_FILES: "-var-file=$CONFIG_PATH/network.pkrvars.hcl -var-file=$CONFIG_PATH/linux-storage.pkrvars.hcl"
 
 ##############################################################################

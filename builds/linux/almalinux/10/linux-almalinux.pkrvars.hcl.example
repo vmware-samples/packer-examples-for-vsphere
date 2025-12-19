@@ -1,0 +1,24 @@
+# © Broadcom. All Rights Reserved.
+# The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.
+# SPDX-License-Identifier: BSD-2-Clause
+
+/*
+    DESCRIPTION:
+    AlmaLinux OS 10 variables used by the Packer Plugin for VMware vSphere (vsphere-iso).
+*/
+
+// Guest Operating System Metadata
+vm_guest_os_name    = "almalinux"
+vm_guest_os_version = "10.1"
+
+// Virtual Machine Guest Operating System Setting
+vm_guest_os_type = "almalinux_64Guest"
+
+// Virtual Machine Hardware Settings
+vm_firmware = "efi-secure"
+
+// Removable Media Settings
+iso_datastore_path       = "iso/linux/almalinux-os/10/amd64"
+iso_content_library_item = "AlmaLinux-10.1-x86_64-dvd"
+iso_file                  = "AlmaLinux-10.1-x86_64-dvd.iso"
+

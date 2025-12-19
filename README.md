@@ -32,13 +32,17 @@ This project supports the following guest operating systems:
 |                              | 11        |
 | Ubuntu Server                | 24.04 LTS |
 |                              | 22.04 LTS |
-| Red Hat Enterprise Linux     | 9         |
+| Red Hat Enterprise Linux     | 10        |
+|                              | 9         |
 |                              | 8         |
-| AlmaLinux OS                 | 9         |
+| AlmaLinux OS                 | 10        |
+|                              | 9         |
 |                              | 8         |
-| Rocky Linux                  | 9         |
+| Rocky Linux                  | 10        |
+|                              | 9         |
 |                              | 8         |
-| Oracle Linux                 | 9         |
+| Oracle Linux                 | 10        |
+|                              | 9         |
 |                              | 8         |
 | CentOS Stream                | 10        |
 |                              | 9         |

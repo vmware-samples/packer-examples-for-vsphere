@@ -262,8 +262,8 @@ additional_packages = ["git", "make", "vim"]
 
 #### Red Hat Subscription Manager
 
-Edit the `config/redhat.pkrvars.hcl` file to configure the credentials for your Red Hat Subscription
-Manager account.
+Edit the `config/rhsm.pkrvars.hcl` file to configure the activation key and organization for your
+Red Hat Subscription Manager account.
 
 ```hcl linenums="1" title="config/rhsm.pkrvars.hcl" hl_lines="1"
 --8<-- "./builds/rhsm.pkrvars.hcl.example:10:100"
@@ -273,7 +273,7 @@ These variables are **only** used if you are performing a Red Hat Enterprise Lin
 are used to register the image with Red Hat Subscription Manager during the build for system updates
 and package installation.
 
-Before the build completes, the machine image is unregistered from Red Hat Subscription Manager.
+Before the build completes, the machine image is disconnected from Red Hat Subscription Manager.
 
 #### SUSE Customer Connect
 

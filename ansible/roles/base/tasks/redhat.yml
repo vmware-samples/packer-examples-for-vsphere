@@ -1,10 +1,46 @@
 ---
 # Red Hat Enterprise Linux or derivative specific tasks.
 
-# Tasks for disconnecting from Red Hat Subscription Manager.
 - name: Getting guest operating system information.
   ansible.builtin.debug:
     msg: "OS: {{ ansible_facts['distribution'] }} {{ ansible_facts['distribution_version'] }}"
+
+# Tasks for Red Hat subscription management.
+- name: Red Hat Subscription Management
+  when: ansible_facts['distribution'] == 'RedHat'
+  become: true
+  block:
+    - name: Registering with Red Hat Subscription Manager.
+      community.general.redhat_subscription:
+        state: present
+        activationkey: "{{ rhsm_activation_key }}"
+        org_id: "{{ rhsm_organization }}"
+        force_register: true
+
+    - name: Enabling CodeReady Builder repository for RHEL 10.
+      when: (ansible_facts['distribution_major_version'] | int) >= 10
+      community.general.rhsm_repository:
+        name: "codeready-builder-for-rhel-{{ ansible_facts['distribution_major_version'] }}-x86_64-rpms"
+        state: enabled
+
+    - name: Enabling CodeReady Builder repository for RHEL 8-9.
+      when: (ansible_facts['distribution_major_version'] | int) >= 8 and (ansible_facts['distribution_major_version'] | int) < 10
+      community.general.rhsm_repository:
+        name: "codeready-builder-for-rhel-{{ ansible_facts['distribution_major_version'] }}-{{ ansible_facts['architecture'] }}-rpms"
+        state: enabled
+
+    - name: Installing EPEL repository.
+      ansible.builtin.dnf:
+        name: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_facts['distribution_major_version'] }}.noarch.rpm"
+        state: present
+        disable_gpg_check: true
+
+    - name: Importing all RPM GPG keys.
+      ansible.builtin.shell: |
+        for key in /etc/pki/rpm-gpg/RPM-GPG-KEY-*; do
+          rpm --import "$key"
+        done
+      changed_when: false
 
 - name: Checking the Red Hat Subscription Manager status.
   when: ansible_facts['distribution'] == 'RedHat'
@@ -14,7 +50,7 @@
   failed_when: "'ERROR' in result.stderr"
   changed_when: false
 
-# Tasks for upgrading the almalinux-release package.
+# Tasks for AlmaLinux.
 - name: Tasks for AlmaLinux
   when: ansible_facts['distribution'] == 'AlmaLinux'
   become: true
@@ -24,23 +60,97 @@
         name: almalinux-release
         state: latest # noqa package-latest
 
+    - name: Installing EPEL repository.
+      ansible.builtin.dnf:
+        name: epel-release
+        state: present
+
+    - name: Importing all RPM GPG keys.
+      ansible.builtin.shell: |
+        for key in /etc/pki/rpm-gpg/RPM-GPG-KEY-*; do
+          rpm --import "$key"
+        done
+      changed_when: false
+
     - name: Installing cloud-init.
       when: enable_cloudinit == 'true' and (ansible_facts['distribution_version'] | int) >= 8
       ansible.builtin.dnf:
         name: cloud-init
         state: latest # noqa package-latest
 
+# Tasks for Rocky Linux.
+- name: Tasks for Rocky Linux
+  when: ansible_facts['distribution'] == 'Rocky'
+  become: true
+  block:
+    - name: Installing EPEL repository.
+      ansible.builtin.dnf:
+        name: epel-release
+        state: present
+
+    - name: Importing all RPM GPG keys.
+      ansible.builtin.shell: |
+        for key in /etc/pki/rpm-gpg/RPM-GPG-KEY-*; do
+          rpm --import "$key"
+        done
+      changed_when: false
+
+# Tasks for CentOS.
+- name: Tasks for CentOS
+  when: ansible_facts['distribution'] == 'CentOS'
+  become: true
+  block:
+    - name: Installing EPEL repository.
+      ansible.builtin.dnf:
+        name: epel-release
+        state: present
+
+    - name: Importing all RPM GPG keys.
+      ansible.builtin.shell: |
+        for key in /etc/pki/rpm-gpg/RPM-GPG-KEY-*; do
+          rpm --import "$key"
+        done
+      changed_when: false
+
+# Tasks for Oracle Linux.
+- name: Tasks for Oracle Linux
+  when: ansible_facts['distribution'] == 'OracleLinux'
+  become: true
+  block:
+    - name: Installing EPEL repository.
+      ansible.builtin.dnf:
+        name: "oracle-epel-release-el{{ ansible_facts['distribution_major_version'] }}"
+        state: present
+
+    - name: Importing all RPM GPG keys.
+      ansible.builtin.shell: |
+        for key in /etc/pki/rpm-gpg/RPM-GPG-KEY-*; do
+          rpm --import "$key"
+        done
+      changed_when: false
+
 # Tasks for updating the operating system and installing additional packages.
 - name: Updating the operating system and installing additional packages.
   when: (ansible_facts['distribution'] == 'Fedora') or (ansible_facts['os_family'] == 'RedHat' and (ansible_facts['distribution_major_version'] | int) >= 8)
   block:
+    - name: Importing all RPM GPG keys before OS update.
+      become: true
+      ansible.builtin.shell: |
+        for key in /etc/pki/rpm-gpg/RPM-GPG-KEY-*; do
+          rpm --import "$key" 2>/dev/null || true
+        done
+      changed_when: false
+
     - name: Updating the operating system.
+      become: true
       ansible.builtin.dnf:
         name: "*"
         state: latest # noqa package-latest
         update_cache: true
+        disable_gpg_check: "{{ ansible_facts['distribution'] == 'RedHat' and (ansible_facts['distribution_major_version'] | int) >= 10 }}"
 
     - name: Installing additional packages.
+      become: true
       ansible.builtin.dnf:
         name: "{{ base_additional_packages[ansible_facts['os_family']] }}"
         state: latest # noqa package-latest
@@ -49,64 +159,5 @@
       when: enable_cloudinit == 'true' and (ansible_facts['distribution_version'] | int) >= 8
       become: true
       ansible.builtin.dnf:
-        name: cloud-init
-        state: latest # noqa package-latest
-
-# Tasks for Rocky Cloud Install.
-- name: Tasks for Rocky Linux Cloud-init
-  when: ansible_facts['distribution'] == 'Rocky'
-  become: true
-  block:
-    - name: Installing cloud-init.
-      when: enable_cloudinit == 'true' and (ansible_facts['distribution_version'] | int) >= 8
-      ansible.builtin.dnf:
-        name: cloud-init
-        state: latest # noqa package-latest
-
-# Tasks for Oracle Cloud Install.
-- name: Tasks for Oracle Linux Cloud-init
-  when: ansible_facts['distribution'] == 'OracleLinux'
-  become: true
-  block:
-    - name: Installing cloud-init.
-      when: enable_cloudinit == 'true' and (ansible_facts['distribution_version'] | int) >= 8
-      ansible.builtin.dnf:
-        name: cloud-init
-        state: latest # noqa package-latest
-
-# Tasks for CentOS Cloud Install.
-- name: Tasks for Centos Linux Cloud-init
-  when: ansible_facts['distribution'] == 'CentOS'
-  become: true
-  block:
-    - name: Installing cloud-init.
-      when: enable_cloudinit == 'true' and (ansible_facts['distribution_version'] | int) >= 8
-      ansible.builtin.dnf:
-        name: cloud-init
-        state: latest # noqa package-latest
-
-# Tasks for updating the operating system and installing additional packages.
-- name: Updating the operating system and installing additional packages.
-  when: ansible_facts['os_family'] == 'RedHat' and (ansible_facts['distribution_major_version'] | int) < 8
-  block:
-    - name: Updating the operating system.
-      ansible.builtin.yum: # noqa fqcn[action-core]
-        name: "*"
-        state: latest # noqa package-latest
-        update_cache: true
-
-    - name: Installing additional packages.
-      ansible.builtin.yum: # noqa fqcn[action-core]
-        name: "{{ base_additional_packages[ansible_os_family] }}"
-        state: latest # noqa package-latest
-
-# Tasks for CentOS Cloud Install.
-- name: Tasks for Centos Linux Cloud-init
-  when: ansible_facts['distribution'] == 'CentOS'
-  become: true
-  block:
-    - name: Installing cloud-init.
-      when: enable_cloudinit == 'true' and (ansible_facts['distribution_version'] | int) < 8
-      ansible.builtin.yum:
         name: cloud-init
         state: latest # noqa package-latest

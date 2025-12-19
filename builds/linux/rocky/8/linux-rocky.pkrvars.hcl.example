@@ -13,7 +13,7 @@ vm_guest_os_name    = "rocky"
 vm_guest_os_version = "8.10"
 
 // Virtual Machine Guest Operating System Setting
-vm_guest_os_type = "other4xLinux64Guest"
+vm_guest_os_type = "rockylinux_64Guest"
 
 // Virtual Machine Hardware Settings
 vm_firmware = "efi"
@@ -21,4 +21,4 @@ vm_firmware = "efi"
 // Removable Media Settings
 iso_datastore_path       = "iso/linux/rocky-linux/8/amd64"
 iso_content_library_item = "Rocky-8.10-x86_64-dvd1"
-iso_file                 = "Rocky-8.10-x86_64-dvd1.iso"
+iso_file                  = "Rocky-8.10-x86_64-dvd1.iso"

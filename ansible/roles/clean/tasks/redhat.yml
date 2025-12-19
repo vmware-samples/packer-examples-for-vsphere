@@ -1,10 +1,31 @@
 ---
-# Tasks to clean the Red Hat Subscription Manager logs.
-- name: Cleaning the Red Hat Subscription Manager logs.
-  ansible.builtin.file:
-    path: /var/log/rhsm
+# Tasks to unregister from Red Hat Subscription Manager.
+- name: Unregistering from Red Hat Subscription Manager.
+  community.general.redhat_subscription:
     state: absent
   when: ansible_facts['distribution'] == 'RedHat'
+  become: true
+  ignore_errors: true
+
+# Tasks to clean the Red Hat Subscription Manager data.
+- name: Cleaning the Red Hat Subscription Manager data.
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - /var/log/rhsm
+    - /etc/pki/entitlement
+    - /etc/rhsm/facts
+  when: ansible_facts['distribution'] == 'RedHat'
+
+# Tasks to clean the Red Hat Subscription Manager identity.
+- name: Cleaning the Red Hat Subscription Manager identity.
+  ansible.builtin.command:
+    cmd: subscription-manager clean
+  when: ansible_facts['distribution'] == 'RedHat'
+  become: true
+  changed_when: false
+  ignore_errors: true
 
 # Tasks to clean the audit logs.
 - name: Cleaning the audit logs.

@@ -12,7 +12,7 @@ vm_guest_os_name    = "almalinux"
 vm_guest_os_version = "9.7"
 
 // Virtual Machine Guest Operating System Setting
-vm_guest_os_type = "other5xLinux64Guest"
+vm_guest_os_type = "almalinux_64Guest"
 
 // Virtual Machine Hardware Settings
 vm_firmware = "efi-secure"

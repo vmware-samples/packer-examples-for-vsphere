@@ -68,12 +68,7 @@ skipx
 
 ### Post-installation commands.
 %post
-dnf install -y oracle-epel-release-el9
-dnf makecache
 dnf install -y sudo open-vm-tools perl
-%{ if additional_packages != "" ~}
-dnf install -y ${additional_packages}
-%{ endif ~}
 echo "${build_username} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/${build_username}
 sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
 %end

@@ -55,8 +55,8 @@ locals {
       build_username           = var.build_username
       build_password           = var.build_password
       build_password_encrypted = var.build_password_encrypted
-      rhsm_username            = var.rhsm_username
-      rhsm_password            = var.rhsm_password
+      rhsm_activation_key      = var.rhsm_activation_key
+      rhsm_organization        = var.rhsm_organization
       vm_guest_os_language     = var.vm_guest_os_language
       vm_guest_os_keyboard     = var.vm_guest_os_keyboard
       vm_guest_os_timezone     = var.vm_guest_os_timezone
@@ -233,6 +233,8 @@ build {
       "--extra-vars", "ansible_username=${var.ansible_username}",
       "--extra-vars", "ansible_key='${var.ansible_key}'",
       "--extra-vars", "enable_cloudinit=${var.vm_guest_os_cloudinit}",
+      "--extra-vars", "rhsm_activation_key=${var.rhsm_activation_key}",
+      "--extra-vars", "rhsm_organization=${var.rhsm_organization}",
     ]
   }
 

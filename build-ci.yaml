@@ -49,6 +49,13 @@ menu:
           var_files:
             - "network.pkrvars.hcl"
             - "linux-storage.pkrvars.hcl"
+      - entry: "Red Hat Enterprise Linux 10"
+        build:
+          path: "builds/linux/rhel/10/"
+          var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
+            - "rhsm.pkrvars.hcl"
       - entry: "Red Hat Enterprise Linux 9"
         build:
           path: "builds/linux/rhel/9/"
@@ -70,6 +77,12 @@ menu:
             - "network.pkrvars.hcl"
             - "linux-storage.pkrvars.hcl"
             - "rhsm.pkrvars.hcl"
+      - entry: "AlmaLinux OS 10"
+        build:
+          path: "builds/linux/almalinux/10/"
+          var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
       - entry: "AlmaLinux OS 9"
         build:
           path: "builds/linux/almalinux/9/"
@@ -82,6 +95,12 @@ menu:
           var_files:
             - "network.pkrvars.hcl"
             - "linux-storage.pkrvars.hcl"
+      - entry: "Rocky Linux 10"
+        build:
+          path: "builds/linux/rocky/10/"
+          var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
       - entry: "Rocky Linux 9"
         build:
           path: "builds/linux/rocky/9/"
@@ -91,6 +110,12 @@ menu:
       - entry: "Rocky Linux 8"
         build:
           path: "builds/linux/rocky/8/"
+          var_files:
+            - "network.pkrvars.hcl"
+            - "linux-storage.pkrvars.hcl"
+      - entry: "Oracle Linux 10"
+        build:
+          path: "builds/linux/oracle/10/"
           var_files:
             - "network.pkrvars.hcl"
             - "linux-storage.pkrvars.hcl"

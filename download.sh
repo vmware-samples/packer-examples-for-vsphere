@@ -337,7 +337,7 @@ select_version() {
     fi
 
     # Convert the version descriptions to an array and sort it in descending order.
-    IFS=$'\n' read -rd '' -a version_array <<<"$(echo "$version_descriptions" | sort -r)"
+    IFS=$'\n' read -rd '' -a version_array <<<"$(echo "$version_descriptions" | sort -V -r)"
 
     # Print the submenu.
     clear
@@ -434,7 +434,13 @@ select_download() {
         fi
         mkdir -p "$download_dir"
 
-        file_name=$(basename "$download_link")
+        # Check if a custom filename is provided in the JSON; otherwise, extract from URL.
+        custom_filename=$(jq -r --arg os "$os" --arg dist "$dist" --arg version "$version" --arg arch "$arch" '.os[] | select(.name == $os) | .types[] | select(.description == $dist) | .versions[$version][] | .architectures[] | select(.architecture == $arch) | .filename // empty' $json_path)
+        if [ -n "$custom_filename" ]; then
+            file_name="$custom_filename"
+        else
+            file_name=$(basename "$download_link")
+        fi
         full_path="$download_dir/$file_name"
 
         # Check if iso file exists in the download directory.

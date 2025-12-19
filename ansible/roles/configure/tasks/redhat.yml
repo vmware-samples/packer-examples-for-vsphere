@@ -3,9 +3,9 @@
 
 # Tasks for disconnecting from Red Hat Subscription Manager.
 - name: Disconnecting from Red Hat Subscription Manager.
-  community.general.redhat_subscription:
-    state: absent
+  ansible.builtin.command: subscription-manager clean
   when: ansible_facts['distribution'] == 'RedHat'
+  ignore_errors: true
 
 # Tasks for configuring SSH for public key authentication.
 - name: Configuring SSH for Public Key Authentication without cloud-init.

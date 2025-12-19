@@ -8,11 +8,11 @@
 */
 
 // Guest Operating System Metadata
-vm_guest_os_name     = "debian"
-vm_guest_os_version  = "12.12"
+vm_guest_os_name    = "debian"
+vm_guest_os_version = "12.12"
 
 // Virtual Machine Guest Operating System Setting
-vm_guest_os_type = "other5xLinux64Guest"
+vm_guest_os_type = "debian12_64Guest"
 
 // Virtual Machine Hardware Settings
 vm_firmware = "efi-secure"

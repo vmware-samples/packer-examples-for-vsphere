@@ -29,6 +29,7 @@ d-i mirror/country string manual
 d-i mirror/http/hostname string cdn-fastly.deb.debian.org
 d-i mirror/http/directory string /debian
 d-i mirror/http/proxy string
+d-i apt-setup/use_mirror boolean true
 
 # User Configuration
 d-i passwd/root-login boolean false

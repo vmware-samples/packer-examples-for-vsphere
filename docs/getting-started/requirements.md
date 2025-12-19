@@ -9,10 +9,10 @@ icon: octicons/verified-24
 The project is tested on the following platforms:
 
 ::spantable::
-| Platform        | Version               |
-| --------------- | --------------------- |
-| VMware vSphere  | 8.0 or later          |
-| VMware vSphere  | 7.0 Update 3D or later|
+| Platform        | Version       |
+| --------------- | ------------- |
+| VMware vSphere  | 9.0 or        |
+| VMware vSphere  | 8.0 Update 3h |
 ::end-spantable::
 
 ## :octicons-stack-24: &nbsp; Operating Systems
@@ -20,11 +20,11 @@ The project is tested on the following platforms:
 The project is tested on the following operating systems for the Packer host [^1] :
 
 ::spantable::
-| Operating System   | Version   | Architecture           |
-| :----------------- | :-------- | :--------------------- |
-| VMware Photon OS   | 5.0       | `x86_64`               |
-| Ubuntu Server      | 22.04 LTS | `x86_64`               |
-| macOS              | Sonoma    | Intel or Apple Silicon |
+| Operating System   | Version | Architecture  |
+| :----------------- | :------ | :------------ |
+| VMware Photon OS   | 5.0     | `amd64`       |
+| Ubuntu Server      | 24.04   | `amd64`       |
+| macOS              | Tahoe   | `arm64`       |
 ::end-spantable::
 
 ## :simple-packer: &nbsp; Packer

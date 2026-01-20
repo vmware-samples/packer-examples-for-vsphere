@@ -48,7 +48,7 @@ following privileges:
 |                                | Provisioning > Create template from virtual machine       | `VirtualMachine.Provisioning.CreateTemplateFromVM` |
 |                                | Provisioning > Mark as template                           | `VirtualMachine.Provisioning.MarkAsTemplate`       |
 |                                | Provisioning > Mark as virtual machine                    | `VirtualMachine.Provisioning.MarkAsVM`             |
-|                                | State > Create snapshot                                   | `VirtualMachine.State.CreateSnapshot`              |
+|                                | Snapshot Management > Create snapshot                     | `VirtualMachine.State.CreateSnapshot`              |
 ::end-spantable::
 
 Once the custom vSphere role is created, assign **Global Permissions** in vSphere for the service

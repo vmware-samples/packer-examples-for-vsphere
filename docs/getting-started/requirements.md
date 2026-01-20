@@ -102,13 +102,13 @@ executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
 The following additional software packages must be installed on the operating system running Packer.
 
 | Package                                                | Version   | Description                                        | Resources                       |
-| :----------------------------------------------------- |:----------| :------------------------------------------------- | :------------------------------ |
+| :----------------------------------------------------- |:----------|:---------------------------------------------------| :------------------------------ |
 | :simple-ansible: &nbsp;&nbsp; ansible-core             | >= 2.16   | Automation engine for IT infrastructure            | [:material-library:][ansible]   |
 | :fontawesome-brands-git: &nbsp;&nbsp; git              | >= 2.43.0 | Version control system for tracking changes        | [:material-library:][git]       |
 | :material-code-braces: &nbsp;&nbsp; gomplate           | >= 4.3.0  | Template renderer                                  | [:material-library:][gomplate]  |
 | :simple-json: &nbsp;&nbsp; jq                          | >= 1.8.3  | Command-line JSON parser                           | [:material-library:][jq]        |
 | :simple-terraform: &nbsp;&nbsp; terraform              | >= 1.10.0 | Infrastructure as Code (IaC) tool by HashiCorp     | [:material-library:][terraform] |
-| :fontawesome-solid-compact-disc: &nbsp;&nbsp; xorriso  | >= 1.5.6  | ISO filesystem images creator for Linux             | [:material-library:][xorriso]   |
+| :fontawesome-solid-compact-disc: &nbsp;&nbsp; xorriso  | >= 1.5.6  | ISO filesystem images creator for Linux            | [:material-library:][xorriso]   |
 
 ### Installation
 
@@ -118,8 +118,6 @@ The following additional software packages must be installed on the operating sy
 
     ```shell
     tdnf -y install ansible git jq xorriso wget unzip
-    echo "ansible-core $(ansible --version | grep 'ansible.*core' | awk '{print $3}' | tr -d ']')"
-    echo "terraform $(terraform version | awk -Fv '{print $2}' | head -n 1)"
     export PATH="$HOME/.local/bin:$PATH"
     ```
 
@@ -149,8 +147,6 @@ The following additional software packages must be installed on the operating sy
     sudo apt install software-properties-common
     sudo add-apt-repository --yes --update ppa:ansible/ansible
     sudo apt install -y python3 python3-pip ansible git jq xorriso whois unzip terraform
-    echo "ansible-core $(ansible --version | grep 'ansible.*core' | awk '{print $3}' | tr -d ']')"
-    echo "terraform $(terraform version | awk -Fv '{print $2}' | head -n 1)"
     export PATH="$HOME/.local/bin:$PATH"
     ```
 
@@ -169,8 +165,6 @@ The following additional software packages must be installed on the operating sy
 
     ```shell
     brew install ansible git jq coreutils hashicorp/tap/terraform gomplate
-    echo "ansible-core $(ansible --version | grep 'ansible.*core' | awk '{print $3}' | tr -d ']')"
-    echo "terraform $(terraform version | awk -Fv '{print $2}' | head -n 1)"
     export PATH="$HOME/.local/bin:$PATH"
     ```
 

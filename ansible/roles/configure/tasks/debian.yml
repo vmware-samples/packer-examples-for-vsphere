@@ -58,7 +58,6 @@
       become_method: sudo
       become_user: root
       when: ansible_distribution == 'Ubuntu' and ansible_distribution_major_version | int >= 24
-  when: enable_cloudinit == 'true'
 
 - name: Replacing dhcp with static for Debian
   ansible.builtin.lineinfile:

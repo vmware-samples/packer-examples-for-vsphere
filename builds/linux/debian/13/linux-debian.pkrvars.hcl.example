@@ -9,7 +9,7 @@
 
 // Guest Operating System Metadata
 vm_guest_os_name     = "debian"
-vm_guest_os_version  = "13.2"
+vm_guest_os_version  = "13.3"
 
 // Virtual Machine Guest Operating System Setting
 vm_guest_os_type = "other6xLinux64Guest"
@@ -19,6 +19,6 @@ vm_firmware = "efi-secure"
 
 // Removable Media Settings
 iso_datastore_path       = "iso/linux/debian/13/amd64"
-iso_content_library_item = "debian-13.2.0-amd64-netinst"
-iso_file                 = "debian-13.2.0-amd64-netinst.iso"
+iso_content_library_item = "debian-13.3.0-amd64-netinst"
+iso_file                 = "debian-13.3.0-amd64-netinst.iso"
 

@@ -6,7 +6,7 @@
   block:
     - name: Getting guest operating system information.
       ansible.builtin.debug:
-        msg: "OS: {{ ansible_distribution }} {{ ansible_distribution_version }}"
+        msg: "OS: {{ ansible_facts['distribution'] }} {{ ansible_facts['distribution_version'] }}"
 
     - name: Updating the operating system.
       ansible.builtin.apt:
@@ -16,11 +16,11 @@
 
     - name: Installing additional packages.
       ansible.builtin.apt:
-        name: "{{ base_additional_packages[ansible_os_family] }}"
+        name: "{{ base_additional_packages[ansible_facts['os_family']] }}"
         state: latest # noqa package-latest
 
     - name: Installing cloud-init.
       ansible.builtin.apt:
         name: cloud-init
         state: latest # noqa package-latest
-      when: enable_cloudinit == 'true' and ansible_distribution_version | int >= 12
+      when: enable_cloudinit == 'true' and (ansible_facts['distribution_version'] | int) >= 12

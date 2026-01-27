@@ -7,7 +7,7 @@
   block:
     - name: Getting guest operating system information.
       ansible.builtin.debug:
-        msg: "OS: {{ ansible_distribution }} {{ ansible_distribution_version }}"
+        msg: "OS: {{ ansible_facts['distribution'] }} {{ ansible_facts['distribution_version'] }}"
 
     - name: Updating the operating system.
       community.general.zypper:
@@ -17,7 +17,7 @@
 
     - name: Installing additional packages.
       community.general.zypper:
-        name: "{{ base_additional_packages[ansible_os_family] }}"
+        name: "{{ base_additional_packages[ansible_facts['os_family']] }}"
         state: latest
 
     - name: Set full module path.

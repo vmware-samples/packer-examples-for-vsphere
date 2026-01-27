@@ -4,10 +4,10 @@
 # Tasks for updating the operating system and installing additional packages.
 - name: Getting guest operating system information.
   ansible.builtin.debug:
-    msg: "OS: {{ ansible_os_name }}"
+    msg: "OS: {{ ansible_facts['os_name'] }}"
 
 - name: Ensure .NET Framework 4.8 requirement is satisfied for Chocolatey v2.0.0 and later.
-  when: ansible_os_installation_type != "Server Core"
+  when: ansible_facts['os_installation_type'] != "Server Core"
   block:
     - name: Install Chocolatey CLI
       chocolatey.chocolatey.win_chocolatey:

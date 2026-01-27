@@ -4,7 +4,7 @@
 # Set the Windows Explorer options.
 # ansible-lint: disable=line-length
 - name: Setting the Windows Explorer options...
-  when: ansible_os_installation_type != "Server Core"
+  when: ansible_facts['os_installation_type'] != "Server Core"
   block:
     - name: Show hidden files.
       ansible.windows.win_regedit:

@@ -6,15 +6,15 @@
   block:
     - name: Getting guest operating system information.
       ansible.builtin.debug:
-        msg: "OS: {{ ansible_distribution }} {{ ansible_distribution_version }}"
+        msg: "OS: {{ ansible_facts['distribution'] }} {{ ansible_facts['distribution_version'] }}"
 
     - name: Updating the operating system.
       ansible.builtin.command: tdnf -y update
-      when: ansible_distribution_version | int >= 5
+      when: (ansible_facts['distribution_version'] | int) >= 5
       changed_when: false
 
 - name: Update Photon OS Repositories and System
-  when: ansible_distribution_version | int <= 4
+  when: (ansible_facts['distribution_version'] | int) <= 4
   block:
     - name: Updating the repository URL.
       ansible.builtin.shell: |
@@ -40,7 +40,7 @@
       changed_when: false
 
 - name: Installing additional packages.
-  ansible.builtin.command: tdnf -y install {{ base_additional_packages[ansible_os_family] | join(' ') }}
+  ansible.builtin.command: tdnf -y install {{ base_additional_packages[ansible_facts['os_family']] | join(' ') }}
   changed_when: false
 
 - name: Installing cloud-init.

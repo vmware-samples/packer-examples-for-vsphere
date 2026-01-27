@@ -6,7 +6,7 @@
   ansible.builtin.apt:
     name: cloud-init
     state: absent
-  when: ansible_distribution == 'Ubuntu' and enable_cloudinit == 'false'
+  when: enable_cloudinit == 'false' and ansible_facts['distribution'] == 'Ubuntu'
 
 # Tasks to clean the audit logs.
 - name: Cleaning the audit logs.
@@ -84,5 +84,5 @@
 # Tasks to clean the shell history.
 - name: Cleaning the shell history.
   ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/.bash_history"
+    path: "{{ ansible_facts['env']['HOME'] }}/.bash_history"
     state: absent

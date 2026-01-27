@@ -1,12 +1,12 @@
 ---
 - name: "{{ base_task_name }}"
-  ansible.builtin.include_tasks: "{{ ansible_os_family | lower }}.yml"
-  when: ansible_os_family in ['Debian', 'RedHat', 'Suse']
+  ansible.builtin.include_tasks: "{{ ansible_facts['os_family'] | lower }}.yml"
+  when: ansible_facts['os_family'] in ['Debian', 'RedHat', 'Suse']
 
 - name: "{{ base_task_name }}"
-  ansible.builtin.include_tasks: "{{ ansible_lsb.codename | lower }}.yml"
-  when: ansible_distribution == 'VMware Photon OS'
+  ansible.builtin.include_tasks: "{{ ansible_facts['lsb']['codename'] | lower }}.yml"
+  when: ansible_facts['distribution'] == 'VMware Photon OS'
 
 - name: "{{ base_task_name }}"
   ansible.builtin.include_tasks: windows.yml
-  when: ansible_os_family == "Windows"
+  when: ansible_facts['os_family'] == "Windows"

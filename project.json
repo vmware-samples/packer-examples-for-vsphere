@@ -125,9 +125,9 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://releases.ubuntu.com/releases/24.04.2/ubuntu-24.04.2-live-server-amd64.iso",
+                                        "download_link": "https://releases.ubuntu.com/releases/24.04.3/ubuntu-24.04.3-live-server-amd64.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://releases.ubuntu.com/releases/24.04/SHA256SUMS"
+                                        "checksum": "https://releases.ubuntu.com/releases/24.04.3/SHA256SUMS"
                                     }
                                 ],
                                 "build_files": [
@@ -150,9 +150,9 @@
                                 "architectures": [
                                     {
                                         "architecture": "amd64",
-                                        "download_link": "https://releases.ubuntu.com/releases/22.04/ubuntu-22.04.5-live-server-amd64.iso",
+                                        "download_link": "https://releases.ubuntu.com/releases/22.04.5/ubuntu-22.04.5-live-server-amd64.iso",
                                         "checksum_algorithm": "sha256",
-                                        "checksum": "https://releases.ubuntu.com/releases/22.04/SHA256SUMS"
+                                        "checksum": "https://releases.ubuntu.com/releases/22.04.5/SHA256SUMS"
                                     }
                                 ],
                                 "build_files": [

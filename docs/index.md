@@ -52,4 +52,4 @@ This project supports the following guest operating systems:
 
 [//]: Links
 [packer]: https://www.packer.io
-[packer-plugin-vsphere]: https://developer.hashicorp.com/packer/plugins/builders/vsphere/vsphere-iso
+[packer-plugin-vsphere]: https://developer.hashicorp.com/packer/integrations/vmware/vsphere

@@ -60,7 +60,7 @@ Please refer to the [documentation][documentation] for more detailed information
 
 ## Contributing
 
-The project team welcomes contributions from the community. Please read our [Developer Certificate of Origin][vmware-cla-dco]. All contributions to this repository must be signed as described on that page. Your signature certifies that you wrote the patch or have the right to pass it on as an open-source patch.
+The project team welcomes contributions from the community. All contributions to this repository must be signed as described on that page. Your signature certifies that you wrote the patch or have the right to pass it on as an open-source patch.
 
 For more detailed information, refer to the [contribution guidelines][contributing] to get started.
 
@@ -101,5 +101,4 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 [gh-issues]: https://github.com/vmware/packer-examples-for-vsphere/issues
 [gh-discussions]: https://github.com/vmware/packer-examples-for-vsphere/discussions
 [packer]: https://www.packer.io
-[packer-plugin-vsphere]: https://developer.hashicorp.com/packer/plugins/builders/vsphere/vsphere-iso
-[vmware-cla-dco]: https://cla.vmware.com/dco
+[packer-plugin-vsphere]: https://developer.hashicorp.com/packer/integrations/vmware/vsphere

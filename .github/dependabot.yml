@@ -34,7 +34,7 @@ updates:
     ignore:
       - dependency-name: "terraform"
         update-types: ["version-update:semver-patch"]
-      - dependency-name: "hashicorp/vsphere"
+      - dependency-name: "vmware/vsphere"
         update-types: ["version-update:semver-patch"]
       - dependency-name: "hashicorp/hcp"
         update-types: ["version-update:semver-patch"]
@@ -44,7 +44,7 @@ updates:
           - "terraform"
       terraform-vsphere:
         patterns:
-          - "hashicorp/vsphere"
+          - "vmware/vsphere"
       terraform-hcp:
         patterns:
           - "hashicorp/hcp"

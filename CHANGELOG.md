@@ -38,6 +38,8 @@
   [#1101](https://github.com/vmware/packer-examples-for-vsphere/pull/1104)
 - Updates Ansible `community.general` collection to `12.4.0`.
   [#1108](https://github.com/vmware/packer-examples-for-vsphere/pull/1108)
+- Updates `chocolatey` to `2.6.0`.
+  [#1109](https://github.com/vmware/packer-examples-for-vsphere/pull/1109)
 - Updates `required_versions` for `packer` to `>= 1.15.0`.
   [#1106](https://github.com/vmware/packer-examples-for-vsphere/pull/1107)
 - Updates `required_plugins` for `packer-plugin-vsphere` to `>= 2.1.1`.
@@ -77,6 +79,8 @@
 - Removes the use of `awk` commands that printed the installed versions of
   supporting components.
   [#1089](https://github.com/vmware/packer-examples-for-vsphere/pull/1089)
+- Removes additional packages from the `chocolatey` package lists.
+  [#1109](https://github.com/vmware/packer-examples-for-vsphere/pull/1109)
 - Eliminates the outer `when: enable_cloudinit == 'true''` condition from
   the configuration task, as the inner conditions are sufficient for task
   execution.

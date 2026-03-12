@@ -33,7 +33,7 @@ The project is tested on the following operating systems for the Packer host [^1
 | :--------------------------------------------------------------- | :-------- | :--------------- | :---------------------------------------------------------------------------------------------------------------------- |
 | :simple-packer: &nbsp;&nbsp; Packer                              | >= 1.12.0 | By HashiCorp     | [:fontawesome-brands-github:][packer-repo] &nbsp;&nbsp; [:material-library:][packer]                                    |
 | :simple-hashicorp: &nbsp;&nbsp; Packer Plugin for Ansible        | >= 1.1.4  | By HashiCorp     | [:fontawesome-brands-github:][packer-plugin-ansible-repo] &nbsp;&nbsp; [:material-library:][packer-plugin-ansible]      |
-| :simple-hashicorp: &nbsp;&nbsp; Packer Plugin for VMware vSphere | >= 2.0.0  | By HashiCorp     | [:fontawesome-brands-github:][packer-plugin-vsphere-repo] &nbsp;&nbsp; [:material-library:][packer-plugin-vsphere-docs] |
+| :simple-hashicorp: &nbsp;&nbsp; Packer Plugin for VMware vSphere | >= 2.1.1  | By Broadcom      | [:fontawesome-brands-github:][packer-plugin-vsphere-repo] &nbsp;&nbsp; [:material-library:][packer-plugin-vsphere-docs] |
 | :fontawesome-brands-git: &nbsp;&nbsp; Packer Plugin for Git      | >= 0.6.5  | Community Plugin | [:fontawesome-brands-github:][packer-plugin-git-repo] &nbsp;&nbsp; [:material-library:][packer-plugin-git-docs]         |
 
 ### Installation
@@ -185,7 +185,7 @@ The following additional software packages must be installed on the operating sy
 [packer-plugin-ansible-repo]: https://github.com/hashicorp/packer-plugin-ansible
 [packer-plugin-git-docs]: https://developer.hashicorp.com/packer/integrations/ethanmdavidson/git
 [packer-plugin-git-repo]: https://github.com/ethanmdavidson/packer-plugin-git
-[packer-plugin-vsphere-docs]: https://developer.hashicorp.com/packer/plugins/builders/vsphere
-[packer-plugin-vsphere-repo]: https://github.com/hashicorp/packer-plugin-vsphere
+[packer-plugin-vsphere-docs]: https://developer.hashicorp.com/packer/integrations/vmware/vsphere
+[packer-plugin-vsphere-repo]: https://github.com/vmware/packer-plugin-vsphere
 [terraform]: https://developer.hashicorp.com/terraform
 [xorriso]: https://www.gnu.org/software/xorriso/

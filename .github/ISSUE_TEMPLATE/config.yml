@@ -10,7 +10,7 @@ contact_links:
     url: "https://developer.hashicorp.com/packer/docs"
     about: Having trouble with Packer? Check out the product documentation.
   - name: Packer Plugin for vSphere
-    url: "https://github.com/hashicorp/packer-plugin-vsphere/issues/new/choose"
+    url: "https://github.com/vmware/packer-plugin-vsphere/issues/new/choose"
     about: >-
       Having trouble with the Packer Plugin for vSphere? Check out the GitHub
       Issues.

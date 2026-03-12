@@ -36,6 +36,8 @@
   `hashicorp/vsphere` to `vmware/vsphere`. This aligns with the provider's
   updated namespace.
   [#1101](https://github.com/vmware/packer-examples-for-vsphere/pull/1104)
+- Updates `required_versions` for `packer` to `>= 1.15.0`.
+  [#1106](https://github.com/vmware/packer-examples-for-vsphere/pull/1107)
 - Updates `required_plugins` for `packer-plugin-vsphere` to `>= 2.1.1`.
   [#1106](https://github.com/vmware/packer-examples-for-vsphere/pull/1106)
 - Updates `required_versions` for `packer-plugin-ansible` to >= `1.1.4`.

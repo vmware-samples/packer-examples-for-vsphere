@@ -6,35 +6,77 @@
 
 **Bug Fix**:
 
-- Increases the Windows Recovery Environment (Windows RE) partition size for Windows Server 2025
-  builds to accommodate version storage requirements.
+- Increases the Windows Recovery Environment (Windows RE) partition size for
+  Windows Server 2025 builds to accommodate version storage requirements.
   [#1044](https://github.com/vmware/packer-examples-for-vsphere/pull/1044)
 
 **Enhancement**:
 
-- Adds `common_ovf_export_image_files` variable to control whether image files are included in OVF
-  exports. [#1047](https://github.com/vmware/packer-examples-for-vsphere/pull/1047)
+- Adds Debian 13 to the project.
+  [#1056](https://github.com/vmware/packer-examples-for-vsphere/pull/1056),
+  [#1094](https://github.com/vmware/packer-examples-for-vsphere/pull/1094),
+- Adds `common_ovf_export_image_files` variable to control whether image files
+  are included in OVF exports.
+  [#1047](https://github.com/vmware/packer-examples-for-vsphere/pull/1047)
+- Updates `common_vm_version` from `19` to `21` to.
 
 **Chore**:
 
+- Updates the tested platform versions to include VMware vSphere 9.0 and 8.0
+  Update 3h.
+  [#1083](https://github.com/vmware/packer-examples-for-vsphere/pull/1083)
+- Updates the tested operating system requirements to VMware Photon OS 5.0
+  (`amd64`), Ubuntu Server 24.04 (`amd64`), and macOS Tahoe (`arm64`).
+  [#1083](https://github.com/vmware/packer-examples-for-vsphere/pull/1083)
+- Updates the Packer plugin for VMware vSphere source from
+  `github.com/hashicorp/vsphere` to `github.com/vmware/vsphere`. This aligns
+  with the plugin's updated namespace.
+  [#1100](https://github.com/vmware/packer-examples-for-vsphere/pull/1100)
+- Updates the Terraform provider for VMware vSphere source from
+  `hashicorp/vsphere` to `vmware/vsphere`. This aligns with the provider's
+  updated namespace.
+  [#1101](https://github.com/vmware/packer-examples-for-vsphere/pull/1101)
+- Updates `required_plugins` for `packer-plugin-vsphere` to `>= 2.0.0`.
+  [#1077](https://github.com/vmware/packer-examples-for-vsphere/pull/1077)
+- Updates `required_versions` for `packer-plugin-ansible` to >= `1.1.4`.
+  [#1078](https://github.com/vmware/packer-examples-for-vsphere/pull/1078)
+- Updates `required_plugins` for `ethanmdavidson/packer-plugin-git` to
+  `>= 0.6.5`.
+  [#1079](https://github.com/vmware/packer-examples-for-vsphere/pull/1079)
+- Updates `required_versions` for `hashicorp/vsphere` to `>= 2.15.0`.
+  [#1102](https://github.com/vmware/packer-examples-for-vsphere/pull/1102)
 - Removes Ubuntu Server 20.04 from the project.
-
   On 31 May 2025, Ubuntu Server 20.04 reached the end of life.
-
-- Updates Debian 12 to 12.11 release.
-  [#1049](https://github.com/vmware/packer-examples-for-vsphere/pull/1049)
+  [#1040](https://github.com/vmware/packer-examples-for-vsphere/pull/1040)
+- Removes Windows 10 from the project..
+  On 14 October 2025, Windows 10 reached the end of life.
+  [#1082](https://github.com/vmware/packer-examples-for-vsphere/pull/1082)
+- Updates Ubuntu 24.04 LTS to 24.04.3 release.
+  [#1099](https://github.com/vmware/packer-examples-for-vsphere/pull/1099)
+- Updates Debian 12 to 12.12 release.
+  [#1095](https://github.com/vmware/packer-examples-for-vsphere/pull/1095)
 - Updates SLES 15 to 15.7 release.
   [#1050](https://github.com/vmware/packer-examples-for-vsphere/pull/1050)
-- Updates Red Hat Enterprise Linux 9 to 9.6 release.
-  [#1051](https://github.com/vmware/packer-examples-for-vsphere/pull/1051)
-- Updates AlmaLinux 9 to 9.6 release.
-  [#1051](https://github.com/vmware/packer-examples-for-vsphere/pull/1051)
-- Updates Rocky Linux 9 to 9.6 release.
-  [#1051](https://github.com/vmware/packer-examples-for-vsphere/pull/1051)
-- Updates Oracle Linux 9 to 9.6 release.
-  [#1051](https://github.com/vmware/packer-examples-for-vsphere/pull/1051)
-- Updates Fedora Server to release 42.
-  [#1048](https://github.com/vmware/packer-examples-for-vsphere/pull/1048)
+- Updates Red Hat Enterprise Linux 9 to 9.7 release.
+  [#1081](https://github.com/vmware/packer-examples-for-vsphere/pull/1081)
+- Updates AlmaLinux 9 to 9.7 release.
+  [#1081](https://github.com/vmware/packer-examples-for-vsphere/pull/1081)
+- Updates Rocky Linux 9 to 9.7 release.
+  [#1081](https://github.com/vmware/packer-examples-for-vsphere/pull/1081)
+- Updates Oracle Linux 9 to 9.7 release.
+  [#1081](https://github.com/vmware/packer-examples-for-vsphere/pull/1081)
+- Updates Fedora Server to release 43.
+  [#1080](https://github.com/vmware/packer-examples-for-vsphere/pull/1080)
+- Update to the documentation to clarify privilege naming. The change updates
+  the privilege description for creating snapshots to use `Snapshot Management`
+  instead of `State`, making the documentation more accurate for vSphere 8+.
+- Removes the use of `awk` commands that printed the installed versions of
+  supporting components.
+  [#1089](https://github.com/vmware/packer-examples-for-vsphere/pull/1089)
+- Eliminates the outer `when: enable_cloudinit == 'true''` condition from
+  the configuration task, as the inner conditions are sufficient for task
+  execution.
+  [#1092](https://github.com/vmware/packer-examples-for-vsphere/pull/1092)
 
 ## v0.22.1
 

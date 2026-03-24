@@ -7,7 +7,9 @@
           dhcp4: false
           addresses:
             - ${ip}/${netmask}
-          gateway4: ${gateway}
+          routes:
+            - to: default
+              via: ${gateway}
           nameservers:
             addresses:
 %{ for item in dns ~}

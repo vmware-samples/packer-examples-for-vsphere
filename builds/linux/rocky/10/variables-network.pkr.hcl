@@ -4,7 +4,7 @@
 
 /*
     DESCRIPTION:
-    Rocky Linux 9 network variables.
+    Rocky Linux 10 network variables.
     Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 

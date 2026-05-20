@@ -4,7 +4,7 @@
 
 /*
     DESCRIPTION:
-    Rocky Linux 9 storage variables.
+    Rocky Linux 10 storage variables.
     Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 

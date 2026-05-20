@@ -4,7 +4,7 @@
 
 /*
     DESCRIPTION:
-    Rocky Linux 9 input variables.
+    Rocky Linux 10 input variables.
     Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
 */
 

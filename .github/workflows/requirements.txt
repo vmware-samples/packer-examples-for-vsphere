@@ -1,9 +1,2 @@
-mkdocs-git-revision-date-localized-plugin
-mkdocs-markdownextradata-plugin
-mkdocs-minify-plugin
-mkdocs-open-in-new-tab
-mkdocs-glightbox
-mkdocs-rss-plugin
-mkdocs-video
+zensical>=0.0.46
 neoteroi-mkdocs
-mkdocs-link-marker

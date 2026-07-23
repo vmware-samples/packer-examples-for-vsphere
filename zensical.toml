@@ -1,0 +1,121 @@
+[project]
+site_name = "Packer Examples for VMware vSphere"
+site_description = "Packer Examples for VMware vSphere"
+site_url = "https://vmware.github.io/packer-examples-for-vsphere/"
+site_author = "Broadcom"
+repo_url = "https://github.com/vmware/packer-examples-for-vsphere"
+edit_uri = "edit/develop/docs/"
+docs_dir = "docs"
+site_dir = ".site"
+use_directory_urls = true
+copyright = "Copyright © 2005-2026 Broadcom. All rights reserved.<br/>The term \"Broadcom\" refers to Broadcom Inc. and/or its subsidiaries."
+extra_css = [
+  "assets/stylesheets/extra.css",
+  "assets/stylesheets/spanable.css",
+]
+
+nav = [
+  { Home = "index.md" },
+  { "Getting Started" = [
+    "getting-started/index.md",
+    { Requirements = "getting-started/requirements.md" },
+    { "Get the Project" = "getting-started/get-project.md" },
+    { "Download ISOs" = "getting-started/downloads.md" },
+    { Privileges = "getting-started/privileges.md" },
+    { Configure = "getting-started/configure.md" },
+    { Build = "getting-started/build.md" },
+    { "GitLab CI/CD" = "getting-started/gitlab-ci-cd.md" },
+    { FAQ = "getting-started/faq.md" },
+  ]},
+  { Community = [
+    "community/index.md",
+    { Support = "community/support.md" },
+    { Contributing = "community/contributing.md" },
+    { "Code of Conduct" = "community/code-of-conduct.md" },
+    { "Release Notes" = "release-notes.md" },
+    { "Release Milestones" = "https://github.com/vmware/packer-examples-for-vsphere/milestones" },
+    { Discussions = "https://github.com/vmware/packer-examples-for-vsphere/discussions" },
+    { "Search Issues" = "https://github.com/vmware/packer-examples-for-vsphere/issues" },
+    { "Open an Issue" = "https://github.com/vmware/packer-examples-for-vsphere/issues/new/choose" },
+    { License = "license.md" },
+  ]},
+]
+
+[project.theme]
+variant = "modern"
+language = "en"
+logo = "assets/images/header-logo.png"
+font.text = "Inter"
+custom_dir = "docs/overrides"
+features = [
+  "navigation.instant",
+  "navigation.instant.prefetch",
+  "navigation.tracking",
+  "navigation.indexes",
+  "navigation.path",
+  "navigation.top",
+  "navigation.footer",
+  "search.highlight",
+  "content.code.copy",
+  "content.tooltips",
+  "content.tabs.link",
+]
+
+favicon = "favicon.ico"
+
+[project.theme.icon]
+repo = "fontawesome/brands/github"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+toggle.icon = "lucide/sun-moon"
+toggle.name = "Switch to light mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+primary = "custom"
+accent = "custom"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+primary = "custom"
+accent = "custom"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to system preference"
+
+[project.extra]
+generator = false
+
+[[project.extra.social]]
+icon = "fontawesome/brands/github"
+link = "https://github.com/vmware/packer-examples-for-vsphere"
+
+[project.markdown_extensions.admonition]
+[project.markdown_extensions.attr_list]
+[project.markdown_extensions.footnotes]
+[project.markdown_extensions.md_in_html]
+[project.markdown_extensions."neoteroi.spantable"]
+[project.markdown_extensions.pymdownx.critic]
+[project.markdown_extensions.pymdownx.details]
+[project.markdown_extensions.pymdownx.inlinehilite]
+[project.markdown_extensions.pymdownx.snippets]
+base_path = ["."]
+check_paths = true
+[project.markdown_extensions.pymdownx.superfences]
+[project.markdown_extensions.pymdownx.highlight]
+anchor_linenums = true
+line_spans = "__span"
+pygments_lang_class = true
+[project.markdown_extensions.pymdownx.tabbed]
+alternate_style = true
+combine_header_slug = true
+[project.markdown_extensions.pymdownx.emoji]
+emoji_generator = "zensical.extensions.emoji.to_svg"
+emoji_index = "zensical.extensions.emoji.twemoji"
+[project.markdown_extensions.tables]
+[project.markdown_extensions.toc]
+permalink = true

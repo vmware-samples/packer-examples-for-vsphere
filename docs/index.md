@@ -1,4 +1,9 @@
-<!-- markdownlint-disable first-line-h1 no-inline-html -->
+---
+title: Packer Examples for VMware vSphere
+icon: lucide/home
+---
+
+<!-- markdownlint-disable MD025 MD058 first-line-h1 no-inline-html -->
 
 <img src="assets/images/icon-color.svg" alt="VMware vSphere" width="150">
 

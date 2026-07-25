@@ -44,10 +44,10 @@
       ansible.builtin.debug:
         msg: Configuring cloud-init
     - name: Ensure disable_vmware_customization is set to false in cloud.cfg
-      ansible.builtin.blockinfile:
+      ansible.builtin.lineinfile:
         path: /etc/cloud/cloud.cfg
-        block: |
-          disable_vmware_customization: false
+        regexp: '^disable_vmware_customization:'
+        line: "disable_vmware_customization: false"
     - name: Set datasource_list in 90_dpkg.cfg
       ansible.builtin.copy:
         content: "datasource_list: [ VMware, OVF, None ]"

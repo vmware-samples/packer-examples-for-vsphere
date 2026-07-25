@@ -4,20 +4,18 @@
 
 .PHONY: docs-install docs-serve docs-serve-live docs-build docs-uninstall
 docs-install:
-	pip install mkdocs-material
 	pip install --requirement .github/workflows/requirements.txt
 
 docs-serve:
-	mkdocs serve
+	zensical serve
 
 docs-serve-live:
-	mkdocs serve --livereload -w ./
+	zensical serve
 
 docs-build:
-	mkdocs build
+	zensical build
 
 docs-uninstall:
-	pip uninstall mkdocs-material mkdocs -y
 	pip uninstall -r .github/workflows/requirements.txt -y
 
 .PHONY: update-gitlab-ci

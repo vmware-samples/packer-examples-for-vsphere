@@ -1,51 +1,54 @@
 # Contributing Guidelines
 
-Thank you for your interest in contributing to our project. Whether it's a bug report, new feature,
-correction, or additional documentation, we greatly value feedback and contributions from our
-community.
+We greatly value feedback and contributions from our community.
 
-Please read through this document before submitting any issues or pull requests to ensure we have
-all the necessary information to effectively respond to your bug report or contribution.
+Please review this document before submitting any issues or pull requests to ensure we have all the
+necessary information to effectively collaborate on your contribution.
 
-## Reporting Bugs and Suggesting Enhancements
+## Issues
 
-We welcome you to use the [GitHub issues][gh-issues] to report bugs or suggest enhancements.
+Use [GitHub issues][gh-issues] to report bugs or suggest enhancements.
 
-When filing an issue, please check existing open, or recently closed, issues to make sure someone
-else hasn't already reported.
+> [!WARNING]
+> Issues that do not follow the guidelines may be closed by the maintainers without further
+> investigation.
 
-Please try to include as much information as you can using the issue fo. Details like these are
-incredibly useful:
+Before opening an issue, [search existing issues][gh-issues-search] to avoid duplicates.
 
-- A reproducible test case or series of steps.
-- Any modifications you've made relevant to the bug.
-- Anything unusual about your environment or deployment.
+When opening an issue, use the provided issue form and include enough information for maintainers
+to understand and reproduce the issue.
 
-## Contributing via Pull Requests
+> [!WARNING]
+> Ensure that you are using a recent revision of the project and supported versions of Packer and
+> VMware vSphere.
 
-Contributions using pull requests are appreciated.
+## Pull Requests
 
-**Before** sending us a pull request, please ensure that:
+Use GitHub pull requests to propose changes to the project.
+
+**Before** submitting a pull request, ensure that:
 
 1. You [open a discussion][gh-discussions] to discuss any significant work with the maintainer(s).
 2. You [open an issue][gh-issues] and link your pull request to the issue for context.
-3. You are working against the latest source on the `develop` branch.
-4. You check existing open, and recently merged, pull requests to make sure someone else hasn't
-   already addressed the problem.
+3. You have forked the repository.
+4. You are working against the latest source on the `develop` branch.
+5. You have created a topic branch based on `develop`.
+6. You have focused the pull request on a logical unit of work.
+7. You have followed the existing project style and conventions.
+8. You have updated the documentation when required and run `make docs-build`.
+9. You have validated the affected templates and tested representative image builds.
+10. You use [Conventional Commits][conventional-commits] and sign off your commits.
 
-To open a pull request, please:
+When opening a pull request, ensure that:
 
-1. Fork the repository.
-2. Modify the source; please focus on the **specific** change you are contributing.
-3. Ensure local tests pass.
-4. Updated the documentation, if required.
-5. Sign-off and commit to your fork [using a clear commit messages][git-commit]. Please use
-   [Conventional Commits][conventional-commits].
-6. Open a pull request, answering any default questions in the pull request.
-7. Pay attention to any automated failures reported in the pull request, and stay involved in the
-   conversation.
+1. The title uses [Conventional Commits][conventional-commits] format.
+2. The description answers the questions in the pull request template.
+3. Work-in-progress pull requests are opened as drafts.
+4. All status checks pass.
+5. You stay involved in the conversation with maintainers.
 
-GitHub provides additional document on [forking a repository][gh-forks] and [creating a pull request][gh-pull-requests].
+GitHub provides additional documentation on [forking a repository][gh-forks] and
+[creating a pull request][gh-pull-requests].
 
 ### Contributor Flow
 
@@ -149,6 +152,7 @@ for larger changes.
 [gh-discussions]: https://github.com/vmware/packer-examples-for-vsphere/discussions
 [gh-forks]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
 [gh-issues]: https://github.com/vmware/packer-examples-for-vsphere/issues
+[gh-issues-search]: https://github.com/vmware/packer-examples-for-vsphere/issues?q=is%3Aissue+is%3Aopen
 [gh-markdown]: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github
 [gh-pull-requests]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
 [git-commit]: https://cbea.ms/git-commit

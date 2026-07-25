@@ -76,6 +76,8 @@ manifests/*.json
 ## Ignore venv directory.
 venv/
 
-# MkDocs documentation
+# Zensical documentation
+## Ignore cache directory.
+.cache/
 ## Ignore site directory.
 .site/
